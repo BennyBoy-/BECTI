@@ -1,0 +1,198 @@
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_patrol.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-25.000000,-475.000000,75.000000,-425.000000,0.000000,"Init"};
+item1[] = {"Cycle",4,218,125.000000,-475.000000,225.000000,-425.000000,0.000000,"Cycle"};
+item2[] = {"Check",2,250,275.000000,-475.000000,375.000000,-425.000000,0.000000,"Check"};
+item3[] = {"Renew_Path",4,218,275.000000,-575.000000,375.000000,-525.000000,2.000000,"Renew" \n "Path"};
+item4[] = {"Process_Action",4,218,275.000000,-375.000000,375.000000,-325.000000,1.000000,"Process" \n "Action"};
+item5[] = {"Done",8,218,425.000000,-475.000000,525.000000,-425.000000,0.000000,"Done"};
+item6[] = {"End",1,250,575.000000,-475.000000,675.000000,-425.000000,0.000000,"End"};
+item7[] = {"Renewal",2,4346,125.000000,-575.000000,225.000000,-525.000000,0.000000,"Renewal"};
+item8[] = {"Processing",2,250,125.000000,-375.000000,225.000000,-325.000000,0.000000,"Processing"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,4};
+link4[] = {2,5};
+link5[] = {3,7};
+link6[] = {4,8};
+link7[] = {5,6};
+link8[] = {7,1};
+link9[] = {8,1};
+globals[] = {25.000000,1,0,0,0,640,480,1,43,6316128,1,-49.166565,679.138794,-34.083618,-705.564575,769,709,1};
+window[] = {0,-1,-1,-1,-1,904,1730,3190,50,1,787};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "town_patrol.fsm";
+  class States
+  {
+    /*%FSM<STATE "Init">*/
+    class Init
+    {
+      name = "Init";
+      init = /*%FSM<STATEINIT""">*/"_town = _this select 0;" \n
+       "_team = _this select 1;" \n
+       "_sideID = _this select 2;" \n
+       "" \n
+       "_ncycle = 0;" \n
+       "_last_renewal = -1200;" \n
+       "" \n
+       "_move_defend_last = 0;" \n
+       "_move_patrol_reload = false;" \n
+       "" \n
+       "_action = """";" \n
+       "_last_action = """";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Check";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Check">*/
+    class Check
+    {
+      name = "Check";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 4 + (random 5);" \n
+       "" \n
+       "_aliveTeam = if ({alive _x} count units _team < 1 || isNull _team) then {false} else {true};" \n
+       "" \n
+       "if (((_town getVariable 'cti_town_capture') < CTI_TOWNS_CAPTURE_VALUE_CEIL && _sideID == (_town getVariable 'cti_town_sideID')) || _sideID != (_town getVariable 'cti_town_sideID')) then {" \n
+       "	_action = ""defense"";" \n
+       "	if (_action != _last_action) then {_move_defend_last = -120};" \n
+       "} else {" \n
+       "	_action = ""patrol"";" \n
+       "	if (_action != _last_action) then {_move_patrol_reload = true};" \n
+       "};" \n
+       "" \n
+       "_last_action = _action;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Renew_Path">*/
+        class Renew_Path
+        {
+          priority = 2.000000;
+          to="Renewal";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time - _last_renewal > 600 && _aliveTeam"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Process_Action">*/
+        class Process_Action
+        {
+          priority = 1.000000;
+          to="Processing";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_aliveTeam"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Done">*/
+        class Done
+        {
+          priority = 0.000000;
+          to="End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End">*/
+    class End
+    {
+      name = "End";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Renewal">*/
+    class Renewal
+    {
+      name = "Renewal";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + .5;" \n
+       "_last_renewal = time;" \n
+       "" \n
+       "_patrol_area = [];" \n
+       "" \n
+       "for '_i' from 1 to CTI_TOWNS_PATROL_HOPS do {" \n
+       "	[_patrol_area, [_town, 25, CTI_TOWNS_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition] call CTI_CO_FNC_ArrayPush;" \n
+       "};" \n
+       "" \n
+       "if (random 100 > 50) then {_team setFormation ""DIAMOND""} else {_team setFormation ""STAG COLUMN""};" \n
+       "if (random 100 > 30) then {_team setCombatMode ""YELLOW""} else {_team setCombatMode ""RED""};" \n
+       "if (random 100 > 20) then {_team setBehaviour ""AWARE""} else {_team setBehaviour ""COMBAT""};" \n
+       "//if (random 100 > 50) then {_team setSpeedMode ""NORMAL""} else {_team setSpeedMode ""LIMITED""};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Check";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Processing">*/
+    class Processing
+    {
+      name = "Processing";
+      init = /*%FSM<STATEINIT""">*/"switch (_action) do {" \n
+       "	case ""patrol"": {" \n
+       "		if (_move_patrol_reload || unitReady leader _team && random 100 > (45 + (random 15))) then {" \n
+       "			if (_move_patrol_reload) then {_move_patrol_reload = false};" \n
+       "			_move_to = _patrol_area select floor(random count _patrol_area); _team move _move_to; //--- The team may idle a bit on spot" \n
+       "		};" \n
+       "	};" \n
+       "	case ""defense"": {" \n
+       "		if (unitReady leader _team && time - _move_defend_last > 65) then {_move_defend_last = time; _team move ([_town, 10, 50] call CTI_CO_FNC_GetRandomPosition)};" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Check";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Init";
+  finalStates[] =
+  {
+    "End",
+  };
+};
+/*%FSM</COMPILE>*/
