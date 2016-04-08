@@ -64,7 +64,7 @@ while {alive _structure} do {
 			//--- The static is occupied
 			if (alive gunner _x || alive assignedGunner _x) then {
 				_x setVariable ["cti_aman_time_occupied", time];
-			} else {;
+			} else {
 				//--- The static is empty
 				if (!alive gunner _x && !alive assignedGunner _x && !_manned && time - _last_occupied > CTI_BASE_DEFENSES_AUTO_DELAY && count(_defense_team call CTI_CO_FNC_GetLiveUnits) < CTI_BASE_DEFENSES_AUTO_LIMIT) then {
 					_manned = true;
@@ -99,7 +99,7 @@ while {alive _structure} do {
 				_ammo_trucks = [_x, CTI_SPECIAL_AMMOTRUCK, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
 				_nearest = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
 				
-				if (count _ammo_trucks > 0 || !isNull _nearest) then {_x setVehicleAmmoDef 1; player sidechat "rearmed!"};
+				if (count _ammo_trucks > 0 || !isNull _nearest) then {_x setVehicleAmmoDef 1};
 			};
 		};
 	} forEach _statics;
