@@ -58,6 +58,6 @@ _unit setSkill (0.3 + (random 0.5));//tbd tweak
 if (_net) then {_unit setVariable ["cti_net", _sideID, true]};
 
 //--- Add a Killed EH.
-// _unit addEventHandler ["killed", Format["[_this select 0, _this select 1, %1, 'vehicle'] Spawn WFBE_CO_FNC_OnUnitKilled;", _sideID]];
+_unit addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
 
 _unit
