@@ -1,4 +1,4 @@
-private ["_candidates", "_groups", "_positions", "_side", "_teams", "_town"];
+private ["_candidates", "_groups", "_hcs", "_positions", "_side", "_teams", "_town"];
 
 _town = _this select 0;
 _side = _this select 1;
@@ -8,7 +8,7 @@ _positions = +(_this select 4);
 
 _candidates = missionNamespace getVariable "CTI_HEADLESS_CLIENTS";
 
-_delegated = false;
+_hcs = [];
 if !(isNil '_candidates') then {
 	_candidates_count = (count _candidates)-1;
 	if (count _candidates > 0 && count _groups > 0) then {
@@ -44,16 +44,17 @@ if !(isNil '_candidates') then {
 				[_sub_positions, _x select 2] call CTI_CO_FNC_ArrayPush;
 			} forEach _x;
 			
+			if (CTI_Log_Level >= CTI_Log_Information) then {
+				["INFORMATION", "FILE: Server\Functions\Server_AttemptDelegation.sqf", format["Delegating unit creation to Headless Client [%1] with owner ID [%2] in [%3] for [%4] team(s) on [%5]", _uid, _owner_id, _town getVariable "cti_town_name", count _sub_teams, _side]] call CTI_CO_FNC_Log;
+			};
+			
+			//--- Send the delegation request to the current HC entity
 			[["CLIENT", _hc_entity], "Client_OnTownDelegationReceived", [_town, _side, _sub_teams, _sub_groups, _sub_positions]] call CTI_CO_FNC_NetSend;
 			
-			if (CTI_Log_Level >= CTI_Log_Debug) then {
-				["DEBUG", "FILE: Server\Functions\Server_AttemptDelegation.sqf", format["Delegating unit creation to Headless Client [%1] with owner ID [%2] in [%3] for [%4] team(s) on [%5]", _uid, _owner_id, _town getVariable "cti_town_name", count _sub_teams, _side]] call CTI_CO_FNC_Log;
-			};
-			// diag_log format ["delegating control to %1 of %2",_owner_id,_sub_teams];
+			//--- Add the current HC to the delegated array if it wasn't in it already
+			if !(_hc_entity in _hcs) then {[_hcs, _hc_entity] call CTI_CO_FNC_ArrayPush};
 		} forEach _delegation_table;
-		
-		_delegated = true;
 	};
 };
 
-_delegated
+_hcs
