@@ -57,6 +57,10 @@ _pv_target = "";
 CTI_NetCom = [_pv_destination, _pv_name, _pv_parameters]; //--- Compose the net message
 if !(isMultiplayer) exitWith { CTI_NetCom call CTI_CO_FNC_OnPVFReceived }; //--- In singleplayer, it's simple!
 
+if (CTI_Log_Level >= CTI_Log_Debug) then {
+	["DEBUG", "FILE: Common\Functions\Common_NetSend.sqf", format["Attempting to Send PVF: [%1] with the destination [%2] and parameters [%3]", _pv_name, _pv_destination, _pv_parameters]] call CTI_CO_FNC_Log;
+};
+
 //--- Parse the header
 _pv_filter_exec = "";
 switch (typeName _pv_destination) do {
@@ -84,6 +88,9 @@ switch (_pv_target) do {
 			CTI_NetCom call CTI_CO_FNC_OnPVFReceived
 		} else {
 			publicVariableServer "CTI_NetCom";
+			if (CTI_Log_Level >= CTI_Log_Debug) then {
+				["DEBUG", "FILE: Common\Functions\Common_NetSend.sqf", format["PVF [%1] with destination [%2] has been sent to the server", _pv_name, _pv_destination]] call CTI_CO_FNC_Log;
+			};
 		};
 		// if (CTI_IsHostedServer) then { CTI_NetCom call CTI_CO_FNC_OnPVFReceived }; //--- Execute the code locally if the server is LAN Hosted
 	};
@@ -99,10 +106,16 @@ switch (_pv_target) do {
 			if (CTI_IsServer) then { //--- Dedicated server here, no problems
 				if (typeName _pv_who == "OBJECT") then { _pv_who = owner _pv_who };
 				_pv_who publicVariableClient "CTI_NetCom";
+				if (CTI_Log_Level >= CTI_Log_Debug) then {
+					["DEBUG", "FILE: Common\Functions\Common_NetSend.sqf", format["PVF [%1] with destination [%2] has been sent to client [%3]", _pv_name, _pv_destination, _pv_who]] call CTI_CO_FNC_Log;
+				};
 			} else { //--- Pure client, owner will not work here so we forward the PVF content to the server which will forward it to the client
 				if (typeName _pv_who == "OBJECT") then {
 					CTI_NetCom = ["SERVER", "Server_Forwarder", CTI_NetCom];
 					publicVariableServer "CTI_NetCom";
+					if (CTI_Log_Level >= CTI_Log_Debug) then {
+						["DEBUG", "FILE: Common\Functions\Common_NetSend.sqf", format["PVF [%1] with the destination [%2] has been forwarded to the server for another client", _pv_name, _pv_destination]] call CTI_CO_FNC_Log;
+					};
 				} else {
 					if (CTI_Log_Level >= CTI_Log_Error) then { //--- Error
 						["ERROR", "FILE: Common\Functions\Common_NetSend.sqf", format ["PVF [%1] could not be forwarded to the desired client since the target isn't an OBJECT (Target: [%2], Type [%3])", _pv_name, _pv_who, typeName _pv_who]] call CTI_CO_FNC_Log

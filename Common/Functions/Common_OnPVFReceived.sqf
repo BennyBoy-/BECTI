@@ -23,7 +23,7 @@
     ["CLIENT", Client_OnTownCaptured, [_town, _newSideID, _currentSideID]] call CTI_CO_FNC_OnPVFReceived
 */
 
-private ["_pv_can_exec", "_pv_destination", "_pv_filter_exec", "_pv_parameters"];
+private ["_pv_can_exec", "_pv_destination", "_pv_filter_exec", "_pv_name", "_pv_parameters"];
 
 //--- Parse the header
 _pv_destination = "";
@@ -32,6 +32,7 @@ switch (typeName (_this select 0)) do {
 	case "STRING": {_pv_destination = _this select 0};
 	case "ARRAY": {_pv_destination = (_this select 0) select 0; _pv_filter_exec = (_this select 0) select 1; };
 };
+_pv_name = _this select 1;
 
 //--- Check if we can execute the PV
 _pv_can_exec = false;
@@ -48,14 +49,18 @@ switch (_pv_destination) do {
 	case "SERVER": { if (CTI_IsServer) then { _pv_can_exec = true } };
 };
 
+if (CTI_Log_Level >= CTI_Log_Debug) then {
+	["DEBUG", "FILE: Common\Functions\Common_OnPVFReceived.sqf", format["Received PVF [%1] with destination [%2] and filter [%3], can execute? [%4]", _pv_name, _pv_filter_exec, _pv_destination, _pv_can_exec]] call CTI_CO_FNC_Log;
+};
+
 //--- Execute if we can
 if (_pv_can_exec) then {
-	if !(isNil {missionNamespace getVariable format ["CTI_PVF_%1", _this select 1]}) then { //--- Make sure that the desired PVF is set as a function
+	if !(isNil {missionNamespace getVariable format ["CTI_PVF_%1", _pv_name]}) then { //--- Make sure that the desired PVF is set as a function
 		_pv_parameters = if (count _this > 2) then { _this select 2 } else { [] };
-		_pv_parameters spawn (missionNamespace getVariable format ["CTI_PVF_%1", _this select 1]);
+		_pv_parameters spawn (missionNamespace getVariable format ["CTI_PVF_%1", _pv_name]);
 	} else {
 		if (CTI_Log_Level >= CTI_Log_Error && !CTI_IsHeadless) then { //--- Error (Skip for HC)
-			["ERROR", "FILE: Common\Functions\Common_OnPVFReceived.sqf", format ["[%1] PVF [%2] was received but could not be called since it isn't defined as a function.", _pv_destination, _this select 1]] call CTI_CO_FNC_Log
+			["ERROR", "FILE: Common\Functions\Common_OnPVFReceived.sqf", format ["[%1] PVF [%2] was received but could not be called since it isn't defined as a function.", _pv_destination, _pv_name]] call CTI_CO_FNC_Log
 		};
 	};
 };

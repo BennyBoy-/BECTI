@@ -8,6 +8,11 @@ while {isNull player} do {
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\Init\Init_Client_Headless.sqf", format["Waiting for Headless Client player object to be non-null: %1", player]] call CTI_CO_FNC_Log };
 };
 
+//--- Benny Debug
+if (CTI_Log_Level >= CTI_Log_Debug) then {
+	["DEBUG", "FILE: Client\Init\Init_Client_Headless.sqf", format["HC is [%1] in group [%2] on side [%3]", player, group player, side player]] call CTI_CO_FNC_Log;
+};
+
 //--- PVF
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\Init\Init_Client_Headless.sqf", "Attempting to register this Headless Client on the server..."] call CTI_CO_FNC_Log };
 ["SERVER", "Request_HCRegister", player] call CTI_CO_FNC_NetSend;

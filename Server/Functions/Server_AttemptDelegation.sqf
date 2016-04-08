@@ -31,7 +31,7 @@ if !(isNil '_candidates') then {
 		//--- Delegate the creation now
 		{
 			_owner_id = (_candidates select _forEachIndex) select 0;
-			_group_hc = (_candidates select _forEachIndex) select 1;
+			_hc_entity = (_candidates select _forEachIndex) select 1;
 			_uid = (_candidates select _forEachIndex) select 2;
 			
 			//--- Recompose
@@ -44,7 +44,7 @@ if !(isNil '_candidates') then {
 				[_sub_positions, _x select 2] call CTI_CO_FNC_ArrayPush;
 			} forEach _x;
 			
-			[["CLIENT", leader _group_hc], "Client_OnTownDelegationReceived", [_town, _side, _sub_teams, _sub_groups, _sub_positions]] call CTI_CO_FNC_NetSend;
+			[["CLIENT", _hc_entity], "Client_OnTownDelegationReceived", [_town, _side, _sub_teams, _sub_groups, _sub_positions]] call CTI_CO_FNC_NetSend;
 			
 			if (CTI_Log_Level >= CTI_Log_Debug) then {
 				["DEBUG", "FILE: Server\Functions\Server_AttemptDelegation.sqf", format["Delegating unit creation to Headless Client [%1] with owner ID [%2] in [%3] for [%4] team(s) on [%5]", _uid, _owner_id, _town getVariable "cti_town_name", count _sub_teams, _side]] call CTI_CO_FNC_Log;
