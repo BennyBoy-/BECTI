@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_resistance.fsm">*/
+/*%FSM<COMPILE "E:\Bohemia Interactive\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, town_resistance.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
@@ -15,11 +15,11 @@ item10[] = {"Inactive",4,218,175.000000,-200.000000,275.000000,-150.000000,1.000
 item11[] = {"Still_active",8,218,300.000000,0.000000,400.000000,50.000000,0.000000,"Still active"};
 item12[] = {"Timed_out",4,218,375.000000,100.000000,475.000000,150.000000,1.000000,"Timed out"};
 item13[] = {"Skip",2,250,300.000000,-200.000000,400.000000,-150.000000,0.000000,"Skip"};
-item14[] = {"Cleanup",2,4346,375.000000,-400.000000,475.000000,-350.000000,0.000000,"Cleanup"};
+item14[] = {"Cleanup",2,250,375.000000,-400.000000,475.000000,-350.000000,0.000000,"Cleanup"};
 item15[] = {"Resistance_Active",2,250,50.000000,-100.000000,150.000000,-50.000000,0.000000,"Resistance" \n "Active?"};
 item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
 item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
-item18[] = {"Create",2,250,-400.000000,200.000000,-300.000000,250.000000,0.000000,"Create"};
+item18[] = {"Create",2,4346,-400.000000,200.000000,-300.000000,250.000000,0.000000,"Create"};
 item19[] = {"Resistance_Active_1",2,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"Resistance" \n "Active?"};
 item20[] = {"Inactive",8,218,-250.000000,200.000000,-150.000000,250.000000,0.000000,"Inactive"};
 item21[] = {"Active",4,218,175.000000,200.000000,275.000000,250.000000,1.000000,"Active"};
@@ -52,8 +52,8 @@ link24[] = {19,21};
 link25[] = {20,18};
 link26[] = {21,8};
 link27[] = {22,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-512.510498,618.715698,364.302094,-512.422363,1098,881,1};
-window[] = {2,-1,-1,-1,-1,973,230,1485,192,3,1116};
+globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-478.569122,652.656860,374.014404,-502.710083,1169,911,1};
+window[] = {2,-1,-1,-1,-1,881,100,1355,100,3,1187};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -238,16 +238,9 @@ class FSM
     class Cleanup
     {
       name = "Cleanup";
-      init = /*%FSM<STATEINIT""">*/"//--- If the creation was delegated, we notify the HC's that they can remove their local units" \n
-       "if (count _town_hc_delegation > 0) then {" \n
-       "	{" \n
-       "		[[""CLIENT"", _x], ""Client_OnTownCleanup"", [_town_groups, _town getVariable ""cti_town_resistance_active_vehicles""]] call CTI_CO_FNC_NetSend;" \n
-       "	} forEach _town_hc_delegation;" \n
+      init = /*%FSM<STATEINIT""">*/"_town setVariable [""cti_town_resistance_active"", false];" \n
        "" \n
-       "	_town_hc_delegation = [];" \n
-       "};" \n
-       "" \n
-       "//--- Cleanup the local units which were spawned or transfered to the server" \n
+       "//--- Teams Units." \n
        "{" \n
        "	if !(isNil '_x') then {" \n
        "		if !(isNull _x) then {" \n
@@ -257,16 +250,13 @@ class FSM
        "	};" \n
        "} forEach _town_groups;" \n
        "" \n
-       "//--- Cleanup the local vehicles which were spawned or transfered on the server" \n
+       "//--- Teams vehicles." \n
        "{" \n
        "	if (alive _x) then {" \n
        "		if (!isPlayer _x) then {deleteVehicle _x};" \n
        "	};" \n
        "} forEach (_town getVariable ""cti_town_resistance_active_vehicles"");" \n
-       "" \n
-       "//--- Mark the town as inactive" \n
-       "_town setVariable [""cti_town_resistance_active_vehicles"", []];" \n
-       "_town setVariable [""cti_town_resistance_active"", false];"/*%FSM</STATEINIT""">*/;
+       "_town setVariable [""cti_town_resistance_active_vehicles"", []];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -325,10 +315,10 @@ class FSM
        "_town_positions = _return select 2;" \n
        "" \n
        "//--- By default, we try to delegate the creation to the HC Clients" \n
-       "_town_hc_delegation = [_town, resistance, _town_teams, _town_groups, _town_positions] call CTI_SE_FNC_AttemptDelegation;" \n
+       "_delegated = [_town, resistance, _town_teams, _town_groups, _town_positions] call CTI_SE_FNC_AttemptDelegation;" \n
        "" \n
-       "//--- If the delegation array is empty then the server has to create the desired units." \n
-       "if (count _town_hc_delegation < 1) then {" \n
+       "//--- If we couldn't delegate it then we create it from the server" \n
+       "if !(_delegated) then {" \n
        "	_town_vehicles = [_town, resistance, _town_teams, _town_groups, _town_positions] call CTI_CO_FNC_CreateTownUnits;" \n
        "	_town setVariable [""cti_town_resistance_active_vehicles"", (_town getVariable ""cti_town_resistance_active_vehicles"") + _town_vehicles];" \n
        "};" \n
