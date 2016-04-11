@@ -324,7 +324,7 @@ class FSM
        "" \n
        "if (count _town_groups > 0) then {" \n
        "	//--- By default, we try to delegate the creation to the HC Clients" \n
-       "	_delegated = [_town, _side, _town_teams, _town_groups, _town_positions] call CTI_SE_FNC_AttemptDelegation;" \n
+       "	_delegated = [_town, _side, _town_teams, _town_groups, _town_positions] call CTI_SE_FNC_AttemptTownDelegation;" \n
        "" \n
        "	//--- If we couldn't delegate it then we create it from the server" \n
        "	if !(_delegated) then {" \n

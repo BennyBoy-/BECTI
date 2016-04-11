@@ -10,6 +10,19 @@ if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\I
 ["SERVER", "Request_HCRegister", player] call CTI_CO_FNC_NetSend;
 
 with missionNamespace do {
+	CTI_PVF_Client_OnDefenseDelegationReceived = {
+		private ["_sideID", "_unit"];
+		
+		_unit = _this select 0;
+		_sideID = _this select 1;
+		
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["A Delegation request was received from the server for the defensive unit [%1] (%2) on side ID [%3]", _unit, typeOf _unit, _sideID]] call CTI_CO_FNC_Log;
+		};
+		
+		_unit addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
+	};
+	
 	CTI_PVF_Client_OnRegisterAnswer = {
 		if (_this) then {
 			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_Client_OnRegisterAnswer", "The Headless Client has been registered"] call CTI_CO_FNC_Log};
