@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "E:\Bohemia Interactive\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, town_resistance.fsm">*/
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_resistance.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
@@ -52,8 +52,8 @@ link24[] = {19,21};
 link25[] = {20,18};
 link26[] = {21,8};
 link27[] = {22,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-478.569122,652.656860,374.014404,-502.710083,1169,911,1};
-window[] = {2,-1,-1,-1,-1,881,100,1355,100,3,1187};
+globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-542.647217,588.578674,334.581848,-542.142578,918,771,1};
+window[] = {2,-1,-1,-1,-1,906,1805,3060,125,3,936};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -238,9 +238,7 @@ class FSM
     class Cleanup
     {
       name = "Cleanup";
-      init = /*%FSM<STATEINIT""">*/"_town setVariable [""cti_town_resistance_active"", false];" \n
-       "" \n
-       "//--- Teams Units." \n
+      init = /*%FSM<STATEINIT""">*/"//--- Teams Units." \n
        "{" \n
        "	if !(isNil '_x') then {" \n
        "		if !(isNull _x) then {" \n
@@ -256,7 +254,13 @@ class FSM
        "		if (!isPlayer _x) then {deleteVehicle _x};" \n
        "	};" \n
        "} forEach (_town getVariable ""cti_town_resistance_active_vehicles"");" \n
-       "_town setVariable [""cti_town_resistance_active_vehicles"", []];"/*%FSM</STATEINIT""">*/;
+       "" \n
+       "_town setVariable [""cti_town_resistance_active_vehicles"", []];" \n
+       "_town setVariable [""cti_town_resistance_active"", false];" \n
+       "" \n
+       "if (CTI_Log_Level >= CTI_Log_Information) then {" \n
+       "	[""INFORMATION"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] has been de-activated"", _town getVariable ""cti_town_name""]] call CTI_CO_FNC_Log;" \n
+       "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -323,7 +327,11 @@ class FSM
        "	_town setVariable [""cti_town_resistance_active_vehicles"", (_town getVariable ""cti_town_resistance_active_vehicles"") + _town_vehicles];" \n
        "};" \n
        "" \n
-       "_town setVariable [""cti_town_resistance_active"", true];"/*%FSM</STATEINIT""">*/;
+       "_town setVariable [""cti_town_resistance_active"", true];" \n
+       "" \n
+       "if (CTI_Log_Level >= CTI_Log_Information) then {" \n
+       "	[""INFORMATION"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is now active"", _town getVariable ""cti_town_name""]] call CTI_CO_FNC_Log;" \n
+       "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

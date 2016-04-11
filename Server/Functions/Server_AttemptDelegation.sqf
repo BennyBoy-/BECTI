@@ -46,10 +46,9 @@ if !(isNil '_candidates') then {
 			
 			[["CLIENT", _hc_entity], "Client_OnTownDelegationReceived", [_town, _side, _sub_teams, _sub_groups, _sub_positions]] call CTI_CO_FNC_NetSend;
 			
-			if (CTI_Log_Level >= CTI_Log_Debug) then {
-				["DEBUG", "FILE: Server\Functions\Server_AttemptDelegation.sqf", format["Delegating unit creation to Headless Client [%1] with owner ID [%2] in [%3] for [%4] team(s) on [%5]", _uid, _owner_id, _town getVariable "cti_town_name", count _sub_teams, _side]] call CTI_CO_FNC_Log;
+			if (CTI_Log_Level >= CTI_Log_Information) then {
+				["INFORMATION", "FILE: Server\Functions\Server_AttemptDelegation.sqf", format["Delegating unit creation to Headless Client [%1] with owner ID [%2] in [%3] for [%4] team(s) on [%5]", _uid, _owner_id, _town getVariable "cti_town_name", count _sub_teams, _side]] call CTI_CO_FNC_Log;
 			};
-			// diag_log format ["delegating control to %1 of %2",_owner_id,_sub_teams];
 		} forEach _delegation_table;
 		
 		_delegated = true;

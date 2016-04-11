@@ -1,16 +1,8 @@
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\Init\Init_Client_Headless.sqf", "Waiting for the Headless Client stabilization before sending the register request"] call CTI_CO_FNC_Log };
 
-//--- Wait for the headless client to "stabilize" itself
-sleep (30 + random 1);
-
 while {isNull player} do {
 	sleep 5;
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\Init\Init_Client_Headless.sqf", format["Waiting for Headless Client player object to be non-null: %1", player]] call CTI_CO_FNC_Log };
-};
-
-//--- Benny Debug
-if (CTI_Log_Level >= CTI_Log_Debug) then {
-	["DEBUG", "FILE: Client\Init\Init_Client_Headless.sqf", format["HC is [%1] in group [%2] on side [%3]", player, group player, side player]] call CTI_CO_FNC_Log;
 };
 
 //--- PVF
@@ -35,8 +27,8 @@ with missionNamespace do {
 		_groups = _this select 3;
 		_positions = _this select 4;
 		
-		if (CTI_Log_Level >= CTI_Log_Debug) then {
-			["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationReceived", format["A Delegation request was received from the server for [%1] teams in town [%2] on [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnTownDelegationReceived", format["A Delegation request was received from the server for [%1] teams in town [%2] on [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
 		
 		_town_vehicles = [_town, _side, _teams, _groups, _positions] call CTI_CO_FNC_CreateTownUnits;
