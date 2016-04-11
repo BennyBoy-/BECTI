@@ -43,7 +43,7 @@ if (isNil '_delegate_history') then { _delegate_history = [] };
 
 //--- We retrieve the Owner ID from all of our HCs
 _hc_owner_ids = [];
-{ [_hc_owner_ids, _x] call CTI_CO_FNC_ArrayPush } forEach (_hcs select 0);
+{ [_hc_owner_ids, _x select 0] call CTI_CO_FNC_ArrayPush } forEach _hcs;
 	
 //--- First, we wipe the HC which are no longer connected
 {
