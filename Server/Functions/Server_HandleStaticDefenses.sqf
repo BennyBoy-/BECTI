@@ -123,7 +123,7 @@ while {alive _structure} do {
 			
 			//--- Delegate the unit (if local) to an HC if present
 			if (alive gunner _x && local gunner _x && !isNil {missionNamespace getVariable "CTI_HEADLESS_CLIENTS"}) then {
-				if (count(missionNamespace getVariable "CTI_HEADLESS_CLIENTS") > 0) {
+				if (count(missionNamespace getVariable "CTI_HEADLESS_CLIENTS") > 0) then {
 					[gunner _x, _side] Call CTI_SE_FNC_AttemptDefenseDelegation;
 				};
 			};
