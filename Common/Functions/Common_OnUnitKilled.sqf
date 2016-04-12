@@ -101,7 +101,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 				//--- PVP Leader Reward for AI/Players
 				_killed_pname = "";
 				if (_isplayable_killed && _isplayable_killer) then { 
-					_bounty = _bounty + (score _killed * CTI_BOUNTY_COEF_PVP);
+					_bounty = _bounty + round(score _killed * CTI_BOUNTY_COEF_PVP);
 					_killed_pname = name _killed;
 				};
 				
