@@ -96,8 +96,11 @@ if (!isNil '_var' && _isplayable_killer) then {
 				};
 				
 				//--- If there is more than one group to award then we split the bounty equally
-				_bounty = round(_cost * CTI_VEHICLES_BOUNTY);
+				_bounty = round(_cost * CTI_BOUNTY_COEF);
 				if (count _award_groups > 1) then { _bounty = round(_bounty / (count _award_groups))};
+				
+				//--- PVP Leader Reward for AI/Players
+				if (_isplayable_killed && _isplayable_killer) then { _cost = _cost + (score _killed * CTI_BOUNTY_COEF_PVP) };
 				
 				//--- Award
 				{
