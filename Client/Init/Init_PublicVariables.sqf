@@ -48,6 +48,7 @@ with missionNamespace do {
 	CTI_PVF_Client_AwardBounty = {
 		_type_killed = _this select 0;
 		_award = _this select 1;
+		_killed_pname = _this select 2;
 		
 		_delay = 5 + random 30;
 		sleep _delay;
@@ -56,7 +57,11 @@ with missionNamespace do {
 		_label = _var select CTI_UNIT_LABEL;
 		
 		(_award) call CTI_CL_FNC_ChangePlayerFunds;
-		["award-bounty", [_award, _label]] call CTI_CL_FNC_DisplayMessage;
+		if (_killed_pname == "") then {
+			["award-bounty", [_award, _label]] call CTI_CL_FNC_DisplayMessage;
+		} else {
+			["award-bounty-pvp", [_award, _killed_pname, _label]] call CTI_CL_FNC_DisplayMessage;
+		};
 	};
 	
 	CTI_PVF_Client_OnSpottedTargetReceived = {
