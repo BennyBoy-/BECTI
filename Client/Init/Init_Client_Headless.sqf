@@ -10,17 +10,50 @@ if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\I
 ["SERVER", "Request_HCRegister", player] call CTI_CO_FNC_NetSend;
 
 with missionNamespace do {
-	CTI_PVF_Client_OnDefenseDelegationReceived = {
-		private ["_sideID", "_unit"];
+	CTI_PVF_Client_OnDefenseDelegationLocalityChanged = {
+		private ["_group", "_sideID"];
 		
-		_unit = _this select 0;
+		_group = _this select 0;
 		_sideID = _this select 1;
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["A Delegation request was received from the server for the defensive unit [%1] (%2) on side ID [%3]", _unit, typeOf _unit, _sideID]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationLocalityChanged", format["Attempting to find the units which could lack initialization on this HC for group [%1]", _group]] call CTI_CO_FNC_Log;
 		};
 		
-		_unit addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
+		//--- Find the units which could miss the Killed EH
+		{
+			if (alive _x && isNil {_x getVariable "cti_hc_managed"}) then {
+				if (CTI_Log_Level >= CTI_Log_Debug) then {
+					["DEBUG", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationLocalityChanged", format["Unit [%1] (%2) was not initialized by this HC. Initializing it now", _x, typeOf _x]] call CTI_CO_FNC_Log;
+				};
+				
+				_x addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
+				_x setVariable ["cti_hc_managed", true];
+			};
+		} forEach units _group;
+	};
+
+	CTI_PVF_Client_OnDefenseDelegationReceived = {
+		private ["_ai", "_ai_args", "_static"];
+		
+		_static = _this select 0;
+		_ai_args = _this select 1;
+		
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["A Delegation request was received from the server for the static [%1] (%2) with AI arguments [%3]", _static, typeOf _static, _ai_args]] call CTI_CO_FNC_Log;
+		};
+		
+		//--- Create the unit
+		_ai = (_ai_args) call CTI_CO_FNC_CreateUnit;
+		
+		//--- Mark the unit as initialized localy, if the locality changed we don't want to have 2 KEH.
+		_ai setVariable ["cti_hc_managed", true];
+		
+		//--- Assign him to the defense
+		[_ai] allowGetIn true;
+		_ai assignAsGunner _static;
+		[_ai] orderGetIn true;
+		_ai moveInGunner _static;
 	};
 	
 	CTI_PVF_Client_OnRegisterAnswer = {
