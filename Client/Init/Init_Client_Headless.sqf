@@ -43,6 +43,14 @@ with missionNamespace do {
 			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["A Delegation request was received from the server for the static [%1] (%2) with AI arguments [%3]", _static, typeOf _static, _ai_args]] call CTI_CO_FNC_Log;
 		};
 		
+		//--- Was there an AI in there previously?
+		if !(isNull assignedGunner _static) then {
+			if (CTI_Log_Level >= CTI_Log_Debug) then {
+				["DEBUG", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["Defense [%1] (%2) has an assigned gunner (%3), attempting to unassign him", _static, typeOf _static, assignedGunner _static]] call CTI_CO_FNC_Log;
+			};
+			unassignVehicle (assignedGunner _static);
+		};
+		
 		//--- Create the unit
 		_ai = (_ai_args) call CTI_CO_FNC_CreateUnit;
 		
