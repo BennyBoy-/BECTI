@@ -34,47 +34,61 @@ with missionNamespace do {
 	};
 
 	CTI_PVF_Client_OnDefenseDelegationReceived = {
-		private ["_ai", "_ai_args", "_static"];
-		
-		_static = _this select 0;
-		_ai_args = _this select 1;
-		
-		_gunner = gunner _static;
-		
-		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["A Delegation request was received from the server for the static [%1] (%2) with AI arguments [%3]", _static, typeOf _static, _ai_args]] call CTI_CO_FNC_Log;
-		};
-		
-		diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - START] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
-		
-		//--- Was there an AI in there previously?
-		if !(isNull _gunner) then {
-			if (CTI_Log_Level >= CTI_Log_Debug) then {
-				["DEBUG", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["Defense [%1] (%2) has an assigned gunner (%3), attempting to unassign him", _static, typeOf _static, assignedGunner _static]] call CTI_CO_FNC_Log;
-				diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - BEFORE UNASSIGN] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+		this spawn {
+			private ["_ai", "_ai_args", "_static"];
+			
+			_static = _this select 0;
+			_ai_args = _this select 1;
+			
+			_gunner = gunner _static;
+			
+			if (CTI_Log_Level >= CTI_Log_Information) then {
+				["INFORMATION", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["A Delegation request was received from the server for the static [%1] (%2) with AI arguments [%3]", _static, typeOf _static, _ai_args]] call CTI_CO_FNC_Log;
 			};
-			unassignVehicle (assignedGunner _static);
-			_gunner action ["getOut", _static];
-			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER UNASSIGN] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
-			_gunner setPos ([getPos _static, 2, 8] call CTI_CO_FNC_GetRandomPosition);
-			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER MOVING ASSIGNED GUNNER] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
-			deleteVehicle _gunner;
-			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER DELETE] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+			
+			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - START] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+			
+			//--- Was there an AI in there previously?
+			if !(isNull _gunner) then {
+				if (CTI_Log_Level >= CTI_Log_Debug) then {
+					["DEBUG", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["Defense [%1] (%2) has an assigned gunner (%3), attempting to unassign him", _static, typeOf _static, assignedGunner _static]] call CTI_CO_FNC_Log;
+					diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - BEFORE UNASSIGN] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+				};
+				unassignVehicle (assignedGunner _static);
+				_gunner action ["getOut", _static];
+				diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER UNASSIGN] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+				_gunner setPos ([getPos _static, 2, 8] call CTI_CO_FNC_GetRandomPosition);
+				diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER MOVING ASSIGNED GUNNER] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+				deleteVehicle _gunner;
+				diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER DELETE] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+			};
+			
+			//--- Create the unit
+			_ai = (_ai_args) call CTI_CO_FNC_CreateUnit;
+			
+			//--- Mark the unit as initialized localy, if the locality changed we don't want to have 2 KEH.
+			_ai setVariable ["cti_hc_managed", true];
+			_ai reveal _static;
+			
+			//--- Assign him to the defense
+			[_ai] allowGetIn true;
+			_ai assignAsGunner _static;
+			[_ai] orderGetIn true;
+			_ai moveInGunner _static;
+			
+			_i = 5;
+			while {_i > 0} do {
+				sleep 3;
+				_ai moveInGunner _static;
+				diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - LOOP] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+				if (gunner _static == _ai) exitWith {
+					diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - exitWith] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+				}
+				_i = _i - 1;
+			};
+			
+			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 		};
-		
-		//--- Create the unit
-		_ai = (_ai_args) call CTI_CO_FNC_CreateUnit;
-		
-		//--- Mark the unit as initialized localy, if the locality changed we don't want to have 2 KEH.
-		_ai setVariable ["cti_hc_managed", true];
-		
-		//--- Assign him to the defense
-		[_ai] allowGetIn true;
-		_ai assignAsGunner _static;
-		[_ai] orderGetIn true;
-		_ai moveInGunner _static;
-		
-		diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 	};
 	
 	CTI_PVF_Client_OnRegisterAnswer = {
