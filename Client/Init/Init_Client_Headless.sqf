@@ -83,7 +83,7 @@ with missionNamespace do {
 				diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - LOOP] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 				if (gunner _static == _ai) exitWith {
 					diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - exitWith] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
-				}
+				};
 				_i = _i - 1;
 			};
 			
