@@ -43,6 +43,8 @@ with missionNamespace do {
 			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["A Delegation request was received from the server for the static [%1] (%2) with AI arguments [%3]", _static, typeOf _static, _ai_args]] call CTI_CO_FNC_Log;
 		};
 		
+		diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - START] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4", _static, local _static, assignedGunner _static, local(assignedGunner _static)];
+		
 		//--- Was there an AI in there previously?
 		if !(isNull assignedGunner _static) then {
 			if (CTI_Log_Level >= CTI_Log_Debug) then {
@@ -64,6 +66,8 @@ with missionNamespace do {
 		_ai assignAsGunner _static;
 		[_ai] orderGetIn true;
 		_ai moveInGunner _static;
+		
+		diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4", _static, local _static, assignedGunner _static, local(assignedGunner _static)];
 	};
 	
 	CTI_PVF_Client_OnRegisterAnswer = {
