@@ -43,16 +43,18 @@ with missionNamespace do {
 			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["A Delegation request was received from the server for the static [%1] (%2) with AI arguments [%3]", _static, typeOf _static, _ai_args]] call CTI_CO_FNC_Log;
 		};
 		
-		diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - START] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4", _static, local _static, assignedGunner _static, local(assignedGunner _static)];
+		diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - START] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static];
 		
 		//--- Was there an AI in there previously?
-		if !(isNull assignedGunner _static) then {
+		_assignedGunner = assignedGunner _static;
+		if !(isNull _assignedGunner) then {
 			if (CTI_Log_Level >= CTI_Log_Debug) then {
 				["DEBUG", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["Defense [%1] (%2) has an assigned gunner (%3), attempting to unassign him", _static, typeOf _static, assignedGunner _static]] call CTI_CO_FNC_Log;
-				diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - BEFORE UNASSIGN] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4", _static, local _static, assignedGunner _static, local(assignedGunner _static)];
+				diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - BEFORE UNASSIGN] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static];
 			};
-			unassignVehicle (assignedGunner _static);
-			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER UNASSIGN] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4", _static, local _static, assignedGunner _static, local(assignedGunner _static)];
+			unassignVehicle _assignedGunner;
+			_assignedGunner action ["getOut", _static];
+			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER UNASSIGN] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static];
 		};
 		
 		//--- Create the unit
@@ -67,7 +69,7 @@ with missionNamespace do {
 		[_ai] orderGetIn true;
 		_ai moveInGunner _static;
 		
-		diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4", _static, local _static, assignedGunner _static, local(assignedGunner _static)];
+		diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static];
 	};
 	
 	CTI_PVF_Client_OnRegisterAnswer = {
