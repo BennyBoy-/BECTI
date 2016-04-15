@@ -34,7 +34,7 @@ with missionNamespace do {
 	};
 
 	CTI_PVF_Client_OnDefenseDelegationReceived = {
-		this spawn {
+		_this spawn {
 			private ["_ai", "_ai_args", "_static"];
 			
 			_static = _this select 0;
