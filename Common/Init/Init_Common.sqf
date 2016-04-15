@@ -104,6 +104,9 @@ call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_East.sqf";
 (west) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_East.sqf";
 
+//--- External Functions/Modules
+(east) call compile preprocessFileLineNumbers "Common\Functions\External\Functions_SHK.sqf";
+
 //--- Network communication handler
 "CTI_NetCom" addPublicVariableEventHandler {(_this select 1) Spawn CTI_CO_FNC_OnPVFReceived};
 

@@ -27,6 +27,20 @@ for '_i' from 0 to count(_groups)-1 do {
 	_group allowFleeing 0;
 	
 	_created_vehicles = _created_vehicles + _vehicles;
+	
+	//--- If SHK Building Position mode is enabled, some AI groups can be placed in buildings
+	if (CTI_SHK_BUILDING_ENABLED) then {
+		_members = _return select 0;
+		//--- Roll the dice, also make sure that the group has no vehicles
+		if (CTI_SHK_BUILDING_PLACEMENT_CHANCE > random 100 && count _vehicles < 1 && count _members <= CTI_SHK_GROUP_SIZE_MAX) then {
+			if (CTI_Log_Level >= CTI_Log_Debug) then {
+				["DEBUG", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Attemtping to place group [%1] units in town's [%2] buildings", _group, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
+			};
+			
+			//--- Place the units in the nearby building if possible
+			[getPos _town, _members, (CTI_SHK_BUILDING_SCAN_RANGE + random(CTI_SHK_BUILDING_SCAN_RANGE_RAN) - random(CTI_SHK_BUILDING_SCAN_RANGE_RAN)), 0, [], true, true] Call SHK_BuildingPosExec; 
+		};
+	};
 };
 
 {
