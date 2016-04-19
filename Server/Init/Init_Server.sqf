@@ -11,6 +11,7 @@ CTI_SE_FNC_AttemptDefenseDelegation = compileFinal preprocessFileLineNumbers "Se
 CTI_SE_FNC_AttemptTownDelegation = compileFinal preprocessFileLineNumbers "Server\Functions\Server_AttemptTownDelegation.sqf";
 CTI_SE_FNC_BuildStructure = compileFinal preprocessFileLineNumbers "Server\Functions\Server_BuildStructure.sqf";
 CTI_SE_FNC_BuildDefense = compileFinal preprocessFileLineNumbers "Server\Functions\Server_BuildDefense.sqf";
+CTI_SE_FNC_CanCaptureTerritorialTown = compileFinal preprocessFileLineNumbers "Server\Functions\Server_CanCaptureTerritorialTown.sqf";
 CTI_SE_FNC_CreateWorker = compileFinal preprocessFileLineNumbers "Server\Functions\Server_CreateWorker.sqf";
 CTI_SE_FNC_HandleAIPurchase = compileFinal preprocessFileLineNumbers "Server\Functions\Server_HandleAIPurchase.sqf";
 CTI_SE_FNC_HandleEmptyVehicle = compileFinal preprocessFileLineNumbers "Server\Functions\Server_HandleEmptyVehicle.sqf";

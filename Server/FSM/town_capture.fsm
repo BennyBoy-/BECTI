@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\ArmA2\FSM Editor Personal Edition\scriptedFSM.cfg, town_resistance.fsm">*/
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_capture.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
@@ -9,7 +9,7 @@ item4[] = {"Empty",4,218,50.000000,-300.000000,150.000000,-250.000000,2.000000,"
 item5[] = {"Gameover",8,218,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Gameover"};
 item6[] = {"Not_Empty",4,218,-250.000000,-300.000000,-150.000000,-250.000000,1.000000,"Not Empty"};
 item7[] = {"Skip",2,250,50.000000,-400.000000,150.000000,-350.000000,0.000000,"Skip"};
-item8[] = {"Check_Capture",2,250,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Check" \n "Capture"};
+item8[] = {"Check_Capture",2,4346,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Check" \n "Capture"};
 item9[] = {"Ready",8,218,-400.000000,-200.000000,-300.000000,-150.000000,0.000000,"Ready"};
 item10[] = {"Not_Ready",4,218,-250.000000,0.000000,-150.000000,50.000000,1.000000,"Not" \n "Ready"};
 item11[] = {"",7,210,196.000000,20.999996,204.000000,29.000004,0.000000,""};
@@ -31,12 +31,12 @@ link12[] = {10,11};
 link13[] = {11,12};
 link14[] = {12,7};
 link15[] = {13,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-528.720276,369.339172,133.816055,-562.199219,1169,906,1};
-window[] = {2,-1,-1,-1,-1,956,175,1430,175,3,1187};
+globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-528.720276,369.339172,133.816055,-562.199219,1169,771,1};
+window[] = {2,-1,-1,-1,-1,956,1855,3110,175,3,1187};
 *//*%FSM</HEAD>*/
 class FSM
 {
-  fsmName = "town_resistance.fsm";
+  fsmName = "town_capture.fsm";
   class States
   {
     /*%FSM<STATE "Start_FSM">*/
@@ -169,8 +169,15 @@ class FSM
        "		_capture_level = _capture_level + CTI_TOWNS_CAPTURE_VALUE_ITERATE;" \n
        "		if (_capture_level > CTI_TOWNS_CAPTURE_VALUE_CEIL) then { _capture_level = CTI_TOWNS_CAPTURE_VALUE_CEIL };" \n
        "	} else { //--- Capture" \n
-       "		_capture_level = _capture_level - CTI_TOWNS_CAPTURE_VALUE_ITERATE;" \n
-       "		if (_capture_level <= 0) then { _captured = true; _capture_level = CTI_TOWNS_CAPTURE_VALUE_CEIL };" \n
+       "		//--- In case of territorial mode, check that the town can be captured!" \n
+       "		_capturable = true;" \n
+       "		if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") == 1) then {" \n
+       "			_capturable = [_town, _force] Call CTI_SE_FNC_CanCaptureTerritorialTown;" \n
+       "		};" \n
+       "		if (_capturable) then {" \n
+       "			_capture_level = _capture_level - CTI_TOWNS_CAPTURE_VALUE_ITERATE;" \n
+       "			if (_capture_level <= 0) then { _captured = true; _capture_level = CTI_TOWNS_CAPTURE_VALUE_CEIL };" \n
+       "		};" \n
        "	};" \n
        "	" \n
        "	if (_capture_level != (_town getVariable ""cti_town_capture"")) then {_town setVariable [""cti_town_capture"", _capture_level, true]};" \n

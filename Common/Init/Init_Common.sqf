@@ -23,6 +23,7 @@ CTI_CO_FNC_GetClosestEnemyTown = compileFinal preprocessFileLineNumbers "Common\
 CTI_CO_FNC_GetClosestEntity = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetClosestEntity.sqf";
 CTI_CO_FNC_GetClosestFriendlyTown = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetClosestFriendlyTown.sqf";
 CTI_CO_FNC_GetClosestStructure = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetClosestStructure.sqf";
+CTI_CO_FNC_GetClosestTerritorialEnemyTown = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetClosestTerritorialEnemyTown.sqf";
 CTI_CO_FNC_GetClosestTown = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetClosestTown.sqf";
 CTI_CO_FNC_GetDirTo = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetDirTo.sqf";
 CTI_CO_FNC_GetEmptyPosition = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetEmptyPosition.sqf";
@@ -81,6 +82,9 @@ CTI_CO_FNC_SanitizeAircraftFFAR = compileFinal preprocessFileLineNumbers "Common
 CTI_CO_FNC_SanitizeArtillery = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeArtillery.sqf";
 
 CTI_CO_CustomIterator = 0;
+
+//--- Which sides are playable
+CTI_PLAYABLE_SIDES = [west, east];
 
 call compile preprocessFileLineNumbers "Common\Config\Artillery\Artillery.sqf";
 call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_Resistance.sqf";

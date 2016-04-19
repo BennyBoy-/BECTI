@@ -5,7 +5,7 @@
 	Description:	Get the closest hostile town for a given side
 	Author: 		Benny
 	Creation Date:	16-09-2013
-	Revision Date:	16-09-2013
+	Revision Date:	18-04-2016
 	
   # PARAMETERS #
     0	[Array/Object]: A position or an object which determine the center
@@ -31,10 +31,15 @@ private ["_center", "_friendlySide", "_towns"];
 _center = _this select 0;
 _friendlySide = _this select 1;
 
-if (typeName _friendlySide == "SIDE") then { _friendlySide = (_friendlySide) call CTI_CO_FNC_GetSideID };
+if (typeName _friendlySide == "SIDE") then {_friendlySide = (_friendlySide) call CTI_CO_FNC_GetSideID};
 
 _towns = [];
 {if (_x getVariable "cti_town_sideID" != _friendlySide) then {[_towns, _x] call CTI_CO_FNC_ArrayPush}} forEach CTI_Towns;
+
+//--- Territorial mode
+if ((missionNamespace getVariable "CTI_TOWNS_TERRITORIAL") == 1) exitWith {
+	[_center, _friendlySide, _towns] Call CTI_CO_FNC_GetClosestTerritorialEnemyTown;
+};
 
 if (count _towns == 0) exitWith {objNull};
 

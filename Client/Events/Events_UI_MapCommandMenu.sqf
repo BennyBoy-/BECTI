@@ -158,7 +158,7 @@ switch (_action) do {
 				_mappos = ((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220001) ctrlMapScreenToWorld [_mx, _my];
 				switch (true) do {
 					case (_order in [CTI_ORDER_TAKETOWN, CTI_ORDER_TAKEHOLDTOWN]): {
-						_nearest = [_mappos, CTI_P_SideID] call CTI_CO_FNC_GetClosestEnemyTown;
+						_nearest = [_mappos, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestEnemyTown;
 						if !(isNull _nearest) then {
 							if (_mappos distance _nearest < 500) then {
 								if (_all) then {
@@ -171,7 +171,7 @@ switch (_action) do {
 						};
 					};
 					case (_order == CTI_ORDER_HOLDTOWNSBASE): {
-						_closest_town = [_mappos, CTI_P_SideID] call CTI_CO_FNC_GetClosestFriendlyTown;
+						_closest_town = [_mappos, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestFriendlyTown;
 						_list = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 						if !(isNull _closest_town) then {[_list, _closest_town] call CTI_CO_FNC_ArrayPush}; //--- Add the closest town
 						_nearest = [_mappos, _list] call CTI_CO_FNC_GetClosestEntity;

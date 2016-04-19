@@ -120,7 +120,7 @@ switch (_action) do {
 					_units_effective = (_selection) call CTI_UI_AIMicromanagement_GetEffectiveUnits;
 					switch (true) do {
 						case (_order in [CTI_ORDER_CLIENT_TAKETOWN, CTI_ORDER_CLIENT_TAKEHOLDTOWN]): {
-							_nearest = [_mappos, CTI_P_SideID] call CTI_CO_FNC_GetClosestEnemyTown;
+							_nearest = [_mappos, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestEnemyTown;
 							if !(isNull _nearest) then {
 								if (_mappos distance _nearest < 500) then {
 									(_units_effective) call CTI_UI_AIMicromanagement_UnregisterFormation; //--- Unregister the previous members if needed
@@ -131,7 +131,7 @@ switch (_action) do {
 							};
 						};
 						case (_order == CTI_ORDER_CLIENT_HOLDTOWNSBASE): {
-							_closest_town = [_mappos, CTI_P_SideID] call CTI_CO_FNC_GetClosestFriendlyTown;
+							_closest_town = [_mappos, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestFriendlyTown;
 							_list = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 							if !(isNull _closest_town) then {[_list, _closest_town] call CTI_CO_FNC_ArrayPush}; //--- Add the closest town
 							_nearest = [_mappos, _list] call CTI_CO_FNC_GetClosestEntity;

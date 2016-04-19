@@ -320,9 +320,15 @@ CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat
 CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 1; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 
+//--- Towns: Territorial
+CTI_TOWNS_TERRITORIAL_MARKER_ENEMY_CAPTURABLE_COLOR = "ColorOrange"; //--- The color for enemy capturable towns
+CTI_TOWNS_TERRITORIAL_MARKER_FRIENDLY_CAPTURABLE_COLOR = "ColorYellow"; //--- The color for friendly capturable towns
+CTI_TOWNS_TERRITORIAL_MARKER_SIZE = [350, 350]; //--- Size of the helper marker
+
 //--- Towns: Parameters
 with missionNamespace do {
 	if (isNil 'CTI_TOWNS_OCCUPATION') then {CTI_TOWNS_OCCUPATION = 1}; //--- Determine whether occupation is enabled or not
+	if (isNil 'CTI_TOWNS_TERRITORIAL') then {CTI_TOWNS_TERRITORIAL = 1}; //--- Enable or disable the Territorial mode (Neighbors Capture)
 };
 //-----------------------------------------------------------------------------------------------------------------------//
 
