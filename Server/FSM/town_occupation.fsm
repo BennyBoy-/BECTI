@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "E:\Bohemia Interactive\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, town_occupation.fsm">*/
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_occupation.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
@@ -52,8 +52,8 @@ link24[] = {19,21};
 link25[] = {20,18};
 link26[] = {21,8};
 link27[] = {22,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-411.897064,719.329102,385.927643,-490.796844,1168,911,1};
-window[] = {2,-1,-1,-1,-1,906,125,1380,125,3,1186};
+globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-592.544495,538.681702,354.781555,-521.942932,908,771,1};
+window[] = {2,-1,-1,-1,-1,881,1780,3035,100,3,926};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -239,9 +239,7 @@ class FSM
     class Cleanup
     {
       name = "Cleanup";
-      init = /*%FSM<STATEINIT""">*/"_town setVariable [""cti_town_occupation_active"", false];" \n
-       "" \n
-       "//--- Teams Units." \n
+      init = /*%FSM<STATEINIT""">*/"//--- Teams Units." \n
        "{" \n
        "	if !(isNil '_x') then {" \n
        "		if !(isNull _x) then {" \n
@@ -257,7 +255,13 @@ class FSM
        "		if (!isPlayer _x) then {deleteVehicle _x};" \n
        "	};" \n
        "} forEach (_town getVariable ""cti_town_occupation_active_vehicles"");" \n
-       "_town setVariable [""cti_town_occupation_active_vehicles"", []];"/*%FSM</STATEINIT""">*/;
+       "" \n
+       "_town setVariable [""cti_town_occupation_active_vehicles"", []];" \n
+       "_town setVariable [""cti_town_occupation_active"", false];" \n
+       "" \n
+       "if (CTI_Log_Level >= CTI_Log_Information) then {" \n
+       "	[""INFORMATION"", ""FILE: Server\FSM\town_occupation.fsm"", format[""Town [%1] has been de-activated"", _town getVariable ""cti_town_name""]] call CTI_CO_FNC_Log;" \n
+       "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -320,7 +324,7 @@ class FSM
        "" \n
        "if (count _town_groups > 0) then {" \n
        "	//--- By default, we try to delegate the creation to the HC Clients" \n
-       "	_delegated = [_town, _side, _town_teams, _town_groups, _town_positions] call CTI_SE_FNC_AttemptDelegation;" \n
+       "	_delegated = [_town, _side, _town_teams, _town_groups, _town_positions] call CTI_SE_FNC_AttemptTownDelegation;" \n
        "" \n
        "	//--- If we couldn't delegate it then we create it from the server" \n
        "	if !(_delegated) then {" \n
@@ -330,7 +334,11 @@ class FSM
        "};" \n
        "" \n
        "_town setVariable [""cti_town_occupation_active"", true];" \n
-       "_town setVariable [""cti_town_occupation_active_sideID"", _sideID];"/*%FSM</STATEINIT""">*/;
+       "_town setVariable [""cti_town_occupation_active_sideID"", _sideID];" \n
+       "" \n
+       "if (CTI_Log_Level >= CTI_Log_Information) then {" \n
+       "	[""INFORMATION"", ""FILE: Server\FSM\town_occupation.fsm"", format[""Town [%1] is now active"", _town getVariable ""cti_town_name""]] call CTI_CO_FNC_Log;" \n
+       "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

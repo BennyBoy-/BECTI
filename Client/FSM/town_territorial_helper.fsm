@@ -1,0 +1,158 @@
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_territorial_helper.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"Cycle"};
+item2[] = {"Update_Markers",2,4346,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Update" \n "Markers"};
+item3[] = {"End_FSM",1,250,50.000000,-325.000000,150.000000,-275.000000,0.000000,"End FSM"};
+item4[] = {"Terminate",4,218,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Terminate"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,1};
+link3[] = {2,4};
+link4[] = {4,3};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-456.160217,360.531433,242.139771,-456.939575,743,636,1};
+window[] = {0,-1,-1,-1,-1,821,1801,3056,40,1,761};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "town_territorial_helper.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;" \n
+       "" \n
+       "//--- Initialize the markers for each towns as invisible" \n
+       "{" \n
+       "	_marker = format[""cti_town_territorial_%1"", _x];" \n
+       "	createMarkerLocal [_marker, getPos _x];" \n
+       "	_marker setMarkerAlphaLocal 0;" \n
+       "	_marker setMarkerColorLocal ""ColorOrange"";" \n
+       "	_marker setMarkerShapeLocal ""ELLIPSE"";" \n
+       "	_marker setMarkerBrushLocal ""SolidBorder"";" \n
+       "	_marker setMarkerSizeLocal CTI_TOWNS_TERRITORIAL_MARKER_SIZE;" \n
+       "	" \n
+       "	_x setVariable [""cti_town_territorial_marker"", _marker];" \n
+       "} forEach CTI_Towns;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Markers";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_Markers">*/
+    class Update_Markers
+    {
+      name = "Update_Markers";
+      init = /*%FSM<STATEINIT""">*/"//--- Our side hold at least one town? if not the closest town to the HQ is our objective" \n
+       "_hq_closest_town = objNull;" \n
+       "if (count(CTI_P_SideID Call CTI_CO_FNC_GetSideTownCount) < 1) then {" \n
+       "	_hq_closest_town = [CTI_P_SideJoined Call CTI_CO_FNC_GetSideHQ, CTI_P_SideJoined] Call CTI_CO_FNC_GetClosestEnemyTown;" \n
+       "};" \n
+       "" \n
+       "//--- Generic, towns" \n
+       "{" \n
+       "	_marker = _x getVariable ""cti_town_territorial_marker"";" \n
+       "	" \n
+       "	//--- Town is held by the player side" \n
+       "	if ((_x getVariable ""cti_town_sideID"") == CTI_P_SideID) then {" \n
+       "		//--- Can we capture it?" \n
+       "		_safe = true;" \n
+       "		{" \n
+       "			if ((_x getVariable ""cti_town_sideID"") != CTI_P_SideID) exitWith {_safe = false};" \n
+       "		} forEach (_x getVariable ""cti_town_neighbors"");" \n
+       "		" \n
+       "		//--- Safe, it cannot be captured" \n
+       "		if (_safe) then {" \n
+       "			if (markerAlpha _marker != 0) then {_marker setMarkerAlphaLocal 0};" \n
+       "		} else {" \n
+       "			//--- Unsafe, our friendly town may be captured" \n
+       "			if (markerAlpha _marker != 1) then {" \n
+       "				_marker setMarkerColorLocal CTI_TOWNS_TERRITORIAL_MARKER_FRIENDLY_CAPTURABLE_COLOR;" \n
+       "				_marker setMarkerAlphaLocal 1;" \n
+       "			};" \n
+       "		};" \n
+       "	} else {" \n
+       "		//--- Hostile held, can we capture it?" \n
+       "		_safe = true;" \n
+       "		{" \n
+       "			if ((_x getVariable ""cti_town_sideID"") == CTI_P_SideID) exitWith {_safe = false};" \n
+       "		} forEach (_x getVariable ""cti_town_neighbors"");" \n
+       "		" \n
+       "		//--- If we have no towns, the closest town to the HQ is capturable" \n
+       "		if !(isNull _hq_closest_town) then {" \n
+       "			if (_hq_closest_town == _x) then {_safe = false};" \n
+       "		};" \n
+       "		" \n
+       "		//--- Safe, it cannot be captured" \n
+       "		if (_safe) then {" \n
+       "			if (markerAlpha _marker != 0) then {_marker setMarkerAlphaLocal 0};" \n
+       "		} else {" \n
+       "			//--- Unsafe, this enemy town may be captured" \n
+       "			if (markerAlpha _marker != 1) then {" \n
+       "				_marker setMarkerColorLocal CTI_TOWNS_TERRITORIAL_MARKER_ENEMY_CAPTURABLE_COLOR;" \n
+       "				_marker setMarkerAlphaLocal 1;" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "} forEach CTI_Towns;" \n
+       "" \n
+       "_ncycle = time + 5;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Markers";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Terminate">*/
+        class Terminate
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM",
+  };
+};
+/*%FSM</COMPILE>*/

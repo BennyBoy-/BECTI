@@ -20,6 +20,7 @@
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_ChangeFunds
+	Common Function: CTI_CO_FNC_GetSideFromID
 	Common Function: CTI_CO_FNC_GetSideID
 	Common Function: CTI_CO_FNC_GetSideLogic
 	Common Function: CTI_CO_FNC_NetSend
@@ -40,6 +41,10 @@ _currentSideID = _town getVariable "cti_town_sideID";
 
 _town setVariable ["cti_town_sideID", _newSideID, true];
 _town setVariable ["cti_town_lastSideID", _currentSideID, true];
+
+if (CTI_Log_Level >= CTI_Log_Information) then {
+	["INFORMATION", "FILE: Server\Functions\Server_OnTownCaptured.sqf", format["Town [%1] has been captured, from [%2] to [%3]", _town getVariable "cti_town_name", (_currentSideID) Call CTI_CO_FNC_GetSideFromID, _newSide]] call CTI_CO_FNC_Log;
+};
 
 ["CLIENT", "Client_OnTownCaptured", [_town, _newSideID, _currentSideID]] call CTI_CO_FNC_NetSend;
 

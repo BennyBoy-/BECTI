@@ -40,9 +40,10 @@ switch (_pv_destination) do {
 	case "CLIENT": {
 		if (CTI_IsClient || CTI_IsHeadless) then {
 			switch (typeName _pv_filter_exec) do {
-				case "OBJECT": { if (_pv_filter_exec == player) then { _pv_can_exec = true } }; //--- An object (SP oriented).
-				case "STRING": { _pv_can_exec = true }; //--- Everyone
-				case "SIDE": { if (_pv_filter_exec == CTI_P_SideJoined) then { _pv_can_exec = true } }; //--- Side only
+				case "OBJECT": { if (_pv_filter_exec == player) then { _pv_can_exec = true } }; //--- For the player?
+				case "SCALAR": { if (_pv_filter_exec == clientOwner) then { _pv_can_exec = true } }; //--- For the player's owner ID?
+				case "SIDE": { if (_pv_filter_exec == CTI_P_SideJoined) then { _pv_can_exec = true } }; //--- For the player's side?
+				case "STRING": { _pv_can_exec = true }; //--- For Everyone!
 			};
 		};
 	};

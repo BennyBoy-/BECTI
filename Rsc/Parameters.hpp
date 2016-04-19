@@ -95,6 +95,12 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
+	class CTI_TOWNS_TERRITORIAL {
+		title = "TOWNS: Territorial Mode";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 1;
+	};
 	class CTI_VEHICLES_AIR_AA {
 		title = "UNITS: Aircraft AA Missiles";
 		values[] = {0,1,2};

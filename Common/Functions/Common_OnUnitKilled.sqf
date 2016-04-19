@@ -96,13 +96,21 @@ if (!isNil '_var' && _isplayable_killer) then {
 				};
 				
 				//--- If there is more than one group to award then we split the bounty equally
-				_bounty = round(_cost * CTI_VEHICLES_BOUNTY);
+				_bounty = round(_cost * CTI_BOUNTY_COEF);
+				
+				//--- PVP Leader Reward for AI/Players
+				_killed_pname = "";
+				if (_isplayable_killed && _isplayable_killer) then { 
+					_bounty = _bounty + round(score _killed * CTI_BOUNTY_COEF_PVP);
+					_killed_pname = name _killed;
+				};
+				
 				if (count _award_groups > 1) then { _bounty = round(_bounty / (count _award_groups))};
 				
 				//--- Award
 				{
 					if (_x call CTI_CO_FNC_IsGroupPlayable) then {
-						if (isPlayer leader _x) then {[["CLIENT", leader _x], "Client_AwardBounty", [_var_name, _bounty]] call CTI_CO_FNC_NetSend} else {[_x, _side_killer, _bounty] call CTI_CO_FNC_ChangeFunds};
+						if (isPlayer leader _x) then {[["CLIENT", leader _x], "Client_AwardBounty", [_var_name, _bounty, _killed_pname]] call CTI_CO_FNC_NetSend} else {[_x, _side_killer, _bounty] call CTI_CO_FNC_ChangeFunds};
 					};
 				} forEach _award_groups;
 			};

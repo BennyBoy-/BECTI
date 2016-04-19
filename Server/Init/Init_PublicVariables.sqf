@@ -117,7 +117,6 @@ with missionNamespace do {
 			[_candidates, [_ownerID, _client, _uid]] call CTI_CO_FNC_ArrayPush;
 			missionNamespace setVariable ["CTI_HEADLESS_CLIENTS", _candidates];
 			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_Request_HCRegister", format["Headless Client [%1] with owner ID [%2] has been registered as a valid Headless Client. There is now [%3] Headless Clients", _uid, _ownerID, count _candidates]] call CTI_CO_FNC_Log};
-			// [] call   CTI_PVF_Client_OnRegisterAnswer
 			[["CLIENT", _client], "Client_OnRegisterAnswer", true] call CTI_CO_FNC_NetSend;
 		} else { //--- An ID of 0 mean that the object is local to the server
 			if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FUNCTION: CTI_PVF_Request_HCRegister", format ["Client [%1] sent a request but his owner ID is 0. It will not be registered as a valid Headless Client", _uid]] call CTI_CO_FNC_Log};

@@ -320,9 +320,15 @@ CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat
 CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 1; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 
+//--- Towns: Territorial
+CTI_TOWNS_TERRITORIAL_MARKER_ENEMY_CAPTURABLE_COLOR = "ColorOrange"; //--- The color for enemy capturable towns
+CTI_TOWNS_TERRITORIAL_MARKER_FRIENDLY_CAPTURABLE_COLOR = "ColorYellow"; //--- The color for friendly capturable towns
+CTI_TOWNS_TERRITORIAL_MARKER_SIZE = [350, 350]; //--- Size of the helper marker
+
 //--- Towns: Parameters
 with missionNamespace do {
 	if (isNil 'CTI_TOWNS_OCCUPATION') then {CTI_TOWNS_OCCUPATION = 1}; //--- Determine whether occupation is enabled or not
+	if (isNil 'CTI_TOWNS_TERRITORIAL') then {CTI_TOWNS_TERRITORIAL = 1}; //--- Enable or disable the Territorial mode (Neighbors Capture)
 };
 //-----------------------------------------------------------------------------------------------------------------------//
 
@@ -421,7 +427,6 @@ with missionNamespace do {
  */
 
 //--- Vehicles: Misc
-CTI_VEHICLES_BOUNTY = 0.15; //--- Bounty upon entity killed.
 CTI_VEHICLES_EMPTY_SCAN_PERIOD = 15; //--- Scan for a crew member in a vehicle each x seconds
 CTI_VEHICLES_HANDLER_EMPTY = 0; //--- Determine how an empty vehicle is handled by the engine (0: Typical delay, 1: delay AND the unit cannot move/fire)
 CTI_VEHICLES_HOOKERS = ["B_Heli_Transport_01_F", "O_Heli_Light_02_unarmed_F", "B_Boat_Armed_01_minigun_F", "O_Boat_Armed_01_hmg_F"]; //--- Vehicle which may lift things (not actual hookers btw)
@@ -450,6 +455,9 @@ with missionNamespace do {
 
 CTI_ARTILLERY_FILTER = 1; //--- Toggle artillery magazines like mines and AT mines (0: Disabled, 1: Enabled)
 CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
+
+CTI_BOUNTY_COEF = 0.15; //--- Bounty coefficient multiplicator based on the unit original cost
+CTI_BOUNTY_COEF_PVP = 1.2; //--- Bounty coefficient multiplicator based on the killed unit score
 
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 30; //--- Keep values of 10
 
@@ -496,6 +504,13 @@ CTI_GC_DELAY_TANK = 300;
 CTI_GC_DELAY_SHIP = 60;
 CTI_GC_DELAY_STATIC = 80;
 CTI_GC_DELAY_BUILDING = 30;
+
+//--- SHK Specific
+CTI_SHK_BUILDING_ENABLED = true;
+CTI_SHK_BUILDING_PLACEMENT_CHANCE = 25; //--- An AI Group has x% of chance to be placed in a building
+CTI_SHK_BUILDING_SCAN_RANGE = 150; //--- The radius used to search for building from the town's center
+CTI_SHK_BUILDING_SCAN_RANGE_RAN = 50; //--- Add a random range, works as min max -> RANGE + (random value - random value)
+CTI_SHK_GROUP_SIZE_MAX = 12; //--- If the group has more than x members, skip it
 
 with missionNamespace do {
 	if (isNil 'CTI_ARTILLERY_SETUP') then {CTI_ARTILLERY_SETUP = 0}; //--- Artillery status (-2: Disabled, -1: Artillery Computer, 0: Short, 1: Medium, 2: Long, 3: Far)
