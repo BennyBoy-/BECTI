@@ -17,7 +17,7 @@ switch (toLower(worldName)) do {
 		Galati setVariable ["cti_town_neighbors", [Koroni, Syrta, North Airfield]];
 		Oreokastro setVariable ["cti_town_neighbors", [North Airfield, Agios Konstantinos, The Dump]];
 		Syrta setVariable ["cti_town_neighbors", [Kore, Agios Dionysios, Galati, The Dump]];
-		Agios Dionysios setVariable ["cti_town_neighbors", [ Lakka, Zaros, Kore, Syrta]];
+		Agios Dionysios setVariable ["cti_town_neighbors", [Lakka, Zaros, Kore, Syrta]];
 		Lakka setVariable ["cti_town_neighbors", [Neochori, AirBase, Koroni, Agios Dionysios]];
 		Neochori setVariable ["cti_town_neighbors", [AirBase, Lakka, Military, Sub Pen, AAC Airfield ]];
 		Zaros setVariable ["cti_town_neighbors", [Agios Dionysios, AAC Airfield, Vikos, Panochori]];
