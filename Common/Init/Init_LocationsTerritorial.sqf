@@ -8,7 +8,7 @@ switch (toLower(worldName)) do {
 		Charkia setVariable ["cti_town_neighbors", [Rodopoli, Dorida, Anthrakia]];
 		Kalochori setVariable ["cti_town_neighbors", [Paros, Limni]];
 		Rodopoli setVariable ["cti_town_neighbors", [Kalithea, Paros, Charkia]];
-		Paros setVariable ["cti_town_neighbors", [Rodopoli, Loannina, Military Outpost, Limni, Kalochori ]];
+		Paros setVariable ["cti_town_neighbors", [Rodopoli, Loannina, Military Outpost, Limni, Kalochori]];
 		Molos setVariable ["cti_town_neighbors", [Sofia, Research Platform, Molos Airfield]];
 		Anthrakia setVariable ["cti_town_neighbors", [Telos, Charkia, Sub Pen]];
 		Telos setVariable ["cti_town_neighbors", [Military, Kalithea, Anthrakia]];
@@ -19,7 +19,7 @@ switch (toLower(worldName)) do {
 		Syrta setVariable ["cti_town_neighbors", [Kore, Agios Dionysios, Galati, The Dump]];
 		Agios Dionysios setVariable ["cti_town_neighbors", [Lakka, Zaros, Kore, Syrta]];
 		Lakka setVariable ["cti_town_neighbors", [Neochori, AirBase, Koroni, Agios Dionysios]];
-		Neochori setVariable ["cti_town_neighbors", [AirBase, Lakka, Military, Sub Pen, AAC Airfield ]];
+		Neochori setVariable ["cti_town_neighbors", [AirBase, Lakka, Military, Sub Pen, AAC Airfield]];
 		Zaros setVariable ["cti_town_neighbors", [Agios Dionysios, AAC Airfield, Vikos, Panochori]];
 		Kavala setVariable ["cti_town_neighbors", [Panochori, Wind Farm, Stadium]];
 		Airbase setVariable ["cti_town_neighbors", [Neochori, Lakka, Military, Sub Pen]];
@@ -30,7 +30,7 @@ switch (toLower(worldName)) do {
 		Sofia setVariable ["cti_town_neighbors", [Molos, Nidasos, Loannina]];
 		Panagia setVariable ["cti_town_neighbors", [Chalkeia, Feres, Ekali]];
 		Kore setVariable ["cti_town_neighbors", [Syrta, Agios Dionysios, Negades]];
-		Sand Airfield setVariable ["cti_town_neighbors", [Loannina ]];
+		Sand Airfield setVariable ["cti_town_neighbors", [Loannina]];
 		Makrynisi setVariable ["cti_town_neighbors", [Faronaki, Neochori, AAC Airfield]];
 		Faronaki setVariable ["cti_town_neighbors", [Ekali, Vikos, Makrynisi, Pyrgos]];
 		Kalithea setVariable ["cti_town_neighbors", [Rodopoli, Telos]];
