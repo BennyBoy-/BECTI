@@ -64,5 +64,39 @@ switch (toLower(worldName)) do {
 
 switch (toLower(worldName)) do {
 	case "stratis": {
+		Bay Outpost setVariable ["cti_town_neighbors", [Agia Marina, Com Platform, Kill Farm]];
+		Kill Farm setVariable ["cti_town_neighbors", [Junction, Bay Outpost]];
+		Junction setVariable ["cti_town_neighbors", [Camp Rogain, Kill Farm, Agia Marina, Military Range]];
+		Agia Marina setVariable ["cti_town_neighbors", [Junction, Bay Outpost, Military Range, Airbase Outpost]];
+		Airbase Outpost setVariable ["cti_town_neighbors", [Agia Marina, Military Range, Transmission Tower Brit, Air Base, Oyster Bay]];
+		Air Base setVariable ["cti_town_neighbors", [Com Platform, Air Field, Airbase Outpost]];
+		Air Field setVariable ["cti_town_neighbors", [Air Base, Fuel Depot, Oyster Bay]];
+		Military Range setVariable ["cti_town_neighbors", [Agia Marina, Airbase Outpost, Storage Dump, Junction]];
+		Storage Dump setVariable ["cti_town_neighbors", [Military Range, Camp Rogain, Transmission Tower Brit, Checkpoint Bravo]];
+		Camp Rogain setVariable ["cti_town_neighbors", [Radio Control, Kamino Village, Junction, Storage Dump]];
+		Radio Control setVariable ["cti_town_neighbors", [Checkpoint Charlie, Old Ruins, Camp Rogain]];
+		Kamino Village setVariable ["cti_town_neighbors", [Kamino Firing Range, Camp Rogain]];
+		Kamino Firing Range setVariable ["cti_town_neighbors", [Old Ruins, Sub Pen, Kamino Village]];
+		Old Ruins setVariable ["cti_town_neighbors", [Radio Control, Kamino Firing Range]];
+		Limeri Bay setVariable ["cti_town_neighbors", [Checkpoint Charlie, Sub Pen]];
+		Transmission Tower Brit setVariable ["cti_town_neighbors", [Checkpoint Bravo, Airbase Outpost, Storage Dump, Oyster Bay]];
+		Checkpoint Bravo setVariable ["cti_town_neighbors", [Old Outpost, Transmission Tower Brit, Storage Dump]];
+		Checkpoint Charlie setVariable ["cti_town_neighbors", [Old Outpost, Limeri Bay, Radio Control]];
+		Checkpoint Mike setVariable ["cti_town_neighbors", [Camp Maxwell, Tsoukalia, Air Station Mike]];
+		Old Outpost setVariable ["cti_town_neighbors", [Air Station Mike, Checkpoint Bravo, Checkpoint Charlie]];
+		Camp Tempest setVariable ["cti_town_neighbors", [Fuel Depot, Tempest Outpost]];
+		Tempest Outpost setVariable ["cti_town_neighbors", [Camp Tempest, Nisi Bay, Air Station Mike]];
+		Nisi Bay setVariable ["cti_town_neighbors", [Tempest Outpost, Oyster Bay]];
+		Air Station Mike setVariable ["cti_town_neighbors", [Checkpoint Mike, Tempest Outpost, Old Outpost]];
+		Oyster Bay setVariable ["cti_town_neighbors", [Nisi Bay, Air Field, Transmission Tower Brit, Airbase Outpost]];
+		Tsoukalia setVariable ["cti_town_neighbors", [Checkpoint Mike, Sub Pen]];
+		Camp Maxwell setVariable ["cti_town_neighbors", [LZ Connor, Checkpoint Mike, Girna, ]];
+		Girna setVariable ["cti_town_neighbors", [Camp Maxwell, Strogos Bay, Fuel Depot]];
+		LZ Connor setVariable ["cti_town_neighbors", [Jay Cove, Strogos Bay, Camp Maxwell, Sub Pen]];
+		Strogos Bay setVariable ["cti_town_neighbors", [LZ Connor, Fuel Depot, Girna, Jay Cove]];
+		Jay Cove setVariable ["cti_town_neighbors", [LZ Connor, Strogos Bay]];
+		Sub Pen setVariable ["cti_town_neighbors", [LZ Connor, Tsoukalia, Limeri Bay, Kamino Firing Range]];
+		Com Platform setVariable ["cti_town_neighbors", [Bay Outpost, Air Base]];
+		Fuel Depot setVariable ["cti_town_neighbors", [Strogos Bay, Air Field, Camp Tempest, Girna]];
 	};
 };
