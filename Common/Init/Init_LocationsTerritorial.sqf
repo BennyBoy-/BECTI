@@ -90,7 +90,7 @@ switch (toLower(worldName)) do {
 		Air Station Mike setVariable ["cti_town_neighbors", [Checkpoint Mike, Tempest Outpost, Old Outpost]];
 		Oyster Bay setVariable ["cti_town_neighbors", [Nisi Bay, Air Field, Transmission Tower Brit, Airbase Outpost]];
 		Tsoukalia setVariable ["cti_town_neighbors", [Checkpoint Mike, Sub Pen]];
-		Camp Maxwell setVariable ["cti_town_neighbors", [LZ Connor, Checkpoint Mike, Girna, ]];
+		Camp Maxwell setVariable ["cti_town_neighbors", [LZ Connor, Checkpoint Mike, Girna]];
 		Girna setVariable ["cti_town_neighbors", [Camp Maxwell, Strogos Bay, Fuel Depot]];
 		LZ Connor setVariable ["cti_town_neighbors", [Jay Cove, Strogos Bay, Camp Maxwell, Sub Pen]];
 		Strogos Bay setVariable ["cti_town_neighbors", [LZ Connor, Fuel Depot, Girna, Jay Cove]];
