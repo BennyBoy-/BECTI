@@ -378,7 +378,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Kill Farm"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town0";
+				name="KillFarm";
 			};
 			id=19;
 			type="FlagPole_F";
@@ -396,7 +396,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Camp Rogain"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town1";
+				name="CampRogain";
 			};
 			id=20;
 			type="FlagPole_F";
@@ -414,7 +414,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Agia Marina"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town2";
+				name="AgiaMarina";
 			};
 			id=21;
 			type="FlagPole_F";
@@ -432,7 +432,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Air Base"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town3";
+				name="AirBase";
 			};
 			id=22;
 			type="FlagPole_F";
@@ -449,7 +449,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Transmission Tower Brit"", resistance, 50] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town4";
+				name="TransmissionTowerBrit";
 			};
 			id=23;
 			type="FlagPole_F";
@@ -467,7 +467,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Storage Dump"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town5";
+				name="StorageDump";
 			};
 			id=24;
 			type="FlagPole_F";
@@ -485,7 +485,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Old Ruins"", resistance, 100] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town6";
+				name="OldRuins";
 			};
 			id=25;
 			type="FlagPole_F";
@@ -503,7 +503,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Kamino Firing Range"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town7";
+				name="KaminoFiringRange";
 			};
 			id=26;
 			type="FlagPole_F";
@@ -521,7 +521,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Air Station Mike"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town8";
+				name="AirStationMike";
 			};
 			id=27;
 			type="FlagPole_F";
@@ -538,7 +538,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Old Outpost"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town9";
+				name="OldOutpost";
 			};
 			id=28;
 			type="FlagPole_F";
@@ -556,7 +556,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Camp Tempest"", resistance, 175] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town10";
+				name="CampTempest";
 			};
 			id=29;
 			type="FlagPole_F";
@@ -573,7 +573,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Camp Maxwell"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town11";
+				name="CampMaxwell";
 			};
 			id=30;
 			type="FlagPole_F";
@@ -591,7 +591,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Girna"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town12";
+				name="Girna";
 			};
 			id=31;
 			type="FlagPole_F";
@@ -609,7 +609,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Strogos Bay"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town13";
+				name="StrogosBay";
 			};
 			id=32;
 			type="FlagPole_F";
@@ -626,7 +626,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""LZ Connor"", resistance, 100] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town14";
+				name="LZConnor";
 			};
 			id=33;
 			type="FlagPole_F";
@@ -644,7 +644,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Jay Cove"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town15";
+				name="JayCove";
 			};
 			id=34;
 			type="FlagPole_F";
@@ -5501,7 +5501,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Tsoukalia"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town16";
+				name="Tsoukalia";
 			};
 			id=160;
 			type="FlagPole_F";
@@ -5519,7 +5519,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Oyster Bay"", resistance, 175] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town17";
+				name="OysterBay";
 			};
 			id=161;
 			type="FlagPole_F";
@@ -5537,7 +5537,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Nisi Bay"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town18";
+				name="NisiBay";
 			};
 			id=162;
 			type="FlagPole_F";
@@ -5555,7 +5555,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Tempest Outpost"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town19";
+				name="TempestOutpost";
 			};
 			id=163;
 			type="FlagPole_F";
@@ -5573,7 +5573,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Checkpoint Charlie"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town20";
+				name="CheckpointCharlie";
 			};
 			id=164;
 			type="FlagPole_F";
@@ -5591,7 +5591,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Checkpoint Mike"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town21";
+				name="CheckpointMike";
 			};
 			id=165;
 			type="FlagPole_F";
@@ -5608,7 +5608,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Checkpoint Bravo"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town22";
+				name="CheckpointBravo";
 			};
 			id=166;
 			type="FlagPole_F";
@@ -5626,7 +5626,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Airbase Outpost"", resistance, 50] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town23";
+				name="AirbaseOutpost";
 			};
 			id=167;
 			type="FlagPole_F";
@@ -5644,7 +5644,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Limeri Bay"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town24";
+				name="LimeriBay";
 			};
 			id=168;
 			type="FlagPole_F";
@@ -5662,7 +5662,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Radio Control"", resistance, 100] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town25";
+				name="RadioControl";
 			};
 			id=169;
 			type="FlagPole_F";
@@ -5680,7 +5680,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Kamino Village"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town26";
+				name="KaminoVillage";
 			};
 			id=170;
 			type="FlagPole_F";
@@ -5698,7 +5698,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Agia Marina"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town27";
+				name="AgiaMarina";
 			};
 			id=171;
 			type="FlagPole_F";
@@ -5716,7 +5716,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Junction"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town28";
+				name="Junction";
 			};
 			id=172;
 			type="FlagPole_F";
@@ -5734,7 +5734,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Bay Outpost"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town29";
+				name="BayOutpost";
 			};
 			id=173;
 			type="FlagPole_F";
@@ -5751,7 +5751,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Air Field"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town30";
+				name="AirField";
 			};
 			id=174;
 			type="FlagPole_F";
@@ -5768,7 +5768,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Fuel Depot"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.6];";
-				name="Town31";
+				name="FuelDepot";
 			};
 			id=175;
 			type="FlagPole_F";
@@ -5785,7 +5785,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Com Platform"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.1];";
-				name="Town32";
+				name="ComPlatform";
 			};
 			id=176;
 			type="FlagPole_F";
@@ -5802,7 +5802,7 @@ class Mission
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Sub Pen"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,-.5];";
-				name="Town33";
+				name="SubPen";
 			};
 			id=177;
 			type="FlagPole_F";
