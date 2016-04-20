@@ -290,6 +290,10 @@ CTI_GEAR_RESELL_TAX = 0.5; //--- Owned items are traded for: <item price> * <tax
  * - Server\FSM\town_resistance.fsm: This controls the town resistance defensive "flow"
  */
 
+//--- Towns: Camps
+CTI_TOWNS_CAMPS_CAPTURE_RANGE = 10; //--- Range needed to capture/protect a camp
+CTI_TOWNS_CAMPS_CLASSNAMES = ["Land_HBarrierTower_F"]; //--- The camps classnames
+ 
 //--- Towns: Capture
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 300; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
 CTI_TOWNS_CAPTURE_RANGE = 50; //--- The range which a unit/vehicle has to be from a town center to capture it

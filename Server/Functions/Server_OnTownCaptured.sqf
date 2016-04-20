@@ -31,7 +31,7 @@
 	  -> Town0 is now captured by West
 */
 
-private ["_award_teams", "_currentSideID", "_last_capture", "_newSide", "_newSideID", "_town"];
+private ["_award_teams", "_currentSideID", "_last_capture", "_newSide", "_newSideID", "_town", "_town_camps"];
 
 _town = _this select 0;
 _newSide = _this select 1;
@@ -41,6 +41,16 @@ _currentSideID = _town getVariable "cti_town_sideID";
 
 _town setVariable ["cti_town_sideID", _newSideID, true];
 _town setVariable ["cti_town_lastSideID", _currentSideID, true];
+
+//--- Update the camps if needed
+_town_camps = _town getVariable "cti_town_camps";
+if !(isNil "_town_camps") then {
+	{
+		_x setVariable ["cti_camp_lastSideID", (_x getVariable "cti_camp_sideID"), true];
+		_x setVariable ["cti_camp_sideID", _newSideID, true];
+		_x setVariable ["cti_camp_value", _town getVariable "cti_town_value"];
+	} forEach _town_camps;
+};
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Server\Functions\Server_OnTownCaptured.sqf", format["Town [%1] has been captured, from [%2] to [%3]", _town getVariable "cti_town_name", (_currentSideID) Call CTI_CO_FNC_GetSideFromID, _newSide]] call CTI_CO_FNC_Log;

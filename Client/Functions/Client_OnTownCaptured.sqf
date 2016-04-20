@@ -31,7 +31,7 @@
 	[_structure, _variable] call CTI_CL_FNC_OnTownCaptured
 */
 
-private ["_color", "_in_range", "_last_capture", "_score", "_side_new", "_sideID_new", "_sideID_old", "_town", "_value"];
+private ["_color", "_in_range", "_last_capture", "_score", "_side_new", "_sideID_new", "_sideID_old", "_town", "_town_camps", "_value"];
 
 _town = _this select 0;
 _sideID_new = _this select 1;
@@ -71,3 +71,9 @@ if (_side_new == CTI_P_SideJoined) then { //--- The player's side has captured i
 _color = (_side_new) call CTI_CO_FNC_GetSideColoration;
 (format ["cti_town_marker_%1", _town]) setMarkerColorLocal _color;
 (format ["cti_town_areaMarker_%1", _town]) setMarkerColorLocal _color;
+
+//--- Update the camps if needed
+_town_camps = _town getVariable "cti_town_camps";
+if !(isNil "_town_camps") then {
+	{(_x getVariable "cti_camp_marker") setMarkerColorLocal _color} forEach _town_camps;
+};
