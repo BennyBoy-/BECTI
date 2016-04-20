@@ -32,7 +32,7 @@ if (typeName _sideCapturing == "SIDE") then {_sideCapturing = (_sideCapturing) c
 
 //--- Check if the capturing side is holding at least 1 town, if not, the HQ's closest town is capturable.
 _hq_closest_town = objNull;
-if (count(_sideCapturing Call CTI_CO_FNC_GetSideTownCount) < 1) then {
+if ((_sideCapturing Call CTI_CO_FNC_GetSideTownCount) < 1) then {
 	_hq_closest_town = [_sideCapturing Call CTI_CO_FNC_GetSideHQ, _sideCapturing] Call CTI_CO_FNC_GetClosestEnemyTown;
 };
 

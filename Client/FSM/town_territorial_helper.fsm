@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-456.160217,360.531433,242.139771,-456.939575,743,636,1};
-window[] = {0,-1,-1,-1,-1,821,1801,3056,40,1,761};
+window[] = {0,-1,-1,-1,-1,981,200,1455,200,1,761};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -59,7 +59,7 @@ class FSM
       name = "Update_Markers";
       init = /*%FSM<STATEINIT""">*/"//--- Our side hold at least one town? if not the closest town to the HQ is our objective" \n
        "_hq_closest_town = objNull;" \n
-       "if (count(CTI_P_SideID Call CTI_CO_FNC_GetSideTownCount) < 1) then {" \n
+       "if ((CTI_P_SideID Call CTI_CO_FNC_GetSideTownCount) < 1) then {" \n
        "	_hq_closest_town = [CTI_P_SideJoined Call CTI_CO_FNC_GetSideHQ, CTI_P_SideJoined] Call CTI_CO_FNC_GetClosestEnemyTown;" \n
        "};" \n
        "" \n
