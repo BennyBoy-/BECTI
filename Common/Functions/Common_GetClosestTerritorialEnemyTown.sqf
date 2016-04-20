@@ -39,7 +39,7 @@ _enemyTowns = _this select 2;
 if (typeName _friendlySide == "SIDE") then {_friendlySide = (_friendlySide) call CTI_CO_FNC_GetSideID};
 
 //--- No towns are available for the friendly side? then, the closest enemy town is the one which is the closest to the HQ
-if (count(_friendlySide Call CTI_CO_FNC_GetSideTownCount) < 1) exitWith {
+if ((_friendlySide Call CTI_CO_FNC_GetSideTownCount) < 1) exitWith {
 	[_friendlySide Call CTI_CO_FNC_GetSideHQ, _enemyTowns] Call CTI_CO_FNC_GetClosestEntity;
 };
 

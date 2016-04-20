@@ -1,15 +1,15 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_capture.fsm">*/
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_capture_camp.fsm">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start_FSM",0,4346,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
+item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Cycle"};
-item2[] = {"Units_near_Cente",2,250,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Units near" \n "Center"};
+item2[] = {"Units_near_Camp",2,250,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Units near" \n "Camp"};
 item3[] = {"End_FSM",1,250,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Empty",4,218,50.000000,-300.000000,150.000000,-250.000000,2.000000,"Empty"};
 item5[] = {"Gameover",8,218,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Gameover"};
 item6[] = {"Not_Empty",4,218,-250.000000,-300.000000,-150.000000,-250.000000,1.000000,"Not Empty"};
 item7[] = {"Skip",2,250,50.000000,-400.000000,150.000000,-350.000000,0.000000,"Skip"};
-item8[] = {"Check_Capture",2,250,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Check" \n "Capture"};
+item8[] = {"Check_Capture",2,4346,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Check" \n "Capture"};
 item9[] = {"Ready",8,218,-400.000000,-200.000000,-300.000000,-150.000000,0.000000,"Ready"};
 item10[] = {"Not_Ready",4,218,-250.000000,0.000000,-150.000000,50.000000,1.000000,"Not" \n "Ready"};
 item11[] = {"",7,210,196.000000,20.999996,204.000000,29.000004,0.000000,""};
@@ -31,23 +31,22 @@ link12[] = {10,11};
 link13[] = {11,12};
 link14[] = {12,7};
 link15[] = {13,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-553.124695,344.934753,133.816055,-562.199219,955,771,1};
-window[] = {2,-1,-1,-1,-1,931,1830,3085,150,3,973};
+globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-553.124695,344.934753,133.816055,-562.199219,947,771,1};
+window[] = {2,-1,-1,-1,-1,856,1755,3010,75,3,965};
 *//*%FSM</HEAD>*/
 class FSM
 {
-  fsmName = "town_capture.fsm";
+  fsmName = "town_capture_camp.fsm";
   class States
   {
     /*%FSM<STATE "Start_FSM">*/
     class Start_FSM
     {
       name = "Start_FSM";
-      init = /*%FSM<STATEINIT""">*/"_town = _this;" \n
+      init = /*%FSM<STATEINIT""">*/"_town = _this select 0;" \n
+       "_camp = _this select 1;" \n
        "" \n
-       "_town setVariable [""cti_town_capture"", CTI_TOWNS_CAPTURE_VALUE_CEIL, true];" \n
-       "" \n
-       "_ncycle = time + 5 + random 1;"/*%FSM</STATEINIT""">*/;
+       "_ncycle = time + 3 + random 1;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -55,7 +54,7 @@ class FSM
         class Cycle
         {
           priority = 0.000000;
-          to="Units_near_Cente";
+          to="Units_near_Camp";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -64,13 +63,13 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "Units_near_Cente">*/
-    class Units_near_Cente
+    /*%FSM<STATE "Units_near_Camp">*/
+    class Units_near_Camp
     {
-      name = "Units_near_Cente";
-      init = /*%FSM<STATEINIT""">*/"_sideID = _town getVariable ""cti_town_sideID"";" \n
+      name = "Units_near_Camp";
+      init = /*%FSM<STATEINIT""">*/"_sideID = _camp getVariable ""cti_camp_sideID"";" \n
        "_side = (_sideID) Call CTI_CO_FNC_GetSideFromID;" \n
-       "_objects = (_town nearEntities [""AllVehicles"", CTI_TOWNS_CAPTURE_RANGE]) unitsBelowHeight 30;" \n
+       "_objects = _town nearEntities [""Man"", CTI_TOWNS_CAMPS_CAPTURE_RANGE];" \n
        "" \n
        "_west = west countSide _objects;" \n
        "_east = east countSide _objects;" \n
@@ -82,7 +81,7 @@ class FSM
        "	case resistance: {_east + _west};" \n
        "};" \n
        "" \n
-       "_ncycle = time + 5;"/*%FSM</STATEINIT""">*/;
+       "_ncycle = time + 3;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -142,7 +141,7 @@ class FSM
         class Cycle
         {
           priority = 0.000000;
-          to="Units_near_Cente";
+          to="Units_near_Camp";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -163,11 +162,11 @@ class FSM
        "" \n
        "_captured = false;" \n
        "if (_force != civilian) then {" \n
-       "	_capture_level = _town getVariable ""cti_town_capture"";" \n
+       "	_capture_level = _camp getVariable ""cti_camp_value"";" \n
        "	" \n
        "	if (_side == _force) then { //--- Protect" \n
-       "		_capture_level = _capture_level + CTI_TOWNS_CAPTURE_VALUE_ITERATE;" \n
-       "		if (_capture_level > CTI_TOWNS_CAPTURE_VALUE_CEIL) then { _capture_level = CTI_TOWNS_CAPTURE_VALUE_CEIL };" \n
+       "		_capture_level = _capture_level + CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE;" \n
+       "		if (_capture_level > CTI_TOWNS_CAMPS_CAPTURE_VALUE_CEIL) then { _capture_level = CTI_TOWNS_CAMPS_CAPTURE_VALUE_CEIL };" \n
        "	} else { //--- Capture" \n
        "		//--- In case of territorial mode, check that the town can be captured!" \n
        "		_capturable = true;" \n
@@ -175,12 +174,12 @@ class FSM
        "			_capturable = [_town, _force] Call CTI_SE_FNC_CanCaptureTerritorialTown;" \n
        "		};" \n
        "		if (_capturable) then {" \n
-       "			_capture_level = _capture_level - CTI_TOWNS_CAPTURE_VALUE_ITERATE;" \n
-       "			if (_capture_level <= 0) then { _captured = true; _capture_level = CTI_TOWNS_CAPTURE_VALUE_CEIL };" \n
+       "			_capture_level = _capture_level - CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE;" \n
+       "			if (_capture_level <= 0) then { _captured = true; _capture_level = CTI_TOWNS_CAMPS_CAPTURE_VALUE_CEIL };" \n
        "		};" \n
        "	};" \n
        "	" \n
-       "	if (_capture_level != (_town getVariable ""cti_town_capture"")) then {_town setVariable [""cti_town_capture"", _capture_level, true]};" \n
+       "	if (_capture_level != (_camp getVariable ""cti_camp_value"")) then {_camp setVariable [""cti_camp_value"", _capture_level, true]};" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -212,7 +211,7 @@ class FSM
     class Captured
     {
       name = "Captured";
-      init = /*%FSM<STATEINIT""">*/"[_town, _force] call CTI_SE_FNC_OnTownCaptured"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"[_town, _camp, _force] call CTI_SE_FNC_OnCampCaptured;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -220,7 +219,7 @@ class FSM
         class Cycle
         {
           priority = 0.000000;
-          to="Units_near_Cente";
+          to="Units_near_Camp";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
