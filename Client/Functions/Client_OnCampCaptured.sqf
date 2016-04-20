@@ -25,7 +25,8 @@
 	Common Function: CTI_CO_FNC_GetSideFromID
 	
   # EXAMPLE #
-	[_structure, _variable] call CTI_CL_FNC_OnCampCaptured
+	[EntreDeux, Camp1, WESTID, EASTID] call CTI_CL_FNC_OnCampCaptured
+	  -> Camp1 of EntreDeux will be captured from East to West
 */
 
 private ["_camp", "_color", "_side_new", "_sideID_new", "_sideID_old", "_town"];
