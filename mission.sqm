@@ -31,6 +31,8 @@ addons[]=
 	"a3_characters_f",
 	"A3_Characters_F_OPFOR",
 	"A3_Modules_F_Curator_Curator",
+	"A3_Characters_F_Gamma",
+	"A3_Characters_F_Common",
 	"ace_advanced_ballistics",
 	"ace_optionsmenu",
 	"ace_map",
@@ -61,26 +63,58 @@ addons[]=
 	"ace_medical_menu",
 	"ace_missionModules",
 	"ace_slideshow",
-	"A3_Characters_F_Gamma",
-	"A3_Characters_F_Common",
-	"CUP_TrackedVehicles_BMP",
-	"CUP_WheeledVehicles_BRDM2",
 	"CUP_Creatures_People_Military_DummyInfantrySet",
+	"CUP_Creatures_Military_USArmy",
+	"CUP_Creatures_Military_SLA",
+	"CUP_Creatures_Military_Taki",
+	"CUP_Creatures_Military_Germany",
+	"CUP_Creatures_Military_USMC",
+	"CUP_Creatures_Military_BAF",
+	"CUP_Creatures_Military_Russia",
+	"CUP_WheeledVehicles_Dingo",
+	"CUP_WheeledVehicles_HMMWV",
+	"CUP_WheeledVehicles_LR",
+	"CUP_WheeledVehicles_BRDM2",
 	"CUP_WheeledVehicles_Ural",
 	"CUP_WheeledVehicles_UAZ",
+	"CUP_WheeledVehicles_BTR40",
+	"CUP_WheeledVehicles_Coyote",
+	"CUP_WheeledVehicles_Vodnik",
+	"CUP_WheeledVehicles_Mastiff",
+	"CUP_WheeledVehicles_Ridgeback",
+	"CUP_WheeledVehicles_Jackal",
+	"CUP_WheeledVehicles_Stryker",
+	"CUP_WheeledVehicles_LAV25",
+	"CUP_WheeledVehicles_M1030",
+	"CUP_WheeledVehicles_RG31",
+	"CUP_WheeledVehicles_Datsun",
+	"CUP_WheeledVehicles_BTR90",
+	"CUP_WheeledVehicles_BTR60",
+	"CUP_TrackedVehicles_BMP",
+	"CUP_TrackedVehicles_T72",
+	"CUP_TrackedVehicles_ZSU23",
+	"CUP_TrackedVehicles_M113",
+	"CUP_TrackedVehicles_M1_Abrams",
+	"CUP_TrackedVehicles_M270",
+	"CUP_TrackedVehicles_Bradley",
+	"CUP_TrackedVehicles_AAV",
+	"CUP_TrackedVehicles_T34",
+	"CUP_TrackedVehicles_T55",
+	"CUP_TrackedVehicles_2S6M",
+	"CUP_TrackedVehicles_Bulldog",
+	"CUP_TrackedVehicles_FV510",
+	"CUP_TrackedVehicles_MCV80",
+	"CUP_TrackedVehicles_BMP3",
+	"CUP_Littlebirds",
+	"CUP_AirVehicles_Ka52",
+	"CUP_AirVehciles_KA60",
+	"CUP_AirVehicles_Mi35",
 	"CUP_AirVehicles_Mi8",
 	"CUP_AirVehicles_Mi24",
 	"CUP_AirVehicles_MI6",
 	"CUP_AirVehicles_Su25",
 	"CUP_AirVehicles_SU34",
-	"CUP_TrackedVehicles_T72",
-	"CUP_TrackedVehicles_ZSU23",
-	"CUP_WheeledVehicles_Dingo",
-	"CUP_WheeledVehicles_HMMWV",
-	"CUP_WheeledVehicles_LR",
-	"CUP_Creatures_Military_Germany",
 	"CUP_AirVehicles_UH1H",
-	"CUP_WheeledVehicles_Jackal",
 	"CUP_AirVehicles_AH64",
 	"CUP_AirVehciles_Merlin",
 	"CUP_AirVehciles_AW159",
@@ -89,35 +123,19 @@ addons[]=
 	"CUP_AirVehicles_C130J",
 	"CUP_AirVehicles_F35",
 	"CUP_AirVehicles_AV8B",
-	"CUP_WheeledVehicles_Stryker",
 	"CUP_AirVehicles_UH60",
 	"CUP_AirVehicles_A10",
-	"CUP_TrackedVehicles_M113",
-	"CUP_TrackedVehicles_M1_Abrams",
-	"CUP_TrackedVehicles_M270",
-	"CUP_TrackedVehicles_Bradley",
-	"CUP_Creatures_Military_USMC",
-	"CUP_TrackedVehicles_AAV",
-	"CUP_WheeledVehicles_LAV25",
-	"CUP_WaterVehicles_RHIB",
-	"CUP_WaterVehicles_Seafox",
-	"CUP_WaterVehicles_Zodiac",
-	"CUP_WheeledVehicles_M1030",
-	"CUP_WheeledVehicles_RG31",
 	"CUP_AirVehicles_MQ9",
 	"CUP_AirVehicles_AH1Z",
 	"CUP_AirVehicles_CH53E",
 	"CUP_AirVehicles_MH60S",
 	"CUP_AirVehciles_UH1Y",
 	"CUP_AirVehicles_MV22",
-	"CUP_WheeledVehicles_Datsun",
-	"CUP_WheeledVehicles_BTR90",
 	"CUP_AirVehicles_Ka50",
-	"CUP_Creatures_Military_SLA",
-	"CUP_Creatures_Military_Taki",
-	"CUP_WheeledVehicles_BTR60",
-	"CUP_TrackedVehicles_T34",
-	"CUP_TrackedVehicles_T55",
+	"CUP_WaterVehicles_RHIB",
+	"CUP_WaterVehicles_Seafox",
+	"CUP_WaterVehicles_Zodiac",
+	"CUP_WaterVehicles_Fregata",
 	"JDG_carrier",
 	"DLL_tow",
 	"ttt_nimitzelevator",
@@ -144,16 +162,10 @@ addons[]=
 	"cba_main",
 	"sfp_norrkoping",
 	"sfp_gruppbat",
-	"ivory_fregata",
 	"sfp_torebodahangar",
 	"sfp_houses_mil_shed",
 	"A3_Air_F_PAKFA",
-	"FIR_F14D_F",
-	"FIR_F15_F",
-	"FIR_F16_F",
-	"JS_S_FA18X",
 	"sab_alphajet",
-	"sab_panther",
 	"sfp_bo105",
 	"sfp_ikv91"
 };
@@ -166,8 +178,8 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="BECTI BE 0.97 - Stratis - HC";
-		overviewText="By Benny - Adapted from OFP era MFCTI (Mike Melvin)";
+		briefingName="OFPS Benny Warfare - Stratis - HC";
+		overviewText="Crafted by Benny for OFPS";
 		resistanceWest=0;
 		startWeather=0;
 		startWind=0;
@@ -187,11 +199,11 @@ class Mission
 	};
 	class Entities
 	{
-		items=123;
+		items=141;
 		class Item0
 		{
 			dataType="Marker";
-			position[]={3330.3003,5.1104259,6818.7476};
+			position[]={3900.2393,138.87549,7040.0195};
 			name="cti-spawn0";
 			type="Empty";
 			id=0;
@@ -199,7 +211,7 @@ class Mission
 		class Item1
 		{
 			dataType="Marker";
-			position[]={2610.7759,7.5679579,1207.4014};
+			position[]={2623.8315,64.655251,664.50537};
 			name="cti-spawn1";
 			type="Empty";
 			id=1;
@@ -207,7 +219,7 @@ class Mission
 		class Item2
 		{
 			dataType="Marker";
-			position[]={5856.2456,10.999955,5761.2222};
+			position[]={4806.7124,118.72127,6523.2661};
 			name="cti-spawn2";
 			type="Empty";
 			id=2;
@@ -215,7 +227,7 @@ class Mission
 		class Item3
 		{
 			dataType="Marker";
-			position[]={5735.3608,89.946045,5344.8545};
+			position[]={5710.4194,100.54508,5287.6201};
 			name="cti-spawn3";
 			type="Empty";
 			id=3;
@@ -223,7 +235,7 @@ class Mission
 		class Item4
 		{
 			dataType="Marker";
-			position[]={4045.7319,76.198013,6512.9614};
+			position[]={3583.7952,82.199181,6393.2139};
 			name="cti-spawn4";
 			type="Empty";
 			id=4;
@@ -239,7 +251,7 @@ class Mission
 		class Item6
 		{
 			dataType="Marker";
-			position[]={3764.1606,186.21147,4469.604};
+			position[]={3407.928,149.14682,4434.1567};
 			name="cti-spawn6";
 			type="Empty";
 			id=6;
@@ -247,7 +259,7 @@ class Mission
 		class Item7
 		{
 			dataType="Marker";
-			position[]={5077.2173,166.58171,4531.7363};
+			position[]={5953.457,78.16748,4943.4141};
 			name="cti-spawn7";
 			type="Empty";
 			id=7;
@@ -255,7 +267,7 @@ class Mission
 		class Item8
 		{
 			dataType="Marker";
-			position[]={5353.9404,11.63759,3789.6519};
+			position[]={5093.1128,171.60208,4320.5698};
 			name="cti-spawn8";
 			type="Empty";
 			id=8;
@@ -263,7 +275,7 @@ class Mission
 		class Item9
 		{
 			dataType="Marker";
-			position[]={4120.2778,156.41135,3281.7412};
+			position[]={3746.6912,179.50122,3106.312};
 			name="cti-spawn9";
 			type="Empty";
 			id=9;
@@ -271,7 +283,7 @@ class Mission
 		class Item10
 		{
 			dataType="Marker";
-			position[]={2291.1016,3.4227855,4079.8271};
+			position[]={2823.7502,152.83643,3336.8857};
 			name="cti-spawn10";
 			type="Empty";
 			id=10;
@@ -279,7 +291,7 @@ class Mission
 		class Item11
 		{
 			dataType="Marker";
-			position[]={2325.1707,7.6182194,2028.5132};
+			position[]={2676.7363,139.424,1637.5562};
 			name="cti-spawn11";
 			type="Empty";
 			id=11;
@@ -287,7 +299,7 @@ class Mission
 		class Item12
 		{
 			dataType="Marker";
-			position[]={2822.259,35.376221,3752.1353};
+			position[]={2708.542,107.09058,2490.5913};
 			name="cti-spawn12";
 			type="Empty";
 			id=12;
@@ -358,15 +370,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4498.8037,110.05186,6796.3115};
-				angles[]={0.089757703,0,0.0024897563};
+				position[]={4492.2676,108.80131,6804.2729};
+				angles[]={0.027492445,0,0.0075011365};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Kill Farm"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town0";
+				name="Kill_Farm";
 			};
 			id=19;
 			type="FlagPole_F";
@@ -376,15 +388,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={5016.6152,212.54413,5912.1816};
-				angles[]={6.278182,0,0.010000871};
+				position[]={5016.9395,212.17381,5890.6377};
+				angles[]={6.258194,0,0.064907812};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Camp Rogain"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town1";
+				name="Camp_Rogain";
 			};
 			id=20;
 			type="FlagPole_F";
@@ -394,15 +406,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={2993.1016,7.3104677,6042.1128};
-				angles[]={6.2806959,0,0.0075011365};
+				position[]={2896.3923,7.30686,6051.1255};
+				angles[]={6.2531939,0,0.092237726};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Agia Marina"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town2";
+				name="Agia_Marina";
 			};
 			id=21;
 			type="FlagPole_F";
@@ -412,15 +424,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={2133.6345,10.217912,5642.7759};
-				angles[]={0.010000871,0,6.2008719};
+				position[]={1900.7389,9.6355133,5778.2583};
+				angles[]={0.0049914722,0,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Stratis Air Base"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town3";
+				init="nullReturn = [this, ""Air Base"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
+				name="Air_Base";
 			};
 			id=22;
 			type="FlagPole_F";
@@ -430,15 +442,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3523.3196,205.94371,4925.2476};
-				angles[]={5.8983774,0,0.18293318};
+				position[]={3526.811,205.31798,4912.3823};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Transmission Tower Brit"", resistance, 50] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town4";
+				name="Transmission_Tower_Brit";
 			};
 			id=23;
 			type="FlagPole_F";
@@ -448,15 +459,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4612.167,133.95323,5298.4097};
-				angles[]={0.0099949092,0,0.06739822};
+				position[]={4175.4155,41.754562,5350.4741};
+				angles[]={6.278182,0,0.024993783};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""LZ Baldy"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town5";
+				init="nullReturn = [this, ""Storage Dump"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
+				name="Storage_Dump";
 			};
 			id=24;
 			type="FlagPole_F";
@@ -466,15 +477,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={5527.9653,82.731041,4736.9102};
-				angles[]={6.230732,0,0.032489564};
+				position[]={5520.52,81.730453,4710.6499};
+				angles[]={6.218276,0,6.228241};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Old Ruins"", resistance, 100] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town6";
+				name="Old_Ruins";
 			};
 			id=25;
 			type="FlagPole_F";
@@ -484,15 +495,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={6470.3687,13.146343,5346.1987};
-				angles[]={0.10214306,0,6.2806959};
+				position[]={6415.3838,11.381375,5430.7881};
+				angles[]={0.0024897563,0,6.2806959};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Kamino Firing Range"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town7";
+				name="Kamino_Firing_Range";
 			};
 			id=26;
 			type="FlagPole_F";
@@ -502,15 +513,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4346.9585,228.83777,3785.0471};
-				angles[]={6.270689,0,0.082313478};
+				position[]={4364.8662,230.72845,3816.2};
+				angles[]={6.2656889,0,0.032489564};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Air Station Mike-26"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town8";
+				init="nullReturn = [this, ""Air Station Mike"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
+				name="Air_Station_Mike";
 			};
 			id=27;
 			type="FlagPole_F";
@@ -520,15 +531,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4388.6387,185.72029,4373.061};
-				angles[]={5.9420638,0,0.42700258};
+				position[]={4352.5181,181.72293,4333.2666};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Old Outpost"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town9";
+				name="Old_Outpost";
 			};
 			id=28;
 			type="FlagPole_F";
@@ -538,15 +548,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1954.6313,6.8958321,3529.8127};
-				angles[]={6.278194,0,0.014998405};
+				position[]={1981.9149,6.5691209,3525.9333};
+				angles[]={6.255693,0,0.0099949092};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Camp Tempest"", resistance, 175] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town10";
+				name="Camp_Tempest";
 			};
 			id=29;
 			type="FlagPole_F";
@@ -556,15 +566,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3343.197,238.50404,2915.8552};
-				angles[]={6.2806721,0,0.062418513};
+				position[]={3286.4573,233.1568,2934.8269};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Camp Maxwell"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town11";
+				name="Camp_Maxwell";
 			};
 			id=30;
 			type="FlagPole_F";
@@ -574,15 +583,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={2069.0051,14.660093,2665.2832};
-				angles[]={0.13418877,0,0.19258296};
+				position[]={1985.5472,6.7023239,2732.8728};
+				angles[]={6.2731905,0,6.268187};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				init="nullReturn = [this, ""Girna"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town12";
+				name="Girna";
 			};
 			id=31;
 			type="FlagPole_F";
@@ -592,15 +601,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3074.4172,171.45293,2161.9343};
-				angles[]={0.044968102,0,0.019996032};
+				position[]={2158.4287,6.5117025,1899.3252};
+				angles[]={0.0024897563,0,6.255693};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Agios loannis"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town13";
+				init="nullReturn = [this, ""Strogos Bay"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
+				name="Strogos_Bay";
 			};
 			id=32;
 			type="FlagPole_F";
@@ -610,15 +619,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={2791.7615,148.28413,1758.0812};
-				angles[]={6.278182,0,0.015002378};
+				position[]={2982.3909,175.3768,1872.8505};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Agios Cephas"", resistance, 100] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town14";
+				init="nullReturn = [this, ""LZ Connor"", resistance, 100] execVM ""Common\Init\Init_Location.sqf""";
+				name="LZ_Connor";
 			};
 			id=33;
 			type="FlagPole_F";
@@ -628,15 +636,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={2624.4792,68.724731,624.39905};
-				angles[]={6.22575,0,0.14154701};
+				position[]={2432.1724,6.583168,1130.8254};
+				angles[]={6.2357221,0,0.012496647};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""The Spartan"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
-				name="Town15";
+				init="nullReturn = [this, ""Jay Cove"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
+				name="Jay_Cove";
 			};
 			id=34;
 			type="FlagPole_F";
@@ -5480,6 +5488,325 @@ class Mission
 				nAttributes=5;
 			};
 		};
+		class Item123
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4275.5132,7.6732159,2687.604};
+				angles[]={6.270689,0,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Tsoukalia"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+				name="Tsoukalia";
+			};
+			id=160;
+			type="FlagPole_F";
+		};
+		class Item124
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2162.1895,6.6183767,4719.1172};
+				angles[]={0.0049914722,0,6.268187};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Oyster Bay"", resistance, 175] execVM ""Common\Init\Init_Location.sqf""";
+				name="Oyster_Bay";
+			};
+			id=161;
+			type="FlagPole_F";
+		};
+		class Item125
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2028.7552,6.6583786,4114.3237};
+				angles[]={6.2656889,0,6.218277};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Nisi Bay"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
+				name="Nisi_Bay";
+			};
+			id=162;
+			type="FlagPole_F";
+		};
+		class Item126
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2791.1311,44.155121,3726.6941};
+				angles[]={6.2706885,0,0.08230973};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Tempest Outpost"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
+				name="Tempest_Outpost";
+			};
+			id=163;
+			type="FlagPole_F";
+		};
+		class Item127
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4808.4761,197.10817,4400.9033};
+				angles[]={0.11449809,0,6.2731905};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Checkpoint Charlie"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+				name="Checkpoint_Charlie";
+			};
+			id=164;
+			type="FlagPole_F";
+		};
+		class Item128
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4157.3936,161.39218,3291.3628};
+				angles[]={6.1835146,0,6.2681909};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Checkpoint Mike"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
+				name="Checkpoint_Mike";
+			};
+			id=165;
+			type="FlagPole_F";
+		};
+		class Item129
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4092.9727,225.2068,4596.4478};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Checkpoint Bravo"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+				name="Checkpoint_Bravo";
+			};
+			id=166;
+			type="FlagPole_F";
+		};
+		class Item130
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2580.7087,86.64904,5489.832};
+				angles[]={0.032489564,0,0.0025135824};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Airbase Outpost"", resistance, 50] execVM ""Common\Init\Init_Location.sqf""";
+				name="Airbase_Outpost";
+			};
+			id=167;
+			type="FlagPole_F";
+		};
+		class Item131
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={5349.3828,15.175591,3773.313};
+				angles[]={6.248199,0,6.2058396};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Limeri Bay"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+				name="Limeri_Bay";
+			};
+			id=168;
+			type="FlagPole_F";
+		};
+		class Item132
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={5204.5259,226.98438,5001.937};
+				angles[]={6.278194,0,0.014998405};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Radio Control"", resistance, 100] execVM ""Common\Init\Init_Location.sqf""";
+				name="Radio_Control";
+			};
+			id=169;
+			type="FlagPole_F";
+		};
+		class Item133
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={6063.6987,21.65868,5633.9551};
+				angles[]={0.024993783,0,6.2806721};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Kamino Village"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
+				name="Kamino_Village";
+			};
+			id=170;
+			type="FlagPole_F";
+		};
+		class Item134
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3266.3247,9.4009933,5784.6777};
+				angles[]={0,0,6.2806959};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Agia Marina"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
+				name="Agia_Marina";
+			};
+			id=171;
+			type="FlagPole_F";
+		};
+		class Item135
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4095.5352,130.21269,6340.7559};
+				angles[]={0.07734675,0,0.16109039};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Junction"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
+				name="Junction";
+			};
+			id=172;
+			type="FlagPole_F";
+		};
+		class Item136
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3219.9011,8.7619247,6841.6431};
+				angles[]={0.022498533,0,0.079829417};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Bay Outpost"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
+				name="Bay_Outpost";
+			};
+			id=173;
+			type="FlagPole_F";
+		};
+		class Item137
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1707.3965,9.4768047,5132.5083};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Air Field"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
+				name="Air_Field";
+			};
+			id=174;
+			type="FlagPole_F";
+		};
+		class Item138
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={465.21213,0.17144716,3098.0908};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Fuel Depot"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.6];";
+				name="Fuel_Depot";
+			};
+			id=175;
+			type="FlagPole_F";
+		};
+		class Item139
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2058.2329,-0.12589478,7205.2051};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Com Platform"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.1];";
+				name="Com_Platform";
+			};
+			id=176;
+			type="FlagPole_F";
+		};
+		class Item140
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={6233.6768,-0.49042404,2371.0293};
+			};
+			side="Empty";
+			class Attributes
+			{
+				skill=0.60000002;
+				init="nullReturn = [this, ""Sub Pen"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,-.5];";
+				name="Sub_Pen";
+			};
+			id=177;
+			type="FlagPole_F";
+		};
 	};
 	class Connections
 	{
@@ -5823,3 +6150,4 @@ class Mission
 		};
 	};
 };
+

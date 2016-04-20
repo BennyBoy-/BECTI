@@ -64,6 +64,5 @@ switch (toLower(worldName)) do {
 
 switch (toLower(worldName)) do {
 	case "stratis": {
-		Live Add Stratis Please
-		};
+	};
 };
