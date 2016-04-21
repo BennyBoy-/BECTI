@@ -3,7 +3,7 @@ class Params {
 		title = "AI: Teams";
 		values[] = {0,1};
 		texts[] = {"Disabled", "Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_ARTILLERY_SETUP {
 		title = "ARTILLERY: Setup";
