@@ -77,13 +77,11 @@ class FSM
        "		" \n
        "		//--- Safe, it cannot be captured" \n
        "		if (_safe) then {" \n
-       "			if (markerAlpha _marker != 0) then {_marker setMarkerAlphaLocal 0};" \n
+       "			_marker setMarkerAlphaLocal 0;" \n
        "		} else {" \n
        "			//--- Unsafe, our friendly town may be captured" \n
-       "			if (markerAlpha _marker != 1) then {" \n
-       "				_marker setMarkerColorLocal CTI_TOWNS_TERRITORIAL_MARKER_FRIENDLY_CAPTURABLE_COLOR;" \n
-       "				_marker setMarkerAlphaLocal 1;" \n
-       "			};" \n
+       "			_marker setMarkerColorLocal CTI_TOWNS_TERRITORIAL_MARKER_FRIENDLY_CAPTURABLE_COLOR;" \n
+       "			_marker setMarkerAlphaLocal 1;" \n
        "		};" \n
        "	} else {" \n
        "		//--- Hostile held, can we capture it?" \n
@@ -99,13 +97,11 @@ class FSM
        "		" \n
        "		//--- Safe, it cannot be captured" \n
        "		if (_safe) then {" \n
-       "			if (markerAlpha _marker != 0) then {_marker setMarkerAlphaLocal 0};" \n
+       "			_marker setMarkerAlphaLocal 0;" \n
        "		} else {" \n
        "			//--- Unsafe, this enemy town may be captured" \n
-       "			if (markerAlpha _marker != 1) then {" \n
-       "				_marker setMarkerColorLocal CTI_TOWNS_TERRITORIAL_MARKER_ENEMY_CAPTURABLE_COLOR;" \n
-       "				_marker setMarkerAlphaLocal 1;" \n
-       "			};" \n
+       "			_marker setMarkerColorLocal CTI_TOWNS_TERRITORIAL_MARKER_ENEMY_CAPTURABLE_COLOR;" \n
+       "			_marker setMarkerAlphaLocal 1;" \n
        "		};" \n
        "	};" \n
        "} forEach CTI_Towns;" \n
