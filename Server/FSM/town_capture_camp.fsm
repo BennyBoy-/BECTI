@@ -69,7 +69,7 @@ class FSM
       name = "Units_near_Camp";
       init = /*%FSM<STATEINIT""">*/"_sideID = _camp getVariable ""cti_camp_sideID"";" \n
        "_side = (_sideID) Call CTI_CO_FNC_GetSideFromID;" \n
-       "_objects = _town nearEntities [""Man"", CTI_TOWNS_CAMPS_CAPTURE_RANGE];" \n
+       "_objects = _camp nearEntities [""Man"", CTI_TOWNS_CAMPS_CAPTURE_RANGE];" \n
        "" \n
        "_west = west countSide _objects;" \n
        "_east = east countSide _objects;" \n
