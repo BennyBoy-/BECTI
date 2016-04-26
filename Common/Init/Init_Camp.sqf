@@ -1,4 +1,4 @@
-private ["_sideID", "_town", "_town_camps", "_town_name", "_town_side", "_town_value"];
+private ["_sideID", "_town", "_town_camps", "_town_name", "_town_side"];
 
 _town = _this select 0;
 _camp = _this select 1;
@@ -20,8 +20,8 @@ if (CTI_IsServer) then {
 	waitUntil {!isNil {_town getVariable "cti_town_sideID"} && !isNil {_town getVariable "cti_town_lastSideID"}};
 	
 	//--- Camp variables
-	_camp setVariable ["cti_camp_value", _town getVariable "cti_town_value"];
-	_camp setVariable ["cti_camp_sideID", _town getVariable "cti_town_value", true];
+	_camp setVariable ["cti_camp_sv", _town getVariable "cti_town_sv_default", true];
+	_camp setVariable ["cti_camp_sideID", _town getVariable "cti_town_sideID", true];
 	_camp setVariable ["cti_camp_lastSideID", _town getVariable "cti_town_lastSideID", true];
 	
 	//--- Camp FSM

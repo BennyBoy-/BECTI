@@ -50,9 +50,9 @@ if (_side_new == CTI_P_SideJoined) then { //--- The player's side has captured i
 	
 	if (_in_range) then { //--- The player or one of his unit was in range of the town.
 		_last_capture = _town getVariable "cti_town_lastcap";
-		_value = _town getVariable "cti_town_value";
+		_value = (_town getVariable "cti_town_sv_max") * CTI_TOWNS_CAPTURE_BOUNTY_COEF;
 		if !(isNil '_last_capture') then {
-			if (time - _last_capture <= CTI_TOWNS_CAPTURE_BOUNTY_DELAY) then { _value = round(_value / 4) };
+			if (time - _last_capture <= CTI_TOWNS_CAPTURE_BOUNTY_DELAY) then { _value = round(_value / 2) };
 		};
 		
 		_score = round(_value / CTI_SCORE_TOWN_VALUE_PERPOINT);
@@ -62,15 +62,16 @@ if (_side_new == CTI_P_SideJoined) then { //--- The player's side has captured i
 	};
 	
 	_town setVariable ["cti_town_lastcap", time];
+	(format["cti_town_marker_%1", _town]) setMarkerTextLocal Format["  SV: %1/%2", _town getVariable "cti_town_sv", _town getVariable "cti_town_sv_max"];
 } else { //--- The player's side has lost it
 	//todo move to displaymessage
 	CTI_P_ChatID commandChat format["%1 has been lost!", _town getVariable "cti_town_name"];
+	(format["cti_town_marker_%1", _town]) setMarkerTextLocal "";
 };
 
 //--- Paint it
 _color = (_side_new) call CTI_CO_FNC_GetSideColoration;
 (format ["cti_town_marker_%1", _town]) setMarkerColorLocal _color;
-(format ["cti_town_areaMarker_%1", _town]) setMarkerColorLocal _color;
 
 //--- Update the camps if needed
 _town_camps = _town getVariable "cti_town_camps";

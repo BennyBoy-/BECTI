@@ -44,4 +44,30 @@ with missionNamespace do {
 	EAST_VEHICLES_LIGHT = EAST_VEHICLE_MOTORIZED;
 	EAST_VEHICLES_MEDIUM = EAST_VEHICLE_APC + EAST_VEHICLE_ARMORED_LIGHT;
 	EAST_VEHICLES_HEAVY = EAST_VEHICLE_ARMORED_LIGHT;
+	
+	//--- Town Teams Templates
+	EAST_TOWNS_AAV = ["O_APC_Tracked_02_AA_F"];
+	EAST_TOWNS_AAV_HEAVY = ["O_APC_Tracked_02_AA_F", "O_APC_Tracked_02_AA_F"];
+	EAST_TOWNS_APC_LIGHT = ["O_APC_Tracked_02_cannon_F"];
+	EAST_TOWNS_APC_MEDIUM = ["O_APC_Tracked_02_cannon_F", "O_APC_Wheeled_02_rcws_F"];
+	EAST_TOWNS_APC_HEAVY = ["O_APC_Tracked_02_cannon_F", "O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F"];
+	EAST_TOWNS_MOTORIZED_MIXED_HEAVY = ["O_MRAP_02_hmg_F","O_MRAP_02_gmg_F","O_MRAP_02_hmg_F"];
+	EAST_TOWNS_MOTORIZED_MIXED_LIGHT = ["O_MRAP_02_hmg_F","O_MRAP_02_gmg_F"];
+	EAST_TOWNS_MOTORIZED_HMG = ["O_MRAP_02_hmg_F","O_MRAP_02_hmg_F"];
+	EAST_TOWNS_MOTORIZED_GMG = ["O_MRAP_02_gmg_F","O_MRAP_02_gmg_F"];
+	EAST_TOWNS_SPECIAL = ["O_Soldier_exp_F", "O_Soldier_exp_F", "O_Soldier_exp_F"];
+	EAST_TOWNS_SQUAD_LIGHT = ["O_Soldier_SL_F", "O_Soldier_F", "O_Soldier_F", "O_Soldier_AR_F", "O_Soldier_LAT_F", "O_Soldier_GL_F", "O_medic_F"];
+	EAST_TOWNS_SQUAD_LIGHT_2 = ["O_Soldier_SL_F", "O_Soldier_GL_F", "O_Soldier_GL_F", "O_Soldier_AR_F", "O_Soldier_F", "O_Soldier_LAT_F", "O_engineer_F", "O_medic_F"];
+	EAST_TOWNS_SQUAD_MEDIUM = ["O_Soldier_SL_F", "O_Soldier_GL_F", "O_Soldier_GL_F", "O_Soldier_AR_F", "O_Soldier_AR_F", "O_Soldier_F", "O_Soldier_F", "O_Soldier_LAT_F", "O_Soldier_AT_F", "O_engineer_F", "O_medic_F"];
+	EAST_TOWNS_SQUAD_AT = ["O_Soldier_SL_F", "O_Soldier_F", "O_Soldier_F", "O_Soldier_AR_F", "O_Soldier_LAT_F", "O_Soldier_AT_F", "O_Soldier_M_F", "O_medic_F"];
+	EAST_TOWNS_SQUAD_AA = ["O_Soldier_SL_F", "O_Soldier_F", "O_Soldier_F", "O_Soldier_AR_F", "O_Soldier_AR_F", "O_soldier_AA_F", "O_soldier_AA_F", "O_engineer_F", "O_medic_F"];
+	EAST_TOWNS_SQUAD_APC_1 = ["O_Soldier_SL_F", "O_Soldier_F", "O_Soldier_GL_F", "O_Soldier_AR_F", "O_Soldier_F", "O_Soldier_LAT_F", "O_APC_Wheeled_02_rcws_F", "O_medic_F", "O_Soldier_repair_F"];
+	EAST_TOWNS_SQUAD_APC_2 = ["O_Soldier_SL_F", "O_Soldier_F", "O_Soldier_GL_F", "O_Soldier_AR_F", "O_Soldier_F", "O_Soldier_LAT_F", "O_APC_Tracked_02_cannon_F", "O_medic_F", "O_Soldier_repair_F"];
+	EAST_TOWNS_SQUAD_MOTORIZED_1 = ["O_Soldier_SL_F", "O_Soldier_F", "O_Soldier_GL_F", "O_Soldier_AR_F", "O_Soldier_F", "O_Soldier_LAT_F", "O_MRAP_02_hmg_F", "O_medic_F", "O_Soldier_repair_F"];
+	EAST_TOWNS_SQUAD_MOTORIZED_2 = ["O_Soldier_SL_F", "O_Soldier_F", "O_Soldier_AT_F", "O_Soldier_AR_F", "O_Soldier_F", "O_Soldier_LAT_F", "O_MRAP_02_hmg_F", "O_medic_F", "O_Soldier_repair_F"];
+	EAST_TOWNS_SNIPERS_1 = ["O_Soldier_M_F", "O_Soldier_M_F", "O_Soldier_M_F", "O_Spotter_F"];
+	EAST_TOWNS_SNIPERS_2 = ["O_Soldier_M_F", "O_Soldier_M_F", "O_Soldier_exp_F", "O_Spotter_F"];
+	EAST_TOWNS_TANKS_LIGHT = ["O_MBT_02_cannon_F"];
+	EAST_TOWNS_TANKS_MEDIUM = ["O_MBT_02_cannon_F", "O_MBT_02_cannon_F"];
+	EAST_TOWNS_TANKS_HEAVY = ["O_MBT_02_cannon_F", "O_MBT_02_cannon_F", "O_MBT_02_cannon_F"];
 };

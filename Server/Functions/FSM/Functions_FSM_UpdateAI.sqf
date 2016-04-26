@@ -386,7 +386,7 @@ CTI_FSM_UpdateAI_Order_TakeTown = {
 				if (isNil '_group') exitWith {};
 				if (_seed != (_group getVariable "cti_order_seed") || time - _start_patrol > CTI_AI_ORDER_TAKEHOLDTOWNS_TIME) exitWith {};
 				
-				if (((_town getVariable 'cti_town_capture') < CTI_TOWNS_CAPTURE_VALUE_CEIL && _sideID == (_town getVariable 'cti_town_sideID')) || _sideID != (_town getVariable 'cti_town_sideID')) then {
+				if (((_town getVariable 'cti_town_sv') < CTI_TOWNS_CAPTURE_VALUE_CEIL && _sideID == (_town getVariable 'cti_town_sideID')) || _sideID != (_town getVariable 'cti_town_sideID')) then {
 					_action = "defense";if (_action != _last_action) then {_move_defend_last = -120};
 				} else {
 					_action = "patrol";if (_action != _last_action) then {_move_patrol_reload = true};
@@ -478,7 +478,7 @@ CTI_FSM_UpdateAI_Order_HoldTownsBase = {
 		if !(alive _defend) exitWith {_destroyed = true};
 		
 		if !(isNil {_defend getVariable "cti_town_sideID"}) then {
-			if (((_defend getVariable 'cti_town_capture') < CTI_TOWNS_CAPTURE_VALUE_CEIL && _sideID == (_defend getVariable 'cti_town_sideID')) || _sideID != (_defend getVariable 'cti_town_sideID')) then {
+			if (((_defend getVariable 'cti_town_sv') < CTI_TOWNS_CAPTURE_VALUE_CEIL && _sideID == (_defend getVariable 'cti_town_sideID')) || _sideID != (_defend getVariable 'cti_town_sideID')) then {
 				_action = "defense";if (_action != _last_action) then {_move_defend_last = -120};
 			} else {
 				_action = "patrol";if (_action != _last_action) then {_move_patrol_reload = true};

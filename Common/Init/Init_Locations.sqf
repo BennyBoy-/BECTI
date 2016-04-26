@@ -7,7 +7,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 };
 
 {
-	waitUntil {!isNil {_x getVariable "cti_town_value"}};
+	waitUntil {!isNil {_x getVariable "cti_town_sv"}};
 	[CTI_Towns, _x] call CTI_CO_FNC_ArrayPush;
 } forEach allMissionObjects "FlagPole_F";
 

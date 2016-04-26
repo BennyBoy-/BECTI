@@ -43,4 +43,24 @@ with missionNamespace do {
 	GUER_VEHICLES_MEDIUM = GUER_VEHICLE_APC;
 	// GUER_VEHICLES_MEDIUM = GUER_VEHICLE_MOTORIZED;
 	// GUER_VEHICLES_HEAVY = GUER_VEHICLE_ARMORED_LIGHT + GUER_VEHICLE_ARMORED_HEAVY;
+	
+	//--- Town Teams Templates
+	GUER_TOWNS_APC_LIGHT = ["I_APC_Wheeled_03_cannon_F"];
+	GUER_TOWNS_APC_MEDIUM = ["I_APC_Wheeled_03_cannon_F", "I_APC_Wheeled_03_cannon_F"];
+	GUER_TOWNS_APC_HEAVY = ["I_APC_Wheeled_03_cannon_F", "I_APC_Wheeled_03_cannon_F", "I_APC_Wheeled_03_cannon_F"];
+	GUER_TOWNS_MOTORIZED_MIXED_HEAVY = ["I_MRAP_03_hmg_F","I_MRAP_03_gmg_F","I_MRAP_03_hmg_F"];
+	GUER_TOWNS_MOTORIZED_MIXED_LIGHT = ["I_MRAP_03_hmg_F","I_MRAP_03_gmg_F"];
+	GUER_TOWNS_MOTORIZED_HMG = ["I_MRAP_03_hmg_F","I_MRAP_03_hmg_F"];
+	GUER_TOWNS_MOTORIZED_GMG = ["I_MRAP_03_gmg_F","I_MRAP_03_gmg_F"];
+	GUER_TOWNS_SPECIAL = ["I_Soldier_exp_F", "I_Soldier_exp_F", "I_Soldier_exp_F"];
+	GUER_TOWNS_SQUAD_LIGHT = ["I_Soldier_SL_F", "I_soldier_F", "I_soldier_F", "I_Soldier_AR_F", "I_Soldier_LAT_F", "I_Soldier_GL_F", "I_medic_F"];
+	GUER_TOWNS_SQUAD_LIGHT_2 = ["I_Soldier_SL_F", "I_Soldier_GL_F", "I_Soldier_GL_F", "I_Soldier_AR_F", "I_soldier_F", "I_Soldier_LAT_F", "I_engineer_F", "I_medic_F"];
+	GUER_TOWNS_SQUAD_MEDIUM = ["I_Soldier_SL_F", "I_Soldier_GL_F", "I_Soldier_GL_F", "I_Soldier_AR_F", "I_Soldier_AR_F", "I_soldier_F", "I_soldier_F", "I_Soldier_LAT_F", "I_Soldier_AT_F", "I_engineer_F", "I_medic_F"];
+	GUER_TOWNS_SQUAD_AT = ["I_Soldier_SL_F", "I_soldier_F", "I_soldier_F", "I_Soldier_AR_F", "I_Soldier_LAT_F", "I_Soldier_AT_F", "I_Soldier_M_F", "I_medic_F"];
+	GUER_TOWNS_SQUAD_AA = ["I_Soldier_SL_F", "I_soldier_F", "I_soldier_F", "I_Soldier_AR_F", "I_Soldier_AR_F", "I_Soldier_AA_F", "I_Soldier_AA_F", "I_engineer_F", "I_medic_F"];
+	GUER_TOWNS_SQUAD_APC_1 = ["I_Soldier_SL_F", "I_soldier_F", "I_Soldier_GL_F", "I_Soldier_AR_F", "I_soldier_F", "I_Soldier_LAT_F", "I_APC_Wheeled_03_cannon_F", "I_medic_F"];
+	GUER_TOWNS_SQUAD_MOTORIZED_1 = ["I_Soldier_SL_F", "I_soldier_F", "I_Soldier_GL_F", "I_Soldier_AR_F", "I_soldier_F", "I_Soldier_LAT_F", "I_MRAP_03_hmg_F", "I_medic_F"];
+	GUER_TOWNS_SQUAD_MOTORIZED_2 = ["I_Soldier_SL_F", "I_soldier_F", "I_Soldier_AT_F", "I_Soldier_AR_F", "I_soldier_F", "I_Soldier_LAT_F", "I_MRAP_03_hmg_F", "I_medic_F"];
+	GUER_TOWNS_SNIPERS_1 = ["I_Soldier_M_F", "I_Soldier_M_F", "I_Soldier_M_F", "I_Spotter_F"];
+	GUER_TOWNS_SNIPERS_2 = ["I_Soldier_M_F", "I_Soldier_M_F", "I_Soldier_exp_F", "I_Spotter_F"];
 };

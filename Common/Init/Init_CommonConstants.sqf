@@ -82,7 +82,7 @@ CTI_AI_TEAMS_FOOT_EMBARK_RANGE = 450; //--- AI leaders on foot will try to embar
 
 //--- AI Teams: Towns defense
 CTI_AI_TEAMS_DEFEND_TOWNS = 1; //--- Static amount of AI which will perform a defensive duty (scales with slot count)
-CTI_AI_TEAMS_DEFEND_TOWNS_WORTH = 75; //--- Defend towns which values are worth more than x
+CTI_AI_TEAMS_DEFEND_TOWNS_WORTH = 50; //--- Defend towns which values are worth more than x
 
 //--- AI Teams: Observation
 CTI_AI_TEAMS_OBSERVATION_BASE_DELAY = 60; //--- Delay between reports from a same group about structures
@@ -289,21 +289,28 @@ CTI_GEAR_RESELL_TAX = 0.5; //--- Owned items are traded for: <item price> * <tax
  * - Server\FSM\town_patrol.fsm: This controls the town units patrol "flow" for either resistance or occupation
  * - Server\FSM\town_resistance.fsm: This controls the town resistance defensive "flow"
  */
-
+ 
 //--- Towns: Camps
 CTI_TOWNS_CAMPS_CAPTURE_RANGE = 10; //--- Range needed to capture/protect a camp
+CTI_TOWNS_CAMPS_CAPTURE_RATE = 2; //--- Determine how fast a camp may be captured/protected
 CTI_TOWNS_CAMPS_CAPTURE_VALUE_CEIL = 30; //--- The camp value's ceiling
 CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE), proc all 5 seconds.
  
 //--- Towns: Capture
+CTI_TOWNS_CAPTURE_BOUNTY_COEF = 4; //--- Bounty coefficient upon capture, (max sv * coefficient)
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 300; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
 CTI_TOWNS_CAPTURE_RANGE = 50; //--- The range which a unit/vehicle has to be from a town center to capture it
+CTI_TOWNS_CAPTURE_RATE = 1; //--- Determine how fast a town may be captured/protected
+CTI_TOWNS_CAPTURE_RATE_CAMPS = 5; //--- Determine how fast a town may be captured while holding it's camps
 CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
 
 //--- Towns: Economy
-CTI_TOWNS_INCOME_RATIO = 1; //--- A value above 1 will increase the resources generation ((Stock value occupied/unoccupied) * ratio)
+CTI_TOWNS_INCOME_RATIO = 10; //--- A value above 1 will increase the resources ($) generation ((Current SV) * ratio)
 CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = 0.25; //--- Determine how much value an unoccupied town bring to the side.
+
+//--- Towns: Markers
+CTI_TOWNS_MARKERS_MAP_RANGE = 600; //--- Distance required to show the town SV on the map (from a player/player's unit)
 
 //--- Towns: Patrol
 CTI_TOWNS_PATROL_HOPS = 10; //--- Towns patrol hops (non-waypoint)
@@ -311,7 +318,7 @@ CTI_TOWNS_PATROL_RANGE = 375; //--- Patrol range in a town
 
 //--- Towns: Occupation
 CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
-CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
+//CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered
@@ -319,11 +326,16 @@ CTI_TOWNS_OCCUPATION_MIN_ACTIVE = 1; //--- When the town is not held by the side
 
 //--- Towns: Resistance
 CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
-CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
+//CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 1; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
+
+//--- Towns: Supply
+CTI_TOWNS_SUPPLY_MODE = 1; //--- Supply Mode: (0: Default, 1: Timed)
+CTI_TOWNS_SUPPLY_TIME_INTERVAL = 80;
+CTI_TOWNS_SUPPLY_TIME_INCREASE = 1;
 
 //--- Towns: Territorial
 CTI_TOWNS_TERRITORIAL_MARKER_ENEMY_CAPTURABLE_COLOR = "ColorOrange"; //--- The color for enemy capturable towns
@@ -499,7 +511,7 @@ CTI_SERVICE_REPAIR_TRUCK_TIME = 50;
 
 CTI_SCORE_BUILD_VALUE_PERPOINT = 1500; //--- Structure value / x
 CTI_SCORE_SALVAGE_VALUE_PERPOINT = 2000; //--- Unit value / x
-CTI_SCORE_TOWN_VALUE_PERPOINT = 100; //--- Town value / x
+CTI_SCORE_TOWN_VALUE_PERPOINT = 10; //--- Town value / x
 
 CTI_GC_DELAY = 90;
 CTI_GC_DELAY_AIR = 360;

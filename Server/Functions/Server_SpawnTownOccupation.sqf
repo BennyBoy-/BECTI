@@ -38,104 +38,240 @@
 	  -> Will spawn West defense forces for Town0
 */
 
-private ["_groups", "_occupation_size", "_pool", "_pool_group_size", "_pool_units", "_positions", "_side", "_sideID", "_teams", "_totalGroups", "_town", "_upgrade", "_value", "_vehicles"];
+private ["_groups", "_pool", "_pool_units", "_positions", "_side", "_sideID", "_teams", "_totalGroups", "_town", "_upgrade", "_value", "_vehicles"];
 
 _town = _this select 0;
 _side = _this select 1;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 _upgrade = (_side call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_TOWNS;
 
-_value = _town getVariable "cti_town_value";
-_occupation_size = round(_value * CTI_TOWNS_OCCUPATION_GROUPS_RATIO);
+_value = _town getVariable "cti_town_sv"; //--- Occupation spawning is based on the current SV
 
-//--- Add an extra group for large towns.
-if (_value >= 350) then { _occupation_size = _occupation_size + 8 };
-_totalGroups = round(_occupation_size / 12 + 1);
+//--- Calculate the Group size by scaling the SV and randomizing the input, min max scaling
+_max_squad = 7;
+_max_squad_random = 2;
+_max_sv = 120;
 
-// switch value...
+_randomGroups = (_value / _max_sv) * _max_squad_random;
+_totalGroups = round(((_value / _max_sv) * _max_squad) + random(_randomGroups) - random(_randomGroups));
+if (_totalGroups < 1) then {_totalGroups = 1};
+
 _pool_units = [];
-_pool_group_size = 12;
 
-//--- Pool data: [<UNIT TYPE>, <PRESENCE>, {<PROBABILITY>}]
+//--- Pool data: [<GROUP>, <PRESENCE>, {<SPAWN PROBABILITY>}], nesting is possible to narrow down some choices
 switch (true) do {
-	case (_value <= 30) : { 
-		_pool_units = [["SOLDIER", 4], ["SOLDIER_GL", 2], ["SOLDIERS_AT_LIGHT", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2]];
+	case (_value < 50) : { 
+		_pool_units = [
+			["TOWNS_SQUAD_LIGHT", 3], 
+			["TOWNS_SQUAD_LIGHT_2", 2], 
+			["TOWNS_SQUAD_MOTORIZED_1", 1, 20], 
+			["TOWNS_SQUAD_MOTORIZED_2", 1, 25]
+		];
 	};
-	case (_value > 30 && _value <= 50) : { 
-		_pool_units = [["SOLDIER", 3], ["SOLDIER_GL", 2], ["SOLDIERS_AT_LIGHT", 2], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["VEHICLE_MOTORIZED", 1, 30], ["VEHICLE_MECHANIZED", 1, 25]];
+	case (_value >= 50 && _value <= 60) : { 
+		_pool_units = [
+			["TOWNS_SQUAD_LIGHT", 2], 
+			["TOWNS_SQUAD_LIGHT_2", 2], 
+			["TOWNS_SQUAD_AA", 1, 75], 
+			["TOWNS_SQUAD_AT", 2], 
+			[
+				["TOWNS_SNIPERS_1", 1, 35], 
+				["TOWNS_SNIPERS_2", 1, 35]
+			],
+			[
+				["TOWNS_SQUAD_MOTORIZED_1", 1, 70],
+				["TOWNS_SQUAD_MOTORIZED_2", 1, 70]
+			], 
+			["TOWNS_APC_LIGHT", 1, 20], 
+			[
+				["TOWNS_MOTORIZED_HMG", 1, 50],
+				["TOWNS_MOTORIZED_MIXED_LIGHT", 1, 25]
+			]
+		];
 	};
-	case (_value > 50 && _value <= 75) : { 
-		_pool_units = [["SOLDIER", 3], ["SOLDIER_GL", 2], ["SOLDIERS_AT_LIGHT", 2], ["SOLDIER_AA", 1, 65], ["SOLDIER_MEDIC", 2], ["SOLDIER_MG", 2], ["SOLDIER_AR", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SNIPERS", 1, 55], ["VEHICLES_LIGHT", 2, 30], ["VEHICLE_APC", 1, 30], ["VEHICLES_AA_LIGHT", 1, 20]];
+	case (_value > 60 && _value <= 80) : { 
+		_pool_units = [
+			["TOWNS_SQUAD_LIGHT", 2], 
+			["TOWNS_SQUAD_LIGHT_2", 2], 
+			["TOWNS_SQUAD_MEDIUM", 2], 
+			["TOWNS_SQUAD_AA", 1, 80], 
+			["TOWNS_SQUAD_AT", 2], 
+			[
+				["TOWNS_SNIPERS_1", 1, 60], 
+				["TOWNS_SNIPERS_2", 1, 60]
+			],
+			["TOWNS_SQUAD_MOTORIZED_1"], 
+			["TOWNS_SQUAD_MOTORIZED_2"], 
+			[
+				["TOWNS_SQUAD_APC_1", 1, 60],
+				["TOWNS_SQUAD_APC_2", 1, 60]
+			],				
+			[
+				["TOWNS_AAV"], 
+				["TOWNS_APC_LIGHT"], 
+				["TOWNS_APC_MEDIUM", 1, 40]
+			],
+			[
+				["TOWNS_MOTORIZED_HMG", 1, 75],
+				["TOWNS_MOTORIZED_GMG", 1, 50]
+			], 
+			[
+				["TOWNS_TANKS_LIGHT", 1, 70],
+				["TOWNS_TANKS_MEDIUM", 1, 50]
+			], 
+			["TOWNS_MOTORIZED_MIXED_LIGHT", 1, 40]
+		];
 	};
-	case (_value > 75 && _value <= 100) : { 
-		_pool_units = [["SOLDIER", 3], ["SOLDIER_GL", 2], ["SOLDIERS_AT_LIGHT", 2], ["SOLDIERS_AT_MEDIUM", 1, 75], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 70], ["SOLDIERS_SNIPERS", 1, 70], ["VEHICLES_LIGHT", 2, 33], ["VEHICLES_MEDIUM", 1, 30], ["VEHICLES_HEAVY", 1, 20], ["VEHICLES_AA_LIGHT", 1, 20]];
+	case (_value > 80 && _value <= 100) : { 
+		_pool_units = [
+			["TOWNS_SQUAD_LIGHT", 2], 
+			["TOWNS_SQUAD_LIGHT_2"], 
+			["TOWNS_SQUAD_MEDIUM", 2], 
+			["TOWNS_SQUAD_AA"], 
+			["TOWNS_SQUAD_AT", 2], 
+			[
+				["TOWNS_SPECIAL", 1, 40], 
+				["TOWNS_SNIPERS_1", 1, 75], 
+				["TOWNS_SNIPERS_2", 1, 80]
+			],
+			[
+				["TOWNS_SQUAD_MOTORIZED_1", 1, 60], 
+				["TOWNS_SQUAD_MOTORIZED_2", 1, 50]
+			], 
+			[
+				["TOWNS_AAV"],
+				["TOWNS_SQUAD_APC_1"],
+				["TOWNS_SQUAD_APC_2"]
+			],
+			[
+				["TOWNS_APC_MEDIUM", 1, 90], 
+				["TOWNS_APC_HEAVY", 1, 75]
+			], 
+			[
+				["TOWNS_MOTORIZED_HMG", 1, 75],
+				["TOWNS_MOTORIZED_GMG", 1, 75]
+			], 
+			[
+				["TOWNS_TANKS_LIGHT", 1, 90],
+				["TOWNS_TANKS_MEDIUM", 1, 80],
+				["TOWNS_TANKS_HEAVY", 1, 70]
+			], 
+			[
+				["TOWNS_MOTORIZED_MIXED_LIGHT", 1, 60],
+				["TOWNS_MOTORIZED_MIXED_HEAVY", 1, 45]
+			]
+		];
 	};
-	case (_value > 100 && _value <= 150) : { 
-		_pool_units = [["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 80], ["SOLDIERS_AT_HEAVY", 2, 50], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 70], ["SOLDIERS_SPECOPS", 1], ["VEHICLES_LIGHT", 1, 35], ["SOLDIERS_SNIPERS", 1, 75], ["VEHICLES_MEDIUM", 1, 33], ["VEHICLES_HEAVY", 1, 25], ["VEHICLES_AA_LIGHT", 1, 22]];
+	case (_value > 100 && _value <= 120) : { 
+		_pool_units = [
+			["TOWNS_SQUAD_LIGHT"], 
+			["TOWNS_SQUAD_LIGHT_2"], 
+			["TOWNS_SQUAD_MEDIUM", 2], 
+			["TOWNS_SQUAD_AA"], 
+			["TOWNS_SQUAD_AT", 2], 
+			[
+				["TOWNS_SPECIAL", 1, 40], 
+				["TOWNS_SNIPERS_1", 1, 75], 
+				["TOWNS_SNIPERS_2", 1, 80]
+			],
+			[
+				["TOWNS_SQUAD_MOTORIZED_1", 1, 60], 
+				["TOWNS_SQUAD_MOTORIZED_2", 1, 50]
+			], 
+			[
+				["TOWNS_AAV"],
+				["TOWNS_AAV_HEAVY"],
+				["TOWNS_SQUAD_APC_1"],
+				["TOWNS_SQUAD_APC_2"]
+			],
+			[
+				["TOWNS_APC_MEDIUM"], 
+				["TOWNS_APC_HEAVY", 2]
+			], 
+			[
+				["TOWNS_MOTORIZED_HMG"],
+				["TOWNS_MOTORIZED_GMG"]
+			], 
+			[
+				["TOWNS_TANKS_LIGHT"],
+				["TOWNS_TANKS_MEDIUM", 2, 90],
+				["TOWNS_TANKS_HEAVY", 1, 80]
+			], 
+			[
+				["TOWNS_MOTORIZED_MIXED_LIGHT", 1, 85],
+				["TOWNS_MOTORIZED_MIXED_HEAVY", 1, 70]
+			]
+		];
 	};
-	case (_value > 150 && _value <= 200) : { 
-		_pool_units = [["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 70], ["SOLDIERS_AT_MEDIUM", 2, 65], ["SOLDIERS_AT_HEAVY", 2, 60], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1, 80], ["VEHICLES_LIGHT", 1, 40], ["VEHICLES_MEDIUM", 1, 33], ["VEHICLES_HEAVY", 1, 27], ["VEHICLES_AA_LIGHT", 1, 25]];
-	};
-	case (_value > 200 && _value <= 250) : { 
-		_pool_units = [["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 55], ["SOLDIERS_AT_MEDIUM", 2, 65], ["SOLDIERS_AT_HEAVY", 2, 65], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1, 85], ["VEHICLES_LIGHT", 1, 37], ["VEHICLES_MEDIUM", 1, 35], ["VEHICLES_HEAVY", 1, 30], ["VEHICLES_AA_LIGHT", 1, 27]];
-	};
-	case (_value > 250 && _value <= 300) : { 
-		_pool_units = [["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 50], ["SOLDIERS_AT_MEDIUM", 2, 70], ["SOLDIERS_AT_HEAVY", 2, 70], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1, 90], ["VEHICLES_LIGHT", 1, 35], ["VEHICLES_MEDIUM", 1, 37], ["VEHICLES_HEAVY", 1, 33], ["VEHICLES_AA_LIGHT", 1, 30]];
-	};
-	case (_value > 300 && _value <= 350) : { 
-		_pool_units = [["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 45], ["SOLDIERS_AT_MEDIUM", 2, 75], ["SOLDIERS_AT_HEAVY", 2, 75], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1, 95], ["VEHICLES_LIGHT", 1, 33], ["VEHICLES_MEDIUM", 1, 40], ["VEHICLES_HEAVY", 1, 35], ["VEHICLES_AA_LIGHT", 1, 30]];
-	};
-	case (_value > 350 && _value <= 400) : { 
-		_pool_units = [["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 40], ["SOLDIERS_AT_MEDIUM", 1, 80], ["SOLDIERS_AT_HEAVY", 2, 75], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1], ["VEHICLES_LIGHT", 1, 33], ["VEHICLES_MEDIUM", 2, 40], ["VEHICLES_HEAVY", 1, 37], ["VEHICLES_AA_LIGHT", 1, 30]];
-	};
-	case (_value > 400 && _value <= 450) : { 
-		_pool_units = [["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 37], ["SOLDIERS_AT_MEDIUM", 1, 82], ["SOLDIERS_AT_HEAVY", 2, 75], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1], ["VEHICLES_LIGHT", 1, 30], ["VEHICLES_MEDIUM", 2, 42], ["VEHICLES_HEAVY", 1, 40], ["VEHICLES_AA_LIGHT", 1, 30]];
-	};
-	case (_value > 450) : { 
-		_pool_units = [["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 35], ["SOLDIERS_AT_MEDIUM", 1, 84], ["SOLDIERS_AT_HEAVY", 2, 75], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1], ["VEHICLES_LIGHT", 1, 27], ["VEHICLES_MEDIUM", 2, 45], ["VEHICLES_HEAVY", 1, 42], ["VEHICLES_AA_LIGHT", 1, 30]];
+	case (_value > 120) : { 
+		_pool_units = [
+			["TOWNS_SQUAD_LIGHT"], 
+			["TOWNS_SQUAD_LIGHT_2"], 
+			["TOWNS_SQUAD_MEDIUM", 2], 
+			["TOWNS_SQUAD_AA"], 
+			["TOWNS_SQUAD_AT", 2], 
+			[
+				["TOWNS_SPECIAL", 1, 75], 
+				["TOWNS_SNIPERS_1"], 
+				["TOWNS_SNIPERS_2"]
+			],
+			[
+				["TOWNS_SQUAD_MOTORIZED_1", 1, 75], 
+				["TOWNS_SQUAD_MOTORIZED_2", 1, 80]
+			], 
+			[
+				["TOWNS_AAV"],
+				["TOWNS_AAV_HEAVY"],
+				["TOWNS_SQUAD_APC_1"],
+				["TOWNS_SQUAD_APC_2"]
+			],
+			[
+				["TOWNS_APC_MEDIUM"], 
+				["TOWNS_APC_HEAVY", 2]
+			], 
+			[
+				["TOWNS_MOTORIZED_HMG"],
+				["TOWNS_MOTORIZED_GMG"]
+			], 
+			[
+				["TOWNS_TANKS_LIGHT"],
+				["TOWNS_TANKS_MEDIUM", 2],
+				["TOWNS_TANKS_HEAVY", 3]
+			], 
+			[
+				["TOWNS_MOTORIZED_MIXED_LIGHT"],
+				["TOWNS_MOTORIZED_MIXED_HEAVY", 2]
+			]
+		];
 	};
 };
 
-//--- Parse properly the pool.
+//--- Flatten the pool
 _pool = [];
 {
-	_unit = _x select 0;
-	_presence = _x select 1;
-	if !(isNil {missionNamespace getVariable format["%1_%2",_side, _unit]}) then {
-		_probability = if (count _x > 2) then {_x select 2} else {100};
-		//--- Get content before parsing (don't alter the source!)
-		_content = +(missionNamespace getVariable format["%1_%2",_side, _unit]);
-		
-		_load = false;
-		switch (typeName (_content select 0)) do {
-			case "ARRAY": { //---  Multiple content
-				//--- Sligty different here, we do a deep check.
-				{
-					_upgrade_required = _x select 1;
-					if (_upgrade < _upgrade_required) then {_content set [_forEachIndex, -1]};
-				} forEach +_content;
-				
-				_content = _content - [-1];
-				
-				if (count _content > 0) then { //--- We have some content
-					//--- Sanitize
-					_sanitized = [];
-					{[_sanitized, _x select 0] call CTI_CO_FNC_ArrayPush} forEach _content;
+	switch (typeName (_x select 0)) do {
+		//--- Only one element is present, check for the force and probability and add it to our current pool
+		case "STRING": {
+			if (!isNil{missionNamespace getVariable format["%1_%2", _side, _x select 0]}) then {
+				_force = if (count _x > 1) then {_x select 1} else {1};
+				_probability = if (count _x > 2) then {_x select 2} else {100};
+			
+				for '_i' from 1 to _force do {_pool pushBack [_x select 0, _probability]};
+			};
+		};
+		//--- More than one element is present, flatten the content and append the array to the current pool
+		case "ARRAY": {
+			_pool_nest = [];
+			{
+				if (!isNil{missionNamespace getVariable format["%1_%2", _side, _x select 0]}) then {
+					_force = if (count _x > 1) then {_x select 1} else {1};
+					_probability = if (count _x > 2) then {_x select 2} else {100};
 					
-					_content = _sanitized; //--- Replace if altered
-					// if (_altered) then {_content set [0, _content]}; //--- Replace if altered
-					_load = true;
+					for '_i' from 1 to _force do {_pool_nest pushBack [_x select 0, _probability]};
 				};
-			};
-			case "STRING": { //--- Simple content
-				_upgrade_required = _content select 1;
-				if (_upgrade >= _upgrade_required) then {_content = _content select 0; _load = true};
-			};
-		};
-		
-		if (_load) then { //--- Finally load if available
-			for '_i' from 1 to _presence do { [_pool, [_content, _probability] ] call CTI_CO_FNC_ArrayPush };
-		};
+			} forEach _x;
+			
+			if (count _pool_nest > 0) then {_pool pushBack _pool_nest};
 	};
 } forEach _pool_units;
 
@@ -144,38 +280,34 @@ if (count _pool < 1) exitWith {[[],[],[]]};
 //--- Shuffle!
 _pool = _pool call CTI_CO_FNC_ArrayShuffle;
 
-//--- Compose the pools.
+//--- Compose the pool
 _teams = [];
-for '_i' from 1 to _totalGroups do {
-	_units = [(missionNamespace getVariable format["%1_SOLDIER_SQUADLEADER", _side]) select 0];
-	
-	// _pool_group_size_current = _pool_group_size;
-	_pool_group_size_current = _pool_group_size-1;
-	while {_pool_group_size_current > 0} do {
-		_picked = _pool select floor(random count _pool);
+while {_totalGroups > 0} do {
+	{
+		_team = _x;
 		
-		_unit = _picked select 0;
-		_probability = _picked select 1;
+		//--- If nested, pick a random element
+		if (_typeName(_team select 0) == "ARRAY") then {
+			_team = _team select floor(random count _team);
+		};
+		
+		//--- Probability check
+		_probability = _team select 1;
 		
 		_can_use = true;
 		if (_probability != 100) then {
 			if (random 100 > _probability) then { _can_use = false };
 		};
 		
+		//--- Our team can be retrieved!
 		if (_can_use) then {
-			if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
-			[_units, _unit] call CTI_CO_FNC_ArrayPush;
-			
-			_pool_group_size_current = _pool_group_size_current - 1;
+			_teams pushBack (missionNamespace getVariable (_team select 0));
+			_totalGroups = _totalGroups - 1;
 		};
-	};
-	
-	[_teams, _units] call CTI_CO_FNC_ArrayPush;
+	} forEach _pool;
 };
 
-diag_log format ["OCCUPATION POOL Composer for %1 (value %2)", _town getVariable "cti_town_name", _value];
-
-// _vehicles = [];
+//--- Create the groups server-sided
 _groups = [];
 _positions = [];
 {
@@ -183,30 +315,18 @@ _positions = [];
 	
 	_position = [getPos _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
 	_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
-	[_positions, _position] call CTI_CO_FNC_ArrayPush;
+	_positions pushBack _position;
 	
 	_group = createGroup _side;
-	[_groups, _group] call CTI_CO_FNC_ArrayPush;
+	_groups pushBack _group;
 	
-	/*
-	{
-		if (_x isKindOf "Man") then {
-			[_x, _group, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, _sideID] call CTI_CO_FNC_CreateUnit;
-		} else {
-			_crew = switch (true) do {
-				case (_x isKindOf "Tank"): { missionNamespace getVariable format["%1_SOLDIER_CREW", _side] };
-				case (_x isKindOf "Air"): { missionNamespace getVariable format["%1_SOLDIER_PILOT", _side] };
-				default { missionNamespace getVariable format["%1_SOLDIER", _side] };
-			};
-			if (typeName _crew == "ARRAY") then {_crew = _crew select 0};
-			_vehicle = [_x, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, random 360, _sideID, false, false, true] call CTI_CO_FNC_CreateVehicle;
-			[_vehicle, _crew, _group, _sideID] call CTI_CO_FNC_ManVehicle;
-			[_vehicles, _vehicle] call CTI_CO_FNC_ArrayPush;
-			[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
-		};
-	} forEach _x;
-	
-	[_town, _group, _sideID] execFSM "Server\FSM\town_patrol.fsm";*/
+	if (CTI_Log_Level >= CTI_Log_Information) then {
+		["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format["Composing Occupation Team for town [%1] on side [%2] using group [%3] at position [%4] with units [%5]", _town getVariable "cti_town_name", _side, _group, _position, _x]] call CTI_CO_FNC_Log;
+	};
 } forEach _teams;
+
+if (CTI_Log_Level >= CTI_Log_Information) then {
+	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format["Composed [%1] Occupation Teams for town [%2] on side [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+};
 
 [_teams, _groups, _positions]

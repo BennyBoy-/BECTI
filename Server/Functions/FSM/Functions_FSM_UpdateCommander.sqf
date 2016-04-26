@@ -139,7 +139,7 @@ CTI_FSM_UpdateCommander_GetMostValuedTowns = {
 	if (typeName _sideID == "SIDE") then { _sideID = _this call CTI_CO_FNC_GetSideID };
 	
 	_towns = [];
-	{if ((_x getVariable "cti_town_sideID") == _sideID && (_x getVariable "cti_town_value") > CTI_AI_TEAMS_DEFEND_TOWNS_WORTH) then {[_towns, _x] call CTI_CO_FNC_ArrayPush}} forEach CTI_Towns;
+	{if ((_x getVariable "cti_town_sideID") == _sideID && (_x getVariable "cti_town_sv_max") > CTI_AI_TEAMS_DEFEND_TOWNS_WORTH) then {[_towns, _x] call CTI_CO_FNC_ArrayPush}} forEach CTI_Towns;
 	
 	_towns
 };

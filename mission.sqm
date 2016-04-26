@@ -239,7 +239,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Kill Farm"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Kill Farm"", resistance, 10, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town0";
 			};
 			id=19;
@@ -257,7 +257,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Camp Rogain"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Camp Rogain"", resistance, 20, 80] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town1";
 			};
 			id=20;
@@ -275,7 +275,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Agia Marina"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Agia Marina"", resistance, 30, 120] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town2";
 			};
 			id=21;
@@ -293,7 +293,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Stratis Air Base"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Stratis Air Base"", resistance, 20, 80] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town3";
 			};
 			id=22;
@@ -311,7 +311,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Transmission Tower Brit"", resistance, 50] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Transmission Tower Brit"", resistance, 10, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town4";
 			};
 			id=23;
@@ -329,7 +329,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""LZ Baldy"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""LZ Baldy"", resistance, 10, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town5";
 			};
 			id=24;
@@ -347,7 +347,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Old Ruins"", resistance, 100] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Old Ruins"", resistance, 10, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town6";
 			};
 			id=25;
@@ -365,7 +365,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Kamino Firing Range"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Kamino Firing Range"", resistance, 10, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town7";
 			};
 			id=26;
@@ -383,7 +383,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Air Station Mike-26"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Air Station Mike-26"", resistance, 20, 80] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town8";
 			};
 			id=27;
@@ -401,7 +401,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Old Outpost"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Old Outpost"", resistance, 10, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town9";
 			};
 			id=28;
@@ -419,7 +419,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Camp Tempest"", resistance, 175] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Camp Tempest"", resistance, 10, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town10";
 			};
 			id=29;
@@ -437,7 +437,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Camp Maxwell"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Camp Maxwell"", resistance, 20, 80] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town11";
 			};
 			id=30;
@@ -455,7 +455,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Girna"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Girna"", resistance, 20, 80] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town12";
 			};
 			id=31;
@@ -473,7 +473,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Agios loannis"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Agios loannis"", resistance, 10, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town13";
 			};
 			id=32;
@@ -491,7 +491,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Agios Cephas"", resistance, 100] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Agios Cephas"", resistance, 10, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town14";
 			};
 			id=33;
@@ -509,7 +509,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""The Spartan"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""The Spartan"", resistance, 10, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Town15";
 			};
 			id=34;
