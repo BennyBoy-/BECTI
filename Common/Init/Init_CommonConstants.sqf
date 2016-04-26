@@ -334,8 +334,8 @@ CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 1; //--- When the town is not held by the side
 
 //--- Towns: Supply
 CTI_TOWNS_SUPPLY_MODE = 1; //--- Supply Mode: (0: Default, 1: Timed)
-CTI_TOWNS_SUPPLY_TIME_INTERVAL = 80;
-CTI_TOWNS_SUPPLY_TIME_INCREASE = 1;
+CTI_TOWNS_SUPPLY_TIME_INTERVAL = 80; //--- Determine the interval between each town SV increment with time
+CTI_TOWNS_SUPPLY_TIME_INCREASE = 1; //--- Determine the town SV increment when the interval's reached (Potential upgrade?)
 
 //--- Towns: Territorial
 CTI_TOWNS_TERRITORIAL_MARKER_ENEMY_CAPTURABLE_COLOR = "ColorOrange"; //--- The color for enemy capturable towns
