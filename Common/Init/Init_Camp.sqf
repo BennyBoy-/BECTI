@@ -3,6 +3,8 @@ private ["_sideID", "_town", "_town_camps", "_town_name", "_town_side"];
 _town = _this select 0;
 _camp = _this select 1;
 
+waitUntil {!isNil 'CTI_Init_JIP' && !isNil 'CTI_Init_Common'};
+
 if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Common\Init\Init_Camp.sqf", format["Initializing camp [%1] (%2) for town [%3]", _camp, typeOf _camp, _town]] call CTI_CO_FNC_Log;
 };
@@ -11,8 +13,6 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 if (isNil {_town getVariable "cti_town_camps"}) then {_town setVariable ["cti_town_camps", []]};
 _town setVariable ["cti_town_camps", (_town getVariable "cti_town_camps") + [_camp]];
 _camp setVariable ["cti_camp_town", _town];
-
-waitUntil {!isNil 'CTI_Init_JIP' && !isNil 'CTI_Init_Common'};
 
 //--- Server Initialization
 if (CTI_IsServer) then {
