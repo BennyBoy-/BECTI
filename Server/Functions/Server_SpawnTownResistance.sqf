@@ -245,7 +245,7 @@ while {_totalGroups > 0} do {
 		_team = _x;
 		
 		//--- If nested, pick a random element
-		if (_typeName(_team select 0) == "ARRAY") then {
+		if (typeName(_team select 0) == "ARRAY") then {
 			_team = _team select floor(random count _team);
 		};
 		
