@@ -259,7 +259,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Frini"", resistance, 175] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Frini"", resistance, 20, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="Frini";
 			};
 			id=19;
@@ -278,7 +278,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Athira"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Athira"", resistance, 40, 100] execVM ""Common\Init\Init_Location.sqf""";
 				name="Athira";
 			};
 			id=20;
@@ -297,7 +297,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""North Airfield"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""North Airfield"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""";
 				name="NorthAirfield";
 			};
 			id=21;
@@ -316,7 +316,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Oreokastro"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Oreokastro"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""";
 				name="Oreokastro";
 			};
 			id=22;
@@ -334,7 +334,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Agios Dionysios"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Agios Dionysios"", resistance, 20, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="AgiosDionysios";
 			};
 			id=23;
@@ -353,7 +353,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Koroni"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Koroni"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Koroni";
 			};
 			id=24;
@@ -372,7 +372,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Kalithea"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Kalithea"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Kalithea";
 			};
 			id=25;
@@ -390,7 +390,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Telos"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Telos"", resistance, 30, 80] execVM ""Common\Init\Init_Location.sqf""";
 				name="Telos";
 			};
 			id=26;
@@ -409,7 +409,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""AAC Airfield"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""AAC Airfield"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""";
 				name="AACAirfield";
 			};
 			id=27;
@@ -428,7 +428,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Neochori"", resistance, 350] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Neochori"", resistance, 35, 90] execVM ""Common\Init\Init_Location.sqf""";
 				name="Neochori";
 			};
 			id=28;
@@ -447,7 +447,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Zaros"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Zaros"", resistance, 25, 70] execVM ""Common\Init\Init_Location.sqf""";
 				name="Zaros";
 			};
 			id=29;
@@ -466,7 +466,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Ekali"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Ekali"", resistance, 20, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="Ekali";
 			};
 			id=30;
@@ -485,7 +485,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Kavala"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Kavala"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""";
 				name="Kavala";
 			};
 			id=31;
@@ -504,7 +504,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Panochori"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Panochori"", resistance, 20, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="Panochori";
 			};
 			id=32;
@@ -523,7 +523,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Faronaki"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Faronaki"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Faronaki";
 			};
 			id=33;
@@ -542,7 +542,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Vikos"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Vikos"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Vikos";
 			};
 			id=34;
@@ -1716,7 +1716,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Makrynisi"", resistance, 75] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Makrynisi"", resistance, 10, 40] execVM ""Common\Init\Init_Location.sqf""";
 				name="Makrynisi";
 			};
 			id=160;
@@ -1735,7 +1735,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Kore"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Kore"", resistance, 30, 80] execVM ""Common\Init\Init_Location.sqf""";
 				name="Kore";
 			};
 			id=161;
@@ -1754,7 +1754,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Stadium"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Stadium"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Stadium";
 			};
 			id=162;
@@ -1772,7 +1772,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Negades"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Negades"", resistance, 20, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="Negades";
 			};
 			id=163;
@@ -1791,7 +1791,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Airbase"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Airbase"", resistance, 30, 80] execVM ""Common\Init\Init_Location.sqf""";
 				name="Airbase";
 			};
 			id=164;
@@ -1809,7 +1809,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Pyrgos"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Pyrgos"", resistance, 25, 70] execVM ""Common\Init\Init_Location.sqf""";
 				name="Pyrgos";
 			};
 			id=165;
@@ -1828,7 +1828,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Lakka"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Lakka"", resistance, 20, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="Lakka";
 			};
 			id=166;
@@ -1846,7 +1846,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Agios Konstantinos"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Agios Konstantinos"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="AgiosKonstantinos";
 			};
 			id=167;
@@ -1865,7 +1865,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Anthrakia"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Anthrakia"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Anthrakia";
 			};
 			id=168;
@@ -1884,7 +1884,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Military"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Military"", resistance, 30, 80] execVM ""Common\Init\Init_Location.sqf""";
 				name="Military";
 			};
 			id=169;
@@ -1902,7 +1902,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Nychi"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Nychi"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Nychi";
 			};
 			id=170;
@@ -1921,7 +1921,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Syrta"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Syrta"", resistance, 20, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="Syrta";
 			};
 			id=171;
@@ -1940,7 +1940,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Galati"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Galati"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Galati";
 			};
 			id=172;
@@ -1959,7 +1959,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Ifestiona"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Ifestiona"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Ifestiona";
 			};
 			id=173;
@@ -1979,7 +1979,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""The dump"", resistance, 175] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""The dump"", resistance, 20, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="Thedump";
 			};
 			id=174;
@@ -1996,7 +1996,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Fuel Depot"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.62004];";
+				init="nullReturn = [this, ""Fuel Depot"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.62004];";
 				name="FuelDepot";
 			};
 			id=175;
@@ -2014,7 +2014,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Com Platform"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.49266];";
+				init="nullReturn = [this, ""Com Platform"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.49266];";
 				name="ComPlatform";
 			};
 			id=176;
@@ -2032,7 +2032,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Sub Pen"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.09323];";
+				init="nullReturn = [this, ""Sub Pen"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.09323];";
 				name="SubPen";
 			};
 			id=177;
@@ -5254,7 +5254,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Wind Farm"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+22.1418];";
+				init="nullReturn = [this, ""Wind Farm"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+22.1418];";
 				name="WindFarm";
 			};
 			id=165;
@@ -5273,7 +5273,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Theater Ruins"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Theater Ruins"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="TheaterRuins";
 			};
 			id=166;
@@ -5292,7 +5292,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Military Outpost"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Military Outpost"", resistance, 25, 70] execVM ""Common\Init\Init_Location.sqf""";
 				name="MilitaryOutpost";
 			};
 			id=167;
@@ -5311,7 +5311,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Sand Airfield"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Sand Airfield"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""";
 				name="SandAirfield";
 			};
 			id=168;
@@ -5329,7 +5329,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Loannina"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Loannina"", resistance, 20, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="Loannina";
 			};
 			id=169;
@@ -5348,7 +5348,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Hotel Complex"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Hotel Complex"", resistance, 20, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="HotelComplex";
 			};
 			id=170;
@@ -5367,7 +5367,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Nidasos"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Nidasos"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Nidasos";
 			};
 			id=171;
@@ -5386,7 +5386,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Sofia"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Sofia"", resistance, 25, 70] execVM ""Common\Init\Init_Location.sqf""";
 				name="Sofia";
 			};
 			id=172;
@@ -5405,7 +5405,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Molos"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Molos"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Molos";
 			};
 			id=173;
@@ -5424,7 +5424,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Molos Airfield"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Molos Airfield"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""";
 				name="MolosAirfield";
 			};
 			id=174;
@@ -5443,7 +5443,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Kalochori"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Kalochori"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Kalochori";
 			};
 			id=175;
@@ -5462,7 +5462,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Paros"", resistance, 350] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Paros"", resistance, 35, 90] execVM ""Common\Init\Init_Location.sqf""";
 				name="Paros";
 			};
 			id=176;
@@ -5481,7 +5481,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Rodopoli"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Rodopoli"", resistance, 25, 70] execVM ""Common\Init\Init_Location.sqf""";
 				name="Rodopoli";
 			};
 			id=177;
@@ -5500,7 +5500,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Charkia"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Charkia"", resistance, 20, 60] execVM ""Common\Init\Init_Location.sqf""";
 				name="Charkia";
 			};
 			id=178;
@@ -5519,7 +5519,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Dorida"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Dorida"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Dorida";
 			};
 			id=179;
@@ -5538,7 +5538,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Limni"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Limni"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Limni";
 			};
 			id=180;
@@ -5557,7 +5557,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Chalkeia"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Chalkeia"", resistance, 25, 70] execVM ""Common\Init\Init_Location.sqf""";
 				name="Chalkeia";
 			};
 			id=181;
@@ -5576,7 +5576,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Panagia"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Panagia"", resistance, 25, 70] execVM ""Common\Init\Init_Location.sqf""";
 				name="Panagia";
 			};
 			id=182;
@@ -5595,7 +5595,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Feres"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Feres"", resistance, 15, 50] execVM ""Common\Init\Init_Location.sqf""";
 				name="Feres";
 			};
 			id=183;
@@ -5614,7 +5614,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Selakano"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Selakano"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""";
 				name="Selakano";
 			};
 			id=184;
@@ -5632,7 +5632,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Radar Platform"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.72914];";
+				init="nullReturn = [this, ""Radar Platform"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.72914];";
 				name="RadarPlatform";
 			};
 			id=185;
@@ -5650,7 +5650,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Oil Rig"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+9.40179];";
+				init="nullReturn = [this, ""Oil Rig"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+9.40179];";
 				name="OilRig";
 			};
 			id=186;
@@ -5668,7 +5668,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Research Platform"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.66273];";
+				init="nullReturn = [this, ""Research Platform"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""; this setPos [getPos this select 0, getPos this select 1,+4.66273];";
 				name="ResearchPlatform";
 			};
 			id=188;
