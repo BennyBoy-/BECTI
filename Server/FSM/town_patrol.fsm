@@ -3,12 +3,12 @@
 /*
 item0[] = {"Init",0,250,-25.000000,-475.000000,75.000000,-425.000000,0.000000,"Init"};
 item1[] = {"Cycle",4,218,125.000000,-475.000000,225.000000,-425.000000,0.000000,"Cycle"};
-item2[] = {"Check",2,250,275.000000,-475.000000,375.000000,-425.000000,0.000000,"Check"};
+item2[] = {"Check",2,4346,275.000000,-475.000000,375.000000,-425.000000,0.000000,"Check"};
 item3[] = {"Renew_Path",4,218,275.000000,-575.000000,375.000000,-525.000000,2.000000,"Renew" \n "Path"};
 item4[] = {"Process_Action",4,218,275.000000,-375.000000,375.000000,-325.000000,1.000000,"Process" \n "Action"};
 item5[] = {"Done",8,218,425.000000,-475.000000,525.000000,-425.000000,0.000000,"Done"};
 item6[] = {"End",1,250,575.000000,-475.000000,675.000000,-425.000000,0.000000,"End"};
-item7[] = {"Renewal",2,4346,125.000000,-575.000000,225.000000,-525.000000,0.000000,"Renewal"};
+item7[] = {"Renewal",2,250,125.000000,-575.000000,225.000000,-525.000000,0.000000,"Renewal"};
 item8[] = {"Processing",2,250,125.000000,-375.000000,225.000000,-325.000000,0.000000,"Processing"};
 link0[] = {0,1};
 link1[] = {1,2};
@@ -21,7 +21,7 @@ link7[] = {5,6};
 link8[] = {7,1};
 link9[] = {8,1};
 globals[] = {25.000000,1,0,0,0,640,480,1,43,6316128,1,-49.166565,679.138794,-34.083618,-705.564575,769,709,1};
-window[] = {0,-1,-1,-1,-1,904,1730,3190,50,1,787};
+window[] = {0,-1,-1,-1,-1,933,70,1530,79,1,787};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -43,7 +43,9 @@ class FSM
        "_move_patrol_reload = false;" \n
        "" \n
        "_action = """";" \n
-       "_last_action = """";"/*%FSM</STATEINIT""">*/;
+       "_last_action = """";" \n
+       "" \n
+       "_last_SV = _town getVariable 'cti_town_sv_default';"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -68,7 +70,7 @@ class FSM
        "" \n
        "_aliveTeam = if ({alive _x} count units _team < 1 || isNull _team) then {false} else {true};" \n
        "" \n
-       "if (((_town getVariable 'cti_town_capture') < CTI_TOWNS_CAPTURE_VALUE_CEIL && _sideID == (_town getVariable 'cti_town_sideID')) || _sideID != (_town getVariable 'cti_town_sideID')) then {" \n
+       "if ((((_town getVariable 'cti_town_sv') < _last_SV || (_town getVariable 'cti_town_sv') < (_town getVariable 'cti_town_sv_default')) && _sideID == (_town getVariable 'cti_town_sideID')) || _sideID != (_town getVariable 'cti_town_sideID')) then {" \n
        "	_action = ""defense"";" \n
        "	if (_action != _last_action) then {_move_defend_last = -120};" \n
        "} else {" \n
@@ -76,7 +78,8 @@ class FSM
        "	if (_action != _last_action) then {_move_patrol_reload = true};" \n
        "};" \n
        "" \n
-       "_last_action = _action;"/*%FSM</STATEINIT""">*/;
+       "_last_action = _action;" \n
+       "_last_SV = _town getVariable 'cti_town_sv_default';"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
