@@ -52,59 +52,66 @@ _specials = [];
 */
 _headers = _headers 		+ [[CTI_BARRACKS, "Barracks", "Barracks"]];
 _classes = _classes 		+ [["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"]];
-_prices = _prices 			+ [1000];
+_prices = _prices 			+ [5000];
 _times = _times 			+ [60];
 _placements = _placements 	+ [[180, 15]];
-_specials = _specials		+ [[["DMG_Reduce", 5]]];
+_specials = _specials		+ [[["DMG_Reduce", 1.5]]];  // Value @ 1 = 2 AP slammer shots
 
 _headers = _headers 		+ [[CTI_LIGHT, "Light Vehicle Factory", "Light"]];
-_classes = _classes 		+ [["Land_i_Garage_V1_F", "Land_Garage_V1_ruins_F"]];
-_prices = _prices 			+ [2000];
+_classes = _classes 		+ [["Land_Medevac_HQ_V1_F", "Land_Medevac_HQ_V1_ruins_F"]];
+_prices = _prices 			+ [10000];
 _times = _times 			+ [80];
-_placements = _placements 	+ [[90, 20]];
-_specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 6]]];
+_placements = _placements 	+ [[90, 25]];
+_specials = _specials		+ [[["DMG_Reduce", 0.7]]];  //with value @ 1 = 16 AP Slammer shots, @ .5 = 8 shots, etc (applies only with V1_F structure) so to determine how many shots to down, x/16 = %, where x is how many shots you want it to take
 
 _headers = _headers 		+ [[CTI_CONTROLCENTER, "Control Center", "CC"]];
-_classes = _classes 		+ [["Land_i_House_Small_03_V1_F", "Land_House_Small_03_V1_ruins_F", ["Land_i_House_Small_03_V1_dam_F"]]];
-_prices = _prices 			+ [3000];
+_classes = _classes 		+ [["Land_Research_HQ_F", "Land_Research_HQ_ruins_F", ["Land_Research_HQ_F"]]];							  
+_prices = _prices 			+ [20000];
 _times = _times 			+ [90];
-_placements = _placements 	+ [[180, 20]];
-_specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 82]]];
+_placements = _placements 	+ [[90, 25]];
+_specials = _specials		+ [[["Connected"],["DMG_Reduce", 0.9]]];
 
 _headers = _headers 		+ [[CTI_HEAVY, "Heavy Vehicle Factory", "Heavy"]];
 _classes = _classes 		+ [["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"]];
-_prices = _prices 			+ [3500];
+_prices = _prices 			+ [15000];
 _times = _times 			+ [120];
-_placements = _placements 	+ [[90, 20]];
-_specials = _specials		+ [[["DMG_Reduce", 2]]];
-
-_headers = _headers 		+ [[CTI_AIR, "Aircraft Factory", "Air"]];
-_classes = _classes 		+ [["Land_Radar_Small_F", "Land_Radar_Small_ruins_F"]];
-_prices = _prices 			+ [8000];
-_times = _times 			+ [140];
-_placements = _placements 	+ [[90, 20]];
-_specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 2]]];
-
-_headers = _headers 		+ [[CTI_AMMO, "Ammo Depot", "Ammo"]];
-_classes = _classes 		+ [["Land_TBox_F", "Land_TBox_ruins_F"]];
-_prices = _prices 			+ [500];
-_times = _times 			+ [40];
-_placements = _placements 	+ [[0, 20]];
-_specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 2]]];
-
-_headers = _headers 		+ [[CTI_REPAIR, "Repair Depot", "Repair"]];
-_classes = _classes 		+ [["Land_FuelStation_Build_F", "Land_FuelStation_Build_ruins_F"]];
-_prices = _prices 			+ [600];
-_times = _times 			+ [35];
-_placements = _placements 	+ [[180, 20]];
-_specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 20]]];
+_placements = _placements 	+ [[90, 25]];
+_specials = _specials		+ [[["DMG_Reduce", .75]]];
 
 _headers = _headers 		+ [[CTI_NAVAL, "Naval Yard", "Naval"]];
 _classes = _classes 		+ [["Land_Lighthouse_small_F", "Land_Lighthouse_small_ruins_F"]];
-_prices = _prices 			+ [2500];
+_prices = _prices 			+ [4000];
 _times = _times 			+ [35];
-_placements = _placements 	+ [[180, 25]];
-_specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 2]]];
+_placements = _placements 	+ [[180, 60]];
+_specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", .5]]];
+
+_headers = _headers 		+ [[CTI_AIR, "Aircraft Factory", "Air"]];
+_classes = _classes 		+ [["Land_Radar_Small_F", "Land_Radar_Small_ruins_F"]];
+_prices = _prices 			+ [20000];
+_times = _times 			+ [140];
+_placements = _placements 	+ [[90, 40]];
+_specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 1]]];  //with value of 1.2 = 12 slammer ap shots
+
+_headers = _headers 		+ [[CTI_AMMO, "Ammo Depot", "Ammo"]];
+_classes = _classes 		+ [["Land_Cargo_HQ_V2_F", "Land_Cargo_HQ_V2_ruins_F"]];
+_prices = _prices 			+ [12000];
+_times = _times 			+ [40];
+_placements = _placements 	+ [[90, 25]];
+_specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", .5]]];
+
+_headers = _headers 		+ [[CTI_REPAIR, "Repair Depot", "Repair"]];
+_classes = _classes 		+ [["Land_Cargo_HQ_V3_F", "Land_Cargo_HQ_V3_ruins_F"]];
+_prices = _prices 			+ [15000];
+_times = _times 			+ [35];
+_placements = _placements 	+ [[90, 25]];
+_specials = _specials		+ [[["DMG_Reduce", .5]]];
+
+_headers = _headers 		+ [[CTI_RADAR, "Air Radar", "Air Radar"]];
+_classes =  _classes 		+ [["Land_TTowerBig_2_F", "Land_TTowerBig_2_ruins_F"]];
+_prices =  _prices 			+ [20000];
+_times =  _times 			+ [120];
+_placements =_placements 	+ [[180, 30]];
+_specials = _specials		+ [[["DMG_Reduce", 1]]];
 
 [_side, _headers, _classes, _prices, _times, _placements, _specials] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Structures.sqf";
 
