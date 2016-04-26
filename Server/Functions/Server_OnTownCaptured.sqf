@@ -48,7 +48,7 @@ if !(isNil "_town_camps") then {
 	{
 		_x setVariable ["cti_camp_lastSideID", (_x getVariable "cti_camp_sideID"), true];
 		_x setVariable ["cti_camp_sideID", _newSideID, true];
-		_x setVariable ["cti_camp_value", _town getVariable "cti_town_value"];
+		_x setVariable ["cti_camp_sv", _town getVariable "cti_town_sv_default", true];
 	} forEach _town_camps;
 };
 
@@ -71,10 +71,10 @@ if (_newSide != resistance && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLE
 	
 	if (count _award_teams > 0) then {
 		_last_capture = _town getVariable format["cti_town_lastcap_%1", _newSide];
-		_value = _town getVariable "cti_town_value";
+		_value = (_town getVariable "cti_town_sv_max") * CTI_TOWNS_CAPTURE_BOUNTY_COEF;
 		
 		if !(isNil '_last_capture') then {
-			if (time - _last_capture <= CTI_TOWNS_CAPTURE_BOUNTY_DELAY) then { _value = round(_value / 4) };
+			if (time - _last_capture <= CTI_TOWNS_CAPTURE_BOUNTY_DELAY) then { _value = round(_value / 2) };
 		};
 		
 		_score = round(_value / CTI_SCORE_TOWN_VALUE_PERPOINT);

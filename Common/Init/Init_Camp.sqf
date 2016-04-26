@@ -1,11 +1,7 @@
-private ["_sideID", "_town", "_town_camps", "_town_name", "_town_side", "_town_value"];
+private ["_sideID", "_town", "_town_camps", "_town_name", "_town_side"];
 
 _town = _this select 0;
 _camp = _this select 1;
-
-if (CTI_Log_Level >= CTI_Log_Information) then {
-	["INFORMATION", "FILE: Common\Init\Init_Camp.sqf", format["Initializing camp [%1] (%2) for town [%3]", _camp, typeOf _camp, _town]] call CTI_CO_FNC_Log;
-};
 
 //--- Common Variables
 if (isNil {_town getVariable "cti_town_camps"}) then {_town setVariable ["cti_town_camps", []]};
@@ -14,14 +10,18 @@ _camp setVariable ["cti_camp_town", _town];
 
 waitUntil {!isNil 'CTI_Init_JIP' && !isNil 'CTI_Init_Common'};
 
+if (CTI_Log_Level >= CTI_Log_Information) then {
+	["INFORMATION", "FILE: Common\Init\Init_Camp.sqf", format["Initializing camp [%1] (%2) for town [%3]", _camp, typeOf _camp, _town]] call CTI_CO_FNC_Log;
+};
+
 //--- Server Initialization
 if (CTI_IsServer) then {
 	//--- The camp is initialized after the town
 	waitUntil {!isNil {_town getVariable "cti_town_sideID"} && !isNil {_town getVariable "cti_town_lastSideID"}};
 	
 	//--- Camp variables
-	_camp setVariable ["cti_camp_value", _town getVariable "cti_town_value"];
-	_camp setVariable ["cti_camp_sideID", _town getVariable "cti_town_value", true];
+	_camp setVariable ["cti_camp_sv", _town getVariable "cti_town_sv_default", true];
+	_camp setVariable ["cti_camp_sideID", _town getVariable "cti_town_sideID", true];
 	_camp setVariable ["cti_camp_lastSideID", _town getVariable "cti_town_lastSideID", true];
 	
 	//--- Camp FSM
