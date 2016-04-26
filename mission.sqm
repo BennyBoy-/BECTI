@@ -383,7 +383,11 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
+<<<<<<< HEAD
 				init="nullReturn = [this, ""Air Station Mike-26"", resistance, 20, 80] execVM ""Common\Init\Init_Location.sqf""";
+=======
+				init="nullReturn = [this, ""Air Station Mike"", resistance, 400] execVM ""Common\Init\Init_Location.sqf""";
+>>>>>>> origin/Benny-Current
 				name="Town8";
 			};
 			id=27;
