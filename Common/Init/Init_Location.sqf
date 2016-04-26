@@ -10,11 +10,11 @@ _town setVariable ["cti_town_name", _town_name];
 _town setVariable ["cti_town_sv_default", _town_sv_default];
 _town setVariable ["cti_town_sv_max", _town_sv_max];
 
+waitUntil {!isNil 'CTI_Init_JIP' && !isNil 'CTI_Init_Common'};
+
 if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Common\Init\Init_Location.sqf", format["Initializing town [%1] (%2) for side [%3] with the SV [%4/%5]", _town, _town_name, _town_side, _town_sv_default, _town_sv_max]] call CTI_CO_FNC_Log;
 };
-
-waitUntil {!isNil 'CTI_Init_JIP' && !isNil 'CTI_Init_Common'};
 
 _sideID = _town_side call CTI_CO_FNC_GetSideID;
 
