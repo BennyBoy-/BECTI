@@ -32,7 +32,7 @@ link13[] = {11,12};
 link14[] = {12,7};
 link15[] = {13,1};
 globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-553.124695,344.934753,133.816055,-562.199219,947,771,1};
-window[] = {2,-1,-1,-1,-1,856,1755,3010,75,3,965};
+window[] = {2,-1,-1,-1,-1,956,1855,3110,175,3,965};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -159,14 +159,15 @@ class FSM
        "_eastDominion = if (_east > _west && _east > _resistance) then {true} else {false};" \n
        "" \n
        "_force = switch (true) do { case _resistanceDominion: { resistance }; case _westDominion: { west }; case _eastDominion: { east }; default { civilian } };" \n
+       "_forceCount = switch (true) do { case _resistanceDominion: { _resistance }; case _westDominion: { _west }; case _eastDominion: { _east }; default { 0 } };" \n
        "" \n
        "_captured = false;" \n
        "if (_force != civilian) then {" \n
-       "	_capture_level = _camp getVariable ""cti_camp_value"";" \n
+       "	_supply = _camp getVariable ""cti_camp_sv"";" \n
        "	" \n
        "	if (_side == _force) then { //--- Protect" \n
-       "		_capture_level = _capture_level + CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE;" \n
-       "		if (_capture_level > CTI_TOWNS_CAMPS_CAPTURE_VALUE_CEIL) then { _capture_level = CTI_TOWNS_CAMPS_CAPTURE_VALUE_CEIL };" \n
+       "		_supply = _supply + (_forceCount * CTI_TOWNS_CAMPS_CAPTURE_RATE);" \n
+       "		if (_supply > (_town getVariable ""cti_town_sv"")) then { _supply = _town getVariable ""cti_town_sv"" };" \n
        "	} else { //--- Capture" \n
        "		//--- In case of territorial mode, check that the town can be captured!" \n
        "		_capturable = true;" \n
@@ -174,12 +175,14 @@ class FSM
        "			_capturable = [_town, _force] Call CTI_SE_FNC_CanCaptureTerritorialTown;" \n
        "		};" \n
        "		if (_capturable) then {" \n
-       "			_capture_level = _capture_level - CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE;" \n
-       "			if (_capture_level <= 0) then { _captured = true; _capture_level = CTI_TOWNS_CAMPS_CAPTURE_VALUE_CEIL };" \n
+       "			_rate = round(_forceCount * CTI_TOWNS_CAMPS_CAPTURE_RATE);" \n
+       "			if (_rate < 1) then {_rate = 1};" \n
+       "			_supply = _supply - round(_forceCount * _rate);" \n
+       "			if (_supply <= 0) then { _captured = true; _supply = _town getVariable ""cti_town_sv_default"" };" \n
        "		};" \n
        "	};" \n
        "	" \n
-       "	if (_capture_level != (_camp getVariable ""cti_camp_value"")) then {_camp setVariable [""cti_camp_value"", _capture_level, true]};" \n
+       "	if (_supply != (_camp getVariable ""cti_camp_sv"")) then {_camp setVariable [""cti_camp_sv"", _supply, true]};" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
