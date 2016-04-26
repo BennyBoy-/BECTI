@@ -47,8 +47,9 @@ funcVectorDot = compileFinal preprocessFileLineNumbers "Server\Functions\Externa
 funcVectorScale = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorScale.sqf";
 funcVectorSub = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorSub.sqf";
 
-//--- Load Naval Town Structures
+//--- Load Structures
 call compile preprocessFileLineNumbers "Server\Init\initTownStructures.sqf";
+call compile preprocessFileLineNumbers "Server\Init\initMapStructures.sqf";
 
 call compile preprocessFileLineNumbers "Server\Init\Init_PublicVariables.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_RepairTruck.sqf";
