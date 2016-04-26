@@ -96,3 +96,6 @@ if (CTI_IsHeadless) then {
 
 //--- Set the group ID
 execVM "Common\Init\Init_GroupsID.sqf";
+
+//--- Load Map Helpers
+0 execVM "changelog.sqf";
