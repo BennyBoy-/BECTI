@@ -313,6 +313,8 @@ _groups = [];
 _positions = [];
 _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 {
+	_position = [];
+	
 	//--- A group may spawn close to a camp or somewhere in the town
 	if (count _camps > 0 && random 100 > 50) then {
 		_camp_index = floor(random count _camps);
