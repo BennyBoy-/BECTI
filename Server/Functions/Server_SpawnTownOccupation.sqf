@@ -272,6 +272,7 @@ _pool = [];
 			} forEach _x;
 			
 			if (count _pool_nest > 0) then {_pool pushBack _pool_nest};
+		};
 	};
 } forEach _pool_units;
 
