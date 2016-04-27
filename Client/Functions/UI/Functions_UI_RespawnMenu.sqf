@@ -5,14 +5,14 @@ CTI_UI_Respawn_GetAvailableLocations = {
 	
 	_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 	_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-	if (alive _hq) then { [_list, _hq] call CTI_CO_FNC_ArrayPush };
+	if (alive _hq) then { _list pushBack _hq };
 	_list = _list + _structures;
 	if (count _list < 1) then { _list = [_hq] };
 	
 	//--- Add FOBs if available.
 	if (CTI_BASE_FOB_MAX > 0) then {
 		_fobs = CTI_P_SideLogic getVariable ["cti_fobs", []];
-		{if (alive _x && _x distance CTI_DeathPosition <= CTI_RESPAWN_FOB_RANGE) then {[_list, _x] call CTI_CO_FNC_ArrayPush}} forEach _fobs;
+		{if (alive _x && _x distance CTI_DeathPosition <= CTI_RESPAWN_FOB_RANGE) then {_list pushBack _x}} forEach _fobs;
 	};
 	
 	//--- Add mobile respawns if available (Also we retrieve the crew which may belong to the player to prevent "in-AI-respawn" over those)
@@ -20,13 +20,13 @@ CTI_UI_Respawn_GetAvailableLocations = {
 	if ((missionNamespace getVariable "CTI_RESPAWN_MOBILE") > 0) then {
 		_mobile = (CTI_DeathPosition) call CTI_UI_Respawn_GetMobileRespawn;
 		_list = _list + _mobile;
-		{{if (group _x == group player) then {[_ignore_mobile_crew, _x] call CTI_CO_FNC_ArrayPush}} forEach crew _x} forEach _mobile;
+		{{if (group _x == group player) then {_ignore_mobile_crew pushBack _x}} forEach crew _x} forEach _mobile;
 	};
 	
 	//--- Add the nearest player's AI (impersonation) minus the mobile's crew
 	if ((missionNamespace getVariable "CTI_RESPAWN_AI") > 0) then {
 		{
-			if (_x distance CTI_DeathPosition <= CTI_RESPAWN_AI_RANGE && !(_x in _ignore_mobile_crew) && !isPlayer _x) then {[_list, _x] call CTI_CO_FNC_ArrayPush};
+			if (_x distance CTI_DeathPosition <= CTI_RESPAWN_AI_RANGE && !(_x in _ignore_mobile_crew) && !isPlayer _x) then {_list pushBack _x};
 		} forEach ((units player - [player]) call CTI_CO_FNC_GetLiveUnits);
 	};
 	
@@ -40,7 +40,7 @@ CTI_UI_Respawn_GetMobileRespawn = {
 	_available = [];
 	
 	{
-		if ((_x getVariable ["cti_spec", -1]) == CTI_SPECIAL_MEDICALVEHICLE && (_x getVariable ["cti_net", -1]) == CTI_P_SideID) then {[_available, _x] call CTI_CO_FNC_ArrayPush};
+		if ((_x getVariable ["cti_spec", -1]) == CTI_SPECIAL_MEDICALVEHICLE && (_x getVariable ["cti_net", -1]) == CTI_P_SideID) then {_available pushBack _x};
 	} forEach (_center nearEntities [["Car","Air","Tank","Ship"], CTI_RESPAWN_MOBILE_RANGE]);
 	
 	_available
@@ -109,7 +109,7 @@ CTI_UI_Respawn_AppendTracker = {
 	_marker setMarkerSizeLocal [1,1];
 	
 	_tracker = uiNamespace getVariable "cti_dialog_ui_respawnmenu_locations_tracker";
-	[_tracker, [_location, _marker]] call CTI_CO_FNC_ArrayPush;
+	_tracker pushBack [_location, _marker];
 	
 	if (_location isKindOf "AllVehicles") then {
 		[_location, _marker] spawn {

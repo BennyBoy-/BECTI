@@ -84,8 +84,9 @@ while { alive _factory } do {
 		if (time > _req_time_out || !_is_present) exitWith { //--- Request timed out or the client already finished processing it's order.
 			if (_is_present) then {
 				_list = _factory getVariable "cti_queue_processing";
-				_list set [0, "!REMOVE!"];
-				_list = _list - ["!REMOVE!"];
+				// _list set [0, "!REMOVE!"];
+				// _list = _list - ["!REMOVE!"];
+				_list deleteAt 0;
 				_factory setVariable ["cti_queue_processing", _list];
 			};
 			

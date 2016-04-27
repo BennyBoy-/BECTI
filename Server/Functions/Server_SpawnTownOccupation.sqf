@@ -22,7 +22,6 @@
 	[TOWN, SIDE] call CTI_SE_FNC_SpawnTownOccupation
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_ArrayShuffle
 	Common Function: CTI_CO_FNC_CreateUnit
 	Common Function: CTI_CO_FNC_CreateVehicle
@@ -30,6 +29,7 @@
 	Common Function: CTI_CO_FNC_GetRandomPosition
 	Common Function: CTI_CO_FNC_GetSideID
 	Common Function: CTI_CO_FNC_GetSideUpgrades
+	Common Function: CTI_CO_FNC_GetTownCamps
 	Common Function: CTI_CO_FNC_ManVehicle
 	Server Function: CTI_SE_FNC_HandleEmptyVehicle
 	

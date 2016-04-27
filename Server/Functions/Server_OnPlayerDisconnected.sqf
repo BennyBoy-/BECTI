@@ -49,7 +49,8 @@ if !(isNil '_candidates') then {
 	_index = -1;
 	{if (_x select 2 == _uid) exitWith {_index = _forEachIndex}} forEach _candidates;
 	if (_index > -1) then {
-		_candidates set [_index, "!nil!"]; _candidates = _candidates - ["!nil!"];
+		// _candidates set [_index, "!nil!"]; _candidates = _candidates - ["!nil!"];
+		_candidates deleteAt _index;
 		missionNamespace setVariable ["CTI_HEADLESS_CLIENTS", _candidates];
 		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Headless Client [%1] [%2] has been disconnected and was removed from the registered clients. There is now [%3] Headless Clients.", _uid, _name, count _candidates]] call CTI_CO_FNC_Log};
 	};

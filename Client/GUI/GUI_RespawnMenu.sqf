@@ -36,8 +36,9 @@ while { true } do {
 		_location = _x select 0;
 		if (!(_location in _locations) || !(alive _location)) then {
 			deleteMarkerLocal (_x select 1);
-			_locations_tracker set [_forEachIndex, "!nil!"];
-			_locations_tracker = _locations_tracker - ["!nil!"];
+			// _locations_tracker set [_forEachIndex, "!nil!"];
+			// _locations_tracker = _locations_tracker - ["!nil!"];
+			_locations_tracker deleteAt _forEachIndex;
 			uiNamespace setVariable ["cti_dialog_ui_respawnmenu_locations_tracker", _locations_tracker];
 			_changes = true;
 		};

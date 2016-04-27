@@ -33,7 +33,7 @@ for '_i' from 0 to (count _headers) -1 do {
 		];
 		
 		missionNamespace setVariable [format["CTI_%1_%2",_side,_classname], _stored];
-		[_defenses, format["CTI_%1_%2",_side,_classname]] call CTI_CO_FNC_ArrayPush;
+		_defenses pushBack format["CTI_%1_%2",_side,_classname];
 	} else {
 		if (CTI_Log_Level >= CTI_Log_Information) then { 
 			["TRIVIAL", "FILE: Common\Config\Base\Set_Defenses.sqf", format ["[%1] Defense [%2] was previously defined. Skipping this one.", _side, _classname]] call CTI_CO_FNC_Log

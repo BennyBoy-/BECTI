@@ -21,12 +21,12 @@
 	(TOWN) call CTI_SE_FNC_SpawnTownResistance
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_ArrayShuffle
 	Common Function: CTI_CO_FNC_CreateUnit
 	Common Function: CTI_CO_FNC_CreateVehicle
 	Common Function: CTI_CO_FNC_GetEmptyPosition
 	Common Function: CTI_CO_FNC_GetRandomPosition
+	Common Function: CTI_CO_FNC_GetTownCamps
 	Common Function: CTI_CO_FNC_ManVehicle
 	Server Function: CTI_SE_FNC_HandleEmptyVehicle
 	

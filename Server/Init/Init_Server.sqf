@@ -59,7 +59,7 @@ _startup_locations = [];
 for '_i' from 0 to 30 do {
 	_location = getMarkerPos format ["cti-spawn%1", _i];
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
-	[_startup_locations, _location] call CTI_CO_FNC_ArrayPush;
+	_startup_locations pushBack _location;
 };
 
 //--- Place both sides.
@@ -111,8 +111,8 @@ if (_attempts >= 500) then {
 	_logic setVariable ["cti_spotted_structures", []];
 	
 	_upgrades = [];
-	for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { [_upgrades, 0] call CTI_CO_FNC_ArrayPush };
-	// for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { [_upgrades, 1] Call CTI_CO_FNC_ArrayPush };
+	for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { _upgrades pushBack 0 };
+	// for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { _upgrades pushBack 1 };
 	_logic setVariable ["cti_upgrades", _upgrades, true];
 	_logic setVariable ["cti_upgrade", -1, true];
 	
@@ -143,7 +143,7 @@ if (_attempts >= 500) then {
 		if !(isNil '_x') then {
 			if (_x isKindOf "Man") then {
 				_group = group _x;
-				[_teams, _group] call CTI_CO_FNC_ArrayPush;
+				_teams pushBack _group;
 				[_group, _side] call CTI_SE_FNC_InitializeGroup;
 				
 				[leader _group, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", _side]] call CTI_CO_FNC_EquipUnit;

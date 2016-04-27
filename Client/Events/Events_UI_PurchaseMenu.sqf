@@ -197,8 +197,9 @@ switch (_action) do {
 			if (_is_present) then {
 				//--- Yes it's here, but can we alter it ?
 				if (_req_can_alter) then {
-					CTI_P_PurchaseRequests set [_index, "!nil!"];
-					CTI_P_PurchaseRequests = CTI_P_PurchaseRequests - ["!nil!"];
+					// CTI_P_PurchaseRequests set [_index, "!nil!"];
+					// CTI_P_PurchaseRequests = CTI_P_PurchaseRequests - ["!nil!"];
+					CTI_P_PurchaseRequests deleteAt _index;
 					
 					//--- Notify the server thread that our request has been canceled.
 					["SERVER", "Request_PurchaseCancel", [_seed, _classname, _req_factory, _req_team, group player]] call CTI_CO_FNC_NetSend;

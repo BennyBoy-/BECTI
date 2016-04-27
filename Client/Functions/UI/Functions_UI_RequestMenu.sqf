@@ -52,7 +52,7 @@ CTI_UI_Request_OnRequestReceived = {
 		};
 	};
 	
-	[CTI_P_TeamsRequests, _request] call CTI_CO_FNC_ArrayPush;
+	CTI_P_TeamsRequests pushBack _request;
 	(_request) spawn CTI_UI_Request_HandleRequest;
 };
 
@@ -111,9 +111,6 @@ CTI_UI_Request_HandleRequest = {
 	if (_remove) then {
 		_id = -1;
 		{if (typeName _x == "ARRAY") then {if ((_x select 3) == _seed) exitWith {_id = _forEachIndex}}} forEach CTI_P_TeamsRequests;
-		if (_id > -1) then {
-			CTI_P_TeamsRequests set [_id, "!nil!"];
-			CTI_P_TeamsRequests = CTI_P_TeamsRequests - ["!nil!"];
-		};
+		if (_id > -1) then { CTI_P_TeamsRequests deleteAt _id };
 	};
 };

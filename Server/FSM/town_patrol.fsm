@@ -137,7 +137,7 @@ class FSM
        "_patrol_area = [];" \n
        "" \n
        "for '_i' from 1 to CTI_TOWNS_PATROL_HOPS do {" \n
-       "	[_patrol_area, [_town, 25, CTI_TOWNS_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition] call CTI_CO_FNC_ArrayPush;" \n
+       "	_patrol_area pushBack ([_town, 25, CTI_TOWNS_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition);" \n
        "};" \n
        "" \n
        "if (random 100 > 50) then {_team setFormation ""DIAMOND""} else {_team setFormation ""STAG COLUMN""};" \n

@@ -21,9 +21,6 @@
   # SYNTAX #
 	[SEED, CLASSNAME, BUYER, INFORMATION, FACTORY] call CTI_CL_FNC_OnPurchaseDelegationReceived
 	
-  # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
-	
   # EXAMPLE #
 	[_seed, _classname, group player, _veh_infos, _factory] call CTI_CL_FNC_OnPurchaseDelegationReceived
 */
@@ -34,4 +31,4 @@ _req_buyer = _this select 2;
 _req_vehinfos = _this select 3;
 _factory = _this select 4;
 
-[CTI_P_PurchaseRequests, [_req_seed, _req_classname, _req_vehinfos, _factory, group player, false]] call CTI_CO_FNC_ArrayPush;
+CTI_P_PurchaseRequests pushBack [_req_seed, _req_classname, _req_vehinfos, _factory, group player, false];
