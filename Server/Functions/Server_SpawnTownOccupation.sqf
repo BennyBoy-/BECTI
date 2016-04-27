@@ -48,7 +48,7 @@ _upgrade = (_side call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_TOWNS;
 _value = _town getVariable "cti_town_sv"; //--- Occupation spawning is based on the current SV
 
 //--- Calculate the Group size by scaling the SV and randomizing the input, min max scaling
-_max_squad = 7;
+_max_squad = 6;
 _max_squad_random = 2;
 _max_sv = 120;
 
@@ -311,10 +311,17 @@ while {_totalGroups > 0} do {
 //--- Create the groups server-sided
 _groups = [];
 _positions = [];
+_camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 {
-	diag_log _x;
-	
-	_position = [getPos _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
+	//--- A group may spawn close to a camp or somewhere in the town
+	if (count _camps > 0 && random 100 > 50) then {
+		_camp_index = floor(random count _camps);
+		_position = [getPos(_camps select _camp_index), 10, CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS] call CTI_CO_FNC_GetRandomPosition;
+		_camps deleteAt _camp_index;
+	} else {
+		_position = [getPos _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
+	};
+
 	_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 	_positions pushBack _position;
 	

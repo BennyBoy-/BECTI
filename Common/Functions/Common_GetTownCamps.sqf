@@ -11,7 +11,7 @@
     0	[Object]: The town
 	
   # RETURNED VALUE #
-	[Array]: The camps
+	[Array (Copy)]: The camps
 	
   # SYNTAX #
 	(TOWN) call CTI_CO_FNC_GetTownCamps
@@ -27,4 +27,4 @@ _camps = _this getVariable "cti_town_camps";
 
 if (isNil '_camps') then {_camps = []};
 
-_camps
++_camps
