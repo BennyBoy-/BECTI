@@ -80,17 +80,28 @@ SHK_SortArray = {
 };
 
 SHK_BuildingPosExec = {
-	private ["_opos","_rad","_bpos", "_men"];
+	private ["_opos","_rad","_side","_bpos","_men"];
 	_opos = _this select 0;
 	if (typename _opos == typename objNull) then {_opos = getpos _opos};
 	_men = _this select 1;
 	_rad = if (count _this > 2) then { _this select 2 } else { 20 };
+	_side = if (count _this > 7) then { _this select 7 } else { civilian };
 
 	_bpos = [];
 	{
 		private ["_i","_p"];
-		for [{_i = 0;_p = _x buildingpos _i},{str _p != "[0,0,0]"},{_i = _i + 1;_p = _x buildingpos _i}] do {
-			_bpos set [count _bpos,_p];
+		_cti_buildingIsValid = true;
+		
+		//--- Since CTI is dynamic, we don't want to spawn stuff too close to existing hostile units
+		if (_side != civilian) then {
+			_cti_entities = _x nearEntities[["Man"], CTI_SHK_BUILDING_SAFE_RANGE];
+			if (({_x countSide _cti_entities > 0} count ([west, east, resistance] - [_side])) > 0) then {_cti_buildingIsValid = false};
+		};
+		
+		if (_cti_buildingIsValid) then {
+			for [{_i = 0;_p = _x buildingpos _i},{str _p != "[0,0,0]"},{_i = _i + 1;_p = _x buildingpos _i}] do {
+				_bpos set [count _bpos,_p];
+			};
 		};
 	} foreach (nearestObjects [_opos, ["Building"], _rad]);
 
