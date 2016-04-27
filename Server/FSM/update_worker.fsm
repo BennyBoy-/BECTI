@@ -139,12 +139,12 @@ class FSM
        "" \n
        "{" \n
        "	_structure_completion = if (isNil {_x getVariable ""cti_completion""}) then {1000} else {_x getVariable ""cti_completion""};" \n
-       "	if (_structure_completion < 100 && (_worker_center distance _x < CTI_BASE_WORKERS_RANGE)) then { [_tasks_build, _x] call CTI_CO_FNC_ArrayPush };" \n
+       "	if (_structure_completion < 100 && (_worker_center distance _x < CTI_BASE_WORKERS_RANGE)) then { _tasks_build pushBack _x };" \n
        "} forEach _structures_wip;" \n
        "" \n
        "{" \n
        "	_virtual_damages = _x getVariable ""cti_altdmg""; if (isNil '_virtual_damages') then {_virtual_damages = -1};" \n
-       "	if ((getDammage _x != 0 || _virtual_damages > 0) && (_worker_center distance _x < CTI_BASE_WORKERS_RANGE) && alive _x) then { [_tasks_repair, _x] call CTI_CO_FNC_ArrayPush };" \n
+       "	if ((getDammage _x != 0 || _virtual_damages > 0) && (_worker_center distance _x < CTI_BASE_WORKERS_RANGE) && alive _x) then { _tasks_repair pushBack _x };" \n
        "} forEach _structures;" \n
        "" \n
        "if (count _tasks_build > 0) then { //--- 1: Construction" \n
@@ -156,7 +156,7 @@ class FSM
        "		_worker_assignment_target = _tasks_repair select floor(random count _tasks_repair);" \n
        "	} else { //--- 3: Repair (Entities)" \n
        "		_vehicles_service = [];" \n
-       "		{ if (getDammage _x > .01 && speed _x < 5 && position _x select 2 < 3 && side _x == _side) then {[_vehicles_service, _x] call CTI_CO_FNC_ArrayPush} } forEach (_worker nearEntities [[""Car"", ""Motorcycle"", ""Tank"", ""Air"", ""StaticWeapon""], (CTI_BASE_WORKERS_RANGE * .8)]);" \n
+       "		{ if (getDammage _x > .01 && speed _x < 5 && position _x select 2 < 3 && side _x == _side) then { _vehicles_service pushBack _x } } forEach (_worker nearEntities [[""Car"", ""Motorcycle"", ""Tank"", ""Air"", ""StaticWeapon""], (CTI_BASE_WORKERS_RANGE * .8)]);" \n
        "		" \n
        "		if (count _vehicles_service > 0) then {" \n
        "			_worker_assignment_target = [_worker, _vehicles_service] call CTI_CO_FNC_GetClosestEntity;" \n

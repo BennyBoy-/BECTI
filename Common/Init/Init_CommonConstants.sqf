@@ -318,6 +318,7 @@ CTI_TOWNS_PATROL_RANGE = 375; //--- Patrol range in a town
 
 //--- Towns: Occupation
 CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
 //CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
@@ -326,6 +327,7 @@ CTI_TOWNS_OCCUPATION_MIN_ACTIVE = 1; //--- When the town is not held by the side
 
 //--- Towns: Resistance
 CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
 //CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
@@ -525,7 +527,8 @@ CTI_GC_DELAY_BUILDING = 30;
 //--- SHK Specific
 CTI_SHK_BUILDING_ENABLED = true;
 CTI_SHK_BUILDING_PLACEMENT_CHANCE = 25; //--- An AI Group has x% of chance to be placed in a building
-CTI_SHK_BUILDING_SCAN_RANGE = 150; //--- The radius used to search for building from the town's center
+CTI_SHK_BUILDING_SAFE_RANGE = 30; //--- Determine whether a building should be used for unit positioning or not if enemies are within this range
+CTI_SHK_BUILDING_SCAN_RANGE = 150; //--- The range used to search for building from the town's center
 CTI_SHK_BUILDING_SCAN_RANGE_RAN = 50; //--- Add a random range, works as min max -> RANGE + (random value - random value)
 CTI_SHK_GROUP_SIZE_MAX = 12; //--- If the group has more than x members, skip it
 

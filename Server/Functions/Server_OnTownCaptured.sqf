@@ -18,7 +18,6 @@
 	[TOWN, SIDE] call CTI_SE_FNC_OnTownCaptured
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_ChangeFunds
 	Common Function: CTI_CO_FNC_GetSideFromID
 	Common Function: CTI_CO_FNC_GetSideID
@@ -63,7 +62,7 @@ if (_newSide != resistance && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLE
 	{
 		if !(isNil '_x') then {
 			if !(isPlayer leader _x) then {
-				{if (_x distance _town < CTI_MARKERS_TOWN_AREA_RANGE && alive _x) exitWith {[_award_teams, group _x] call CTI_CO_FNC_ArrayPush}} forEach units _x;
+				{if (_x distance _town < CTI_MARKERS_TOWN_AREA_RANGE && alive _x) exitWith {_award_teams pushBack (group _x)}} forEach units _x;
 			};
 		};
 	} forEach ((_newSide call CTI_CO_FNC_GetSideLogic) getVariable "cti_teams");

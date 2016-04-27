@@ -21,12 +21,12 @@
 	(TOWN) call CTI_SE_FNC_SpawnTownResistance
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_ArrayShuffle
 	Common Function: CTI_CO_FNC_CreateUnit
 	Common Function: CTI_CO_FNC_CreateVehicle
 	Common Function: CTI_CO_FNC_GetEmptyPosition
 	Common Function: CTI_CO_FNC_GetRandomPosition
+	Common Function: CTI_CO_FNC_GetTownCamps
 	Common Function: CTI_CO_FNC_ManVehicle
 	Server Function: CTI_SE_FNC_HandleEmptyVehicle
 	
@@ -42,7 +42,7 @@ _town = _this;
 _value = _town getVariable "cti_town_sv_max";
 
 //--- Calculate the Group size by scaling the SV and randomizing the input, min max scaling
-_max_squad = 7;
+_max_squad = 6;
 _max_squad_random = 2;
 _max_sv = 120;
 
@@ -265,12 +265,20 @@ while {_totalGroups > 0} do {
 	} forEach _pool;
 };
 
-//TODO: spawn near camps
 //--- Create the groups server-sided
 _groups = [];
 _positions = [];
+_camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 {
-	_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
+	//--- A group may spawn close to a camp or somewhere in the town
+	if (count _camps > 0 && random 100 > 50) then {
+		_camp_index = floor(random count _camps);
+		_position = [getPos(_camps select _camp_index), 10, CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS] call CTI_CO_FNC_GetRandomPosition;
+		_camps deleteAt _camp_index;
+	} else {
+		_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
+	};
+	
 	_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 	_positions pushBack _position;
 	

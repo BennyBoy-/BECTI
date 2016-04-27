@@ -589,7 +589,7 @@ class FSM
        "_defensive_teams = [];" \n
        "" \n
        "{" \n
-       "	if ((_x getVariable ""cti_order"") in [CTI_ORDER_HOLDTOWNSBASE, CTI_ORDER_HOLDTOWNSBASES]) then {[_defensive_teams, _x] call CTI_CO_FNC_ArrayPush};" \n
+       "	if ((_x getVariable ""cti_order"") in [CTI_ORDER_HOLDTOWNSBASE, CTI_ORDER_HOLDTOWNSBASES]) then {_defensive_teams pushBack _x};" \n
        "} forEach ((_side call CTI_CO_FNC_GetSideGroups) - [_sideCommander]);" \n
        "" \n
        "if (count _defensive_teams > 0) then { //--- Update our defenders" \n
@@ -600,7 +600,7 @@ class FSM
        "		_enemyside = ([west,east] - [_side]) select 0;" \n
        "		_enemy_hq = (_enemyside) call CTI_CO_FNC_GetSideHQ;" \n
        "		_focus_list = [];" \n
-       "		if (alive _enemy_hq) then {[_focus_list, _enemy_hq] call CTI_CO_FNC_ArrayPush};" \n
+       "		if (alive _enemy_hq) then {_focus_list pushBack _enemy_hq};" \n
        "		_focus_list = _focus_list + (_side call CTI_CO_FNC_GetSideStructures);" \n
        "		if (count _focus_list < 1) then {_focus_list = [_enemy_hq]};" \n
        "		" \n

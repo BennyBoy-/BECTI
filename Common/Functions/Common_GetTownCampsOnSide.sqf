@@ -35,4 +35,4 @@ if (isNil '_camps') exitWith {[]};
 _camps_side = [];
 {if ((_x getVariable "cti_camp_sideID") == _side) then {_camps_side pushBack _x}} forEach _camps;
 
-_camps
+_camps_side

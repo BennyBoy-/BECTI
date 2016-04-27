@@ -20,7 +20,6 @@
 	[UNIT, CLASSNAME, ITEMS] call CTI_CO_FNC_EquipContainerVest
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_GetItemBaseConfig
 	
   # EXAMPLE #
@@ -43,7 +42,7 @@ _added = [];
 	if (_item != "") then {
 		if !(_item in _added) then {
 			//_base = (_item) call CTI_CO_FNC_GetItemBaseConfig;
-			[_added, _item] call CTI_CO_FNC_ArrayPush;
+			_added pushBack _item;
 			_count = {_x == _item} count _items;
 			
 			(vestContainer _unit) addItemCargoGlobal [_item, _count];

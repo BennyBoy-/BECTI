@@ -1,4 +1,4 @@
-private ["_groups", "_positions", "_side", "_teams", "_town"];
+private ["_groups", "_positions", "_side", "_sideID", "_teams", "_town"];
 
 _town = _this select 0;
 _side = _this select 1;
@@ -9,6 +9,7 @@ _positions = _this select 4;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 _created_vehicles = [];
+_shk_members = [];
 
 //--- Create all the requested units for a town at the explicit given location
 for '_i' from 0 to count(_groups)-1 do {
@@ -34,13 +35,18 @@ for '_i' from 0 to count(_groups)-1 do {
 		//--- Roll the dice, also make sure that the group has no vehicles
 		if (CTI_SHK_BUILDING_PLACEMENT_CHANCE > random 100 && count _vehicles < 1 && count _members <= CTI_SHK_GROUP_SIZE_MAX) then {
 			if (CTI_Log_Level >= CTI_Log_Debug) then {
-				["DEBUG", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Attemtping to place group [%1] units in town's [%2] buildings", _group, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
+				["DEBUG", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Group [%1] members in town [%2] will be placed in nearby building if possible via SHK", _group, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
 			};
 			
-			//--- Place the units in the nearby building if possible
-			[getPos _town, _members, (CTI_SHK_BUILDING_SCAN_RANGE + random(CTI_SHK_BUILDING_SCAN_RANGE_RAN) - random(CTI_SHK_BUILDING_SCAN_RANGE_RAN)), 0, [], true, true] Call SHK_BuildingPosExec; 
+			{_shk_members pushBack _x} forEach _members;
 		};
 	};
+};
+
+//--- SHK AI placement
+if (CTI_SHK_BUILDING_ENABLED && count _shk_members > 0) then { 
+	//--- Place the units in the nearby building if possible
+	[getPos _town, _shk_members, (CTI_SHK_BUILDING_SCAN_RANGE + random(CTI_SHK_BUILDING_SCAN_RANGE_RAN) - random(CTI_SHK_BUILDING_SCAN_RANGE_RAN)), 0, [], true, true, _side] Call SHK_BuildingPosExec; 
 };
 
 {

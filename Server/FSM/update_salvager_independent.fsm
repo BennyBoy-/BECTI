@@ -177,7 +177,7 @@ class FSM
        "_move_lasttime = 0;" \n
        "_action = """";" \n
        "_list = [];" \n
-       "{if (!alive _x && !(surfaceIsWater getPos _x) && _x distance _salvager < CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE && isNil {_x getVariable ""cti_gc_noremove""}) then {[_list, _x] call CTI_CO_FNC_ArrayPush}} forEach vehicles;" \n
+       "{if (!alive _x && !(surfaceIsWater getPos _x) && _x distance _salvager < CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE && isNil {_x getVariable ""cti_gc_noremove""}) then {_list pushBack _x}} forEach vehicles;" \n
        "" \n
        "if (count _list > 0) then { _last_targetcheck = time; _goto = [_salvager, _list] call CTI_CO_FNC_GetClosestEntity; _action = ""goto-target""; _salvager commandMove (position _goto) };" \n
        "" \n
@@ -350,7 +350,7 @@ class FSM
        "	if (time - _last_targetcheck > 25 && _action != """") then {" \n
        "		_last_targetcheck = time;" \n
        "		_list = [];" \n
-       "		{if (!alive _x && !(surfaceIsWater getPos _x) && _x distance _salvager < CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE && isNil {_x getVariable ""cti_gc_noremove""}) then {[_list, _x] call CTI_CO_FNC_ArrayPush}} forEach vehicles;" \n
+       "		{if (!alive _x && !(surfaceIsWater getPos _x) && _x distance _salvager < CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE && isNil {_x getVariable ""cti_gc_noremove""}) then {_list pushBack _x}} forEach vehicles;" \n
        "" \n
        "		if (count _list > 0) then { " \n
        "			_closest = [_salvager, _list] call CTI_CO_FNC_GetClosestEntity;" \n

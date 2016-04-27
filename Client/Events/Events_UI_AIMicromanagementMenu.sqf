@@ -133,7 +133,7 @@ switch (_action) do {
 						case (_order == CTI_ORDER_CLIENT_HOLDTOWNSBASE): {
 							_closest_town = [_mappos, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestFriendlyTown;
 							_list = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-							if !(isNull _closest_town) then {[_list, _closest_town] call CTI_CO_FNC_ArrayPush}; //--- Add the closest town
+							if !(isNull _closest_town) then {_list pushBack _closest_town}; //--- Add the closest town
 							_nearest = [_mappos, _list] call CTI_CO_FNC_GetClosestEntity;
 							if !(isNull _nearest) then {
 								if (_mappos distance _nearest < 500) then {
@@ -191,7 +191,7 @@ switch (_action) do {
 		_selection = _this select 1;
 		
 		if (count _selection > 0) then {
-			_selection = (_selection) call CTI_CO_FNC_ArrayReverse; //--- Reverse the usual selection so that we may remove top-most values first
+			reverse _selection; //--- Reverse the usual selection so that we may remove top-most values first
 			{
 				_value = ((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270002) lbValue _x;
 				_who = (uiNamespace getVariable "cti_dialog_ui_aimicromenu_units") select _value;

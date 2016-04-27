@@ -21,7 +21,6 @@
 	[SIDE, RUIN, STRUCTURE VARIABLE, POSITION, DIRECTION] spawn CTI_SE_FNC_HandleStructureConstruction
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_GetClosestEntity
 	Common Function: CTI_CO_FNC_GetSideID
 	Common Function: CTI_CO_FNC_GetSideLogic
@@ -108,19 +107,20 @@ if (_completion >= 100) then {
 	{
 		_pos = getPos _x;
 		_pos = [_pos select 0, _pos select 1];
-		[_structures_positions, _pos] call CTI_CO_FNC_ArrayPush;
+		_structures_positions pushBack _pos;
 	} forEach ((_side call CTI_CO_FNC_GetSideStructures) + (_logic getVariable "cti_structures_wip"));
 	
 	//--- Check for empty areas now
 	_need_update = false;
 	{
 		_closest = [_x, _structures_positions] call CTI_CO_FNC_GetClosestEntity;
-		if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _areas set [_forEachIndex, "!nil!"]};
+		// if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _areas set [_forEachIndex, "!nil!"]};
+		if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _areas deleteAt _forEachIndex};
 	} forEach +_areas;
 	
 	//--- Only update if we have to
 	if (_need_update) then {
-		_areas = _areas - ["!nil!"];
+		// _areas = _areas - ["!nil!"];
 		_logic setVariable ["cti_structures_areas", _areas, true];
 	};
 	

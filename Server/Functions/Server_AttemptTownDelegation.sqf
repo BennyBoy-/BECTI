@@ -21,7 +21,6 @@
 	[TOWN, SIDE, CLASSNAMES, GROUPS, POSITIONS] call CTI_SE_FNC_AttemptTownDelegation
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_ArrayShuffle
 	Common Function: CTI_CO_FNC_Log
 	Common Function: CTI_CO_FNC_NetSend
@@ -72,9 +71,9 @@ if !(isNil '_candidates') then {
 			_sub_groups = [];
 			_sub_positions = [];
 			{
-				[_sub_teams, _x select 0] call CTI_CO_FNC_ArrayPush;
-				[_sub_groups, _x select 1] call CTI_CO_FNC_ArrayPush;
-				[_sub_positions, _x select 2] call CTI_CO_FNC_ArrayPush;
+				_sub_teams pushBack (_x select 0);
+				_sub_groups pushBack (_x select 1);
+				_sub_positions pushBack (_x select 2);
 			} forEach _x;
 			
 			[["CLIENT", _hc_entity], "Client_OnTownDelegationReceived", [_town, _side, _sub_teams, _sub_groups, _sub_positions]] call CTI_CO_FNC_NetSend;

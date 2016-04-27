@@ -21,7 +21,6 @@
 	[GROUP, SIDE, POOL, FACTORY] call CTI_SE_FNC_AI_PurchaseSquad
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_ArrayShuffle
 	Server Function: CTI_SE_FNC_OnClientPurchase
 	
@@ -40,7 +39,7 @@ _need = round(3 + random 2); //--- The amount of units to purchase
 _compose = [];
 
 _flaten = [];
-{ for '_i' from 1 to (_x select 1) do {[_flaten, _x] call CTI_CO_FNC_ArrayPush} } forEach _pool;
+{ for '_i' from 1 to (_x select 1) do {_flaten pushBack _x} } forEach _pool;
 
 _pool = _flaten call CTI_CO_FNC_ArrayShuffle;
 
@@ -54,7 +53,7 @@ while {_need > 0} do {
 	};
 	
 	if (_can_use) then {
-		[_compose, _picked select 0] call CTI_CO_FNC_ArrayPush;
+		_compose pushBack (_picked select 0);
 		_need = _need - 1;
 	};
 };

@@ -101,7 +101,7 @@ switch (_action) do {
 					_row = ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290014) lbAdd format ["[%1] - %2", _x call CTI_CL_FNC_GetAIDigit, _get select 0];
 					_markers = [_x, _range select 0, _range select 1] call CTI_UI_Artillery_CreateArtilleryMarker;
 					_thread = [_x, _markers] spawn CTI_UI_Artillery_UpdateArtilleryMarker;
-					[_artillery_array, [_x, _markers, _thread]] call CTI_CO_FNC_ArrayPush;
+					_artillery_array pushBack [_x, _markers, _thread];
 				} forEach _artillery;
 				
 				uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery", _artillery_array];

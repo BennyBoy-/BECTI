@@ -184,8 +184,9 @@ switch (_action) do {
 		_container = uiNamespace getVariable "cti_dialog_ui_gear_items_tab";
 		_items = ((_gear select 1) select _container) select 1;
 		
-		_items set [_items find _item, "!nil!"];
-		_items = _items - ["!nil!"];
+		// _items set [_items find _item, "!nil!"];
+		// _items = _items - ["!nil!"];
+		_items deleteAt (_items find _item);
 		(_gear select 1) select (uiNamespace getVariable "cti_dialog_ui_gear_items_tab") set [1, _items];
 		
 		//--- Update the mass.
@@ -303,14 +304,14 @@ switch (_action) do {
 		};
 		
 		_seed = round(time + random 10000 - random 500 + diag_frameno);
-		[missionNamespace getVariable "cti_gear_list_templates", [_label, _picture, _cost, _gear, _upgrade, _seed]] call CTI_CO_FNC_ArrayPush;
+		(missionNamespace getVariable "cti_gear_list_templates") pushBack [_label, _picture, _cost, _gear, _upgrade, _seed];
 		
 		//todo: get the upgrade level
 		//--- Persistent!
 		//todo: template is nil? add a seed.
 		// if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
 		_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
-		[_templates, [_label, _picture, _cost, _gear, _upgrade, _seed]] call CTI_CO_FNC_ArrayPush; 
+		_templates pushBack [_label, _picture, _cost, _gear, _upgrade, _seed]; 
 		profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
 		saveProfileNamespace;
 		
@@ -328,8 +329,9 @@ switch (_action) do {
 			_seed = lnbValue[70108, [_index,0]];
 			if (_index > -1 && _index < ((lnbSize((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70108)) select 0)) then {
 				_templates = missionNamespace getVariable "cti_gear_list_templates";
-				_templates set [_index, "!nil!"];
-				_templates = _templates - ["!nil!"];
+				// _templates set [_index, "!nil!"];
+				// _templates = _templates - ["!nil!"];
+				_templates deleteAt _index;
 				missionNamespace setVariable ["cti_gear_list_templates", _templates];
 				
 				//--- Persistent!

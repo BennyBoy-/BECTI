@@ -9,7 +9,7 @@ CTI_UI_Artillery_GetTeamArtillery = {
 	_vehicles = [group player, true] call CTI_CO_FNC_GetTeamVehicles;
 	
 	//--- Attempt to get the artillery pieces that may be present
-	{if (typeOf _x in _types) then {[_available, _x] call CTI_CO_FNC_ArrayPush}} forEach _vehicles;
+	{if (typeOf _x in _types) then {_available pushBack _x}} forEach _vehicles;
 	
 	_available
 };
@@ -28,10 +28,10 @@ CTI_UI_Artillery_GetText = {
 			_get = missionNamespace getVariable format ["CTI_ARTILLERY_%1", _kind];
 			
 			if !(isNil '_get') then {
-				[_texts, [_get select 0, _kind]] call CTI_CO_FNC_ArrayPush;
+				_texts pushBack [_get select 0, _kind];
 			};
 			
-			[_processed, _kind] call CTI_CO_FNC_ArrayPush;
+			_processed pushBack _kind;
 		};
 	} forEach _artillery;
 	
@@ -45,7 +45,7 @@ CTI_UI_Artillery_GetGivenTeamArtillery = {
 	_available = [];
 	_artillery = call CTI_UI_Artillery_GetTeamArtillery;
 	
-	{if (typeOf _x == _type) then {[_available, _x] call CTI_CO_FNC_ArrayPush}} forEach _artillery;
+	{if (typeOf _x == _type) then {_available pushBack _x}} forEach _artillery;
 	_available
 };
 
@@ -125,7 +125,7 @@ CTI_UI_Artillery_GetSelectedArtilleryArray = {
 	_artillery_array = _this;
 	
 	_return = [];
-	{[_return, _artillery_array select _x] call CTI_CO_FNC_ArrayPush} forEach (lbSelection ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290014));
+	{_return pushBack (_artillery_array select _x)} forEach (lbSelection ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290014));
 	
 	_return
 };

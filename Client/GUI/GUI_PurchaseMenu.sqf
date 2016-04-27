@@ -40,11 +40,12 @@ while { true } do {
 		
 		if !(_is_present) then {
 			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110013) lbDelete _forEachIndex;
-			_lb_queued_content set [_forEachIndex, "!nil!"];
+			// _lb_queued_content set [_forEachIndex, "!nil!"];
+			_lb_queued_content deleteAt _forEachIndex;
 		};
 	} forEach _lb_queued_content;
 	
-	_lb_queued_content = _lb_queued_content - ["!nil!"];
+	// _lb_queued_content = _lb_queued_content - ["!nil!"];
 	
 	//--- Check for new content
 	{
@@ -63,7 +64,7 @@ while { true } do {
 		} forEach _lb_queued_content;
 		
 		if !(_is_present) then {
-			[_lb_queued_content, _request] call CTI_CO_FNC_ArrayPush;
+			_lb_queued_content pushBack _request;
 			_name = _var select CTI_UNIT_LABEL;
 			
 			_label = "";
