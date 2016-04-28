@@ -42,7 +42,7 @@ _town = _this;
 _value = _town getVariable "cti_town_sv_max";
 
 //--- Calculate the Group size by scaling the SV and randomizing the input, min max scaling
-_max_squad = 6;
+_max_squad = 7;
 _max_squad_random = 2;
 _max_sv = 120;
 
@@ -268,6 +268,8 @@ while {_totalGroups > 0} do {
 			_teams pushBack (missionNamespace getVariable (_team select 0));
 			_totalGroups = _totalGroups - 1;
 		};
+		
+		if (_totalGroups < 1) exitWith {};
 	} forEach _pool;
 };
 
