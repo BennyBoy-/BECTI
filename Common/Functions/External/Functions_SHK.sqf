@@ -95,7 +95,7 @@ SHK_BuildingPosExec = {
 		//--- Since CTI is dynamic, we don't want to spawn stuff too close to existing hostile units
 		if (_side != civilian) then {
 			_cti_entities = _x nearEntities[["Man"], CTI_SHK_BUILDING_SAFE_RANGE];
-			if (({_x countSide _cti_entities > 0} count ([west, east, resistance] - [_side])) > 0) then {_cti_buildingIsValid = false};
+			if (({_x countSide _cti_entities > 0} count [west, east, resistance]) > 0) then {_cti_buildingIsValid = false};
 		};
 		
 		if (_cti_buildingIsValid) then {
