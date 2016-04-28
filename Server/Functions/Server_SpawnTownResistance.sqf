@@ -47,8 +47,14 @@ _max_squad_random = 2;
 _max_sv = 120;
 
 _randomGroups = (_value / _max_sv) * _max_squad_random;
-_totalGroups = round(((_value / _max_sv) * _max_squad) + random(_randomGroups) - random(_randomGroups));
+_fixedGroups = (_value / _max_sv) * _max_squad;
+_totalGroups = round(_fixedGroups + random _randomGroups - random _randomGroups);
+// _totalGroups = round(((_value / _max_sv) * _max_squad) + random(_randomGroups) - random(_randomGroups));
 if (_totalGroups < 1) then {_totalGroups = 1};
+
+if (CTI_Log_Level >= CTI_Log_Information) then {
+	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format["Begining Resistance Teams composition for town [%1] with a max SV of [%2] using variables <Max Squad = [%3]>,<Max Squad Randomness = [%4]>,<Max SV = [%5]> Resulting in Fixed Group Size [%6] and a Random Group Size of [%7] for a Total Rounded Group Size of [%8]", _town getVariable "cti_town_name", _value, _max_squad, _max_squad_random, _max_sv, _fixedGroups, _randomGroups, _totalGroups]] call CTI_CO_FNC_Log;
+};
 
 _pool_units = [];
 
@@ -293,7 +299,7 @@ _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 } forEach _teams;
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
-	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format["Composed [%1] Resistance Teams for town [%2]", count _teams, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
+	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format["Composed [%1] Resistance Teams for town [%2] having a max SV of [%3]", count _teams, _town getVariable "cti_town_name", _value]] call CTI_CO_FNC_Log;
 };
 
 [_teams, _groups, _positions]
