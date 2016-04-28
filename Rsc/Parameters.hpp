@@ -71,6 +71,12 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
+	class CTI_RESPAWN_CAMPS {
+		title = "RESPAWN: Camps";
+		values[] = {0,1,2};
+		texts[] = {"Disabled","Town Classic","Nearby Camps"};
+		default = 1;
+	};
 	class CTI_RESPAWN_FOB_RANGE {
 		title = "RESPAWN: FOB Range";
 		values[] = {500,750,1000,1250,1500,1750,2000};
