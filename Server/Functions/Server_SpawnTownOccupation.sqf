@@ -311,6 +311,8 @@ while {_totalGroups > 0} do {
 			_teams pushBack (missionNamespace getVariable (_team select 0));
 			_totalGroups = _totalGroups - 1;
 		};
+		
+		if (_totalGroups < 1) exitWith {};
 	} forEach _pool;
 };
 
