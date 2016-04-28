@@ -33,7 +33,7 @@ _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 _camps = [];
 
 //--- Determine the camp respawn mode
-switch (CTI_RESPAWN_CAMPS) do {
+switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS") do {
 	case 1: { //--- Classic Mode, get the closest town
 		_town = (_location) call CTI_CO_FNC_GetClosestTown;
 		if !(isNull _town) then {

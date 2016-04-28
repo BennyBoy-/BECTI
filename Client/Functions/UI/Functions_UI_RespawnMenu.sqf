@@ -16,7 +16,7 @@ CTI_UI_Respawn_GetAvailableLocations = {
 	};
 	
 	//--- Add camps if camp respawn is enabled
-	if (CTI_RESPAWN_CAMPS > 0) then {
+	if ((missionNamespace getVariable "CTI_RESPAWN_CAMPS") > 0) then {
 		_list = _list + ([CTI_DeathPosition, CTI_P_SideID] Call CTI_CO_FNC_GetRespawnCamps);
 	};
 	
