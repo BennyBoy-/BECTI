@@ -1,15 +1,21 @@
 /*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_patrol.fsm">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Init",0,250,-25.000000,-475.000000,75.000000,-425.000000,0.000000,"Init"};
-item1[] = {"Cycle",4,218,125.000000,-475.000000,225.000000,-425.000000,0.000000,"Cycle"};
-item2[] = {"Check",2,4346,275.000000,-475.000000,375.000000,-425.000000,0.000000,"Check"};
-item3[] = {"Renew_Path",4,218,275.000000,-575.000000,375.000000,-525.000000,2.000000,"Renew" \n "Path"};
-item4[] = {"Process_Action",4,218,275.000000,-375.000000,375.000000,-325.000000,1.000000,"Process" \n "Action"};
+item0[] = {"Init",0,250,-300.000000,-475.000000,-200.000000,-425.000000,0.000000,"Init"};
+item1[] = {"Cycle",4,218,-150.000000,-475.000000,-50.000000,-425.000000,0.000000,"Cycle"};
+item2[] = {"Check",2,250,275.000000,-475.000000,375.000000,-425.000000,0.000000,"Check"};
+item3[] = {"Path_Renewal",4,218,275.000000,-575.000000,375.000000,-525.000000,2.000000,"Path" \n "Renewal"};
+item4[] = {"Alive",4,218,275.000000,-375.000000,375.000000,-325.000000,1.000000,"Alive"};
 item5[] = {"Done",8,218,425.000000,-475.000000,525.000000,-425.000000,0.000000,"Done"};
 item6[] = {"End",1,250,575.000000,-475.000000,675.000000,-425.000000,0.000000,"End"};
-item7[] = {"Renewal",2,250,125.000000,-575.000000,225.000000,-525.000000,0.000000,"Renewal"};
-item8[] = {"Processing",2,250,125.000000,-375.000000,225.000000,-325.000000,0.000000,"Processing"};
+item7[] = {"Renewal",2,250,-150.000000,-575.000000,-50.000000,-525.000000,0.000000,"Renewal"};
+item8[] = {"Determine_Action",2,250,275.000000,-275.000000,375.000000,-225.000000,0.000000,"Determine" \n "Action"};
+item9[] = {"Patrol",4,218,125.000000,-275.000000,225.000000,-225.000000,1.000000,"Patrol"};
+item10[] = {"Town_Defense",4,218,125.000000,-200.000000,225.000000,-150.000000,0.000000,"Town" \n "Defense"};
+item11[] = {"Town_Defense",2,250,-25.000000,-200.000000,75.000000,-150.000000,0.000000,"Town" \n "Defense"};
+item12[] = {"Patrol",2,4346,-25.000000,-275.000000,75.000000,-225.000000,0.000000,"Patrol"};
+item13[] = {"",7,210,-104.000000,-254.000000,-96.000008,-246.000000,0.000000,""};
+item14[] = {"",7,210,-104.000000,-179.000000,-96.000000,-171.000000,0.000000,""};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,3};
@@ -19,9 +25,16 @@ link5[] = {3,7};
 link6[] = {4,8};
 link7[] = {5,6};
 link8[] = {7,1};
-link9[] = {8,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,43,6316128,1,-49.166565,679.138794,-34.083618,-705.564575,769,709,1};
-window[] = {0,-1,-1,-1,-1,933,70,1530,79,1,787};
+link9[] = {8,9};
+link10[] = {8,10};
+link11[] = {9,12};
+link12[] = {10,11};
+link13[] = {11,14};
+link14[] = {12,13};
+link15[] = {13,1};
+link16[] = {14,13};
+globals[] = {25.000000,1,0,0,0,640,480,1,53,6316128,1,-190.885681,664.189209,30.392044,-757.967468,769,709,1};
+window[] = {0,-1,-1,-1,-1,865,1692,3152,11,1,787};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -44,6 +57,8 @@ class FSM
        "" \n
        "_action = """";" \n
        "_last_action = """";" \n
+       "_patrol_hop = [];" \n
+       "_patrol_hop_idlefor = -1;" \n
        "" \n
        "_last_SV = _town getVariable 'cti_town_sv_default';"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -68,23 +83,12 @@ class FSM
       name = "Check";
       init = /*%FSM<STATEINIT""">*/"_ncycle = time + 4 + (random 5);" \n
        "" \n
-       "_aliveTeam = if ({alive _x} count units _team < 1 || isNull _team) then {false} else {true};" \n
-       "" \n
-       "if ((((_town getVariable 'cti_town_sv') < _last_SV || (_town getVariable 'cti_town_sv') < (_town getVariable 'cti_town_sv_default')) && _sideID == (_town getVariable 'cti_town_sideID')) || _sideID != (_town getVariable 'cti_town_sideID')) then {" \n
-       "	_action = ""defense"";" \n
-       "	if (_action != _last_action) then {_move_defend_last = -120};" \n
-       "} else {" \n
-       "	_action = ""patrol"";" \n
-       "	if (_action != _last_action) then {_move_patrol_reload = true};" \n
-       "};" \n
-       "" \n
-       "_last_action = _action;" \n
-       "_last_SV = _town getVariable 'cti_town_sv_default';"/*%FSM</STATEINIT""">*/;
+       "_aliveTeam = if ({alive _x} count units _team < 1 || isNull _team) then {false} else {true};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "Renew_Path">*/
-        class Renew_Path
+        /*%FSM<LINK "Path_Renewal">*/
+        class Path_Renewal
         {
           priority = 2.000000;
           to="Renewal";
@@ -93,11 +97,11 @@ class FSM
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-        /*%FSM<LINK "Process_Action">*/
-        class Process_Action
+        /*%FSM<LINK "Alive">*/
+        class Alive
         {
           priority = 1.000000;
-          to="Processing";
+          to="Determine_Action";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"_aliveTeam"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -135,15 +139,27 @@ class FSM
        "_last_renewal = time;" \n
        "" \n
        "_patrol_area = [];" \n
+       "_patrol_hop = [];" \n
+       "_patrol_hop_idlefor = -1;" \n
        "" \n
+       "//--- Fetch the possible camps" \n
+       "_camps = (_town) Call CTI_CO_FNC_GetTownCamps;" \n
+       "" \n
+       "//--- A patrol hop is composed as follow: [location, object, subroutine]" \n
        "for '_i' from 1 to CTI_TOWNS_PATROL_HOPS do {" \n
-       "	_patrol_area pushBack ([_town, 25, CTI_TOWNS_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition);" \n
+       "	if (count _camps > 0) then {" \n
+       "		_patrol_area pushBack [[_camps select 0, 0, CTI_TOWNS_CAMPS_CAPTURE_RANGE] call CTI_CO_FNC_GetRandomPosition, _camps select 0, ""camp""];" \n
+       "		_camps deleteAt 0;" \n
+       "	} else {" \n
+       "		_patrol_area pushBack [[_town, 25, CTI_TOWNS_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition, _town, ""town""];" \n
+       "	};" \n
        "};" \n
        "" \n
        "if (random 100 > 50) then {_team setFormation ""DIAMOND""} else {_team setFormation ""STAG COLUMN""};" \n
        "if (random 100 > 30) then {_team setCombatMode ""YELLOW""} else {_team setCombatMode ""RED""};" \n
        "if (random 100 > 20) then {_team setBehaviour ""AWARE""} else {_team setBehaviour ""COMBAT""};" \n
-       "//if (random 100 > 50) then {_team setSpeedMode ""NORMAL""} else {_team setSpeedMode ""LIMITED""};"/*%FSM</STATEINIT""">*/;
+       "//if (random 100 > 50) then {_team setSpeedMode ""NORMAL""} else {_team setSpeedMode ""LIMITED""};" \n
+       ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -160,19 +176,104 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "Processing">*/
-    class Processing
+    /*%FSM<STATE "Determine_Action">*/
+    class Determine_Action
     {
-      name = "Processing";
-      init = /*%FSM<STATEINIT""">*/"switch (_action) do {" \n
-       "	case ""patrol"": {" \n
-       "		if (_move_patrol_reload || unitReady leader _team && random 100 > (45 + (random 15))) then {" \n
-       "			if (_move_patrol_reload) then {_move_patrol_reload = false};" \n
-       "			_move_to = _patrol_area select floor(random count _patrol_area); _team move _move_to; //--- The team may idle a bit on spot" \n
+      name = "Determine_Action";
+      init = /*%FSM<STATEINIT""">*/"if ((((_town getVariable 'cti_town_sv') < _last_SV || (_town getVariable 'cti_town_sv') < (_town getVariable 'cti_town_sv_default')) && _sideID == (_town getVariable 'cti_town_sideID')) || _sideID != (_town getVariable 'cti_town_sideID')) then {" \n
+       "	_action = ""defense"";" \n
+       "	if (_action != _last_action) then {_move_defend_last = -120};" \n
+       "} else {" \n
+       "	_action = ""patrol"";" \n
+       "	if (_action != _last_action) then {_move_patrol_reload = true};" \n
+       "};" \n
+       "" \n
+       "_last_action = _action;" \n
+       "_last_SV = _town getVariable 'cti_town_sv_default';"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Patrol">*/
+        class Patrol
+        {
+          priority = 1.000000;
+          to="Patrol";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_action == ""patrol"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Town_Defense">*/
+        class Town_Defense
+        {
+          priority = 0.000000;
+          to="Town_Defense";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_action == ""defense"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Town_Defense">*/
+    class Town_Defense
+    {
+      name = "Town_Defense";
+      init = /*%FSM<STATEINIT""">*/"if (unitReady leader _team && time - _move_defend_last > 65) then {" \n
+       "	_move_defend_last = time; " \n
+       "	_team move ([_town, 7, CTI_TOWNS_CAPTURE_RANGE] call CTI_CO_FNC_GetRandomPosition);" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Check";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Patrol">*/
+    class Patrol
+    {
+      name = "Patrol";
+      init = /*%FSM<STATEINIT""">*/"if (_move_patrol_reload || unitReady leader _team ) then {" \n
+       "	if (_move_patrol_reload) then {_move_patrol_reload = false; _patrol_hop = []; _patrol_hop_idlefor = -1};" \n
+       "	//--- Is there a currently assigned hop node?" \n
+       "	_next_node = true;" \n
+       "	if (count _patrol_hop > 0) then {" \n
+       "		//--- Subroutine checkup" \n
+       "		switch (_patrol_hop select 2) do {" \n
+       "			case ""camp"": { //--- Camp patrol node" \n
+       "				if ((_patrol_hop select 1) getVariable ""cti_camp_sideID"" != _sideID) then { //--- Camp is held by the enemy, wait a bit" \n
+       "					if (_patrol_hop_idlefor < 0) then {_patrol_hop_idlefor = time + 40 + random 100};" \n
+       "				} else { //--- Camp is held by our side, wait a bit but not too long" \n
+       "					if (_patrol_hop_idlefor < 0) then {_patrol_hop_idlefor = time + 10 + random 60};" \n
+       "				};" \n
+       "				" \n
+       "				if (time < _patrol_hop_idlefor) then {_next_node = false}; //--- Lock the hop till the condition's met" \n
+       "			};" \n
+       "			case ""town"": { //--- Town patrol node" \n
+       "				//--- Simple patrol, wait randomly after the node's completion" \n
+       "				if (_patrol_hop_idlefor < 0) then {_patrol_hop_idlefor = time + random 60};" \n
+       "				" \n
+       "				if (time < _patrol_hop_idlefor) then {_next_node = false}; //--- Lock the hop till the condition's met" \n
+       "			};" \n
        "		};" \n
        "	};" \n
-       "	case ""defense"": {" \n
-       "		if (unitReady leader _team && time - _move_defend_last > 65) then {_move_defend_last = time; _team move ([_town, 10, 50] call CTI_CO_FNC_GetRandomPosition)};" \n
+       "	" \n
+       "	//--- Process the next node" \n
+       "	if (_next_node) then {" \n
+       "		_patrol_hop_idlefor = -1;" \n
+       "		_patrol_hop = _patrol_area select floor(random count _patrol_area); " \n
+       "		_team move (_patrol_hop select 0);" \n
        "	};" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;

@@ -313,7 +313,7 @@ CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = 0.25; //--- Determine how much value an
 CTI_TOWNS_MARKERS_MAP_RANGE = 600; //--- Distance required to show the town SV on the map (from a player/player's unit)
 
 //--- Towns: Patrol
-CTI_TOWNS_PATROL_HOPS = 10; //--- Towns patrol hops (non-waypoint)
+CTI_TOWNS_PATROL_HOPS = 7; //--- Towns patrol hops (non-waypoint)
 CTI_TOWNS_PATROL_RANGE = 375; //--- Patrol range in a town
 
 //--- Towns: Occupation
