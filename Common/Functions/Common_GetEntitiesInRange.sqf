@@ -31,6 +31,6 @@ _objects = _this select 1;
 _range = _this select 2;
 
 _inrange = [];
-{if (_x distance _object < _range) then {_inrange pushBack _x}} forEach _objects;
+{if (_x distance _object <= _range) then {_inrange pushBack _x}} forEach _objects;
 
 _inrange
