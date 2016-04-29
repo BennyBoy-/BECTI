@@ -4,7 +4,7 @@ while { true } do {
 	if (isNil {uiNamespace getVariable "cti_dialog_ui_teamsmenu"}) exitWith {}; //--- Menu is closed.
 	
 	{
-		_funds = [_x, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
+		_funds = (_x) call CTI_CO_FNC_GetFunds;
 		_lives = {alive _x} count units _x;
 		_independent = if (_x getVariable "cti_independent") then {"On"} else {"Off"};
 		_squad = missionNamespace getVariable format ["CTI_SQUAD_%1_%2", CTI_P_SideJoined, _x getVariable "cti_role"];

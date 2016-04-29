@@ -17,7 +17,7 @@ CTI_UI_Respawn_GetAvailableLocations = {
 	
 	//--- Add camps if camp respawn is enabled
 	if ((missionNamespace getVariable "CTI_RESPAWN_CAMPS") > 0) then {
-		_list = _list + ([CTI_DeathPosition, CTI_P_SideID] Call CTI_CO_FNC_GetRespawnCamps);
+		_list = _list + ([CTI_DeathPosition, CTI_P_SideID, group player] Call CTI_CO_FNC_GetRespawnCamps);
 	};
 	
 	//--- Add mobile respawns if available (Also we retrieve the crew which may belong to the player to prevent "in-AI-respawn" over those)
@@ -73,6 +73,14 @@ CTI_UI_Respawn_GetRespawnLabel = {
 	_value = "Structure";
 	switch (true) do {
 		case (_location == (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ)): { _value = "Headquarters"	};
+		case (!isNil {_location getVariable "cti_camp_town"}): { 
+			_town = _location getVariable "cti_camp_town";
+			switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") do {
+				case 1: {_value = format["Camp (%1) - $%2", _town getVariable "cti_town_name", CTI_RESPAWN_CAMPS_CONDITION_PRICED]};
+				case 2: {_value = format["Camp (%1) - %2 Spawn Remaining", _town getVariable "cti_town_name", _town getVariable "cti_camp_respawn_count"]};
+				default {_value = format["Camp (%1)", _town getVariable "cti_town_name"]};
+			};
+		};
 		case (!isNil {_location getVariable "cti_structure_type"}): { 
 			_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _location getVariable "cti_structure_type"];
 			_value = (_var select 0) select 1;
@@ -99,7 +107,7 @@ CTI_UI_Respawn_GetLocationInformation = {
 	_distance = _closest distance _location;
 	_distance_near = _distance - (_distance % 100);
 	
-	format ["%1 %2 %3",_closest getVariable "cti_town_name", _direction_eff, _distance_near]
+	format ["%1 %2 %3", _closest getVariable "cti_town_name", _direction_eff, _distance_near]
 };
 
 CTI_UI_Respawn_AppendTracker = {
@@ -227,6 +235,18 @@ CTI_UI_Respawn_OnRespawnReady = {
 	
 	if !(_respawn_ai) then { //--- Stock respawn
 		_spawn_at = [_where, 8, 30] call CTI_CO_FNC_GetRandomPosition;
+		
+		//--- Camp respawn, check for conditions
+		if !(isNil {_where getVariable "cti_camp_town"}) then {
+			if ((missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") > 0) then {
+				_town = _where getVariable "cti_camp_town";
+				switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") do {
+					case 1: {(-CTI_RESPAWN_CAMPS_CONDITION_PRICED) call CTI_CL_FNC_ChangePlayerFunds}; //--- Priced, deduce the cost from the player's funds
+					case 2: {_town setVariable ["cti_camp_respawn_count", (_town getVariable "cti_camp_respawn_count") - 1]};
+				};
+			};
+		};
+		
 		player setPos _spawn_at;
 	};
 	

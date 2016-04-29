@@ -66,7 +66,7 @@ _team = grpNull;
 if (isNull _team) exitWith {if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Disconnected Player [%1] [%2] group couldn't be found among the current playable units", _name, _uid]] call CTI_CO_FNC_Log}};
 
 _side = _get select 3; //--- Get the last side joined
-_funds = [_team, _side] call CTI_CO_FNC_GetFunds;
+_funds = (_team) call CTI_CO_FNC_GetFunds;
 _commander = (_side) call CTI_CO_FNC_GetSideCommander;
 _is_commander = if (_commander == _team) then {true} else {false};
 _leader = leader _team;

@@ -15,7 +15,7 @@ switch (_action) do {
 		};
 		
 		{
-			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbAddRow [format["$%1", [_x, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds], format["%1 (%2)", _x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], if (isPlayer leader _x) then {name leader _x} else {"AI"}]];
+			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbAddRow [format["$%1", (_x) call CTI_CO_FNC_GetFunds], format["%1 (%2)", _x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], if (isPlayer leader _x) then {name leader _x} else {"AI"}]];
 		} forEach _groups;
 		((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbSetCurSelRow 0;
 		
@@ -46,7 +46,7 @@ switch (_action) do {
 		
 		if (_changeto != -1) then {
 			_group = (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_groups") select _changeto;
-			_funds = [_group, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
+			_funds = (_group) call CTI_CO_FNC_GetFunds;
 			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140003) ctrlSetStructuredText (parseText format["Player Resources: <t color='%1'>$%2</t>", CTI_P_Coloration_Money, _funds]);
 			uiNamespace setVariable ["cti_dialog_ui_transferresourcesmenu_group", _group];
 		};
@@ -62,7 +62,7 @@ switch (_action) do {
 		if (_amount > 0 && _amount <= call CTI_CL_FNC_GetPlayerFunds) then {
 			_group = (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_groups") select (lnbCurSelRow 140001);
 			if (_group != group player) then {
-				[_group, CTI_P_SideJoined, _amount] call CTI_CO_FNC_ChangeFunds;
+				[_group, _amount] call CTI_CO_FNC_ChangeFunds;
 				-(_amount) call CTI_CL_FNC_ChangePlayerFunds;
 				[["CLIENT", leader _group], "Client_OnMessageReceived", ["funds-transfer", [_amount ,_group]]] call CTI_CO_FNC_NetSend;
 				hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Transfered <t color='%1'>$%2</t> to group <t color='#55bcfc'>%3</t>.", CTI_P_Coloration_Money, _amount, _group getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]];

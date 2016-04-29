@@ -24,4 +24,4 @@
     (-500) call CTI_CL_FNC_ChangePlayerFunds -> Removes 500 funds from the player
 */
 
-[group player, CTI_P_SideJoined, _this] call CTI_CO_FNC_ChangeFunds;
+[group player, _this] call CTI_CO_FNC_ChangeFunds;

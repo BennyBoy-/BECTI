@@ -62,12 +62,15 @@ if (_side_new == CTI_P_SideJoined) then { //--- The player's side has captured i
 	};
 	
 	_town setVariable ["cti_town_lastcap", time];
-	(format["cti_town_marker_%1", _town]) setMarkerTextLocal Format["  SV: %1/%2", _town getVariable "cti_town_sv", _town getVariable "cti_town_sv_max"];
+	(format["cti_town_marker_%1", _town]) setMarkerTextLocal Format["  %1 | SV: %2/%3", _town getVariable "cti_town_name", _town getVariable "cti_town_sv", _town getVariable "cti_town_sv_max"];
 } else { //--- The player's side has lost it
 	//todo move to displaymessage
 	CTI_P_ChatID commandChat format["%1 has been lost!", _town getVariable "cti_town_name"];
-	(format["cti_town_marker_%1", _town]) setMarkerTextLocal "";
+	(format["cti_town_marker_%1", _town]) setMarkerTextLocal format["  %1", _town getVariable "cti_town_name"];
 };
+
+//--- Whenever a town is captured or lost, if the camp spawn mode is on limited, we reset the respawn counter.
+if ((missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") == 2) then {_town setVariable ["cti_camp_respawn_count", CTI_RESPAWN_CAMPS_CONDITION_LIMITED]};
 
 //--- Paint it
 _color = (_side_new) call CTI_CO_FNC_GetSideColoration;
