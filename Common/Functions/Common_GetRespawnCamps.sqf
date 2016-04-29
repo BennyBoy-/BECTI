@@ -10,22 +10,23 @@
   # PARAMETERS #
     0	[Array]: the XYZ coordinates
     1	[Array]: the unit's side
+    2	[Group]: the unit's group
 	
   # RETURNED VALUE #
 	[Array]: The living units
 	
   # SYNTAX #
-	(GROUP/ARRAY) call CTI_CO_FNC_GetLiveUnits
+	[CENTER, SIDE, GROUP] call CTI_CO_FNC_GetRespawnCamps
 	
   # EXAMPLE #
-    _lives = (units player) call CTI_CO_FNC_GetLiveUnits
-    _lives = (group player) call CTI_CO_FNC_GetLiveUnits
+    _camps = [deathpos, sideplayer, group player] call CTI_CO_FNC_GetRespawnCamps
 */
 
-private ["_location", "_side", "_sideID"];
+private ["_camps", "_group", "_location", "_side", "_sideID"];
 
 _location = _this select 0;
 _sideID = _this select 1;
+_group = _this select 2;
 
 if (typeName _sideID == "SIDE") then { _sideID = (_sideID) call CTI_CO_FNC_GetSideID };
 _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
@@ -33,7 +34,7 @@ _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 _camps = [];
 
 //--- Determine the camp respawn mode
-switch (CTI_RESPAWN_CAMPS) do {
+switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS") do {
 	case 1: { //--- Classic Mode, get the closest town
 		_town = (_location) call CTI_CO_FNC_GetClosestTown;
 		if !(isNull _town) then {
@@ -69,6 +70,29 @@ switch (CTI_RESPAWN_CAMPS) do {
 			} forEach _list;
 		} forEach _towns_near;
 	};
+};
+
+//--- Check the camp condition if needed, default is unlimited
+if ((missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") > 0) then {
+	_list = [];
+	{
+		switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") do {
+			case 1: { //--- Priced
+				_funds = (_group) Call CTI_CO_FNC_GetFunds;
+				if (_funds >= CTI_RESPAWN_CAMPS_CONDITION_PRICED) then {_list pushBack _x};
+			};
+			case 2: { //--- Limited
+				_town = _x getVariable "cti_camp_town";
+				if (isNil {_town getVariable "cti_camp_respawn_count"}) then {_town setVariable ["cti_camp_respawn_count", CTI_RESPAWN_CAMPS_CONDITION_LIMITED]}; 
+				if ((_town getVariable "cti_camp_respawn_count") > 0) then {_list pushBack _x};
+			};
+			default {
+				_list pushBack _x;
+			};
+		};
+	} forEach _camps;
+	
+	_camps = _list;
 };
 
 _camps

@@ -95,9 +95,9 @@ if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	};
 };
 
-_funds = [_req_buyer, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
+_funds = (_req_buyer) call CTI_CO_FNC_GetFunds;
 if (_funds < _cost) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; };
-// [_req_buyer, CTI_P_SideJoined, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
+// [_req_buyer, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
 
 while { time <= _req_time_out && alive _factory } do { sleep .25 };
 
@@ -107,9 +107,9 @@ if !(alive _factory) exitWith { diag_log "the factory is dead" };
 if !(_process) then { if ((count units (group player))+1 <= CTI_PLAYERS_GROUPSIZE) then { _process = true }};
 if !(_process) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend }; //--- Can't do it but we answer to the server.
 
-_funds = [_req_buyer, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
+_funds = (_req_buyer) call CTI_CO_FNC_GetFunds;
 if (_funds < _cost) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; };
-[_req_buyer, CTI_P_SideJoined, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
+[_req_buyer, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
 
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\Functions\Client_OnPurchaseOrderReceived.sqf", format["Purchase order concerning classname [%1] with seed [%2] from [%3] on factory [%4, (%5)] is done. Processing the creation...", _req_classname, _req_seed, _req_buyer, _factory, _factory getVariable "cti_structure_type"]] call CTI_CO_FNC_Log };
 

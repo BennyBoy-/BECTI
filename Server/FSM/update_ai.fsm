@@ -233,7 +233,7 @@ class FSM
       name = "Phase_III_Group";
       init = /*%FSM<STATEINIT""">*/"_live_units = (_group) call CTI_CO_FNC_GetLiveUnits;" \n
        "_structures = (_side) call CTI_CO_FNC_GetSideStructures;" \n
-       "_funds = [_group, _side] call CTI_CO_FNC_GetFunds;" \n
+       "_funds = (_group) call CTI_CO_FNC_GetFunds;" \n
        "_role = _group getVariable ""cti_role"";" \n
        "" \n
        "_var = missionNamespace getVariable format [""CTI_SQUAD_%1_%2"", _side, _role];" \n

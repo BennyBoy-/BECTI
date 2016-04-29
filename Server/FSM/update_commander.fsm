@@ -558,7 +558,7 @@ class FSM
        "					" \n
        "					if (_funds >= _amount) then {" \n
        "						[_side, -_amount] call CTI_CO_FNC_ChangeFundsCommander; //--- Minus for the com" \n
-       "						[_x, _amount] call CTI_CO_FNC_ChangeFundsTeam; //--- Plus for the group" \n
+       "						[_x, _amount] call CTI_CO_FNC_ChangeFunds; //--- Plus for the group" \n
        "					};" \n
        "				};" \n
        "			};" \n

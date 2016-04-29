@@ -79,7 +79,7 @@ if (_newSide != resistance && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLE
 		_score = round(_value / CTI_SCORE_TOWN_VALUE_PERPOINT);
 		{ 
 			if (_score > 0) then {[leader _x, _score] spawn CTI_SE_FNC_AddScore};
-			[_x, _newSide, _value] call CTI_CO_FNC_ChangeFunds;
+			[_x, _value] call CTI_CO_FNC_ChangeFunds;
 		} forEach _award_teams;
 	};
 	

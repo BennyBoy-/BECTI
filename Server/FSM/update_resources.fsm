@@ -90,7 +90,7 @@ class FSM
        "			//--- This is the resources pool" \n
        "			_value = _value + _pool_income_player;" \n
        "			" \n
-       "			if (_value > 0) then { [_x, _side, _value] call CTI_CO_FNC_ChangeFunds };" \n
+       "			if (_value > 0) then { [_x, _value] call CTI_CO_FNC_ChangeFunds };" \n
        "		} forEach (_side_units - [_commander]);" \n
        "	} else {" \n
        "		_pool_income_commander = _pool_income_commander + _pool_income_players;" \n

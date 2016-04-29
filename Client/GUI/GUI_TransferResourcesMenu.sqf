@@ -12,7 +12,7 @@ while { true } do {
 		if (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_forceupdate") then { uiNamespace setVariable ["cti_dialog_ui_transferresourcesmenu_forceupdate", false] };
 		
 		{
-			_funds = [_x, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
+			_funds = (_x) call CTI_CO_FNC_GetFunds;
 			if (((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbText [_forEachIndex, 0] != format ["$%1", _funds]) then {
 				((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbSetText [[_forEachIndex, 0], format ["$%1", _funds]];
 			};
@@ -39,7 +39,7 @@ while { true } do {
 	};
 	
 	if (!isNil {uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_group"}) then {
-		_funds = [uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_group", CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
+		_funds = (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_group") call CTI_CO_FNC_GetFunds;
 		if (_funds != _last_grp_funds) then {
 			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140003) ctrlSetStructuredText (parseText format["<t align='left'>Player Resources:</t> <t align='right' color='%1'>$%2</t>", CTI_P_Coloration_Money, _funds]);
 			_last_grp_funds = _funds;

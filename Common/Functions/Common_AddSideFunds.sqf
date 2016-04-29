@@ -57,7 +57,7 @@ _value_player = 0;
 if (_total_groups > 0) then {
 	_value_player = round(_value_players / _total_groups);
 	if (_value_player > 0) then {
-		{[_x, _side, _value_player] call CTI_CO_FNC_ChangeFunds} forEach _groups;
+		{[_x, _value_player] call CTI_CO_FNC_ChangeFunds} forEach _groups;
 	};
 };
 
