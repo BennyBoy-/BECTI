@@ -160,7 +160,7 @@ class FSM
     {
       name = "Phase_III_Detect";
       init = /*%FSM<STATEINIT""">*/"_entities = [];" \n
-       "{if (!alive _x && isNil {_x getVariable ""cti_gc_noremove""}) then {[_entities, _x] call CTI_CO_FNC_ArrayPush}} foreach ((nearestObjects [_salvager, ['Car','Motorcycle','Ship','Air','Tank','StaticWeapon'], CTI_VEHICLES_SALVAGE_RANGE]) - [_salvager]);" \n
+       "{if (!alive _x && isNil {_x getVariable ""cti_gc_noremove""}) then {_entities pushBack _x}} foreach ((nearestObjects [_salvager, ['Car','Motorcycle','Ship','Air','Tank','StaticWeapon'], CTI_VEHICLES_SALVAGE_RANGE]) - [_salvager]);" \n
        "" \n
        "if (count _entities > 0) then {" \n
        "	_wreck = [_salvager, _entities] call CTI_CO_FNC_GetClosestEntity;" \n
@@ -179,7 +179,7 @@ class FSM
        "				_salvage_value = round(_salvage_value / 2); //--- Split resources in half, half goes to the team which salvaged the wreck, the other half goes to the side." \n
        "				_return = [_side, _salvage_value] call CTI_CO_FNC_AddSideFunds;" \n
        "				_player_get = _return select 1;	_commander_get = _return select 2;" \n
-       "				[_group, _side, _salvage_value] call CTI_CO_FNC_ChangeFunds;" \n
+       "				[_group, _salvage_value] call CTI_CO_FNC_ChangeFunds;" \n
        "				if (isPlayer leader _group) then {[[""CLIENT"", leader _group], ""Client_OnMessageReceived"", [""salvage-by"", [_var_name, _salvage_value, driver _salvager]]] call CTI_CO_FNC_NetSend};" \n
        "			} else { //--- Group is not among our cti players, award the side still." \n
        "				_return = [_side, _salvage_value] call CTI_CO_FNC_AddSideFunds;" \n

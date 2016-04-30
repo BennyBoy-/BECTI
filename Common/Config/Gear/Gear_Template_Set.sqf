@@ -23,7 +23,7 @@ _formated = [];
 		};
 	} forEach (_x select 0);
 	
-	[_formated, [_label, _picture, _cost, _x, 0/* todo Gear Upgrade */]] call CTI_CO_FNC_ArrayPush;
+	_formated pushBack [_label, _picture, _cost, _x, 0/* todo Gear Upgrade */];
 } forEach _templates;
 
 missionNamespace setVariable ["cti_gear_list_templates", _formated];

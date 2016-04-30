@@ -17,15 +17,17 @@ switch (_action) do {
 					_row = ((uiNamespace getVariable "cti_dialog_ui_requestmenu") displayCtrl 280005) lnbAddRow [format ["%1",_origin getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]], (_request) call CTI_UI_Request_GetRequestLabel];
 					((uiNamespace getVariable "cti_dialog_ui_requestmenu") displayCtrl 280005) lnbSetValue [[_row, 0], _seed];
 				} else {
-					[_removes, _forEachIndex] call CTI_CO_FNC_ArrayPush;
+					_removes pushBack _forEachIndex;
 				};
 			} else {
-				[_removes, _forEachIndex] call CTI_CO_FNC_ArrayPush;
+				_removes pushBack _forEachIndex;
 			};
 		} forEach CTI_P_TeamsRequests;
 		
-		{CTI_P_TeamsRequests set [_forEachIndex, "!nil!"]} forEach _removes;
-		CTI_P_TeamsRequests = CTI_P_TeamsRequests - ["!nil"];
+		// {CTI_P_TeamsRequests set [_forEachIndex, "!nil!"]} forEach _removes;
+		// CTI_P_TeamsRequests = CTI_P_TeamsRequests - ["!nil"];
+		// To be tested, used to be _forEachIndex
+		{CTI_P_TeamsRequests deleteAt _x} forEach _removes;
 		
 		// ([group player, 0, [], round(random 200 + random 10000 - random 5000), "Benny"]) call CTI_PVF_Client_OnRequestReceived;
 		// CTI_P_TeamsRequests = CTI_P_TeamsRequests + [[group player, 0, [], round(random 200 + random 10000 - random 5000), "Benny"]];
@@ -74,8 +76,9 @@ switch (_action) do {
 					};
 				};
 				
-				CTI_P_TeamsRequests set [_id, "!nil!"];
-				CTI_P_TeamsRequests = CTI_P_TeamsRequests - ["!nil!"];
+				// CTI_P_TeamsRequests set [_id, "!nil!"];
+				// CTI_P_TeamsRequests = CTI_P_TeamsRequests - ["!nil!"];
+				CTI_P_TeamsRequests deleteAt _id;
 			};
 			
 			//--- Delete the entry whether it failed or not
@@ -108,8 +111,9 @@ switch (_action) do {
 					};
 				};
 				
-				CTI_P_TeamsRequests set [_id, "!nil!"];
-				CTI_P_TeamsRequests = CTI_P_TeamsRequests - ["!nil!"];
+				// CTI_P_TeamsRequests set [_id, "!nil!"];
+				// CTI_P_TeamsRequests = CTI_P_TeamsRequests - ["!nil!"];
+				CTI_P_TeamsRequests deleteAt _id;
 			};
 			
 			//--- Delete the entry whether it failed or not

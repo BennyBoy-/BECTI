@@ -9,9 +9,7 @@ _orders = missionNamespace getVariable Format ["CTI_%1_UPGRADES_AI_ORDER", _side
 _levels = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", _side];
 
 _values = [];
-for '_i' from 0 to count(_levels)-1 do {
-	[_values, []] call CTI_CO_FNC_ArrayPush;
-};
+for '_i' from 0 to count(_levels)-1 do {_values pushBack []};
 
 {
 	_upgrade = _x select 0;
@@ -28,7 +26,7 @@ for '_i' from 0 to count(_values)-1 do {
 		_level = _levels select _i;
 		
 		for '_j' from 1 to _level do {
-			if !(_j in _found) then { [_add, [_i, _j]] call CTI_CO_FNC_ArrayPush };
+			if !(_j in _found) then { _add pushBack [_i, _j] };
 		};
 	};
 };

@@ -22,7 +22,7 @@ CTI_UI_SatelitteCamera_GetParsedVehicleRoles = {
 	
 	_parsed = "";
 	_opcrew = [];
-	if (alive driver _vehicle) then {[_opcrew, driver _vehicle] call CTI_CO_FNC_ArrayPush;_parsed = _parsed + format [" <t color='#ae6eef'>Driver:</t> <t color='#d4b4f7'>%1</t>%2<br />", driver _vehicle, if (effectiveCommander _vehicle == driver _vehicle) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]};
+	if (alive driver _vehicle) then {_opcrew pushBack (driver _vehicle);_parsed = _parsed + format [" <t color='#ae6eef'>Driver:</t> <t color='#d4b4f7'>%1</t>%2<br />", driver _vehicle, if (effectiveCommander _vehicle == driver _vehicle) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]};
 	_gunner = "";
 	_commander = "";
 	_turrets = "";
@@ -34,9 +34,9 @@ CTI_UI_SatelitteCamera_GetParsedVehicleRoles = {
 		_unit = _vehicle turretUnit [_i];
 		if (alive _unit) then {
 			_roleFound = false;
-			if !(_found_gunner) then { if (getNumber (_turret_main >> "primaryGunner") > 0) then {_found_gunner = true; _roleFound = true; [_opcrew, _unit] call CTI_CO_FNC_ArrayPush;_gunner = format [" <t color='#ae6eef'>Gunner:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
-			if (!_found_commander && !_roleFound) then { if (getNumber (_turret_main >> "primaryObserver") > 0) then {_found_commander = true; [_opcrew, _unit] call CTI_CO_FNC_ArrayPush;_commander = format [" <t color='#ae6eef'>Commander:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
-			if !(_unit in _opcrew) then {[_opcrew, _unit] call CTI_CO_FNC_ArrayPush;_turrets = _turrets + format [" <t color='#ae6eef'>Turret [%1]:</t> <t color='#d4b4f7'>%2</t>%3<br />", _i, _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]};
+			if !(_found_gunner) then { if (getNumber (_turret_main >> "primaryGunner") > 0) then {_found_gunner = true; _roleFound = true; _opcrew pushBack _unit;_gunner = format [" <t color='#ae6eef'>Gunner:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
+			if (!_found_commander && !_roleFound) then { if (getNumber (_turret_main >> "primaryObserver") > 0) then {_found_commander = true; _opcrew pushBack _unit;_commander = format [" <t color='#ae6eef'>Commander:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
+			if !(_unit in _opcrew) then {_opcrew pushBack _unit;_turrets = _turrets + format [" <t color='#ae6eef'>Turret [%1]:</t> <t color='#d4b4f7'>%2</t>%3<br />", _i, _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]};
 		};
 		
 		_config_sub = _turret_main >> "turrets";
@@ -46,9 +46,9 @@ CTI_UI_SatelitteCamera_GetParsedVehicleRoles = {
 			_unit = _vehicle turretUnit [_i, _j];
 			if (alive _unit) then {
 				_roleFound = false;
-				if !(_found_gunner) then { if (getNumber (_turret_sub >> "primaryGunner") > 0) then {_found_gunner = true; _roleFound = true; [_opcrew, _unit] call CTI_CO_FNC_ArrayPush;_gunner = format [" <t color='#ae6eef'>Gunner:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
-				if (!_found_commander && !_roleFound) then { if (getNumber (_turret_sub >> "primaryObserver") > 0) then {_found_commander = true; [_opcrew, _unit] call CTI_CO_FNC_ArrayPush;_commander = format [" <t color='#ae6eef'>Commander:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
-				if !(_unit in _opcrew) then {[_opcrew, _unit] call CTI_CO_FNC_ArrayPush;_turrets = _turrets + format [" <t color='#ae6eef'>Turret [%1,%2]:</t> <t color='#d4b4f7'>%3</t>%4<br />", _i, _j, _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]};
+				if !(_found_gunner) then { if (getNumber (_turret_sub >> "primaryGunner") > 0) then {_found_gunner = true; _roleFound = true; _opcrew pushBack _unit;_gunner = format [" <t color='#ae6eef'>Gunner:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
+				if (!_found_commander && !_roleFound) then { if (getNumber (_turret_sub >> "primaryObserver") > 0) then {_found_commander = true; _opcrew pushBack _unit;_commander = format [" <t color='#ae6eef'>Commander:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
+				if !(_unit in _opcrew) then {_opcrew pushBack _unit;_turrets = _turrets + format [" <t color='#ae6eef'>Turret [%1,%2]:</t> <t color='#d4b4f7'>%3</t>%4<br />", _i, _j, _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]};
 			};
 		};
 	};

@@ -24,4 +24,4 @@
 	  -> Will return the current player funds
 */
 
-[group player, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds
+(group player) call CTI_CO_FNC_GetFunds

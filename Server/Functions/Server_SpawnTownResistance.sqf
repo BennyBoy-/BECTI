@@ -21,12 +21,12 @@
 	(TOWN) call CTI_SE_FNC_SpawnTownResistance
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_ArrayShuffle
 	Common Function: CTI_CO_FNC_CreateUnit
 	Common Function: CTI_CO_FNC_CreateVehicle
 	Common Function: CTI_CO_FNC_GetEmptyPosition
 	Common Function: CTI_CO_FNC_GetRandomPosition
+	Common Function: CTI_CO_FNC_GetTownCamps
 	Common Function: CTI_CO_FNC_ManVehicle
 	Server Function: CTI_SE_FNC_HandleEmptyVehicle
 	
@@ -47,8 +47,14 @@ _max_squad_random = 2;
 _max_sv = 120;
 
 _randomGroups = (_value / _max_sv) * _max_squad_random;
-_totalGroups = round(((_value / _max_sv) * _max_squad) + random(_randomGroups) - random(_randomGroups));
+_fixedGroups = (_value / _max_sv) * _max_squad;
+_totalGroups = round(_fixedGroups + random _randomGroups - random _randomGroups);
+// _totalGroups = round(((_value / _max_sv) * _max_squad) + random(_randomGroups) - random(_randomGroups));
 if (_totalGroups < 1) then {_totalGroups = 1};
+
+if (CTI_Log_Level >= CTI_Log_Information) then {
+	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format["Begining Resistance Teams composition for town [%1] with a max SV of [%2] using variables <Max Squad = [%3]>,<Max Squad Randomness = [%4]>,<Max SV = [%5]> Resulting in Fixed Group Size [%6] and a Random Group Size of [%7] for a Total Rounded Group Size of [%8]", _town getVariable "cti_town_name", _value, _max_squad, _max_squad_random, _max_sv, _fixedGroups, _randomGroups, _totalGroups]] call CTI_CO_FNC_Log;
+};
 
 _pool_units = [];
 
@@ -262,15 +268,27 @@ while {_totalGroups > 0} do {
 			_teams pushBack (missionNamespace getVariable (_team select 0));
 			_totalGroups = _totalGroups - 1;
 		};
+		
+		if (_totalGroups < 1) exitWith {};
 	} forEach _pool;
 };
 
-//TODO: spawn near camps
 //--- Create the groups server-sided
 _groups = [];
 _positions = [];
+_camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 {
-	_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
+	_position = [];
+	
+	//--- A group may spawn close to a camp or somewhere in the town
+	if (count _camps > 0 && random 100 > 50) then {
+		_camp_index = floor(random count _camps);
+		_position = [getPos(_camps select _camp_index), 10, CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS] call CTI_CO_FNC_GetRandomPosition;
+		_camps deleteAt _camp_index;
+	} else {
+		_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
+	};
+	
 	_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 	_positions pushBack _position;
 	
@@ -283,7 +301,7 @@ _positions = [];
 } forEach _teams;
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
-	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format["Composed [%1] Resistance Teams for town [%2]", count _teams, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
+	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format["Composed [%1] Resistance Teams for town [%2] having a max SV of [%3]", count _teams, _town getVariable "cti_town_name", _value]] call CTI_CO_FNC_Log;
 };
 
 [_teams, _groups, _positions]

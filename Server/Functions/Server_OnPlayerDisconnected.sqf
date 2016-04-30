@@ -49,7 +49,8 @@ if !(isNil '_candidates') then {
 	_index = -1;
 	{if (_x select 2 == _uid) exitWith {_index = _forEachIndex}} forEach _candidates;
 	if (_index > -1) then {
-		_candidates set [_index, "!nil!"]; _candidates = _candidates - ["!nil!"];
+		// _candidates set [_index, "!nil!"]; _candidates = _candidates - ["!nil!"];
+		_candidates deleteAt _index;
 		missionNamespace setVariable ["CTI_HEADLESS_CLIENTS", _candidates];
 		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Headless Client [%1] [%2] has been disconnected and was removed from the registered clients. There is now [%3] Headless Clients.", _uid, _name, count _candidates]] call CTI_CO_FNC_Log};
 	};
@@ -65,7 +66,7 @@ _team = grpNull;
 if (isNull _team) exitWith {if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Disconnected Player [%1] [%2] group couldn't be found among the current playable units", _name, _uid]] call CTI_CO_FNC_Log}};
 
 _side = _get select 3; //--- Get the last side joined
-_funds = [_team, _side] call CTI_CO_FNC_GetFunds;
+_funds = (_team) call CTI_CO_FNC_GetFunds;
 _commander = (_side) call CTI_CO_FNC_GetSideCommander;
 _is_commander = if (_commander == _team) then {true} else {false};
 _leader = leader _team;

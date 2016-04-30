@@ -202,7 +202,7 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 								} forEach _flat;
 								_x set [2, _cost];
 								
-								[_list, _x] call CTI_CO_FNC_ArrayPush;
+								_list pushBack _x;
 							};
 						};
 					};

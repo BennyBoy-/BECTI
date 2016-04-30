@@ -18,7 +18,6 @@
 	[CENTER, FRIENDLY SIDE] call CTI_CO_FNC_GetClosestFriendlyTown
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_GetClosestEntity
 	Common Function: CTI_CO_FNC_GetSideID
 	
@@ -34,7 +33,7 @@ _friendlySide = _this select 1;
 if (typeName _friendlySide == "SIDE") then {_friendlySide = (_friendlySide) call CTI_CO_FNC_GetSideID};
 
 _towns = [];
-{if (_x getVariable "cti_town_sideID" == _friendlySide) then {[_towns, _x] call CTI_CO_FNC_ArrayPush}} forEach CTI_Towns;
+{if (_x getVariable "cti_town_sideID" == _friendlySide) then {_towns pushBack _x}} forEach CTI_Towns;
 
 if (count _towns == 0) exitWith {objNull};
 

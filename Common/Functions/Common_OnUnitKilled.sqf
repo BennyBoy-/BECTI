@@ -92,7 +92,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 				//--- The kill was not made by proxy and the killer is in a vehicle
 				if (!_killed_proxy && vehicle _killer != _killer) then {
 					_vehicle = vehicle _killer;
-					{if (alive _x) then {if !(group _x in _award_groups) then {[_award_groups, group _x] call CTI_CO_FNC_ArrayPush}}} forEach [driver _vehicle, gunner _vehicle, commander _vehicle];
+					{if (alive _x) then {if !(group _x in _award_groups) then {_award_groups pushBack (group _x)}}} forEach [driver _vehicle, gunner _vehicle, commander _vehicle];
 				};
 				
 				//--- If there is more than one group to award then we split the bounty equally
@@ -110,7 +110,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 				//--- Award
 				{
 					if (_x call CTI_CO_FNC_IsGroupPlayable) then {
-						if (isPlayer leader _x) then {[["CLIENT", leader _x], "Client_AwardBounty", [_var_name, _bounty, _killed_pname]] call CTI_CO_FNC_NetSend} else {[_x, _side_killer, _bounty] call CTI_CO_FNC_ChangeFunds};
+						if (isPlayer leader _x) then {[["CLIENT", leader _x], "Client_AwardBounty", [_var_name, _bounty, _killed_pname]] call CTI_CO_FNC_NetSend} else {[_x, _bounty] call CTI_CO_FNC_ChangeFunds};
 					};
 				} forEach _award_groups;
 			};
@@ -124,15 +124,15 @@ if (!isNil '_var' && _isplayable_killer) then {
 			if (_killed != _killer && _isplayable_killer) then {
 				//--- Compensate the killed units with the killer's funds on non-captured entities
 				if ((_side_killer call CTI_CO_FNC_GetSideID) == _sideID_killed) then {
-					_killer_funds = [_group_killer, _side_killer] call CTI_CO_FNC_GetFunds;
+					_killer_funds = (_group_killer) call CTI_CO_FNC_GetFunds;
 					_penalty = _cost;
 					_cashout = _killer_funds - _cost;
 					if (_cashout < 0) then {_penalty = _cost - (-_cashout)};
 					
 					if (_penalty > 0) then {
-						if (_isplayable_killed) then {[_group_killed, _side_killed, _penalty] call CTI_CO_FNC_ChangeFunds}; //--- If the killed unit belong to a playable group, then we compensate that group.
+						if (_isplayable_killed) then {[_group_killed, _penalty] call CTI_CO_FNC_ChangeFunds}; //--- If the killed unit belong to a playable group, then we compensate that group.
 						if (_isplayable_killer) then { //--- If the killer unit belong to a playable group, then we penalize that group.
-							[_group_killer, _side_killer, -(_penalty)] call CTI_CO_FNC_ChangeFunds;
+							[_group_killer, -_penalty] call CTI_CO_FNC_ChangeFunds;
 							_show_local = if (CTI_IsHostedServer || CTI_IsClient) then {true} else {false};
 							[["CLIENT", _side_killed], "Client_OnMessageReceived", ["penalty", [_var_name, _group_killer, _penalty]], _show_local] call CTI_CO_FNC_NetSend;
 							[["CLIENT", _killer], "Client_OnTeamkill"] call CTI_CO_FNC_NetSend;

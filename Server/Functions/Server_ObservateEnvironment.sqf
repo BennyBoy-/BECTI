@@ -42,13 +42,15 @@ _groupisplayable = _group call CTI_CO_FNC_IsGroupPlayable;
 
 //--- Sanitize a bit to avoid ending up with a thousand crap in the array
 _spotted_units = _side_logic getVariable "cti_spotted_units";
-{if !(alive _x) then {_spotted_units set [_forEachIndex, objNull]}} forEach +_spotted_units;
-_spotted_units = _spotted_units - [objNull];
+// {if !(alive _x) then {_spotted_units set [_forEachIndex, objNull]}} forEach +_spotted_units;
+// _spotted_units = _spotted_units - [objNull];
+{if !(alive _x) then {_spotted_units deleteAt _forEachIndex}} forEach +_spotted_units;
 _side_logic setVariable ["cti_spotted_units", _spotted_units];
 
 _spotted_base = _side_logic getVariable "cti_spotted_structures";
-{if !(alive _x) then {_spotted_base set [_forEachIndex, objNull]}} forEach +_spotted_base;
-_spotted_base = _spotted_base - [objNull];
+// {if !(alive _x) then {_spotted_base set [_forEachIndex, objNull]}} forEach +_spotted_base;
+// _spotted_base = _spotted_base - [objNull];
+{if !(alive _x) then {_spotted_base deleteAt _forEachIndex}} forEach +_spotted_base;
 _side_logic setVariable ["cti_spotted_structures", _spotted_base];
 
 _spotted_unit = objNull;

@@ -17,7 +17,6 @@
 	(SIDE) call CTI_CO_FNC_GetSideGroups
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_GetSideLogic
 	
   # EXAMPLE #
@@ -36,7 +35,7 @@ if !(isNull _logic) then {
 	{
 		if !(isNil '_x') then {
 			if !(isNull _x) then {
-				[_teams, _x] call CTI_CO_FNC_ArrayPush 
+				_teams pushBack _x;
 			};
 		};
 	} forEach (_logic getVariable "cti_teams");

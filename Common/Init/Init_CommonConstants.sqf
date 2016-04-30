@@ -313,11 +313,12 @@ CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = 0.25; //--- Determine how much value an
 CTI_TOWNS_MARKERS_MAP_RANGE = 600; //--- Distance required to show the town SV on the map (from a player/player's unit)
 
 //--- Towns: Patrol
-CTI_TOWNS_PATROL_HOPS = 10; //--- Towns patrol hops (non-waypoint)
+CTI_TOWNS_PATROL_HOPS = 7; //--- Towns patrol hops (non-waypoint)
 CTI_TOWNS_PATROL_RANGE = 375; //--- Patrol range in a town
 
 //--- Towns: Occupation
 CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
 //CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
@@ -326,6 +327,7 @@ CTI_TOWNS_OCCUPATION_MIN_ACTIVE = 1; //--- When the town is not held by the side
 
 //--- Towns: Resistance
 CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
 //CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
@@ -486,6 +488,12 @@ CTI_MARKERS_VEHICLES_DEAD_DELAY = 125;
 CTI_PLAYER_DEFAULT_ALIAS = "Soldier";
 
 CTI_RESPAWN_AI_RANGE = 600;
+CTI_RESPAWN_CAMPS_CONDITION_LIMITED = 4; //--- With this condition, a unit may only spawn x times on a camp during a capture cycle
+CTI_RESPAWN_CAMPS_CONDITION_PRICED = 200; //--- With this condition, a price is needed to respawn on a camp
+CTI_RESPAWN_CAMPS_RANGE_CLASSIC = 550; //--- Determine the range needed to respawn at a town's camps (from the town center)
+CTI_RESPAWN_CAMPS_RANGE_ENHANCED = 350; //--- Determine the range needed to respawn at a town's camps (from a camp)
+CTI_RESPAWN_CAMPS_SAFE = 1; //--- Disable a camp's respawn if enemies are around it
+CTI_RESPAWN_CAMPS_SAFE_RANGE = 15; //--- Disable a camp's respawn if enemies are around it
 CTI_RESPAWN_MOBILE_RANGE = 300;
 
 CTI_SATCAM_ZOOM_MIN = 50;
@@ -525,7 +533,8 @@ CTI_GC_DELAY_BUILDING = 30;
 //--- SHK Specific
 CTI_SHK_BUILDING_ENABLED = true;
 CTI_SHK_BUILDING_PLACEMENT_CHANCE = 25; //--- An AI Group has x% of chance to be placed in a building
-CTI_SHK_BUILDING_SCAN_RANGE = 150; //--- The radius used to search for building from the town's center
+CTI_SHK_BUILDING_SAFE_RANGE = 30; //--- Determine whether a building should be used for unit positioning or not if units are present within this range
+CTI_SHK_BUILDING_SCAN_RANGE = 150; //--- The range used to search for building from the town's center
 CTI_SHK_BUILDING_SCAN_RANGE_RAN = 50; //--- Add a random range, works as min max -> RANGE + (random value - random value)
 CTI_SHK_GROUP_SIZE_MAX = 12; //--- If the group has more than x members, skip it
 
@@ -557,6 +566,8 @@ with missionNamespace do {
 	CTI_PLAYERS_GROUPSIZE = 12;
 	
 	if (isNil 'CTI_RESPAWN_AI') then {CTI_RESPAWN_AI = 1};
+	if (isNil 'CTI_RESPAWN_CAMPS') then {CTI_RESPAWN_CAMPS = 1}; //--- Camp mode (1: Classic, 2: Nearby)
+	if (isNil 'CTI_RESPAWN_CAMPS_CONDITION') then {CTI_RESPAWN_CAMPS_CONDITION = 2}; //--- Camp respawn condition (0: Unlimited, 1: Priced, 2: Limited per capture)
 	if (isNil 'CTI_RESPAWN_FOB_RANGE') then {CTI_RESPAWN_FOB_RANGE = 1750}; //--- Range at which a unit can spawn at a FOB
 	if (isNil 'CTI_RESPAWN_MOBILE') then {CTI_RESPAWN_MOBILE = 1};
 	if (isNil 'CTI_RESPAWN_TIMER') then {CTI_RESPAWN_TIMER = 30};

@@ -65,7 +65,7 @@ CTI_UI_AIMicromanagement_GetEffectiveUnits = {
 	{
 		_value = ((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270002) lbValue _x;
 		_who = _units select _value;
-		if (alive _who) then {[_units_effective, _who] call CTI_CO_FNC_ArrayPush};
+		if (alive _who) then {_units_effective pushBack _who};
 	} forEach _selection;
 	
 	_units_effective

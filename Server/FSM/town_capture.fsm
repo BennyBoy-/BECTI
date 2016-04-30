@@ -8,25 +8,25 @@ item3[] = {"End_FSM",1,250,-100.000000,-100.000000,0.000000,-50.000000,0.000000,
 item4[] = {"Empty",4,218,50.000000,-300.000000,150.000000,-250.000000,2.000000,"Empty"};
 item5[] = {"Gameover",8,218,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Gameover"};
 item6[] = {"Not_Empty",4,218,-250.000000,-300.000000,-150.000000,-250.000000,1.000000,"Not Empty"};
-item7[] = {"Skip",2,250,350.000000,-400.000000,450.000000,-350.000000,0.000000,"Skip"};
-item8[] = {"Check_Capture",2,250,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Check" \n "Capture"};
-item9[] = {"Ready",8,218,-400.000000,-200.000000,-300.000000,-150.000000,0.000000,"Ready"};
-item10[] = {"Not_Ready",4,218,-250.000000,0.000000,-150.000000,50.000000,1.000000,"Not" \n "Ready"};
-item11[] = {"",7,210,508.500000,20.999996,516.500000,29.000004,0.000000,""};
-item12[] = {"",7,210,508.500000,-379.000000,516.500000,-371.000000,0.000000,""};
-item13[] = {"Captured",2,250,-400.000000,-400.000000,-300.000000,-350.000000,0.000000,"Captured"};
-item14[] = {"Supply_Mode",2,250,200.000000,-300.000000,300.000000,-250.000000,0.000000,"Supply" \n "Mode"};
-item15[] = {"Timed",4,4314,200.000000,-200.000000,300.000000,-150.000000,1.000000,"Timed"};
-item16[] = {"Default",8,218,350.000000,-300.000000,450.000000,-250.000000,0.000000,"Default"};
-item17[] = {"Timed_Update",2,250,350.000000,-200.000000,450.000000,-150.000000,0.000000,"Timed" \n "Update"};
+item7[] = {"Skip",2,250,50.000000,-400.000000,150.000000,-350.000000,0.000000,"Skip"};
+item8[] = {"Check_Capture",2,250,-250.000000,0.000000,-150.000000,50.000000,0.000000,"Check" \n "Capture"};
+item9[] = {"Ready",8,218,-500.000000,0.000000,-400.000000,50.000000,0.000000,"Ready"};
+item10[] = {"Not_Ready",4,218,-250.000000,100.000000,-150.000000,150.000000,1.000000,"Not" \n "Ready"};
+item11[] = {"",7,210,196.000046,121.000023,203.999969,128.999985,0.000000,""};
+item12[] = {"",7,210,196.000000,-379.000000,204.000015,-371.000000,0.000000,""};
+item13[] = {"Captured",2,250,-500.000000,-400.000000,-400.000000,-350.000000,0.000000,"Captured"};
+item14[] = {"Supply_Mode",2,250,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Supply" \n "Mode"};
+item15[] = {"Timed",4,218,-400.000000,-200.000000,-300.000000,-150.000000,1.000000,"Timed"};
+item16[] = {"Default",8,218,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"Default"};
+item17[] = {"Timed_Update",2,4346,-400.000000,-100.000000,-300.000000,-50.000000,0.000000,"Timed" \n "Update"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,4};
 link3[] = {2,5};
 link4[] = {2,6};
-link5[] = {4,14};
+link5[] = {4,7};
 link6[] = {5,3};
-link7[] = {6,8};
+link7[] = {6,14};
 link8[] = {7,1};
 link9[] = {8,9};
 link10[] = {8,10};
@@ -38,10 +38,10 @@ link15[] = {13,1};
 link16[] = {14,15};
 link17[] = {14,16};
 link18[] = {15,17};
-link19[] = {16,7};
+link19[] = {16,8};
 link20[] = {17,16};
-globals[] = {25.000000,1,0,0,0,640,480,1,174,6316128,1,-253.145233,644.914185,83.975464,-612.038391,955,771,1};
-window[] = {2,-1,-1,-1,-1,981,1880,3135,200,3,973};
+globals[] = {25.000000,1,0,0,0,640,480,1,174,6316128,1,-714.509399,339.867218,337.179016,-514.051392,856,771,1};
+window[] = {2,-1,-1,-1,-1,906,1805,3060,125,3,874};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -101,7 +101,7 @@ class FSM
         class Empty
         {
           priority = 2.000000;
-          to="Supply_Mode";
+          to="Skip";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _west == 0 && _east == 0 && _resistance == 0"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -111,7 +111,7 @@ class FSM
         class Not_Empty
         {
           priority = 1.000000;
-          to="Check_Capture";
+          to="Supply_Mode";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && (_west > 0 || _east > 0 || _resistance > 0)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -266,7 +266,7 @@ class FSM
         class Default
         {
           priority = 0.000000;
-          to="Skip";
+          to="Check_Capture";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -280,6 +280,9 @@ class FSM
     {
       name = "Timed_Update";
       init = /*%FSM<STATEINIT""">*/"if ((_town getVariable ""cti_town_sv"") < (_town getVariable ""cti_town_sv_max"")) then {" \n
+       "	//--- An enemy presence will always reset the timer" \n
+       "	if (_activeEnemies > 0) then {_supply_timed_lastUpdate = time + CTI_TOWNS_SUPPLY_TIME_INTERVAL};" \n
+       "" \n
        "	if (time > _supply_timed_lastUpdate) then {" \n
        "		_supply_timed_lastUpdate = time + CTI_TOWNS_SUPPLY_TIME_INTERVAL;" \n
        "		_supply = (_town getVariable ""cti_town_sv"") + CTI_TOWNS_SUPPLY_TIME_INCREASE;" \n
@@ -294,7 +297,7 @@ class FSM
         class Default
         {
           priority = 0.000000;
-          to="Skip";
+          to="Check_Capture";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;

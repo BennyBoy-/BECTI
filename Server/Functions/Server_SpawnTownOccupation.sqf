@@ -22,7 +22,6 @@
 	[TOWN, SIDE] call CTI_SE_FNC_SpawnTownOccupation
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_ArrayShuffle
 	Common Function: CTI_CO_FNC_CreateUnit
 	Common Function: CTI_CO_FNC_CreateVehicle
@@ -30,6 +29,7 @@
 	Common Function: CTI_CO_FNC_GetRandomPosition
 	Common Function: CTI_CO_FNC_GetSideID
 	Common Function: CTI_CO_FNC_GetSideUpgrades
+	Common Function: CTI_CO_FNC_GetTownCamps
 	Common Function: CTI_CO_FNC_ManVehicle
 	Server Function: CTI_SE_FNC_HandleEmptyVehicle
 	
@@ -48,13 +48,19 @@ _upgrade = (_side call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_TOWNS;
 _value = _town getVariable "cti_town_sv"; //--- Occupation spawning is based on the current SV
 
 //--- Calculate the Group size by scaling the SV and randomizing the input, min max scaling
-_max_squad = 7;
+_max_squad = 6;
 _max_squad_random = 2;
 _max_sv = 120;
 
 _randomGroups = (_value / _max_sv) * _max_squad_random;
-_totalGroups = round(((_value / _max_sv) * _max_squad) + random(_randomGroups) - random(_randomGroups));
+_fixedGroups = (_value / _max_sv) * _max_squad;
+_totalGroups = round(_fixedGroups + random _randomGroups - random _randomGroups);
+// _totalGroups = round(((_value / _max_sv) * _max_squad) + random(_randomGroups) - random(_randomGroups));
 if (_totalGroups < 1) then {_totalGroups = 1};
+
+if (CTI_Log_Level >= CTI_Log_Information) then {
+	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format["Begining Occupation Teams composition for town [%1] on side [%2] with a current SV of [%3] using variables <Max Squad = [%4]>,<Max Squad Randomness = [%5]>,<Max SV = [%6]> Resulting in Fixed Group Size [%7] and a Random Group Size of [%8] for a Total Rounded Group Size of [%9]", _town getVariable "cti_town_name", _side, _value, _max_squad, _max_squad_random, _max_sv, _fixedGroups, _randomGroups, _totalGroups]] call CTI_CO_FNC_Log;
+};
 
 _pool_units = [];
 
@@ -272,6 +278,7 @@ _pool = [];
 			} forEach _x;
 			
 			if (count _pool_nest > 0) then {_pool pushBack _pool_nest};
+		};
 	};
 } forEach _pool_units;
 
@@ -304,16 +311,27 @@ while {_totalGroups > 0} do {
 			_teams pushBack (missionNamespace getVariable (_team select 0));
 			_totalGroups = _totalGroups - 1;
 		};
+		
+		if (_totalGroups < 1) exitWith {};
 	} forEach _pool;
 };
 
 //--- Create the groups server-sided
 _groups = [];
 _positions = [];
+_camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 {
-	diag_log _x;
+	_position = [];
 	
-	_position = [getPos _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
+	//--- A group may spawn close to a camp or somewhere in the town
+	if (count _camps > 0 && random 100 > 50) then {
+		_camp_index = floor(random count _camps);
+		_position = [getPos(_camps select _camp_index), 10, CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS] call CTI_CO_FNC_GetRandomPosition;
+		_camps deleteAt _camp_index;
+	} else {
+		_position = [getPos _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
+	};
+
 	_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 	_positions pushBack _position;
 	
@@ -326,7 +344,7 @@ _positions = [];
 } forEach _teams;
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
-	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format["Composed [%1] Occupation Teams for town [%2] on side [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format["Composed [%1] Occupation Teams for town [%2] on side [%3] with the current SV [%4]", count _teams, _town getVariable "cti_town_name", _side, _value]] call CTI_CO_FNC_Log;
 };
 
 [_teams, _groups, _positions]

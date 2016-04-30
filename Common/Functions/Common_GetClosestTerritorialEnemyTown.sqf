@@ -20,7 +20,6 @@
 	[CENTER, FRIENDLY SIDE, ENEMY TOWNS] call CTI_CO_FNC_GetClosestTerritorialEnemyTown
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_GetClosestEntity
 	Common Function: CTI_CO_FNC_GetSideHQ
 	Common Function: CTI_CO_FNC_GetSideID
@@ -48,7 +47,7 @@ _availableTowns = [];
 {
 	_town = _x;
 	{
-		if ((_x getVariable "cti_town_sideID") == _friendlySide) exitWith {[_availableTowns, _town] call CTI_CO_FNC_ArrayPush};
+		if ((_x getVariable "cti_town_sideID") == _friendlySide) exitWith {_availableTowns pushBack _town};
 	} forEach (_x getVariable "cti_town_neighbors");
 } forEach _enemyTowns;
 

@@ -29,7 +29,7 @@ CTI_FSM_UpdateClientAI_Order_Patrol = {
 	_patrol_area = [];
 	if !(_is_queued) then { //--- A point was given
 		for '_i' from 1 to CTI_ORDER_CLIENT_PATROL_HOPS do {
-			[_patrol_area, [_position, 20, CTI_ORDER_CLIENT_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition] call CTI_CO_FNC_ArrayPush;
+			_patrol_area pushBack ([_position, 20, CTI_ORDER_CLIENT_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition);
 		};
 	} else {
 		_patrol_area = _position;
@@ -222,7 +222,7 @@ CTI_FSM_UpdateClientAI_Order_TakeTown = {
 			_move_defend_last = 0;_move_patrol_reload = true;
 			_action = "";_last_action = "";_patrol_area = [];_start_patrol = time;
 			
-			for '_i' from 1 to CTI_AI_ORDER_TAKEHOLDTOWNS_HOPS do {[_patrol_area, [_town, 5, CTI_AI_ORDER_TAKEHOLDTOWNS_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition] call CTI_CO_FNC_ArrayPush};
+			for '_i' from 1 to CTI_AI_ORDER_TAKEHOLDTOWNS_HOPS do {_patrol_area pushBack ([_town, 5, CTI_AI_ORDER_TAKEHOLDTOWNS_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition)};
 			
 			while {true} do {
 				if !(alive _ai) exitWith {};
@@ -335,7 +335,7 @@ CTI_FSM_UpdateClientAI_Order_HoldTownsBase = {
 	_action = "patrol";_last_action = "";_patrol_area = [];_start_patrol = time;
 	_pos_patrol = getPos _defend; _pos_patrol_isbase = if (isNil {_defend getVariable "cti_town_sideID"}) then {true} else {false};
 	
-	for '_i' from 1 to CTI_AI_ORDER_HOLDTOWNSBASES_HOPS do {[_patrol_area, [_defend, 5, CTI_AI_ORDER_HOLDTOWNSBASES_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition] call CTI_CO_FNC_ArrayPush};
+	for '_i' from 1 to CTI_AI_ORDER_HOLDTOWNSBASES_HOPS do {_patrol_area pushBack ([_defend, 5, CTI_AI_ORDER_HOLDTOWNSBASES_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition)};
 	
 	_destroyed = false;
 	while {true} do {
