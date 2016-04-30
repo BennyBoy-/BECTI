@@ -60,4 +60,13 @@ if (_net) then {_unit setVariable ["cti_net", _sideID, true]};
 //--- Add a Killed EH.
 _unit addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
 
+//admin zeus
+if !( isNil "ADMIN_ZEUS"  ) then {
+	if !(isServer) then {
+		["SERVER", "Server_Addeditable",[ADMIN_ZEUS,_unit]] call CTI_CO_FNC_NetSend;
+	} else {
+		ADMIN_ZEUS addCuratorEditableObjects [[_unit],true] ;
+	};
+};
+
 _unit
