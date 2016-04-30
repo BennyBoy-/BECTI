@@ -210,3 +210,13 @@ if (_attempts >= 500) then {
 };
 
 if (CTI_WEATHER_FAST > 0) then { execFSM "Server\FSM\weather_fast.fsm" };
+
+// Zeus admin for players
+if !( isNil "ADMIN_ZEUS") then {
+	0 spawn {
+		while {!CTI_GameOver} do {
+			ADMIN_ZEUS addCuratorEditableObjects [playableUnits,true];
+			sleep 5;
+		};
+	};
+};
