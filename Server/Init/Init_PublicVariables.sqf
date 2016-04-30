@@ -137,4 +137,8 @@ with missionNamespace do {
 			_town setVariable ["cti_town_occupation_active_vehicles", (_town getVariable "cti_town_occupation_active_vehicles") + _vehicles];
 		};
 	};
+	//ZEUS
+	CTI_PVF_Server_Addeditable= {
+    	(_this select 0) addCuratorEditableObjects [[_this select 1],true] ;
+	};
 };

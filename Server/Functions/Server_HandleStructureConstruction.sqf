@@ -126,3 +126,5 @@ if (_completion >= 100) then {
 	
 	//todo: add message bout structure expiration
 };
+
+if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_structure],true];};
