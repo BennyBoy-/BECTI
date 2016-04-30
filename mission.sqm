@@ -5318,6 +5318,7 @@ class Mission
 									"STRING"
 								};
 							};
+							value="ADMIN_ZEUS";
 						};
 					};
 				};
@@ -5389,6 +5390,7 @@ class Mission
 									"STRING"
 								};
 							};
+							value="ADMIN_ZEUS";
 						};
 					};
 				};
@@ -5407,6 +5409,7 @@ class Mission
 									"STRING"
 								};
 							};
+							value="";
 						};
 					};
 				};
