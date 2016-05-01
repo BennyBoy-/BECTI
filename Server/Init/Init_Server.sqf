@@ -39,6 +39,7 @@ CTI_SE_FNC_SpawnTownResistance = compileFinal preprocessFileLineNumbers "Server\
 CTI_SE_FNC_StartFactoryQueue = compileFinal preprocessFileLineNumbers "Server\Functions\Server_StartFactoryQueue.sqf";
 CTI_SE_FNC_StartUpgrade = compileFinal preprocessFileLineNumbers "Server\Functions\Server_StartUpgrade.sqf";
 CTI_SE_FNC_TrashObject = compileFinal preprocessFileLineNumbers "Server\Functions\Server_TrashObject.sqf";
+CTI_SE_FNC_Weather_Hook= compileFinal preprocessFileLineNumbers "Server\Functions\Server_Weather_Hook.sqf";
 
 funcCalcAlignPosDir = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fCalcAlignPosDir.sqf";
 funcVectorAdd = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorAdd.sqf";
@@ -209,7 +210,34 @@ if (_attempts >= 500) then {
 	execFSM "Server\FSM\update_victory.fsm";
 };
 
-if (CTI_WEATHER_FAST > 0) then { execFSM "Server\FSM\weather_fast.fsm" };
+// Date init
+_it=0;
+_possible_it_off=[0,0,0,0,0,0,6,6,6,12,12,12,18];
+if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 10) then {
+	_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL")*6;
+} else {
+	_it= _possible_it_off select floor random (count _possible_it_off);
+};
+skipTime _it;
+
+// dynamic wheather
+0 spawn CTI_SE_FNC_Weather_Hook;
+		
+// time compression
+0 spawn {
+	_day_ratio=14/CTI_WEATHER_FAST;
+	_night_ratio=10/CTI_WEATHER_FAST_NIGHT;
+	while {!CTI_Gameover} do {
+		if (daytime > 5 && daytime <19 ) then {
+			if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio;};
+		} else {
+			if (timeMultiplier !=  _night_ratio) then {setTimeMultiplier _nigth_ratio; }
+		};
+		sleep 120;
+	};
+};
+//TeamStack
+0 execFSM "Server\FSM\TEAMSTACK_count.fsm";
 
 // Zeus admin for players
 if !( isNil "ADMIN_ZEUS") then {

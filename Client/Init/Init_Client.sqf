@@ -62,6 +62,8 @@ CTI_P_LastRootMenu = "";
 CTI_P_LastRepairTime = -600;
 CTI_P_WallsAutoAlign = true;
 CTI_P_DefensesAutoManning = false;
+CTI_P_RapidDefence_Actions=[];
+CTI_P_RapidDefence=-1;
 
 CTI_P_Coloration_Money = "#BAFF81";
 
@@ -244,10 +246,6 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1
 	if (_grid > _grid_max) then { _grid = _grid_max };
 	setTerrainGrid _grid;
 	
-	if (CTI_WEATHER_FAST > 0) then { 
-		waitUntil {!isNil 'CTI_SERVERDATE'};
-		execFSM "Client\FSM\weather_fast_client.fsm";
-	};
 };
 
 // CTI_PurchaseMenu = player addAction ["<t color='#a5c4ff'>DEBUG: Purchase Units</t>", "Client\Actions\Action_PurchaseMenu.sqf", "HQ", 1, false, true, "", "_target == player"];//debug
@@ -255,7 +253,7 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1
 // player addAction ["<t color='#a5c4ff'>MENU: Equipment</t>", "Client\Actions\Action_GearMenu.sqf", "HQ", 93, false, true, "", "true"];
 
 // onMapSingleClick "{(vehicle leader _x) setPos ([_pos, 8, 30] call CTI_CO_FNC_GetRandomPosition)} forEach (CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups)";
-onMapSingleClick "vehicle player setPos _pos"; //--- benny debug: teleport
+CTI_BASE_CONSTRUCTION_TIME = if (CTI_DEV_MODE > 0) then { onMapSingleClick "vehicle player setPos _pos"; };//--- benny debug: teleport
 // player addEventHandler ["HandleDamage", {if (player != (_this select 3)) then {(_this select 3) setDammage 1}; false}]; //--- God-Slayer mode.
 // player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_BuildMenu.sqf"];//debug
 // player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug

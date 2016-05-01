@@ -6,6 +6,7 @@ CTI_FACTORY_AIR = 3;
 CTI_FACTORY_REPAIR = 4;
 CTI_FACTORY_AMMO = 5;
 CTI_FACTORY_NAVAL = 6;
+CTI_FACTORY_RADAR = 7;
 
 CTI_BARRACKS = "Barracks";
 CTI_LIGHT = "Light";
@@ -15,8 +16,9 @@ CTI_AIR = "Air";
 CTI_REPAIR = "Repair";
 CTI_AMMO = "Ammo";
 CTI_NAVAL = "Naval";
+CTI_RADAR = "Radar";
 
-CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL];
+CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL,CTI_RADAR];
 
 CTI_WEST_COLOR = "ColorBlue";
 CTI_EAST_COLOR = "ColorRed";
@@ -205,16 +207,26 @@ CTI_ORDER_CLIENT_PATROL_RANGE = 325; //--- AI: Patrol a position.
  */
 
 //--- Upgrades: Order
-CTI_UPGRADE_BARRACKS = 0;
-CTI_UPGRADE_LIGHT = 1;
-CTI_UPGRADE_HEAVY = 2;
-CTI_UPGRADE_AIR = 3;
-CTI_UPGRADE_SATELLITE = 4;
-CTI_UPGRADE_AIR_FFAR = 5;
-CTI_UPGRADE_AIR_AT = 6;
-CTI_UPGRADE_AIR_AA = 7;
-CTI_UPGRADE_AIR_CM = 8;
-CTI_UPGRADE_TOWNS = 9;
+CTI_UPGRADE_GEAR = 	0;
+CTI_UPGRADE_BARRACKS = 1;
+CTI_UPGRADE_LIGHT = 2;
+CTI_UPGRADE_HEAVY = 3;
+CTI_UPGRADE_NAVAL = 4;
+CTI_UPGRADE_AIR = 5;
+CTI_UPGRADE_AIR_FFAR = 6;
+CTI_UPGRADE_AIR_DAR = 7;
+CTI_UPGRADE_AIR_AT = 8;
+CTI_UPGRADE_AIR_AA = 9;
+CTI_UPGRADE_AIR_CM = 10;
+CTI_UPGRADE_TOWNS = 11;
+CTI_UPGRADE_HALO = 12;
+CTI_UPGRADE_AIRR = 13;
+CTI_UPGRADE_ARTR = 14;
+CTI_UPGRADE_REST = 15;
+CTI_UPGRADE_IRSMOKE = 16;
+CTI_UPGRADE_SATELLITE = 17;
+CTI_UPGRADE_NUKE = 18;
+
 //-----------------------------------------------------------------------------------------------------------------------//
 
 
@@ -375,14 +387,15 @@ with missionNamespace do {
 //--- Base: Area
 CTI_BASE_AREA_MAX = 2;
 CTI_BASE_AREA_RANGE = 500;
+CTI_BASE_CONSTRUCTION_TIME = if (CTI_DEV_MODE > 0) then { 0 } else {180}; //--- Length of time a structure takes to build, in seconds.
 
 //--- Base: Construction
 CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 500; //--- Decay starts after x seconds unattended.
 CTI_BASE_CONSTRUCTION_DECAY_DELAY = 10; //--- Decay each x seconds.
-CTI_BASE_CONSTRUCTION_DECAY_FROM = 0.25; //--- Decay of x / 100 each y seconds.
-CTI_BASE_CONSTRUCTION_RANGE = 150; //--- Determine how far the commander may be from the HQ to build
+CTI_BASE_CONSTRUCTION_DECAY_FROM = 10; //--- Decay of x / 100 each y seconds.
+CTI_BASE_CONSTRUCTION_RANGE = 200; //--- Determine how far the commander may be from the HQ to build
 CTI_BASE_CONSTRUCTION_RATIO_INIT = 1; //--- The initial construction ratio
-CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.95; //--- The completion ratio is multiplied by this coefficient to make repairs less effective at each factory's destruction.
+CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.60; //--- The completion ratio is multiplied by this coefficient to make repairs less effective at each factory's destruction.
 
 //--- Base: Defenses
 CTI_BASE_DEFENSES_AUTO_DELAY = 240; //--- Delay after which a new unit will replace a dead one for a defense
@@ -572,12 +585,17 @@ with missionNamespace do {
 	if (isNil 'CTI_RESPAWN_MOBILE') then {CTI_RESPAWN_MOBILE = 1};
 	if (isNil 'CTI_RESPAWN_TIMER') then {CTI_RESPAWN_TIMER = 30};
 	
+	if (isNil 'CTI_TEAMSWAP') then {CTI_TEAMSWAP = 1}; 
+	if (isNil 'CTI_TEAMSTACK') then {CTI_TEAMSTACK = 1}; 
+	
 	if (isNil 'CTI_MARKERS_INFANTRY') then {CTI_MARKERS_INFANTRY = 1}; //--- Track infantry on map
 	
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 0};
 	
-	if (isNil 'CTI_WEATHER_FAST') then {CTI_WEATHER_FAST = 0};
-	CTI_WEATHER_FAST_VALUES = [0, 4.8, 5.052631579, 5.333333333, 5.647058824, 6, 6.4, 6.857142857, 7.384615385, 8, 8.727272727, 9.6, 10.66666667, 12]; //--- Fast time values, this shall match the amount of values in rsc\parameters.hpp
+	if (isNil 'CTI_WEATHER_FAST') then {CTI_WEATHER_FAST = 12};
+	if (isNil 'CTI_WEATHER_FAST_NIGHT') then {CTI_WEATHER_FAST_NIGHT = 1};
+	if (isNil 'CTI_WEATHER_INITIAL') then {CTI_WEATHER_INITIAL = 10};
+	if (isNil 'CTI_WEATHER_ALLOWRAIN') then {CTI_WEATHER_ALLOWRAIN = 0};
 	
-	if (CTI_WEATHER_FAST > 0) then {CTI_WEATHER_FAST = CTI_WEATHER_FAST_VALUES select CTI_WEATHER_FAST};
+	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 0};
 };
