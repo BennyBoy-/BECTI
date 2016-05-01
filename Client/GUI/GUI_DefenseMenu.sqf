@@ -19,7 +19,7 @@ while { true } do {
 	};
 	
 	if (_last_workercount != _count) then {
-		((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200009) ctrlSetStructuredText (parseText format["Workers: <t color='#66baff'>%1</t>/%2", _count, CTI_BASE_WORKERS_LIMIT]);
+		((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200009) ctrlSetStructuredText (parseText format["Workers Removed!"]);
 	};
 	
 	_last_funds = _funds;

@@ -113,6 +113,7 @@ class CTI_RscBuildMenu {
 			text = "Build Defense";
 			action = "['onBuildDefense', lnbCurSelRow 100007] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
+		/* No more workers	
 		class CTI_Menu_Control_AddWorker : CTI_Menu_Control_Undo {
 			idc = 100005;
 			
@@ -121,7 +122,7 @@ class CTI_RscBuildMenu {
 			text = "Add Worker";
 			action = "['onAddWorker'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
-		
+		*/
 		class CTI_Menu_Control_BuildingList : RscListNBox {
 			idc = 100006;
 			

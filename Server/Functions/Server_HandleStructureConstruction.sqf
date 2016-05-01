@@ -6,21 +6,22 @@
 	Author: 		Benny
 	Creation Date:	20-09-2013
 	Revision Date:	20-09-2013
-	
+
   # PARAMETERS #
     0	[Side]: The side of the structure
     1	[Object]: The ruin
     2	[String]: The structure variable name
     3	[Array]: The position
     4	[Array]: The direction
-	
+
   # RETURNED VALUE #
 	None
-	
+
   # SYNTAX #
 	[SIDE, RUIN, STRUCTURE VARIABLE, POSITION, DIRECTION] spawn CTI_SE_FNC_HandleStructureConstruction
-	
+
   # DEPENDENCIES #
+
 	Common Function: CTI_CO_FNC_GetClosestEntity
 	Common Function: CTI_CO_FNC_GetSideID
 	Common Function: CTI_CO_FNC_GetSideLogic
@@ -30,42 +31,54 @@
 	Server Function: CTI_SE_FNC_OnBuildingHandleDamage
 	Server Function: CTI_SE_FNC_OnBuildingHandleVirtualDamage
 	Server Function: CTI_SE_FNC_OnBuildingHit
-	
+
   # EXAMPLE #
     [_side, _structure, _variable, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
 */
 
-private ["_completion", "_completion_ratio", "_completion_last", "_direction", "_lasttouch", "_position", "_side", "_structure", "_variable"];
+private ["_completion", "_completion_ratio", "_completion_last", "_direction", "_isDestroyed", "_lasttouch", "_position", "_side", "_structure", "_variable"];
 
 _side = _this select 0;
+_side_id= (_side) call CTI_CO_FNC_GetSideID;
 _structure = _this select 1;
 _variable = _this select 2;
 _position = _this select 3;
 _direction = _this select 4;
+_isDestroyed = if (count _this > 5) then {_this select 5} else {false};
+
 
 if (CTI_DEBUG) then {_structure setVariable ["cti_completion", 100]};
-
+waitUntil {!isNil {_structure getVariable "cti_completion"}};
 _completion = _structure getVariable "cti_completion";
 _completion_ratio = _structure getVariable "cti_completion_ratio";
 _completion_last = _completion;
 
+//********Put in Benny's suggestion on removing workers from here, ss83************
 _lasttouch = time;
 
-//--- Await for the site to be constructed or "abandonned"
-while {_completion > 0 && _completion < 100} do {
-	_completion = _structure getVariable "cti_completion";
-	sleep CTI_BASE_CONSTRUCTION_DECAY_DELAY;
-	
-	if (_completion > _completion_last) then { _lasttouch = time };
-	
-	if (time - _lasttouch > CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT) then {_structure setVariable ["cti_completion", _completion - CTI_BASE_CONSTRUCTION_DECAY_FROM]};
-	
+if (_isDestroyed) then {
+	 while {_completion > 0 && _completion < 100} do {
+        _completion = _structure getVariable "cti_completion";
+        sleep CTI_BASE_CONSTRUCTION_DECAY_DELAY;
+
+        if (_completion > _completion_last) then { _lasttouch = time };
+
+        if (time - _lasttouch > CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT) then {_structure setVariable ["cti_completion", _completion - CTI_BASE_CONSTRUCTION_DECAY_FROM]};
+
 	_completion_last = _completion;
-};
+	}; 
+} else {
+    //--- Normal construction cycle
+    if(!CTI_DEBUG) then {
+        sleep CTI_BASE_CONSTRUCTION_TIME; //this timer determines how long it takes for the structure to pop up, ss83
+    };	
+    _completion = 100;
+}; 
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") - [_structure, objNull]];
 
+//******************************To here, SS83************************************
 deleteVehicle _structure;
 
 if (_completion >= 100) then {
@@ -75,9 +88,8 @@ if (_completion >= 100) then {
 	_structure setPos _position;
 	_structure setDir _direction;
 	_structure setVectorUp [0,0,0];
-	
 	_structure setVariable ["cti_structure_type", ((_var select 0) select 0)];
-	
+
 	//--- Do we use our alternative damage system to prevent some bisteries from happening?
 	_alternative_damages = false;
 	_reduce_damages = 0;
@@ -93,11 +105,11 @@ if (_completion >= 100) then {
 			_structure addEventHandler ["hit", format ["[_this select 0, _this select 2, %1, '%2', %3] spawn CTI_SE_FNC_OnBuildingHit", (_side) call CTI_CO_FNC_GetSideID, _variable, _position]];
 		};
 	};
-	
+
 	_logic setVariable ["cti_structures", (_logic getVariable "cti_structures") + [_structure], true];
-	
+
 	[_structure, _var, _side] call CTI_SE_FNC_InitializeStructure;
-	
+
 	[["CLIENT", _side], "Client_OnStructureConstructed", [_structure, _variable]] call CTI_CO_FNC_NetSend;
 } else {
 	private ["_areas", "_closest", "_need_update", "_structures_positions"];
@@ -109,23 +121,22 @@ if (_completion >= 100) then {
 		_pos = [_pos select 0, _pos select 1];
 		_structures_positions pushBack _pos;
 	} forEach ((_side call CTI_CO_FNC_GetSideStructures) + (_logic getVariable "cti_structures_wip"));
-	
+
 	//--- Check for empty areas now
 	_need_update = false;
 	{
 		_closest = [_x, _structures_positions] call CTI_CO_FNC_GetClosestEntity;
-		// if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _areas set [_forEachIndex, "!nil!"]};
-		if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _areas deleteAt _forEachIndex};
+		if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _areas set [_forEachIndex, "!nil!"]};
 	} forEach +_areas;
-	
+
 	//--- Only update if we have to
 	if (_need_update) then {
-		// _areas = _areas - ["!nil!"];
+		_areas = _areas - ["!nil!"];
 		_logic setVariable ["cti_structures_areas", _areas, true];
 	};
-	
+
 	//todo: add message bout structure expiration
 };
 
-//AdminZeus
+//Admin Zeus
 if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_structure],true];};
