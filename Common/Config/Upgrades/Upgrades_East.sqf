@@ -90,8 +90,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[CTI_UPGRADE_HEAVY,3]] //--- Nuke
 ]];
 
+if (CTI_DEV_MODE > 0) then { 
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
-	if (CTI_DEV_MODE > 0) then { 
 		[1, 1, 1], //--- Gear
 		[1, 1, 1], //--- Barracks
 		[1, 1, 1], //--- Light
@@ -111,7 +111,9 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[1], //--- IR Smoke
 		[1], //--- Satellite
 		[1] //--- Nuke
-	}else {
+]];
+}else {
+missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[60,60,60], //--- Gear
 		[60,60,60], //--- Barracks
 		[60,60,60], //--- Light
@@ -131,8 +133,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[60], //--- IR Smoke
 		[600], //--- Satellite
 		[300] //--- Nuke
-	}
 ]];
+};
 
 //todo, on commander missing link checkup, skip disabled upgrades.
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_AI_ORDER", _side], [
