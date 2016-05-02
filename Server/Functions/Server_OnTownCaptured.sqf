@@ -41,6 +41,11 @@ _currentSideID = _town getVariable "cti_town_sideID";
 _town setVariable ["cti_town_sideID", _newSideID, true];
 _town setVariable ["cti_town_lastSideID", _currentSideID, true];
 
+//--- Set the town in a peace mode if needed for the specified amount of time
+if (missionNamespace getVariable "CTI_TOWNS_PEACE" > 0) then {
+	_town setVariable ["cti_town_peace", time + (missionNamespace getVariable "CTI_TOWNS_PEACE"), true];
+};
+
 //--- Update the camps if needed
 _town_camps = _town getVariable "cti_town_camps";
 if !(isNil "_town_camps") then {

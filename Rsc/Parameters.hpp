@@ -107,6 +107,12 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
+	class CTI_TOWNS_PEACE {
+		title = "TOWNS: Peace";
+		values[] = {0,60,120,180,300,600};
+		texts[] = {"Disabled","1 Minute","2 Minutes","3 Minutes","5 Minutes","10 Minutes"};
+		default = 180;
+	};
 	class CTI_TOWNS_TERRITORIAL {
 		title = "TOWNS: Territorial Mode";
 		values[] = {0,1};

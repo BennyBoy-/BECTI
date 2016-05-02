@@ -32,7 +32,7 @@ link13[] = {11,12};
 link14[] = {12,7};
 link15[] = {13,1};
 globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-553.124695,344.934753,133.816055,-562.199219,947,771,1};
-window[] = {2,-1,-1,-1,-1,806,1705,2960,25,3,965};
+window[] = {2,-1,-1,-1,-1,831,1730,2985,50,3,965};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -74,6 +74,15 @@ class FSM
        "_west = west countSide _objects;" \n
        "_east = east countSide _objects;" \n
        "_resistance = resistance countSide _objects;" \n
+       "" \n
+       "//--- Check if the town is in a peace mode" \n
+       "if (missionNamespace getVariable ""CTI_TOWNS_PEACE"" > 0) then {" \n
+       "	if (time < (_town getVariable ""cti_town_peace"")) then {" \n
+       "		_west = 0;" \n
+       "		_east = 0;" \n
+       "		_resistance = 0;" \n
+       "	};" \n
+       "};" \n
        "" \n
        "_ncycle = time + 3;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
