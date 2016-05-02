@@ -74,6 +74,19 @@ if !(isNil '_candidates') then {
 				_sub_teams pushBack (_x select 0);
 				_sub_groups pushBack (_x select 1);
 				_sub_positions pushBack (_x select 2);
+				
+				//--- Set the HC as the new group's owner
+				_locality = (_x select 1) setGroupOwner _owner_id;
+				
+				if (_locality) then {
+					if (CTI_Log_Level >= CTI_Log_Information) then {
+						["INFORMATION", "FILE: Server\Functions\Server_AttemptTownDelegation.sqf", format["Group [%1] locality has been changed to the Headless Client [%2] with owner ID [%3] for town [%4] on side [%5]", _x select 1, _uid, _owner_id, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+					};
+				} else {
+					if (CTI_Log_Level >= CTI_Log_Error) then {
+						["ERROR", "FILE: Server\Functions\Server_AttemptTownDelegation.sqf", format["Group [%1] locality could not be changed for Headless Client [%2] with owner ID [%3] for town [%4] on side [%5]", _x select 1, _uid, _owner_id, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+					};
+				};
 			} forEach _x;
 			
 			[["CLIENT", _hc_entity], "Client_OnTownDelegationReceived", [_town, _side, _sub_teams, _sub_groups, _sub_positions]] call CTI_CO_FNC_NetSend;
