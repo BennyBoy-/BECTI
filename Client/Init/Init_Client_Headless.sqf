@@ -85,7 +85,7 @@ with missionNamespace do {
 	};
 	
 	CTI_PVF_Client_OnTownDelegationReceived = {
-		private ["_groups", "_positions", "_side", "_teams", "_town", "_town_vehicles"];
+		private ["_groups", "_hc_tvar", "_positions", "_side", "_teams", "_town", "_town_vehicles"];
 		
 		_town = _this select 0;
 		_side = _this select 1;
@@ -103,11 +103,53 @@ with missionNamespace do {
 			["SERVER", "Request_TownAddVehicles", [_town, _side, _town_vehicles]] call CTI_CO_FNC_NetSend;
 		};
 		
+		_hc_tvar = if (_side == resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
+		
 		{
-			_x spawn {
+			//--- Register each groups on the town for deletion
+			if (isNil {_town getVariable _hc_tvar}) then {_town setVariable [_hc_tvar, [_x]]} else {_town setVariable [_hc_tvar, (_town getVariable _hc_tvar) + [_x]]};
+		// commented in for delegation removal via pvf
+			/*_x spawn {
 				while {count units _this > 0} do {sleep 5}; 
 				deleteGroup _this;
-			};
+			};*/
 		} forEach _groups; //--- Delete the group client-sided.
+	};
+	
+	CTI_PVF_Client_OnTownDelegationRemoval = {
+		private ["_hc_tvar", "_side", "_town"];
+		
+		_town = _this select 0;
+		_side = _this select 1;
+		
+		_hc_tvar = if (_side == resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
+		
+		//--- Triggered only if we have units over here
+		if !(isNil {_town getVariable _hc_tvar}) then {
+			if (CTI_Log_Level >= CTI_Log_Information) then {
+				["INFORMATION", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["A Delegation removal request was received from the server for [%1] teams present in town [%2] on side [%3]", count(_town getVariable _hc_tvar), _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+			};
+		
+			{
+				["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] group [%2] units will be removed", _town getVariable "cti_town_name", _x]] call CTI_CO_FNC_Log;
+				if !(isNil '_x') then {
+					["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] group [%2] is not nil", _town getVariable "cti_town_name", _x]] call CTI_CO_FNC_Log;
+					if !(isNull _x) then {
+						["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] group [%2] is not null ([%3] units), is local? [%4]", _town getVariable "cti_town_name", _x, count units _x, local _x]] call CTI_CO_FNC_Log;
+						{
+							["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] deleting unit [%2] from group [%3], local? [%4]", _town getVariable "cti_town_name", _x, group _x, local _x]] call CTI_CO_FNC_Log;
+							deleteVehicle _x;
+							["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] is unit removed? unit [%2]", _town getVariable "cti_town_name", _x]] call CTI_CO_FNC_Log;
+						} forEach units _x;
+						["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] group [%2] is about to be removed, units count [%3]", _town getVariable "cti_town_name", _x, count units _x]] call CTI_CO_FNC_Log;
+						deleteGroup _x;
+						["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] group [%2] was deleted?", _town getVariable "cti_town_name", _x]] call CTI_CO_FNC_Log;
+					};
+				};
+			} forEach (_town getVariable _hc_tvar);
+			
+			//--- Destroy the variable at the end
+			_town setVariable [_hc_tvar, nil];
+		};
 	};
 };
