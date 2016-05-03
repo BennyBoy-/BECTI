@@ -220,13 +220,13 @@ skipTime _it;
 		
 // time compression
 0 spawn {
-	_day_ratio=14/CTI_WEATHER_FAST;
-	_night_ratio=10/CTI_WEATHER_FAST_NIGHT;
+	_day_ratio = 14/CTI_WEATHER_FAST;
+	_night_ratio = 10/CTI_WEATHER_FAST_NIGHT;
 	while {!CTI_Gameover} do {
 		if (daytime > 5 && daytime <19 ) then {
-			if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio;};
+			if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio };
 		} else {
-			if (timeMultiplier !=  _night_ratio) then {setTimeMultiplier _nigth_ratio; }
+			if (timeMultiplier !=  _night_ratio) then {setTimeMultiplier _night_ratio };
 		};
 		sleep 120;
 	};
