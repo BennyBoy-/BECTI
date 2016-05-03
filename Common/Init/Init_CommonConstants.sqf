@@ -311,6 +311,7 @@ CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = 0.25; //--- Determine how much value an
 
 //--- Towns: Markers
 CTI_TOWNS_MARKERS_MAP_RANGE = 600; //--- Distance required to show the town SV on the map (from a player/player's unit)
+CTI_TOWNS_MARKERS_PEACE_COLOR = "ColorYellow"; //--- The color used for peace-mode towns
 
 //--- Towns: Patrol
 CTI_TOWNS_PATROL_HOPS = 7; //--- Towns patrol hops (non-waypoint)
@@ -340,8 +341,6 @@ CTI_TOWNS_SUPPLY_TIME_INTERVAL = 80; //--- Determine the interval between each t
 CTI_TOWNS_SUPPLY_TIME_INCREASE = 1; //--- Determine the town SV increment when the interval's reached (Potential upgrade?)
 
 //--- Towns: Territorial
-CTI_TOWNS_TERRITORIAL_MARKER_ENEMY_CAPTURABLE_COLOR = "ColorOrange"; //--- The color for enemy capturable towns
-CTI_TOWNS_TERRITORIAL_MARKER_FRIENDLY_CAPTURABLE_COLOR = "ColorYellow"; //--- The color for friendly capturable towns
 CTI_TOWNS_TERRITORIAL_MARKER_SIZE = [350, 350]; //--- Size of the helper marker
 
 //--- Towns: Parameters

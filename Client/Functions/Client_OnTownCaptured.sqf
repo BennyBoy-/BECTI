@@ -81,3 +81,6 @@ _town_camps = _town getVariable "cti_town_camps";
 if !(isNil "_town_camps") then {
 	{(_x getVariable "cti_camp_marker") setMarkerColorLocal _color} forEach _town_camps;
 };
+
+//--- Update the territorial markers if enabled
+if ((missionNamespace getVariable "CTI_TOWNS_TERRITORIAL") > 0) then {CTI_P_TerritorialUpdate = true};

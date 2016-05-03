@@ -129,7 +129,8 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 	waitUntil {!isNil 'CTI_InitTowns'};
 	
 	execFSM "Client\FSM\update_markers_towns.fsm";
-	if ((missionNamespace getVariable "CTI_TOWNS_TERRITORIAL") == 1) then {
+	if ((missionNamespace getVariable "CTI_TOWNS_TERRITORIAL") > 0) then {
+		CTI_P_TerritorialUpdate = false;
 		execFSM "Client\FSM\town_territorial_helper.fsm";
 	};
 };
