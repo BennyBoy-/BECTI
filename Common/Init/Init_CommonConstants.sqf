@@ -530,6 +530,8 @@ CTI_GC_DELAY_SHIP = 60;
 CTI_GC_DELAY_STATIC = 80;
 CTI_GC_DELAY_BUILDING = 30;
 
+CTI_VOTE_TIME = 60; //--- Commander Vote time
+
 //--- SHK Specific
 CTI_SHK_BUILDING_ENABLED = true;
 CTI_SHK_BUILDING_PLACEMENT_CHANCE = 25; //--- An AI Group has x% of chance to be placed in a building

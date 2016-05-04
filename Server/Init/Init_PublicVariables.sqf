@@ -137,4 +137,28 @@ with missionNamespace do {
 			_town setVariable ["cti_town_occupation_active_vehicles", (_town getVariable "cti_town_occupation_active_vehicles") + _vehicles];
 		};
 	};
+	
+	CTI_PVF_Request_CommanderVote = {
+		private ["_logic", "_name", "_side", "_team"];
+		
+		_side = _this select 0;
+		_name = _this select 1;
+		
+		_logic = (_side) Call CTI_CO_FNC_GetSideLogic;
+		_team = (_side) Call CTI_CO_FNC_GetSideCommanderTeam;
+		
+		//--- Make sure that no vote is running
+		if (_logic getVariable "cti_votetime" <= 0) then {
+			//--- Set the votes for the default commander
+			{
+				if ((_x getVariable "cti_vote") != _team) then {_x setVariable ["cti_vote", _team, true]};
+			} forEach (_logic getVariable "cti_teams");
+			
+			//--- Call in for a vote
+			(_side) Spawn CTI_SE_FNC_VoteForCommander;
+			
+			//--- Send a message to the clients
+			[["CLIENT", _side], "Client_OnMessageReceived", ["commander-vote-start", _name]] call CTI_CO_FNC_NetSend;
+		};
+	};
 };
