@@ -940,7 +940,10 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then { //--- Muzzle is an array
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'MuzzleSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									_compatibleItems = (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'MuzzleSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower);
+									{_compatibleItems pushBack toLower(configName _x)} forEach (configProperties[configfile >> _config_type >> (_x select 0) >> "MuzzleSlot" >> "CowsSlot" >> "compatibleItems", "true", true]);
+									if (_item in _compatibleItems) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									// if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'MuzzleSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
@@ -949,7 +952,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then { //--- Optics is a subclass
-									_compatibleItems = [];
+									_compatibleItems = (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'CowsSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower);
 									{_compatibleItems pushBack toLower(configName _x)} forEach (configProperties[configfile >> _config_type >> (_x select 0) >> "WeaponSlotsInfo" >> "CowsSlot" >> "compatibleItems", "true", true]);
 									if (_item in _compatibleItems) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
@@ -961,7 +964,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then { //--- Side is a subclass
-									_compatibleItems = [];
+									_compatibleItems = (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'PointerSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower);
 									{_compatibleItems pushBack toLower(configName _x)} forEach (configProperties[configfile >> _config_type >> (_x select 0) >> "WeaponSlotsInfo" >> "PointerSlot" >> "compatibleItems", "true", true]);
 									if (_item in _compatibleItems) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
@@ -1130,9 +1133,13 @@ CTI_UI_Gear_UpdateLinkedItems = {
 			};
 		} forEach (getArray(configFile >> 'CfgWeapons' >> _item >> 'muzzles'));
 		
-		//--- Add the compatible accessories
-		_compatible_muzzles = (getArray(configFile >> 'CfgWeapons' >> _item >> 'WeaponSlotsInfo' >> 'MuzzleSlot' >> 'compatibleItems')) call CTI_CO_FNC_ArrayToLower;
+		//--- Add the compatible accessories (bistery over here, one time the config 'compatibleItems' is property, one time it's an array, so fuck it, we add both).
 		_compatible_acc = [];
+		_compatible_acc = _compatible_acc + ((getArray(configFile >> 'CfgWeapons' >> _item >> 'WeaponSlotsInfo' >> 'MuzzleSlot' >> 'compatibleItems')) call CTI_CO_FNC_ArrayToLower);
+		_compatible_acc = _compatible_acc + ((getArray(configFile >> 'CfgWeapons' >> _item >> 'WeaponSlotsInfo' >> 'PointerSlot' >> 'compatibleItems')) call CTI_CO_FNC_ArrayToLower);
+		_compatible_acc = _compatible_acc + ((getArray(configFile >> 'CfgWeapons' >> _item >> 'WeaponSlotsInfo' >> 'CowsSlot' >> 'compatibleItems')) call CTI_CO_FNC_ArrayToLower);
+		
+		{_compatible_acc pushBack toLower(configName _x)} forEach (configProperties[configfile >> 'CfgWeapons' >> _item >> "WeaponSlotsInfo" >> "MuzzleSlot" >> "compatibleItems", "true", true]);
 		{_compatible_acc pushBack toLower(configName _x)} forEach (configProperties[configfile >> 'CfgWeapons' >> _item >> "WeaponSlotsInfo" >> "PointerSlot" >> "compatibleItems", "true", true]);
 		{_compatible_acc pushBack toLower(configName _x)} forEach (configProperties[configfile >> 'CfgWeapons' >> _item >> "WeaponSlotsInfo" >> "CowsSlot" >> "compatibleItems", "true", true]);
 		
@@ -1144,7 +1151,7 @@ CTI_UI_Gear_UpdateLinkedItems = {
 				lnbSetPicture [70601, [_row, 1], getText(configFile >> _get select 2 >> _x >> 'picture')];
 				lnbSetData [70601, [_row, 0], toLower(_x)];
 			};
-		} forEach (_magazines call CTI_CO_FNC_ArrayToLower) + _compatible_muzzles + _compatible_acc;
+		} forEach (_magazines call CTI_CO_FNC_ArrayToLower) + _compatible_acc;
 	};
 };
 
