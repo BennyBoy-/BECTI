@@ -832,6 +832,38 @@ _i = _i		+ ["acc_pointer_IR"];
 _u = _u		+ [0];
 _p = _p		+ [2];
 
+_i = _i		+ ["bipod_01_F_snd"];
+_u = _u		+ [0];
+_p = _p		+ [4];
+
+_i = _i		+ ["bipod_01_F_blk"];
+_u = _u		+ [0];
+_p = _p		+ [4];
+
+_i = _i		+ ["bipod_01_F_mtp"];
+_u = _u		+ [0];
+_p = _p		+ [4];
+
+_i = _i		+ ["bipod_02_F_blk"];
+_u = _u		+ [0];
+_p = _p		+ [4];
+
+_i = _i		+ ["bipod_02_F_tan"];
+_u = _u		+ [0];
+_p = _p		+ [4];
+
+_i = _i		+ ["bipod_02_F_hex"];
+_u = _u		+ [0];
+_p = _p		+ [4];
+
+_i = _i		+ ["bipod_03_F_blk"];
+_u = _u		+ [0];
+_p = _p		+ [4];
+
+_i = _i		+ ["bipod_03_F_oli"];
+_u = _u		+ [0];
+_p = _p		+ [4];
+
 //--- Items
 _i = _i		+ ["NVGoggles"];
 _u = _u		+ [0];

@@ -89,6 +89,7 @@ for '_i' from 0 to count(_items)-1 do {
 							case CTI_SUBTYPE_ACC_MUZZLE: {"Acc-Muzzle"};
 							case CTI_SUBTYPE_ACC_OPTIC: {"Acc-Optics"};
 							case CTI_SUBTYPE_ACC_SIDE: {"Acc-Side"};
+							case CTI_SUBTYPE_ACC_BIPOD: {"Acc-Bipod"};
 							case CTI_SUBTYPE_HEADGEAR: {"Headgear"};
 							case CTI_SUBTYPE_VEST: {"Vest"};
 							case CTI_SUBTYPE_UNIFORM: {"Uniform"};
@@ -100,7 +101,7 @@ for '_i' from 0 to count(_items)-1 do {
 								case (_item_subtype == "Uniform"): { _gear_uniforms pushBack _item };
 								case (_item_subtype == "Vest"): { _gear_vests pushBack _item };
 								case (_item_subtype == "Headgear"): { _gear_headgear pushBack _item };
-								case (_item_subtype in ["Acc-Muzzle", "Acc-Optics", "Acc-Side"]): { _gear_accessories pushBack _item };
+								case (_item_subtype in ["Acc-Muzzle", "Acc-Optics", "Acc-Side", "Acc-Bipod"]): { _gear_accessories pushBack _item };
 								case (_item_subtype in ["BaseItem", ""]): { _gear_misc pushBack _item };
 							};
 						};
