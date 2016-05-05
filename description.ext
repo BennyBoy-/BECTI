@@ -6,6 +6,7 @@
 #include "Rsc\Game.hpp"
 #include "Rsc\Resources.hpp"
 #include "Rsc\Dialogs.hpp"
+#include "Rsc\Titles.hpp"
 #include "Rsc\Notifications.hpp"
 #include "Rsc\Sounds.hpp"
 #include "Rsc\Debriefing.hpp"

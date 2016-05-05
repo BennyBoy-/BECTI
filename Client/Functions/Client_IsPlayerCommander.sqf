@@ -17,11 +17,15 @@
 	call CTI_CL_FNC_IsPlayerCommander
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_GetSideCommander
+	Common Function: CTI_CO_FNC_GetSideCommanderTeam
 	
   # EXAMPLE #
     call CTI_CL_FNC_IsPlayerCommander
 	  -> Returns true if the player is the current commander
 */
 
-if ((CTI_P_SideJoined call CTI_CO_FNC_GetSideCommander) == group player) then {true} else {false}
+private["_commander"];
+
+_commander = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommanderTeam;
+if (isNull _commander) exitWith {false};
+if (_commander == group player) then {true} else {false}

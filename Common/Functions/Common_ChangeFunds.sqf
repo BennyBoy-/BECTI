@@ -20,15 +20,11 @@
 	[GROUP, AMOUNT] call CTI_CO_FNC_ChangeFunds
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ChangeFundsCommander
-	Common Function: CTI_CO_FNC_ChangeFunds
-	Common Function: CTI_CO_FNC_GetSideCommander
+	Common Function: CTI_CO_FNC_GetFunds
 	
   # EXAMPLE #
 	[group player, 500] call CTI_CO_FNC_ChangeFunds; 
-	  -> Assuming the player is the commander and had 5000 before: 5500
-	[group player, 500] call CTI_CO_FNC_ChangeFunds; 
-	  -> Assuming the player is not the commander and had 25 before: 525
+	  -> If the player had 5000 before, he'll end up with 5500
 */
 
 private ["_funds", "_group", "_side", "_value"];
@@ -41,11 +37,6 @@ _side = side _group;
 if (isNil '_value') exitWith {"error CTI_CO_FNC_ChangeFunds: attempted to set nil value"};
 if (typeName _value != "SCALAR") exitWith {"error CTI_CO_FNC_ChangeFunds: attempted to set non scalar value"};
 
-if ((_side call CTI_CO_FNC_GetSideCommander) == _group) then {
-	//--- Change the commander's funds
-	[_side, _value] call CTI_CO_FNC_ChangeFundsCommander;
-} else {
-	//--- Change a team's funds
-	_funds = (_group) call CTI_CO_FNC_GetFunds;
-	_group setVariable ["cti_funds", _funds + _value, true];
-};
+//--- Change a team's funds
+_funds = (_group) call CTI_CO_FNC_GetFunds;
+_group setVariable ["cti_funds", _funds + _value, true];

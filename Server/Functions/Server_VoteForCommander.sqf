@@ -38,8 +38,10 @@ for '_i' from 0 to (count _teams)-1 do {_votes pushBack 0};
 //--- Dispatch the votes
 _vote_ai = 0;
 {
-	_who = _teams find (_x getVariable "cti_vote");
-	if (_who > -1) then {_votes set [_who, (_votes select _who) + 1]} else {_vote_ai = _vote_ai + 1};
+	if (isPlayer leader _x) then {
+		_who = _teams find (_x getVariable "cti_vote");
+		if (_who > -1) then {_votes set [_who, (_votes select _who) + 1]} else {_vote_ai = _vote_ai + 1};
+	};
 } forEach _teams;
 
 //--- Get the most voted for group

@@ -68,4 +68,22 @@ switch (_action) do {
 			createDialog "CTI_RscSatelitteCamera";
 		};
 	};
+	case "onCommanderVotePressed": {
+		if (CTI_P_SideLogic getVariable ["cti_votetime", -1] < 0) then { //--- No vote's running
+			//--- Request a new vote
+			["SERVER", "Request_CommanderVote", [CTI_P_SideJoined, name player]] call CTI_CO_FNC_NetSend;
+			
+			//--- Don't lock this script
+			0 spawn {
+				waitUntil{CTI_P_SideLogic getVariable "cti_votetime" > -1 || !alive player || !dialog};
+				if (alive player && dialog) then {
+					closeDialog 0;
+					createDialog "CTI_RscVoteMenu";
+				};
+			};
+		} else {
+			closeDialog 0;
+			createDialog "CTI_RscVoteMenu";
+		};
+	};
 };

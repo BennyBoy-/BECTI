@@ -197,7 +197,9 @@ class FSM
        "		};" \n
        "		if (_capturable) then {" \n
        "			//--- Retrieve the current held camps" \n
-       "			_rate = CTI_TOWNS_CAPTURE_RATE * (count([_town, _force] Call CTI_CO_FNC_GetTownCampsOnSide) / count(_town Call CTI_CO_FNC_GetTownCamps)) * CTI_TOWNS_CAPTURE_RATE_CAMPS;" \n
+       "			_camps_count = count(_town Call CTI_CO_FNC_GetTownCamps);" \n
+       "			_camps_force = if (_camps_count < 1) then {1} else {count([_town, _force] Call CTI_CO_FNC_GetTownCampsOnSide) / _camps_count};" \n
+       "			_rate = CTI_TOWNS_CAPTURE_RATE * _camps_force * CTI_TOWNS_CAPTURE_RATE_CAMPS;" \n
        "			if (_rate < 1) then {_rate = 1};" \n
        "			_supply = _supply - round(_forceCount * _rate);" \n
        "			if (_supply <= 0) then { _captured = true; _supply = _town getVariable ""cti_town_sv_default"" };" \n

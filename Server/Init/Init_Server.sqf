@@ -98,13 +98,15 @@ if (_attempts >= 500) then {
 	_logic setVariable ["cti_structures_areas", [], true];
 	_logic setVariable ["cti_structures_lasthit", -600];
 	_logic setVariable ["cti_workers", [], true];
-	_logic setVariable ["cti_commander", grpNull, true];
-	_logic setVariable ["cti_commander_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1_COMMANDER", _side], true];
+	_logic setVariable ["cti_commander_team", grpNull, true];
+	_logic setVariable ["cti_ai_commander", false];
+	_logic setVariable ["cti_ai_commander_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1_COMMANDER", _side]];
 	_logic setVariable ["cti_pool_award", missionNamespace getVariable format ["CTI_ECONOMY_POOL_AWARD_PERCENTAGE_%1", _side], true];
 	_logic setVariable ["cti_pool_resources", missionNamespace getVariable format ["CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_%1", _side], true];
 	_logic setVariable ["cti_salvagers", [], true];
 	_logic setVariable ["cti_spotted_units", []];
 	_logic setVariable ["cti_spotted_structures", []];
+	_logic setVariable ["cti_supply", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_SUPPLY_%1", _side], true];
 	
 	_upgrades = [];
 	for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { _upgrades pushBack 0 };
@@ -157,13 +159,9 @@ if (_attempts >= 500) then {
 							
 							if (isMultiplayer) then { sleep 20 };
 							
-							if (typeOf (leader _group) != (missionNamespace getVariable format["CTI_%1_Commander", _side])) then { //--- An AI Team
-								sleep (random 5); //--- Differ each threads.
-								if (isNil {_group getVariable "cti_aifsm_handled"}) then {
-									[_group, _side] execFSM "Server\FSM\update_ai.fsm";
-								};
-							} else { //--- The Commander
-								if (isNull (_logic getVariable "cti_commander")) then { _logic setVariable ["cti_commander", _group, true] };
+							sleep (random 5); //--- Differ each threads.
+							if (isNil {_group getVariable "cti_aifsm_handled"}) then {
+								[_group, _side] execFSM "Server\FSM\update_ai.fsm";
 							};
 						};
 					};
@@ -173,33 +171,19 @@ if (_attempts >= 500) then {
 	} forEach (synchronizedObjects _logic);
 	
 	_logic setVariable ["cti_teams", _teams, true];
-	
-	//--- Handle the Commander
-	if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" == 1) then {
-		[_side, _logic] spawn {
-			_side = _this select 0;
-			_logic = _this select 1;
-			
-			sleep 2;
-			if (isMultiplayer) then { sleep 25 };
-			
-			if !(isNull (_logic getVariable "cti_commander")) then {
-				if !(isPlayer leader (_logic getVariable "cti_commander")) then { 
-					_logic setVariable ["cti_ai_commander", true];
-					(_side) execFSM "Server\FSM\update_commander.fsm";
-				};
-			};
-		};
-	};
 } forEach [[west, CTI_WEST, _westLocation], [east, CTI_EAST, _eastLocation]];
 
-//--- Towns init thread
+//--- Towns init thread + Vote
 0 spawn {
 	waitUntil {!isNil 'CTI_InitTowns'};
 	
 	execFSM "Server\FSM\update_garbage_collector.fsm";
 	execFSM "Server\FSM\update_resources.fsm";
 	execFSM "Server\FSM\update_victory.fsm";
+	
+	waitUntil {time > 0};
+	
+	{_x Spawn CTI_SE_FNC_VoteForCommander} forEach CTI_PLAYABLE_SIDES;
 };
 
 if (CTI_WEATHER_FAST > 0) then { execFSM "Server\FSM\weather_fast.fsm" };

@@ -1466,7 +1466,7 @@ class CTI_RscOptionsMenu {
 			x = "SafeZoneX + (SafeZoneW * 0.2)";
 			y = "SafeZoneY + (SafezoneH * 0.205)";
 			w = "SafeZoneW * 0.3";
-			h = "SafeZoneH * 0.7";
+			h = "SafeZoneH * 0.75";
 			colorBackground[] = {0, 0, 0, 0.7};
 			moving = 1;
 		};
@@ -1619,6 +1619,14 @@ class CTI_RscOptionsMenu {
 			
 			text = "Satellite Camera";
 			action = "['onSatCamPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_OptionsMenu.sqf'";
+		};
+		class CTI_Menu_Options_VoteMenu : CTI_Menu_Options_OnlineHelp {
+			idc = 130015;
+			
+			y = "SafeZoneY + (SafezoneH * 0.895)";
+			
+			text = "Commander Vote";
+			action = "['onCommanderVotePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_OptionsMenu.sqf'";
 		};
 		class CTI_Control_Exit : RscButton {
 			idc = 22555;
@@ -4620,6 +4628,108 @@ class CTI_RscArtilleryMenu {
 			
 			text = "<<";
 			action = "closeDialog 0; createDialog 'CTI_RscCommandMenu';";
+		};
+	};
+};
+
+class CTI_RscVoteMenu {
+	movingEnable = 0;
+	idd = 300000;
+	onLoad = "uiNamespace setVariable ['cti_dialog_ui_votemenu', _this select 0];['onLoad'] execVM 'Client\Events\Events_UI_VoteMenu.sqf'";
+	onUnload = "uiNamespace setVariable ['cti_dialog_ui_votemenu', nil]";
+	
+	class controlsBackground {
+		class CTI_Background : RscText {
+			x = "SafeZoneX + (SafeZoneW * 0.273)";
+			y = "SafeZoneY + (SafezoneH * 0.134)";
+			w = "SafeZoneW * 0.5";
+			h = "SafeZoneH * 0.8";
+			colorBackground[] = {0, 0, 0, 0.7};
+			moving = 1;
+		};
+		class CTI_Background_Header : CTI_Background {
+			x = "SafeZoneX + (SafeZoneW * 0.273)";
+			y = "SafeZoneY + (SafezoneH * 0.134)";
+			w = "SafeZoneW * 0.5";
+			h = "SafeZoneH * 0.05"; //0.06 stock
+			colorBackground[] = {0, 0, 0, 0.4};
+		};
+		class CTI_Menu_Title : RscText {
+			style = ST_LEFT;
+			x = "SafeZoneX + (SafeZoneW * 0.293)";
+			y = "SafeZoneY + (SafezoneH * 0.139)";
+			w = "SafeZoneW * 0.48";
+			h = "SafeZoneH * 0.037";
+			
+			text = "Commander Vote";
+			colorText[] = {0.258823529, 0.713725490, 1, 1};
+			
+			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+		};
+	};
+	class controls {
+		class CTI_Menu_Vote_List : RscListNBox {
+			idc = 300001;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.28)";
+			y = "SafeZoneY + (SafezoneH * 0.207)";
+			w = "SafeZoneW * 0.489";
+			h = "SafeZoneH * 0.665";
+			
+			// rowHeight = "1.22 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			rowHeight = "1.3 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			// sizeEx = "0.78 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			sizeEx = "0.95 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};
+			itemBackground[] = {1,1,1,0.1};
+			columns[] = {0.01, 0.75};
+			
+			onLBSelChanged = "['onVoteLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_VoteMenu.sqf'";
+		};
+		class CTI_Menu_Vote_Time : RscText {
+			idc = 300002;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.739)";
+			y = "SafeZoneY + (SafezoneH * 0.896)";
+			w = "SafeZoneW * 0.25";
+			shadow = 2;
+		};
+		class CTI_Menu_Vote_Elected : CTI_Menu_Vote_Time {
+			idc = 300003;
+			style = ST_LEFT;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.28)";
+			w = "SafeZoneW * 0.3";
+		};
+		class CTI_Menu_Vote_Time_Static : CTI_Menu_Vote_Time {
+			idc = 300004;
+			style = ST_RIGHT;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.433)";
+			w = "SafeZoneW * 0.3";
+			
+			text = "Time :";
+		};
+		class CTI_Control_Exit : RscButton {
+			idc = 22555;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.723)";
+			y = "SafeZoneY + (SafezoneH * 0.139)";
+			w = "SafeZoneW * 0.04";
+			h = "SafeZoneH * 0.04";
+			
+			text = "X";
+			action = "closeDialog 0";
+		};
+		class CTI_Control_Back : CTI_Control_Exit {
+			idc = 22555;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.678)";
+			
+			text = "<<";
+			action = "closeDialog 0; createDialog 'CTI_RscOptionsMenu';";
 		};
 	};
 };

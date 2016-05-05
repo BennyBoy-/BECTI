@@ -4,7 +4,7 @@ _action = _this select 0;
 switch (_action) do {
 	case "onLoad": {
 		_groups = if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" == 1) then {(CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups} else {(CTI_P_SideJoined) call CTI_CO_FNC_GetSidePlayerGroups};
-		_commander = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommander;
+		_commander = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommanderTeam;
 		_groups = _groups - [_commander];
 		// if (_commander != group player) exitWith {};
 		

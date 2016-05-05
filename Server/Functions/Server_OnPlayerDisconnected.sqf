@@ -24,7 +24,7 @@
 	Common Function: CTI_CO_FNC_GetClosestEntity
 	Common Function: CTI_CO_FNC_GetFunds
 	Common Function: CTI_CO_FNC_GetRandomPosition
-	Common Function: CTI_CO_FNC_GetSideCommander
+	Common Function: CTI_CO_FNC_GetSideCommanderTeam
 	Common Function: CTI_CO_FNC_GetSideHQ
 	Common Function: CTI_CO_FNC_GetSideStructures
 	Common Function: CTI_CO_FNC_NetSend
@@ -67,7 +67,7 @@ if (isNull _team) exitWith {if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", 
 
 _side = _get select 3; //--- Get the last side joined
 _funds = (_team) call CTI_CO_FNC_GetFunds;
-_commander = (_side) call CTI_CO_FNC_GetSideCommander;
+_commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;
 _is_commander = if (_commander == _team) then {true} else {false};
 _leader = leader _team;
 

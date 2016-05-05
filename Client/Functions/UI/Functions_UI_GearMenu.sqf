@@ -39,16 +39,16 @@ CTI_UI_Gear_DisplayInventory = {
 		_startidc = _startidc + 1;
 		
 		if (count (_x select 1) > 0) then {
-			{
-				if (_x != "") then {
-					((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc) ctrlSetText getText(configFile >> 'CfgWeapons' >> _x >> 'picture');
-					((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc) ctrlSetTooltip getText(configFile >> 'CfgWeapons' >> _x >> 'displayName');
+			for '_i' from 0 to 2 do {
+				if ((_x select 1) select _i != "") then {
+					((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc) ctrlSetText getText(configFile >> 'CfgWeapons' >> (_x select 1) select _i >> 'picture');
+					((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc) ctrlSetTooltip getText(configFile >> 'CfgWeapons' >> (_x select 1) select _i >> 'displayName');
 				} else {
-					((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc) ctrlSetText (_default_accs select _forEachIndex);
+					((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc) ctrlSetText (_default_accs select _i);
 					((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc) ctrlSetTooltip "";
 				};
 				_startidc = _startidc + 1;
-			} forEach (_x select 1);
+			};
 		} else {
 			for '_i' from 0 to 2 do {
 				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc) ctrlSetText (_default_accs select _i);
@@ -57,8 +57,6 @@ CTI_UI_Gear_DisplayInventory = {
 			};
 		};
 		
-		
-		// player sidechat format [" %1", _gear select 2];
 		if (count(_x select 2) > 0) then {
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc_current_mag+_forEachindex) ctrlSetText getText(configFile >> 'CfgMagazines' >> ((_x select 2) select 0) >> 'picture');
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc_current_mag+_forEachindex) ctrlSetTooltip getText(configFile >> 'CfgMagazines' >> ((_x select 2) select 0) >> 'displayName');
@@ -185,8 +183,7 @@ CTI_UI_Gear_DisplayShoppingItems = {
 	
 	if (_tab != CTI_GEAR_TAB_TEMPLATES) then { //--- Generic items
 		{
-			_get = missionNamespace getVariable _x;
-			
+			_get = missionNamespace getVariable format["cti_%1", _x];
 			if !(isNil "_get") then {
 				_row = lnbAddRow [70108, [getText(configFile >> _get select 2 >> _x >> 'displayName'), format ["$%1", (_get select 0) select 1]]];
 				lnbSetPicture [70108, [_row, 1], getText(configFile >> _get select 2 >> _x >> 'picture')];
@@ -340,7 +337,7 @@ CTI_UI_Gear_AddItem = {
 	
 	_item = toLower(_this);
 	
-	_get = missionNamespace getVariable _item;
+	_get = missionNamespace getVariable format["cti_%1", _item];
 	_updated = false;
 	
 	if !(isNil '_get') then {
@@ -554,20 +551,17 @@ CTI_UI_Gear_CheckMagazines = {
 		
 		for '_i' from 2 to 0 step -1 do {
 			_items = ((_gear select 1) select _i) select 1;
-			_count = 0;
 			for '_j' from 0 to count(_items)-1 do {
 				if ((_items select _j) in _replace) then {
 					["ContainerItem", _items select _j, "", [_i]] call CTI_UI_Gear_UpdateMass;
 					[_i, 70301+_i] call CTI_UI_Gear_UpdateContainerProgress;
-					// _items set [_j, "!nil!"];
-					_items deleteAt _j;
-					_count = _count + 1;
+					_items set [_j, "!nil!"];
 				};
 			};
 			
-			// _count = {_x == "!nil!"} count _items;
+			_count = {_x == "!nil!"} count _items;
 			if (_count > 0) then {
-				// _items = _items - ["!nil!"];
+				_items = _items - ["!nil!"];
 				((_gear select 1) select _i) set [1, _items];
 				_return = [((_gear select 1) select _i) select 0, _items] call CTI_UI_Gear_GetContainerMass;
 				_container_items_mass = _return select 1;
@@ -945,7 +939,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							_acc_idcs = [77014, 77018, 77022];
 							//--- Where does it fit?
 							{
-								if ((_x select 0) != "") then {
+								if ((_x select 0) != "") then { //--- Muzzle is an array
 									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'MuzzleSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
@@ -954,17 +948,22 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							_acc_idcs = [77016, 77020, 77024];
 							//--- Where does it fit?
 							{
-								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'CowsSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+								if ((_x select 0) != "") then { //--- Optics is a subclass
+									_compatibleItems = [];
+									{_compatibleItems pushBack toLower(configName _x)} forEach (configProperties[configfile >> _config_type >> (_x select 0) >> "WeaponSlotsInfo" >> "CowsSlot" >> "compatibleItems", "true", true]);
+									if (_item in _compatibleItems) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
 						case CTI_SUBTYPE_ACC_SIDE: {
 							_acc_idcs = [77015, 77019, 77023];
+							
 							//--- Where does it fit?
 							{
-								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'PointerSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+								if ((_x select 0) != "") then { //--- Side is a subclass
+									_compatibleItems = [];
+									{_compatibleItems pushBack toLower(configName _x)} forEach (configProperties[configfile >> _config_type >> (_x select 0) >> "WeaponSlotsInfo" >> "PointerSlot" >> "compatibleItems", "true", true]);
+									if (_item in _compatibleItems) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
@@ -1121,7 +1120,7 @@ CTI_UI_Gear_UpdateLinkedItems = {
 	if ((lnbSize 70601) select 0 > 0) then {lnbClear 70601};
 	
 	if (_config_type == "CfgWeapons") then {
-		// _magazines = (getArray(configFile >> 'CfgWeapons' >> _item >> 'magazines')) call CTI_CO_FNC_ArrayToLower;
+		//--- Add the linked magazines
 		_magazines = [];
 		{
 			if (_x == "this") then {
@@ -1131,15 +1130,21 @@ CTI_UI_Gear_UpdateLinkedItems = {
 			};
 		} forEach (getArray(configFile >> 'CfgWeapons' >> _item >> 'muzzles'));
 		
+		//--- Add the compatible accessories
+		_compatible_muzzles = (getArray(configFile >> 'CfgWeapons' >> _item >> 'WeaponSlotsInfo' >> 'MuzzleSlot' >> 'compatibleItems')) call CTI_CO_FNC_ArrayToLower;
+		_compatible_acc = [];
+		{_compatible_acc pushBack toLower(configName _x)} forEach (configProperties[configfile >> 'CfgWeapons' >> _item >> "WeaponSlotsInfo" >> "PointerSlot" >> "compatibleItems", "true", true]);
+		{_compatible_acc pushBack toLower(configName _x)} forEach (configProperties[configfile >> 'CfgWeapons' >> _item >> "WeaponSlotsInfo" >> "CowsSlot" >> "compatibleItems", "true", true]);
+		
 		{
-			_get = missionNamespace getVariable _x;
+			_get = missionNamespace getVariable format["cti_%1", _x];
 			
 			if !(isNil "_get") then {
 				_row = lnbAddRow [70601, [getText(configFile >> _get select 2 >> _x >> 'displayName'), format ["$%1", (_get select 0) select 1]]];
 				lnbSetPicture [70601, [_row, 1], getText(configFile >> _get select 2 >> _x >> 'picture')];
 				lnbSetData [70601, [_row, 0], toLower(_x)];
 			};
-		} forEach (_magazines call CTI_CO_FNC_ArrayToLower);
+		} forEach (_magazines call CTI_CO_FNC_ArrayToLower) + _compatible_muzzles + _compatible_acc;
 	};
 };
 
