@@ -583,7 +583,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						description="Commander";
+						description="Zulu";
 						isPlayable=1;
 					};
 					id=38;
@@ -615,7 +615,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						description="Commander";
+						description="Zulu";
 						isPlayable=1;
 					};
 					id=40;
