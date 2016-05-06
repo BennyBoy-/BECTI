@@ -41,14 +41,14 @@ for '_i' from 0 to count(_items)-1 do {
 		if (isNil {missionNamespace getVariable _item}) then {
 			switch (_config_type) do { //--- Each item is handled differently
 				case "CfgGlasses": {
-					missionNamespace setVariable [_item, [[_upgrades select _i, _prices select _i], "Goggles", _config_type]];
+					missionNamespace setVariable [format["cti_%1", _item], [[_upgrades select _i, _prices select _i], "Goggles", _config_type]];
 					if (_pushtogear) then {_gear_glasses pushBack _item};
 					_cpt = _cpt + 1;
 					
 					if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Common\Config\Gear\Gear_Config_Set.sqf", format ["Set Glasses [%1].", _item]] call CTI_CO_FNC_Log };
 				};
 				case "CfgMagazines": {
-					missionNamespace setVariable [_item, [[_upgrades select _i, _prices select _i], "Magazines", _config_type]];
+					missionNamespace setVariable [format["cti_%1", _item], [[_upgrades select _i, _prices select _i], "Magazines", _config_type]];
 					
 					if (_pushtogear) then {
 						if (getText(configFile >> 'CfgMagazines' >> _item >> "nameSound") in ["mine", "satchelcharge"]) then {
@@ -63,7 +63,7 @@ for '_i' from 0 to count(_items)-1 do {
 				};
 				case "CfgVehicles": {
 					if (getNumber(configFile >> _config_type >> _item >> 'isbackpack') == 1) then { //--- Make sure that this is a backpack
-						missionNamespace setVariable [_item, [[_upgrades select _i, _prices select _i], "Backpack", _config_type]];
+						missionNamespace setVariable [format["cti_%1", _item], [[_upgrades select _i, _prices select _i], "Backpack", _config_type]];
 						if (_pushtogear) then {_gear_backpacks pushBack _item};
 						_cpt = _cpt + 1;
 						
@@ -89,6 +89,7 @@ for '_i' from 0 to count(_items)-1 do {
 							case CTI_SUBTYPE_ACC_MUZZLE: {"Acc-Muzzle"};
 							case CTI_SUBTYPE_ACC_OPTIC: {"Acc-Optics"};
 							case CTI_SUBTYPE_ACC_SIDE: {"Acc-Side"};
+							case CTI_SUBTYPE_ACC_BIPOD: {"Acc-Bipod"};
 							case CTI_SUBTYPE_HEADGEAR: {"Headgear"};
 							case CTI_SUBTYPE_VEST: {"Vest"};
 							case CTI_SUBTYPE_UNIFORM: {"Uniform"};
@@ -100,7 +101,7 @@ for '_i' from 0 to count(_items)-1 do {
 								case (_item_subtype == "Uniform"): { _gear_uniforms pushBack _item };
 								case (_item_subtype == "Vest"): { _gear_vests pushBack _item };
 								case (_item_subtype == "Headgear"): { _gear_headgear pushBack _item };
-								case (_item_subtype in ["Acc-Muzzle", "Acc-Optics", "Acc-Side"]): { _gear_accessories pushBack _item };
+								case (_item_subtype in ["Acc-Muzzle", "Acc-Optics", "Acc-Side", "Acc-Bipod"]): { _gear_accessories pushBack _item };
 								case (_item_subtype in ["BaseItem", ""]): { _gear_misc pushBack _item };
 							};
 						};
@@ -119,7 +120,7 @@ for '_i' from 0 to count(_items)-1 do {
 						_item_type = [_item_type, _item_subtype];
 					};
 					
-					missionNamespace setVariable [_item, [[_upgrades select _i, _prices select _i], _item_type, _config_type]];
+					missionNamespace setVariable [format["cti_%1", _item], [[_upgrades select _i, _prices select _i], _item_type, _config_type]];
 					_cpt = _cpt + 1;
 					
 					if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Common\Config\Gear\Gear_Config_Set.sqf", format ["Set Item [%1] of nature [%2].", _item, _item_type]] call CTI_CO_FNC_Log };

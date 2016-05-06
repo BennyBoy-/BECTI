@@ -18,10 +18,6 @@
   # SYNTAX #
 	(GROUP) call CTI_CO_FNC_GetFunds
 	
-  # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_GetFundsCommander
-	Common Function: CTI_CO_FNC_GetSideCommander
-	
   # EXAMPLE #
     _funds = (group player) call CTI_CO_FNC_GetFunds
 */
@@ -31,9 +27,5 @@ private ["_group", "_side"];
 _group = _this;
 _side = side _group;
 
-if ((_side call CTI_CO_FNC_GetSideCommander) == _group) then {
-	(_side) call CTI_CO_FNC_GetFundsCommander;
-} else {
-	_funds = _group getVariable "cti_funds";
-	if (isNil '_funds') then {0} else {_funds};
-}
+_funds = _group getVariable "cti_funds";
+if (isNil '_funds') then {0} else {_funds};

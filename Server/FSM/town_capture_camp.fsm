@@ -174,7 +174,7 @@ class FSM
        "	} else { //--- Capture" \n
        "		//--- In case of territorial mode, check that the town can be captured!" \n
        "		_capturable = true;" \n
-       "		if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") == 1) then {" \n
+       "		if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") > 0) then {" \n
        "			_capturable = [_town, _force] Call CTI_SE_FNC_CanCaptureTerritorialTown;" \n
        "		};" \n
        "		if (_capturable) then {" \n

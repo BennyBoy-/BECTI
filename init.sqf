@@ -70,7 +70,7 @@ call compile preprocessFileLineNumbers "Common\Init\Init_Common.sqf";
 
 //--- Towns init
 execVM "Common\Init\Init_Locations.sqf";
-if ((missionNamespace getVariable "CTI_TOWNS_TERRITORIAL") == 1) then {
+if ((missionNamespace getVariable "CTI_TOWNS_TERRITORIAL") > 0) then {
 	call compile preprocessFileLineNumbers "Common\Init\Init_LocationsTerritorial.sqf";
 };
 

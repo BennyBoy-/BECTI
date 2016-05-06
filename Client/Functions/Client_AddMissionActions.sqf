@@ -22,7 +22,7 @@
 */
 
 //--- Commander related actions
-if ((CTI_P_SideLogic getVariable "cti_commander") == group player) then { 
+if (call CTI_CL_FNC_IsPlayerCommander) then { 
 	player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_BuildMenu.sqf", "", 93, false, true, "", "_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange"];
 };
 

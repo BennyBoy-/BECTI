@@ -273,6 +273,7 @@ CTI_SUBTYPE_ITEM = 0;
 CTI_SUBTYPE_ACC_MUZZLE = 101;
 CTI_SUBTYPE_ACC_OPTIC = 201;
 CTI_SUBTYPE_ACC_SIDE = 301;
+CTI_SUBTYPE_ACC_BIPOD = 302;
 CTI_SUBTYPE_HEADGEAR = 605;
 CTI_SUBTYPE_UAVTERMINAL = 621;
 CTI_SUBTYPE_VEST = 701;
@@ -323,6 +324,7 @@ CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = 0.25; //--- Determine how much value an
 
 //--- Towns: Markers
 CTI_TOWNS_MARKERS_MAP_RANGE = 600; //--- Distance required to show the town SV on the map (from a player/player's unit)
+CTI_TOWNS_MARKERS_PEACE_COLOR = "ColorYellow"; //--- The color used for peace-mode towns
 
 //--- Towns: Patrol
 CTI_TOWNS_PATROL_HOPS = 7; //--- Towns patrol hops (non-waypoint)
@@ -352,8 +354,6 @@ CTI_TOWNS_SUPPLY_TIME_INTERVAL = 80; //--- Determine the interval between each t
 CTI_TOWNS_SUPPLY_TIME_INCREASE = 1; //--- Determine the town SV increment when the interval's reached (Potential upgrade?)
 
 //--- Towns: Territorial
-CTI_TOWNS_TERRITORIAL_MARKER_ENEMY_CAPTURABLE_COLOR = "ColorOrange"; //--- The color for enemy capturable towns
-CTI_TOWNS_TERRITORIAL_MARKER_FRIENDLY_CAPTURABLE_COLOR = "ColorYellow"; //--- The color for friendly capturable towns
 CTI_TOWNS_TERRITORIAL_MARKER_SIZE = [350, 350]; //--- Size of the helper marker
 
 //--- Towns: Parameters
@@ -535,6 +535,8 @@ CTI_SCORE_BUILD_VALUE_PERPOINT = 1500; //--- Structure value / x
 CTI_SCORE_SALVAGE_VALUE_PERPOINT = 2000; //--- Unit value / x
 CTI_SCORE_TOWN_VALUE_PERPOINT = 10; //--- Town value / x
 
+CTI_UI_TOWNS_PROGRESSBAR_DISTANCE = 550;
+
 CTI_GC_DELAY = 90;
 CTI_GC_DELAY_AIR = 360;
 CTI_GC_DELAY_CAR = 240;
@@ -543,6 +545,8 @@ CTI_GC_DELAY_TANK = 300;
 CTI_GC_DELAY_SHIP = 60;
 CTI_GC_DELAY_STATIC = 80;
 CTI_GC_DELAY_BUILDING = 30;
+
+CTI_VOTE_TIME = 60; //--- Commander Vote time
 
 //--- SHK Specific
 CTI_SHK_BUILDING_ENABLED = true;
@@ -566,6 +570,9 @@ with missionNamespace do {
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER') then {CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER = 9000};
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_WEST') then {CTI_ECONOMY_STARTUP_FUNDS_WEST = 900};
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER') then {CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER = 9000};
+	
+	if (isNil 'CTI_ECONOMY_STARTUP_SUPPLY_EAST') then {CTI_ECONOMY_STARTUP_SUPPLY_EAST = 1200};
+	if (isNil 'CTI_ECONOMY_STARTUP_SUPPLY_WEST') then {CTI_ECONOMY_STARTUP_SUPPLY_WEST = 1200};
 	
 	// CTI_ECONOMY_STARTUP_FUNDS_EAST = 80000;
 	// CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER = 400000;

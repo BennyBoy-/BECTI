@@ -1,12 +1,12 @@
-/*%FSM<COMPILE "E:\Bohemia Interactive\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, update_commander.fsm">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, update_commander.fsm">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start_FSM",0,250,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Start FSM"};
-item1[] = {"Cycle",4,218,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Cycle"};
-item2[] = {"Phase_I_Commande",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Phase I" \n "Commander"};
-item3[] = {"End_FSM",1,250,-400.000000,-200.000000,-300.000000,-150.000000,0.000000,"End FSM"};
-item4[] = {"Human",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Human"};
-item5[] = {"AI",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"AI"};
+item0[] = {"Start_FSM",0,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"Cycle"};
+item2[] = {"Phase_I_Commande",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Phase I" \n "Commander"};
+item3[] = {"End_FSM",1,250,-400.000000,0.000000,-300.000000,50.000000,0.000000,"End FSM"};
+item4[] = {"Human",8,218,-250.000000,0.000000,-150.000000,50.000000,0.000000,"Human"};
+item5[] = {"AI",4,218,-100.000000,100.000000,0.000000,150.000000,1.000000,"AI"};
 item6[] = {"Phase_III_Action",2,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"Phase III" \n "Action"};
 item7[] = {"Roles",4,218,-250.000000,400.000000,-150.000000,450.000000,1.000000,"Roles"};
 item8[] = {"Set_Roles__One_Time",2,250,-250.000000,500.000000,-150.000000,550.000000,0.000000,"Set" \n "Roles" \n "(One Time)"};
@@ -22,28 +22,23 @@ item17[] = {"Orders",4,218,-375.000000,400.000000,-275.000000,450.000000,2.00000
 item18[] = {"Update_Orders",2,250,-375.000000,500.000000,-275.000000,550.000000,0.000000,"Update" \n "Orders"};
 item19[] = {"",7,210,-54.000004,696.000000,-46.000000,704.000000,0.000000,""};
 item20[] = {"",7,210,696.000000,696.000000,704.000000,704.000000,0.000000,""};
-item21[] = {"",7,210,696.000000,-279.000000,704.000000,-271.000000,0.000000,""};
+item21[] = {"",7,210,696.000000,-78.999985,704.000000,-71.000015,0.000000,""};
 item22[] = {"Construction",4,218,50.000000,200.000000,150.000000,250.000000,2.000000,"Construction"};
 item23[] = {"Management",4,218,-250.000000,200.000000,-150.000000,250.000000,1.000000,"Management"};
 item24[] = {"Determine",2,250,50.000000,300.000000,150.000000,350.000000,0.000000,"Determine"};
-item25[] = {"Determine_1",2,4346,-250.000000,300.000000,-150.000000,350.000000,0.000000,"Determine"};
+item25[] = {"Determine_1",2,250,-250.000000,300.000000,-150.000000,350.000000,0.000000,"Determine"};
 item26[] = {"Nil",8,218,-100.000000,400.000000,0.000000,450.000000,0.000000,"Nil"};
 item27[] = {"Skip",2,250,-100.000000,500.000000,0.000000,550.000000,0.000000,"Skip"};
 item28[] = {"Workers",4,218,300.000000,400.000000,400.000000,450.000000,2.000000,"Workers"};
 item29[] = {"Update_Workers",2,250,300.000000,500.000000,400.000000,550.000000,0.000000,"Update" \n "Workers"};
-item30[] = {"Phase_II_Respawn",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Phase II" \n "Respawning"};
-item31[] = {"Ready",4,218,-100.000000,100.000000,0.000000,150.000000,1.000000,"Ready"};
-item32[] = {"Respawning",8,218,-250.000000,0.000000,-150.000000,50.000000,0.000000,"Respawning"};
-item33[] = {"Skip_1",2,250,-500.000000,0.000000,-400.000000,50.000000,0.000000,"Skip"};
-item34[] = {"",7,210,-454.000000,-279.000000,-446.000000,-271.000000,0.000000,""};
-item35[] = {"Salvagers",4,218,425.000000,400.000000,525.000000,450.000000,1.000000,"Salvagers"};
-item36[] = {"Update_Salvagers",2,250,425.000000,500.000000,525.000000,550.000000,0.000000,"Update" \n "Salvagers"};
+item30[] = {"Salvagers",4,218,425.000000,400.000000,525.000000,450.000000,1.000000,"Salvagers"};
+item31[] = {"Update_Salvagers",2,250,425.000000,500.000000,525.000000,550.000000,0.000000,"Update" \n "Salvagers"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,4};
 link3[] = {2,5};
 link4[] = {4,3};
-link5[] = {5,30};
+link5[] = {5,6};
 link6[] = {6,22};
 link7[] = {6,23};
 link8[] = {6,26};
@@ -69,7 +64,7 @@ link27[] = {24,11};
 link28[] = {24,13};
 link29[] = {24,26};
 link30[] = {24,28};
-link31[] = {24,35};
+link31[] = {24,30};
 link32[] = {25,7};
 link33[] = {25,15};
 link34[] = {25,17};
@@ -79,15 +74,9 @@ link37[] = {27,19};
 link38[] = {28,29};
 link39[] = {29,19};
 link40[] = {30,31};
-link41[] = {30,32};
-link42[] = {31,6};
-link43[] = {32,33};
-link44[] = {33,34};
-link45[] = {34,1};
-link46[] = {35,36};
-link47[] = {36,19};
-globals[] = {25.000000,1,0,0,0,640,480,1,223,6316128,1,-627.959229,754.378662,919.349121,-388.749390,931,911,1};
-window[] = {2,-1,-1,-1,-1,806,25,1280,25,3,949};
+link41[] = {31,19};
+globals[] = {25.000000,1,0,0,0,640,480,1,223,6316128,1,-431.425415,699.195679,722.627197,-345.742767,672,635,1};
+window[] = {0,-1,-1,-1,-1,822,100,1450,41,1,690};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -101,7 +90,6 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"_side = _this;" \n
        "_sideID = (_side) call CTI_CO_FNC_GetSideID;" \n
        "_sideLogic = (_side) call CTI_CO_FNC_GetSideLogic;" \n
-       "_sideCommander = _sideLogic getVariable ""cti_commander"";" \n
        "" \n
        "_ncycle = 0;" \n
        "_lastAction = """";" \n
@@ -112,21 +100,13 @@ class FSM
        "_role_assigned = false;" \n
        "_role_assigned_lastcheck = -3000;" \n
        "" \n
-       "_commander_lastmove = -100;" \n
        "_commander_buildorderstart = -1;" \n
        "_commander_lastsalvager_addin = -600;" \n
        "_commander_lastteamupdate = 0;" \n
        "" \n
        "_logical_path = missionNamespace getVariable format[""CTI_%1_Commander_Path"", _side];" \n
        "_logical_path_reached = 0;" \n
-       "_logical_path_index = 0;" \n
-       "" \n
-       "if (isMultiplayer) then {" \n
-       "	(leader _sideCommander) removeAllEventHandlers ""respawn"";" \n
-       "	(leader _sideCommander) addEventHandler [""respawn"", format[""[_this select 0, _this select 1, %1] spawn CTI_FSM_UpdateCommander_Respawn_MP"", _sideID]];" \n
-       "} else {" \n
-       "	(leader _sideCommander) addEventHandler [""killed"", format[""[_this select 0, %1] spawn CTI_FSM_UpdateCommander_Respawn_SP"", _sideID]];" \n
-       "};"/*%FSM</STATEINIT""">*/;
+       "_logical_path_index = 0;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -147,12 +127,7 @@ class FSM
     class Phase_I_Commande
     {
       name = "Phase_I_Commande";
-      init = /*%FSM<STATEINIT""">*/"_sideCommander = _sideLogic getVariable ""cti_commander"";" \n
-       "" \n
-       "_ok = false;" \n
-       "if !(isNull _sideCommander) then {" \n
-       "	if !(isPlayer leader _sideCommander) then { _ok = true };" \n
-       "};" \n
+      init = /*%FSM<STATEINIT""">*/"_sideCommander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;" \n
        "" \n
        "_ncycle = time + 5;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -162,9 +137,9 @@ class FSM
         class AI
         {
           priority = 1.000000;
-          to="Phase_II_Respawn";
+          to="Phase_III_Action";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _ok"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && isNull _sideCommander && _sideLogic getVariable ""cti_ai_commander"""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -198,13 +173,13 @@ class FSM
       name = "Phase_III_Action";
       init = /*%FSM<STATEINIT""">*/"_action = """";" \n
        "" \n
-       "_funds = (_side) call CTI_CO_FNC_GetFundsCommander;" \n
-       "_structures = (_side) call CTI_CO_FNC_GetSideStructures;" \n
-       "_factory_commandCenter = [CTI_CONTROLCENTER, leader _sideCommander, _structures] call CTI_CO_FNC_GetClosestStructure;" \n
-       "" \n
-       "//--- Check base eta." \n
        "_hq = (_side) call CTI_CO_FNC_GetSideHQ;" \n
        "" \n
+       "_funds = (_side) call CTI_CO_FNC_GetFundsCommander;" \n
+       "_structures = (_side) call CTI_CO_FNC_GetSideStructures;" \n
+       "_factory_commandCenter = [CTI_CONTROLCENTER, _hq, _structures] call CTI_CO_FNC_GetClosestStructure;" \n
+       "" \n
+       "//--- Check base eta." \n
        "if (alive _hq) then {_action = ""construction""};" \n
        "if (alive _factory_commandCenter) then {_action = ""management""};" \n
        "" \n
@@ -257,7 +232,7 @@ class FSM
       name = "Set_Roles__One_Time";
       init = /*%FSM<STATEINIT""">*/"_role_assigned = true;" \n
        "" \n
-       "_teams = (_side call CTI_CO_FNC_GetSideGroups) - [_sideCommander];" \n
+       "_teams = _side call CTI_CO_FNC_GetSideGroups;" \n
        "_teams_count = count _teams;" \n
        "_ratio_infantry = ceil(_teams_count * .45);" \n
        "_ratio_light_n_heavy = round(_teams_count * .20);" \n
@@ -334,11 +309,10 @@ class FSM
        "	_template = missionNamespace getVariable format[""CTI_%1_Base_Template"", _side];" \n
        "	" \n
        "	//--- The structure is not built around" \n
-       "	_position_commander = getPos leader(_side call CTI_CO_FNC_GetSideCommander);" \n
-       "	if !([_side, _selected_param, _position_commander, 1250] call CTI_CO_FNC_HasStructure) then {" \n
+       "	if !([_side, _selected_param, getPos _hq, 1250] call CTI_CO_FNC_HasStructure) then {" \n
        "		//--- But is it in WIP?" \n
        "		_is_being_built = false;" \n
-       "		{if ((_x getVariable ""cti_structure_type"") == _selected_param && _x distance _position_commander <= 1250) exitWith {_is_being_built = true}} forEach (_sideLogic getVariable ""cti_structures_wip"");" \n
+       "		{if ((_x getVariable ""cti_structure_type"") == _selected_param && _x distance _hq <= 1250) exitWith {_is_being_built = true}} forEach (_sideLogic getVariable ""cti_structures_wip"");" \n
        "		" \n
        "		//--- All clear!" \n
        "		if !(_is_being_built) then {" \n
@@ -376,27 +350,21 @@ class FSM
        "		_position = _build select 2;" \n
        "		_var = missionNamespace getVariable format [""CTI_%1_%2"", _side, _build select 0];" \n
        "		_distance_structure = (_var select 4) select 1;" \n
-       "		_dir_to = [leader _sideCommander, _position] call CTI_CO_FNC_GetDirTo;" \n
+       "		_dir_to = [_hq, _position] call CTI_CO_FNC_GetDirTo;" \n
        "		_goto = [(_position select 0) - ((sin _dir_to) * _distance_structure), (_position select 1) - ((cos _dir_to) * _distance_structure), 0];" \n
-       "		if ((leader _sideCommander) distance _goto <= 35 && unitReady (leader _sideCommander) && alive (leader _sideCommander)) then {" \n
-       "			//--- Construct" \n
-       "			(leader _sideCommander) setDir _dir_to;" \n
-       "			_direction_structure = (_var select 4) select 0;" \n
-       "			_direction = 0 + ((_build select 2) select 1) + _direction_structure; //todo template defines that (0)" \n
-       "			[format [""CTI_%1_%2"", _side, _build select 0], _side, (_build select 2), _direction] call CTI_SE_FNC_BuildStructure;" \n
-       "			" \n
-       "			[_side, -(_build select 1)] call CTI_CO_FNC_ChangeFundsCommander;" \n
-       "			_score = round((_build select 1) / CTI_SCORE_BUILD_VALUE_PERPOINT);" \n
-       "			if (_score > 0) then {(leader _sideCommander) addScore _score};" \n
-       "			" \n
-       "			_build = [];" \n
-       "			" \n
-       "			//--- Next!" \n
-       "			if (_logical_path_reached < (count _logical_path)-1) then {_logical_path_reached = _logical_path_reached + 1};" \n
-       "			_logical_path_index = if (_logical_path_index + 1 > _logical_path_reached) then {0} else {_logical_path_index + 1};" \n
-       "		} else {" \n
-       "			if (time - _commander_lastmove > 35) then { (leader _sideCommander) commandMove _goto };" \n
-       "		};" \n
+       "" \n
+       "		//--- Construct" \n
+       "		_direction_structure = (_var select 4) select 0;" \n
+       "		_direction = 0 + ((_build select 2) select 1) + _direction_structure; //todo template defines that (0)" \n
+       "		[format [""CTI_%1_%2"", _side, _build select 0], _side, (_build select 2), _direction] call CTI_SE_FNC_BuildStructure;" \n
+       "		" \n
+       "		[_side, -(_build select 1)] call CTI_CO_FNC_ChangeFundsCommander;" \n
+       "		" \n
+       "		_build = [];" \n
+       "		" \n
+       "		//--- Next!" \n
+       "		if (_logical_path_reached < (count _logical_path)-1) then {_logical_path_reached = _logical_path_reached + 1};" \n
+       "		_logical_path_index = if (_logical_path_index + 1 > _logical_path_reached) then {0} else {_logical_path_index + 1};" \n
        "	};" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -442,11 +410,10 @@ class FSM
       name = "Update_Upgrades";
       init = /*%FSM<STATEINIT""">*/"_upgrade = _selected_param select 0;" \n
        "_upgrade_level = _selected_param select 1;" \n
-       "_position_commander = getPos leader(_side call CTI_CO_FNC_GetSideCommander);" \n
        "" \n
        "_increment = false;" \n
        "//--- Do we have a CC in range?" \n
-       "if ([_side, CTI_CONTROLCENTER, _position_commander, CTI_BASE_PURCHASE_UNITS_RANGE_CC] call CTI_CO_FNC_HasStructure) then {" \n
+       "if ([_side, CTI_CONTROLCENTER, getPos _hq, CTI_BASE_PURCHASE_UNITS_RANGE_CC] call CTI_CO_FNC_HasStructure) then {" \n
        "	//--- Do we have the upgrade yet?" \n
        "	if !([_side, _upgrade, _upgrade_level] call CTI_CO_FNC_HasUpgrade) then {" \n
        "		if ((_sideLogic getVariable ""cti_upgrade"") < 0) then {" \n
@@ -564,7 +531,7 @@ class FSM
        "			};" \n
        "		};" \n
        "	};" \n
-       "} forEach ((_side call CTI_CO_FNC_GetSideGroups) - [_sideCommander]);"/*%FSM</STATEINIT""">*/;
+       "} forEach (_side call CTI_CO_FNC_GetSideGroups);"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -590,7 +557,7 @@ class FSM
        "" \n
        "{" \n
        "	if ((_x getVariable ""cti_order"") in [CTI_ORDER_HOLDTOWNSBASE, CTI_ORDER_HOLDTOWNSBASES]) then {_defensive_teams pushBack _x};" \n
-       "} forEach ((_side call CTI_CO_FNC_GetSideGroups) - [_sideCommander]);" \n
+       "} forEach (_side call CTI_CO_FNC_GetSideGroups);" \n
        "" \n
        "if (count _defensive_teams > 0) then { //--- Update our defenders" \n
        "	_towns = (_sideID) call CTI_FSM_UpdateCommander_GetMostValuedTowns;" \n
@@ -653,7 +620,7 @@ class FSM
        "};" \n
        "" \n
        "//--- Salvagers are needed?" \n
-       "_factory_repair = [CTI_REPAIR, leader _sideCommander, _structures] call CTI_CO_FNC_GetClosestStructure;" \n
+       "_factory_repair = [CTI_REPAIR, _hq, _structures] call CTI_CO_FNC_GetClosestStructure;" \n
        "if !(isNull _factory_repair) then {" \n
        "	if (_funds >= CTI_VEHICLES_SALVAGER_PRICE && !isNull _factory_repair && count(_sideLogic getVariable ""cti_salvagers"") < CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX && time - _commander_lastsalvager_addin > 300) then {_action = ""hire-salvager""};" \n
        "};" \n
@@ -830,68 +797,12 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "Phase_II_Respawn">*/
-    class Phase_II_Respawn
-    {
-      name = "Phase_II_Respawn";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Ready">*/
-        class Ready
-        {
-          priority = 1.000000;
-          to="Phase_III_Action";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time > (_sideCommander getVariable ""cti_nextrespawn"")"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Respawning">*/
-        class Respawning
-        {
-          priority = 0.000000;
-          to="Skip_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Skip_1">*/
-    class Skip_1
-    {
-      name = "Skip_1";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Cycle">*/
-        class Cycle
-        {
-          priority = 0.000000;
-          to="Phase_I_Commande";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
     /*%FSM<STATE "Update_Salvagers">*/
     class Update_Salvagers
     {
       name = "Update_Salvagers";
-      init = /*%FSM<STATEINIT""">*/"if ((leader _sideCommander) distance _factory_repair < 40 && unitReady (leader _sideCommander)) then {" \n
-       "	_commander_lastsalvager_addin = time;" \n
-       "	[_side, _sideCommander, _side, format[""CTI_Salvager_Independent_%1"", _side], _factory_repair, [true, true, true, true, true], (time + random 10000 - random 500 + diag_frameno)] call CTI_SE_FNC_OnClientPurchase;" \n
-       "} else {" \n
-       "	if (time - _commander_lastmove > 25) then { (leader _sideCommander) commandMove ([getPos _factory_repair, 2, 15] call CTI_CO_FNC_GetRandomPosition) };" \n
-       "};"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_commander_lastsalvager_addin = time;" \n
+       "[_side, grpNull, _side, format[""CTI_Salvager_Independent_%1"", _side], _factory_repair, [true, true, true, true, true], (time + random 10000 - random 500 + diag_frameno)] call CTI_SE_FNC_OnClientPurchase;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
