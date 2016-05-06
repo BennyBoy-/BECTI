@@ -12,8 +12,6 @@
 #include "Rsc\Debriefing.hpp"
 #include "Rsc\Parameters.hpp"
 
-// Disable AI Slots
-disabledAI = 1;
 
 // ^HS^ for Headless Client
 joinUnassigned = 0;

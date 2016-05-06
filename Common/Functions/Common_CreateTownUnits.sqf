@@ -41,6 +41,9 @@ for '_i' from 0 to count(_groups)-1 do {
 			{_shk_members pushBack _x} forEach _members;
 		};
 	};
+	
+	//--- Zeus
+	CTI_ZEUS addCuratorEditableObjects [units _group, true];
 };
 
 //--- SHK AI placement
