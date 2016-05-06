@@ -55,13 +55,15 @@ if (((_gear select 1) select 0) select 0 != uniform _unit || [((_gear select 1) 
 };
 
 //--- [Assigned items check-in]
-removeAllAssignedItems _unit; //--- Due to the lack of commands for some of them, we remove everything first.
+removeAllAssignedItems _unit; //--- Due to the lack of commands for some of them, we remove everything first aside from goggles and headgear
 _new = _gear select 2;
 
 _item = _new select 0;
+if (_item != headgear _unit) then {removeHeadgear _unit};
 if (_item != "") then {_unit addHeadgear _item};
 
 _item = _new select 1;
+if (_item != goggles _unit) then {removeGoggles _unit};
 if (_item != "") then {_unit addGoggles _item};
 
 { if (_x != "") then {_unit linkItem _x} } forEach ([((_gear select 3) select 0) select 0] + ((_gear select 3) select 1));
