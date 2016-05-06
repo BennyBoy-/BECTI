@@ -43,7 +43,7 @@ for '_i' from 0 to count(_groups)-1 do {
 	};
 	
 	//--- Zeus
-	CTI_ZEUS addCuratorEditableObjects [units _group, true];
+	ADMIN_ZEUS addCuratorEditableObjects [units _group, true];
 };
 
 //--- SHK AI placement
