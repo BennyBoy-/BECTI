@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=124;
+		nextID=125;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={3116.8513,216.42154,2232.1418};
-		dir[]={-0.37435776,-0.42094943,-0.82629621};
-		up[]={-0.17373191,0.90706378,-0.38346729};
-		aside[]={-0.91093057,-6.8359077e-007,0.41270068};
+		pos[]={2209.8831,162.37219,2730.425};
+		dir[]={0.8252241,-0.12930398,0.54996169};
+		up[]={0.10770269,0.99157417,0.071779273};
+		aside[]={0.55462265,3.4837285e-007,-0.83221138};
 	};
 };
 binarizationWanted=0;
@@ -30,7 +30,8 @@ addons[]=
 	"A3_Characters_F_BLUFOR",
 	"a3_characters_f",
 	"A3_Characters_F_OPFOR",
-	"A3_Structures_F_Mil_BagBunker"
+	"A3_Structures_F_Mil_BagBunker",
+	"A3_Modules_F_Curator_Curator"
 };
 randomSeed=13186954;
 class ScenarioData
@@ -62,7 +63,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=84;
+		items=85;
 		class Item0
 		{
 			dataType="Marker";
@@ -1843,6 +1844,116 @@ class Mission
 			};
 			id=121;
 			type="Land_BagBunker_Tower_F";
+		};
+		class Item84
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={7069.1309,1.9862902,6010.354};
+			};
+			name="CTI_ZEUS";
+			id=124;
+			type="ModuleCurator_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleCurator_F_Owner";
+					expression="_this setVariable ['Owner',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="#adminLogged";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleCurator_F_Forced";
+					expression="_this setVariable ['Forced',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleCurator_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleInfo";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleCurator_F_Addons";
+					expression="_this setVariable ['Addons',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=2;
+						};
+					};
+				};
+				nAttributes=5;
+			};
 		};
 	};
 	class Connections
