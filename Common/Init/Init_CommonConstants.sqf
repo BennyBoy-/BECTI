@@ -605,5 +605,7 @@ with missionNamespace do {
 	if (isNil 'CTI_WEATHER_INITIAL') then {CTI_WEATHER_INITIAL = 10};
 	if (isNil 'CTI_WEATHER_ALLOWRAIN') then {CTI_WEATHER_ALLOWRAIN = 0};
 	
+	if (isNil 'CTI_CUP_ADDON') then {CTI_CUP_ADDON = 1};
+	if (isNil 'CTI_ACE_ADDON') then {CTI_ACE_ADDON = 1};
 	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 0};
 };

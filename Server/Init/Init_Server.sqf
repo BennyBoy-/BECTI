@@ -203,7 +203,7 @@ skipTime _it;
 // dynamic wheather
 0 spawn CTI_SE_FNC_Weather_Hook;
 		
-// time compression
+// Fast time compression
 0 spawn {
 	_day_ratio = 14/CTI_WEATHER_FAST;
 	_night_ratio = 10/CTI_WEATHER_FAST_NIGHT;
