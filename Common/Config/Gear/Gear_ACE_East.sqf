@@ -89,4 +89,25 @@ _i = _i + ["ACE_optic_Hamr_PIP"];
 _u = _u + [0];																									
 _p = _p + [100];
 
+//Nightvision
+_i = _i + ["ACE_NVG_Gen1"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_NVG_Gen2"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_NVG_Gen3"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_NVG_Gen4"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_NVG_Wide"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf"; 
