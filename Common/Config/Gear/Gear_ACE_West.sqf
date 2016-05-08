@@ -133,8 +133,8 @@ _i = _i + ["ACE_fieldDressing"];
 _u = _u + [0];																									
 _p = _p + [100];
 
-//Vehicle Key: East
-_i = _i + ["ACE_key_east"];																									
+//Vehicle Key: West
+_i = _i + ["ACE_key_west"];																									
 _u = _u + [0];																									
 _p = _p + [10];
 
