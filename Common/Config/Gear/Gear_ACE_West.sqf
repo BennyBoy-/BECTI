@@ -110,4 +110,37 @@ _i = _i + ["ACE_NVG_Wide"];
 _u = _u + [0];																									
 _p = _p + [100];
 
+//Rangecard
+_i = _i + ["ACE_RangeCard"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+//Binocular
+_i = _i + ["ACE_MX2A"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_Vector"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_Yardage450"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+//Medical
+_i = _i + ["ACE_fieldDressing"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+//Vehicle Key: East
+_i = _i + ["ACE_key_east"];																									
+_u = _u + [0];																									
+_p = _p + [10];
+
+//Sandbag
+_i = _i + ["ACE_Sandbag_empty"];																									
+_u = _u + [0];																									
+_p = _p + [10];
+
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf"; 
