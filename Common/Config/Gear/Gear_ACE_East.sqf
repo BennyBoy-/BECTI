@@ -48,5 +48,45 @@ _i = _i + ["ACE_SpottingScopeObject"];
 _u = _u + [1];																									
 _p = _p + [100];																									
 
+//Optics																									
+_i = _i + ["ACE_optic_Arco_2D"];																									
+_u = _u + [0];																									
+_p = _p + [100];																									
+																									
+_i = _i + ["ACE_optic_Arco_PIP"];																									
+_u = _u + [0];																									
+_p = _p + [100];	
+
+_i = _i + ["ACE_optic_LRPS_2D"];																									
+_u = _u + [0];																									
+_p = _p + [100];	
+
+_i = _i + ["ACE_optic_LRPS_PIP"];																									
+_u = _u + [0];																									
+_p = _p + [100];	
+
+_i = _i + ["ACE_optic_SOS_2D"];																									
+_u = _u + [0];																									
+_p = _p + [100];	
+
+_i = _i + ["ACE_optic_SOS_PIP"];																									
+_u = _u + [0];																									
+_p = _p + [100];	
+
+_i = _i + ["ACE_optic_MRCO_2D"];																									
+_u = _u + [0];																									
+_p = _p + [100];	
+
+_i = _i + ["ACE_optic_MRCO_PIP"];																									
+_u = _u + [0];																									
+_p = _p + [100];	
+
+_i = _i + ["ACE_optic_Hamr_2D"];																									
+_u = _u + [0];																									
+_p = _p + [100];	
+
+_i = _i + ["ACE_optic_Hamr_PIP"];																									
+_u = _u + [0];																									
+_p = _p + [100];
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf"; 
