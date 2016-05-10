@@ -142,10 +142,10 @@ createMarkerLocal ["respawn_west",getMarkerPos "CTI_WestRespawn"];
 
 //--- AI/Players Loadouts, to prevent any bisteries, DO NOT give them a pistol.
 missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
-	[["arifle_mxc_f",["","acc_pointer_ir","optic_Aco"],["30rnd_65x39_caseless_mag"]],["launch_nlaw_f",[],["nlaw_f"]],["",[],[]]],
-	[["u_b_combatuniform_mcam",["firstaidkit","firstaidkit"]],["v_platecarrier1_rgr",["30rnd_65x39_caseless_mag","30rnd_65x39_caseless_mag","30rnd_65x39_caseless_mag","30rnd_65x39_caseless_mag","30rnd_65x39_caseless_mag","30rnd_65x39_caseless_mag"]],["b_assaultpack_mcamo",["handgrenade","handgrenade","30rnd_65x39_caseless_mag","30rnd_65x39_caseless_mag","30rnd_65x39_caseless_mag","30rnd_65x39_caseless_mag","30rnd_65x39_caseless_mag","30rnd_65x39_caseless_mag","nlaw_f","nlaw_f"]]],
-	["h_helmetb",""],[["nvgoggles","binocular"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
+	[["CUP_arifle_M16A4_Base",["","",""],[]],["CUP_launch_M136",["","",""],["CUP_M136_M"]],["hgun_p07_f",["","",""],[]]],
+	[["U_B_CombatUniform_mcam",["firstaidkit","firstaidkit","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],["V_PlateCarrier1_blk",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","16rnd_9x21_mag","16rnd_9x21_mag","smokeshell","smokeshellblue"]],["CUP_B_AssaultPack_Black",["CUP_HandGrenade_M67","CUP_HandGrenade_M67",""]]],
+	["H_HelmetB_black",""],[["nvgoggles","binocular"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
 missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
-	[["arifle_mk20c_f",["","acc_pointer_ir","optic_aco_grn"],["30rnd_556x45_stanag"]],["launch_rpg32_f",[],["rpg32_f"]],["",[],[]]],
-	[["u_o_combatuniform_ocamo",["firstaidkit","firstaidkit"]],["V_PlateCarrier2_rgr",["30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag"]],["b_assaultpack_khk",["handgrenade","handgrenade","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","rpg32_f","rpg32_f"]]],
-	["h_helmeto_ocamo",""],[["nvgoggles","binocular"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
+	[["CUP_arifle_AK47",["","",""],["CUP_30Rnd_762x39_AK47_M"]],["",["","",""],[""]],["CUP_launch_RPG18",[],["CUP_RPG18_M"]],["hgun_rook40_f",["","",""],[]]],
+	[["u_o_combatuniform_ocamo",["firstaidkit","firstaidkit","CUP_30Rnd_762x39_AK47_M","CUP_30Rnd_762x39_AK47_M","CUP_30Rnd_762x39_AK47_M","CUP_30Rnd_762x39_AK47_M"]],["V_Chestrig_blk",["CUP_30Rnd_762x39_AK47_M","CUP_30Rnd_762x39_AK47_M","16rnd_9x21_mag","16rnd_9x21_mag","smokeshell","smokeshellred"]],["CUP_B_AssaultPack_Coyote",["CUP_HandGrenade_RGD5","CUP_HandGrenade_RGD5"]]],
+	["H_HelmetSpecO_ocamo",""],[["nvgoggles","binocular"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
