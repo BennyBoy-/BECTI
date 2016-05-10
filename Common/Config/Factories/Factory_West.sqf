@@ -11,30 +11,44 @@ missionNamespace setVariable [format["CTI_%1_Crew", _side], "B_crew_F"];
 missionNamespace setVariable [format["CTI_%1_Pilot", _side], "B_Helipilot_F"];
 
 missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
-	["B_Truck_01_transport_F", [
-		["arifle_mx_gl_f", 2], ["30Rnd_65x39_caseless_mag", 50],
-		["arifle_MXM_F", 1], ["100Rnd_65x39_caseless_mag", 10],
-		["srifle_EBR_F", 2], ["20Rnd_762x51_Mag", 20], 
-		["LMG_Mk200_F", 1], ["200Rnd_65x39_cased_Box", 5], 
-		["launch_NLAW_F", 3], ["NLAW_F", 12], 
-		["HandGrenade", 20], 
-		["30Rnd_65x39_caseless_mag_Tracer", 6], 
-		["3rnd_he_grenade_shell", 8], 
-		["3Rnd_UGL_FlareWhite_F", 9], 
-		["3rnd_smokeblue_grenade_shell", 3], 
-		["SmokeShellBlue", 8],
+	["B_Truck_01_medical_F", [
+		["CUP_arifle_M16A2_GL", 2], ["CUP_30Rnd_556x45_Stanag", 50],
+		["CUP_launch_M136", 5], 
+		["CUP_M136_M", 20],
+		["CUP_30Rnd_TE1_Red_Tracer_556x45_G36", 15],
+		["CUP_1Rnd_HE_M203", 8],
+		["CUP_FlareWhite_M203", 9],
+		["CUP_1Rnd_Smoke_M203", 3],
+		["CUP_1Rnd_SmokeGreen_M203", 8],
 		["firstaidkit", 20],
 		["Chemlight_blue", 36],
 		["acc_flashlight", 5],
-		["optic_ACO_grn", 3],
-		["optic_Holosight", 2],
-		["optic_MRCO", 1],
-		["optic_arco", 2],
-		["B_Bergen_sgg", 4],
-		["B_HMG_01_support_F", 1],
-		["B_HMG_01_support_high_F", 1]
-	]], 
-	["B_MRAP_01_F", []]
+		["Toolkit", 4],
+		["B_Bergen_sgg", 4]
+	]],
+	["B_MRAP_01_F", [
+		["Toolkit", 2],
+		["firstaidkit", 10],
+		["CUP_30Rnd_556x45_Stanag", 15],
+		["CUP_launch_M136", 5],
+		["CUP_M136_M", 10]
+	]],
+	["CUP_B_HMMWV_M2_GPK_USA", [
+		["Toolkit", 2],
+		["firstaidkit", 10],
+		["CUP_30Rnd_556x45_Stanag", 15],
+		["CUP_launch_M136", 5],
+		["CUP_M136_M", 10]
+	]],
+	["CUP_B_HMMWV_M2_GPK_USA", [
+		["Toolkit", 2],
+		["firstaidkit", 10],
+		["CUP_30Rnd_556x45_Stanag", 15],
+		["CUP_launch_M136", 5],
+		["CUP_M136_M", 10]
+	]]
+	//,	["B_Heli_Transport_01_F", []]
+
 ]];
 
 //--- Units - Barracks
