@@ -334,7 +334,7 @@ _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["AT Defense"];
 _classes = _classes 		+ ["O_static_AT_F"];
-_prices = _prices 			+ [6000];
+_prices = _prices 			+ [8000];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
