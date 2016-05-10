@@ -5,6 +5,7 @@ CTI_CO_FNC_ArrayShuffle = compileFinal preprocessFileLineNumbers "Common\Functio
 CTI_CO_FNC_ArrayToLower = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ArrayToLower.sqf";
 CTI_CO_FNC_ChangeFunds = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ChangeFunds.sqf";
 CTI_CO_FNC_ChangeFundsCommander = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ChangeFundsCommander.sqf";
+CTI_CO_FNC_ChangeSideSupply = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ChangeSideSupply.sqf";
 CTI_CO_FNC_ConvertGearToFlat = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ConvertGearToFlat.sqf";
 CTI_CO_FNC_CreateTeam = compileFinal preprocessFileLineNumbers "Common\Functions\Common_CreateTeam.sqf";
 CTI_CO_FNC_CreateTownUnits = compileFinal preprocessFileLineNumbers "Common\Functions\Common_CreateTownUnits.sqf";

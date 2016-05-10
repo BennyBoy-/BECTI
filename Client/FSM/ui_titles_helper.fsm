@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ui_titles_helper.fsm">*/
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, ui_titles_helper.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Init"};
@@ -20,8 +20,8 @@ link6[] = {5,3};
 link7[] = {6,5};
 link8[] = {7,8};
 link9[] = {8,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,25,6316128,1,-467.027588,319.490784,233.161652,-459.848785,415,598,1};
-window[] = {2,-1,-1,-1,-1,613,-868,-100,156,3,433};
+globals[] = {25.000000,1,0,0,0,640,480,1,25,6316128,1,-467.027588,319.490784,233.161652,-459.848785,415,771,1};
+window[] = {2,-1,-1,-1,-1,557,1780,2548,100,3,433};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -81,7 +81,7 @@ class FSM
        "		_commander = name leader _commander;" \n
        "	};" \n
        "	" \n
-       "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601002) ctrlSetText format[""%1 | $ %2 | %3 S | %4%5 HP"", CTI_P_SideJoined, call CTI_CL_FNC_GetPlayerFunds, (CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply, 100 - ((getDammage player) * 100), ""%""];" \n
+       "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601002) ctrlSetText format[""%1 | $ %2 | %3 S | %4%5 HP"", CTI_P_SideJoined, call CTI_CL_FNC_GetPlayerFunds, (CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply, round(100 - ((getDammage player) * 100)), ""%""];" \n
        "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601003) ctrlSetText format[""Commander: %1"", _commander];" \n
        "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601004) ctrlSetText (if (CTI_P_SideLogic getVariable ""cti_upgrade"" > -1) then {""Upgrade Running""} else {""""})" \n
        "};" \n
