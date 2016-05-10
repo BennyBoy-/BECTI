@@ -142,7 +142,7 @@ createMarkerLocal ["respawn_west",getMarkerPos "CTI_WestRespawn"];
 
 //--- AI/Players Loadouts, to prevent any bisteries, DO NOT give them a pistol.
 missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
-	[["CUP_arifle_M16A4_Base",["","",""],[]],["CUP_launch_M136",["","",""],["CUP_M136_M"]],["hgun_p07_f",["","",""],[]]],
+	[["CUP_arifle_M16A4_Base",["","",""],["30Rnd_556x45_Stanag_Tracer_Green"]],["CUP_launch_M136",["","",""],["CUP_M136_M"]],["hgun_p07_f",["","",""],[]]],
 	[["U_B_CombatUniform_mcam",["firstaidkit","firstaidkit","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],["V_PlateCarrier1_blk",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","16rnd_9x21_mag","16rnd_9x21_mag","smokeshell","smokeshellblue"]],["CUP_B_AssaultPack_Black",["CUP_HandGrenade_M67","CUP_HandGrenade_M67",""]]],
 	["H_HelmetB_black",""],[["nvgoggles","binocular"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
 missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
