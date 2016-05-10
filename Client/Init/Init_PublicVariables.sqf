@@ -126,4 +126,17 @@ with missionNamespace do {
 			deleteMarkerLocal _marker;
 		};
 	};
+	
+	CTI_PVF_Client_OnNewCommanderVote = {
+		_name = _this;
+		
+		["commander-vote-start", _name] call CTI_CL_FNC_DisplayMessage;
+		
+		waitUntil{CTI_P_SideLogic getVariable "cti_votetime" > -1 || !alive player};
+		
+		if (alive player) then {
+			closeDialog 0;
+			createDialog "CTI_RscVoteMenu";
+		};
+	};
 };

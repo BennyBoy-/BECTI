@@ -158,7 +158,7 @@ with missionNamespace do {
 			(_side) Spawn CTI_SE_FNC_VoteForCommander;
 			
 			//--- Send a message to the clients
-			[["CLIENT", _side], "Client_OnMessageReceived", ["commander-vote-start", _name]] call CTI_CO_FNC_NetSend;
+			// [["CLIENT", _side], "Client_OnMessageReceived", ["commander-vote-start", _name]] call CTI_CO_FNC_NetSend;
 		};
 	};
 };

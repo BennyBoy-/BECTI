@@ -75,7 +75,10 @@ switch (_action) do {
 			
 			//--- Don't lock this script
 			0 spawn {
+				[["CLIENT", CTI_P_SideJoined], "Client_OnNewCommanderVote", name player] call CTI_CO_FNC_NetSend;
+			
 				waitUntil{CTI_P_SideLogic getVariable "cti_votetime" > -1 || !alive player || !dialog};
+				
 				if (alive player && dialog) then {
 					closeDialog 0;
 					createDialog "CTI_RscVoteMenu";
