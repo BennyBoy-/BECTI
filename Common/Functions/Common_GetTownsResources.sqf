@@ -23,7 +23,7 @@
     _income = (West) call CTI_CO_FNC_GetTownsResources
 */
 
-private ["_hostiles", "_near", "_side", "_sideID", "_total_values", "_value"];
+private ["_hostiles", "_near", "_side", "_sideID", "_total_values"];
 
 _side = _this;
 _total_values = 0;
@@ -32,7 +32,7 @@ _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 {
 	if (_x getVariable "cti_town_sideID" == _sideID) then {
-		_value = _x getVariable "cti_town_sv";
+		_total_values = _total_values + (_x getVariable "cti_town_sv");
 		
 		/*if (missionNamespace getVariable "CTI_ECONOMY_TOWNS_OCCUPATION" == 1) then { //--- Town occupation is active
 			_near = _x nearEntities ["AllVehicles", CTI_MARKERS_TOWN_AREA_RANGE];
@@ -45,9 +45,7 @@ _sideID = (_side) call CTI_CO_FNC_GetSideID;
 				_value = _value * CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE;
 			};
 		};*/
-		
-		_value = _value * CTI_TOWNS_INCOME_RATIO; //--- Add in the extra ratio
-		_total_values = _total_values + _value;
+		// _total_values = _total_values + _value;
 	};
 } forEach CTI_Towns;
 

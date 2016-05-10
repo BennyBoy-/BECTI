@@ -27,7 +27,7 @@
 	  -> Will return the current player income
 */
 
-_total_values = (CTI_P_SideJoined) call CTI_CO_FNC_GetTownsResources;
+_total_values = ((CTI_P_SideJoined) call CTI_CO_FNC_GetTownsResources) * CTI_TOWNS_INCOME_RATIO;
 if (_total_values == 0) exitWith {0}; //--- Don't bother if we have no towns!
 
 _percent_award = CTI_P_SideLogic getVariable "cti_pool_award";
