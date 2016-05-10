@@ -394,15 +394,15 @@ CTI_BASE_CONSTRUCTION_TIME = if (CTI_DEV_MODE > 0) then { 0 } else {180}; //--- 
 CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 500; //--- Decay starts after x seconds unattended.
 CTI_BASE_CONSTRUCTION_DECAY_DELAY = 10; //--- Decay each x seconds.
 CTI_BASE_CONSTRUCTION_DECAY_FROM = 10; //--- Decay of x / 100 each y seconds.
-CTI_BASE_CONSTRUCTION_RANGE = 200; //--- Determine how far the commander may be from the HQ to build
+CTI_BASE_CONSTRUCTION_RANGE = 400; //--- Determine how far the commander may be from the HQ to build
 CTI_BASE_CONSTRUCTION_RATIO_INIT = 1; //--- The initial construction ratio
 CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.60; //--- The completion ratio is multiplied by this coefficient to make repairs less effective at each factory's destruction.
 
 //--- Base: Defenses
 CTI_BASE_DEFENSES_AUTO_DELAY = 240; //--- Delay after which a new unit will replace a dead one for a defense
-CTI_BASE_DEFENSES_AUTO_LIMIT = 25; //--- Amount of independent units which may man nearby defenses
-CTI_BASE_DEFENSES_AUTO_RANGE = 500; //--- Range from the nearest barrack at which AI may auto man a defense
-CTI_BASE_DEFENSES_AUTO_REARM_RANGE = 500; //--- Range needed for a defense to be able to rearm at a service point
+CTI_BASE_DEFENSES_AUTO_LIMIT = 30; //--- Amount of independent units which may man nearby defenses
+CTI_BASE_DEFENSES_AUTO_RANGE = 600; //--- Range from the nearest barrack at which AI may auto man a defense
+CTI_BASE_DEFENSES_AUTO_REARM_RANGE = 600; //--- Range needed for a defense to be able to rearm at a service point
 CTI_BASE_DEFENSES_EMPTY_TIMEOUT = 1200; //--- Delay after which an empty defense is considered empty
 
 //--- Base: HQ
@@ -415,9 +415,9 @@ CTI_BASE_NOOBPROTECTION = 1; //--- Make structures invulnerable to friendly fire
 
 //--- Base: Purchase range
 CTI_BASE_GEAR_FOB_RANGE = 4; //--- Determine how far a player has to be from a FOB to access the Gear Menu
-CTI_BASE_GEAR_RANGE = 150; //--- Determine how far a player has to be from a Barracks to access the Gear Menu
+CTI_BASE_GEAR_RANGE = 300; //--- Determine how far a player has to be from a Barracks to access the Gear Menu
 CTI_BASE_PURCHASE_UNITS_RANGE = 150; //--- Determine how far a player has to be from a factory to access the Factory Menu without CC
-CTI_BASE_PURCHASE_UNITS_RANGE_CC = 8500; //--- Determine how far a player has to be from a factory to access the Factory Menu with CC
+CTI_BASE_PURCHASE_UNITS_RANGE_CC = 15000; //--- Determine how far a player has to be from a factory to access the Factory Menu with CC
 
 //--- Base: Workers
 CTI_BASE_WORKERS_BUILD_COEFFICIENT = 1; //--- Worker build speed multiplier (<coefficient> / (<structure build time> / 100)), higher is faster.
@@ -473,8 +473,8 @@ CTI_VEHICLES_REPAIRTRUCK_BASE_REPAIR_RANGE = 25; //--- Repair trucks may repair 
 //--- Vehicles: Salvage Trucks
 CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX = 2; //--- Maximum amount of Independent Salvage Trucks which may be present per side
 CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE = 5000; //--- An independent Salvage may search for wreck up to x meters
-CTI_VEHICLES_SALVAGE_RATE = 0.2; //--- This coefficient determine the value of a salvaged wreck (wreck value * x)
-CTI_VEHICLES_SALVAGE_RANGE = 25; //--- This is the distance required between a Wreck and Salvage Truck
+CTI_VEHICLES_SALVAGE_RATE = 0.4; //--- This coefficient determine the value of a salvaged wreck (wreck value * x)
+CTI_VEHICLES_SALVAGE_RANGE = 300; //--- This is the distance required between a Wreck and Salvage Truck
 CTI_VEHICLES_SALVAGER_PRICE = 550; //--- Determine the cost of the salvage trucks
 
 //--- Vehicles: Parameter
