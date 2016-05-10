@@ -11,30 +11,43 @@ missionNamespace setVariable [format["CTI_%1_Crew", _side], "O_crew_F"];
 missionNamespace setVariable [format["CTI_%1_Pilot", _side], "O_Helipilot_F"];
 
 missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
-	["O_Truck_02_transport_F", [
-		["arifle_Katiba_GL_F", 2], ["30rnd_65x39_caseless_green", 50],
-		["arifle_Mk20_F", 2], ["30rnd_556x45_stanag", 25],
-		["srifle_DMR_01_F", 2], ["10Rnd_762x51_Mag", 20], 
-		["LMG_Zafir_F", 1], ["150Rnd_762x51_Box", 5], 
-		["launch_RPG32_F", 3], ["RPG32_F", 12], 
-		["HandGrenade", 20], 
-		["30Rnd_65x39_caseless_green_mag_Tracer", 6], 
-		["1Rnd_HE_Grenade_shell", 24], 
-		["UGL_FlareRed_F", 27], 
-		["1Rnd_SmokeRed_Grenade_shell", 9], 
+	["O_Truck_03_medical_F", [
+		["CUP_arifle_AK74_GL", 4], ["CUP_30Rnd_762x39_AK47_M", 50],
+		["CUP_launch_RPG18", 5], ["CUP_RPG18_M", 20],
+		["CUP_HandGrenade_M67", 20],
+		["CUP_30Rnd_545x39_AK_M", 30],
+		["CUP_30Rnd_TE1_Red_Tracer_545x39_AK_M", 10],
+		["CUP_1Rnd_HE_GP25_M", 24],
+		["CUP_FlareRed_GP25_M", 27],
+		["CUP_1Rnd_SmokeRed_GP25_M", 9],
 		["SmokeShellRed", 8],
 		["firstaidkit", 20],
 		["Chemlight_red", 36],
-		["acc_flashlight", 5],
-		["optic_ACO_grn", 3],
-		["optic_Holosight", 2],
-		["optic_MRCO", 1],
-		["optic_DMS", 2],
-		["B_Bergen_sgg_Exp", 4],
-		["O_HMG_01_support_F", 1],
-		["O_HMG_01_support_high_F", 1]
-	]], 
-	["O_MRAP_02_F", []]
+		["Toolkit", 4],
+		["B_Kitbag_cbr", 4]
+	]],
+	["O_MRAP_02_F", [
+		["Toolkit", 1],
+		["firstaidkit", 10],
+		["CUP_30Rnd_762x39_AK47_M", 25],
+		["CUP_launch_RPG18", 5],
+		["CUP_RPG18_M", 10]
+	]],
+	["OFPS_BRDM2", [
+		["Toolkit", 1],
+		["firstaidkit", 10],
+		["CUP_30Rnd_762x39_AK47_M", 25],
+		["CUP_launch_RPG18", 5],
+		["CUP_RPG18_M", 10]
+	]],
+	["OFPS_BTR60", [
+		["Toolkit", 1],
+		["firstaidkit", 10],
+		["CUP_30Rnd_762x39_AK47_M", 25],
+		["CUP_launch_RPG18", 5],
+		["CUP_RPG18_M", 10]
+	]]
+	//,	["O_Heli_Light_02_unarmed_F", []]
 ]];
 
 //--- Units - Barracks
