@@ -322,25 +322,25 @@ _categories = _categories 	+ ["Fortification"];
 
 _headers = _headers 		+ ["MG Defense"];
 _classes = _classes 		+ ["O_HMG_01_High_F"];
-_prices = _prices 			+ [1000];
+_prices = _prices 			+ [200];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["GL Defense"];
 _classes = _classes 		+ ["O_GMG_01_high_F"];
-_prices = _prices 			+ [1300];
+_prices = _prices 			+ [300];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["AT Defense"];
 _classes = _classes 		+ ["O_static_AT_F"];
-_prices = _prices 			+ [2500];
+_prices = _prices 			+ [6000];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["AA Defense"];
 _classes = _classes 		+ ["O_static_AA_F"];
-_prices = _prices 			+ [1500];
+_prices = _prices 			+ [3000];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
@@ -352,49 +352,49 @@ _categories = _categories 	+ ["Defense"];
 /*
 _headers = _headers 		+ ["M2 Machine Gun"];
 _classes = _classes 		+ ["CUP_B_M2StaticMG_USMC"];
-_prices = _prices 			+ [1500];
+_prices = _prices 			+ [150];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["M2 Mini"];
 _classes = _classes 		+ ["CUP_B_M2StaticMG_USMC"];
-_prices = _prices 			+ [1500];
+_prices = _prices 			+ [150];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["AGS-30"];
 _classes = _classes 		+ ["CUP_B_AGS_CDF"];
-_prices = _prices 			+ [1500];
+_prices = _prices 			+ [200];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["DShKM"];
 _classes = _classes 		+ ["CUP_B_DSHKM_CDF"];
-_prices = _prices 			+ [1500];
+_prices = _prices 			+ [175];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["DShKM Mini"];
 _classes = _classes 		+ ["CUP_B_DSHkM_MiniTriPod_CDF"];
-_prices = _prices 			+ [1500];
+_prices = _prices 			+ [175];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["KORD Mini"];
 _classes = _classes 		+ ["CUP_O_KORD_RU"];
-_prices = _prices 			+ [3000];
+_prices = _prices 			+ [300];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["Metis AT-13"];
 _classes = _classes 		+ ["CUP_O_Metis_RU"];
-_prices = _prices 			+ [3000];
+_prices = _prices 			+ [4000];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["D-30 AT"];
 _classes = _classes 		+ ["CUP_B_D30_AT_CDF"];
-_prices = _prices 			+ [5000];
+_prices = _prices 			+ [7000];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
@@ -406,7 +406,7 @@ _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["SPG-9"];
 _classes = _classes 		+ ["CUP_B_SPG9_CDF"];
-_prices = _prices 			+ [2000];
+_prices = _prices 			+ [500];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
