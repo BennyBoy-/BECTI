@@ -19,9 +19,9 @@
 	[STRUCTURE VARIABLE, CENTER, RADIUS] spawn CTI_CL_FNC_PlacingBuilding
 	
   # DEPENDENCIES #
-	Client Function: CTI_CL_FNC_ChangePlayerFunds
-	Client Function: CTI_CL_FNC_GetPlayerFunds
+	Client Function: CTI_CO_FNC_ChangeSideSupply
 	Common Function: CTI_CO_FNC_GetDirTo
+	Client Function: CTI_CO_FNC_GetSideSupply
 	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
@@ -131,8 +131,8 @@ if !(_in_area) then {
 
 //--- If there's no problems then we place it.
 if !(CTI_VAR_StructureCanceled) then {
-	if ((call CTI_CL_FNC_GetPlayerFunds) >= (_var select 2)) then {
-		-(_var select 2) call CTI_CL_FNC_ChangePlayerFunds;
+	if (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply) >= (_var select 2)) then {
+		[CTI_P_SideJoined, -(_var select 2)] call CTI_CO_FNC_ChangeSideSupply;
 		["SERVER", "Request_Building", [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player]] call CTI_CO_FNC_NetSend;
 	} else {
 		hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to place that structure.";

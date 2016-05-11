@@ -9,7 +9,7 @@ switch (_action) do {
 		
 		{
 			_var = missionNamespace getVariable _x;
-			_row = ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100006) lnbAddRow [format ["$%1", _var select 2], (_var select 0) select 1];
+			_row = ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100006) lnbAddRow [format ["S%1", _var select 2], (_var select 0) select 1];
 			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100006) lnbSetData [[_row, 0], _x];
 		} forEach (missionNamespace getVariable format ["CTI_%1_STRUCTURES", CTI_P_SideJoined]);
 		
@@ -41,14 +41,14 @@ switch (_action) do {
 			_selected = lnbData[100006, [_selected, 0]];
 			
 			_var = missionNamespace getVariable _selected;
-			_funds = call CTI_CL_FNC_GetPlayerFunds;
+			_supply = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply;
 			
-			if (_funds >= (_var select 2)) then { //--- Check if we have enough funds to go in the construction mode.
+			if (_supply >= (_var select 2)) then { //--- Check if we have enough supply to go in the construction mode.
 				CTI_VAR_StructurePlaced = false;
 				[_selected, CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ, CTI_BASE_CONSTRUCTION_RANGE] spawn CTI_CL_FNC_PlacingBuilding;
 				closeDialog 0;
 			} else {
-				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to place that defense.";
+				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough supply to place that structure.";
 			};
 		};
 	};
