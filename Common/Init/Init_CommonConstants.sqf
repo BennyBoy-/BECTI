@@ -310,7 +310,7 @@ CTI_TOWNS_CAMPS_CAPTURE_VALUE_CEIL = 30; //--- The camp value's ceiling
 CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE), proc all 5 seconds.
  
 //--- Towns: Capture
-CTI_TOWNS_CAPTURE_BOUNTY_COEF = 4; //--- Bounty coefficient upon capture, (max sv * coefficient)
+CTI_TOWNS_CAPTURE_BOUNTY_COEF = 50; //--- Bounty coefficient upon capture, (max sv * coefficient)
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 300; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
 CTI_TOWNS_CAPTURE_RANGE = 50; //--- The range which a unit/vehicle has to be from a town center to capture it
 CTI_TOWNS_CAPTURE_RATE = 1; //--- Determine how fast a town may be captured/protected
@@ -489,8 +489,8 @@ with missionNamespace do {
 CTI_ARTILLERY_FILTER = 1; //--- Toggle artillery magazines like mines and AT mines (0: Disabled, 1: Enabled)
 CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
 
-CTI_BOUNTY_COEF = 0.15; //--- Bounty coefficient multiplicator based on the unit original cost
-CTI_BOUNTY_COEF_PVP = 1.2; //--- Bounty coefficient multiplicator based on the killed unit score
+CTI_BOUNTY_COEF = 2; //--- Bounty coefficient multiplicator based on the unit original cost
+CTI_BOUNTY_COEF_PVP = 2; //--- Bounty coefficient multiplicator based on the killed unit score
 
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 30; //--- Keep values of 10
 
