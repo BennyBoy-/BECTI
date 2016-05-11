@@ -95,7 +95,9 @@ if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1) then { //--- Pla
 	};
 } else { //--- Place the leader at the respawn island and disable his movements
 	_leader setPos ([getMarkerPos format["CTI_%1Respawn",_side], 3, 15] call CTI_CO_FNC_GetRandomPosition);
-	_leader disableAI "MOVE";
+	_leader enableSimulationGlobal false;
+	_leader hideObjectGlobal true;
+	_leader disableAI "FSM";
 };
 
 _team setVariable ["cti_uid", nil]; //--- Release the uid.

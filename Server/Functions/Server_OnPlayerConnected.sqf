@@ -72,6 +72,12 @@ _get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid];
 // _team call CTI_CO_FNC_RemoveWaypoints;
 _leader setDammage 0;
 
+//--- Enable the leader again (sim + visu) in case of no-ai settings
+if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
+	_leader enableSimulationGlobal true;
+	_leader hideObjectGlobal false;
+};
+
 //--- We store the player UID over the group, this allows us to easily fetch the disconnecting client original group.
 _team setVariable ["cti_uid", _uid];
 
