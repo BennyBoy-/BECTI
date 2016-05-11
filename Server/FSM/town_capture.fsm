@@ -185,8 +185,10 @@ class FSM
        "	_supply = _town getVariable ""cti_town_sv"";" \n
        "	" \n
        "	if (_side == _force) then { //--- Protect" \n
-       "		_supply = _supply + (_forceCount * CTI_TOWNS_CAPTURE_RATE);" \n
-       "		if (_supply > (_town getVariable ""cti_town_sv_default"")) then { _supply = _town getVariable ""cti_town_sv_default"" };" \n
+       "		if (_supply < _town getVariable ""cti_town_sv_default"") then {" \n
+       "			_supply = _supply + (_forceCount * CTI_TOWNS_CAPTURE_RATE);" \n
+       "			if (_supply > (_town getVariable ""cti_town_sv_default"")) then { _supply = _town getVariable ""cti_town_sv_default"" };" \n
+       "		};" \n
        "	} else { //--- Capture" \n
        "		//--- In case of territorial mode, check that the town can be captured!" \n
        "		_capturable = true;" \n
