@@ -88,39 +88,39 @@ _p = _p + [225];
 //VZ 58 Family
 
 _i = _i + ["CUP_arifle_Sa58P"];
-_u = _u + [4];
+_u = _u + [3];
 _p = _p + [100];
 
 _i = _i + ["CUP_arifle_Sa58V"];
-_u = _u + [4];
+_u = _u + [3];
 _p = _p + [100];
 
 _i = _i + ["CUP_arifle_Sa58RIS1"];
-_u = _u + [4];
+_u = _u + [3];
 _p = _p + [150];
 
 _i = _i + ["CUP_arifle_Sa58RIS2"];
-_u = _u + [4];
+_u = _u + [3];
 _p = _p + [150];
 
 _i = _i + ["CUP_arifle_Sa58RIS2_gl"];
-_u = _u + [4];
+_u = _u + [3];
 _p = _p + [175];
 
 _i = _i + ["CUP_arifle_Sa58P_des"];
-_u = _u + [4];
+_u = _u + [3];
 _p = _p + [150];
 
 _i = _i + ["CUP_arifle_Sa58V_camo"];
-_u = _u + [4];
+_u = _u + [3];
 _p = _p + [150];
 
 _i = _i + ["CUP_arifle_Sa58RIS1_des"];
-_u = _u + [4];
+_u = _u + [3];
 _p = _p + [150];
 
 _i = _i + ["CUP_arifle_Sa58RIS2_camo"];
-_u = _u + [4];
+_u = _u + [3];
 _p = _p + [150];
 
 //XM8 Family
@@ -176,7 +176,7 @@ _p = _p + [400];
 //UK59 Family
 
 _i = _i + ["CUP_lmg_UK59"];
-_u = _u + [4];
+_u = _u + [3];
 _p = _p + [400];
 
 
@@ -285,7 +285,7 @@ _p = _p + [10];
 
 _i = _i + ["CUP_hgun_Makarov"];
 _u = _u + [2];
-_p = _p + [5];
+_p = _p + [3];
 
 _i = _i + ["CUP_MakarovSD"];
 _u = _u + [3];
@@ -336,7 +336,7 @@ _p = _p + [2500];
 //METIS Family
 
 _i = _i + ["CUP_launch_Metis"];
-_u = _u + [4];
+_u = _u + [3];
 _p = _p + [6000];
 
 
@@ -960,7 +960,7 @@ _u = _u		+ [0];
 _p = _p		+ [550];
 
 _i = _i		+ ["CUP_AT13_M"];  //metis missiles
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [800];
 
 _i = _i		+ ["CUP_RPG18_M"];
@@ -1131,73 +1131,73 @@ _u = _u		+ [1];
 _p = _p		+ [150];
 
 _i = _i		+ ["CUP_optic_PSO_3"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [150];
 
 
 //--DMR Sniper Optics
 
 _i = _i		+ ["CUP_optic_SB_3_12x50_PMII"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [450];
 
 _i = _i		+ ["CUP_optic_LeupoldMk4"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [450];
 
 _i = _i		+ ["CUP_optic_Leupold_VX3"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [450];
 
 _i = _i		+ ["CUP_optic_LeupoldM3LR"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [450];
 
 _i = _i		+ ["CUP_optic_LeupoldMk4_10x40_LRT_Desert"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [450];
 
 _i = _i		+ ["CUP_optic_LeupoldMk4_10x40_LRT_Woodland"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [450];
 
 _i = _i		+ ["CUP_optic_LeupoldMk4_CQ_T"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [450];
 
 _i = _i		+ ["CUP_optic_LeupoldMk4_MRT_tan"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [450];
 
 _i = _i		+ ["CUP_optic_PechenegScope"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [450];
 
 
 //--Nightvision TWS Optics
 
 _i = _i		+ ["CUP_optic_AN_PAS_13c1"];
-_u = _u		+ [5];
+_u = _u		+ [3];
 _p = _p		+ [1000];
 
 _i = _i		+ ["CUP_optic_AN_PAS_13c2"];
-_u = _u		+ [5];
+_u = _u		+ [3];
 _p = _p		+ [1000];
 
 _i = _i		+ ["CUP_optic_GOSHAWK"];
-_u = _u		+ [5];
+_u = _u		+ [3];
 _p = _p		+ [1000];
 
 _i = _i		+ ["CUP_optic_AN_PVS_10"];
-_u = _u		+ [5];
+_u = _u		+ [3];
 _p = _p		+ [1000];
 
 _i = _i		+ ["CUP_optic_AN_PVS_4"];
-_u = _u		+ [5];
+_u = _u		+ [3];
 _p = _p		+ [1000];
 
 _i = _i		+ ["CUP_optic_NSPU"];
-_u = _u		+ [5];
+_u = _u		+ [3];
 _p = _p		+ [1000];
 
 
@@ -1433,11 +1433,11 @@ _u = _u		+ [3];
 _p = _p		+ [500];
 
 _i = _i		+ ["CUP_B_HikingPack_Civ"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [600];
 
 _i = _i		+ ["CUP_B_ACRPara_m95"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [600];
 
 _i = _i		+ ["CUP_B_ACRScout_m95"];
@@ -1485,15 +1485,15 @@ _u = _u		+ [2];
 _p = _p		+ [500];
 
 _i = _i		+ ["CUP_B_AlicePack_Khaki"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [600];
 
 _i = _i		+ ["CUP_B_AlicePack_Bedroll"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [600];
 
 _i = _i		+ ["CUP_B_Bergen_BAF"];
-_u = _u		+ [4];
+_u = _u		+ [3];
 _p = _p		+ [600];
 
 
