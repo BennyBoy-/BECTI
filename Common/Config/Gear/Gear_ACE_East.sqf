@@ -20,7 +20,27 @@ _p = _p + [100];
 																									
 _i = _i + ["ACE_DefusalKit"];																									
 _u = _u + [0];																									
-_p = _p + [100];																									
+_p = _p + [100];
+																									
+_i = _i + ["ACE_Altimeter"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+																									
+_i = _i + ["ACE_UAVBattery"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+																									
+_i = _i + ["ACE_wirecutter"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+																									
+_i = _i + ["ACE_MapTools"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+																									
+_i = _i + ["ACE_SpareBarrel"];																									
+_u = _u + [0];																									
+_p = _p + [100];
 																									
 //Explosives																									
 _i = _i + ["ACE_M26_Clacker"];																									
@@ -95,19 +115,19 @@ _u = _u + [0];
 _p = _p + [100];
 
 _i = _i + ["ACE_NVG_Gen2"];																									
-_u = _u + [0];																									
+_u = _u + [1];																									
 _p = _p + [100];
 
 _i = _i + ["ACE_NVG_Gen3"];																									
-_u = _u + [0];																									
+_u = _u + [2];																									
 _p = _p + [100];
 
 _i = _i + ["ACE_NVG_Gen4"];																									
-_u = _u + [0];																									
+_u = _u + [3];																									
 _p = _p + [100];
 
 _i = _i + ["ACE_NVG_Wide"];																									
-_u = _u + [0];																									
+_u = _u + [3];																									
 _p = _p + [100];
 
 //Rangecard
@@ -128,8 +148,77 @@ _i = _i + ["ACE_Yardage450"];
 _u = _u + [0];																									
 _p = _p + [100];
 
+_i = _i + ["ACE_HuntIR_monitor"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
 //Medical
+
+_i = _i + ["ACE_elasticBandage"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_packingBandage"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
 _i = _i + ["ACE_fieldDressing"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_tourniquet"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_epinephrine"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_plasmaIV_500"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_plasmaIV_250"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_bloodIV"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_bloodIV_500"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_bloodIV_250"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_salineIV"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_salineIV_500"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_salineIV_250"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_quikclot"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_personalAidKit"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_surgicalKit"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_bodyBag"];																									
 _u = _u + [0];																									
 _p = _p + [100];
 
