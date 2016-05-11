@@ -230,6 +230,6 @@ _p = _p + [10];
 //Sandbag
 _i = _i + ["ACE_Sandbag_empty"];																									
 _u = _u + [0];																									
-_p = _p + [10];
+_p = _p + [1];
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf"; 
