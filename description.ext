@@ -13,7 +13,7 @@
 #include "Rsc\Parameters.hpp"
 
 // Disable AI Slots
-disabledAI = 1;
+//disabledAI = 1; -THIS BREAKS GAME TICKET WAS PUT IN FOR BENNY TO CHECK IT OUT
 
 // ^HS^ for Headless Client
 joinUnassigned = 0;
