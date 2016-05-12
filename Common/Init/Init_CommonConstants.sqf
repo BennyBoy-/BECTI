@@ -374,7 +374,6 @@ with missionNamespace do {
  */
 
 //--- Base: Area
-CTI_BASE_AREA_MAX = 2;
 CTI_BASE_AREA_RANGE = 500;
 
 //--- Base: Construction
@@ -420,6 +419,7 @@ CTI_BASE_WORKERS_WANDER_RANGE_MAX = 225; //--- Worker may wander no further than
 
 //--- Base: Parameters
 with missionNamespace do {
+	if (isNil 'CTI_BASE_AREA_MAX') then {CTI_BASE_AREA_MAX = 2}; //--- Maximum amount of FOBs which a side may place
 	if (isNil 'CTI_BASE_FOB_MAX') then {CTI_BASE_FOB_MAX = 2}; //--- Maximum amount of FOBs which a side may place
 	if (isNil 'CTI_BASE_HQ_REPAIR') then {CTI_BASE_HQ_REPAIR = 1}; //--- Determine whether the HQ can be repaired or not
 	if (isNil 'CTI_BASE_STARTUP_PLACEMENT') then {CTI_BASE_STARTUP_PLACEMENT = 4000}; //--- Each side need to be further than x meters

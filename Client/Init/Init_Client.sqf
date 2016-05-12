@@ -62,6 +62,7 @@ CTI_P_LastRootMenu = "";
 CTI_P_LastRepairTime = -600;
 CTI_P_WallsAutoAlign = true;
 CTI_P_DefensesAutoManning = false;
+CTI_P_ServerFPS = -1;
 
 CTI_P_Coloration_Money = "#BAFF81";
 
