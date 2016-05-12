@@ -235,6 +235,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 	
 	if !(_respawn_ai) then { //--- Stock respawn
 		_spawn_at = [_where, 8, 30] call CTI_CO_FNC_GetRandomPosition;
+		_spawn_in = false;
 		
 		//--- Camp respawn, check for conditions
 		if !(isNil {_where getVariable "cti_camp_town"}) then {
@@ -247,7 +248,16 @@ CTI_UI_Respawn_OnRespawnReady = {
 			};
 		};
 		
-		player setPos _spawn_at;
+		if (_where isKindOf "AllVehicles") then { //--- Vehicle respawn
+			if (_where emptyPositions "cargo" > 0 && !(locked _where)) then {
+				_spawn_in = true;
+				player moveInCargo _where;
+			};
+		};
+		
+		if !(_spawn_in) then { //--- If the unit did not respawn in a vehicle, we place it near
+			player setPos _spawn_at;
+		};
 	};
 	
 	titleCut["","BLACK IN",1];
