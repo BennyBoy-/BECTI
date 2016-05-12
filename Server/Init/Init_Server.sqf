@@ -168,6 +168,10 @@ if (_attempts >= 500) then {
 								[_group, _side] execFSM "Server\FSM\update_ai.fsm";
 							};
 						};
+					} else { //--- Disable those AI
+						(leader _group) enableSimulationGlobal false;
+						(leader _group) hideObjectGlobal true;
+						(leader _group) disableAI "FSM";
 					};
 				};
 			};

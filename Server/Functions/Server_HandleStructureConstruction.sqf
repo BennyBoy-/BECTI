@@ -127,6 +127,7 @@ if (_completion >= 100) then {
 	{
 		_closest = [_x, _structures_positions] call CTI_CO_FNC_GetClosestEntity;
 		if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _areas set [_forEachIndex, "!nil!"]};
+		// if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _areas deleteAt _forEachIndex};
 	} forEach +_areas;
 
 	//--- Only update if we have to
