@@ -143,11 +143,11 @@ _p = _p		+ [10];
 _i = _i		+ ["MiniGrenade"];
 _u = _u		+ [0];
 _p = _p		+ [5];
-\*
-_i = _i		+ ["HandGrenade_Stone"];
-_u = _u		+ [0];
-_p = _p		+ [1];
-*\
+
+//_i = _i		+ ["HandGrenade_Stone"];
+//_u = _u		+ [0];
+//_p = _p		+ [1];
+
 _i = _i		+ ["SmokeShell"];
 _u = _u		+ [0];
 _p = _p		+ [0];
