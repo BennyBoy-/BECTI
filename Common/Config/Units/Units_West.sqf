@@ -23,12 +23,13 @@ _s = _s + [""];
 _c = _c + ['B_soldier_AA_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [300];
+_o = _o + [500];
 _t = _t + [5];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_BARRACKS];
 _s = _s + [""];
 
+/* AT titan soldier blocked out
 _c = _c + ['B_soldier_AT_F'];
 _p = _p + [''];
 _n = _n + [''];
@@ -37,6 +38,7 @@ _t = _t + [5];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_BARRACKS];
 _s = _s + [""];
+*/
 
 _c = _c + ['B_soldier_AR_F'];
 _p = _p + [''];
@@ -191,7 +193,7 @@ _u = _u + [1];
 _f = _f + [CTI_FACTORY_BARRACKS];
 _s = _s + [""];
 
-
+//--- Light Vehicles
 
 _c = _c + ['B_Quadbike_01_F'];
 _p = _p + [''];
@@ -202,10 +204,39 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_LIGHT];
 _s = _s + [""];
 
-_c = _c + ['B_Truck_01_transport_F'];
+_c = _c + ['B_G_Offroad_01_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [300];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_LIGHT];
+_s = _s + [""];
+
+_c = _c + ['B_G_Offroad_01_armed_F'];
 _p = _p + [''];
 _n = _n + [''];
 _o = _o + [400];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_LIGHT];
+_s = _s + [""];
+
+/*
+_c = _c + ['C_Van_01_transport_F']; 
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [500];
+_t = _t + [15];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_LIGHT];
+_s = _s + [""];
+*/
+
+_c = _c + ['B_Truck_01_transport_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [300];
 _t = _t + [15];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_LIGHT];
@@ -216,105 +247,157 @@ _p = _p + [''];
 _n = _n + [''];
 _o = _o + [325];
 _t = _t + [15];
-_u = _u + [0];
+_u = _u + [1];
 _f = _f + [CTI_FACTORY_LIGHT];
 _s = _s + [""];
 
 _c = _c + ['B_MRAP_01_hmg_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [550];
+_o = _o + [800];
 _t = _t + [20];
-_u = _u + [0];
+_u = _u + [2];
 _f = _f + [CTI_FACTORY_LIGHT];
 _s = _s + [""];
 
 _c = _c + ['B_MRAP_01_gmg_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [700];
+_o = _o + [900];
 _t = _t + [20];
-_u = _u + [1];
+_u = _u + [2];
 _f = _f + [CTI_FACTORY_LIGHT];
 _s = _s + [""];
 
 _c = _c + ['B_Truck_01_medical_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [800];
+_o = _o + [4000];
 _t = _t + [20];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_LIGHT];
 _s = _s + ["service-medic"];
 
+_c = _c + ['B_Slingload_01_Medevac_F'];   
+_p = _p + [''];
+_n = _n + [(format ["Slingload Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE])];
+_o = _o + [2000];
+_t = _t + [20];
+_u = _u + [3];
+_f = _f + [CTI_FACTORY_LIGHT];
+_s = _s + ["service-medic"];
 
+_c = _c + ['B_UGV_01_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [800];
+_t = _t + [20];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_LIGHT];
+_s = _s + ["LoadUGV"]; // Radioman - Init LoadUGV script
 
+_c = _c + ['B_UGV_01_rcws_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [1000];
+_t = _t + [20];
+_u = _u + [3];
+_f = _f + [CTI_FACTORY_LIGHT];
+_s = _s + [""];
+
+//--- Heavy Vehicles
 
 _c = _c + ['B_APC_Wheeled_01_cannon_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [1150];
+_o = _o + [7000];
 _t = _t + [30];
-_u = _u + [0];
+_u = _u + [2];
 _f = _f + [CTI_FACTORY_HEAVY];
 _s = _s + [""];
 
 _c = _c + ['B_APC_Tracked_01_rcws_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [1500];
+_o = _o + [5000];
 _t = _t + [30];
-_u = _u + [1];
+_u = _u + [2];
+_f = _f + [CTI_FACTORY_HEAVY];
+_s = _s + [""];
+
+_c = _c + ['B_MBT_01_TUSK_F'];  
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [24000];
+_t = _t + [30];
+_u = _u + [2];
 _f = _f + [CTI_FACTORY_HEAVY];
 _s = _s + [""];
 
 _c = _c + ['B_MBT_01_cannon_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [3000];
+_o = _o + [26000];
 _t = _t + [30];
-_u = _u + [1];
+_u = _u + [2];
 _f = _f + [CTI_FACTORY_HEAVY];
 _s = _s + [""];
 
 _c = _c + ['B_APC_Tracked_01_AA_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [4000];
+_o = _o + [6000];
 _t = _t + [30];
-_u = _u + [1];
+_u = _u + [2];
 _f = _f + [CTI_FACTORY_HEAVY];
 _s = _s + [""];
 
 _c = _c + ['B_MBT_01_arty_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [4500];
+_o = _o + [150000];
 _t = _t + [30];
-_u = _u + [1];
+_u = _u + [3];
 _f = _f + [CTI_FACTORY_HEAVY];
 _s = _s + [""];
 
 _c = _c + ['B_MBT_01_mlrs_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [5500];
+_o = _o + [180000];
 _t = _t + [30];
-_u = _u + [1];
+_u = _u + [3];
 _f = _f + [CTI_FACTORY_HEAVY];
 _s = _s + [""];
 
-
-
+//--- Repair Vehicles
 
 _c = _c + ['B_Truck_01_Repair_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [550];
+_o = _o + [4000];
 _t = _t + [25];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_REPAIR];
 _s = _s + ["service-repairtruck"];
+
+_c = _c + ['B_Slingload_01_Repair_F'];  
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [2000];
+_t = _t + [25];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_REPAIR];
+_s = _s + ["service-repairtruck"];
+
+_c = _c + ['B_Slingload_01_Fuel_F'];  
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [100];
+_t = _t + [25];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_REPAIR];
+_s = _s + ["service-fueltruck"];
 
 _c = _c + ['CTI_Salvager_West'];
 _p = _p + [''];
@@ -343,26 +426,69 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_REPAIR];
 _s = _s + [""];
 
-
-
-
+//--- Ammo Vehicles
 
 _c = _c + ['B_Truck_01_ammo_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [550];
+_o = _o + [4000];
 _t = _t + [25];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_AMMO];
 _s = _s + ["service-ammotruck"];
 
+_c = _c + ['B_Slingload_01_Ammo_F'];
+_p = _p + [''];
+_n = _n + ['AmmoPod(vehicle rearm)'];
+_o = _o + [2000];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + ["service-ammotruck"];
+
+_c = _c + ["Box_NATO_Wps_F"];
+_p = _p + [''];
+_n = _n + ['Empty Crate'];
+_o = _o + [5];
+_t = _t + [5];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + [""];
+
+_c = _c + ["B_supplyCrate_F"];
+_p = _p + [''];
+_n = _n + ['Mobile Gear access Crate'];
+_o = _o + [2000];
+_t = _t + [15];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + ["service-gear"];
 
 
+//--- Air Vehicles
+
+_c = _c + ['B_UAV_02_CAS_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [10000];
+_t = _t + [35];
+_u = _u + [2];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+
+_c = _c + ['B_UAV_02_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [35000];
+_t = _t + [35];
+_u = _u + [2];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
 
 _c = _c + ['B_Heli_Light_01_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [4000];
+_o = _o + [2000];
 _t = _t + [35];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_AIR];
@@ -371,16 +497,25 @@ _s = _s + [""];
 _c = _c + ['B_Heli_Transport_01_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [5500];
+_o = _o + [6000];
 _t = _t + [40];
-_u = _u + [0];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+
+_c = _c + ['B_Heli_Transport_03_F']; 
+_p = _p + [''];
+_n = _n + [(format ["HURON Heavy Airlift (DLC ONLY)"])];
+_o = _o + [7000];
+_t = _t + [40];
+_u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
 _c = _c + ['B_Heli_Light_01_armed_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [6000];
+_o = _o + [8000];
 _t = _t + [50];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
@@ -389,13 +524,22 @@ _s = _s + [""];
 _c = _c + ['B_Heli_Attack_01_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [12000];
+_o = _o + [60000];
 _t = _t + [50];
-_u = _u + [1];
+_u = _u + [3];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
+_c = _c + ['B_Plane_CAS_01_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [70000];
+_t = _t + [50];
+_u = _u + [3];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
 
+//--- Naval Vehicles
 
 
 _c = _c + ['C_Boat_Civil_01_F'];
@@ -428,10 +572,19 @@ _s = _s + [""];
 _c = _c + ['B_SDV_01_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [400];
+_o = _o + [100];
 _t = _t + [25];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_NAVAL];
 _s = _s + [""];
+
+_c = _c + ['C_Boat_Civil_01_police_F'];
+_p = _p + [''];
+_n = _n + [(format ["Respawn Shore Required - Range %1 m",CTI_RESPAWN_MOBILE_RANGE])];
+_o = _o + [2500];
+_t = _t + [25];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_NAVAL];
+_s = _s + ["service-medic"];
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";

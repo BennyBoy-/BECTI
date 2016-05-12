@@ -6,6 +6,7 @@ CTI_FACTORY_AIR = 3;
 CTI_FACTORY_REPAIR = 4;
 CTI_FACTORY_AMMO = 5;
 CTI_FACTORY_NAVAL = 6;
+CTI_FACTORY_RADAR = 7;
 
 CTI_BARRACKS = "Barracks";
 CTI_LIGHT = "Light";
@@ -15,8 +16,9 @@ CTI_AIR = "Air";
 CTI_REPAIR = "Repair";
 CTI_AMMO = "Ammo";
 CTI_NAVAL = "Naval";
+CTI_RADAR = "Radar";
 
-CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL];
+CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL,CTI_RADAR];
 
 CTI_WEST_COLOR = "ColorBlue";
 CTI_EAST_COLOR = "ColorRed";
@@ -205,16 +207,26 @@ CTI_ORDER_CLIENT_PATROL_RANGE = 325; //--- AI: Patrol a position.
  */
 
 //--- Upgrades: Order
-CTI_UPGRADE_BARRACKS = 0;
-CTI_UPGRADE_LIGHT = 1;
-CTI_UPGRADE_HEAVY = 2;
-CTI_UPGRADE_AIR = 3;
-CTI_UPGRADE_SATELLITE = 4;
-CTI_UPGRADE_AIR_FFAR = 5;
-CTI_UPGRADE_AIR_AT = 6;
-CTI_UPGRADE_AIR_AA = 7;
-CTI_UPGRADE_AIR_CM = 8;
-CTI_UPGRADE_TOWNS = 9;
+CTI_UPGRADE_GEAR = 	0;
+CTI_UPGRADE_BARRACKS = 1;
+CTI_UPGRADE_LIGHT = 2;
+CTI_UPGRADE_HEAVY = 3;
+CTI_UPGRADE_NAVAL = 4;
+CTI_UPGRADE_AIR = 5;
+CTI_UPGRADE_AIR_FFAR = 6;
+CTI_UPGRADE_AIR_DAR = 7;
+CTI_UPGRADE_AIR_AT = 8;
+CTI_UPGRADE_AIR_AA = 9;
+CTI_UPGRADE_AIR_CM = 10;
+CTI_UPGRADE_TOWNS = 11;
+CTI_UPGRADE_HALO = 12;
+CTI_UPGRADE_AIRR = 13;
+CTI_UPGRADE_ARTR = 14;
+CTI_UPGRADE_REST = 15;
+CTI_UPGRADE_IRSMOKE = 16;
+CTI_UPGRADE_SATELLITE = 17;
+CTI_UPGRADE_NUKE = 18;
+
 //-----------------------------------------------------------------------------------------------------------------------//
 
 
@@ -298,7 +310,7 @@ CTI_TOWNS_CAMPS_CAPTURE_VALUE_CEIL = 30; //--- The camp value's ceiling
 CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE), proc all 5 seconds.
  
 //--- Towns: Capture
-CTI_TOWNS_CAPTURE_BOUNTY_COEF = 4; //--- Bounty coefficient upon capture, (max sv * coefficient)
+CTI_TOWNS_CAPTURE_BOUNTY_COEF = 50; //--- Bounty coefficient upon capture, (max sv * coefficient)
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 300; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
 CTI_TOWNS_CAPTURE_RANGE = 50; //--- The range which a unit/vehicle has to be from a town center to capture it
 CTI_TOWNS_CAPTURE_RATE = 1; //--- Determine how fast a town may be captured/protected
@@ -375,20 +387,21 @@ with missionNamespace do {
 
 //--- Base: Area
 CTI_BASE_AREA_RANGE = 500;
+CTI_BASE_CONSTRUCTION_TIME = if (CTI_DEV_MODE > 0) then { 0 } else {180}; //--- Length of time a structure takes to build, in seconds.
 
 //--- Base: Construction
 CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 500; //--- Decay starts after x seconds unattended.
 CTI_BASE_CONSTRUCTION_DECAY_DELAY = 10; //--- Decay each x seconds.
-CTI_BASE_CONSTRUCTION_DECAY_FROM = 0.25; //--- Decay of x / 100 each y seconds.
-CTI_BASE_CONSTRUCTION_RANGE = 150; //--- Determine how far the commander may be from the HQ to build
+CTI_BASE_CONSTRUCTION_DECAY_FROM = 10; //--- Decay of x / 100 each y seconds.
+CTI_BASE_CONSTRUCTION_RANGE = 400; //--- Determine how far the commander may be from the HQ to build
 CTI_BASE_CONSTRUCTION_RATIO_INIT = 1; //--- The initial construction ratio
-CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.95; //--- The completion ratio is multiplied by this coefficient to make repairs less effective at each factory's destruction.
+CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.60; //--- The completion ratio is multiplied by this coefficient to make repairs less effective at each factory's destruction.
 
 //--- Base: Defenses
 CTI_BASE_DEFENSES_AUTO_DELAY = 240; //--- Delay after which a new unit will replace a dead one for a defense
-CTI_BASE_DEFENSES_AUTO_LIMIT = 25; //--- Amount of independent units which may man nearby defenses
-CTI_BASE_DEFENSES_AUTO_RANGE = 500; //--- Range from the nearest barrack at which AI may auto man a defense
-CTI_BASE_DEFENSES_AUTO_REARM_RANGE = 500; //--- Range needed for a defense to be able to rearm at a service point
+CTI_BASE_DEFENSES_AUTO_LIMIT = 30; //--- Amount of independent units which may man nearby defenses
+CTI_BASE_DEFENSES_AUTO_RANGE = 600; //--- Range from the nearest barrack at which AI may auto man a defense
+CTI_BASE_DEFENSES_AUTO_REARM_RANGE = 600; //--- Range needed for a defense to be able to rearm at a service point
 CTI_BASE_DEFENSES_EMPTY_TIMEOUT = 1200; //--- Delay after which an empty defense is considered empty
 
 //--- Base: HQ
@@ -401,9 +414,9 @@ CTI_BASE_NOOBPROTECTION = 1; //--- Make structures invulnerable to friendly fire
 
 //--- Base: Purchase range
 CTI_BASE_GEAR_FOB_RANGE = 4; //--- Determine how far a player has to be from a FOB to access the Gear Menu
-CTI_BASE_GEAR_RANGE = 150; //--- Determine how far a player has to be from a Barracks to access the Gear Menu
+CTI_BASE_GEAR_RANGE = 300; //--- Determine how far a player has to be from a Barracks to access the Gear Menu
 CTI_BASE_PURCHASE_UNITS_RANGE = 150; //--- Determine how far a player has to be from a factory to access the Factory Menu without CC
-CTI_BASE_PURCHASE_UNITS_RANGE_CC = 8500; //--- Determine how far a player has to be from a factory to access the Factory Menu with CC
+CTI_BASE_PURCHASE_UNITS_RANGE_CC = 15000; //--- Determine how far a player has to be from a factory to access the Factory Menu with CC
 
 //--- Base: Workers
 CTI_BASE_WORKERS_BUILD_COEFFICIENT = 1; //--- Worker build speed multiplier (<coefficient> / (<structure build time> / 100)), higher is faster.
@@ -460,8 +473,8 @@ CTI_VEHICLES_REPAIRTRUCK_BASE_REPAIR_RANGE = 25; //--- Repair trucks may repair 
 //--- Vehicles: Salvage Trucks
 CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX = 2; //--- Maximum amount of Independent Salvage Trucks which may be present per side
 CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE = 5000; //--- An independent Salvage may search for wreck up to x meters
-CTI_VEHICLES_SALVAGE_RATE = 0.2; //--- This coefficient determine the value of a salvaged wreck (wreck value * x)
-CTI_VEHICLES_SALVAGE_RANGE = 25; //--- This is the distance required between a Wreck and Salvage Truck
+CTI_VEHICLES_SALVAGE_RATE = 0.4; //--- This coefficient determine the value of a salvaged wreck (wreck value * x)
+CTI_VEHICLES_SALVAGE_RANGE = 300; //--- This is the distance required between a Wreck and Salvage Truck
 CTI_VEHICLES_SALVAGER_PRICE = 550; //--- Determine the cost of the salvage trucks
 
 //--- Vehicles: Parameter
@@ -476,8 +489,8 @@ with missionNamespace do {
 CTI_ARTILLERY_FILTER = 1; //--- Toggle artillery magazines like mines and AT mines (0: Disabled, 1: Enabled)
 CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
 
-CTI_BOUNTY_COEF = 0.15; //--- Bounty coefficient multiplicator based on the unit original cost
-CTI_BOUNTY_COEF_PVP = 1.2; //--- Bounty coefficient multiplicator based on the killed unit score
+CTI_BOUNTY_COEF = 2; //--- Bounty coefficient multiplicator based on the unit original cost
+CTI_BOUNTY_COEF_PVP = 2; //--- Bounty coefficient multiplicator based on the killed unit score
 
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 30; //--- Keep values of 10
 
@@ -580,12 +593,20 @@ with missionNamespace do {
 	if (isNil 'CTI_RESPAWN_MOBILE') then {CTI_RESPAWN_MOBILE = 1};
 	if (isNil 'CTI_RESPAWN_TIMER') then {CTI_RESPAWN_TIMER = 30};
 	
+	if (isNil 'CTI_TEAMSWAP') then {CTI_TEAMSWAP = 1}; 
+	if (isNil 'CTI_TEAMSTACK') then {CTI_TEAMSTACK = 1}; 
+	
 	if (isNil 'CTI_MARKERS_INFANTRY') then {CTI_MARKERS_INFANTRY = 1}; //--- Track infantry on map
 	
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 0};
 	
-	if (isNil 'CTI_WEATHER_FAST') then {CTI_WEATHER_FAST = 0};
-	CTI_WEATHER_FAST_VALUES = [0, 4.8, 5.052631579, 5.333333333, 5.647058824, 6, 6.4, 6.857142857, 7.384615385, 8, 8.727272727, 9.6, 10.66666667, 12]; //--- Fast time values, this shall match the amount of values in rsc\parameters.hpp
+	if (isNil 'CTI_WEATHER_FAST') then {CTI_WEATHER_FAST = 12};
+	if (isNil 'CTI_WEATHER_FAST_NIGHT') then {CTI_WEATHER_FAST_NIGHT = 1};
+	if (isNil 'CTI_WEATHER_INITIAL') then {CTI_WEATHER_INITIAL = 10};
+	if (isNil 'CTI_WEATHER_ALLOWRAIN') then {CTI_WEATHER_ALLOWRAIN = 0};
 	
-	if (CTI_WEATHER_FAST > 0) then {CTI_WEATHER_FAST = CTI_WEATHER_FAST_VALUES select CTI_WEATHER_FAST};
+	if (isNil 'CTI_CUP_ADDON') then {CTI_CUP_ADDON = 1};
+	if (isNil 'CTI_ACE_ADDON') then {CTI_ACE_ADDON = 1};
+	if (isNil 'CTI_OFPS_ADDON') then {CTI_OFPS_ADDON = 1};
+	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 0};
 };

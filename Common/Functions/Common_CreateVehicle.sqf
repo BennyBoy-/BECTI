@@ -79,4 +79,13 @@ if (_handle) then {
 	_vehicle setVariable ["cti_occupant", _side call CTI_CO_FNC_GetSideFromID];
 };
 
+//AdminZeus
+if !( isNil "ADMIN_ZEUS") then {
+	if !(CTI_isServer) then {
+		["SERVER", "Server_Addeditable",[ADMIN_ZEUS,_vehicle]] call CTI_CO_FNC_NetSend;
+	} else {
+		ADMIN_ZEUS addCuratorEditableObjects [[_vehicle],true] ;
+	};
+};
+
 _vehicle

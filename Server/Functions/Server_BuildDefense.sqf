@@ -110,4 +110,7 @@ if (_defense emptyPositions "gunner" > 0) then { //--- Hard defense
 	// _defense addEVentHandler ["hit", {player sidechat format["%1",getDammage (_this select 0)];}];
 // _defense setDammage 1;
 
+//AdminZeus
+if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_defense],true];};
+
 _defense

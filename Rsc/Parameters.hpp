@@ -3,7 +3,7 @@ class Params {
 		title = "AI: Teams";
 		values[] = {0,1};
 		texts[] = {"Disabled", "Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_ARTILLERY_SETUP {
 		title = "ARTILLERY: Setup";
@@ -43,26 +43,38 @@ class Params {
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER {
 		title = "INCOME: Starting Funds (East Commander)";
-		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000};
-		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000"};
+		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
+		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
+		default = 15000;
+	};
+	class CTI_ECONOMY_STARTUP_SUPPLY_EAST {
+		title = "SUPPLY: Starting Supply (East Commander)";
+		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
+		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
 		default = 9000;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_EAST {
 		title = "INCOME: Starting Funds (East Players)";
-		values[] = {900,1500,2400,3200,6000,8000,10000,12500,15000,20000};
-		texts[] = {"$900","$1500","$2400","$3200","$6000","$8000","$10000","$12500","$15000","$20000"};
+		values[] = {900,1500,2400,3200,6000,8000,10000,12500,15000,20000,100000000};
+		texts[] = {"$900","$1500","$2400","$3200","$6000","$8000","$10000","$12500","$15000","$20000","$100000000"};
 		default = 900;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER {
 		title = "INCOME: Starting Funds (West Commander)";
-		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000};
-		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000"};
+		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
+		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
+		default = 15000;
+	};
+	class CTI_ECONOMY_STARTUP_SUPPLY_WEST {
+		title = "SUPPLY: Starting Supply (East Commander)";
+		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
+		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
 		default = 9000;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_WEST {
 		title = "INCOME: Starting Funds (West Players)";
-		values[] = {900,1500,2400,3200,6000,8000,10000,12500,15000,20000};
-		texts[] = {"$900","$1500","$2400","$3200","$6000","$8000","$10000","$12500","$15000","$20000"};
+		values[] = {900,1500,2400,3200,6000,8000,10000,12500,15000,20000,100000000};
+		texts[] = {"$900","$1500","$2400","$3200","$6000","$8000","$10000","$12500","$15000","$20000","$100000000"};
 		default = 900;
 	};
 	class CTI_ECONOMY_TOWNS_OCCUPATION {
@@ -125,6 +137,18 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
+	class CTI_VEHICLES_AIR_FFAR {
+		title = "UNITS: Aircraft FFAR";
+		values[] = {0,1,2};
+		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
+		default = 0;
+	};
+	class CTI_VEHICLES_AIR_DAR {
+		title = "UNITS: Aircraft DAR";
+		values[] = {0,1,2};
+		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
+		default = 0;
+	};
 	class CTI_VEHICLES_AIR_AA {
 		title = "UNITS: Aircraft AA Missiles";
 		values[] = {0,1,2};
@@ -173,11 +197,64 @@ class Params {
 		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM"};
 		default = 2500;
 	};
-	class CTI_WEATHER_FAST {
-		title = "WEATHER: Fast Time";
-		values[] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
-		texts[] = {"Disabled","24H = 10H","24H = 9H30","24H = 9H","24H = 8H30","24H = 8H","24H = 7H30","24H = 7H","24H = 6H30", 
-		"24H = 6H","24H = 5H30","24H = 5H","24H = 4H30","24H = 4H"};
+	class CTI_TEAMSWAP {
+		title = "TEAM: Team swap protection";
+		values[] = {0,1};
+		texts[] = {"off","on"};
+		default = 0;
+	};
+	class CTI_TEAMSTACK {
+		title = "TEAM: Team Stack protection";
+		values[] = {0,1};
+		texts[] = {"off","on"};
+		default = 0;
+	};
+	class CTI_WEATHER_INITIAL {
+		title = "WEATHER: Inital Time";
+		values[] = {0,1,2,3,10};
+		texts[] = {"Morning","Noon","Evening","Midnight","Random"};
+		default = 0;
+	};
+	class CTI_WEATHER_ALLOWRAIN {
+		title = "WEATHER: Allow Rain";
+		values[] = {0,1};
+		texts[] = {"False","True"};
+		default = 0;
+	};
+  	class CTI_WEATHER_FAST {
+		title = "WEATHER: Day Duration";
+		values[] = {1,2,3,4,5,6,7,8,9,10,11,12};
+		texts[] = {"1 hour","2 hours","3 hours","4 hours","5 hours","6 hours","7 hours","8 hours","9 hours","10 hours","11 hours","12 hours"};
+		default = 6;
+	};
+  	class CTI_WEATHER_FAST_NIGHT {
+		title = "WEATHER: Night Duration";
+		values[] = {1,2,3,4,5,6,7,8,9,10,11,12};
+		texts[] = {"1 hour","2 hours","3 hours","4 hours","5 hours","6 hours","7 hours","8 hours","9 hours","10 hours","11 hours","12 hours"};
+		default = 1;
+	};
+	class CTI_CUP_ADDON {
+		title = "ADDON: CUP Support, Units, Vehicles, Weapons";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 1;
+	};
+	class CTI_ACE_ADDON {
+		title = "ADDON: ACE Support";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 1;
+	};
+	class CTI_OFPS_ADDON {
+		title = "ADDON: OFPS MOD Pack Support";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 1;
+	};	
+	class CTI_DEV_MODE {
+		title = "DEV: Dev Mode";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
 		default = 0;
 	};
 };
