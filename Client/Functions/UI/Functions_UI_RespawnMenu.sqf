@@ -249,7 +249,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 		};
 		
 		if (_where isKindOf "AllVehicles") then { //--- Vehicle respawn
-			if (_where emptyPositions "cargo" > 0 && !(locked _where)) then {
+			if (_where emptyPositions "cargo" > 0 && (locked _where in [0, 1])) then {
 				_spawn_in = true;
 				player moveInCargo _where;
 			};
