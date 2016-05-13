@@ -69,6 +69,8 @@ if !(_sell) then {
 	[_side, _structure, _variable, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
 
 	_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull]];
+	
+	diag_log format ["DEBUG:: Server_OnBuildingDestroyed.sqf:: structure %1 on side %2 was destroyed (not sold)", ((_var select 1) select 1), _sideID];
 };
 
 sleep 5;
