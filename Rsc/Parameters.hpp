@@ -66,7 +66,7 @@ class Params {
 		default = 15000;
 	};
 	class CTI_ECONOMY_STARTUP_SUPPLY_WEST {
-		title = "SUPPLY: Starting Supply (East Commander)";
+		title = "SUPPLY: Starting Supply (West Commander)";
 		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
 		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
 		default = 9000;
@@ -111,7 +111,7 @@ class Params {
 		title = "RESPAWN: Mobile";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_RESPAWN_TIMER {
 		title = "RESPAWN: Delay";
