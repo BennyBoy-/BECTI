@@ -139,4 +139,6 @@ with missionNamespace do {
 			createDialog "CTI_RscVoteMenu";
 		};
 	};
+	
+	CTI_PVF_Client_ReceiveServerFPS = { CTI_P_ServerFPS = _this };
 };

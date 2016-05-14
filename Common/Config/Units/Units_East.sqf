@@ -602,6 +602,15 @@ _s = _s + [""];
 
 //--- Naval Vehicles
 
+_c = _c + ['C_Boat_Civil_01_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [200];
+_t = _t + [15];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_NAVAL];
+_s = _s + ["service-medic"];
+
 _c = _c + ['O_Boat_Transport_01_F'];
 _p = _p + [''];
 _n = _n + [''];

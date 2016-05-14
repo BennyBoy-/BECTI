@@ -203,8 +203,6 @@ CTI_HC_CreateTownUnits = {
 		//--- Create the given team
 		[_team, _position, _side, _group, true, false, true, _town] Spawn CTI_HC_CreateTeam;
 	};
-
-	_created_vehicles
 };
 
 CTI_HC_CreateTeam = {

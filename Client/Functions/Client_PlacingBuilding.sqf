@@ -118,7 +118,7 @@ _in_area = false;
 //--- Maybe we have no area in range?
 if !(_in_area) then {
 	//--- If we have none, then have we reached our limit?
-	if (count (CTI_P_SideLogic getVariable "cti_structures_areas") < CTI_BASE_AREA_MAX) then {
+	if (count (CTI_P_SideLogic getVariable "cti_structures_areas") < (missionNamespace getVariable "CTI_BASE_AREA_MAX")) then {
 		//--- We create a new area if we still have room for areas and of course, we allow the construction
 		CTI_P_SideLogic setVariable ["cti_structures_areas", (CTI_P_SideLogic getVariable "cti_structures_areas") + [[_pos select 0, _pos select 1]], true];
 	} else {

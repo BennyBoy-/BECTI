@@ -11,6 +11,12 @@ class Params {
 		texts[] = {"Disabled","Ballistic Computer","Short","Medium","Long","Extreme"};
 		default = 0;
 	};
+	class CTI_BASE_AREA_MAX {
+		title = "BASE: Areas";
+		values[] = {1,2,3,4,5};
+		texts[] = {"1","2","3","4","5"};
+		default = 2;
+	};
 	class CTI_BASE_HQ_REPAIR {
 		title = "BASE: HQ Repairable";
 		values[] = {0,1};

@@ -155,7 +155,12 @@ with missionNamespace do {
 		if (_logic getVariable "cti_votetime" <= 0) then {
 			//--- Set the votes for the default commander
 			{
-				if ((_x getVariable "cti_vote") != _team) then {_x setVariable ["cti_vote", _team, true]};
+				_vote_update = false;
+				if (isNull (_x getVariable "cti_vote") && !isNull _team || !isNull (_x getVariable "cti_vote") && isNull _team) then {_vote_update = true};
+				if (!isNull (_x getVariable "cti_vote") && !isNull _team) then {
+					if ((_x getVariable "cti_vote") != _team) then {_vote_update = true};
+				};
+				if (_vote_update) then {_x setVariable ["cti_vote", _team, true]};
 			} forEach (_logic getVariable "cti_teams");
 			
 			//--- Call in for a vote
