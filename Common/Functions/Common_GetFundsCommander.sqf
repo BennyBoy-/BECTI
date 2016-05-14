@@ -28,5 +28,5 @@ private ["_funds", "_logic", "_side"];
 _side = _this;
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
-_funds = _logic getVariable "cti_ai_commander_funds";
+_funds = _logic getVariable "cti_commander_funds";
 if (isNil '_funds') then {0} else {_funds}

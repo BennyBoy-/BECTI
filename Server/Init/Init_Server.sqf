@@ -104,7 +104,7 @@ if (_attempts >= 500) then {
 	_logic setVariable ["cti_workers", [], true];
 	_logic setVariable ["cti_commander_team", grpNull, true];
 	_logic setVariable ["cti_ai_commander", false];
-	_logic setVariable ["cti_ai_commander_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1_COMMANDER", _side]];
+	_logic setVariable ["cti_commander_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1_COMMANDER", _side]];
 	_logic setVariable ["cti_pool_award", missionNamespace getVariable format ["CTI_ECONOMY_POOL_AWARD_PERCENTAGE_%1", _side], true];
 	_logic setVariable ["cti_pool_resources", missionNamespace getVariable format ["CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_%1", _side], true];
 	_logic setVariable ["cti_salvagers", [], true];
