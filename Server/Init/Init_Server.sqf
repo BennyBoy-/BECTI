@@ -132,11 +132,14 @@ if (_attempts >= 500) then {
 	{
 		_model = _x select 0;
 		_equipment = _x select 1;
-		
-		_vehicle = [_model, _startPos, 0, _side, false, true, true] call CTI_CO_FNC_CreateVehicle;
-		[_vehicle, getPos _hq, 45, 60, true, false, true] call CTI_CO_FNC_PlaceNear;
+		_roads=_startPos nearroads 75;
+		_no_roads=_startPos nearroads 25;
+		_position= (_roads-_no_roads) call BIS_fnc_selectRandom;
+		_vehicle = [_model, _position, 0, _side, false, true, true] call CTI_CO_FNC_CreateVehicle;
+		//[_vehicle, getPos _hq, 45, 60, true, false, true] call CTI_CO_FNC_PlaceNear;
 		[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
 		if (count _equipment > 0) then {[_vehicle, _equipment] call CTI_CO_FNC_EquipVehicleCargoSpace};
+		if ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7 != "") then {[_vehicle, _side, ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7)] call CTI_CO_FNC_InitializeCustomVehicle;};
 	} forEach (missionNamespace getVariable format["CTI_%1_Vehicles_Startup", _side]);
 	
 	//--- Handle the Team
