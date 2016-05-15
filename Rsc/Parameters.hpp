@@ -87,7 +87,7 @@ class Params {
 		title = "RESPAWN: AI Members";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_RESPAWN_CAMPS {
 		title = "RESPAWN: Camps";
