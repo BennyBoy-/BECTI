@@ -31,8 +31,5 @@ private ["_funds", "_group", "_value"];
 _group = _this select 0;
 _value = _this select 1;
 
-if (isNil '_value') exitWith {"error CTI_CO_FNC_ChangeFundsTeam: attempted to set nil value"};
-if (typeName _value != "SCALAR") exitWith {"error CTI_CO_FNC_ChangeFundsTeam: attempted to set non scalar value"};
-
 _funds = (_group) call CTI_CO_FNC_GetFundsTeam;
 _group setVariable ["cti_funds", _funds + _value, true];

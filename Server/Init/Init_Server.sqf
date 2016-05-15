@@ -104,7 +104,7 @@ if (_attempts >= 500) then {
 	_logic setVariable ["cti_workers", [], true];
 	_logic setVariable ["cti_commander_team", grpNull, true];
 	_logic setVariable ["cti_ai_commander", false];
-	_logic setVariable ["cti_commander_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1_COMMANDER", _side]];
+	_logic setVariable ["cti_commander_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1_COMMANDER", _side], true];
 	_logic setVariable ["cti_pool_award", missionNamespace getVariable format ["CTI_ECONOMY_POOL_AWARD_PERCENTAGE_%1", _side], true];
 	_logic setVariable ["cti_pool_resources", missionNamespace getVariable format ["CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_%1", _side], true];
 	_logic setVariable ["cti_salvagers", [], true];
@@ -132,11 +132,9 @@ if (_attempts >= 500) then {
 	{
 		_model = _x select 0;
 		_equipment = _x select 1;
-		_roads=_startPos nearroads 75;
-		_no_roads=_startPos nearroads 25;
-		_position= (_roads-_no_roads) call BIS_fnc_selectRandom;
-		_vehicle = [_model, _position, 0, _side, false, true, true] call CTI_CO_FNC_CreateVehicle;
-		//[_vehicle, getPos _hq, 45, 60, true, false, true] call CTI_CO_FNC_PlaceNear;
+		
+		_vehicle = [_model, _startPos, 0, _side, false, true, true] call CTI_CO_FNC_CreateVehicle;
+		[_vehicle, getPos _hq, 45, 60, true, false, true] call CTI_CO_FNC_PlaceNear;
 		[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
 		if (count _equipment > 0) then {[_vehicle, _equipment] call CTI_CO_FNC_EquipVehicleCargoSpace};
 		if ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7 != "") then {[_vehicle, _side, ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7)] call CTI_CO_FNC_InitializeCustomVehicle;};

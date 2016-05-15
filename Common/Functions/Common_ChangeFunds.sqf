@@ -27,13 +27,18 @@
 	  -> If the player had 5000 before, he'll end up with 5500
 */
 
-private ["_funds", "_group", "_side", "_value"];
+private ["_funds", "_group", "_side", "_value", "_commander"];
 
 _group = _this select 0;
-_side = _this select 1;
-_value = _this select 2;
+_value = _this select 1;
 
-if ((_side call CTI_CO_FNC_GetSideCommanderTeam) == _group) then {
+_side = side _group;
+
+if (isNil '_value') exitWith {"error CTI_CO_FNC_ChangeFunds: attempted to set nil value"};
+if (typeName _value != "SCALAR") exitWith {"error CTI_CO_FNC_ChangeFunds: attempted to set non scalar value"};
+
+_commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;
+if (isPlayer leader _commander) then {
 	//--- Change the commander's funds
 	[_side, _value] call CTI_CO_FNC_ChangeFundsCommander;
 } else {
