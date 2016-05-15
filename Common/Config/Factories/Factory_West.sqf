@@ -224,6 +224,7 @@ _u = _u		+ ['LDL_C130J'];
 _u = _u		+ ['bwi_a3_t6a'];
 _u = _u		+ ['bwi_a3_t6c'];
 _u = _u		+ ['bwi_a3_at6b'];
+_u = _u		+ ['bwi_a3_at6b_3'];
 _u = _u		+ ['sab_alphajet'];
 _u = _u		+ ['sab_alphajet2'];
 _u = _u		+ ['OFPS_BUZZA_B'];

@@ -138,7 +138,8 @@ addons[]=
 	"A3_Air_F_PAKFA",
 	"sab_alphajet",
 	"sfp_bo105",
-	"sfp_ikv91"
+	"sfp_ikv91",
+	"sfp_j12"
 };
 randomSeed=13186954;
 class ScenarioData
