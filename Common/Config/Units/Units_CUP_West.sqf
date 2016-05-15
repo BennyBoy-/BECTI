@@ -718,7 +718,7 @@ _s = _s + [""];
 _c = _c + ['CUP_B_AV8B_CAP_USMC'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [50000];
+_o = _o + [35000];
 _t = _t + [20];
 _u = _u + [2];
 _f = _f + [CTI_FACTORY_AIR];
@@ -730,15 +730,6 @@ _n = _n + [''];
 _o = _o + [80000];
 _t = _t + [20];
 _u = _u + [3];
-_f = _f + [CTI_FACTORY_AIR];
-_s = _s + [""];
-
-_c = _c + ['CUP_B_GR9_CAP_GB'];
-_p = _p + [''];
-_n = _n + [''];
-_o = _o + [50000];
-_t = _t + [20];
-_u = _u + [2];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
@@ -856,6 +847,52 @@ _n = _n + [''];
 _o = _o + [20000];
 _t = _t + [20];
 _u = _u + [2];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+
+
+_c = _c + ['CUP_B_AH1Z_Escort'];
+_p = _p + [''];
+_n = _n + ['AH-1Z Cobra (Rocket Pods)'];
+_o = _o + [30000];
+_t = _t + [50];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+
+_c = _c + ['CUP_B_AH64D_ES_USA'];
+_p = _p + [''];
+_n = _n + ['AH-64 Apache (Rocket Pods)'];
+_o = _o + [30000];
+_t = _t + [50];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+
+_c = _c + ['CUP_B_AV8B_GBU12_USMC'];
+_p = _p + [''];
+_n = _n + ['AV8B Harrier (GBU)'];
+_o = _o + [40000];
+_t = _t + [50];
+_u = _u + [3];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+
+_c = _c + ['CUP_B_AV8B_MK82_USMC'];
+_p = _p + [''];
+_n = _n + ['AV8B Harrier (Rocket Pods)'];
+_o = _o + [30000];
+_t = _t + [50];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+
+_c = _c + ['CUP_B_F35B_LGB_USMC'];
+_p = _p + [''];
+_n = _n + ['F-35B (GBU)'];
+_o = _o + [80000];
+_t = _t + [50];
+_u = _u + [3];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 

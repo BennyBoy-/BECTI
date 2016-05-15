@@ -193,7 +193,7 @@ _u = _u		+ ['CUP_O_Ka60_GL_Hex_CSAT'];
 _u = _u		+ ['CUP_C_DC3_CIV'];
 _u = _u		+ ['CUP_O_C130J_TKA'];
 _u = _u		+ ['CUP_O_C130J_Cargo_TKA'];
-_u = _u		+ ['CUP_B_Su25_CDF'];
+_u = _u		+ ['OFPS_SU25'];
 _u = _u		+ ['OFPS_SU34_LGB'];
 _u = _u		+ ['OFPS_SU34_AGM'];
 };
