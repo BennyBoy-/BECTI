@@ -27,7 +27,8 @@ for '_i' from 0 to count(_groups)-1 do {
 	//--- Our units are strong!
 	_group allowFleeing 0;
 	
-	_created_vehicles = _created_vehicles + _vehicles;
+	// _created_vehicles = _created_vehicles + _vehicles;
+	{_created_vehicles pushBack _x} forEach _vehicles;
 	
 	//--- If SHK Building Position mode is enabled, some AI groups can be placed in buildings
 	if (CTI_SHK_BUILDING_ENABLED) then {
