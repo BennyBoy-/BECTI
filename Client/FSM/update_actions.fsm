@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\ArmA2\FSM Editor Personal Edition\scriptedFSM.cfg, update_actions.fsm">*/
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, update_actions.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-554.049622,262.642029,242.139771,-456.939575,1306,880,1};
-window[] = {2,-1,-1,-1,-1,853,85,1340,72,3,1324};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-554.049622,262.642029,242.139771,-456.939575,854,771,1};
+window[] = {2,-1,-1,-1,-1,981,1880,3135,200,3,872};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -68,7 +68,7 @@ class FSM
        "		if (alive _hq) then {" \n
        "			for '_i' from 0 to 3 do {_hq removeAction _i};" \n
        "		};" \n
-       "		if !(isNil ""CTI_HQ_BuildAction"") then {_hq removeAction ""CTI_HQ_BuildAction""};" \n
+       "		if !(isNil ""CTI_HQ_BuildAction"") then {player removeAction ""CTI_HQ_BuildAction""};" \n
        "	};" \n
        "	if (!isNull _commander) then {" \n
        "		if (_commander == group player) then {" \n
