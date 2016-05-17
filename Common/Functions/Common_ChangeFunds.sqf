@@ -27,12 +27,10 @@
 	  -> If the player had 5000 before, he'll end up with 5500
 */
 
-private ["_funds", "_group", "_side", "_value"];
+private ["_funds", "_group", "_value"];
 
 _group = _this select 0;
 _value = _this select 1;
-
-_side = side _group;
 
 if (isNil '_value') exitWith {"error CTI_CO_FNC_ChangeFunds: attempted to set nil value"};
 if (typeName _value != "SCALAR") exitWith {"error CTI_CO_FNC_ChangeFunds: attempted to set non scalar value"};

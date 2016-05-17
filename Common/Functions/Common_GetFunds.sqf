@@ -22,10 +22,9 @@
     _funds = (group player) call CTI_CO_FNC_GetFunds
 */
 
-private ["_group", "_side"];
+private ["_group"];
 
 _group = _this;
-_side = side _group;
 
 _funds = _group getVariable "cti_funds";
 if (isNil '_funds') then {0} else {_funds};
