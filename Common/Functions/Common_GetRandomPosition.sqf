@@ -32,15 +32,15 @@ private["_position","_radius","_direction","_maxRadius","_minRadius","_tries"];
 _position = _this select 0;
 _minRadius = _this select 1;
 _maxRadius = _this select 2;
+_tries = if (count _this > 3) then {_this select 3} else {500};
 _direction = random 360;
 
 if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (count _position < 3) then {_position set [2, 0]};
 
-_tries = 500;
 _radius = (random (_maxRadius - _minRadius)) + _minRadius;
 _position = [(_position select 0)+((sin _direction)*_radius),(_position select 1)+((cos _direction)*_radius),(_position select 2)];
-while {surfaceIsWater _position && _tries > -1} do {
+while {surfaceIsWater _position && _tries > 0} do {
 	_direction = random 360;
 	_radius = (random (_maxRadius - _minRadius)) + _minRadius;
 	_position = [(_position select 0)+((sin _direction)*_radius),(_position select 1)+((cos _direction)*_radius),(_position select 2)];

@@ -63,7 +63,7 @@ _customid = -1;
 if (typeName (_var_classname select CTI_UNIT_SCRIPT) == "ARRAY") then { _model = (_var_classname select CTI_UNIT_SCRIPT) select 0; _script = (_var_classname select CTI_UNIT_SCRIPT) select 1; _customid = (_var_classname select CTI_UNIT_SCRIPT) select 2};
 
 //--- Then we check if the buyer has enough funds to perform this operation
-_cost = _var_classname select 2;
+_cost = _var_classname select CTI_UNIT_PRICE;
 if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
 	_crew = missionNamespace getVariable format["CTI_%1_%2", _req_side, _crew];
@@ -78,7 +78,7 @@ if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory
 
 _var = missionNamespace getVariable format ["CTI_%1_%2", _req_side, _factory getVariable "cti_structure_type"];
 _direction = 360 - ((_var select 4) select 0);
-_distance = (_var select 4) select 1;
+_distance = ((_var select 4) select 1) + (_var_classname select CTI_UNIT_DISTANCE);
 _position = _factory modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
 
 while { time <= _req_time_out && alive _factory } do { sleep .25 }; //--- Construction...
