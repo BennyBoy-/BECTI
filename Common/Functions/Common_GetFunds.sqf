@@ -25,7 +25,6 @@
 private ["_group", "_side", "_commander"];
 
 _group = _this;
-_side = side _group;
 
 _commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;
 if (isPlayer leader _commander) then {
