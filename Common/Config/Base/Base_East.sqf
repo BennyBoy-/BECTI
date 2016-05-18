@@ -105,7 +105,7 @@ _headers = _headers 		+ [[CTI_NAVAL, "Naval Yard", "Naval"]];
 _classes = _classes 		+ [["Land_Lighthouse_small_F", "Land_Lighthouse_small_ruins_F"]];
 _prices = _prices 			+ [2000];
 _times = _times 			+ [35];
-_placements = _placements 	+ [[180, 100]];
+_placements = _placements 	+ [[180, 40]];
 _specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 4]]];
 
 _headers = _headers 		+ [[CTI_RADAR, "Air Radar", "Air Radar"]];
