@@ -7,7 +7,7 @@ item2[] = {"Occupation_hold",2,250,-100.000000,-200.000000,0.000000,-150.000000,
 item3[] = {"End_FSM",1,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Held_by_Occupati",4,218,-100.000000,-100.000000,0.000000,-50.000000,2.000000,"Held by" \n "Occupation"};
 item5[] = {"Gameover",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
-item6[] = {"Enemy_Near_",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Enemy Near?"};
+item6[] = {"Enemy_Near_",2,4346,-100.000000,0.000000,0.000000,50.000000,0.000000,"Enemy Near?"};
 item7[] = {"Not_held_by_Occu",4,218,50.000000,-200.000000,150.000000,-150.000000,1.000000,"Not held by" \n "Occupation"};
 item8[] = {"Occupation_Timeout",2,250,175.000000,100.000000,275.000000,150.000000,0.000000,"Occupation" \n "Timeout?"};
 item9[] = {"Active",8,218,175.000000,0.000000,275.000000,50.000000,0.000000,"Active"};
@@ -15,7 +15,7 @@ item10[] = {"Inactive",4,218,175.000000,-200.000000,275.000000,-150.000000,1.000
 item11[] = {"Still_active",8,218,300.000000,0.000000,400.000000,50.000000,0.000000,"Still active"};
 item12[] = {"Timed_out",4,218,375.000000,100.000000,475.000000,150.000000,1.000000,"Timed out"};
 item13[] = {"Skip",2,250,300.000000,-200.000000,400.000000,-150.000000,0.000000,"Skip"};
-item14[] = {"Cleanup",2,4346,375.000000,-400.000000,475.000000,-350.000000,0.000000,"Cleanup"};
+item14[] = {"Cleanup",2,250,375.000000,-400.000000,475.000000,-350.000000,0.000000,"Cleanup"};
 item15[] = {"Occupation_Active",2,250,50.000000,-100.000000,150.000000,-50.000000,0.000000,"Occupation" \n "Active?"};
 item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
 item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
@@ -53,7 +53,7 @@ link25[] = {20,18};
 link26[] = {21,8};
 link27[] = {22,1};
 globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-592.544495,538.681702,354.781555,-521.942932,908,771,1};
-window[] = {2,-1,-1,-1,-1,931,1830,3085,150,3,926};
+window[] = {2,-1,-1,-1,-1,806,1705,2960,25,3,926};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -147,7 +147,17 @@ class FSM
     {
       name = "Enemy_Near_";
       init = /*%FSM<STATEINIT""">*/"_objects = (_town nearEntities [""AllVehicles"", CTI_TOWNS_OCCUPATION_DETECTION_RANGE]) unitsBelowHeight CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR;" \n
-       "_count_enemies = [_objects, _side] call CTI_CO_FNC_GetAreaEnemiesCount;"/*%FSM</STATEINIT""">*/;
+       "" \n
+       "_count_enemies = 0;" \n
+       "if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") > 0) then {" \n
+       "	{" \n
+       "		if ((_x countSide _objects) > 0 && _count_enemies < 1) then {" \n
+       "			if ([_town, _x] Call CTI_SE_FNC_CanCaptureTerritorialTown) then {_count_enemies = [_objects, _side] call CTI_CO_FNC_GetAreaEnemiesCount};" \n
+       "		};" \n
+       "	} forEach ([west, east, resistance] - [_side]);" \n
+       "} else {" \n
+       "	_count_enemies = [_objects, _side] call CTI_CO_FNC_GetAreaEnemiesCount;" \n
+       "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

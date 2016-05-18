@@ -39,4 +39,4 @@ if (typeName _value != "SCALAR") exitWith {"error CTI_CO_FNC_ChangeFundsCommande
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _funds = (_side) call CTI_CO_FNC_GetFundsCommander;
-_logic setVariable ["cti_ai_commander_funds", _funds + _value];
+_logic setVariable ["cti_commander_funds", _funds + _value, true];
