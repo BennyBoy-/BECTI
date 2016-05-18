@@ -725,4 +725,4 @@ _f = _f + [CTI_FACTORY_NAVAL];
 _s = _s + [""];
 _d = _d + [0];
 
-[_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";
+[_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s, _d] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";
