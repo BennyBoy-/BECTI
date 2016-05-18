@@ -165,6 +165,16 @@ _f = _f + [CTI_FACTORY_NAVAL];
 _s = _s + [""];
 _d = _d + [0];
 
+_c = _c + ['rhsusf_mkvsoc'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [5000];
+_t = _t + [25];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_NAVAL];
+_s = _s + [""];
+_d = _d + [1];
+
 _c = _c + ['sfp_rbb_norrkoping'];
 _p = _p + [''];
 _n = _n + [''];

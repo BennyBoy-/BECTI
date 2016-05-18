@@ -31,6 +31,7 @@ private ["_funds", "_group", "_side", "_value", "_commander"];
 
 _group = _this select 0;
 _value = _this select 1;
+_side = side _group;
 
 if (isNil '_value') exitWith {"error CTI_CO_FNC_ChangeFunds: attempted to set nil value"};
 if (typeName _value != "SCALAR") exitWith {"error CTI_CO_FNC_ChangeFunds: attempted to set non scalar value"};

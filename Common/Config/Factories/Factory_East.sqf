@@ -270,6 +270,7 @@ _u = _u		+ ["CUP_B_RHIB2Turret_USMC"];
 if (CTI_OFPS_ADDON > 0) then { 
 _u = _u		+ ["Burnes_LCAC_1"];
 _u = _u		+ ["sfp_gruppbat"];
+_u = _u		+ ["rhsusf_mkvsoc"];
 _u = _u		+ ["sfp_rbb_norrkoping"];
 _u = _u		+ ["OFPS_Frigate_CSAT"];
 };
