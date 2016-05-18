@@ -51,7 +51,7 @@ _t = _t + [50];
 _u = _u + [2];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
-_d = _d + [0];
+_d = _d + [50];
 
 _c = _c + ['usaf_b1b'];
 _p = _p + [''];
@@ -61,7 +61,7 @@ _t = _t + [50];
 _u = _u + [3];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
-_d = _d + [0];
+_d = _d + [50];
 
 _c = _c + ['bwi_a3_at6b'];
 _p = _p + [''];
@@ -183,7 +183,7 @@ _t = _t + [25];
 _u = _u + [2];
 _f = _f + [CTI_FACTORY_NAVAL];
 _s = _s + [""];
-_d = _d + [70];
+_d = _d + [60];
 
 _c = _c + ['OFPS_Frigate_Blu'];
 _p = _p + [''];
@@ -193,7 +193,7 @@ _t = _t + [25];
 _u = _u + [2];
 _f = _f + [CTI_FACTORY_NAVAL];
 _s = _s + ["service-ammotruck"];
-_d = _d + [100];
+_d = _d + [150];
 
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s, _d] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";
