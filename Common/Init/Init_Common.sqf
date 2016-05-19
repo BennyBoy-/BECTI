@@ -64,6 +64,7 @@ CTI_CO_FNC_HasStructure = compileFinal preprocessFileLineNumbers "Common\Functio
 CTI_CO_FNC_HasUpgrade = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasUpgrade.sqf";
 CTI_CO_FNC_InitializeCustomVehicle = compileFinal preprocessFileLineNumbers "Common\Functions\Common_InitializeCustomVehicle.sqf";
 CTI_CO_FNC_InitializeNetVehicle = compileFinal preprocessFileLineNumbers "Common\Functions\Common_InitializeNetVehicle.sqf";
+CTI_CO_FNC_IsGroupCommander = compileFinal preprocessFileLineNumbers "Common\Functions\Common_IsGroupCommander.sqf";
 CTI_CO_FNC_IsGroupPlayable = compileFinal preprocessFileLineNumbers "Common\Functions\Common_IsGroupPlayable.sqf";
 CTI_CO_FNC_ManVehicle = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ManVehicle.sqf";
 CTI_CO_FNC_MarkerUpdate = compileFinal preprocessFileLineNumbers "Common\Functions\Common_MarkerUpdate.sqf";
