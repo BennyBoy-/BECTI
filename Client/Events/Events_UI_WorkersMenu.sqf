@@ -54,6 +54,15 @@ switch (_action) do {
 			if (_nearest distance _mappos < 500) then {
 				if (isNil {_nearest getVariable "cti_sell"}) then {
 					_nearest setVariable ["cti_sell", true, true];
+					
+					//--- Commander Refund
+					if !(isNil {_nearest getVariable "cti_structure_type"}) then {
+						_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _nearest getVariable "cti_structure_type"];
+						
+						_cost = _var select 2;
+						[CTI_P_SideJoined, round(_cost * CTI_BASE_CONSTRUCTION_REFUNDS)] call CTI_CO_FNC_ChangeFundsCommander;
+					};
+					
 					//todo bcast
 					_nearest setDammage 1;
 				};

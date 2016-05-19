@@ -391,12 +391,14 @@ CTI_BASE_AREA_RANGE = 500;
 CTI_BASE_CONSTRUCTION_TIME = if (CTI_DEV_MODE > 0) then { 0 } else {180}; //--- Length of time a structure takes to build, in seconds.
 
 //--- Base: Construction
+CTI_BASE_CONSTRUCTION_BOUNTY = 0.50; //--- The bounty awarded upon a hostile structure destruction
 CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 500; //--- Decay starts after x seconds unattended.
 CTI_BASE_CONSTRUCTION_DECAY_DELAY = 10; //--- Decay each x seconds.
 CTI_BASE_CONSTRUCTION_DECAY_FROM = 10; //--- Decay of x / 100 each y seconds.
 CTI_BASE_CONSTRUCTION_RANGE = 400; //--- Determine how far the commander may be from the HQ to build
 CTI_BASE_CONSTRUCTION_RATIO_INIT = 1; //--- The initial construction ratio
 CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.60; //--- The completion ratio is multiplied by this coefficient to make repairs less effective at each factory's destruction.
+CTI_BASE_CONSTRUCTION_REFUNDS = 0.60; //--- The refund value of a structure (structure cost * x)
 
 //--- Base: Defenses
 CTI_BASE_DEFENSES_AUTO_DELAY = 240; //--- Delay after which a new unit will replace a dead one for a defense

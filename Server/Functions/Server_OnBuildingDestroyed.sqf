@@ -51,7 +51,7 @@ _sell = if (isNil {_killed getVariable "cti_sell"}) then {false} else {true};
 _logic setVariable ["cti_structures", (_logic getVariable "cti_structures") - [_killed, objNull], true];
 _var = missionNamespace getVariable _variable;
 
-//--- Sell?
+//--- The structure was not sold
 if !(_sell) then {
 	//--- Replace with ruins
 	_structure = ((_var select 1) select 1) createVehicle _position;
@@ -70,8 +70,23 @@ if !(_sell) then {
 
 	_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull]];
 	
-	diag_log format ["DEBUG:: Server_OnBuildingDestroyed.sqf:: structure %1 on side %2 was destroyed (not sold)", ((_var select 1) select 1), _sideID];
-} else {
+	//--- Bounty
+	if !(isNull _killer) then {
+		if (side _killer != sideEnemy && side _killer != _side && (group _killer) call CTI_CO_FNC_IsGroupPlayable) then {
+			if (isPlayer _killer) then {
+				_label = ((_var select 0) select 1);
+				_award = round((_var select 2) * CTI_BASE_CONSTRUCTION_BOUNTY);
+				
+				[["CLIENT", _killer], "Client_AwardBountyStructure", [_label, _award]] call CTI_CO_FNC_NetSend;
+				["CLIENT", "Client_OnMessageReceived", ["structure-destroyed", [name _killer, _label]]] call CTI_CO_FNC_NetSend;
+			} else {
+				//--- AI Reward
+			};
+		};
+	};
+	
+	diag_log format ["DEBUG:: Server_OnBuildingDestroyed.sqf:: structure %1 on side %2 was destroyed (not sold), killer %3", ((_var select 1) select 1), _sideID, _killer];
+} else { //--- The structure was sold
 	private ["_areas", "_closest", "_delete_pos", "_need_update", "_structures_positions"];
 	//--- We update the base area array to remove potential empty areas. First we get the 2D positions of our structures
 	_areas = _logic getVariable "cti_structures_areas";
