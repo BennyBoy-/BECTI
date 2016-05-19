@@ -2069,7 +2069,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Fuel Depot"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""; this setVariable ["cti_naval", true]; this setPos [getPos this select 0, getPos this select 1,+4.6];";
+				init="nullReturn = [this, ""Fuel Depot"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""; this setVariable [""cti_naval"", true]; this setPos [getPos this select 0, getPos this select 1,+4.6];";
 				name="FuelDepot";
 			};
 			id=175;
@@ -2087,7 +2087,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Com Platform"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""; this setVariable ["cti_naval", true]; this setPos [getPos this select 0, getPos this select 1,+4.1];";
+				init="nullReturn = [this, ""Com Platform"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""; this setVariable [""cti_naval"", true]; this setPos [getPos this select 0, getPos this select 1,+4.1];";
 				name="ComPlatform";
 			};
 			id=176;
@@ -2105,7 +2105,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Sub Pen"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""; this setVariable ["cti_naval", true]; this setPos [getPos this select 0, getPos this select 1,-.5];";
+				init="nullReturn = [this, ""Sub Pen"", resistance, 50, 120] execVM ""Common\Init\Init_Location.sqf""; this setVariable [""cti_naval"", true]; this setPos [getPos this select 0, getPos this select 1,-.5];";
 				name="SubPen";
 			};
 			id=177;

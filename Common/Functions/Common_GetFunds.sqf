@@ -32,10 +32,7 @@ _group = _this;
 _side = side _group;
 
 if (_group call CTI_CO_FNC_IsGroupCommander) then {
-	_funds = (_side) call CTI_CO_FNC_GetFundsCommander;
+	(_side) call CTI_CO_FNC_GetFundsCommander;
 } else {
-	_funds = _group getVariable "cti_funds";
-	if (isNil '_funds') then {_funds = 0};
+	_group getVariable "cti_funds";
 };
-
-_funds

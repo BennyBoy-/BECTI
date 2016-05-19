@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_capture.fsm">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, town_capture.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
@@ -38,8 +38,8 @@ link16[] = {13,15};
 link17[] = {14,16};
 link18[] = {15,7};
 link19[] = {16,15};
-globals[] = {25.000000,1,0,0,0,640,480,1,176,6316128,1,-517.422180,607.565002,193.045731,-592.868408,856,771,1};
-window[] = {2,-1,-1,-1,-1,956,1855,3110,175,3,874};
+globals[] = {25.000000,1,0,0,0,640,480,1,176,6316128,1,-517.422180,607.565002,193.045731,-592.868408,856,1430,1};
+window[] = {2,-1,-1,-1,-1,1041,260,1515,260,3,874};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -81,7 +81,7 @@ class FSM
       name = "Units_near_Cente";
       init = /*%FSM<STATEINIT""">*/"_sideID = _town getVariable ""cti_town_sideID"";" \n
        "_side = (_sideID) Call CTI_CO_FNC_GetSideFromID;" \n
-       "_objects = (_town nearEntities [""AllVehicles"", _capture_range]) unitsBelowHeight 30;" \n
+       "_objects = (_town nearEntities [""AllVehicles"", _capture_range]) unitsBelowHeight 250;" \n
        "" \n
        "_west = west countSide _objects;" \n
        "_east = east countSide _objects;" \n

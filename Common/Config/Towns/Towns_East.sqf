@@ -70,4 +70,10 @@ with missionNamespace do {
 	EAST_TOWNS_TANKS_LIGHT = ["O_MBT_02_cannon_F"];
 	EAST_TOWNS_TANKS_MEDIUM = ["O_MBT_02_cannon_F", "O_MBT_02_cannon_F"];
 	EAST_TOWNS_TANKS_HEAVY = ["O_MBT_02_cannon_F", "O_MBT_02_cannon_F", "O_MBT_02_cannon_F"];
+	
+	//--- Naval
+	EAST_TOWNS_NAVAL_INFANTRY = ["O_diver_TL_F", "O_diver_F", "O_diver_F"];
+	EAST_TOWNS_NAVAL_BOATS = ["O_Boat_Transport_01_F"];
+	EAST_TOWNS_NAVAL_ASSAULT_BOATS = ["O_Boat_Armed_01_hmg_F"];
+	EAST_TOWNS_NAVAL_ARMORED = ["O_APC_Wheeled_02_rcws_F"];
 };
