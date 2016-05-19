@@ -52,8 +52,8 @@ link24[] = {19,21};
 link25[] = {20,18};
 link26[] = {21,8};
 link27[] = {22,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-592.544495,538.681702,354.781555,-521.942932,908,771,1};
-window[] = {2,-1,-1,-1,-1,806,1705,2960,25,3,926};
+globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-592.544495,538.681702,354.781555,-521.942932,908,881,1};
+window[] = {2,-1,-1,-1,-1,931,150,1405,150,3,926};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -146,7 +146,9 @@ class FSM
     class Enemy_Near_
     {
       name = "Enemy_Near_";
-      init = /*%FSM<STATEINIT""">*/"_objects = (_town nearEntities [""AllVehicles"", CTI_TOWNS_OCCUPATION_DETECTION_RANGE]) unitsBelowHeight CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR;" \n
+      init = /*%FSM<STATEINIT""">*/"//_objects = (_town nearEntities [""AllVehicles"", CTI_TOWNS_OCCUPATION_DETECTION_RANGE]) unitsBelowHeight CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR;" \n
+       "_objects = [];" \n
+       "{if (((ASLToAGL getPosASL _x) select 2) < CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR) then {_objects pushBack _x}} forEach (_town nearEntities [""AllVehicles"", CTI_TOWNS_OCCUPATION_DETECTION_RANGE]);" \n
        "" \n
        "_count_enemies = 0;" \n
        "if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") > 0) then {" \n

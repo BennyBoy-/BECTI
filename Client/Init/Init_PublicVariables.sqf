@@ -67,6 +67,14 @@ with missionNamespace do {
 		};
 	};
 	
+	CTI_PVF_Client_AwardBountyStructure = {
+		_label = _this select 0;
+		_award = _this select 1;
+		
+		["award-bounty-structure", [_award, _label]] call CTI_CL_FNC_DisplayMessage;
+		(_award) call CTI_CL_FNC_ChangePlayerFunds;
+	};
+	
 	CTI_PVF_Client_OnSpottedTargetReceived = {
 		_position = _this select 0;
 		_type = _this select 1;

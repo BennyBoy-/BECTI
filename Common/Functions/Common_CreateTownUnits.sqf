@@ -50,7 +50,8 @@ for '_i' from 0 to count(_groups)-1 do {
 //--- SHK AI placement
 if (CTI_SHK_BUILDING_ENABLED && count _shk_members > 0) then { 
 	//--- Place the units in the nearby building if possible
-	[getPos _town, _shk_members, (CTI_SHK_BUILDING_SCAN_RANGE + random(CTI_SHK_BUILDING_SCAN_RANGE_RAN) - random(CTI_SHK_BUILDING_SCAN_RANGE_RAN)), 0, [], true, true, _side] Call SHK_BuildingPosExec; 
+	_scan_range = if (isNil {_town getVariable "cti_naval"}) then {CTI_SHK_BUILDING_SCAN_RANGE} else {CTI_SHK_BUILDING_SCAN_RANGE * 1.75};
+	[ASLToAGL getPosASL _town, _shk_members, (_scan_range + random(CTI_SHK_BUILDING_SCAN_RANGE_RAN) - random(CTI_SHK_BUILDING_SCAN_RANGE_RAN)), 0, [], true, true, _side] Call SHK_BuildingPosExec; 
 };
 
 {

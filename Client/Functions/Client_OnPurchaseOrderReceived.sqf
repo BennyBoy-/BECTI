@@ -119,6 +119,7 @@ _direction = 360 - ((_var select 4) select 0);
 _distance = ((_var select 4) select 1) + (_var_classname select CTI_UNIT_DISTANCE);
 
 _position = _factory modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
+_position set [2, .5];
 _net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then { true } else { false };
 _vehicle = objNull;
 _units = [];

@@ -35,7 +35,7 @@ _maxRadius = _this select 2;
 _tries = if (count _this > 3) then {_this select 3} else {500};
 _direction = random 360;
 
-if (typeName _position == "OBJECT") then {_position = getPos _position};
+if (typeName _position == "OBJECT") then {_position = ASLToAGL getPosASL _position};
 if (count _position < 3) then {_position set [2, 0]};
 
 _radius = (random (_maxRadius - _minRadius)) + _minRadius;

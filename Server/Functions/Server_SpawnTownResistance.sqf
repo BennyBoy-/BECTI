@@ -381,20 +381,20 @@ _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 	if (isNil {_town getVariable "cti_naval"}) then {
 		if (count _camps > 0 && random 100 > 50) then {
 			_camp_index = floor(random count _camps);
-			_position = [getPos(_camps select _camp_index), 10, CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS, _tries] call CTI_CO_FNC_GetRandomPosition;
+			_position = [ASLToAGL getPosASL(_camps select _camp_index), 10, CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS, _tries] call CTI_CO_FNC_GetRandomPosition;
 			_camps deleteAt _camp_index;
 		} else {
-			_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, _tries] call CTI_CO_FNC_GetRandomPosition;
+			_position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, _tries] call CTI_CO_FNC_GetRandomPosition;
 		};
 		_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 	} else {
 		_places_water = [];
-		_places = selectBestPlaces [([getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, 0] call CTI_CO_FNC_GetRandomPosition), 200, "(1 * sea) * (1 - meadow) * (1 - hills) * (1 - houses) * (1 - forest) * (1 - trees)", 8, 3]; //--- 0 to 1. 1 is full sea.
+		_places = selectBestPlaces [([ASLToAGL getPosASL _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, 0] call CTI_CO_FNC_GetRandomPosition), 200, "(1 * sea) * (1 - meadow) * (1 - hills) * (1 - houses) * (1 - forest) * (1 - trees)", 8, 3]; //--- 0 to 1. 1 is full sea.
 		{if ((_x select 1) == 1) then {_places_water pushBack (_x select 0)}} forEach _places;
 		if (count _places_water > 0) then { //--- Use safe water spot
 			_position = _places_water select floor(random count _places_water);
 		} else { //--- Failsafe
-			_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, 0] call CTI_CO_FNC_GetRandomPosition;
+			_position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, 0] call CTI_CO_FNC_GetRandomPosition;
 		};
 	};
 	
