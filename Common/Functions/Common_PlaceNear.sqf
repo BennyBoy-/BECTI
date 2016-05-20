@@ -53,10 +53,10 @@ _radius = (random (_maxRadius - _minRadius)) + _minRadius;
 if (_placeSafe) then {
 	_safeRadius = (_maxRadius - _minRadius) / 2;
 	if (_safeRadius < 5) then {_safeRadius = 5};
-	_destination = [(_position select 0)+((sin _direction)*_radius),(_position select 1)+((cos _direction)*_radius),(_position select 2)+0.5];
+	_destination = [(_position select 0)+((sin _direction)*_radius),(_position select 1)+((cos _direction)*_radius),0.3]; //z: (_position select 2)+0.5
 	[_object,_destination,_safeRadius] call CTI_CO_FNC_PlaceSafe;
 } else {
-	_object setPos [(_position select 0)+((sin _direction)*_radius),(_position select 1)+((cos _direction)*_radius),(_position select 2)+0.5];
+	_object setPos [(_position select 0)+((sin _direction)*_radius),(_position select 1)+((cos _direction)*_radius),0.3]; //z: (_position select 2)+0.5
 };
 
 if (_randomDirection) then {_object setDir random 360};
