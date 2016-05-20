@@ -275,7 +275,9 @@ CTI_UI_Respawn_OnRespawnReady = {
 	};
 	
 	if !(_respawn_ai) then { //--- Stock respawn
-		[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip the default equipment
+		//--- Determine whether the last known gear should be used or the default one
+		_respawn_gear = if (isNil 'CTI_P_CurrentGear') then {missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]} else {CTI_P_CurrentGear};
+		[player, _respawn_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment
 	} else { //--- Respawn in own AI
 		[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
 	};

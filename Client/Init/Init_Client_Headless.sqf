@@ -249,7 +249,7 @@ CTI_HC_CreateTeam = {
 	["SERVER", "Request_TownAddVehicles", [_town, _side, _created_vehicles]] call CTI_CO_FNC_NetSend;
 	
 	if (CTI_SHK_BUILDING_ENABLED) then {
-		if (CTI_SHK_BUILDING_PLACEMENT_CHANCE > random 100 && count _created_vehicles < 1 && count _created_units <= CTI_SHK_GROUP_SIZE_MAX) then {
+		if (count _created_vehicles < 1 && ((CTI_SHK_BUILDING_PLACEMENT_CHANCE > random 100 && count _created_units <= CTI_SHK_GROUP_SIZE_MAX) || !isNil {_town getVariable "cti_naval"})) then {
 			if (CTI_Log_Level >= CTI_Log_Debug) then {
 				["DEBUG", "FUNCTION: CTI_HC_CreateTeam", format["Group [%1] members in town [%2] will be placed in nearby building if possible via SHK", _group, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
 			};
