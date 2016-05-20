@@ -125,6 +125,12 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
+	class CTI_TOWNS_OCCUPATION_FORCES {
+		title = "TOWNS: Occupation Forces";
+		values[] = {0,1,2};
+		texts[] = {"Vanilla","CUP","Mixed"};
+		default = 0;
+	};
 	class CTI_TOWNS_PEACE {
 		title = "TOWNS: Peace";
 		values[] = {0,60,120,180,300,600};
