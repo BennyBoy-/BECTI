@@ -71,9 +71,15 @@ with missionNamespace do {
 	EAST_TOWNS_TANKS_MEDIUM = ["O_MBT_02_cannon_F", "O_MBT_02_cannon_F"];
 	EAST_TOWNS_TANKS_HEAVY = ["O_MBT_02_cannon_F", "O_MBT_02_cannon_F", "O_MBT_02_cannon_F"];
 	
-	//--- Naval
-	EAST_TOWNS_NAVAL_INFANTRY = ["O_diver_TL_F", "O_diver_F", "O_diver_F"];
-	EAST_TOWNS_NAVAL_BOATS = ["O_Boat_Transport_01_F"];
-	EAST_TOWNS_NAVAL_ASSAULT_BOATS = ["O_Boat_Armed_01_hmg_F"];
-	EAST_TOWNS_NAVAL_ARMORED = ["O_APC_Wheeled_02_rcws_F"];
+	//--- Naval Units
+	EAST_TOWNS_NAVAL_INFANTRY = ["O_diver_F"];
+	EAST_TOWNS_NAVAL_SQUADLEADER = ["O_diver_TL_F"];
+	EAST_TOWNS_NAVAL_ASSAULT_BOAT = ["O_Boat_Armed_01_hmg_F"];
+	EAST_TOWNS_NAVAL_LARGE_ASSAULT_BOAT = ["rhsusf_mkvsoc"];
+	//--- Naval Teams Templates
+	EAST_TOWNS_NAVAL_SQUAD_1 = ["O_diver_TL_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_Soldier_AT_F", "O_Soldier_AT_F", "O_Soldier_AA_F"];
+	EAST_TOWNS_NAVAL_SQUAD_2 = ["O_diver_TL_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_Soldier_AT_F", "O_Soldier_AT_F", "O_Soldier_AA_F", "O_Soldier_AA_F"];
+	EAST_TOWNS_NAVAL_SQUAD_3 = ["O_diver_TL_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_Soldier_AT_F", "O_Soldier_AT_F", "O_Soldier_AT_F", "O_Soldier_AT_F", "O_Soldier_AA_F", "O_Soldier_AA_F", "O_Soldier_AA_F", "O_Soldier_AA_F"];
+	EAST_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS = ["O_Boat_Armed_01_hmg_F", "O_Boat_Armed_01_hmg_F", "O_Boat_Armed_01_hmg_F"];
+	EAST_TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS = ["rhsusf_mkvsoc", "rhsusf_mkvsoc"];
 };

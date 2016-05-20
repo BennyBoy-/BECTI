@@ -214,87 +214,41 @@ if (isNil {_town getVariable "cti_naval"}) then {
 	switch (true) do {
 		case (_value < 50) : { 
 			_pool_units = [
-				["GUER_TOWNS_SQUAD_LIGHT", 3], 
-				["GUER_TOWNS_SQUAD_LIGHT_2", 2],
-				["GUER_TOWNS_NAVAL_INFANTRY", 2],
-				["GUER_TOWNS_NAVAL_ASSAULT_BOATS", 2]
+				["GUER_TOWNS_NAVAL_SQUAD_1", 1], 
+				["GUER_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 1]
 			];
 		};
 		case (_value >= 50 && _value <= 60) : { 
 			_pool_units = [
-				["GUER_TOWNS_SQUAD_LIGHT", 2], 
-				["GUER_TOWNS_SQUAD_LIGHT_2", 2], 
-				["GUER_TOWNS_SQUAD_AA", 1, 75], 
-				["GUER_TOWNS_SQUAD_AT", 2], 
-				[
-					["GUER_TOWNS_SNIPERS_1", 1, 35], 
-					["GUER_TOWNS_SNIPERS_2", 1, 35]
-				],
-				["GUER_TOWNS_NAVAL_INFANTRY", 3],
-				["GUER_TOWNS_NAVAL_ASSAULT_BOATS", 3]
+				["GUER_TOWNS_NAVAL_SQUAD_1", 1], 
+				["GUER_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 2]
 			];
 		};
 		case (_value > 60 && _value <= 80) : { 
 			_pool_units = [
-				["GUER_TOWNS_SQUAD_LIGHT", 2], 
-				["GUER_TOWNS_SQUAD_LIGHT_2", 2], 
-				["GUER_TOWNS_SQUAD_MEDIUM", 2], 
-				["GUER_TOWNS_SQUAD_AA", 1, 80], 
-				["GUER_TOWNS_SQUAD_AT", 2], 
-				[
-					["GUER_TOWNS_SNIPERS_1", 1, 60], 
-					["GUER_TOWNS_SNIPERS_2", 1, 60]
-				],
-				["GUER_TOWNS_NAVAL_INFANTRY", 4],
-				["GUER_TOWNS_NAVAL_ASSAULT_BOATS", 4]
+				["GUER_TOWNS_NAVAL_SQUAD_2", 1], 
+				["GUER_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 3]
 			];
 		};
 		case (_value > 80 && _value <= 100) : { 
 			_pool_units = [
-				["GUER_TOWNS_SQUAD_LIGHT", 2], 
-				["GUER_TOWNS_SQUAD_LIGHT_2"], 
-				["GUER_TOWNS_SQUAD_MEDIUM", 2], 
-				["GUER_TOWNS_SQUAD_AA"], 
-				["GUER_TOWNS_SQUAD_AT", 2], 
-				[
-					["GUER_TOWNS_SPECIAL", 1, 40], 
-					["GUER_TOWNS_SNIPERS_1", 1, 75], 
-					["GUER_TOWNS_SNIPERS_2", 1, 80]
-				],
-				["GUER_TOWNS_NAVAL_INFANTRY", 5],
-				["GUER_TOWNS_NAVAL_ASSAULT_BOATS", 5]
+				["GUER_TOWNS_NAVAL_SQUAD_2", 1], 
+				["GUER_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 2],
+				["GUER_TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS", 1]
 			];
 		};
 		case (_value > 100 && _value <= 120) : { 
 			_pool_units = [
-				["GUER_TOWNS_SQUAD_LIGHT"], 
-				["GUER_TOWNS_SQUAD_LIGHT_2"], 
-				["GUER_TOWNS_SQUAD_MEDIUM", 2], 
-				["GUER_TOWNS_SQUAD_AA"], 
-				["GUER_TOWNS_SQUAD_AT", 2], 
-				[
-					["GUER_TOWNS_SPECIAL", 1, 40], 
-					["GUER_TOWNS_SNIPERS_1", 1, 75], 
-					["GUER_TOWNS_SNIPERS_2", 1, 80]
-				],
-				["GUER_TOWNS_NAVAL_INFANTRY", 6],
-				["GUER_TOWNS_NAVAL_ASSAULT_BOATS", 6]
+				["GUER_TOWNS_NAVAL_SQUAD_3", 1], 
+				["GUER_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 2],
+				["GUER_TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS", 1]
 			];
 		};
 		case (_value > 120) : { 
 			_pool_units = [
-				["GUER_TOWNS_SQUAD_LIGHT"], 
-				["GUER_TOWNS_SQUAD_LIGHT_2"], 
-				["GUER_TOWNS_SQUAD_MEDIUM", 2], 
-				["GUER_TOWNS_SQUAD_AA"], 
-				["GUER_TOWNS_SQUAD_AT", 2],
-				[
-					["GUER_TOWNS_SPECIAL", 1, 40], 
-					["GUER_TOWNS_SNIPERS_1", 1, 75], 
-					["GUER_TOWNS_SNIPERS_2", 1, 80]
-				],
-				["GUER_TOWNS_NAVAL_INFANTRY", 6],
-				["GUER_TOWNS_NAVAL_ASSAULT_BOATS", 6]
+				["GUER_TOWNS_NAVAL_SQUAD_3", 1], 
+				["GUER_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 3],
+				["GUER_TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS", 1]
 			];
 		};
 	};

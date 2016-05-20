@@ -64,9 +64,15 @@ with missionNamespace do {
 	GUER_TOWNS_SNIPERS_1 = ["I_Soldier_M_F", "I_Soldier_M_F", "I_Soldier_M_F", "I_Spotter_F"];
 	GUER_TOWNS_SNIPERS_2 = ["I_Soldier_M_F", "I_Soldier_M_F", "I_Soldier_exp_F", "I_Spotter_F"];
 	
-	//--- Naval
-	GUER_TOWNS_NAVAL_INFANTRY = ["I_diver_TL_F", "I_diver_F", "I_diver_F"];
-	GUER_TOWNS_NAVAL_BOATS = ["I_Boat_Transport_01_F"];
-	GUER_TOWNS_NAVAL_ASSAULT_BOATS = ["I_Boat_Armed_01_minigun_F"];
-	GUER_TOWNS_NAVAL_ARMORED = ["I_APC_Wheeled_03_cannon_F"];
+	//--- Naval Units
+	GUER_TOWNS_NAVAL_INFANTRY = ["I_diver_F"];
+	GUER_TOWNS_NAVAL_SQUADLEADER = ["I_diver_TL_F"];
+	GUER_TOWNS_NAVAL_ASSAULT_BOAT = ["I_Boat_Armed_01_minigun_F"];
+	GUER_TOWNS_NAVAL_LARGE_ASSAULT_BOAT = ["rhsusf_mkvsoc"];
+	//--- Naval Teams Templates
+	GUER_TOWNS_NAVAL_SQUAD_1 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AT_F", "I_Soldier_AA_F"];
+	GUER_TOWNS_NAVAL_SQUAD_2 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AT_F", "I_Soldier_AA_F", "I_Soldier_AA_F"];
+	GUER_TOWNS_NAVAL_SQUAD_3 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AT_F", "I_Soldier_AT_F", "I_Soldier_AT_F", "I_Soldier_AA_F", "I_Soldier_AA_F", "I_Soldier_AA_F", "I_Soldier_AA_F"];
+	GUER_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS = ["I_Boat_Armed_01_minigun_F", "I_Boat_Armed_01_minigun_F", "I_Boat_Armed_01_minigun_F"];
+	GUER_TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS = ["rhsusf_mkvsoc", "rhsusf_mkvsoc"];
 };

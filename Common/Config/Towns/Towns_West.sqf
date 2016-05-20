@@ -71,9 +71,15 @@ with missionNamespace do {
 	WEST_TOWNS_TANKS_MEDIUM = ["B_MBT_01_cannon_F", "B_MBT_01_cannon_F"];
 	WEST_TOWNS_TANKS_HEAVY = ["B_MBT_01_cannon_F", "B_MBT_01_cannon_F", "B_MBT_01_cannon_F"];
 	
-	//--- Naval
-	WEST_TOWNS_NAVAL_INFANTRY = ["B_diver_TL_F", "B_diver_F", "B_diver_F"];
-	WEST_TOWNS_NAVAL_BOATS = ["B_Boat_Transport_01_F"];
+	//--- Naval Units
+	WEST_TOWNS_NAVAL_INFANTRY = ["B_diver_F"];
+	WEST_TOWNS_NAVAL_SQUADLEADER = ["B_diver_TL_F"];
 	WEST_TOWNS_NAVAL_ASSAULT_BOATS = ["B_Boat_Armed_01_minigun_F"];
-	WEST_TOWNS_NAVAL_ARMORED = ["B_APC_Wheeled_01_cannon_F"];
+	WEST_TOWNS_NAVAL_LARGE_ASSAULT_BOATS = ["B_Boat_Armed_01_minigun_F"];
+	//--- Naval Teams Templates
+	WEST_TOWNS_NAVAL_SQUAD_1 = ["B_diver_TL_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_Soldier_AT_F", "B_Soldier_AT_F", "B_Soldier_AA_F"];
+	WEST_TOWNS_NAVAL_SQUAD_2 = ["B_diver_TL_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_Soldier_AT_F", "B_Soldier_AT_F", "B_Soldier_AA_F", "B_Soldier_AA_F"];
+	WEST_TOWNS_NAVAL_SQUAD_3 = ["B_diver_TL_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_Soldier_AT_F", "B_Soldier_AT_F", "B_Soldier_AT_F", "B_Soldier_AT_F", "B_Soldier_AA_F", "B_Soldier_AA_F", "B_Soldier_AA_F", "B_Soldier_AA_F"];
+	WEST_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS = ["B_Boat_Armed_01_minigun_F", "B_Boat_Armed_01_minigun_F", "B_Boat_Armed_01_minigun_F"];
+	WEST_TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS = ["rhsusf_mkvsoc", "rhsusf_mkvsoc"];
 };
