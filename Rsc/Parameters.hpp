@@ -125,8 +125,20 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
-	class CTI_TOWNS_OCCUPATION_FORCES {
-		title = "TOWNS: Occupation Forces";
+	class CTI_TOWNS_OCCUPATION_RESISTANCE {
+		title = "TOWNS: Resistance Occupation Forces";
+		values[] = {0,1,2};
+		texts[] = {"Vanilla","CUP","Mixed"};
+		default = 0;
+	};
+	class CTI_TOWNS_OCCUPATION_WEST {
+		title = "TOWNS: Blufor Occupation Forces";
+		values[] = {0,1,2};
+		texts[] = {"Vanilla","CUP","Mixed"};
+		default = 0;
+	};
+	class CTI_TOWNS_OCCUPATION_EAST {
+		title = "TOWNS: Opfor Occupation Forces";
 		values[] = {0,1,2};
 		texts[] = {"Vanilla","CUP","Mixed"};
 		default = 0;

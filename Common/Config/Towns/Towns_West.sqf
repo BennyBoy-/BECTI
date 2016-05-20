@@ -1,5 +1,5 @@
 with missionNamespace do {
-if (CTI_TOWNS_OCCUPATION_FORCES = 0) then { 
+if (CTI_TOWNS_OCCUPATION_WEST = 0) then { 
 //--- VANILLA TOWN OCCUPATION
 //--- Infantry
 	WEST_SOLDIER = ["B_Soldier_F", 1];
@@ -85,7 +85,7 @@ if (CTI_TOWNS_OCCUPATION_FORCES = 0) then {
 	WEST_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS = ["B_Boat_Armed_01_minigun_F", "B_Boat_Armed_01_minigun_F", "B_Boat_Armed_01_minigun_F"];
 	WEST_TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS = ["rhsusf_mkvsoc", "rhsusf_mkvsoc"];
 };
-if (CTI_TOWNS_OCCUPATION_FORCES = 1) then { 
+if (CTI_TOWNS_OCCUPATION_WEST = 1) then { 
 //--- CUP TOWN OCCUPATION
 	//--- Infantry
 	WEST_SOLDIER = ["CUP_B_US_Soldier", 1];
@@ -171,7 +171,7 @@ if (CTI_TOWNS_OCCUPATION_FORCES = 1) then {
 	WEST_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS = ["B_Boat_Armed_01_minigun_F", "B_Boat_Armed_01_minigun_F", "B_Boat_Armed_01_minigun_F"];
 	WEST_TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS = ["rhsusf_mkvsoc", "rhsusf_mkvsoc"];
 };
-if (CTI_TOWNS_OCCUPATION_FORCES = 2) then { 
+if (CTI_TOWNS_OCCUPATION_WEST = 2) then { 
 //--- MIXED TOWN OCCUPATION - vanilla/cup/ofps/etc..
 	//--- Infantry
 	WEST_SOLDIER = ["CUP_B_US_Soldier", 1];
