@@ -183,7 +183,7 @@ _t = _t + [25];
 _u = _u + [2];
 _f = _f + [CTI_FACTORY_NAVAL];
 _s = _s + [""];
-_d = _d + [60];
+_d = _d + [50];
 
 _c = _c + ['OFPS_Frigate_Blu'];
 _p = _p + [''];
@@ -193,7 +193,7 @@ _t = _t + [25];
 _u = _u + [2];
 _f = _f + [CTI_FACTORY_NAVAL];
 _s = _s + ["service-ammotruck"];
-_d = _d + [150];
+_d = _d + [130];
 
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s, _d] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";

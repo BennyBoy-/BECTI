@@ -275,21 +275,21 @@ if (isNil {_town getVariable "cti_naval"}) then {
 		};
 		case (_value > 80 && _value <= 100) : { 
 			_pool_units = [
-				["TOWNS_NAVAL_SQUAD_2", 1], 
+				["TOWNS_NAVAL_SQUAD_2", 2], 
 				["TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 2],
 				["TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS", 1]
 			];
 		};
 		case (_value > 100 && _value <= 120) : { 
 			_pool_units = [
-				["TOWNS_NAVAL_SQUAD_3", 1], 
+				["TOWNS_NAVAL_SQUAD_3", 2], 
 				["TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 2],
 				["TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS", 1]
 			];
 		};
 		case (_value > 120) : { 
 			_pool_units = [
-				["TOWNS_NAVAL_SQUAD_3", 1], 
+				["TOWNS_NAVAL_SQUAD_3", 2], 
 				["TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 3],
 				["TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS", 1]
 			];
