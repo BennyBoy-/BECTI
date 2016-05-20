@@ -151,7 +151,8 @@ SHK_BuildingPosExec = {
 				_pos = _bpos select _ind;
 				_dir = ((_pos select 0) - (_opos select 0)) atan2 ((_pos select 1) - (_opos select 1));
 				if (_dir < 0) then {_dir = _dir + 360};
-				_x setpos _pos;
+				// _x setpos _pos;
+				_x setPosASL (AGLToASL _pos);
 				_x setformdir _dir;
 				if _disableMove then { doStop _x; };
 				if _stance then { _x setunitpos "UP" };

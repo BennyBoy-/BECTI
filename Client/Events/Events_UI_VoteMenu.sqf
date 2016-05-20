@@ -26,6 +26,15 @@ switch (_action) do {
 			_who = (uiNamespace getVariable "cti_dialog_ui_votemenu_groups") select _index;
 			if !(isPlayer leader _who) then {_who = grpNull}; //--- Non player vote = ai/null com
 		};
-		if ((group player getVariable "cti_vote") != _who) then {group player setVariable ["cti_vote", _who, true]};
+		
+		_current_vote = group player getVariable "cti_vote";
+		_vote_update = false;
+		
+		if (isNull _who && !isNull _current_vote || !isNull _who && isNull _current_vote) then {_vote_update = true};
+		if (!isNull _who && !isNull _current_vote) then {
+			if (_who != _current_vote) then {_vote_update = true};
+		};
+		
+		if (_vote_update) then {group player setVariable ["cti_vote", _who, true]};
 	};
 };

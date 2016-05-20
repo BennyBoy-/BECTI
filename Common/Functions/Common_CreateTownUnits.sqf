@@ -34,7 +34,7 @@ for '_i' from 0 to count(_groups)-1 do {
 	if (CTI_SHK_BUILDING_ENABLED) then {
 		_members = _return select 0;
 		//--- Roll the dice, also make sure that the group has no vehicles
-		if (count _vehicles < 1 && ((CTI_SHK_BUILDING_PLACEMENT_CHANCE > random 100 && count _vehicles < 1 && count _members <= CTI_SHK_GROUP_SIZE_MAX) || !isNil {_town getVariable "cti_naval"})) then {
+		if (count _vehicles < 1 && ((CTI_SHK_BUILDING_PLACEMENT_CHANCE > random 100 && count _members <= CTI_SHK_GROUP_SIZE_MAX) || !isNil {_town getVariable "cti_naval"})) then {
 			if (CTI_Log_Level >= CTI_Log_Debug) then {
 				["DEBUG", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Group [%1] members in town [%2] will be placed in nearby building if possible via SHK", _group, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
 			};

@@ -283,6 +283,7 @@ CTI_SUBTYPE_BACKPACK = 901;
 
 //--- Gear: Parameters
 CTI_GEAR_RESELL_TAX = 0.5; //--- Owned items are traded for: <item price> * <tax>
+CTI_GEAR_RESPAWN_WITH_LAST = 1; //--- Determine whether the player should respawn with his last known gear or not
 //-----------------------------------------------------------------------------------------------------------------------//
 
 
