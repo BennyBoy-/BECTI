@@ -60,7 +60,7 @@ switch (_action) do {
 						_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _nearest getVariable "cti_structure_type"];
 						
 						_cost = _var select 2;
-						[CTI_P_SideJoined, round(_cost * CTI_BASE_CONSTRUCTION_REFUNDS)] call CTI_CO_FNC_ChangeFundsCommander;
+						[CTI_P_SideJoined, round(_cost * CTI_BASE_CONSTRUCTION_REFUNDS)] call CTI_CO_FNC_ChangeSideSupply;
 					};
 					
 					//todo bcast
