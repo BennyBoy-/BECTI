@@ -21,7 +21,7 @@
 	
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_ChangeFunds
-	Common Function: CTI_CO_FNC_GetSideCommander
+	Common Function: CTI_CO_FNC_GetSideCommanderTeam
 	Common Function: CTI_CO_FNC_GetSideGroups
 	Common Function: CTI_CO_FNC_GetSideLogic
 	
@@ -41,7 +41,7 @@ if (isNil '_value') exitWith {};
 if (typeName _value != "SCALAR") exitWith {};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
-_commander = (_side) call CTI_CO_FNC_GetSideCommander;
+_commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;
 _groups = (_side) call CTI_CO_FNC_GetSideGroups;
 _groups = _groups - [_commander];
 
@@ -62,6 +62,10 @@ if (_total_groups > 0) then {
 };
 
 //--- Change the commander funds
-if (_value_commander > 0) then {_logic setVariable ["cti_commander_funds", (_logic getVariable "cti_commander_funds") + _value_commander, true]};
+if !(isNull _commander) then {
+	[_commander, _value_commander] call CTI_CO_FNC_ChangeFunds;
+} else {
+	[_side, _value_commander] call CTI_CO_FNC_ChangeFundsCommander;
+};
 
 [_value_player, _value_players, _value_commander]

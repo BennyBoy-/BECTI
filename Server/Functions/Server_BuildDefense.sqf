@@ -55,6 +55,8 @@ if (_limit) exitWith {};
 _position set [2, 0];
 
 _defense = (_var select 1) createVehicle _position;
+_defense setVariable ["cti_managed", true];
+
 _direction_structure = (_var select 4) select 0;
 
 if (_defense isKindOf "Building") then {

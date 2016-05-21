@@ -26,6 +26,7 @@ if (CTI_IsServer) then {
 	(_town) execFSM "Server\FSM\town_capture.fsm";
 	(_town) execFSM "Server\FSM\town_resistance.fsm";
 	if (missionNamespace getVariable "CTI_TOWNS_OCCUPATION" > 0) then {(_town) execFSM "Server\FSM\town_occupation.fsm"};
+	if (missionNamespace getVariable "CTI_TOWNS_PEACE" > 0) then {(_town) setVariable ["cti_town_peace", -5000, true]};
 };
 
 if (CTI_IsClient) then {

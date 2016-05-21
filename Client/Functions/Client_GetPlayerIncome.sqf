@@ -27,7 +27,7 @@
 	  -> Will return the current player income
 */
 
-_total_values = (CTI_P_SideJoined) call CTI_CO_FNC_GetTownsResources;
+_total_values = ((CTI_P_SideJoined) call CTI_CO_FNC_GetTownsResources) * CTI_TOWNS_INCOME_RATIO;
 if (_total_values == 0) exitWith {0}; //--- Don't bother if we have no towns!
 
 _percent_award = CTI_P_SideLogic getVariable "cti_pool_award";
@@ -38,9 +38,9 @@ _pool_income_total = _total_values - _pool_award; //--- The resources pool overa
 _pool_income_players = _pool_income_total * _percent_resources; //--- The resources pool for the players
 _pool_income_commander = round(_pool_income_total - _pool_income_players);
 
-_commander = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommander;
+_commander = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommanderTeam;
 
-if (_commander == group player) exitWith { _pool_income_commander };
+if (call CTI_CL_FNC_IsPlayerCommander) exitWith { _pool_income_commander };
 
 _side_units = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups;
 _total_players = count (_side_units - [_commander]);

@@ -36,7 +36,7 @@ _towns = [];
 {if (_x getVariable "cti_town_sideID" != _friendlySide) then {_towns pushBack _x}} forEach CTI_Towns;
 
 //--- Territorial mode
-if ((missionNamespace getVariable "CTI_TOWNS_TERRITORIAL") == 1) exitWith {
+if ((missionNamespace getVariable "CTI_TOWNS_TERRITORIAL") > 0) exitWith {
 	[_center, _friendlySide, _towns] Call CTI_CO_FNC_GetClosestTerritorialEnemyTown;
 };
 

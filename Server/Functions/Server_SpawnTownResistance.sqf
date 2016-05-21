@@ -57,156 +57,207 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 };
 
 _pool_units = [];
+_tries = 400;
 
 //--- Pool data: [<GROUP>, <PRESENCE>, {<SPAWN PROBABILITY>}], nesting is possible to narrow down some choices
-switch (true) do {
-	case (_value < 50) : { 
-		_pool_units = [
-			["GUER_TOWNS_SQUAD_LIGHT", 3], 
-			["GUER_TOWNS_SQUAD_LIGHT_2", 2], 
-			["GUER_TOWNS_SQUAD_MOTORIZED_1", 1, 20], 
-			["GUER_TOWNS_SQUAD_MOTORIZED_2", 1, 25]
-		];
-	};
-	case (_value >= 50 && _value <= 60) : { 
-		_pool_units = [
-			["GUER_TOWNS_SQUAD_LIGHT", 2], 
-			["GUER_TOWNS_SQUAD_LIGHT_2", 2], 
-			["GUER_TOWNS_SQUAD_AA", 1, 75], 
-			["GUER_TOWNS_SQUAD_AT", 2], 
-			[
-				["GUER_TOWNS_SNIPERS_1", 1, 35], 
-				["GUER_TOWNS_SNIPERS_2", 1, 35]
-			],
-			[
-				["GUER_TOWNS_SQUAD_MOTORIZED_1", 1, 70],
-				["GUER_TOWNS_SQUAD_MOTORIZED_2", 1, 70]
-			], 
-			["GUER_TOWNS_APC_LIGHT", 1, 20], 
-			[
-				["GUER_TOWNS_MOTORIZED_HMG", 1, 50],
-				["GUER_TOWNS_MOTORIZED_MIXED_LIGHT", 1, 25]
-			]
-		];
-	};
-	case (_value > 60 && _value <= 80) : { 
-		_pool_units = [
-			["GUER_TOWNS_SQUAD_LIGHT", 2], 
-			["GUER_TOWNS_SQUAD_LIGHT_2", 2], 
-			["GUER_TOWNS_SQUAD_MEDIUM", 2], 
-			["GUER_TOWNS_SQUAD_AA", 1, 80], 
-			["GUER_TOWNS_SQUAD_AT", 2], 
-			[
-				["GUER_TOWNS_SNIPERS_1", 1, 60], 
-				["GUER_TOWNS_SNIPERS_2", 1, 60]
-			],
-			["GUER_TOWNS_SQUAD_MOTORIZED_1"], 
-			["GUER_TOWNS_SQUAD_MOTORIZED_2"], 
-			["GUER_TOWNS_SQUAD_APC_1", 1, 60], 
-			[
-				["GUER_TOWNS_APC_LIGHT"], 
-				["GUER_TOWNS_APC_MEDIUM", 1, 40]
-			],
-			[
-				["GUER_TOWNS_MOTORIZED_HMG", 1, 75],
-				["GUER_TOWNS_MOTORIZED_GMG", 1, 50]
-			], 
-			["GUER_TOWNS_MOTORIZED_MIXED_LIGHT", 1, 40]
-		];
-	};
-	case (_value > 80 && _value <= 100) : { 
-		_pool_units = [
-			["GUER_TOWNS_SQUAD_LIGHT", 2], 
-			["GUER_TOWNS_SQUAD_LIGHT_2"], 
-			["GUER_TOWNS_SQUAD_MEDIUM", 2], 
-			["GUER_TOWNS_SQUAD_AA"], 
-			["GUER_TOWNS_SQUAD_AT", 2], 
-			[
-				["GUER_TOWNS_SPECIAL", 1, 40], 
-				["GUER_TOWNS_SNIPERS_1", 1, 75], 
-				["GUER_TOWNS_SNIPERS_2", 1, 80]
-			],
-			[
+if (isNil {_town getVariable "cti_naval"}) then {
+	switch (true) do {
+		case (_value < 50) : { 
+			_pool_units = [
+				["GUER_TOWNS_SQUAD_LIGHT", 3], 
+				["GUER_TOWNS_SQUAD_LIGHT_2", 2], 
 				["GUER_TOWNS_SQUAD_MOTORIZED_1", 1, 60], 
-				["GUER_TOWNS_SQUAD_MOTORIZED_2", 1, 50]
-			], 
-			["GUER_TOWNS_SQUAD_APC_1"], 
-			[
-				["GUER_TOWNS_APC_MEDIUM", 1, 90], 
-				["GUER_TOWNS_APC_HEAVY", 1, 75]
-			], 
-			[
-				["GUER_TOWNS_MOTORIZED_HMG", 1, 75],
-				["GUER_TOWNS_MOTORIZED_GMG", 1, 75]
-			], 
-			[
-				["GUER_TOWNS_MOTORIZED_MIXED_LIGHT", 1, 60],
-				["GUER_TOWNS_MOTORIZED_MIXED_HEAVY", 1, 45]
-			]
-		];
+				["GUER_TOWNS_SQUAD_MOTORIZED_2", 1, 60]
+			];
+		};
+		case (_value >= 50 && _value <= 60) : { 
+			_pool_units = [
+				["GUER_TOWNS_SQUAD_LIGHT", 2], 
+				["GUER_TOWNS_SQUAD_LIGHT_2", 2], 
+				["GUER_TOWNS_SQUAD_AA", 1, 75], 
+				["GUER_TOWNS_SQUAD_AT", 2], 
+				[
+					["GUER_TOWNS_SNIPERS_1", 1, 60], 
+					["GUER_TOWNS_SNIPERS_2", 1, 60]
+				],
+				[
+					["GUER_TOWNS_SQUAD_MOTORIZED_1", 1, 80],
+					["GUER_TOWNS_SQUAD_MOTORIZED_2", 1, 80]
+				], 
+				["GUER_TOWNS_APC_LIGHT", 1, 60], 
+				[
+					["GUER_TOWNS_MOTORIZED_HMG", 1, 60],
+					["GUER_TOWNS_MOTORIZED_MIXED_LIGHT", 1, 60]
+				]
+			];
+		};
+		case (_value > 60 && _value <= 80) : { 
+			_pool_units = [
+				["GUER_TOWNS_SQUAD_LIGHT", 2], 
+				["GUER_TOWNS_SQUAD_LIGHT_2", 2], 
+				["GUER_TOWNS_SQUAD_MEDIUM", 2], 
+				["GUER_TOWNS_SQUAD_AA", 1, 80], 
+				["GUER_TOWNS_SQUAD_AT", 2], 
+				[
+					["GUER_TOWNS_SNIPERS_1", 1, 60], 
+					["GUER_TOWNS_SNIPERS_2", 1, 60]
+				],
+				["GUER_TOWNS_SQUAD_MOTORIZED_1"], 
+				["GUER_TOWNS_SQUAD_MOTORIZED_2"], 
+				["GUER_TOWNS_SQUAD_APC_1", 1, 60], 
+				[
+					["GUER_TOWNS_APC_LIGHT"], 
+					["GUER_TOWNS_APC_MEDIUM", 1, 60]
+				],
+				[
+					["GUER_TOWNS_MOTORIZED_HMG", 1, 75],
+					["GUER_TOWNS_MOTORIZED_GMG", 1, 60]
+				], 
+				["GUER_TOWNS_MOTORIZED_MIXED_LIGHT", 1, 60]
+			];
+		};
+		case (_value > 80 && _value <= 100) : { 
+			_pool_units = [
+				["GUER_TOWNS_SQUAD_LIGHT", 2], 
+				["GUER_TOWNS_SQUAD_LIGHT_2"], 
+				["GUER_TOWNS_SQUAD_MEDIUM", 2], 
+				["GUER_TOWNS_SQUAD_AA"], 
+				["GUER_TOWNS_SQUAD_AT", 2], 
+				[
+					["GUER_TOWNS_SPECIAL", 1, 60], 
+					["GUER_TOWNS_SNIPERS_1", 1, 75], 
+					["GUER_TOWNS_SNIPERS_2", 1, 80]
+				],
+				[
+					["GUER_TOWNS_SQUAD_MOTORIZED_1", 2, 60], 
+					["GUER_TOWNS_SQUAD_MOTORIZED_2", 2, 60]
+				], 
+				["GUER_TOWNS_SQUAD_APC_1"], 
+				[
+					["GUER_TOWNS_APC_MEDIUM", 1, 90], 
+					["GUER_TOWNS_APC_HEAVY", 1, 75]
+				], 
+				[
+					["GUER_TOWNS_MOTORIZED_HMG", 2, 75],
+					["GUER_TOWNS_MOTORIZED_GMG", 2, 75]
+				], 
+				[
+					["GUER_TOWNS_MOTORIZED_MIXED_LIGHT", 1, 60],
+					["GUER_TOWNS_MOTORIZED_MIXED_HEAVY", 1, 50]
+				]
+			];
+		};
+		case (_value > 100 && _value <= 120) : { 
+			_pool_units = [
+				["GUER_TOWNS_SQUAD_LIGHT"], 
+				["GUER_TOWNS_SQUAD_LIGHT_2"], 
+				["GUER_TOWNS_SQUAD_MEDIUM", 2], 
+				["GUER_TOWNS_SQUAD_AA"], 
+				["GUER_TOWNS_SQUAD_AT", 2], 
+				[
+					["GUER_TOWNS_SPECIAL", 1, 50], 
+					["GUER_TOWNS_SNIPERS_1", 1, 75], 
+					["GUER_TOWNS_SNIPERS_2", 1, 80]
+				],
+				[
+					["GUER_TOWNS_SQUAD_MOTORIZED_1", 1, 60], 
+					["GUER_TOWNS_SQUAD_MOTORIZED_2", 1, 50]
+				], 
+				["GUER_TOWNS_SQUAD_APC_1"], 
+				[
+					["GUER_TOWNS_APC_MEDIUM"], 
+					["GUER_TOWNS_APC_HEAVY"]
+				], 
+				[
+					["GUER_TOWNS_MOTORIZED_HMG", 2],
+					["GUER_TOWNS_MOTORIZED_GMG", 2]
+				], 
+				[
+					["GUER_TOWNS_MOTORIZED_MIXED_LIGHT", 2, 85],
+					["GUER_TOWNS_MOTORIZED_MIXED_HEAVY", 2, 70]
+				]
+			];
+		};
+		case (_value > 120) : { 
+			_pool_units = [
+				["GUER_TOWNS_SQUAD_LIGHT"], 
+				["GUER_TOWNS_SQUAD_LIGHT_2"], 
+				["GUER_TOWNS_SQUAD_MEDIUM", 2], 
+				["GUER_TOWNS_SQUAD_AA", 2], 
+				["GUER_TOWNS_SQUAD_AT", 2], 
+				[
+					["GUER_TOWNS_SPECIAL", 1, 75], 
+					["GUER_TOWNS_SNIPERS_1", 2], 
+					["GUER_TOWNS_SNIPERS_2", 2]
+				],
+				[
+					["GUER_TOWNS_SQUAD_MOTORIZED_1", 1, 75], 
+					["GUER_TOWNS_SQUAD_MOTORIZED_2", 1, 80]
+				], 
+				["GUER_TOWNS_SQUAD_APC_1", 2], 
+				[
+					["GUER_TOWNS_APC_MEDIUM", 2], 
+					["GUER_TOWNS_APC_HEAVY", 2]
+				], 
+				[
+					["GUER_TOWNS_MOTORIZED_HMG", 2],
+					["GUER_TOWNS_MOTORIZED_GMG", 2]
+				], 
+				[
+					["GUER_TOWNS_MOTORIZED_MIXED_LIGHT", 3],
+					["GUER_TOWNS_MOTORIZED_MIXED_HEAVY", 3]
+				]
+			];
+		};
 	};
-	case (_value > 100 && _value <= 120) : { 
-		_pool_units = [
-			["GUER_TOWNS_SQUAD_LIGHT"], 
-			["GUER_TOWNS_SQUAD_LIGHT_2"], 
-			["GUER_TOWNS_SQUAD_MEDIUM", 2], 
-			["GUER_TOWNS_SQUAD_AA"], 
-			["GUER_TOWNS_SQUAD_AT", 2], 
-			[
-				["GUER_TOWNS_SPECIAL", 1, 40], 
-				["GUER_TOWNS_SNIPERS_1", 1, 75], 
-				["GUER_TOWNS_SNIPERS_2", 1, 80]
-			],
-			[
-				["GUER_TOWNS_SQUAD_MOTORIZED_1", 1, 60], 
-				["GUER_TOWNS_SQUAD_MOTORIZED_2", 1, 50]
-			], 
-			["GUER_TOWNS_SQUAD_APC_1"], 
-			[
-				["GUER_TOWNS_APC_MEDIUM"], 
-				["GUER_TOWNS_APC_HEAVY"]
-			], 
-			[
-				["GUER_TOWNS_MOTORIZED_HMG"],
-				["GUER_TOWNS_MOTORIZED_GMG"]
-			], 
-			[
-				["GUER_TOWNS_MOTORIZED_MIXED_LIGHT", 1, 85],
-				["GUER_TOWNS_MOTORIZED_MIXED_HEAVY", 1, 70]
-			]
-		];
+} else {
+	switch (true) do {
+		case (_value < 50) : { 
+			_pool_units = [
+				["GUER_TOWNS_NAVAL_SQUAD_1", 1], 
+				["GUER_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 1]
+			];
+		};
+		case (_value >= 50 && _value <= 60) : { 
+			_pool_units = [
+				["GUER_TOWNS_NAVAL_SQUAD_1", 1], 
+				["GUER_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 2]
+			];
+		};
+		case (_value > 60 && _value <= 80) : { 
+			_pool_units = [
+				["GUER_TOWNS_NAVAL_SQUAD_2", 1], 
+				["GUER_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 3]
+			];
+		};
+		case (_value > 80 && _value <= 100) : { 
+			_pool_units = [
+				["GUER_TOWNS_NAVAL_SQUAD_2", 2], 
+				["GUER_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 2],
+				["GUER_TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS", 1]
+			];
+		};
+		case (_value > 100 && _value <= 120) : { 
+			_pool_units = [
+				["GUER_TOWNS_NAVAL_SQUAD_3", 2], 
+				["GUER_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 3],
+				["GUER_TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS", 1]
+			];
+		};
+		case (_value > 120) : { 
+			_pool_units = [
+				["GUER_TOWNS_NAVAL_SQUAD_3", 2], 
+				["GUER_TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 4],
+				["GUER_TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS", 1]
+			];
+		};
 	};
-	case (_value > 120) : { 
-		_pool_units = [
-			["GUER_TOWNS_SQUAD_LIGHT"], 
-			["GUER_TOWNS_SQUAD_LIGHT_2"], 
-			["GUER_TOWNS_SQUAD_MEDIUM", 2], 
-			["GUER_TOWNS_SQUAD_AA"], 
-			["GUER_TOWNS_SQUAD_AT", 2], 
-			[
-				["GUER_TOWNS_SPECIAL", 1, 75], 
-				["GUER_TOWNS_SNIPERS_1"], 
-				["GUER_TOWNS_SNIPERS_2"]
-			],
-			[
-				["GUER_TOWNS_SQUAD_MOTORIZED_1", 1, 75], 
-				["GUER_TOWNS_SQUAD_MOTORIZED_2", 1, 80]
-			], 
-			["GUER_TOWNS_SQUAD_APC_1", 2], 
-			[
-				["GUER_TOWNS_APC_MEDIUM"], 
-				["GUER_TOWNS_APC_HEAVY"]
-			], 
-			[
-				["GUER_TOWNS_MOTORIZED_HMG"],
-				["GUER_TOWNS_MOTORIZED_GMG"]
-			], 
-			[
-				["GUER_TOWNS_MOTORIZED_MIXED_LIGHT"],
-				["GUER_TOWNS_MOTORIZED_MIXED_HEAVY"]
-			]
-		];
-	};
+	
+	_tries = 0;
+	
+	//--- Naval forces are divided by two
+	_totalGroups = round(_totalGroups / 2);
+	if (_totalGroups < 1) then {_totalGroups = 1};
 };
 
 //--- Flatten the pool
@@ -281,15 +332,26 @@ _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 	_position = [];
 	
 	//--- A group may spawn close to a camp or somewhere in the town
-	if (count _camps > 0 && random 100 > 50) then {
-		_camp_index = floor(random count _camps);
-		_position = [getPos(_camps select _camp_index), 10, CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS] call CTI_CO_FNC_GetRandomPosition;
-		_camps deleteAt _camp_index;
+	if (isNil {_town getVariable "cti_naval"}) then {
+		if (count _camps > 0 && random 100 > 50) then {
+			_camp_index = floor(random count _camps);
+			_position = [ASLToAGL getPosASL(_camps select _camp_index), 10, CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS, _tries] call CTI_CO_FNC_GetRandomPosition;
+			_camps deleteAt _camp_index;
+		} else {
+			_position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, _tries] call CTI_CO_FNC_GetRandomPosition;
+		};
+		_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 	} else {
-		_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
+		_places_water = [];
+		_places = selectBestPlaces [([ASLToAGL getPosASL _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, 0] call CTI_CO_FNC_GetRandomPosition), 200, "(1 * sea) * (1 - meadow) * (1 - hills) * (1 - houses) * (1 - forest) * (1 - trees)", 8, 3]; //--- 0 to 1. 1 is full sea.
+		{if ((_x select 1) == 1) then {_places_water pushBack (_x select 0)}} forEach _places;
+		if (count _places_water > 0) then { //--- Use safe water spot
+			_position = _places_water select floor(random count _places_water);
+		} else { //--- Failsafe
+			_position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, 0] call CTI_CO_FNC_GetRandomPosition;
+		};
 	};
 	
-	_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 	_positions pushBack _position;
 	
 	_group = createGroup resistance;

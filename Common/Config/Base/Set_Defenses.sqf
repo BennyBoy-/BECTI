@@ -1,4 +1,4 @@
-private ["_categories", "_classes", "_defenses", "_headers", "_placements", "_prices", "_side"];
+private ["_categories", "_classes", "_defenses", "_defenses_cname", "_headers", "_placements", "_prices", "_side"];
 
 _side = _this select 0;
 _headers = _this select 1;
@@ -8,6 +8,7 @@ _placements = _this select 4;
 _categories = _this select 5;
 
 _defenses = [];
+_defenses_cname = [];
 for '_i' from 0 to (count _headers) -1 do {
 	_header = _headers select _i;
 	_classname = _classes select _i;
@@ -34,6 +35,7 @@ for '_i' from 0 to (count _headers) -1 do {
 		
 		missionNamespace setVariable [format["CTI_%1_%2",_side,_classname], _stored];
 		_defenses pushBack format["CTI_%1_%2",_side,_classname];
+		_defenses_cname pushBack _classname;
 	} else {
 		if (CTI_Log_Level >= CTI_Log_Information) then { 
 			["TRIVIAL", "FILE: Common\Config\Base\Set_Defenses.sqf", format ["[%1] Defense [%2] was previously defined. Skipping this one.", _side, _classname]] call CTI_CO_FNC_Log
@@ -42,3 +44,4 @@ for '_i' from 0 to (count _headers) -1 do {
 };
 
 missionNamespace setVariable [format ["CTI_%1_DEFENSES", _side], _defenses];
+missionNamespace setVariable [format ["CTI_%1_DEFENSES_NAMES", _side], _defenses_cname];

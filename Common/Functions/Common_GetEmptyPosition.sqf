@@ -26,7 +26,7 @@ private ["_i" ,"_object", "_position", "_tpos"];
 _object = _this select 0;
 _radius = _this select 1;
 
-if (typeName _object == "OBJECT") then {_object = getPos _object};
+if (typeName _object == "OBJECT") then {_object = ASLToAGL getPosASL _object};
 
 _position = [(_object select 0)+5,(_object select 1)+5,0];
 _i = 0;

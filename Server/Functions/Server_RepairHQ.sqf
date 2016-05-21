@@ -58,7 +58,7 @@ _logic setVariable ["cti_hq", _hq, true];
 [["CLIENT", _side], "Client_OnMessageReceived", ["hq-repair"]] call CTI_CO_FNC_NetSend;
 
 //--- Set the HQ to be local to a player commander if possible.
-_commander = (_side) call CTI_CO_FNC_GetSideCommander;
+_commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;
 if (isPlayer leader _commander) then {
 	_hq setOwner (owner leader _commander);
 	[["CLIENT", _side], "Client_AddHQActions", _hq] call CTI_CO_FNC_NetSend;

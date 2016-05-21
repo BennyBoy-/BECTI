@@ -31,7 +31,7 @@ while { true } do {
 			_last_award_pool = _award_pool;
 		};
 		if (_income != _last_income) then {
-			_side_income = (CTI_P_SideJoined) call CTI_CO_FNC_GetTownsResources;
+			_side_income = ((CTI_P_SideJoined) call CTI_CO_FNC_GetTownsResources) * CTI_TOWNS_INCOME_RATIO;
 			((uiNamespace getVariable "cti_dialog_ui_optionsmenu") displayCtrl 130003) ctrlSetStructuredText (parseText format["<t>Income (Me/Side): <t color='%1'>$%2</t>/<t color='%1'>$%3</t></t>", CTI_P_Coloration_Money, _income, round _side_income]);
 			_last_income = _income;
 		};

@@ -41,11 +41,28 @@ _parameters = if (count _this > 1) then {_this select 1} else {[]};
 switch (_message_var) do {
 	case "award-bounty": {player groupChat format ["$%1 awarded for the neutralization of a %2", _parameters select 0, _parameters select 1]};
 	case "award-bounty-pvp": {player groupChat format ["$%1 awarded for the neutralization of %2 (%3)", _parameters select 0, _parameters select 1, _parameters select 2]};
+	case "award-bounty-structure": {player groupChat format ["$%1 awarded for the neutralization of %2 structure", _parameters select 0, _parameters select 1]};
 	case "build-by": {
 		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _parameters select 1];
 		(_parameters select 0) groupChat format ["Constructing %1... %2%3", (_var select 0) select 1, _parameters select 2, "%"];
 	};
 	case "commander-disconnected": {CTI_P_ChatID sideChat "The current commander has left the game"};
+	case "commander-vote-end": {
+		if (isNull _parameters) then {
+			if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" > 0) then {
+				CTI_P_ChatID commandChat "AI Commander Selected!";
+			} else {
+				CTI_P_ChatID commandChat "No Commander Selected!";
+			};
+		} else {
+			if (_parameters != group player) then {
+				CTI_P_ChatID commandChat format["%1 is the new commander!", name leader _parameters];
+			} else {
+				CTI_P_ChatID commandChat "You are the new commander!";
+			};
+		};
+	};
+	case "commander-vote-start": {CTI_P_ChatID commandChat format["%1 has initiated a commander vote!", _parameters]};//--- Todo, popup system with helper on/off
 	case "hq-destroyed": {CTI_P_ChatID commandChat "The HQ has been destroyed!"};
 	case "hq-repair": {CTI_P_ChatID commandChat "The HQ has been repaired"};
 	case "funds-transfer": {player groupChat format ["%2 has transfered you $%1", _parameters select 0, (_parameters select 1) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]]};
@@ -85,6 +102,8 @@ switch (_message_var) do {
 		_var = missionNamespace getVariable (_parameters select 0);
 		CTI_P_ChatID commandChat format ["%1 is under attack at grid %2!", (_var select 0) select 1, mapGridPosition (_parameters select 1)];
 	};
+	case "structure-destroyed": {player globalChat format ["%1 has destroyed a %2 structure", _parameters select 0, _parameters select 1]};
+	case "structure-sold": {player commandChat format ["Sold a %1 structure for S%2", _parameters select 0, _parameters select 1]};
 	case "structure-teamkill-attempt": {
 		CTI_P_ChatID commandChat format ["Player %1 from group %2 tried to place an explosive near a friendly %3! (the explosive was removed)", _parameters select 0, _parameters select 1, _parameters select 2];
 	};

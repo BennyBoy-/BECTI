@@ -112,10 +112,11 @@ if (_completion >= 100) then {
 
 	[["CLIENT", _side], "Client_OnStructureConstructed", [_structure, _variable]] call CTI_CO_FNC_NetSend;
 } else {
-	private ["_areas", "_closest", "_need_update", "_structures_positions"];
+	private ["_areas", "_closest", "_delete_pos", "_need_update", "_structures_positions"];
 	//--- We update the base area array to remove potential empty areas. First we get the 2D positions of our structures
 	_areas = _logic getVariable "cti_structures_areas";
 	_structures_positions = [];
+	_delete_pos = [];
 	{
 		_pos = getPos _x;
 		_pos = [_pos select 0, _pos select 1];
@@ -126,13 +127,21 @@ if (_completion >= 100) then {
 	_need_update = false;
 	{
 		_closest = [_x, _structures_positions] call CTI_CO_FNC_GetClosestEntity;
-		if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _areas set [_forEachIndex, "!nil!"]};
+		if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _delete_pos pushBack _x; _areas set [_forEachIndex, "!nil!"]};
+		// if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _areas deleteAt _forEachIndex};
 	} forEach +_areas;
 
 	//--- Only update if we have to
 	if (_need_update) then {
 		_areas = _areas - ["!nil!"];
 		_logic setVariable ["cti_structures_areas", _areas, true];
+		
+		//--- Wipe the defense/structures upon area expiration
+		{
+			{
+				if !(isNil {_x getVariable "cti_managed"}) then {deleteVehicle _x};
+			} forEach (nearestObjects [_x, missionNamespace getVariable format ["CTI_%1_DEFENSES_NAMES", _side], CTI_BASE_AREA_RANGE]);
+		} forEach _delete_pos;
 	};
 
 	//todo: add message bout structure expiration

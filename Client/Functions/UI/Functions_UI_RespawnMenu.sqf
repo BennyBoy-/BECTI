@@ -234,7 +234,8 @@ CTI_UI_Respawn_OnRespawnReady = {
 	};
 	
 	if !(_respawn_ai) then { //--- Stock respawn
-		_spawn_at = [_where, 8, 30] call CTI_CO_FNC_GetRandomPosition;
+		_spawn_args = [_where, 8, 30];
+		_spawn_in = false;
 		
 		//--- Camp respawn, check for conditions
 		if !(isNil {_where getVariable "cti_camp_town"}) then {
@@ -247,7 +248,21 @@ CTI_UI_Respawn_OnRespawnReady = {
 			};
 		};
 		
-		player setPos _spawn_at;
+		if (_where isKindOf "AllVehicles") then { //--- Vehicle respawn
+			if (_where emptyPositions "cargo" > 0 && (locked _where in [0, 1])) then {
+				_spawn_in = true;
+				player moveInCargo _where;
+			} else {
+				if (_where isKindOf "Ship") then {
+					_spawn_args = [_where, 5, 15, 0];
+				};
+			};
+		};
+		
+		if !(_spawn_in) then { //--- If the unit did not respawn in a vehicle, we place it near
+			_spawn_at = _spawn_args call CTI_CO_FNC_GetRandomPosition;
+			player setPos _spawn_at;
+		};
 	};
 	
 	titleCut["","BLACK IN",1];
@@ -260,7 +275,9 @@ CTI_UI_Respawn_OnRespawnReady = {
 	};
 	
 	if !(_respawn_ai) then { //--- Stock respawn
-		[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip the default equipment
+		//--- Determine whether the last known gear should be used or the default one
+		_respawn_gear = if (isNil 'CTI_P_CurrentGear') then {missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]} else {CTI_P_CurrentGear};
+		[player, _respawn_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment
 	} else { //--- Respawn in own AI
 		[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
 	};

@@ -75,7 +75,7 @@ if !(_process) then { if ((count units (group player))+1 <= CTI_PLAYERS_GROUPSIZ
 if !(_process) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend }; //--- Can't do it but we answer to the server.
 
 //--- Check if the buyer has enough funds to perform this operation
-_cost = _var_classname select 2;
+_cost = _var_classname select CTI_UNIT_PRICE;
 if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
 	_crew = missionNamespace getVariable format["CTI_%1_%2", CTI_P_SideJoined, _crew];
@@ -116,9 +116,10 @@ if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\F
 //--- Creation.
 _var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _factory getVariable "cti_structure_type"];
 _direction = 360 - ((_var select 4) select 0);
-_distance = (_var select 4) select 1;
+_distance = ((_var select 4) select 1) + (_var_classname select CTI_UNIT_DISTANCE);
 
 _position = _factory modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
+_position set [2, .5];
 _net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then { true } else { false };
 _vehicle = objNull;
 _units = [];
@@ -157,6 +158,29 @@ if (_model isKindOf "Man") then {
 				};
 			};
 		} forEach (_var_classname select CTI_UNIT_TURRETS);
+		
+		//Prevent certain Vehicles and Objects from being despawned
+		_handle=true;
+		if (_model isKindof  'ReammoBox_F') then {_handle=false}; 
+		if (_model isKindof  'O_Truck_03_medical_F') then {_handle=false};  
+		if (_model isKindof  'B_Truck_01_medical_F') then {_handle=false}; 
+		if (_model isKindof  'O_Truck_03_repair_F') then {_handle=false}; 
+		if (_model isKindof  'B_Truck_01_repair_F') then {_handle=false}; 
+		if (_model isKindof  'O_Truck_03_ammo_F') then {_handle=false}; 
+		if (_model isKindof  'B_Truck_01_ammo_F') then {_handle=false}; 
+		if (_model isKindof  'I_Heli_light_03_unarmed_F') then {_handle=false}; 
+		if (_model isKindof  'O_Heli_Transport_04_medevac_F') then {_handle=false};	
+		if (_model isKindof  'O_Heli_Transport_04_ammo_F') then {_handle=false};	
+		if (_model isKindof  'O_Heli_Transport_04_repair_F') then {_handle=false};	
+		if (_model isKindof  'O_MBT_02_arty_F') then {_handle=false};	
+		if (_model isKindof  'B_MBT_01_arty_F') then {_handle=false};	
+		if (_model isKindof  'B_MBT_01_mlrs_F') then {_handle=false};	
+		if (_model isKindof  'B_UGV_01_rcws_F') then {_handle=false};	
+		if (_model isKindof  'O_UGV_01_rcws_F') then {_handle=false};	
+		
+		if (_handle) then {
+			["SERVER", "Request_HandleAction", ["empty", [_vehicle]]] call CTI_CO_FNC_NetSend; //--- Ask the server to track our vehicle emptiness
+		};
 	};
 	
 	_vehicle addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 2'];
@@ -169,8 +193,9 @@ if (_model isKindOf "Man") then {
 	
 	//--- Sanitize the artillery loadout, mines may lag the server for instance
 	if (CTI_ARTILLERY_FILTER == 1) then {if (_model in (missionNamespace getVariable ["CTI_ARTILLERY", []])) then {(_vehicle) call CTI_CO_FNC_SanitizeArtillery}};
-	
-	["SERVER", "Request_HandleAction", ["empty", _vehicle]] call CTI_CO_FNC_NetSend; //--- Ask the server to track our vehicle emptyness
+	if (_script == "") then {
+		["SERVER", "Request_HandleAction", ["empty", _vehicle]] call CTI_CO_FNC_NetSend; //--- Ask the server to track our vehicle emptyness
+	};
 };
 
 {

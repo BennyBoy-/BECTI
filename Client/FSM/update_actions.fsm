@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\ArmA2\FSM Editor Personal Edition\scriptedFSM.cfg, update_actions.fsm">*/
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, update_actions.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-456.714600,359.977081,242.139771,-456.939575,782,906,1};
-window[] = {2,-1,-1,-1,-1,831,50,1305,50,3,800};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-554.049622,262.642029,242.139771,-456.939575,854,881,1};
+window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,872};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -23,7 +23,11 @@ class FSM
     class Start_FSM
     {
       name = "Start_FSM";
-      init = /*%FSM<STATEINIT""">*/"_ncycle = 0;"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_ncycle = 0;" \n
+       "" \n
+       "" \n
+       "_commander_last = grpNull;" \n
+       "_commander_update = false;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -46,8 +50,37 @@ class FSM
       name = "Update_Actions";
       init = /*%FSM<STATEINIT""">*/"_ncycle = time + 2.5;" \n
        "" \n
-       "_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;" \n
        "_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;" \n
+       "" \n
+       "//--- Commander checks" \n
+       "_commander = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommanderTeam;" \n
+       "if (isNull _commander && !isNull _commander_last) then {_commander_update = true};" \n
+       "if (!isNull _commander && isNull _commander_last) then {_commander_update = true};" \n
+       "if (!isNull _commander && !isNull _commander_last) then {" \n
+       "	if (_commander != _commander_last) then {_commander_update = true};" \n
+       "};" \n
+       "" \n
+       "if (_commander_update) then {" \n
+       "	_commander_update = false;" \n
+       "	_commander_last = _commander;" \n
+       "	//--- AI/Null Com or different commander" \n
+       "	if (isNull _commander || _commander != group player) then {" \n
+       "		if (alive _hq) then {" \n
+       "			for '_i' from 0 to 3 do {_hq removeAction _i};" \n
+       "		};" \n
+       "		if !(isNil ""CTI_HQ_BuildAction"") then {player removeAction CTI_HQ_BuildAction};" \n
+       "	};" \n
+       "	if (!isNull _commander) then {" \n
+       "		if (_commander == group player) then {" \n
+       "			CTI_HQ_BuildAction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_BuildMenu.sqf"", """", 93, false, true, """", ""_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange""];" \n
+       "			(_hq) spawn (missionNamespace getVariable ""CTI_PVF_Client_AddHQActions"");" \n
+       "		};" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "" \n
+       "//--- Generic base checks" \n
+       "_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;" \n
        "" \n
        "CTI_Base_HQInRange = if (alive _hq && _hq distance player < CTI_BASE_CONSTRUCTION_RANGE) then {true} else {false};" \n
        "CTI_Base_ControlCenterInRange = if !(isNull ([CTI_CONTROLCENTER, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_CC] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
@@ -72,6 +105,10 @@ class FSM
        "	if (_nearest distance vehicle player <= CTI_BASE_GEAR_FOB_RANGE) then {_in_range = true};" \n
        "};" \n
        "CTI_Base_GearInRange_FOB = _in_range;" \n
+       "" \n
+       "if (CTI_GEAR_RESPAWN_WITH_LAST > 0) then {" \n
+       "	if (alive player) then {CTI_P_CurrentGear = (player) call CTI_UI_Gear_GetUnitEquipment};" \n
+       "};" \n
        "" \n
        "/*//debug" \n
        "CTI_Base_BarracksInRange = true;" \n

@@ -1,13 +1,13 @@
 /*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_occupation.fsm">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start_FSM",0,4346,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
+item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Cycle"};
 item2[] = {"Occupation_hold",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Occupation hold" \n "the town?"};
 item3[] = {"End_FSM",1,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Held_by_Occupati",4,218,-100.000000,-100.000000,0.000000,-50.000000,2.000000,"Held by" \n "Occupation"};
 item5[] = {"Gameover",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
-item6[] = {"Enemy_Near_",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Enemy Near?"};
+item6[] = {"Enemy_Near_",2,4346,-100.000000,0.000000,0.000000,50.000000,0.000000,"Enemy Near?"};
 item7[] = {"Not_held_by_Occu",4,218,50.000000,-200.000000,150.000000,-150.000000,1.000000,"Not held by" \n "Occupation"};
 item8[] = {"Occupation_Timeout",2,250,175.000000,100.000000,275.000000,150.000000,0.000000,"Occupation" \n "Timeout?"};
 item9[] = {"Active",8,218,175.000000,0.000000,275.000000,50.000000,0.000000,"Active"};
@@ -52,8 +52,8 @@ link24[] = {19,21};
 link25[] = {20,18};
 link26[] = {21,8};
 link27[] = {22,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-592.544495,538.681702,354.781555,-521.942932,908,771,1};
-window[] = {2,-1,-1,-1,-1,981,1880,3135,200,3,926};
+globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-592.544495,538.681702,354.781555,-521.942932,908,881,1};
+window[] = {2,-1,-1,-1,-1,931,150,1405,150,3,926};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -146,8 +146,20 @@ class FSM
     class Enemy_Near_
     {
       name = "Enemy_Near_";
-      init = /*%FSM<STATEINIT""">*/"_objects = (_town nearEntities [""AllVehicles"", CTI_TOWNS_OCCUPATION_DETECTION_RANGE]) unitsBelowHeight CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR;" \n
-       "_count_enemies = [_objects, _side] call CTI_CO_FNC_GetAreaEnemiesCount;"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"//_objects = (_town nearEntities [""AllVehicles"", CTI_TOWNS_OCCUPATION_DETECTION_RANGE]) unitsBelowHeight CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR;" \n
+       "_objects = [];" \n
+       "{if (((ASLToAGL getPosASL _x) select 2) < CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR) then {_objects pushBack _x}} forEach (_town nearEntities [""AllVehicles"", CTI_TOWNS_OCCUPATION_DETECTION_RANGE]);" \n
+       "" \n
+       "_count_enemies = 0;" \n
+       "if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") > 0) then {" \n
+       "	{" \n
+       "		if ((_x countSide _objects) > 0 && _count_enemies < 1) then {" \n
+       "			if ([_town, _x] Call CTI_SE_FNC_CanCaptureTerritorialTown) then {_count_enemies = [_objects, _side] call CTI_CO_FNC_GetAreaEnemiesCount};" \n
+       "		};" \n
+       "	} forEach ([west, east, resistance] - [_side]);" \n
+       "} else {" \n
+       "	_count_enemies = [_objects, _side] call CTI_CO_FNC_GetAreaEnemiesCount;" \n
+       "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -239,7 +251,17 @@ class FSM
     class Cleanup
     {
       name = "Cleanup";
-      init = /*%FSM<STATEINIT""">*/"//--- Teams Units." \n
+      init = /*%FSM<STATEINIT""">*/"if !(isNil {missionNamespace getVariable ""CTI_HEADLESS_CLIENTS""}) then {" \n
+       "	if (CTI_Log_Level >= CTI_Log_Information) then {" \n
+       "		[""INFORMATION"", ""FILE: Server\FSM\town_occupation.fsm"", format[""Removing Headless Clients delegated units for Occupation in town [%1]"", _town getVariable ""cti_town_name""]] call CTI_CO_FNC_Log;" \n
+       "	};" \n
+       "	" \n
+       "	{" \n
+       "		[[""CLIENT"", _x select 1], ""Client_OnTownDelegationRemoval"", [_town, _side]] call CTI_CO_FNC_NetSend;" \n
+       "	} forEach (missionNamespace getVariable ""CTI_HEADLESS_CLIENTS"");" \n
+       "};" \n
+       "" \n
+       "//--- Teams Units." \n
        "{" \n
        "	if !(isNil '_x') then {" \n
        "		if !(isNull _x) then {" \n

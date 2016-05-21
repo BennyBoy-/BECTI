@@ -36,11 +36,9 @@ _var = missionNamespace getVariable _variable;
 CTI_P_ChatID commandChat format ["%1 is now available at grid %2.", (_var select 0) select 1, mapGridPosition getPos _structure];
 
 //--- Add score for the commander
-if (isNull (CTI_P_SideLogic getVariable "cti_commander")) then {
-	if (group player == (CTI_P_SideLogic getVariable "cti_commander")) then {
-		_score = round((_var select 2) / CTI_SCORE_BUILD_VALUE_PERPOINT);
-		if (_score > 0) then {["SERVER", "Request_AddScore", [player, _score]] call CTI_CO_FNC_NetSend}; //--- Award some score
-	};
+if (call CTI_CL_FNC_IsPlayerCommander) then {
+	_score = round((_var select 2) / CTI_SCORE_BUILD_VALUE_PERPOINT);
+	if (_score > 0) then {["SERVER", "Request_AddScore", [player, _score]] call CTI_CO_FNC_NetSend}; //--- Award some score
 };
 
 [_structure, _var] call CTI_CL_FNC_InitializeStructure;

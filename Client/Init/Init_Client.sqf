@@ -62,6 +62,7 @@ CTI_P_LastRootMenu = "";
 CTI_P_LastRepairTime = -600;
 CTI_P_WallsAutoAlign = true;
 CTI_P_DefensesAutoManning = false;
+CTI_P_ServerFPS = -1;
 CTI_P_RapidDefence_Actions=[];
 CTI_P_RapidDefence=-1;
 
@@ -73,6 +74,12 @@ if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") != -1) then {enableEngi
 if (isMultiplayer) then {
 	//--- Can I join?
 	missionNamespace setVariable ["CTI_PVF_Client_JoinRequestAnswer", {_this spawn CTI_CL_FNC_JoinRequestAnswer}]; //--- Early PVF, do not spoil the game with the others.
+
+	//--- Enable the player again (sim + visu) in case of no-ai settings
+	if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
+		player enableSimulationGlobal true;
+		player hideObjectGlobal false;
+	};
 	
 	_last_req = -100;
 	while {!CTI_P_CanJoin} do {
@@ -108,6 +115,17 @@ call compile preprocessFile "Client\Functions\UI\Functions_UI_UpgradeMenu.sqf";
 if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_West.sqf"};
 if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_East.sqf"};
 
+//--- Load CUP Gear
+if (CTI_CUP_ADDON > 0) then { 
+	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_West.sqf"};
+	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_East.sqf"};
+};
+//--- Load ACE Gear
+if (CTI_ACE_ADDON > 0) then { 
+	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_ACE_West.sqf"};
+	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_ACE_East.sqf"};
+};
+
 CTI_InitClient = true;
 
 //--- Wait for a proper overall init (disabled slot?)
@@ -131,14 +149,15 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 	waitUntil {!isNil 'CTI_InitTowns'};
 	
 	execFSM "Client\FSM\update_markers_towns.fsm";
-	if ((missionNamespace getVariable "CTI_TOWNS_TERRITORIAL") == 1) then {
+	execFSM "Client\FSM\ui_titles_helper.fsm";
+	if ((missionNamespace getVariable "CTI_TOWNS_TERRITORIAL") > 0) then {
+		CTI_P_TerritorialUpdate = false;
 		execFSM "Client\FSM\town_territorial_helper.fsm";
 	};
 };
 
 //--- HQ / Base markers thread
 0 spawn {
-	waitUntil {!isNil 'CTI_Init_CommanderClient'};
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_structures"} && !isNil {CTI_P_SideLogic getVariable "cti_hq"}};
 	
 	//--- Initialize the structures (JIP or prefab) along with HQ.
@@ -160,29 +179,16 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 	};
 };
 
-//--- Commander thread
+//--- Delayed thread
 0 spawn {
-	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_commander"} && !isNil {CTI_P_SideLogic getVariable "cti_hq"} && !isNil {CTI_P_SideLogic getVariable "cti_salvagers"}};
+	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_hq"} && !isNil {CTI_P_SideLogic getVariable "cti_salvagers"}};
 	
 	_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
-	if (typeOf player == (missionNamespace getVariable format["CTI_%1_Commander", CTI_P_SideJoined])) then {
-		CTI_P_SideLogic setVariable ["cti_commander", group player, true];
-		
-		if (alive _hq) then {
-			player reveal _hq;
-			if (isMultiplayer) then {["SERVER", "Request_HQLocality", [CTI_P_SideJoined, player]] call CTI_CO_FNC_NetSend};
-			waitUntil {local _hq};
-			_hq lock 2;
-			_hq addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 2'];
-			_hq addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 0'];
-		};
-	};
-	CTI_Init_CommanderClient = true;
 	
-	if !(call CTI_CL_FNC_IsPlayerCommander) then {
+	// if !(call CTI_CL_FNC_IsPlayerCommander) then {
 		//--- Execute the client orders context
 		execFSM "Client\FSM\update_orders.fsm";
-	};
+	// };
 	
 	call CTI_CL_FNC_AddMissionActions;
 	
@@ -196,13 +202,19 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 			};
 		};
 	};
+	
+	waitUntil {time > 0};
+	
+	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_votetime"}};
+	
+	if (CTI_P_SideLogic getVariable "cti_votetime" > 0) then {createDialog "CTI_RscVoteMenu"};
 };
 
 //--- Gear templates (persitent)
-if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
-// profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], nil];
+if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
+// profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined], nil];
 // saveProfileNamespace;
-if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {execVM "Client\Init\Init_Persistent_Gear.sqf"};
+if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined]}) then {execVM "Client\Init\Init_Persistent_Gear.sqf"};
 
 //--- Graphics/video thread (persistent)
 0 spawn {
@@ -253,10 +265,13 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1
 // player addAction ["<t color='#a5c4ff'>MENU: Equipment</t>", "Client\Actions\Action_GearMenu.sqf", "HQ", 93, false, true, "", "true"];
 
 // onMapSingleClick "{(vehicle leader _x) setPos ([_pos, 8, 30] call CTI_CO_FNC_GetRandomPosition)} forEach (CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups)";
-CTI_BASE_CONSTRUCTION_TIME = if (CTI_DEV_MODE > 0) then { onMapSingleClick "vehicle player setPos _pos"; };//--- benny debug: teleport
-// player addEventHandler ["HandleDamage", {if (player != (_this select 3)) then {(_this select 3) setDammage 1}; false}]; //--- God-Slayer mode.
-// player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_BuildMenu.sqf"];//debug
-// player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
+
+if (CTI_DEV_MODE > 0) then { 
+	onMapSingleClick "vehicle player setPos _pos"; //--- benny debug: teleport
+	//player addEventHandler ["HandleDamage", {if (player != (_this select 3)) then {(_this select 3) setDammage 1}; false}]; //--- God-Slayer mode.
+	player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
+	// player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_BuildMenu.sqf"];//debug
+};
 
 if (profileNamespace getVariable "CTI_PERSISTENT_HINTS") then {
 	0 spawn {

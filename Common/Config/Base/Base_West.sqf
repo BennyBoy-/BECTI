@@ -107,7 +107,7 @@ _headers = _headers 		+ [[CTI_NAVAL, "Naval Yard", "Naval"]];
 _classes = _classes 		+ [["Land_Lighthouse_small_F", "Land_Lighthouse_small_ruins_F"]];
 _prices = _prices 			+ [2000];
 _times = _times 			+ [35];
-_placements = _placements 	+ [[180, 60]];
+_placements = _placements 	+ [[180, 40]];
 _specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 4]]];
 
 _headers = _headers 		+ [[CTI_RADAR, "Air Radar", "Air Radar"]];
@@ -330,25 +330,25 @@ _categories = _categories 	+ ["Fortification"];
 
 _headers = _headers 		+ ["MG Defense"];
 _classes = _classes 		+ ["B_HMG_01_High_F"];
-_prices = _prices 			+ [1000];
+_prices = _prices 			+ [200];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["GL Defense"];
 _classes = _classes 		+ ["B_GMG_01_high_F"];
-_prices = _prices 			+ [1300];
+_prices = _prices 			+ [300];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["AT Defense"];
 _classes = _classes 		+ ["B_static_AT_F"];
-_prices = _prices 			+ [2500];
+_prices = _prices 			+ [8000];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["AA Defense"];
 _classes = _classes 		+ ["B_static_AA_F"];
-_prices = _prices 			+ [1500];
+_prices = _prices 			+ [3000];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
@@ -361,25 +361,25 @@ _categories = _categories 	+ ["Defense"];
 /*
 _headers = _headers 		+ ["M2 Machine Gun"];
 _classes = _classes 		+ ["CUP_B_M2StaticMG_USMC"];
-_prices = _prices 			+ [1500];
+_prices = _prices 			+ [150];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["M2 Mini"];
 _classes = _classes 		+ ["CUP_B_M2StaticMG_USMC"];
-_prices = _prices 			+ [1500];
+_prices = _prices 			+ [150];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["TOW Tripod"];
 _classes = _classes 		+ ["CUP_B_TOW_TriPod_USMC"];
-_prices = _prices 			+ [2000];
+_prices = _prices 			+ [4000];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["D-30 AT"];
 _classes = _classes 		+ ["CUP_B_D30_AT_CDF"];
-_prices = _prices 			+ [5000];
+_prices = _prices 			+ [7000];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 

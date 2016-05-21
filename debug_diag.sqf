@@ -23,7 +23,7 @@
 // createDialog "CTI_RscDefenseMenu";
 // createDialog "CTI_RscPurchaseMenu";
 // createDialog "CTI_RscOptionsMenu";
-// createDialog "CTI_RscGearMenu";
+createDialog "CTI_RscGearMenu";
 // createDialog "CTI_RscWorkersMenu";
 // createDialog "CTI_RscTransferResourcesMenu";
 // createDialog "CTI_RscRequestMenu";
@@ -39,3 +39,6 @@
 
 // _q = (side player) call CTI_CO_FNC_GetSideHQ;
 // _q setDammage 1;
+
+// {uiNamespace setVariable [_x, displayNull]} forEach ["cti_title_capture"];
+// 600200 cutRsc["CTI_CaptureBar","PLAIN",0];

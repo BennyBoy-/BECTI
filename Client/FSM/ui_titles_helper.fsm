@@ -1,0 +1,237 @@
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, ui_titles_helper.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Init"};
+item1[] = {"Refresh",2,4346,-100.000000,-125.000000,0.000000,-75.000000,0.000000,"Refresh"};
+item2[] = {"End",1,250,-100.000000,-325.000000,0.000000,-275.000000,0.000000,"End"};
+item3[] = {"Loop",4,218,50.000000,-125.000000,150.000000,-75.000000,0.000000,"Loop"};
+item4[] = {"Gameover",8,218,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Gameover"};
+item5[] = {"Update_Capture",2,250,50.000000,-25.000000,150.000000,25.000000,0.000000,"Update Capture"};
+item6[] = {"In_Range",4,218,-100.000000,-25.000000,0.000000,25.000000,1.000000,"In Range"};
+item7[] = {"Not_in_Range",4,218,-225.000000,25.000000,-125.000000,75.000000,2.000000,"Not in Range"};
+item8[] = {"Hide",2,250,200.000000,25.000000,300.000000,75.000000,0.000000,"Hide"};
+link0[] = {0,3};
+link1[] = {1,4};
+link2[] = {1,6};
+link3[] = {1,7};
+link4[] = {3,1};
+link5[] = {4,2};
+link6[] = {5,3};
+link7[] = {6,5};
+link8[] = {7,8};
+link9[] = {8,3};
+globals[] = {25.000000,1,0,0,0,640,480,1,25,6316128,1,-160.035034,340.672852,767.721619,-295.226898,415,881,1};
+window[] = {2,-1,-1,-1,-1,632,175,943,175,3,433};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "ui_titles_helper.fsm";
+  class States
+  {
+    /*%FSM<STATE "Init">*/
+    class Init
+    {
+      name = "Init";
+      init = /*%FSM<STATEINIT""">*/"_delay = 4;" \n
+       "_lastCheck = """";" \n
+       "_lastSID = -1;" \n
+       "_lastUpdate = time;" \n
+       "_txt = """";" \n
+       "" \n
+       "_colorBlue = [0,0,0.7,0.6];" \n
+       "_colorGreen = [0,0.7,0,0.6];" \n
+       "_colorRed = [0.7,0,0,0.6];" \n
+       "_colorBlack = [0,0,0,0.6];" \n
+       "_colorYellow = [0.7,0.7,0,0.6];" \n
+       "" \n
+       "600200 cutRsc[""CTI_CaptureBar"",""PLAIN"",0];" \n
+       "if (!isNull (uiNamespace getVariable ""cti_title_capture"")) then {" \n
+       "	{((uiNamespace getVariable ""cti_title_capture"") displayCtrl _x) ctrlShow false} forEach [601000,601001];" \n
+       "};" \n
+       "" \n
+       "_snap = 0;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Loop">*/
+        class Loop
+        {
+          priority = 0.000000;
+          to="Refresh";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _snap"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Refresh">*/
+    class Refresh
+    {
+      name = "Refresh";
+      init = /*%FSM<STATEINIT""">*/"_nearest = (player) call CTI_CO_FNC_GetClosestTown;" \n
+       "_update = if (player distance _nearest < CTI_UI_TOWNS_PROGRESSBAR_DISTANCE && alive player) then {true} else {false};" \n
+       "" \n
+       "if !(isNull (uiNamespace getVariable ""cti_title_capture"")) then {" \n
+       "	_commander = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommanderTeam;" \n
+       "	if (isNull _commander) then {" \n
+       "		_commander = if (missionNamespace getVariable ""CTI_AI_TEAMS_ENABLED"" > 0) then {""AI""} else {""N/A""};" \n
+       "	} else {" \n
+       "		_commander = name leader _commander;" \n
+       "	};" \n
+       "	" \n
+       "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601002) ctrlSetText format[""%1 | $ %2 | %3 S | %4%5 HP"", CTI_P_SideJoined, call CTI_CL_FNC_GetPlayerFunds, (CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply, round(100 - (getDammage player * 100)), ""%""];" \n
+       "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601003) ctrlSetText format[""Commander: %1"", _commander];" \n
+       "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601004) ctrlSetText (if (CTI_P_SideLogic getVariable ""cti_upgrade"" > -1) then {""Upgrade Running""} else {""No Upgrade Running""});" \n
+       "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601005) ctrlSetText format[""Server: %1 | Client: %1"", CTI_P_ServerFPS, round diag_fps];" \n
+       "};" \n
+       "" \n
+       "_snap = time + 2;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Not_in_Range">*/
+        class Not_in_Range
+        {
+          priority = 2.000000;
+          to="Hide";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_update && !CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "In_Range">*/
+        class In_Range
+        {
+          priority = 1.000000;
+          to="Update_Capture";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_update && !CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Gameover">*/
+        class Gameover
+        {
+          priority = 0.000000;
+          to="End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End">*/
+    class End
+    {
+      name = "End";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_Capture">*/
+    class Update_Capture
+    {
+      name = "Update_Capture";
+      init = /*%FSM<STATEINIT""">*/"_sideID = _nearest getVariable ""cti_town_sideID"";" \n
+       "_curSV = _nearest getVariable ""cti_town_sv"";" \n
+       "_maxSV = _nearest getVariable ""cti_town_sv_max"";" \n
+       "" \n
+       "_towns_near = [getPos player, CTI_Towns, CTI_UI_TOWNS_PROGRESSBAR_DISTANCE*3] call CTI_CO_FNC_GetEntitiesInRange;" \n
+       "_camps = [];" \n
+       "{_camps = _camps + (_x call CTI_CO_FNC_GetTownCamps)} forEach _towns_near;" \n
+       "_camp = [player, _camps] call CTI_CO_FNC_GetClosestEntity;" \n
+       "" \n
+       "if (!isNull _camp && _camp distance player < CTI_TOWNS_CAMPS_CAPTURE_RANGE) then {" \n
+       "	_sideID = _camp getVariable ""cti_camp_sideID"";" \n
+       "	_curSV = _camp getVariable ""cti_camp_sv"";" \n
+       "	if (_lastCheck == ""Town"") then {_delay = 0};" \n
+       "	_txt = """";" \n
+       "	_lastCheck = ""Camp"";" \n
+       "} else {" \n
+       "	_txt = Format [""Town SV: %1/%2"",_curSV,_maxSV];" \n
+       "	_lastCheck = ""Town"";" \n
+       "};" \n
+       "" \n
+       "if (_sideID != _lastSID) then {_delay = 0};" \n
+       "if (isNull (uiNamespace getVariable ""cti_title_capture"")) then {600200 cutRsc[""CTI_CaptureBar"",""PLAIN"",0];_delay = 0};" \n
+       "if !(isNull (uiNamespace getVariable ""cti_title_capture"")) then {" \n
+       "" \n
+       "	_barColor = switch (_sideID) do {" \n
+       "		case CTI_WEST_ID: {_colorBlue};" \n
+       "		case CTI_EAST_ID: {_colorRed};" \n
+       "		case CTI_RESISTANCE_ID: {_colorGreen};" \n
+       "		default {_colorGreen};" \n
+       "	};" \n
+       "	" \n
+       "	if (missionNamespace getVariable ""CTI_TOWNS_PEACE"" > 0) then {" \n
+       "		if (time < (_nearest getVariable ""cti_town_peace"")) then { _barColor = _colorYellow; }; //--- Peace mode is enabled" \n
+       "	};" \n
+       "" \n
+       "	_control = (uiNamespace getVariable ""cti_title_capture"") displayCtrl 601000;" \n
+       "	_control ctrlShow true;" \n
+       "	_control ctrlSetTextColor _barColor;" \n
+       "	_textControl = (uiNamespace getVariable ""cti_title_capture"") displayCtrl 601001;" \n
+       "	_textControl ctrlShow true;" \n
+       "	_textControl ctrlSetText _txt;" \n
+       "	_control progressSetPosition (_curSV / _maxSV);" \n
+       "	_control ctrlCommit _delay;" \n
+       "	" \n
+       "	_delay = 4;" \n
+       "	_lastSID = _sideID;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Loop">*/
+        class Loop
+        {
+          priority = 0.000000;
+          to="Refresh";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _snap"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Hide">*/
+    class Hide
+    {
+      name = "Hide";
+      init = /*%FSM<STATEINIT""">*/"_delay = 0;" \n
+       "if (isNull (uiNamespace getVariable ""cti_title_capture"")) then {600200 cutRsc[""CTI_CaptureBar"",""PLAIN"",0]};" \n
+       "if (!isNull (uiNamespace getVariable ""cti_title_capture"")) then {" \n
+       "	{((uiNamespace getVariable ""cti_title_capture"") displayCtrl _x) ctrlShow false} forEach [601000,601001];" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Loop">*/
+        class Loop
+        {
+          priority = 0.000000;
+          to="Refresh";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _snap"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Init";
+  finalStates[] =
+  {
+    "End",
+  };
+};
+/*%FSM</COMPILE>*/

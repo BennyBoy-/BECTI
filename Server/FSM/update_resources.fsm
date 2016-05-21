@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,162,6316128,1,-620.422607,163.824570,138.236649,-571.857727,973,881,1};
-window[] = {2,-1,-1,-1,-1,806,25,1280,25,3,991};
+globals[] = {25.000000,1,0,0,0,640,480,1,162,6316128,1,-620.422607,163.824570,50.778564,-570.654663,973,771,1};
+window[] = {2,-1,-1,-1,-1,906,1805,3060,125,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -50,25 +50,26 @@ class FSM
        "" \n
        "{" \n
        "	_side = _x;" \n
-       "	_total_values = (_side) call CTI_CO_FNC_GetTownsResources;" \n
+       "	_supply = (_side) call CTI_CO_FNC_GetTownsResources;" \n
+       "	_funds = _supply * CTI_TOWNS_INCOME_RATIO; //--- The funds are based on the sum of the side's supply" \n
        "	" \n
        "	_logic = (_side) call CTI_CO_FNC_GetSideLogic;" \n
-       "	_commander = _logic getVariable ""cti_commander"";" \n
+       "	_commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;" \n
        "	_side_units = (_side) call CTI_CO_FNC_GetSideGroups;" \n
        "	_total_players = count (_side_units - [_commander]);" \n
        "	" \n
        "	//--- First we deal with the award pool" \n
        "	_percent_award = _logic getVariable ""cti_pool_award"";" \n
        "	_percent_resources = _logic getVariable ""cti_pool_resources"";" \n
-       "	_pool_award = _total_values * _percent_award; //--- The award pool" \n
-       "//_pool_award = 1750 * 0.1 = 175" \n
+       "	_pool_award = _funds * _percent_award; //--- The award pool" \n
+       "	//_pool_award = 1750 * 0.1 = 175" \n
        "" \n
-       "	_pool_income_total = _total_values - _pool_award; //--- The resources pool overall" \n
-       "//_pool_income_total = 1750 - 175 = 1575" \n
+       "	_pool_income_total = _funds - _pool_award; //--- The resources pool overall" \n
+       "	//_pool_income_total = 1750 - 175 = 1575" \n
        "	_pool_income_players = _pool_income_total * _percent_resources; //--- The resources pool for the players" \n
-       "//_pool_income_players = 1575 * 0.3 = 472.5" \n
+       "	//_pool_income_players = 1575 * 0.3 = 472.5" \n
        "	_pool_income_commander = round(_pool_income_total - _pool_income_players);" \n
-       "//_pool_income_commander = 1575 - 472.5 = 1102.5" \n
+       "	//_pool_income_commander = 1575 - 472.5 = 1102.5" \n
        "	" \n
        "	// _side_players = (_side) call CTI_CO_FNC_GetSidePlayerGroups;" \n
        "	" \n
@@ -80,7 +81,7 @@ class FSM
        "	//--- Calculate the income per player from the resources pool" \n
        "	if (_total_players > 0) then {" \n
        "		_pool_income_player = round(_pool_income_players / _total_players);" \n
-       "	//_pool_income_player = 472.5 / 4 = 118" \n
+       "		//_pool_income_player = 472.5 / 4 = 118" \n
        "		//--- Award units aside from commander" \n
        "		{" \n
        "			//--- This is the award pool" \n
@@ -96,7 +97,10 @@ class FSM
        "		_pool_income_commander = _pool_income_commander + _pool_income_players;" \n
        "	};" \n
        "" \n
-       "	if (_pool_income_commander != 0) then {[_side, _pool_income_commander] call CTI_CO_FNC_ChangeFundsCommander};" \n
+       "	if (_pool_income_commander > 0) then {[_side, _pool_income_commander] call CTI_CO_FNC_ChangeFundsCommander};" \n
+       "	" \n
+       "	//--- Last, we deal with the supply" \n
+       "	if (_supply > 0) then {[_side, _supply] call CTI_CO_FNC_ChangeSideSupply};" \n
        "} forEach [west, east];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links

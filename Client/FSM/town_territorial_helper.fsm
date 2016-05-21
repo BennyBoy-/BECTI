@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-456.160217,360.531433,242.139771,-456.939575,743,636,1};
-window[] = {0,-1,-1,-1,-1,981,200,1455,200,1,761};
+window[] = {0,-1,-1,-1,-1,863,1773,3028,82,1,761};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -46,7 +46,7 @@ class FSM
           priority = 1.000000;
           to="Update_Markers";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && (time > _ncycle || CTI_P_TerritorialUpdate)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -57,7 +57,9 @@ class FSM
     class Update_Markers
     {
       name = "Update_Markers";
-      init = /*%FSM<STATEINIT""">*/"//--- Our side hold at least one town? if not the closest town to the HQ is our objective" \n
+      init = /*%FSM<STATEINIT""">*/"if (CTI_P_TerritorialUpdate) then {CTI_P_TerritorialUpdate = false};" \n
+       "" \n
+       "//--- Our side hold at least one town? if not the closest town to the HQ is our objective" \n
        "_hq_closest_town = objNull;" \n
        "if ((CTI_P_SideID Call CTI_CO_FNC_GetSideTownCount) < 1) then {" \n
        "	_hq_closest_town = [CTI_P_SideJoined Call CTI_CO_FNC_GetSideHQ, CTI_P_SideJoined] Call CTI_CO_FNC_GetClosestEnemyTown;" \n
@@ -80,8 +82,16 @@ class FSM
        "			_marker setMarkerAlphaLocal 0;" \n
        "		} else {" \n
        "			//--- Unsafe, our friendly town may be captured" \n
-       "			_marker setMarkerColorLocal CTI_TOWNS_TERRITORIAL_MARKER_FRIENDLY_CAPTURABLE_COLOR;" \n
-       "			_marker setMarkerAlphaLocal 1;" \n
+       "			if (missionNamespace getVariable ""CTI_TOWNS_PEACE"" > 0) then { //--- Peace mode" \n
+       "				if (time < (_x getVariable ""cti_town_peace"")) then { //--- Peace mode is enabled" \n
+       "					_marker setMarkerColorLocal CTI_TOWNS_MARKERS_PEACE_COLOR;" \n
+       "				} else {" \n
+       "					_marker setMarkerColorLocal (markerColor format[""cti_town_marker_%1"", _x]);" \n
+       "				};" \n
+       "			} else { //--- Standard mode" \n
+       "				_marker setMarkerColorLocal (markerColor format[""cti_town_marker_%1"", _x]);" \n
+       "			};" \n
+       "			_marker setMarkerAlphaLocal 0.5;" \n
        "		};" \n
        "	} else {" \n
        "		//--- Hostile held, can we capture it?" \n
@@ -100,8 +110,8 @@ class FSM
        "			_marker setMarkerAlphaLocal 0;" \n
        "		} else {" \n
        "			//--- Unsafe, this enemy town may be captured" \n
-       "			_marker setMarkerColorLocal CTI_TOWNS_TERRITORIAL_MARKER_ENEMY_CAPTURABLE_COLOR;" \n
-       "			_marker setMarkerAlphaLocal 1;" \n
+       "			_marker setMarkerColorLocal (markerColor format[""cti_town_marker_%1"", _x]);" \n
+       "			_marker setMarkerAlphaLocal 0.5;" \n
        "		};" \n
        "	};" \n
        "} forEach CTI_Towns;" \n
@@ -116,7 +126,7 @@ class FSM
           priority = 1.000000;
           to="Update_Markers";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && (time > _ncycle || CTI_P_TerritorialUpdate)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

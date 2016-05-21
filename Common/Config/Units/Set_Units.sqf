@@ -1,4 +1,4 @@
-private ["_c", "_cpt", "_custom", "_f", "_faction", "_label", "_n", "_o", "_p", "_picture", "_s", "_scripts", "_stored", "_t", "_turrets", "_u", "_var_name"];
+private ["_c", "_cpt", "_custom", "_d", "_f", "_faction", "_label", "_n", "_o", "_p", "_picture", "_s", "_scripts", "_stored", "_t", "_turrets", "_u", "_var_name"];
 
 _side = _this select 0;
 _faction = _this select 1;
@@ -10,6 +10,7 @@ _t = _this select 6;
 _u = _this select 7;
 _f = _this select 8;
 _s = _this select 9;
+_d = _this select 10;
 
 _cpt = 0;
 
@@ -40,7 +41,7 @@ for '_i' from 0 to (count _c)-1 do {
 				CTI_CO_CustomIterator = CTI_CO_CustomIterator + 1;
 			};
 			
-			_stored = [_label, _picture, _o select _i, _t select _i, _u select _i, _f select _i, _turrets, _scripts];
+			_stored = [_label, _picture, _o select _i, _t select _i, _u select _i, _f select _i, _turrets, _scripts, _d select _i];
 			missionNamespace setVariable [_var_name, _stored];
 			_cpt = _cpt + 1;
 			

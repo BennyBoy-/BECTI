@@ -165,7 +165,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_AI_ORDER", _side], [
 
 if (CTI_IsClient) then {
 	missionNamespace setVariable [Format["CTI_%1_UPGRADES_LABELS", _side], [
-		["(DISABLED) Gear", "Unlock better gear"], //--- Gear
+		["Gear", "Unlock better gear"], //--- Gear
 		["Barracks", "Unlock better infantry units"], //--- Barracks
 		["Light Factory", "Unlock better motorized units"], //--- Light
 		["Heavy Factory", "Unlock better armored units"], //--- Heavy

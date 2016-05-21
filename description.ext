@@ -6,11 +6,14 @@
 #include "Rsc\Game.hpp"
 #include "Rsc\Resources.hpp"
 #include "Rsc\Dialogs.hpp"
+#include "Rsc\Titles.hpp"
 #include "Rsc\Notifications.hpp"
 #include "Rsc\Sounds.hpp"
 #include "Rsc\Debriefing.hpp"
 #include "Rsc\Parameters.hpp"
 
+// Disable AI Slots
+//disabledAI = 1; -THIS BREAKS GAME TICKET WAS PUT IN FOR BENNY TO CHECK IT OUT
 
 // ^HS^ for Headless Client
 joinUnassigned = 0;

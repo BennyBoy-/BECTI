@@ -67,6 +67,14 @@ with missionNamespace do {
 		};
 	};
 	
+	CTI_PVF_Client_AwardBountyStructure = {
+		_label = _this select 0;
+		_award = _this select 1;
+		
+		["award-bounty-structure", [_award, _label]] call CTI_CL_FNC_DisplayMessage;
+		(_award) call CTI_CL_FNC_ChangePlayerFunds;
+	};
+	
 	CTI_PVF_Client_OnSpottedTargetReceived = {
 		_position = _this select 0;
 		_type = _this select 1;
@@ -126,4 +134,19 @@ with missionNamespace do {
 			deleteMarkerLocal _marker;
 		};
 	};
+	
+	CTI_PVF_Client_OnNewCommanderVote = {
+		_name = _this;
+		
+		["commander-vote-start", _name] call CTI_CL_FNC_DisplayMessage;
+		
+		waitUntil{CTI_P_SideLogic getVariable "cti_votetime" > -1 || !alive player};
+		
+		if (alive player) then {
+			closeDialog 0;
+			createDialog "CTI_RscVoteMenu";
+		};
+	};
+	
+	CTI_PVF_Client_ReceiveServerFPS = { CTI_P_ServerFPS = _this };
 };

@@ -1,47 +1,47 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_capture.fsm">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, town_capture.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Cycle"};
-item2[] = {"Units_near_Cente",2,250,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Units near" \n "Center"};
+item2[] = {"Units_near_Cente",2,4346,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Units near" \n "Center"};
 item3[] = {"End_FSM",1,250,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Empty",4,218,50.000000,-300.000000,150.000000,-250.000000,2.000000,"Empty"};
 item5[] = {"Gameover",8,218,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Gameover"};
 item6[] = {"Not_Empty",4,218,-250.000000,-300.000000,-150.000000,-250.000000,1.000000,"Not Empty"};
-item7[] = {"Skip",2,250,50.000000,-400.000000,150.000000,-350.000000,0.000000,"Skip"};
+item7[] = {"Blank",2,250,50.000000,-400.000000,150.000000,-350.000000,0.000000,"Blank"};
 item8[] = {"Check_Capture",2,250,-250.000000,0.000000,-150.000000,50.000000,0.000000,"Check" \n "Capture"};
-item9[] = {"Ready",8,218,-500.000000,0.000000,-400.000000,50.000000,0.000000,"Ready"};
-item10[] = {"Not_Ready",4,218,-250.000000,100.000000,-150.000000,150.000000,1.000000,"Not" \n "Ready"};
-item11[] = {"",7,210,196.000046,121.000023,203.999969,128.999985,0.000000,""};
-item12[] = {"",7,210,196.000000,-379.000000,204.000015,-371.000000,0.000000,""};
-item13[] = {"Captured",2,250,-500.000000,-400.000000,-400.000000,-350.000000,0.000000,"Captured"};
-item14[] = {"Supply_Mode",2,250,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Supply" \n "Mode"};
-item15[] = {"Timed",4,218,-400.000000,-200.000000,-300.000000,-150.000000,1.000000,"Timed"};
-item16[] = {"Default",8,218,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"Default"};
-item17[] = {"Timed_Update",2,4346,-400.000000,-100.000000,-300.000000,-50.000000,0.000000,"Timed" \n "Update"};
+item9[] = {"Capture",8,218,-500.000000,0.000000,-400.000000,50.000000,0.000000,"Capture"};
+item10[] = {"No_Capture",4,218,-250.000000,100.000000,-150.000000,150.000000,1.000000,"No Capture"};
+item11[] = {"",7,210,246.000046,121.000023,253.999969,128.999985,0.000000,""};
+item12[] = {"Captured",2,250,-500.000000,-400.000000,-400.000000,-350.000000,0.000000,"Captured"};
+item13[] = {"Supply_Mode",2,250,200.000000,-300.000000,300.000000,-250.000000,0.000000,"Supply" \n "Mode"};
+item14[] = {"Timed",4,218,350.000000,-300.000000,450.000000,-250.000000,1.000000,"Timed"};
+item15[] = {"Default",8,218,200.000000,-400.000000,300.000000,-350.000000,0.000000,"Default"};
+item16[] = {"Timed_Update",2,250,350.000000,-400.000000,450.000000,-350.000000,0.000000,"Timed" \n "Update"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,4};
 link3[] = {2,5};
 link4[] = {2,6};
-link5[] = {4,7};
+link5[] = {4,13};
 link6[] = {5,3};
-link7[] = {6,14};
+link7[] = {6,8};
 link8[] = {7,1};
 link9[] = {8,9};
 link10[] = {8,10};
-link11[] = {9,13};
+link11[] = {9,12};
 link12[] = {10,11};
-link13[] = {11,12};
-link14[] = {12,7};
-link15[] = {13,1};
-link16[] = {14,15};
+link13[] = {11,13};
+link14[] = {12,1};
+link15[] = {13,14};
+link16[] = {13,15};
 link17[] = {14,16};
-link18[] = {15,17};
-link19[] = {16,8};
-link20[] = {17,16};
-globals[] = {25.000000,1,0,0,0,640,480,1,174,6316128,1,-714.509399,339.867218,337.179016,-514.051392,856,771,1};
-window[] = {2,-1,-1,-1,-1,906,1805,3060,125,3,874};
+link18[] = {15,7};
+link19[] = {16,15};
+
+globals[] = {25.000000,1,0,0,0,640,480,1,176,6316128,1,-517.422180,607.565002,193.045731,-592.868408,856,881,1};
+window[] = {2,-1,-1,-1,-1,831,50,1305,50,3,874};
+
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -55,6 +55,8 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"_town = _this;" \n
        "" \n
        "_town setVariable [""cti_town_capture"", CTI_TOWNS_CAPTURE_VALUE_CEIL, true];" \n
+       "_capture_range = CTI_TOWNS_CAPTURE_RANGE;" \n
+       "if !(isNil {_town getVariable ""cti_naval""}) then {_capture_range = _capture_range * 2};" \n
        "" \n
        "_supply_timed_lastUpdate = 0;" \n
        "" \n
@@ -81,11 +83,22 @@ class FSM
       name = "Units_near_Cente";
       init = /*%FSM<STATEINIT""">*/"_sideID = _town getVariable ""cti_town_sideID"";" \n
        "_side = (_sideID) Call CTI_CO_FNC_GetSideFromID;" \n
-       "_objects = (_town nearEntities [""AllVehicles"", CTI_TOWNS_CAPTURE_RANGE]) unitsBelowHeight 30;" \n
+       "//_objects = (_town nearEntities [""AllVehicles"", _capture_range]) unitsBelowHeight 30;" \n
+       "_objects = [];" \n
+       "{if (((ASLToAGL getPosASL _x) select 2) < 30) then {_objects pushBack _x}} forEach (_town nearEntities [""AllVehicles"", _capture_range]);" \n
        "" \n
        "_west = west countSide _objects;" \n
        "_east = east countSide _objects;" \n
        "_resistance = resistance countSide _objects;" \n
+       "" \n
+       "//--- Check if the town is in a peace mode" \n
+       "if (missionNamespace getVariable ""CTI_TOWNS_PEACE"" > 0) then {" \n
+       "	if (time < (_town getVariable ""cti_town_peace"")) then {" \n
+       "		_west = 0;" \n
+       "		_east = 0;" \n
+       "		_resistance = 0;" \n
+       "	};" \n
+       "};" \n
        "" \n
        "_activeEnemies = switch (_side) do {" \n
        "	case west: {_east + _resistance};" \n
@@ -101,7 +114,7 @@ class FSM
         class Empty
         {
           priority = 2.000000;
-          to="Skip";
+          to="Supply_Mode";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _west == 0 && _east == 0 && _resistance == 0"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -111,7 +124,7 @@ class FSM
         class Not_Empty
         {
           priority = 1.000000;
-          to="Supply_Mode";
+          to="Check_Capture";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && (_west > 0 || _east > 0 || _resistance > 0)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -141,10 +154,10 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "Skip">*/
-    class Skip
+    /*%FSM<STATE "Blank">*/
+    class Blank
     {
-      name = "Skip";
+      name = "Blank";
       init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -178,17 +191,21 @@ class FSM
        "	_supply = _town getVariable ""cti_town_sv"";" \n
        "	" \n
        "	if (_side == _force) then { //--- Protect" \n
-       "		_supply = _supply + (_forceCount * CTI_TOWNS_CAPTURE_RATE);" \n
-       "		if (_supply > (_town getVariable ""cti_town_sv_default"")) then { _supply = _town getVariable ""cti_town_sv_default"" };" \n
+       "		if (_supply < _town getVariable ""cti_town_sv_default"") then {" \n
+       "			_supply = _supply + (_forceCount * CTI_TOWNS_CAPTURE_RATE);" \n
+       "			if (_supply > (_town getVariable ""cti_town_sv_default"")) then { _supply = _town getVariable ""cti_town_sv_default"" };" \n
+       "		};" \n
        "	} else { //--- Capture" \n
        "		//--- In case of territorial mode, check that the town can be captured!" \n
        "		_capturable = true;" \n
-       "		if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") == 1) then {" \n
+       "		if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") > 0) then {" \n
        "			_capturable = [_town, _force] Call CTI_SE_FNC_CanCaptureTerritorialTown;" \n
        "		};" \n
        "		if (_capturable) then {" \n
        "			//--- Retrieve the current held camps" \n
-       "			_rate = CTI_TOWNS_CAPTURE_RATE * (count([_town, _force] Call CTI_CO_FNC_GetTownCampsOnSide) / count(_town Call CTI_CO_FNC_GetTownCamps)) * CTI_TOWNS_CAPTURE_RATE_CAMPS;" \n
+       "			_camps_count = count(_town Call CTI_CO_FNC_GetTownCamps);" \n
+       "			_camps_force = if (_camps_count < 1) then {1} else {count([_town, _force] Call CTI_CO_FNC_GetTownCampsOnSide) / _camps_count};" \n
+       "			_rate = CTI_TOWNS_CAPTURE_RATE * _camps_force * CTI_TOWNS_CAPTURE_RATE_CAMPS;" \n
        "			if (_rate < 1) then {_rate = 1};" \n
        "			_supply = _supply - round(_forceCount * _rate);" \n
        "			if (_supply <= 0) then { _captured = true; _supply = _town getVariable ""cti_town_sv_default"" };" \n
@@ -200,18 +217,18 @@ class FSM
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "Not_Ready">*/
-        class Not_Ready
+        /*%FSM<LINK "No_Capture">*/
+        class No_Capture
         {
           priority = 1.000000;
-          to="Skip";
+          to="Supply_Mode";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"!_captured"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-        /*%FSM<LINK "Ready">*/
-        class Ready
+        /*%FSM<LINK "Capture">*/
+        class Capture
         {
           priority = 0.000000;
           to="Captured";
@@ -266,7 +283,7 @@ class FSM
         class Default
         {
           priority = 0.000000;
-          to="Check_Capture";
+          to="Blank";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -297,7 +314,7 @@ class FSM
         class Default
         {
           priority = 0.000000;
-          to="Check_Capture";
+          to="Blank";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;

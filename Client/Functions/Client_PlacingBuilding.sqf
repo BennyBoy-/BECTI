@@ -19,9 +19,9 @@
 	[STRUCTURE VARIABLE, CENTER, RADIUS] spawn CTI_CL_FNC_PlacingBuilding
 	
   # DEPENDENCIES #
-	Client Function: CTI_CL_FNC_ChangePlayerFunds
-	Client Function: CTI_CL_FNC_GetPlayerFunds
+	Client Function: CTI_CO_FNC_ChangeSideSupply
 	Common Function: CTI_CO_FNC_GetDirTo
+	Client Function: CTI_CO_FNC_GetSideSupply
 	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
@@ -118,7 +118,7 @@ _in_area = false;
 //--- Maybe we have no area in range?
 if !(_in_area) then {
 	//--- If we have none, then have we reached our limit?
-	if (count (CTI_P_SideLogic getVariable "cti_structures_areas") < CTI_BASE_AREA_MAX) then {
+	if (count (CTI_P_SideLogic getVariable "cti_structures_areas") < (missionNamespace getVariable "CTI_BASE_AREA_MAX")) then {
 		//--- We create a new area if we still have room for areas and of course, we allow the construction
 		CTI_P_SideLogic setVariable ["cti_structures_areas", (CTI_P_SideLogic getVariable "cti_structures_areas") + [[_pos select 0, _pos select 1]], true];
 	} else {
@@ -131,8 +131,8 @@ if !(_in_area) then {
 
 //--- If there's no problems then we place it.
 if !(CTI_VAR_StructureCanceled) then {
-	if ((call CTI_CL_FNC_GetPlayerFunds) >= (_var select 2)) then {
-		-(_var select 2) call CTI_CL_FNC_ChangePlayerFunds;
+	if (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply) >= (_var select 2)) then {
+		[CTI_P_SideJoined, -(_var select 2)] call CTI_CO_FNC_ChangeSideSupply;
 		["SERVER", "Request_Building", [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player]] call CTI_CO_FNC_NetSend;
 	} else {
 		hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to place that structure.";

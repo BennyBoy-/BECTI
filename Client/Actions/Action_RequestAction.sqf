@@ -2,7 +2,7 @@ _args = _this select 3;
 _request = _args select 0;
 _position = _args select 1;
 
-_commander = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommander;
+_commander = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommanderTeam;
 
 CTI_P_TeamsRequests_Last = time;
 
