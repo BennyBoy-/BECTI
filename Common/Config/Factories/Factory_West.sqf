@@ -24,10 +24,12 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["Chemlight_blue", 36],
 		["acc_flashlight", 5],
 		["Toolkit", 4],
+		["ACE_key_lockpick", 4],
 		["B_Bergen_sgg", 4]
 	]],
 	["B_MRAP_01_F", [
 		["Toolkit", 2],
+		["ACE_key_lockpick", 4],
 		["firstaidkit", 10],
 		["CUP_30Rnd_556x45_Stanag", 15],
 		["CUP_launch_M136", 5],
@@ -35,6 +37,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 	]],
 	["CUP_B_HMMWV_M2_GPK_USA", [
 		["Toolkit", 2],
+		["ACE_key_lockpick", 4],
 		["firstaidkit", 10],
 		["CUP_30Rnd_556x45_Stanag", 15],
 		["CUP_launch_M136", 5],
@@ -42,6 +45,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 	]],
 	["CUP_B_HMMWV_M2_GPK_USA", [
 		["Toolkit", 2],
+		["ACE_key_lockpick", 4],
 		["firstaidkit", 10],
 		["CUP_30Rnd_556x45_Stanag", 15],
 		["CUP_launch_M136", 5],
