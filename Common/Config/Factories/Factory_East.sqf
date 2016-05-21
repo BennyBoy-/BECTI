@@ -24,10 +24,12 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["firstaidkit", 20],
 		["Chemlight_red", 36],
 		["Toolkit", 4],
+		["ACE_key_lockpick", 4],
 		["B_Kitbag_cbr", 4]
 	]],
 	["O_MRAP_02_F", [
 		["Toolkit", 2],
+		["ACE_key_lockpick", 4],
 		["firstaidkit", 10],
 		["CUP_30Rnd_762x39_AK47_M", 25],
 		["CUP_launch_RPG18", 5],
@@ -35,6 +37,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 	]],
 	["OFPS_BRDM2", [
 		["Toolkit", 2],
+		["ACE_key_lockpick", 4],
 		["firstaidkit", 10],
 		["CUP_30Rnd_762x39_AK47_M", 25],
 		["CUP_launch_RPG18", 5],
@@ -42,6 +45,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 	]],
 	["OFPS_BTR60", [
 		["Toolkit", 2],
+		["ACE_key_lockpick", 4],
 		["firstaidkit", 10],
 		["CUP_30Rnd_762x39_AK47_M", 25],
 		["CUP_launch_RPG18", 5],
