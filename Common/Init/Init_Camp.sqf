@@ -45,7 +45,7 @@ if (CTI_IsClient) then {
 	_marker = createMarkerLocal [format ["cti_camp_marker_%1_%2", _town, (_town getVariable "cti_town_camps") find _camp], getPos _camp];
 	_marker setMarkerTypeLocal "mil_marker";
 	_marker setMarkerColorLocal _coloration;
-	_marker setMarkerSizeLocal [0.5, 0.5]; 
+	_marker setMarkerSizeLocal [0.3, 0.3]; 
 	
 	_camp setVariable ["cti_camp_marker", _marker];
 };
