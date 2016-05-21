@@ -20,7 +20,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["CUP_FlareWhite_M203", 9],
 		["CUP_1Rnd_Smoke_M203", 3],
 		["CUP_1Rnd_SmokeGreen_M203", 8],
-		["ACE_personalAidKit", 20],
+		["ACE_atropine", 20],
 		["Chemlight_blue", 36],
 		["acc_flashlight", 5],
 		["Toolkit", 4],
@@ -30,7 +30,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 	["B_MRAP_01_F", [
 		["Toolkit", 2],
 		["ACE_key_lockpick", 4],
-		["ACE_personalAidKit", 20],
+		["ACE_atropine", 20],
 		["CUP_30Rnd_556x45_Stanag", 15],
 		["CUP_launch_M136", 5],
 		["CUP_M136_M", 10]
@@ -38,7 +38,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 	["CUP_B_HMMWV_M2_GPK_USA", [
 		["Toolkit", 2],
 		["ACE_personalAidKit", 20],
-		["firstaidkit", 10],
+		["ACE_atropine", 20],
 		["CUP_30Rnd_556x45_Stanag", 15],
 		["CUP_launch_M136", 5],
 		["CUP_M136_M", 10]
@@ -46,7 +46,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 	["CUP_B_HMMWV_M2_GPK_USA", [
 		["Toolkit", 2],
 		["ACE_key_lockpick", 4],
-		["ACE_personalAidKit", 20],
+		["ACE_atropine", 20],
 		["CUP_30Rnd_556x45_Stanag", 15],
 		["CUP_launch_M136", 5],
 		["CUP_M136_M", 10]
