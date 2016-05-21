@@ -72,8 +72,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 			_pool_units = [
 				["TOWNS_SQUAD_LIGHT", 3], 
 				["TOWNS_SQUAD_LIGHT_2", 2], 
-				["TOWNS_SQUAD_MOTORIZED_1", 1, 20], 
-				["TOWNS_SQUAD_MOTORIZED_2", 1, 25]
+				["TOWNS_SQUAD_MOTORIZED_1", 1, 60], 
+				["TOWNS_SQUAD_MOTORIZED_2", 1, 60]
 			];
 		};
 		case (_value >= 50 && _value <= 60) : { 
@@ -83,17 +83,17 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				["TOWNS_SQUAD_AA", 1, 75], 
 				["TOWNS_SQUAD_AT", 2], 
 				[
-					["TOWNS_SNIPERS_1", 1, 35], 
-					["TOWNS_SNIPERS_2", 1, 35]
+					["TOWNS_SNIPERS_1", 1, 60], 
+					["TOWNS_SNIPERS_2", 1, 60]
 				],
 				[
-					["TOWNS_SQUAD_MOTORIZED_1", 1, 70],
-					["TOWNS_SQUAD_MOTORIZED_2", 1, 70]
+					["TOWNS_SQUAD_MOTORIZED_1", 1, 80],
+					["TOWNS_SQUAD_MOTORIZED_2", 1, 80]
 				], 
-				["TOWNS_APC_LIGHT", 1, 20], 
+				["TOWNS_APC_LIGHT", 1, 60], 
 				[
-					["TOWNS_MOTORIZED_HMG", 1, 50],
-					["TOWNS_MOTORIZED_MIXED_LIGHT", 1, 25]
+					["TOWNS_MOTORIZED_HMG", 1, 60],
+					["TOWNS_MOTORIZED_MIXED_LIGHT", 1, 60]
 				]
 			];
 		};
@@ -117,7 +117,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				[
 					["TOWNS_AAV"], 
 					["TOWNS_APC_LIGHT"], 
-					["TOWNS_APC_MEDIUM", 1, 40]
+					["TOWNS_APC_MEDIUM", 1, 60]
 				],
 				[
 					["TOWNS_MOTORIZED_HMG", 1, 75],
@@ -125,9 +125,9 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				], 
 				[
 					["TOWNS_TANKS_LIGHT", 1, 70],
-					["TOWNS_TANKS_MEDIUM", 1, 50]
+					["TOWNS_TANKS_MEDIUM", 1, 60]
 				], 
-				["TOWNS_MOTORIZED_MIXED_LIGHT", 1, 40]
+				["TOWNS_MOTORIZED_MIXED_LIGHT", 1, 60]
 			];
 		};
 		case (_value > 80 && _value <= 100) : { 
@@ -138,13 +138,13 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				["TOWNS_SQUAD_AA"], 
 				["TOWNS_SQUAD_AT", 2], 
 				[
-					["TOWNS_SPECIAL", 1, 40], 
+					["TOWNS_SPECIAL", 1, 50], 
 					["TOWNS_SNIPERS_1", 1, 75], 
 					["TOWNS_SNIPERS_2", 1, 80]
 				],
 				[
-					["TOWNS_SQUAD_MOTORIZED_1", 1, 60], 
-					["TOWNS_SQUAD_MOTORIZED_2", 1, 50]
+					["TOWNS_SQUAD_MOTORIZED_1", 2, 60], 
+					["TOWNS_SQUAD_MOTORIZED_2", 2, 60]
 				], 
 				[
 					["TOWNS_AAV"],
@@ -156,8 +156,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 					["TOWNS_APC_HEAVY", 1, 75]
 				], 
 				[
-					["TOWNS_MOTORIZED_HMG", 1, 75],
-					["TOWNS_MOTORIZED_GMG", 1, 75]
+					["TOWNS_MOTORIZED_HMG", 2, 75],
+					["TOWNS_MOTORIZED_GMG", 2, 75]
 				], 
 				[
 					["TOWNS_TANKS_LIGHT", 1, 90],
@@ -166,7 +166,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				], 
 				[
 					["TOWNS_MOTORIZED_MIXED_LIGHT", 1, 60],
-					["TOWNS_MOTORIZED_MIXED_HEAVY", 1, 45]
+					["TOWNS_MOTORIZED_MIXED_HEAVY", 1, 50]
 				]
 			];
 		};
@@ -178,13 +178,13 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				["TOWNS_SQUAD_AA"], 
 				["TOWNS_SQUAD_AT", 2], 
 				[
-					["TOWNS_SPECIAL", 1, 40], 
+					["TOWNS_SPECIAL", 1, 50], 
 					["TOWNS_SNIPERS_1", 1, 75], 
 					["TOWNS_SNIPERS_2", 1, 80]
 				],
 				[
-					["TOWNS_SQUAD_MOTORIZED_1", 1, 60], 
-					["TOWNS_SQUAD_MOTORIZED_2", 1, 50]
+					["TOWNS_SQUAD_MOTORIZED_1", 3, 60], 
+					["TOWNS_SQUAD_MOTORIZED_2", 3, 60]
 				], 
 				[
 					["TOWNS_AAV"],
@@ -197,17 +197,17 @@ if (isNil {_town getVariable "cti_naval"}) then {
 					["TOWNS_APC_HEAVY", 2]
 				], 
 				[
-					["TOWNS_MOTORIZED_HMG"],
-					["TOWNS_MOTORIZED_GMG"]
+					["TOWNS_MOTORIZED_HMG", 2],
+					["TOWNS_MOTORIZED_GMG", 2]
 				], 
 				[
 					["TOWNS_TANKS_LIGHT"],
 					["TOWNS_TANKS_MEDIUM", 2, 90],
-					["TOWNS_TANKS_HEAVY", 1, 80]
+					["TOWNS_TANKS_HEAVY", 2, 80]
 				], 
 				[
-					["TOWNS_MOTORIZED_MIXED_LIGHT", 1, 85],
-					["TOWNS_MOTORIZED_MIXED_HEAVY", 1, 70]
+					["TOWNS_MOTORIZED_MIXED_LIGHT", 2, 85],
+					["TOWNS_MOTORIZED_MIXED_HEAVY", 2, 70]
 				]
 			];
 		};
@@ -216,12 +216,12 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				["TOWNS_SQUAD_LIGHT"], 
 				["TOWNS_SQUAD_LIGHT_2"], 
 				["TOWNS_SQUAD_MEDIUM", 2], 
-				["TOWNS_SQUAD_AA"], 
+				["TOWNS_SQUAD_AA", 2], 
 				["TOWNS_SQUAD_AT", 2], 
 				[
 					["TOWNS_SPECIAL", 1, 75], 
-					["TOWNS_SNIPERS_1"], 
-					["TOWNS_SNIPERS_2"]
+					["TOWNS_SNIPERS_1", 2], 
+					["TOWNS_SNIPERS_2", 2]
 				],
 				[
 					["TOWNS_SQUAD_MOTORIZED_1", 1, 75], 
@@ -234,12 +234,12 @@ if (isNil {_town getVariable "cti_naval"}) then {
 					["TOWNS_SQUAD_APC_2"]
 				],
 				[
-					["TOWNS_APC_MEDIUM"], 
+					["TOWNS_APC_MEDIUM", 2], 
 					["TOWNS_APC_HEAVY", 2]
 				], 
 				[
-					["TOWNS_MOTORIZED_HMG"],
-					["TOWNS_MOTORIZED_GMG"]
+					["TOWNS_MOTORIZED_HMG", 2],
+					["TOWNS_MOTORIZED_GMG", 2]
 				], 
 				[
 					["TOWNS_TANKS_LIGHT"],
@@ -247,8 +247,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 					["TOWNS_TANKS_HEAVY", 3]
 				], 
 				[
-					["TOWNS_MOTORIZED_MIXED_LIGHT"],
-					["TOWNS_MOTORIZED_MIXED_HEAVY", 2]
+					["TOWNS_MOTORIZED_MIXED_LIGHT", 3],
+					["TOWNS_MOTORIZED_MIXED_HEAVY", 3]
 				]
 			];
 		};
@@ -283,14 +283,14 @@ if (isNil {_town getVariable "cti_naval"}) then {
 		case (_value > 100 && _value <= 120) : { 
 			_pool_units = [
 				["TOWNS_NAVAL_SQUAD_3", 2], 
-				["TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 2],
+				["TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 3],
 				["TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS", 1]
 			];
 		};
 		case (_value > 120) : { 
 			_pool_units = [
 				["TOWNS_NAVAL_SQUAD_3", 2], 
-				["TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 3],
+				["TOWNS_NAVAL_SQUAD_ASSAULT_BOATS", 4],
 				["TOWNS_NAVAL_SQUAD_LARGE_ASSAULT_BOATS", 1]
 			];
 		};
