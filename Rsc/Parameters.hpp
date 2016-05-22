@@ -125,23 +125,35 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
+	class CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE {
+		title = "TOWNS: Resistance Occupation Level";
+		values[] = {6,8,10,12,14};
+		texts[] = {"Noob","Low","Medium","High","Insane"};
+		default = 10;
+	};
+	class CTI_TOWNS_OCCUPATION_LEVEL {
+		title = "TOWNS: Side Occupation Level";
+		values[] = {6,8,10,12,14};
+		texts[] = {"Noob","Low","Medium","High","Insane"};
+		default = 8;
+	};
 	class CTI_TOWNS_OCCUPATION_RESISTANCE {
 		title = "TOWNS: Resistance Occupation Forces";
 		values[] = {0,1,2};
 		texts[] = {"Vanilla","CUP","Mixed"};
-		default = 0;
+		default = 2;
 	};
 	class CTI_TOWNS_OCCUPATION_WEST {
 		title = "TOWNS: Blufor Occupation Forces";
 		values[] = {0,1,2};
 		texts[] = {"Vanilla","CUP","Mixed"};
-		default = 0;
+		default = 2;
 	};
 	class CTI_TOWNS_OCCUPATION_EAST {
 		title = "TOWNS: Opfor Occupation Forces";
 		values[] = {0,1,2};
 		texts[] = {"Vanilla","CUP","Mixed"};
-		default = 0;
+		default = 2;
 	};
 	class CTI_TOWNS_PEACE {
 		title = "TOWNS: Peace";
