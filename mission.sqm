@@ -42,6 +42,7 @@ addons[]=
 	"ace_cargo",
 	"ace_interaction",
 	"ace_medical",
+	"ace_medical_menu",
 	"CUP_Creatures_People_Military_DummyInfantrySet",
 	"CUP_Creatures_Military_USArmy",
 	"CUP_Creatures_Military_SLA",
@@ -180,7 +181,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=158;
+		items=160;
 		class Item0
 		{
 			dataType="Marker";
@@ -6548,6 +6549,91 @@ class Mission
 					};
 				};
 				nAttributes=3;
+			};
+		};
+		class Item158
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={4710.0552,-51.260441,8007.5469};
+			};
+			id=166;
+			type="ACE_moduleBasicMedicalSettings";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ACE_moduleBasicMedicalSettings_medicSetting_basicEpi";
+					expression="_this setVariable ['medicSetting_basicEpi',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ACE_moduleBasicMedicalSettings_useLocation_basicEpi";
+					expression="_this setVariable ['useLocation_basicEpi',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item159
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={4772.0532,-54.633801,8010.769};
+			};
+			id=167;
+			type="ACE_moduleMedicalMenuSettings";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ACE_moduleMedicalMenuSettings_allow";
+					expression="_this setVariable ['allow',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				nAttributes=1;
 			};
 		};
 	};
