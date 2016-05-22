@@ -117,7 +117,7 @@ class Params {
 		title = "RESPAWN: Delay";
 		values[] = {15,20,25,30,35,40,45,50,55,60};
 		texts[] = {"15 Seconds","20 Seconds","25 Seconds","30 Seconds","35 Seconds","40 Seconds","45 Seconds","50 Seconds","55 Seconds","60 Seconds"};
-		default = 30;
+		default = 15;
 	};
 	class CTI_TOWNS_OCCUPATION {
 		title = "TOWNS: Occupation";
