@@ -89,9 +89,11 @@ if (isNil {_town getVariable "cti_naval"}) then {
 		};
 		case (_value > 60 && _value <= 80) : { 
 			_pool_units = [
-				["TOWNS_SQUAD_RIFLEMEN3", 1, 99], 
-				["TOWNS_SQUAD_SNIPER", 1, 99], 
-				["TOWNS_SQUAD_AT1", 1, 99], 				
+				[
+					["TOWNS_SQUAD_RIFLEMEN3", 1, 50], 
+					["TOWNS_SQUAD_SNIPER", 1, 20], 
+					["TOWNS_SQUAD_AT1", 1, 30] 				
+				],				
 				[
 					["TOWNS_SQUAD_LIGHT2_MIXED", 1, 20],
 					["TOWNS_SQUAD_LIGHT3_MIXED", 1, 50],
@@ -105,10 +107,12 @@ if (isNil {_town getVariable "cti_naval"}) then {
 		};
 		case (_value > 80 && _value <= 100) : { 
 			_pool_units = [
-				["TOWNS_SQUAD_RIFLEMEN3", 1, 99],
-				["TOWNS_SQUAD_SNIPER", 1, 99], 
-				["TOWNS_SQUAD_AT2", 1, 99], 
-				["TOWNS_SQUAD_AA", 1, 99],
+				[
+					["TOWNS_SQUAD_RIFLEMEN3", 1, 50],
+					["TOWNS_SQUAD_SNIPER", 1, 10], 
+					["TOWNS_SQUAD_AT2", 1, 20], 
+					["TOWNS_SQUAD_AA", 1, 20]
+				],
 				[
 					["TOWNS_SQUAD_LIGHT3_MIXED", 1, 20],
 					["TOWNS_SQUAD_LIGHT4_MIXED", 1, 50],
@@ -144,10 +148,12 @@ if (isNil {_town getVariable "cti_naval"}) then {
 		};
 		case (_value > 100 && _value <= 120) : { 
 			_pool_units = [
-				["TOWNS_SQUAD_RIFLEMEN3", 1, 99],
-				["TOWNS_SQUAD_SNIPER", 1, 99], 
-				["TOWNS_SQUAD_AT2", 1, 99], 
-				["TOWNS_SQUAD_AA", 1, 99],
+				[
+					["TOWNS_SQUAD_RIFLEMEN3", 1, 50],
+					["TOWNS_SQUAD_SNIPER", 1, 10], 
+					["TOWNS_SQUAD_AT2", 1, 20], 
+					["TOWNS_SQUAD_AA", 1, 20]
+				],
 				[
 					["TOWNS_SQUAD_LIGHT4_MIXED", 1, 20],
 					["TOWNS_SQUAD_LIGHT5_MIXED", 1, 50],
@@ -185,10 +191,12 @@ if (isNil {_town getVariable "cti_naval"}) then {
 		};
 		case (_value > 120) : { 
 			_pool_units = [
-				["TOWNS_SQUAD_RIFLEMEN3", 1, 99],
-				["TOWNS_SQUAD_SNIPER", 1, 99], 
-				["TOWNS_SQUAD_AT2", 1, 99], 
-				["TOWNS_SQUAD_AA", 1, 99],
+				[
+					["TOWNS_SQUAD_RIFLEMEN3", 1, 50],
+					["TOWNS_SQUAD_SNIPER", 1, 10], 
+					["TOWNS_SQUAD_AT2", 1, 20], 
+					["TOWNS_SQUAD_AA", 1, 20]
+				],
 				[
 					["TOWNS_SQUAD_LIGHT5_MIXED", 1, 20],
 					["TOWNS_SQUAD_LIGHT6_MIXED", 1, 30],
