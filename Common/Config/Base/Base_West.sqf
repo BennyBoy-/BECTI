@@ -233,7 +233,7 @@ _classes = _classes 		+ ["Land_TentHangar_V1_F"];
 _prices = _prices 			+ [500];
 _placements = _placements 	+ [[0, 20]];
 _categories = _categories 	+ ["Structures_Military"];
-/*
+
 _headers = _headers 		+ ["Mil Shed"];
 _classes = _classes 		+ ["Land_sfp_mil_shed"];
 _prices = _prices 			+ [1000];
@@ -251,7 +251,7 @@ _classes = _classes 		+ ["Land_sfp_torebodahangar_alt2"];
 _prices = _prices 			+ [1500];
 _placements = _placements 	+ [[0, 20]];
 _categories = _categories 	+ ["Structures_Military"];
-*/
+
 _headers = _headers 		+ ["Dome (Small)"];
 _classes = _classes 		+ ["Land_Dome_Small_F"];
 _prices = _prices 			+ [1500];
@@ -358,7 +358,7 @@ _prices = _prices 			+ [10000];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
-/*
+
 _headers = _headers 		+ ["M2 Machine Gun"];
 _classes = _classes 		+ ["CUP_B_M2StaticMG_USMC"];
 _prices = _prices 			+ [150];
@@ -400,7 +400,7 @@ _classes = _classes 		+ ["C_at_phalanx_missile_35AI"];
 _prices = _prices 			+ [100000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
-*/
+
 _headers = _headers 		+ [["Heli Pad", [["DMG_Reduce", 1]]]];
 _classes = _classes 		+ ["Land_HelipadSquare_F"];
 _prices = _prices 			+ [10];
