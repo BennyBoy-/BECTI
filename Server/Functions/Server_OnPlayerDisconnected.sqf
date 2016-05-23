@@ -76,6 +76,7 @@ if !(isNull assignedVehicle _leader) then { unassignVehicle _leader; [_leader] o
 if (vehicle _leader == (_side call CTI_CO_FNC_GetSideHQ)) then { _leader action ["EJECT", vehicle _leader] }; //--- Is it the HQ?
 
 _get set [1, _funds];
+missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], _get];
 
 if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1) then { //--- Place the leader back at base
 	_leader enableAI "Move";
