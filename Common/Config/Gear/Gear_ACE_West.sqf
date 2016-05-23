@@ -42,6 +42,19 @@ _i = _i + ["ACE_SpareBarrel"];
 _u = _u + [0];																									
 _p = _p + [100];
 
+//Flashlights
+_i = _i + ["ACE_Flashlight_MX991"];																									
+_u = _u + [0];																									
+_p = _p + [20];
+
+_i = _i + ["ACE_Flashlight_KSF1"];																									
+_u = _u + [0];																									
+_p = _p + [20];
+
+_i = _i + ["ACE_Flashlight_XL50"];																									
+_u = _u + [0];																									
+_p = _p + [20];
+
 //Explosives																									
 _i = _i + ["ACE_M26_Clacker"];																									
 _u = _u + [2];																									
@@ -170,6 +183,10 @@ _u = _u + [0];
 _p = _p + [100];
 
 _i = _i + ["ACE_epinephrine"];																									
+_u = _u + [0];																									
+_p = _p + [100];
+
+_i = _i + ["ACE_morphine"];																									
 _u = _u + [0];																									
 _p = _p + [100];
 
