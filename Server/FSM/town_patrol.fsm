@@ -8,11 +8,11 @@ item3[] = {"Path_Renewal",4,218,275.000000,-575.000000,375.000000,-525.000000,2.
 item4[] = {"Alive",4,218,275.000000,-375.000000,375.000000,-325.000000,1.000000,"Alive"};
 item5[] = {"Done",8,218,425.000000,-475.000000,525.000000,-425.000000,0.000000,"Done"};
 item6[] = {"End",1,250,575.000000,-475.000000,675.000000,-425.000000,0.000000,"End"};
-item7[] = {"Renewal",2,250,-150.000000,-575.000000,-50.000000,-525.000000,0.000000,"Renewal"};
+item7[] = {"Renewal",2,4346,-150.000000,-575.000000,-50.000000,-525.000000,0.000000,"Renewal"};
 item8[] = {"Determine_Action",2,250,275.000000,-275.000000,375.000000,-225.000000,0.000000,"Determine" \n "Action"};
 item9[] = {"Patrol",4,218,125.000000,-275.000000,225.000000,-225.000000,1.000000,"Patrol"};
 item10[] = {"Town_Defense",4,218,125.000000,-200.000000,225.000000,-150.000000,0.000000,"Town" \n "Defense"};
-item11[] = {"Town_Defense",2,4346,-25.000000,-200.000000,75.000000,-150.000000,0.000000,"Town" \n "Defense"};
+item11[] = {"Town_Defense",2,250,-25.000000,-200.000000,75.000000,-150.000000,0.000000,"Town" \n "Defense"};
 item12[] = {"Patrol",2,250,-25.000000,-275.000000,75.000000,-225.000000,0.000000,"Patrol"};
 item13[] = {"",7,210,-104.000000,-254.000000,-96.000008,-246.000000,0.000000,""};
 item14[] = {"",7,210,-104.000000,-179.000000,-96.000000,-171.000000,0.000000,""};
@@ -33,8 +33,8 @@ link13[] = {11,14};
 link14[] = {12,13};
 link15[] = {13,1};
 link16[] = {14,13};
-globals[] = {25.000000,1,0,0,0,640,480,1,53,6316128,1,-239.810669,615.264038,118.234627,-670.124878,769,709,1};
-window[] = {0,-1,-1,-1,-1,947,1744,3204,93,1,787};
+globals[] = {25.000000,1,0,0,0,640,480,1,53,6316128,1,-287.623657,567.451172,111.563057,-676.796509,769,709,1};
+window[] = {0,-1,-1,-1,-1,1029,175,1635,175,1,787};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -149,19 +149,33 @@ class FSM
        "" \n
        "//--- A patrol hop is composed as follow: [location, object, subroutine]" \n
        "for '_i' from 1 to CTI_TOWNS_PATROL_HOPS do {" \n
+       "	_tries = if (isNil {_town getVariable ""cti_naval""}) then {250} else {0};" \n
        "	if (count _camps > 0) then {" \n
-       "		_patrol_area pushBack [[_camps select 0, 0, CTI_TOWNS_CAMPS_CAPTURE_RANGE] call CTI_CO_FNC_GetRandomPosition, _camps select 0, ""camp""];" \n
+       "		_position = [ASLToAGL getPosASL (_camps select 0), 2, CTI_TOWNS_CAMPS_CAPTURE_RANGE/2, _tries] call CTI_CO_FNC_GetRandomPosition;" \n
+       "		if (isNil {_town getVariable ""cti_naval""}) then {" \n
+       "			_position = [_position, CTI_TOWNS_CAMPS_CAPTURE_RANGE/2, ""ground"", 8, 3, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;" \n
+       "		} else {" \n
+       "			_position = [_position, CTI_TOWNS_CAMPS_CAPTURE_RANGE/1.25, ""sea"", 8, 3, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;" \n
+       "		};" \n
+       "		" \n
+       "		_patrol_area pushBack [_position, _camps select 0, ""camp""];" \n
        "		_camps deleteAt 0;" \n
        "	} else {" \n
-       "		_patrol_area pushBack [[_town, 25, CTI_TOWNS_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition, _town, ""town""];" \n
+       "		_position = [ASLToAGL getPosASL _town, 8, CTI_TOWNS_PATROL_RANGE/2, _tries] call CTI_CO_FNC_GetRandomPosition;" \n
+       "		if (isNil {_town getVariable ""cti_naval""}) then {" \n
+       "			_position = [_position, CTI_TOWNS_PATROL_RANGE/2, ""ground"", 8, 3, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;" \n
+       "		} else {" \n
+       "			_position = [_position, CTI_TOWNS_PATROL_RANGE/1.25, ""sea"", 8, 3, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;" \n
+       "		};" \n
+       "		" \n
+       "		_patrol_area pushBack [_position, _town, ""town""];" \n
        "	};" \n
        "};" \n
        "" \n
        "if (random 100 > 50) then {_team setFormation ""DIAMOND""} else {_team setFormation ""STAG COLUMN""};" \n
        "if (random 100 > 30) then {_team setCombatMode ""YELLOW""} else {_team setCombatMode ""RED""};" \n
        "if (random 100 > 20) then {_team setBehaviour ""AWARE""} else {_team setBehaviour ""COMBAT""};" \n
-       "//if (random 100 > 50) then {_team setSpeedMode ""NORMAL""} else {_team setSpeedMode ""LIMITED""};" \n
-       ""/*%FSM</STATEINIT""">*/;
+       "//if (random 100 > 50) then {_team setSpeedMode ""NORMAL""} else {_team setSpeedMode ""LIMITED""};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -224,7 +238,7 @@ class FSM
       name = "Town_Defense";
       init = /*%FSM<STATEINIT""">*/"if (unitReady leader _team && time - _move_defend_last > 65) then {" \n
        "	_move_defend_last = time; " \n
-       "	_team move ([_town, 7, _capture_range] call CTI_CO_FNC_GetRandomPosition);" \n
+       "	_team move ([_town, 5, _capture_range, if (isNil {_town getVariable ""cti_naval""}) then {75} else {0}] call CTI_CO_FNC_GetRandomPosition);" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
