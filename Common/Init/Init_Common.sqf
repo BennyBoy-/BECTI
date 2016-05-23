@@ -37,6 +37,7 @@ CTI_CO_FNC_GetItemBaseConfig = compileFinal preprocessFileLineNumbers "Common\Fu
 CTI_CO_FNC_GetLiveUnits = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetLiveUnits.sqf";
 CTI_CO_FNC_GetNearestSpecialVehicles = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetNearestSpecialVehicles.sqf";
 CTI_CO_FNC_GetPositionFrom = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetPositionFrom.sqf";
+CTI_CO_FNC_GetRandomBestPlaces = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetRandomBestPlaces.sqf";
 CTI_CO_FNC_GetRandomPosition = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetRandomPosition.sqf";
 CTI_CO_FNC_GetRespawnCamps = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetRespawnCamps.sqf";
 CTI_CO_FNC_GetSideColoration = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetSideColoration.sqf";
