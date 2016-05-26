@@ -116,17 +116,20 @@ with missionNamespace do {
 		} forEach _groups; //--- Delete the group client-sided.
 	};*/
 	CTI_PVF_Client_OnTownDelegationReceived = {
-		private ["_groups", "_hc_tvar", "_positions", "_side", "_teams", "_town", "_town_vehicles"];
+		private ["_groups", "_hc_tvar", "_positions", "_side", "_sleep_thread", "_teams", "_town", "_town_vehicles"];
 		
 		_town = _this select 0;
 		_side = _this select 1;
 		_teams = _this select 2;
 		_groups = _this select 3;
 		_positions = _this select 4;
+		_sleep_thread = _this select 5;//--- Debug: add a delay while HC are fucked
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
 			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnTownDelegationReceived", format["A Delegation request was received from the server for [%1] teams in town [%2] on [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
+		
+		sleep _sleep_thread;
 		
 		[_town, _side, _teams, _groups, _positions] spawn CTI_HC_CreateTownUnits;
 		
@@ -203,7 +206,7 @@ CTI_HC_CreateTownUnits = {
 		//--- Create the given team
 		[_team, _position, _side, _group, true, false, true, _town] Spawn CTI_HC_CreateTeam;
 		
-		sleep 10;
+		sleep 3; // delay while HC are fubar
 	};
 };
 

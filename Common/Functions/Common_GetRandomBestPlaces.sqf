@@ -14,7 +14,7 @@
     3	[Number]: The precision (grid size)
     4	[Number]: The source count (count of returned positions)
     5	[Number]: The floor value which match a valid result of our expression
-    6	[Boolean]: True if a single result should be returned, false for all results
+    6	[Boolean]: True if a single position should be returned, false for all results
 	
   # RETURNED VALUE #
 	[Array]: One or multiple positions depending on the Boolean parameter
@@ -24,6 +24,8 @@
 	
   # NOTE
 	- A small precision will be more accurate but it will need more CPU resources, use the 0-100 range as a reference
+	- The returned value will be a single position if the _return_one param is set to true
+	- The returned value will be an array of positions if the _return_one param is set to false
 	
   # EXAMPLE #
     _positions = [getPos player, 100, "sea", 10, 6, 1, false] call CTI_CO_FNC_GetRandomPosition
@@ -60,7 +62,7 @@ _places = selectBestPlaces [_position, _radius, _formula, _precision, _source_co
 _positions = [];
 {if ((_x select 1) >= _valid_floor) then {_positions pushBack (_x select 0)}} forEach _places;
 
-if (count _positions < 1) then {_positions = _position};
+if (count _positions < 1) then {_positions = [_position]};
 if (_return_one) exitWith {_positions select floor(random count _positions)};
 
 _positions
