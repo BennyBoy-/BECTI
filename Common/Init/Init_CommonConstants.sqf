@@ -512,7 +512,8 @@ CTI_PLAYER_DEFAULT_ALIAS = "Soldier";
 
 CTI_RESPAWN_AI_RANGE = 600;
 CTI_RESPAWN_CAMPS_CONDITION_LIMITED = 10; //--- With this condition, a unit may only spawn x times on a camp during a capture cycle
-CTI_RESPAWN_CAMPS_CONDITION_PRICED = 500; //--- With this condition, a price is needed to respawn on a camp
+CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_ENEMY = 5; //--- Coefficient applied upon camp fee on enemy held town respawn
+CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_FRIENDLY = 5; //--- Coefficient applied upon camp fee on friendly held town respawn
 CTI_RESPAWN_CAMPS_RANGE_CLASSIC = 550; //--- Determine the range needed to respawn at a town's camps (from the town center)
 CTI_RESPAWN_CAMPS_RANGE_ENHANCED = 350; //--- Determine the range needed to respawn at a town's camps (from a camp)
 CTI_RESPAWN_CAMPS_SAFE = 1; //--- Disable a camp's respawn if enemies are around it
