@@ -269,12 +269,6 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
-	class CTI_ACE_ADDON {
-		title = "ADDON: ACE Support";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 1;
-	};
 	class CTI_OFPS_ADDON {
 		title = "ADDON: OFPS MOD Pack Support";
 		values[] = {0,1};
