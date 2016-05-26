@@ -35,6 +35,7 @@
 */
 
 params ["_position", ["_radius", 200], ["_layout", "meadow"], ["_precision", 8], ["_source_count", 3], ["_valid_floor", 1], ["_return_one", true]];
+private ["_formula", "_places", "_positions"];
 
 _formula = switch (_layout) do {
 	/*
