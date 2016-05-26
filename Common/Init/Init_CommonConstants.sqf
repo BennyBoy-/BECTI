@@ -12,7 +12,7 @@ CTI_BARRACKS = "Barracks";
 CTI_LIGHT = "Light";
 CTI_CONTROLCENTER = "ControlCenter";
 CTI_HEAVY = "Heavy";
-CTI_AIR = "Air";
+CTI_AIR = "Air";a
 CTI_REPAIR = "Repair";
 CTI_AMMO = "Ammo";
 CTI_NAVAL = "Naval";
@@ -620,7 +620,6 @@ with missionNamespace do {
 	if (isNil 'CTI_WEATHER_ALLOWRAIN') then {CTI_WEATHER_ALLOWRAIN = 0};
 	
 	if (isNil 'CTI_CUP_ADDON') then {CTI_CUP_ADDON = 1};
-	if (isNil 'CTI_ACE_ADDON') then {CTI_ACE_ADDON = 1};
 	if (isNil 'CTI_OFPS_ADDON') then {CTI_OFPS_ADDON = 1};
 	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 0};
 };
