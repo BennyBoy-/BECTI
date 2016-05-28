@@ -99,7 +99,7 @@ class Params {
 		title = "RESPAWN: Camps Condition";
 		values[] = {0,1,2};
 		texts[] = {"No limits","Priced","Limited"};
-		default = 2;
+		default = 1;
 	};
 	class CTI_RESPAWN_FOB_RANGE {
 		title = "RESPAWN: FOB Range";

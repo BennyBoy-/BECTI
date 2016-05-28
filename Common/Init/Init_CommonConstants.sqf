@@ -321,7 +321,7 @@ CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
 
 //--- Towns: Economy
-CTI_TOWNS_INCOME_RATIO = 10; //--- A value above 1 will increase the resources ($) generation ((Current SV) * ratio)
+CTI_TOWNS_INCOME_RATIO = 6; //--- A value above 1 will increase the resources ($) generation ((Current SV) * ratio)
 CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = 0.25; //--- Determine how much value an unoccupied town bring to the side.
 
 //--- Towns: Markers
@@ -498,8 +498,8 @@ with missionNamespace do {
 CTI_ARTILLERY_FILTER = 1; //--- Toggle artillery magazines like mines and AT mines (0: Disabled, 1: Enabled)
 CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
 
-CTI_BOUNTY_COEF = 2; //--- Bounty coefficient multiplicator based on the unit original cost
-CTI_BOUNTY_COEF_PVP = 2; //--- Bounty coefficient multiplicator based on the killed unit score
+CTI_BOUNTY_COEF = 1.2; //--- Bounty coefficient multiplicator based on the unit original cost
+CTI_BOUNTY_COEF_PVP = 1; //--- Bounty coefficient multiplicator based on the killed unit score
 
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 30; //--- Keep values of 10
 
