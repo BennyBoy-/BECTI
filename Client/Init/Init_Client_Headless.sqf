@@ -206,7 +206,7 @@ CTI_HC_CreateTownUnits = {
 		//--- Create the given team
 		[_team, _position, _side, _group, true, false, true, _town] Spawn CTI_HC_CreateTeam;
 		
-		sleep 3; // delay while HC are fubar
+		sleep 5; // delay while HC are fubar
 	};
 };
 
@@ -245,7 +245,7 @@ CTI_HC_CreateTeam = {
 			["SERVER", "Request_HandleAction", ["empty", _vehicle]] call CTI_CO_FNC_NetSend;
 		};
 		
-		sleep 1;
+		sleep 5;
 	} forEach _units;
 
 	{_group addVehicle _x} forEach _created_vehicles;
@@ -296,14 +296,14 @@ CTI_HC_ManVehicle = {
 	_net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1 && _sideID in [CTI_WEST_ID, CTI_EAST_ID]) then { true } else { false };
 
 	if (_vehicle emptyPositions "driver" > 0) then {
-		sleep 1;
+		sleep 5;
 		_unit = [_crew, _group, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 		_unit moveInDriver _vehicle;
 		_units = _units + [_unit];
 	};
 
 	{
-		sleep 1;
+		sleep 5;
 		_unit = [_crew, _group, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 		_unit moveInTurret [_vehicle, _x];
 		_units = _units + [_unit];
