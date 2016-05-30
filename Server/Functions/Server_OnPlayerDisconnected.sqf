@@ -71,16 +71,18 @@ _commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;
 _is_commander = if (_commander == _team) then {true} else {false};
 _leader = leader _team;
 
+_hq = (_side) call CTI_CO_FNC_GetSideHQ;
+
 //--- We force the unit out of it's vehicle.
 if !(isNull assignedVehicle _leader) then { unassignVehicle _leader; [_leader] orderGetIn false; [_leader] allowGetIn false };
-if (vehicle _leader == (_side call CTI_CO_FNC_GetSideHQ)) then { _leader action ["EJECT", vehicle _leader] }; //--- Is it the HQ?
+if (vehicle _leader == _hq) then { _leader action ["EJECT", vehicle _leader] }; //--- Is it the HQ?
 
 _get set [1, _funds];
 missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], _get];
 
+
 if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1) then { //--- Place the leader back at base
 	_leader enableAI "Move";
-	_hq = (_side) call CTI_CO_FNC_GetSideHQ;
 	_structures = (_side) call CTI_CO_FNC_GetSideStructures;
 	
 	_spawn_at = _hq;
@@ -99,6 +101,10 @@ if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1) then { //--- Pla
 	_leader enableSimulationGlobal false;
 	_leader hideObjectGlobal true;
 	_leader disableAI "FSM";
+};
+
+if (CTI_AI_TEAMS_UNITS_DELETE_ON_DISCONNECT > 0) then {
+	{if (!isPlayer _x && !(_x in playableUnits)) then {deleteVehicle _x}} forEach (units _team + ([_team, false] call CTI_CO_FNC_GetTeamVehicles) - [_hq]);
 };
 
 _team setVariable ["cti_uid", nil]; //--- Release the uid.

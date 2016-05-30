@@ -95,6 +95,7 @@ CTI_AI_TEAMS_OBSERVATION_MARKER_LIFESPAN = 120; //--- Time a reporting marker ma
 
 //--- AI Teams: Units
 CTI_AI_TEAMS_UNITS_MIN = 4; //--- Amount of units an AI leader need to have to be able to perform it's duty (It will resupply @base if it's lower)
+CTI_AI_TEAMS_UNITS_DELETE_ON_DISCONNECT = 1; //--- Remove AI units on player d/c
 
 //--- AI Teams: Parameters
 with missionNamespace do {
