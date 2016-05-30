@@ -348,6 +348,10 @@ _pool = [];
 				_probability = if (count _x > 2) then {_x select 2} else {100};
 			
 				for '_i' from 1 to _force do {_pool pushBack [_x select 0, _probability]};
+			} else {
+				if (CTI_Log_Level >= CTI_Log_Error) then { 
+					["ERROR", "FILE: FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Attempting to use an undefined Occupation Team Template [%1] for town [%2] on side [%3]", format["%1_%2", _side, _x select 0], _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+				};
 			};
 		};
 		//--- More than one element is present, flatten the content and append the array to the current pool
@@ -359,6 +363,10 @@ _pool = [];
 					_probability = if (count _x > 2) then {_x select 2} else {100};
 					
 					for '_i' from 1 to _force do {_pool_nest pushBack [_x select 0, _probability]};
+				} else {
+					if (CTI_Log_Level >= CTI_Log_Error) then { 
+						["ERROR", "FILE: FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Attempting to use an undefined Occupation Team Template [%1] for town [%2] on side [%3]", format["%1_%2", _side, _x select 0], _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+					};
 				};
 			} forEach _x;
 			
