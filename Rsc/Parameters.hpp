@@ -99,7 +99,7 @@ class Params {
 		title = "RESPAWN: Camps Condition";
 		values[] = {0,1,2};
 		texts[] = {"No limits","Priced","Limited"};
-		default = 2;
+		default = 1;
 	};
 	class CTI_RESPAWN_FOB_RANGE {
 		title = "RESPAWN: FOB Range";
@@ -265,12 +265,6 @@ class Params {
 	};
 	class CTI_CUP_ADDON {
 		title = "ADDON: CUP Support, Units, Vehicles, Weapons";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 1;
-	};
-	class CTI_ACE_ADDON {
-		title = "ADDON: ACE Support";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
