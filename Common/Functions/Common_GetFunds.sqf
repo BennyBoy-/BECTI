@@ -35,6 +35,7 @@ _funds = 0;
 if (_group call CTI_CO_FNC_IsGroupCommander) then {
 	_funds = (_side) call CTI_CO_FNC_GetFundsCommander;
 } else {
+	diag_log format ["DEBUG CTI_CO_FNC_GetFunds -> group [%1], group side [%2], funds [%3]", _group, _side, _funds];
 	if !(isNil {_group getVariable "cti_funds"}) then {_funds = _group getVariable "cti_funds"};
 };
 
