@@ -17,6 +17,8 @@ CTI_REPAIR = "Repair";
 CTI_AMMO = "Ammo";
 CTI_NAVAL = "Naval";
 CTI_RADAR = "Radar";
+CTI_HQ_DEPLOY = "HQDeployed";
+CTI_HQ_MOBILIZE = "HQMobilized";
 
 CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL,CTI_RADAR];
 
@@ -390,7 +392,6 @@ with missionNamespace do {
 
 //--- Base: Area
 CTI_BASE_AREA_RANGE = 500;
-CTI_BASE_CONSTRUCTION_TIME = if (CTI_DEV_MODE > 0) then { 0 } else {180}; //--- Length of time a structure takes to build, in seconds.
 
 //--- Base: Construction
 CTI_BASE_CONSTRUCTION_BOUNTY = 0.50; //--- The bounty awarded upon a hostile structure destruction

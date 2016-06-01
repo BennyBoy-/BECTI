@@ -61,5 +61,5 @@ _logic setVariable ["cti_hq", _hq, true];
 _commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;
 if (isPlayer leader _commander) then {
 	_hq setOwner (owner leader _commander);
-	[["CLIENT", _side], "Client_AddHQActions", _hq] call CTI_CO_FNC_NetSend;
+	[["CLIENT", leader _commander], "Client_AddHQActions", _hq] call CTI_CO_FNC_NetSend;
 };
