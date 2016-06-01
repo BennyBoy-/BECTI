@@ -53,7 +53,7 @@ link25[] = {20,18};
 link26[] = {21,8};
 link27[] = {22,1};
 globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-488.427002,642.798950,268.039368,-608.685242,918,881,1};
-window[] = {2,-1,-1,-1,-1,931,150,1405,150,3,936};
+window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,936};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -283,7 +283,9 @@ class FSM
        "	};" \n
        "} forEach _town_groups;*/" \n
        "//--- Teams Units." \n
-       "_town_groups spawn {" \n
+       "[_town, _town_groups] spawn {" \n
+       "	_town = _this select 0;" \n
+       "	_town_groups = _this select 1;" \n
        "	{" \n
        "		[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] units will be removed"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
        "		if !(isNil '_x') then {" \n
@@ -304,7 +306,7 @@ class FSM
        "				[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] was deleted?"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
        "			};" \n
        "		};" \n
-       "	} forEach _this;" \n
+       "	} forEach _town_groups;" \n
        "};" \n
        "" \n
        "//--- Teams vehicles." \n
