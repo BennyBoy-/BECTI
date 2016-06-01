@@ -32,10 +32,10 @@ switch (_action) do {
 					_upgrade_current = _upgrades select _selected;
 					_upgrade_level = (missionNamespace getVariable Format["CTI_%1_UPGRADES_LEVELS", CTI_P_SideJoined]) select _selected;
 					_upgrade_price = ((missionNamespace getVariable Format["CTI_%1_UPGRADES_COSTS", CTI_P_SideJoined]) select _selected) select _upgrade_current;
-					_supply = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply;
+					_funds = call CTI_CL_FNC_GetPlayerFunds;
 					
 					if (_upgrade_current < _upgrade_level) then {
-						if (_supply >= _upgrade_price) then {
+						if (_funds >= _upgrade_price) then {
 							_links = ((missionNamespace getVariable Format["CTI_%1_UPGRADES_LINKS", CTI_P_SideJoined]) select _selected) select _upgrade_current;
 							_link_needed = false;
 							if (count _links > 0) then {
@@ -53,7 +53,7 @@ switch (_action) do {
 							};
 							
 							if !(_link_needed) then {
-								[CTI_P_SideJoined, -(_upgrade_price)] call CTI_CO_FNC_ChangeSideSupply;
+								-(_upgrade_price) call CTI_CL_FNC_ChangePlayerFunds;
 								
 								["SERVER", "Request_Upgrade", [CTI_P_SideJoined, _selected, _upgrade_current]] call CTI_CO_FNC_NetSend;
 								CTI_P_SideLogic setVariable ["cti_upgrade", _selected,true];
@@ -64,7 +64,7 @@ switch (_action) do {
 								hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Not all dependencies are met to start this upgrade.";
 							};
 						} else {
-							hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough supply to perform this operation.";
+							hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to perform this operation.";
 						};
 					} else {
 						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The maximum upgrade level has been reached for this upgrade.";
