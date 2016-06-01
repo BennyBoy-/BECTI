@@ -47,10 +47,23 @@ switch (_action) do {
 			_var = missionNamespace getVariable _selected;
 			_supply = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply;
 			
+			//--- Check if we're dealing with HQ mobilize or a normal structure
+			
 			if (_supply >= (_var select 2)) then { //--- Check if we have enough supply to go in the construction mode.
-				CTI_VAR_StructurePlaced = false;
-				[_selected, CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ, CTI_BASE_CONSTRUCTION_RANGE] spawn CTI_CL_FNC_PlacingBuilding;
-				closeDialog 0;
+				
+				
+				if (((_var select 0) select 0) != CTI_HQ_MOBILIZE) then {
+					CTI_VAR_StructurePlaced = false;
+					[_selected, CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ, CTI_BASE_CONSTRUCTION_RANGE] spawn CTI_CL_FNC_PlacingBuilding;
+					closeDialog 0;
+				} else {
+					//--- HQ Mobilize
+					if ((CTI_P_SideJoined) call CTI_CO_FNC_IsHQDeployed) then {
+						_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
+						["SERVER", "Request_HQToggle", [_selected, CTI_P_SideJoined, position _hq, direction _hq]] call CTI_CO_FNC_NetSend;
+						closeDialog 0;
+					};
+				};
 			} else {
 				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough supply to place that structure.";
 			};
