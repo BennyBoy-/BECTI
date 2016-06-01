@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-554.049622,262.642029,242.139771,-456.939575,854,881,1};
-window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,872};
+window[] = {2,-1,-1,-1,-1,881,100,1355,100,3,872};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -107,7 +107,7 @@ class FSM
        "CTI_Base_GearInRange_FOB = _in_range;" \n
        "" \n
        "if (CTI_GEAR_RESPAWN_WITH_LAST > 0) then {" \n
-       "	if (alive player) then {CTI_P_CurrentGear = (player) call CTI_UI_Gear_GetUnitEquipment};" \n
+       "	if (alive player && !CTI_P_Respawning) then {CTI_P_CurrentGear = (player) call CTI_UI_Gear_GetUnitEquipment};" \n
        "};" \n
        "" \n
        "/*//debug" \n

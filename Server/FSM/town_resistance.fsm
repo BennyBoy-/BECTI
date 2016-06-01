@@ -9,13 +9,13 @@ item4[] = {"Held_by_Resistan",4,218,-100.000000,-100.000000,0.000000,-50.000000,
 item5[] = {"Gameover",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
 item6[] = {"Enemy_Near_",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Enemy Near?"};
 item7[] = {"Not_held_by_Resi",4,218,50.000000,-200.000000,150.000000,-150.000000,1.000000,"Not held by" \n "Resistance"};
-item8[] = {"Resistance_Timeout",2,4346,175.000000,100.000000,275.000000,150.000000,0.000000,"Resistance" \n "Timeout?"};
+item8[] = {"Resistance_Timeout",2,250,175.000000,100.000000,275.000000,150.000000,0.000000,"Resistance" \n "Timeout?"};
 item9[] = {"Active",8,218,175.000000,0.000000,275.000000,50.000000,0.000000,"Active"};
 item10[] = {"Inactive",4,218,175.000000,-200.000000,275.000000,-150.000000,1.000000,"Inactive"};
 item11[] = {"Still_active",8,218,300.000000,0.000000,400.000000,50.000000,0.000000,"Still active"};
 item12[] = {"Timed_out",4,218,375.000000,100.000000,475.000000,150.000000,1.000000,"Timed out"};
 item13[] = {"Skip",2,250,300.000000,-200.000000,400.000000,-150.000000,0.000000,"Skip"};
-item14[] = {"Cleanup",2,250,375.000000,-400.000000,475.000000,-350.000000,0.000000,"Cleanup"};
+item14[] = {"Cleanup",2,4346,375.000000,-400.000000,475.000000,-350.000000,0.000000,"Cleanup"};
 item15[] = {"Resistance_Active",2,250,50.000000,-100.000000,150.000000,-50.000000,0.000000,"Resistance" \n "Active?"};
 item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
 item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
@@ -53,7 +53,7 @@ link25[] = {20,18};
 link26[] = {21,8};
 link27[] = {22,1};
 globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-488.427002,642.798950,268.039368,-608.685242,918,881,1};
-window[] = {2,-1,-1,-1,-1,956,175,1430,175,3,936};
+window[] = {2,-1,-1,-1,-1,931,150,1405,150,3,936};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -262,6 +262,7 @@ class FSM
        "};" \n
        "" \n
        "//--- Teams Units." \n
+       "/* //--- Valid Deletion, do not remove" \n
        "{" \n
        "	[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] units will be removed"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
        "	if !(isNil '_x') then {" \n
@@ -280,7 +281,31 @@ class FSM
        "			[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] was deleted?"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
        "		};" \n
        "	};" \n
-       "} forEach _town_groups;" \n
+       "} forEach _town_groups;*/" \n
+       "//--- Teams Units." \n
+       "_town_groups spawn {" \n
+       "	{" \n
+       "		[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] units will be removed"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+       "		if !(isNil '_x') then {" \n
+       "			[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is not nil"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+       "			if !(isNull _x) then {" \n
+       "				[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is not null ([%3] units), is local? [%4], owner [%5]"", _town getVariable ""cti_town_name"", _x, count units _x, local _x, groupOwner _x]] call CTI_CO_FNC_Log;" \n
+       "				if (local _x) then {" \n
+       "					{" \n
+       "						[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] deleting unit [%2] from group [%3], local? [%4]"", _town getVariable ""cti_town_name"", _x, group _x, local _x]] call CTI_CO_FNC_Log;" \n
+       "						deleteVehicle _x;" \n
+       "						[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is unit removed? unit [%2]"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+       "						sleep 4;" \n
+       "					} forEach units _x;" \n
+       "					[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is about to be removed, units count [%3]"", _town getVariable ""cti_town_name"", _x, count units _x]] call CTI_CO_FNC_Log;" \n
+       "					sleep 2;" \n
+       "					deleteGroup _x;" \n
+       "				};" \n
+       "				[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] was deleted?"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+       "			};" \n
+       "		};" \n
+       "	} forEach _this;" \n
+       "};" \n
        "" \n
        "//--- Teams vehicles." \n
        "{" \n
