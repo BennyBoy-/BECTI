@@ -66,6 +66,7 @@ CTI_CO_FNC_InitializeCustomVehicle = compileFinal preprocessFileLineNumbers "Com
 CTI_CO_FNC_InitializeNetVehicle = compileFinal preprocessFileLineNumbers "Common\Functions\Common_InitializeNetVehicle.sqf";
 CTI_CO_FNC_IsGroupCommander = compileFinal preprocessFileLineNumbers "Common\Functions\Common_IsGroupCommander.sqf";
 CTI_CO_FNC_IsGroupPlayable = compileFinal preprocessFileLineNumbers "Common\Functions\Common_IsGroupPlayable.sqf";
+CTI_CO_FNC_IsHQDeployed = compileFinal preprocessFileLineNumbers "Common\Functions\Common_IsHQDeployed.sqf";
 CTI_CO_FNC_ManVehicle = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ManVehicle.sqf";
 CTI_CO_FNC_MarkerUpdate = compileFinal preprocessFileLineNumbers "Common\Functions\Common_MarkerUpdate.sqf";
 CTI_CO_FNC_NetSend = compileFinal preprocessFileLineNumbers "Common\Functions\Common_NetSend.sqf";

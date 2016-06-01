@@ -36,7 +36,7 @@
     [_side, _structure, _variable, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
 */
 
-private ["_completion", "_completion_ratio", "_completion_last", "_direction", "_isDestroyed", "_lasttouch", "_position", "_side", "_structure", "_variable"];
+private ["_completion", "_completion_ratio", "_completion_last", "_direction", "_isDestroyed", "_lasttouch", "_position", "_side", "_structure", "_time_build", "_var", "_variable"];
 
 _side = _this select 0;
 _side_id= (_side) call CTI_CO_FNC_GetSideID;
@@ -52,6 +52,9 @@ waitUntil {!isNil {_structure getVariable "cti_completion"}};
 _completion = _structure getVariable "cti_completion";
 _completion_ratio = _structure getVariable "cti_completion_ratio";
 _completion_last = _completion;
+
+_var = missionNamespace getVariable _variable;
+_time_build = _var select 3;
 
 //********Put in Benny's suggestion on removing workers from here, ss83************
 _lasttouch = time;
@@ -70,7 +73,7 @@ if (_isDestroyed) then {
 } else {
     //--- Normal construction cycle
     if(!CTI_DEBUG) then {
-        sleep CTI_BASE_CONSTRUCTION_TIME; //this timer determines how long it takes for the structure to pop up, ss83
+        sleep (if (CTI_DEV_MODE > 0) then {0} else {_time_build}); //this timer determines how long it takes for the structure to pop up, ss83
     };	
     _completion = 100;
 }; 
@@ -82,7 +85,6 @@ _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wi
 deleteVehicle _structure;
 
 if (_completion >= 100) then {
-	_var = missionNamespace getVariable _variable;
 	_structure = ((_var select 1) select 0) createVehicle _position;
 	_structure setDir _direction;
 	_structure setPos _position;
