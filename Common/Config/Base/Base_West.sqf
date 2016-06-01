@@ -55,7 +55,7 @@ _conditions = [];
 				If a building is damaged, all the EH it had will bisteriously vanish... This "feature" will probably never get fixed so once again, we fix it ourself!
 		- DMG_Reduce: Reduce the incoming damage on a building making it stronger if above 1.
 */
-<<<<<<< HEAD
+
 _headers = _headers 		+ [[CTI_BARRACKS, "Barracks", "Barracks"]];
 _classes = _classes 		+ [["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"]];
 _prices = _prices 			+ [2000];
@@ -209,7 +209,6 @@ _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 2]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
 [_side, _headers, _classes, _prices, _times, _placements, _specials, _conditions] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Structures.sqf";
->>>>>>> refs/remotes/origin/Benny-Current
 
 //--- Defenses
 _headers = [];
@@ -218,7 +217,6 @@ _prices = [];
 _placements = [];
 _categories = [];
 
-<<<<<<< HEAD
 _headers = _headers 		+ ["Empty Crate"];
 _classes = _classes 		+ ["O_supplyCrate_F"];
 _prices = _prices 			+ [5];
@@ -350,7 +348,7 @@ _classes = _classes 		+ ["Land_Dome_Small_F"];
 _prices = _prices 			+ [1500];
 _placements = _placements 	+ [[0, 30]];
 _categories = _categories 	+ ["Fortification"];
-=======
+
 _headers pushBack 		"Empty Crate";
 _classes pushBack		"O_supplyCrate_F";
 _prices pushBack 		5;
@@ -482,7 +480,6 @@ _classes pushBack 		"Land_Dome_Small_F";
 _prices pushBack 		1500;
 _placements pushBack 	[0, 30];
 _categories pushBack 	"Fortification";
->>>>>>> refs/remotes/origin/Benny-Current
 
 _headers pushBack 		"Dome (Big)";
 _classes pushBack 		"Land_Dome_Big_F";
@@ -584,7 +581,6 @@ _prices pushBack 		10000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
-<<<<<<< HEAD
 
 _headers = _headers 		+ ["M2 Machine Gun"];
 _classes = _classes 		+ ["CUP_B_M2StaticMG_USMC"];
@@ -820,4 +816,3 @@ _categories pushBack 	"Structures";
 
 
 [_side, _headers, _classes, _prices, _placements, _categories] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Defenses.sqf";
->>>>>>> refs/remotes/origin/Benny-Current

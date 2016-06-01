@@ -53,7 +53,7 @@ _conditions = [];
 				If a building is damaged, all the EH it had will bisteriously vanish... This "feature" will probably never get fixed so once again, we fix it ourself!
 		- DMG_Reduce: Reduce the incoming damage on a building making it stronger if above 1.
 */
-<<<<<<< HEAD
+
 _headers = _headers 		+ [[CTI_BARRACKS, "Barracks", "Barracks"]];
 _classes = _classes 		+ [["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"]];
 _prices = _prices 			+ [2000];
@@ -208,7 +208,7 @@ _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 2]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
 [_side, _headers, _classes, _prices, _times, _placements, _specials, _conditions] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Structures.sqf";
->>>>>>> refs/remotes/origin/Benny-Current
+
 
 //--- Defenses
 _headers = [];
@@ -217,7 +217,6 @@ _prices = [];
 _placements = [];
 _categories = [];
 
-<<<<<<< HEAD
 _headers = _headers 		+ ["Empty Crate"];
 _classes = _classes 		+ ["O_supplyCrate_F"];
 _prices = _prices 			+ [5];
@@ -355,7 +354,7 @@ _classes = _classes 		+ ["Land_Dome_Big_F"];
 _prices = _prices 			+ [4000];
 _placements = _placements 	+ [[0, 50]];
 _categories = _categories 	+ ["Fortification"];
-=======
+
 _headers pushBack 		"Empty Crate";
 _classes pushBack 		"O_supplyCrate_F";
 _prices pushBack 		5;
@@ -493,7 +492,6 @@ _classes pushBack 		"Land_Dome_Big_F";
 _prices pushBack 		4000;
 _placements pushBack 	[0, 50];
 _categories pushBack 	"Fortification";
->>>>>>> refs/remotes/origin/Benny-Current
 
 /*
 _headers pushBack 		"H-Barrier (Small) (1 Block)";
@@ -547,7 +545,6 @@ _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
 */
 
-<<<<<<< HEAD
 _headers = _headers 		+ [["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"], ["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0)|| ( missionNamespace getVariable 'CTI_BASE_FOB_PERMISSION' ) == 0 )}]]]];
 _classes = _classes 		+ ["Land_Medevac_house_V1_F"];
 _prices = _prices 			+ [10000];
@@ -661,7 +658,7 @@ _classes = _classes 		+ ["Land_HelipadSquare_F"];
 _prices = _prices 			+ [10];
 _placements = _placements 	+ [[0, 7]];
 _categories = _categories 	+ ["Signs"];
-=======
+
 _headers pushBack 		["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"], ["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0)|| ( missionNamespace getVariable 'CTI_BASE_FOB_PERMISSION' ) == 0 )}]]];
 _classes pushBack 		"Land_Medevac_house_V1_F";
 _prices pushBack 		10000;
@@ -775,7 +772,7 @@ _classes pushBack 		"Land_HelipadSquare_F";
 _prices pushBack 		10;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Signs";
->>>>>>> refs/remotes/origin/Benny-Current
+
 /*
 _headers pushBack 		"Flag";
 _classes pushBack 		"Flag_CSAT_F";
