@@ -76,10 +76,10 @@ if (isMultiplayer) then {
 	missionNamespace setVariable ["CTI_PVF_Client_JoinRequestAnswer", {_this spawn CTI_CL_FNC_JoinRequestAnswer}]; //--- Early PVF, do not spoil the game with the others.
 
 	//--- Enable the player again (sim + visu) in case of no-ai settings
-	if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
+	/*if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
 		player enableSimulationGlobal true;
 		player hideObjectGlobal false;
-	};
+	};*/
 	
 	_last_req = -100;
 	while {!CTI_P_CanJoin} do {

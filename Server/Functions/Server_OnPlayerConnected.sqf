@@ -78,9 +78,6 @@ if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
 	_leader hideObjectGlobal false;
 };
 
-//--- We store the player UID over the group, this allows us to easily fetch the disconnecting client original group.
-// _team setVariable ["cti_uid", _uid];
-
 if (isNil '_get') then { //--- The player has joined for the first time.
 	//--- Format is [UID, Funds, First Joined side, Last Joined side (current one)]
 	missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], [_uid, 0, _side, _side]];

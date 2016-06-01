@@ -30,6 +30,7 @@ CTI_CO_FNC_GetEntitiesInRange = compileFinal preprocessFileLineNumbers "Common\F
 CTI_CO_FNC_GetFriendlyTowns = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetFriendlyTowns.sqf";
 CTI_CO_FNC_GetFunds = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetFunds.sqf";
 CTI_CO_FNC_GetFundsCommander = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetFundsCommander.sqf";
+CTI_CO_FNC_GetFundsTeam = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetFundsTeam.sqf";
 CTI_CO_FNC_GetGearItemCost = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetGearItemCost.sqf";
 CTI_CO_FNC_GetItemBaseConfig = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetItemBaseConfig.sqf";
 CTI_CO_FNC_GetLiveUnits = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetLiveUnits.sqf";

@@ -32,10 +32,10 @@ switch (_action) do {
 					_upgrade_current = _upgrades select _selected;
 					_upgrade_level = (missionNamespace getVariable Format["CTI_%1_UPGRADES_LEVELS", CTI_P_SideJoined]) select _selected;
 					_upgrade_price = ((missionNamespace getVariable Format["CTI_%1_UPGRADES_COSTS", CTI_P_SideJoined]) select _selected) select _upgrade_current;
-					_funds = call CTI_CL_FNC_GetPlayerFunds;
+					_supply = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply;
 					
 					if (_upgrade_current < _upgrade_level) then {
-						if (_funds >= _upgrade_price) then {
+						if (_supply >= _upgrade_price) then {
 							_links = ((missionNamespace getVariable Format["CTI_%1_UPGRADES_LINKS", CTI_P_SideJoined]) select _selected) select _upgrade_current;
 							_link_needed = false;
 							if (count _links > 0) then {
@@ -53,7 +53,7 @@ switch (_action) do {
 							};
 							
 							if !(_link_needed) then {
-								-(_upgrade_price) call CTI_CL_FNC_ChangePlayerFunds;
+								[CTI_P_SideJoined, -(_upgrade_price)] call CTI_CO_FNC_ChangeSideSupply;
 								
 								["SERVER", "Request_Upgrade", [CTI_P_SideJoined, _selected, _upgrade_current]] call CTI_CO_FNC_NetSend;
 								CTI_P_SideLogic setVariable ["cti_upgrade", _selected,true];
