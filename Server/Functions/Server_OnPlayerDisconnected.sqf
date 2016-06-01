@@ -33,11 +33,14 @@
     onPlayerDisconnected {[_uid, _name, _id] call CTI_SE_FNC_OnPlayerDisconnected};
 */
 
-_uid = _this select 0;
-_name = _this select 1;
-_id = _this select 2;
+_unit = _this select 0;
+_id = _this select 1;
+_uid = _this select 2;
+_name = _this select 3;
 
-if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Player [%1] [%2] has left the current session", _name, _uid]] call CTI_CO_FNC_Log};
+_team = group _unit;
+
+if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Player [%1] [%2] with unit [%3] in group [%4] has left the current session", _name, _uid, _unit, _team]] call CTI_CO_FNC_Log};
 
 if (_name == '__SERVER__' || _uid == '') exitWith {}; //--- We don't care about the server!
 
@@ -60,29 +63,34 @@ if !(isNil '_candidates') then {
 _get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid];
 if (isNil '_get') exitWith {if (CTI_Log_Level >= CTI_Log_Warning) then {["WARNING", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Disconnected Player [%1] [%2] information couldn't be retrieved", _name, _uid]] call CTI_CO_FNC_Log}};
 
-//--- Get the disconnected group
-_team = grpNull;
-{if ((group _x getVariable "cti_uid") == _uid) exitWith {_team = group _x}} forEach playableUnits;
+if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Retrieved Player [%1] [%2] previous informations [%3]", _name, _uid, _get]] call CTI_CO_FNC_Log};
+
+//--- Make sure that the group is valid
 if (isNull _team) exitWith {if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Disconnected Player [%1] [%2] group couldn't be found among the current playable units", _name, _uid]] call CTI_CO_FNC_Log}};
 
 _side = _get select 3; //--- Get the last side joined
-_funds = (_team) call CTI_CO_FNC_GetFunds;
-_commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;
-_is_commander = if (_commander == _team) then {true} else {false};
-_leader = leader _team;
 
+if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Player [%1] [%2] group is [%3] on last side [%4]", _name, _uid, _team, _side]] call CTI_CO_FNC_Log};
+
+_funds = (_team) call CTI_CO_FNC_GetFunds;
+_is_commander = if (_team call CTI_CO_FNC_IsGroupCommander) then {true} else {false};
 _hq = (_side) call CTI_CO_FNC_GetSideHQ;
 
 //--- We force the unit out of it's vehicle.
-if !(isNull assignedVehicle _leader) then { unassignVehicle _leader; [_leader] orderGetIn false; [_leader] allowGetIn false };
-if (vehicle _leader == _hq) then { _leader action ["EJECT", vehicle _leader] }; //--- Is it the HQ?
+if !(isNull assignedVehicle _unit) then { unassignVehicle _unit; [_unit] orderGetIn false; [_unit] allowGetIn false };
+if (vehicle _unit == _hq) then { _unit action ["EJECT", vehicle _unit] }; //--- Is it the HQ?
 
-_get set [1, _funds];
-missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], _get];
-
+if !(_is_commander) then {
+	_get set [1, _funds];
+	missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], _get];
+	
+	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Updated Player [%1] [%2] funds to [%3]", _name, _uid, _funds]] call CTI_CO_FNC_Log};
+} else {
+	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Player [%1] [%2] funds were not updated since he previously was the commander", _name, _uid]] call CTI_CO_FNC_Log};
+};
 
 if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1) then { //--- Place the leader back at base
-	_leader enableAI "Move";
+	_unit enableAI "Move";
 	_structures = (_side) call CTI_CO_FNC_GetSideStructures;
 	
 	_spawn_at = _hq;
@@ -90,24 +98,24 @@ if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1) then { //--- Pla
 	
 	if (_is_commander) then {if (alive _hq) then { _spawn_at = _hq }}; //--- AI commander will prefer to spawn at HQ if it's alive
 	_spawn_at = [_spawn_at, 8, 30] call CTI_CO_FNC_GetRandomPosition;
-	_leader setPos _spawn_at;
+	_unit setPos _spawn_at;
 	
 	if (!_is_commander && !isNull _team) then { //--- AI Leader Takeover
 		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["AI Leader is taking over [%1] [%2] slot since he/she left the current session. The team is [%3]", _name, _uid, _team]] call CTI_CO_FNC_Log};
 		[_team, _side] execFSM "Server\FSM\update_ai.fsm";
 	};
 } else { //--- Place the leader at the respawn island and disable his movements
-	_leader setPos ([getMarkerPos format["CTI_%1Respawn",_side], 3, 15] call CTI_CO_FNC_GetRandomPosition);
-	_leader enableSimulationGlobal false;
-	_leader hideObjectGlobal true;
-	_leader disableAI "FSM";
+	_unit setPos ([markerPos format["CTI_%1Respawn",_side], 3, 15] call CTI_CO_FNC_GetRandomPosition);
+	_unit enableSimulationGlobal false;
+	_unit hideObjectGlobal true;
+	_unit disableAI "FSM";
 };
 
 if (CTI_AI_TEAMS_UNITS_DELETE_ON_DISCONNECT > 0) then {
 	{if (!isPlayer _x && !(_x in playableUnits)) then {deleteVehicle _x}} forEach (units _team + ([_team, false] call CTI_CO_FNC_GetTeamVehicles) - [_hq]);
 };
 
-_team setVariable ["cti_uid", nil]; //--- Release the uid.
+// _team setVariable ["cti_uid", nil]; //--- Release the uid.
 
 //--- Was it the commander?
 if (_is_commander && !isNull _team) then {
