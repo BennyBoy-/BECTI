@@ -146,6 +146,11 @@ _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side
 
 
 //--- Defenses
+_headers = [];
+_classes = [];
+_prices = [];
+_placements = [];
+_categories = [];
 
 _headers pushBack 		"Empty Crate";
 _classes pushBack 		"O_supplyCrate_F";
