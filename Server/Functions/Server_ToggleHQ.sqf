@@ -24,20 +24,22 @@
 	  -> Will mobilize or deploy the HQ based on the given and global variable at the desired position
 */
 
-private ["_direction", "_hq", "_is_deployed", "_logic", "_position", "_side", "_sideID", "_var"];
+private ["_direction", "_hq", "_is_deployed", "_logic", "_position", "_side", "_sideID", "_var", "_variable"];
 
-_var = missionNamespace getVariable (_this select 0);
+_variable = _this select 0;
 _side = _this select 1;
 _position = _this select 2;
 _direction = _this select 3;
 
+_var = missionNamespace getVariable (_this select 0);
+
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _is_deployed = (_side) call CTI_CO_FNC_IsHQDeployed;
-_hq = (_side) call CTI_CO_FNC_GetSideHQ;
+_current_hq = (_side) call CTI_CO_FNC_GetSideHQ;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then { //--- Attempt to deploy the HQ
-	if (!_is_deployed && alive _hq) then { //--- Make sure that the HQ is not deployed and alive
+	if (!_is_deployed && alive _current_hq) then { //--- Make sure that the HQ is not deployed and alive
 		_logic setVariable ["cti_hq_deployed", true, true];
 		
 		//--- Deploy the HQ
@@ -64,10 +66,10 @@ if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then { //--- Attempt to deploy 
 		};
 		
 		_logic setVariable ["cti_hq", _structure, true];
-		deleteVehicle _hq;
+		deleteVehicle _current_hq;
 	};
 } else { //--- Attempt to mobilize the HQ
-	if (_is_deployed && alive _hq) then { //--- Make sure that the HQ is deployed and alive
+	if (_is_deployed && alive _current_hq) then { //--- Make sure that the HQ is deployed and alive
 		_logic setVariable ["cti_hq_deployed", false, true];
 		
 		//--- Mobilize the HQ
@@ -80,6 +82,7 @@ if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then { //--- Attempt to deploy 
 		};
 		
 		_logic setVariable ["cti_hq", _hq, true];
+		deleteVehicle _current_hq;
 		
 		//--- Set the HQ to be local to a player commander if possible.
 		_commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;
