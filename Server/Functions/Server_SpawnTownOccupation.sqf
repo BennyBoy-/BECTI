@@ -347,7 +347,7 @@ _pool = [];
 				_force = if (count _x > 1) then {_x select 1} else {1};
 				_probability = if (count _x > 2) then {_x select 2} else {100};
 			
-				for '_i' from 1 to _force do {_pool pushBack [_x select 0, _probability]};
+				for '_i' from 1 to _force do {_pool pushBack [format["%1_%2", _side, _x select 0], _probability]};
 			} else {
 				if (CTI_Log_Level >= CTI_Log_Error) then { 
 					["ERROR", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Attempting to use an undefined Occupation Team Template [%1] for town [%2] on side [%3]", format["%1_%2", _side, _x select 0], _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
@@ -362,7 +362,7 @@ _pool = [];
 					_force = if (count _x > 1) then {_x select 1} else {1};
 					_probability = if (count _x > 2) then {_x select 2} else {100};
 					
-					for '_i' from 1 to _force do {_pool_nest pushBack [_x select 0, _probability]};
+					for '_i' from 1 to _force do {_pool_nest pushBack [format["%1_%2", _side, _x select 0], _probability]};
 				} else {
 					if (CTI_Log_Level >= CTI_Log_Error) then { 
 						["ERROR", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Attempting to use an undefined Occupation Team Template [%1] for town [%2] on side [%3]", format["%1_%2", _side, _x select 0], _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
@@ -376,7 +376,7 @@ _pool = [];
 } forEach _pool_units;
 
 if (CTI_Log_Level >= CTI_Log_Information) then { 
-	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Retrieved an Occupation Pool count of [%1] for town [%2] on side [%3]. Total group is set to [%4]", _town getVariable "cti_town_name", count _pool, _side, _totalGroups]] call CTI_CO_FNC_Log;
+	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Retrieved an Occupation Pool count of [%1] for town [%2] on side [%3]. Total group is set to [%4]", count _pool, _town getVariable "cti_town_name", _side, _totalGroups]] call CTI_CO_FNC_Log;
 };
 
 if (count _pool < 1) exitWith {[[],[],[]]};
