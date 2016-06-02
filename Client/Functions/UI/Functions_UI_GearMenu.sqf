@@ -404,7 +404,7 @@ CTI_UI_Gear_AddItem = {
 							_updated = [_item] call CTI_UI_Gear_TryContainerAddItem;
 						};
 					};
-					case (_sub_type in ["Acc-Muzzle","Acc-Optics","Acc-Side","Acc-Bipod","Item"]): {
+					case (_sub_type in ["Acc-Muzzle","Acc-Optics","Acc-Side","Acc-Bipod"]): {
 						// _updated = [_item] call CTI_UI_Gear_TryContainerAddItem;
 						
 						//--- Try to equip it.
@@ -413,6 +413,9 @@ CTI_UI_Gear_AddItem = {
 						// if !(_updated) then {
 							// _updated = [_item] call CTI_UI_Gear_TryContainerAddItem;
 						// };
+					};
+					case (_sub_type == "Item"): {
+						_updated = [_item] call CTI_UI_Gear_TryContainerAddItem;
 					};
 					case (_sub_type == "Headgear"): {
 						_current = (_gear select 2) select 0;
