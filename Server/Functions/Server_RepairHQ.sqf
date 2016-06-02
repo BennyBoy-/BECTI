@@ -51,9 +51,14 @@ _hq setVariable ["cti_ai_prohib", true]; //--- HQ may not be used by AI as a com
 _hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_SE_FNC_OnHQDestroyed", _sideID]];
 if (CTI_BASE_NOOBPROTECTION == 1) then {
 	_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", _sideID]]; //--- You want that on public
+	[["CLIENT", _side], "Client_AddHQDamagerHandler", _hq] call CTI_CO_FNC_NetSend;
 };
 
 _logic setVariable ["cti_hq", _hq, true];
+
+if (CTI_Log_Level >= CTI_Log_Information) then {
+	["INFORMATION", "FILE: Server\Functions\Server_RepairHQ.sqf", format["HQ from side [%1] has been repaired at position [%2]", _side, _position]] call CTI_CO_FNC_Log;
+};
 
 [["CLIENT", _side], "Client_OnMessageReceived", ["hq-repair"]] call CTI_CO_FNC_NetSend;
 

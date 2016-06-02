@@ -67,6 +67,10 @@ if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then { //--- Attempt to deploy 
 		
 		_logic setVariable ["cti_hq", _structure, true];
 		deleteVehicle _current_hq;
+		
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FILE: Server\Functions\Server_ToggleHQ.sqf", format["HQ from side [%1] was deployed at position [%2]", _side, _structure]] call CTI_CO_FNC_Log;
+		};
 	};
 } else { //--- Attempt to mobilize the HQ
 	if (_is_deployed && alive _current_hq) then { //--- Make sure that the HQ is deployed and alive
@@ -79,6 +83,7 @@ if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then { //--- Attempt to deploy 
 		_hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_SE_FNC_OnHQDestroyed", _sideID]];
 		if (CTI_BASE_NOOBPROTECTION == 1) then {
 			_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", _sideID]]; //--- You want that on public
+			[["CLIENT", _side], "Client_AddHQDamagerHandler", _hq] call CTI_CO_FNC_NetSend;
 		};
 		
 		_logic setVariable ["cti_hq", _hq, true];
@@ -89,6 +94,10 @@ if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then { //--- Attempt to deploy 
 		if (isPlayer leader _commander) then {
 			_hq setOwner (owner leader _commander);
 			[["CLIENT", leader _commander], "Client_AddHQActions", _hq] call CTI_CO_FNC_NetSend;
+		};
+		
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FILE: Server\Functions\Server_ToggleHQ.sqf", format["HQ from side [%1] was mobilized at position [%2]", _side, _structure]] call CTI_CO_FNC_Log;
 		};
 	};
 };

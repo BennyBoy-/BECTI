@@ -62,7 +62,7 @@ _specials pushBack 		[];
 _conditions pushBack 	(compile format["%1 call CTI_CO_FNC_IsHQDeployed", _side]);
 
 _headers pushBack 		[CTI_HQ_DEPLOY, "Headquarters (Deploy)", "HQ"];
-_classes pushback		["Land_Cargo_Tower_V1_F", ""];
+_classes pushback		["Land_Cargo_Tower_V1_F", "Land_Cargo_Tower_V1_ruins_F"];
 _prices pushBack 		500;
 _times pushBack			0;
 _placements pushBack 	[180, 15, false];

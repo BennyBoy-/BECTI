@@ -307,7 +307,7 @@ _pool = [];
 				for '_i' from 1 to _force do {_pool pushBack [_x select 0, _probability]};
 			} else {
 				if (CTI_Log_Level >= CTI_Log_Error) then { 
-					["ERROR", "FILE: FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Attempting to use an undefined Resistance Team Template [%1] for town [%2]", _x select 0, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
+					["ERROR", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Attempting to use an undefined Resistance Team Template [%1] for town [%2]", _x select 0, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
 				};
 			};
 		};
@@ -322,7 +322,7 @@ _pool = [];
 					for '_i' from 1 to _force do {_pool_nest pushBack [_x select 0, _probability]};
 				} else {
 					if (CTI_Log_Level >= CTI_Log_Error) then { 
-						["ERROR", "FILE: FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Attempting to use an undefined Resistance Team Template [%1] for town [%2]", _x select 0, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
+						["ERROR", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Attempting to use an undefined Resistance Team Template [%1] for town [%2]", _x select 0, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
 					};
 				};
 			} forEach _x;
@@ -331,6 +331,10 @@ _pool = [];
 		};
 	};
 } forEach _pool_units;
+
+if (CTI_Log_Level >= CTI_Log_Information) then { 
+	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Retrieved a Resistance Pool count of [%1] for town [%2]. Total groups is set to [%3]", _town getVariable "cti_town_name", count _pool, _totalGroups]] call CTI_CO_FNC_Log;
+};
 
 if (count _pool < 1) exitWith {[[],[],[]]};
 

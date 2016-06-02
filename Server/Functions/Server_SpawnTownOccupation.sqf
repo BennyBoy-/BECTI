@@ -350,7 +350,7 @@ _pool = [];
 				for '_i' from 1 to _force do {_pool pushBack [_x select 0, _probability]};
 			} else {
 				if (CTI_Log_Level >= CTI_Log_Error) then { 
-					["ERROR", "FILE: FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Attempting to use an undefined Occupation Team Template [%1] for town [%2] on side [%3]", format["%1_%2", _side, _x select 0], _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+					["ERROR", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Attempting to use an undefined Occupation Team Template [%1] for town [%2] on side [%3]", format["%1_%2", _side, _x select 0], _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 				};
 			};
 		};
@@ -365,7 +365,7 @@ _pool = [];
 					for '_i' from 1 to _force do {_pool_nest pushBack [_x select 0, _probability]};
 				} else {
 					if (CTI_Log_Level >= CTI_Log_Error) then { 
-						["ERROR", "FILE: FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Attempting to use an undefined Occupation Team Template [%1] for town [%2] on side [%3]", format["%1_%2", _side, _x select 0], _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+						["ERROR", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Attempting to use an undefined Occupation Team Template [%1] for town [%2] on side [%3]", format["%1_%2", _side, _x select 0], _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 					};
 				};
 			} forEach _x;
@@ -374,6 +374,10 @@ _pool = [];
 		};
 	};
 } forEach _pool_units;
+
+if (CTI_Log_Level >= CTI_Log_Information) then { 
+	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Retrieved an Occupation Pool count of [%1] for town [%2] on side [%3]. Total group is set to [%4]", _town getVariable "cti_town_name", count _pool, _side, _totalGroups]] call CTI_CO_FNC_Log;
+};
 
 if (count _pool < 1) exitWith {[[],[],[]]};
 

@@ -44,7 +44,7 @@ for '_i' from 0 to count(_groups)-1 do {
 	};
 	
 	//--- Zeus
-	ADMIN_ZEUS addCuratorEditableObjects [units _group, true];
+	if !( isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [units _group, true]};
 };
 
 //--- SHK AI placement

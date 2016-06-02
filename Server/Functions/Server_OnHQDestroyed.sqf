@@ -34,7 +34,15 @@ _killer = _this select 1;
 _sideID = _this select 2;
 _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 
+if (CTI_Log_Level >= CTI_Log_Information) then {
+	["INFORMATION", "FILE: Server\Functions\Server_OnHQDestroyed.sqf", format["HQ [%1] from side [%2] has been destroyed by [%3]", _killed, _side, _killer]] call CTI_CO_FNC_Log;
+};
+
 if (_side call CTI_CO_FNC_IsHQDeployed) then {
+	if (CTI_Log_Level >= CTI_Log_Information) then {
+		["INFORMATION", "FILE: Server\Functions\Server_OnHQDestroyed.sqf", format["HQ [%1] from side [%2] was mobilized, creating a wreck", _killed, _side]] call CTI_CO_FNC_Log;
+	};
+	
 	_logic = (_side) call CTI_CO_FNC_GetSideLogic;
 	_logic setVariable ["cti_hq_deployed", false, true];
 	
@@ -45,6 +53,17 @@ if (_side call CTI_CO_FNC_IsHQDeployed) then {
 	_hq setDamage 1;
 	
 	_logic setVariable ["cti_hq", _hq, true];
+	
+	//--- Delete the potential ruins
+	_var = missionNamespace getVariable format["CTI_%1_%2", _side, CTI_HQ_DEPLOY];
+	
+	_classnames = _var select 1;
+	_classnames = if (count _classnames > 2) then {[_classnames select 1] + (_classnames select 2)} else {[_classnames select 1]};
+
+	{if (isNil {_x getVariable "cti_completion"}) then { deleteVehicle _x }} forEach (nearestObjects [position _killed, _classnames, 25]);
+	
+	//--- Just in case, remove the old wreck if needed
+	if !(isNull _killed) then {deleteVehicle _killed}; 
 };
 
 [["CLIENT", _side], "Client_OnMessageReceived", ["hq-destroyed"]] call CTI_CO_FNC_NetSend;

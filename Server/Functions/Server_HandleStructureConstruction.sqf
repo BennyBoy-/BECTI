@@ -56,32 +56,34 @@ _completion_last = _completion;
 _var = missionNamespace getVariable _variable;
 _time_build = _var select 3;
 
-//********Put in Benny's suggestion on removing workers from here, ss83************
-_lasttouch = time;
+switch (missionNamespace getVariable "CTI_BASE_CONSTRUCTION_MODE") do {
+	case 0: { //--- Timed Based
+		if(!CTI_DEBUG) then {
+			sleep (if (CTI_DEV_MODE > 0) then {0} else {_time_build}); //this timer determines how long it takes for the structure to pop up, ss83
+		};
+		
+		//--- Upon destruction, a structure is no longer valid in a timed-based situation
+		_completion = if (_isDestroyed) then {0} else {100};
+	};
+	case 1: { //--- Worker Based
+		_lasttouch = time;
+		
+		while {_completion > 0 && _completion < 100} do {
+			_completion = _structure getVariable "cti_completion";
+			sleep CTI_BASE_CONSTRUCTION_DECAY_DELAY;
 
-if (_isDestroyed) then {
-	 while {_completion > 0 && _completion < 100} do {
-        _completion = _structure getVariable "cti_completion";
-        sleep CTI_BASE_CONSTRUCTION_DECAY_DELAY;
+			if (_completion > _completion_last) then { _lasttouch = time };
 
-        if (_completion > _completion_last) then { _lasttouch = time };
+			if (time - _lasttouch > CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT) then {_structure setVariable ["cti_completion", _completion - CTI_BASE_CONSTRUCTION_DECAY_FROM]};
 
-        if (time - _lasttouch > CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT) then {_structure setVariable ["cti_completion", _completion - CTI_BASE_CONSTRUCTION_DECAY_FROM]};
-
-	_completion_last = _completion;
-	}; 
-} else {
-    //--- Normal construction cycle
-    if(!CTI_DEBUG) then {
-        sleep (if (CTI_DEV_MODE > 0) then {0} else {_time_build}); //this timer determines how long it takes for the structure to pop up, ss83
-    };	
-    _completion = 100;
-}; 
+			_completion_last = _completion;
+		}; 
+	};
+};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") - [_structure, objNull]];
 
-//******************************To here, SS83************************************
 deleteVehicle _structure;
 
 if (_completion >= 100) then {
@@ -111,6 +113,10 @@ if (_completion >= 100) then {
 	_logic setVariable ["cti_structures", (_logic getVariable "cti_structures") + [_structure], true];
 
 	[_structure, _var, _side] call CTI_SE_FNC_InitializeStructure;
+	
+	if (CTI_Log_Level >= CTI_Log_Information) then {
+		["INFORMATION", "FILE: Server\Functions\Server_HandleStructureConstruction.sqf", format["A [%1] from side [%2] Construction has been completed on position [%3], was it destroyed? [%4]", (_var select 0) select 1, _side, _position, _isDestroyed]] call CTI_CO_FNC_Log;
+	};
 
 	[["CLIENT", _side], "Client_OnStructureConstructed", [_structure, _variable]] call CTI_CO_FNC_NetSend;
 } else {
@@ -144,6 +150,10 @@ if (_completion >= 100) then {
 				if !(isNil {_x getVariable "cti_managed"}) then {deleteVehicle _x};
 			} forEach (nearestObjects [_x, missionNamespace getVariable format ["CTI_%1_DEFENSES_NAMES", _side], CTI_BASE_AREA_RANGE]);
 		} forEach _delete_pos;
+	};
+	
+	if (CTI_Log_Level >= CTI_Log_Information) then {
+		["INFORMATION", "FILE: Server\Functions\Server_HandleStructureConstruction.sqf", format["A [%1] from side [%2] Construction has expired at position [%3], was it destroyed? [%4]", (_var select 0) select 1, _side, _position, _isDestroyed]] call CTI_CO_FNC_Log;
 	};
 
 	//todo: add message bout structure expiration
