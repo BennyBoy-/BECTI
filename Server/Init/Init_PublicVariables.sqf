@@ -171,4 +171,16 @@ with missionNamespace do {
 			// [["CLIENT", _side], "Client_OnMessageReceived", ["commander-vote-start", _name]] call CTI_CO_FNC_NetSend;
 		};
 	};
+	
+	CTI_PVF_Server_RequestVehicleLock = {
+		private ["_locked", "_vehicle"];
+		_vehicle = _this select 0;
+		_locked = _this select 1;
+		
+		if (local _vehicle) then {
+			_vehicle lock _locked;
+		} else {
+			[["CLIENT", owner _vehicle], "Client_RequestVehicleLock", [_vehicle, _locked]] call CTI_CO_FNC_NetSend;
+		};
+	};
 };

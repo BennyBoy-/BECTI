@@ -149,4 +149,16 @@ with missionNamespace do {
 	};
 	
 	CTI_PVF_Client_ReceiveServerFPS = { CTI_P_ServerFPS = _this };
+	
+	CTI_PVF_Client_AddHQDamagerHandler = {
+		_this addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", CTI_P_SideID]];
+	};
+	
+	CTI_PVF_Client_RequestVehicleLock = {
+		private ["_locked", "_vehicle"];
+		_vehicle = _this select 0;
+		_locked = _this select 1;
+		
+		_vehicle lock _locked;
+	};
 };
