@@ -39,7 +39,7 @@ _origin = if (count _this > 4) then {_this select 4} else {objNull};
 _position set [2, 0];
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
-	["INFORMATION", "FILE: Server\Functions\Server_BuildStructure.sqf", format["Received a build request from side [%1] for a [%2] structure at position [%3]", _side, (_var select 0) select 1, _position]] call CTI_CO_FNC_Log;
+	["INFORMATION", "FILE: Server\Functions\Server_BuildStructure.sqf", format["Received a Structure build request from side [%1] for a [%2] at position [%3]", _side, (_var select 0) select 1, _position]] call CTI_CO_FNC_Log;
 };
 
 _structure = ((_var select 1) select 1) createVehicle _position;

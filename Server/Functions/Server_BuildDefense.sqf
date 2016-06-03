@@ -45,6 +45,10 @@ _manned = if (count _this > 6) then {_this select 6} else {false};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 
+if (CTI_Log_Level >= CTI_Log_Information) then {
+	["INFORMATION", "FILE: Server\Functions\Server_BuildDefense.sqf", format["Received a Defense build request from side [%1] for a [%2] structure at position [%3], manned? [%4]", _side, _var select 1, _position, _manned]] call CTI_CO_FNC_Log;
+};
+
 //--- Is it a fob?
 _fob = false;
 _limit = false;

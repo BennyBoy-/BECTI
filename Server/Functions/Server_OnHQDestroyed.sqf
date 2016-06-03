@@ -34,11 +34,14 @@ _killer = _this select 1;
 _sideID = _this select 2;
 _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 
+_was_deployed = _side call CTI_CO_FNC_IsHQDeployed;
+_var = missionNamespace getVariable format["CTI_%1_%2", _side, if (_was_deployed) then {CTI_HQ_DEPLOY} else {CTI_HQ_MOBILIZE}];
+
 if (CTI_Log_Level >= CTI_Log_Information) then {
-	["INFORMATION", "FILE: Server\Functions\Server_OnHQDestroyed.sqf", format["HQ [%1] from side [%2] has been destroyed by [%3]", _killed, _side, _killer]] call CTI_CO_FNC_Log;
+	["INFORMATION", "FILE: Server\Functions\Server_OnHQDestroyed.sqf", format["HQ [%1] from side [%2] has been destroyed by [%3], deployed? [%4]", _killed, _side, _killer, _was_deployed]] call CTI_CO_FNC_Log;
 };
 
-if (_side call CTI_CO_FNC_IsHQDeployed) then {
+if (_was_deployed) then {
 	if (CTI_Log_Level >= CTI_Log_Information) then {
 		["INFORMATION", "FILE: Server\Functions\Server_OnHQDestroyed.sqf", format["HQ [%1] from side [%2] was mobilized, creating a wreck", _killed, _side]] call CTI_CO_FNC_Log;
 	};
@@ -54,9 +57,7 @@ if (_side call CTI_CO_FNC_IsHQDeployed) then {
 	
 	_logic setVariable ["cti_hq", _hq, true];
 	
-	//--- Delete the potential ruins
-	_var = missionNamespace getVariable format["CTI_%1_%2", _side, CTI_HQ_DEPLOY];
-	
+	//--- Delete the potential ruins	
 	_classnames = _var select 1;
 	_classnames = if (count _classnames > 2) then {[_classnames select 1] + (_classnames select 2)} else {[_classnames select 1]};
 
@@ -64,6 +65,21 @@ if (_side call CTI_CO_FNC_IsHQDeployed) then {
 	
 	//--- Just in case, remove the old wreck if needed
 	if !(isNull _killed) then {deleteVehicle _killed}; 
+};
+
+//--- Bounty
+if !(isNull _killer) then {
+	if (side _killer != sideEnemy && side _killer != _side && (group _killer) call CTI_CO_FNC_IsGroupPlayable) then {
+		if (isPlayer _killer) then {
+			_label = ((_var select 0) select 1);
+			_award = round((_var select 2) * CTI_BASE_HQ_BOUNTY);
+			
+			[["CLIENT", _killer], "Client_AwardBountyStructure", [_label, _award]] call CTI_CO_FNC_NetSend;
+			["CLIENT", "Client_OnMessageReceived", ["structure-destroyed", [name _killer, _label]]] call CTI_CO_FNC_NetSend;
+		} else {
+			//--- AI Reward
+		};
+	};
 };
 
 [["CLIENT", _side], "Client_OnMessageReceived", ["hq-destroyed"]] call CTI_CO_FNC_NetSend;

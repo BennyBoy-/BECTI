@@ -2,23 +2,38 @@ _vehicles = player nearEntities [["Car","Motorcycle","Tank","Ship","Air","Static
 if (count _vehicles < 1) exitWith {hint "There are no nearby vehicles to repair"};
 
 _vehicle = [player, _vehicles] Call CTI_CO_FNC_GetClosestEntity;
-
 _dammages = getDammage _vehicle;
-if (_dammages <= 0.25) exitWith {hint "The vehicle cannot be repaired any further"};
+
+//--- Retrieve hitpoints for the given vehicle
+_hitPoints = [];
+configProperties [configFile >> "CfgVehicles" >> typeOf _vehicle >> "HitPoints", "_hitPoints pushBack configName _x; true", true]; 
 
 CTI_P_ActionRepairNextUse = time + CTI_P_ActionRepairDelay;
 
-_skip = false;
-for "_i" from 0 to 4 do {
-	sleep 0.5;
-	player playMove "AinvPknlMstpSlayWrflDnon_medic";
-	sleep 0.5;
-	waitUntil {animationState player == "ainvpknlmstpslaywrfldnon_amovpknlmstpsraswrfldnon" || !alive player || vehicle player != player || !alive _vehicle || _vehicle distance player > 5};
-	if (!alive player || vehicle player != player || !alive _vehicle || _vehicle distance player > 5) exitWith {_skip = true};
+player playMove "Acts_carFixingWheel";
+sleep 3;
+waitUntil {animationState player != "Acts_carFixingWheel" || !alive player || vehicle player != player || !alive _vehicle || _vehicle distance player > 5};
+
+if (alive player && vehicle player == player && alive _vehicle && _vehicle distance player <= 5) then {
+	//--- Overall repairs (75% limit)
+	if (_dammages <= 0.25) then {
+		_dammages = _dammages - 0.15;
+		if (_dammages < 0) then {_dammages = 0};
+		_vehicle setDammage _dammages;
+	};
+	
+	//--- Parts repairs (No limits)
+	//--- TODO: If locality does not match the player's, delegate to the vehicle owner (like lockpick).
+	{
+		_damages = _vehicle getHit _x;
+		if (_dammages > 0) then {_vehicle setHit [_x, _damages - 0.10]};
+	} forEach _hitPoints;
+	
+	//--- Fuel
+	if (fuel _vehicle < 0.10) then {_vehicle setFuel 0.10};
+	
+	hint "The vehicle has been partially repaired";
+} else {
+	hint "Unable to repair the vehicle";
 };
 
-if !(_skip) then {
-	_dammages = _dammages - 0.15;
-	if (_dammages < 0) then {_dammages = 0};
-	_vehicle setDammage _dammages;
-};
