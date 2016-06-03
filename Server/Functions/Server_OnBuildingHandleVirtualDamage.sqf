@@ -36,7 +36,7 @@
     _structure addEventHandler ["handledamage", format ["[_this select 0, _this select 2, _this select 3, '%1', %2, %3, %4, %5, %6] call CTI_SE_FNC_OnBuildingHandleVirtualDamage", _variable, (_side) call CTI_CO_FNC_GetSideID, _position, _direction, _completion_ratio, _reduce_damages]];
 */
 
-private ["_completion_ratio", "_damage", "_damaged", "_direction", "_logic", "_position", "_reduce_damages", "_shooter", "_side", "_sideID", "_variable", "_virtual_damages"];
+private ["_completion_ratio", "_damage", "_damaged", "_direction", "_logic", "_position", "_reduce_damages", "_shooter", "_side", "_sideID", "_var", "_variable", "_virtual_damages"];
 
 _damaged = _this select 0;
 _damage = _this select 1;
@@ -66,7 +66,14 @@ _damaged setVariable ["cti_altdmg", _virtual_damages];
 if (_virtual_damages >= 1 || !alive _damaged) then {
 	_damaged removeAllEventHandlers "handleDamage";
 	_damaged setDammage 1;
-	[_damaged, _shooter, _variable, _sideID, _position, _direction, _completion_ratio] spawn CTI_SE_FNC_OnBuildingDestroyed
+	
+	_var = missionNamespace getVariable _variable;
+	
+	if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then {
+		[_damaged, _shooter, _sideID] spawn CTI_SE_FNC_OnHQDestroyed;
+	} else {
+		[_damaged, _shooter, _variable, _sideID, _position, _direction, _completion_ratio] spawn CTI_SE_FNC_OnBuildingDestroyed;
+	};
 };
 
 //--- Display a message to the team

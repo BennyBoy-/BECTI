@@ -33,6 +33,7 @@ CTI_SE_FNC_SpawnTownOccupation = compileFinal preprocessFileLineNumbers "Server\
 CTI_SE_FNC_SpawnTownResistance = compileFinal preprocessFileLineNumbers "Server\Functions\Server_SpawnTownResistance.sqf";
 CTI_SE_FNC_StartFactoryQueue = compileFinal preprocessFileLineNumbers "Server\Functions\Server_StartFactoryQueue.sqf";
 CTI_SE_FNC_StartUpgrade = compileFinal preprocessFileLineNumbers "Server\Functions\Server_StartUpgrade.sqf";
+CTI_SE_FNC_ToggleHQ = compileFinal preprocessFileLineNumbers "Server\Functions\Server_ToggleHQ.sqf";
 CTI_SE_FNC_TrashObject = compileFinal preprocessFileLineNumbers "Server\Functions\Server_TrashObject.sqf";
 CTI_SE_FNC_VoteForCommander = compileFinal preprocessFileLineNumbers "Server\Functions\Server_VoteForCommander.sqf";
 CTI_SE_FNC_Weather_Hook= compileFinal preprocessFileLineNumbers "Server\Functions\Server_Weather_Hook.sqf";
@@ -98,6 +99,7 @@ if (_attempts >= 500) then {
 	
 	//--- Generic per-logic variables
 	_logic setVariable ["cti_hq", _hq, true];
+	_logic setVariable ["cti_hq_deployed", false, true];
 	_logic setVariable ["cti_structures_wip", []];
 	_logic setVariable ["cti_structures", [], true];
 	_logic setVariable ["cti_structures_areas", [], true];
@@ -138,7 +140,6 @@ if (_attempts >= 500) then {
 		[_vehicle, getPos _hq, 45, 60, true, false, true] call CTI_CO_FNC_PlaceNear;
 		[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
 		if (count _equipment > 0) then {[_vehicle, _equipment] call CTI_CO_FNC_EquipVehicleCargoSpace};
-		if ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7 != "") then {[_vehicle, _side, ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7)] call CTI_CO_FNC_InitializeCustomVehicle;};
 	} forEach (missionNamespace getVariable format["CTI_%1_Vehicles_Startup", _side]);
 	
 	//--- Handle the Team
@@ -222,6 +223,8 @@ skipTime _it;
 		sleep 120;
 	};
 };
+//TeamStack
+0 execFSM "Server\FSM\TEAMSTACK_count.fsm";
 
 // Zeus admin for players
 if !( isNil "ADMIN_ZEUS") then {

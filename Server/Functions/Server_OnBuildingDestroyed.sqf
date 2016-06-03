@@ -51,6 +51,10 @@ _sell = if (isNil {_killed getVariable "cti_sell"}) then {false} else {true};
 _logic setVariable ["cti_structures", (_logic getVariable "cti_structures") - [_killed, objNull], true];
 _var = missionNamespace getVariable _variable;
 
+if (CTI_Log_Level >= CTI_Log_Information) then {
+	["INFORMATION", "FILE: Server\Functions\Server_OnBuildingDestroyed.sqf", format["A [%1] from side [%2] was destroyed by [%3] at position [%4], was it sold? [%5]", (_var select 0) select 1, _side, _killer, _position, _sell]] call CTI_CO_FNC_Log;
+};
+
 //--- The structure was not sold
 if !(_sell) then {
 	//--- Replace with ruins
@@ -66,7 +70,7 @@ if !(_sell) then {
 	_structure setVariable ["cti_structures_iteration", (_var select 3)/100];
 	_structure setVariable ["cti_structure_type", ((_var select 0) select 0)];
 
-	[_side, _structure, _variable, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
+	[_side, _structure, _variable, _position, _direction, true] spawn CTI_SE_FNC_HandleStructureConstruction;
 
 	_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull]];
 	
@@ -85,7 +89,7 @@ if !(_sell) then {
 		};
 	};
 	
-	diag_log format ["DEBUG:: Server_OnBuildingDestroyed.sqf:: structure %1 on side %2 was destroyed (not sold), killer %3", ((_var select 1) select 1), _sideID, _killer];
+	// diag_log format ["DEBUG:: Server_OnBuildingDestroyed.sqf:: structure %1 on side %2 was destroyed (not sold), killer %3", ((_var select 1) select 1), _sideID, _killer];
 } else { //--- The structure was sold
 	private ["_areas", "_closest", "_delete_pos", "_need_update", "_structures_positions"];
 	//--- We update the base area array to remove potential empty areas. First we get the 2D positions of our structures

@@ -7,14 +7,18 @@ switch (_action) do {
 		if (CTI_P_WallsAutoAlign) then { ctrlSetText [100003, "Auto-Align Walls: On"] } else { ctrlSetText [100003, "Auto-Align Walls: Off"] };
 		if (CTI_P_DefensesAutoManning) then { ctrlSetText [100011, "Defenses Auto-Manning: On"] } else { ctrlSetText [100011, "Defenses Auto-Manning: Off"] };
 		
+		//--- Structures
 		{
 			_var = missionNamespace getVariable _x;
-			_row = ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100006) lnbAddRow [format ["S%1", _var select 2], (_var select 0) select 1];
-			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100006) lnbSetData [[_row, 0], _x];
+			if (call (_var select 6)) then { //--- If the item's condition is met, we can append it to the listbox
+				_row = ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100006) lnbAddRow [format ["S%1", _var select 2], (_var select 0) select 1];
+				((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100006) lnbSetData [[_row, 0], _x];
+			};
 		} forEach (missionNamespace getVariable format ["CTI_%1_STRUCTURES", CTI_P_SideJoined]);
 		
 		if !(isNil {uiNamespace getVariable "cti_dialog_ui_buildmenu_lastbsel"}) then {((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100006) lnbSetCurSelRow (uiNamespace getVariable "cti_dialog_ui_buildmenu_lastbsel")};
 		
+		//--- Defenses
 		{
 			_var = missionNamespace getVariable _x;
 			
@@ -43,10 +47,23 @@ switch (_action) do {
 			_var = missionNamespace getVariable _selected;
 			_supply = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply;
 			
+			//--- Check if we're dealing with HQ mobilize or a normal structure
+			
 			if (_supply >= (_var select 2)) then { //--- Check if we have enough supply to go in the construction mode.
-				CTI_VAR_StructurePlaced = false;
-				[_selected, CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ, CTI_BASE_CONSTRUCTION_RANGE] spawn CTI_CL_FNC_PlacingBuilding;
-				closeDialog 0;
+				
+				
+				if (((_var select 0) select 0) != CTI_HQ_MOBILIZE) then {
+					CTI_VAR_StructurePlaced = false;
+					[_selected, CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ, CTI_BASE_CONSTRUCTION_RANGE] spawn CTI_CL_FNC_PlacingBuilding;
+					closeDialog 0;
+				} else {
+					//--- HQ Mobilize
+					if ((CTI_P_SideJoined) call CTI_CO_FNC_IsHQDeployed) then {
+						_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
+						["SERVER", "Request_HQToggle", [_selected, CTI_P_SideJoined, position _hq, direction _hq]] call CTI_CO_FNC_NetSend;
+						closeDialog 0;
+					};
+				};
 			} else {
 				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough supply to place that structure.";
 			};

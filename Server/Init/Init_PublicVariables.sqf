@@ -30,6 +30,7 @@ with missionNamespace do {
 	
 	CTI_PVF_Request_Building = { _this spawn CTI_SE_FNC_BuildStructure };
 	CTI_PVF_Request_Defense = { _this spawn CTI_SE_FNC_BuildDefense };
+	CTI_PVF_Request_HQToggle = { _this spawn CTI_SE_FNC_ToggleHQ };
 	
 	CTI_PVF_Request_Purchase = { _this spawn CTI_SE_FNC_OnClientPurchase };
 	CTI_PVF_Request_PurchaseCancel = { _this spawn CTI_SE_FNC_OnClientPurchaseCancelled };
@@ -168,6 +169,18 @@ with missionNamespace do {
 			
 			//--- Send a message to the clients
 			// [["CLIENT", _side], "Client_OnMessageReceived", ["commander-vote-start", _name]] call CTI_CO_FNC_NetSend;
+		};
+	};
+	
+	CTI_PVF_Server_RequestVehicleLock = {
+		private ["_locked", "_vehicle"];
+		_vehicle = _this select 0;
+		_locked = _this select 1;
+		
+		if (local _vehicle) then {
+			_vehicle lock _locked;
+		} else {
+			[["CLIENT", owner _vehicle], "Client_RequestVehicleLock", [_vehicle, _locked]] call CTI_CO_FNC_NetSend;
 		};
 	};
 };

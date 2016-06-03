@@ -64,7 +64,7 @@ switch (_action) do {
 								hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Not all dependencies are met to start this upgrade.";
 							};
 						} else {
-							hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough supply to perform this operation.";
+							hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to perform this operation.";
 						};
 					} else {
 						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The maximum upgrade level has been reached for this upgrade.";

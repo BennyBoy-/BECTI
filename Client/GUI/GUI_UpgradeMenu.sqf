@@ -1,4 +1,4 @@
-_last_funds = -1;
+_last_supply = -1;
 _last_running = -1;
 _last_upgrades_check = -1;
 
@@ -8,13 +8,13 @@ while { true } do {
 	_selected = lnbCurSelRow ((uiNamespace getVariable "cti_dialog_ui_upgrademenu") displayCtrl 250002);
 	if (_selected > -1) then {
 		_selected = lnbValue [250002, [_selected, 1]];
-		_funds = call CTI_CL_FNC_GetPlayerFunds;
+		_supply = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply;
 		
-		if (_last_funds != _funds) then {
+		if (_last_supply != _supply) then {
 			(_selected) call CTI_UI_Upgrade_LoadUpgradeInfo;
 		};
 		
-		_last_funds = _funds;
+		_last_supply = _supply;
 	};
 	
 	if (time - _last_upgrades_check > .75) then {

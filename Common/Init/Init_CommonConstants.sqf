@@ -17,6 +17,8 @@ CTI_REPAIR = "Repair";
 CTI_AMMO = "Ammo";
 CTI_NAVAL = "Naval";
 CTI_RADAR = "Radar";
+CTI_HQ_DEPLOY = "HQDeployed";
+CTI_HQ_MOBILIZE = "HQMobilized";
 
 CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL,CTI_RADAR];
 
@@ -395,7 +397,6 @@ with missionNamespace do {
 
 //--- Base: Area
 CTI_BASE_AREA_RANGE = 500;
-CTI_BASE_CONSTRUCTION_TIME = if (CTI_DEV_MODE > 0) then { 0 } else {180}; //--- Length of time a structure takes to build, in seconds.
 
 //--- Base: Construction
 CTI_BASE_CONSTRUCTION_BOUNTY = 0.50; //--- The bounty awarded upon a hostile structure destruction
@@ -443,6 +444,7 @@ CTI_BASE_WORKERS_WANDER_RANGE_MAX = 225; //--- Worker may wander no further than
 //--- Base: Parameters
 with missionNamespace do {
 	if (isNil 'CTI_BASE_AREA_MAX') then {CTI_BASE_AREA_MAX = 2}; //--- Maximum amount of FOBs which a side may place
+	if (isNil 'CTI_BASE_CONSTRUCTION_MODE') then {CTI_BASE_CONSTRUCTION_MODE = 0}; //--- Construction mode to use for structures (0: Timed, 1: Workers)
 	if (isNil 'CTI_BASE_FOB_MAX') then {CTI_BASE_FOB_MAX = 2}; //--- Maximum amount of FOBs which a side may place
 	if (isNil 'CTI_BASE_HQ_REPAIR') then {CTI_BASE_HQ_REPAIR = 1}; //--- Determine whether the HQ can be repaired or not
 	if (isNil 'CTI_BASE_STARTUP_PLACEMENT') then {CTI_BASE_STARTUP_PLACEMENT = 4000}; //--- Each side need to be further than x meters

@@ -66,6 +66,15 @@ CTI_P_ServerFPS = -1;
 CTI_P_RapidDefence_Actions=[];
 CTI_P_RapidDefence=-1;
 
+//--- Actions (skills)
+CTI_P_ActionLockPick = false;
+CTI_P_ActionLockPickChance = 0;
+CTI_P_ActionLockPickDelay = 30;
+CTI_P_ActionLockPickNextUse = -1;
+CTI_P_ActionRepair = false;
+CTI_P_ActionRepairDelay = 90;
+CTI_P_ActionRepairNextUse = -1;
+
 CTI_P_Coloration_Money = "#BAFF81";
 
 //--- Artillery Computer is only enabled on demand
@@ -76,10 +85,10 @@ if (isMultiplayer) then {
 	missionNamespace setVariable ["CTI_PVF_Client_JoinRequestAnswer", {_this spawn CTI_CL_FNC_JoinRequestAnswer}]; //--- Early PVF, do not spoil the game with the others.
 
 	//--- Enable the player again (sim + visu) in case of no-ai settings
-	if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
+	/*if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
 		player enableSimulationGlobal true;
 		player hideObjectGlobal false;
-	};
+	};*/
 	
 	_last_req = -100;
 	while {!CTI_P_CanJoin} do {

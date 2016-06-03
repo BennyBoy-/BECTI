@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, ui_titles_helper.fsm">*/
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, ui_titles_helper.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Init"};
@@ -90,7 +90,7 @@ class FSM
        "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601002) ctrlSetText format[""%1 | $ %2 | %3 S | %4%5 HP"", CTI_P_SideJoined, call CTI_CL_FNC_GetPlayerFunds, (CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply, round(100 - (getDammage player * 100)), ""%""];" \n
        "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601003) ctrlSetText format[""Commander: %1"", _commander];" \n
        "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601004) ctrlSetText _upgrade_txt;" \n
-       "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601005) ctrlSetText format[""Server: %1 | Client: %1"", CTI_P_ServerFPS, round diag_fps];" \n
+       "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601005) ctrlSetText format[""Server: %1 | Client: %2"", CTI_P_ServerFPS, round diag_fps];" \n
        "};" \n
        "" \n
        "_snap = time + 2;"/*%FSM</STATEINIT""">*/;
