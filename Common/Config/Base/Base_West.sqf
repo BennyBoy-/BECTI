@@ -55,8 +55,9 @@ _conditions = [];
 				If a building is damaged, all the EH it had will bisteriously vanish... This "feature" will probably never get fixed so once again, we fix it ourself!
 		- DMG_Reduce: Reduce the incoming damage on a building making it stronger if above 1.
 */
+
 _headers pushBack 		[CTI_HQ_MOBILIZE, "Headquarters (Mobilize)", "HQ"];
-_classes pushback		[missionNamespace getVariable format["CTI_%1_HQ", _side], ""];
+_classes pushBack		[missionNamespace getVariable format["CTI_%1_HQ", _side], ""];
 _prices pushBack 		500;
 _times pushBack			0;
 _placements pushBack 	[0, 15, false];
@@ -64,42 +65,43 @@ _specials pushBack 		[];
 _conditions pushBack 	(compile format["%1 call CTI_CO_FNC_IsHQDeployed", _side]);
 
 _headers pushBack 		[CTI_HQ_DEPLOY, "Headquarters (Deploy)", "HQ"];
-_classes pushback		["Land_Cargo_Tower_V1_F", "Land_Cargo_Tower_V1_ruins_F"];
+_classes pushBack		["Land_Research_house_V1_F", "Land_Research_house_V1_ruins_F"];
 _prices pushBack 		500;
 _times pushBack			0;
 _placements pushBack 	[180, 15, false];
-_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 1.5]];
+_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 6]];
 _conditions pushBack 	(compile format["!(%1 call CTI_CO_FNC_IsHQDeployed)", _side]);
 
-_headers pushBack 		[CTI_BARRACKS, "Barracks", "Barracks"];
-_classes pushback		["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"];
-_prices pushBack 		2000;
+_headers pushBack		[CTI_BARRACKS, "Barracks", "Barracks"];
+_classes pushBack		["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"];
+_prices pushBack		2000;
 _times pushBack			60;
 _placements pushBack 	[180, 15];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 1.5]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
-_headers pushBack 		[CTI_LIGHT, "Light Vehicle Factory", "Light"];
-_classes pushBack 		["Land_Medevac_HQ_V1_F", "Land_Medevac_HQ_V1_ruins_F"];
-_prices pushBack		4000;
+_headers pushBack		[CTI_LIGHT, "Light Vehicle Factory", "Light"];
+_classes pushBack		["Land_Medevac_HQ_V1_F", "Land_Medevac_HQ_V1_ruins_F"];
+_prices pushBack 		4000;
 _times pushBack 		80;
 _placements pushBack 	[90, 25];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 25]];
+_conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
 _headers pushBack 		[CTI_CONTROLCENTER, "Control Center", "CC"];
 _classes pushBack 		["Land_Research_HQ_F", "Land_Research_HQ_ruins_F", ["Land_Research_HQ_F"]];							  
 _prices pushBack 		8000;
 _times pushBack 		90;
 _placements pushBack 	[90, 25, false];
-_specials pushBack 		[["Connected"], ["DMG_Alternative"], ["DMG_Reduce", 4.3]];
+_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 4.3]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
 _headers pushBack 		[CTI_HEAVY, "Heavy Vehicle Factory", "Heavy"];
-_classes pushBack		["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"];
+_classes pushBack 		["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"];
 _prices pushBack 		6000;
 _times pushBack 		120;
 _placements pushBack 	[90, 25];
-_specials pushBack		[["DMG_Alternative"], ["DMG_Reduce", 25]];
+_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 25]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
 _headers pushBack 		[CTI_AIR, "Aircraft Factory", "Air"];
@@ -107,7 +109,7 @@ _classes pushBack 		["Land_Airport_Tower_F", "Land_Airport_Tower_ruins_F"];
 _prices pushBack 		8000;
 _times pushBack 		140;
 _placements pushBack 	[180, 40];
-_specials pushBack		[["DMG_Alternative"], ["DMG_Reduce", 20000]]; 
+_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 20000]]; 
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
 _headers pushBack 		[CTI_AMMO, "Ammo Depot", "Ammo"];
@@ -130,7 +132,7 @@ _headers pushBack 		[CTI_NAVAL, "Naval Yard", "Naval"];
 _classes pushBack 		["Land_Lighthouse_small_F", "Land_Lighthouse_small_ruins_F"];
 _prices pushBack 		2000;
 _times pushBack 		35;
-_placements pushBack	[180, 60];
+_placements pushBack 	[180, 60];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 4]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
@@ -258,7 +260,7 @@ _classes pushBack 		"Land_TentHangar_V1_F";
 _prices pushBack 		500;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
-/*
+
 _headers pushBack 		"Mil Shed";
 _classes pushBack 		"Land_sfp_mil_shed";
 _prices pushBack 		1000;
@@ -276,7 +278,7 @@ _classes pushBack 		"Land_sfp_torebodahangar_alt2";
 _prices pushBack 		1500;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
-*/
+
 _headers pushBack 		"Dome (Small)";
 _classes pushBack 		"Land_Dome_Small_F";
 _prices pushBack 		1500;
@@ -288,7 +290,6 @@ _classes pushBack 		"Land_Dome_Big_F";
 _prices pushBack 		4000;
 _placements pushBack 	[0, 50];
 _categories pushBack 	"Fortification";
-
 
 /* 
 _headers pushBack 		"H-Barrier (Small) (1 Block)";
@@ -352,7 +353,6 @@ _prices pushBack 		10000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Fortification";
 
-
 _headers pushBack 		"MG Defense";
 _classes pushBack 		"B_HMG_01_High_F";
 _prices pushBack 		200;
@@ -383,7 +383,6 @@ _prices pushBack 		10000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
-/*
 _headers pushBack 		"M2 Machine Gun";
 _classes pushBack 		"CUP_B_M2StaticMG_USMC";
 _prices pushBack 		150;
@@ -425,7 +424,7 @@ _classes pushBack 		"C_at_phalanx_missile_35AI";
 _prices pushBack 		100000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
-*/
+
 _headers pushBack 		["Heli Pad", [["DMG_Reduce", 1]]];
 _classes pushBack 		"Land_HelipadSquare_F";
 _prices pushBack 		10;

@@ -204,6 +204,8 @@ _u = _u		+ ['CUP_B_CH47F_USA'];
 _u = _u		+ ['CUP_B_AH64D_MR_USA'];
 _u = _u		+ ['CUP_B_AH64D_AT_USA'];
 _u = _u		+ ['CUP_B_AH1Z'];
+_u = _u		+ ['CUP_B_AH1Z_Escort'];
+_u = _u		+ ['CUP_B_AH64D_ES_USA'];
 _u = _u		+ ['CUP_C_C47_CIV'];
 _u = _u		+ ['CUP_B_C130J_USMC'];
 _u = _u		+ ['CUP_B_C130J_Cargo_USMC'];
@@ -212,8 +214,10 @@ _u = _u		+ ['CUP_B_MV22_USMC_RAMPGUN'];
 _u = _u		+ ['CUP_USMC_MQ9'];
 _u = _u		+ ['CUP_B_A10_CAS_USA'];
 _u = _u		+ ['CUP_B_AV8B_CAP_USMC'];
+_u = _u		+ ['CUP_B_AV8B_MK82_USMC'];
+_u = _u		+ ['CUP_B_AV8B_GBU12_USMC'];
 _u = _u		+ ['CUP_B_F35B_AA_USMC'];
-_u = _u		+ ['CUP_B_GR9_CAP_GB'];
+_u = _u		+ ['CUP_B_F35B_LGB_USMC'];
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
@@ -224,6 +228,7 @@ _u = _u		+ ['LDL_C130J'];
 _u = _u		+ ['bwi_a3_t6a'];
 _u = _u		+ ['bwi_a3_t6c'];
 _u = _u		+ ['bwi_a3_at6b'];
+_u = _u		+ ['bwi_a3_at6b_3'];
 _u = _u		+ ['sab_alphajet'];
 _u = _u		+ ['sab_alphajet2'];
 _u = _u		+ ['OFPS_BUZZA_B'];
@@ -280,6 +285,7 @@ _u = _u		+ ["CUP_B_RHIB2Turret_USMC"];
 if (CTI_OFPS_ADDON > 0) then { 
 _u = _u		+ ["Burnes_LCAC_1"];
 _u = _u		+ ["sfp_gruppbat"];
+_u = _u		+ ["rhsusf_mkvsoc"];
 _u = _u		+ ["sfp_rbb_norrkoping"];
 _u = _u		+ ["OFPS_Frigate_Blu"];
 };

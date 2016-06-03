@@ -53,8 +53,9 @@ _conditions = [];
 				If a building is damaged, all the EH it had will bisteriously vanish... This "feature" will probably never get fixed so once again, we fix it ourself!
 		- DMG_Reduce: Reduce the incoming damage on a building making it stronger if above 1.
 */
+
 _headers pushBack 		[CTI_HQ_MOBILIZE, "Headquarters (Mobilize)", "HQ"];
-_classes pushback		[missionNamespace getVariable format["CTI_%1_HQ", _side], ""];
+_classes pushBack		[missionNamespace getVariable format["CTI_%1_HQ", _side], ""];
 _prices pushBack 		500;
 _times pushBack			0;
 _placements pushBack 	[0, 15, false];
@@ -62,11 +63,11 @@ _specials pushBack 		[];
 _conditions pushBack 	(compile format["%1 call CTI_CO_FNC_IsHQDeployed", _side]);
 
 _headers pushBack 		[CTI_HQ_DEPLOY, "Headquarters (Deploy)", "HQ"];
-_classes pushback		["Land_Cargo_Tower_V1_F", "Land_Cargo_Tower_V1_ruins_F"];
+_classes pushBack		["Land_Research_house_V1_F", "Land_Research_house_V1_ruins_F"];
 _prices pushBack 		500;
 _times pushBack			0;
 _placements pushBack 	[180, 15, false];
-_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 1.5]];
+_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 6]];
 _conditions pushBack 	(compile format["!(%1 call CTI_CO_FNC_IsHQDeployed)", _side]);
 
 _headers pushBack		[CTI_BARRACKS, "Barracks", "Barracks"];
@@ -90,7 +91,7 @@ _classes pushBack 		["Land_Research_HQ_F", "Land_Research_HQ_ruins_F", ["Land_Re
 _prices pushBack 		8000;
 _times pushBack 		90;
 _placements pushBack 	[90, 25, false];
-_specials pushBack 		[["Connected"], ["DMG_Alternative"], ["DMG_Reduce", 4.3]];
+_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 4.3]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
 _headers pushBack 		[CTI_HEAVY, "Heavy Vehicle Factory", "Heavy"];
@@ -142,6 +143,7 @@ _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 2]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
 [_side, _headers, _classes, _prices, _times, _placements, _specials, _conditions] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Structures.sqf";
+
 
 //--- Defenses
 _headers = [];
@@ -257,7 +259,7 @@ _classes pushBack 		"Land_TentHangar_V1_F";
 _prices pushBack 		500;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
-/*
+
 _headers pushBack 		"Mil Shed";
 _classes pushBack 		"Land_sfp_mil_shed";
 _prices pushBack 		1000;
@@ -275,7 +277,7 @@ _classes pushBack 		"Land_sfp_torebodahangar_alt2";
 _prices pushBack 		1500;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
-*/
+
 _headers pushBack 		"Dome (Small)";
 _classes pushBack 		"Land_Dome_Small_F";
 _prices pushBack 		1500;
@@ -300,9 +302,8 @@ _classes pushBack 		"Land_HBarrier_5_F";
 _prices pushBack 		50;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
-*/
 
-/*_headers pushBack 		["High Wall (Concrete)",[["CanAutoAlign", 4.6, 0]]];
+_headers pushBack 		["High Wall (Concrete)",[["CanAutoAlign", 4.6, 0]]];
 _classes pushBack 		"Land_CncWall4_F";
 _prices pushBack 		20;
 _placements pushBack 	[0, 7];
@@ -313,7 +314,6 @@ _classes pushBack 		"Land_HBarrier_5_F";
 _prices pushBack 		20;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
-
 
 _headers pushBack 		["H-Barrier (Big)",[["CanAutoAlign", 6, 0]]];
 _classes pushBack 		"Land_HBarrierBig_F";
@@ -375,7 +375,7 @@ _classes pushBack 		"O_Mortar_01_F";
 _prices pushBack 		10000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
-/*
+
 _headers pushBack 		"M2 Machine Gun";
 _classes pushBack 		"CUP_B_M2StaticMG_USMC";
 _prices pushBack 		150;
@@ -447,12 +447,13 @@ _classes pushBack 		"C_at_phalanx_missile_35AI";
 _prices pushBack 		100000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
-*/
+
 _headers pushBack 		["Heli Pad", [["DMG_Reduce", 1]]];
 _classes pushBack 		"Land_HelipadSquare_F";
 _prices pushBack 		10;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Signs";
+
 /*
 _headers pushBack 		"Flag";
 _classes pushBack 		"Flag_CSAT_F";

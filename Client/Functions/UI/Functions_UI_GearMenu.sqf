@@ -159,7 +159,7 @@ CTI_UI_Gear_DisplayContainerItems = {
 
 //--- Display the shoping tab items
 CTI_UI_Gear_DisplayShoppingItems = {
-	private ["_get", "_list", "_tab"];
+	private ["_get", "_list", "_tab", "_upgrade_gear", "_upgrades"];
 	
 	_tab = _this;
 	
@@ -181,20 +181,28 @@ CTI_UI_Gear_DisplayShoppingItems = {
 		default {missionNamespace getVariable "cti_gear_list_templates"};
 	};
 	
+	_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
+	_upgrade_gear = _upgrades select CTI_UPGRADE_GEAR;
+	if (CTI_DEBUG) then {_upgrade_gear=10};
+	
 	if (_tab != CTI_GEAR_TAB_TEMPLATES) then { //--- Generic items
 		{
 			_get = missionNamespace getVariable format["cti_%1", _x];
 			if !(isNil "_get") then {
-				_row = lnbAddRow [70108, [getText(configFile >> _get select 2 >> _x >> 'displayName'), format ["$%1", (_get select 0) select 1]]];
-				lnbSetPicture [70108, [_row, 1], getText(configFile >> _get select 2 >> _x >> 'picture')];
-				lnbSetData [70108, [_row, 0], toLower(_x)];
+				if (((_get select 0) select 0) <= _upgrade_gear) then { //--- Add the item if it's equal or below the upgrade level
+					_row = lnbAddRow [70108, [getText(configFile >> _get select 2 >> _x >> 'displayName'), format ["$%1", (_get select 0) select 1]]];
+					lnbSetPicture [70108, [_row, 1], getText(configFile >> _get select 2 >> _x >> 'picture')];
+					lnbSetData [70108, [_row, 0], toLower(_x)];
+				};
 			};
 		} forEach _list;
 	} else { //--- Templates
 		{
-			_row = lnbAddRow [70108, [_x select 0, format ["$%1", _x select 2]]];
-			if (_x select 1 != "") then {lnbSetPicture [70108, [_row, 1], _x select 1]};
-			lnbSetValue [70108, [_row, 0], _x select 4];
+			if ((_x select 4) <= _upgrade_gear) then { //--- Add the template if it's equal or below the upgrade level
+				_row = lnbAddRow [70108, [_x select 0, format ["$%1", _x select 2]]];
+				if (_x select 1 != "") then {lnbSetPicture [70108, [_row, 1], _x select 1]};
+				lnbSetValue [70108, [_row, 0], _x select 4];
+			};
 		} forEach _list;
 	};
 	

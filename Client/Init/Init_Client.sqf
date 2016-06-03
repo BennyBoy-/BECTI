@@ -129,11 +129,6 @@ if (CTI_CUP_ADDON > 0) then {
 	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_West.sqf"};
 	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_East.sqf"};
 };
-//--- Load ACE Gear
-if (CTI_ACE_ADDON > 0) then { 
-	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_ACE_West.sqf"};
-	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_ACE_East.sqf"};
-};
 
 CTI_InitClient = true;
 

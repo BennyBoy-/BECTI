@@ -324,7 +324,7 @@ CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
 
 //--- Towns: Economy
-CTI_TOWNS_INCOME_RATIO = 10; //--- A value above 1 will increase the resources ($) generation ((Current SV) * ratio)
+CTI_TOWNS_INCOME_RATIO = 6; //--- A value above 1 will increase the resources ($) generation ((Current SV) * ratio)
 CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = 0.25; //--- Determine how much value an unoccupied town bring to the side.
 
 //--- Towns: Markers
@@ -364,6 +364,11 @@ CTI_TOWNS_TERRITORIAL_MARKER_SIZE = [350, 350]; //--- Size of the helper marker
 //--- Towns: Parameters
 with missionNamespace do {
 	if (isNil 'CTI_TOWNS_OCCUPATION') then {CTI_TOWNS_OCCUPATION = 1}; //--- Determine whether occupation is enabled or not
+	if (isNil 'CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE') then {CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE = 10}; //--Set town occ max group for resistance
+	if (isNil 'CTI_TOWNS_OCCUPATION_LEVEL') then {CTI_TOWNS_OCCUPATION_LEVEL = 8}; //-- Set Town occ max group
+	if (isNil 'CTI_TOWNS_OCCUPATION_RESISTANCE') then {CTI_TOWNS_OCCUPATION_RESISTANCE = 0}; //--- Set Town Occupation Forces
+	if (isNil 'CTI_TOWNS_OCCUPATION_WEST') then {CTI_TOWNS_OCCUPATION_WEST = 0};
+	if (isNil 'CTI_TOWNS_OCCUPATION_EAST') then {CTI_TOWNS_OCCUPATION_EAST = 0};
 	if (isNil 'CTI_TOWNS_PEACE') then {CTI_TOWNS_PEACE = 180}; //--- Enable or disable the Town Peace mode (Expressed in seconds, 0 is disabled)
 	if (isNil 'CTI_TOWNS_TERRITORIAL') then {CTI_TOWNS_TERRITORIAL = 1}; //--- Enable or disable the Territorial mode (Neighbors Capture)
 };
@@ -496,8 +501,8 @@ with missionNamespace do {
 CTI_ARTILLERY_FILTER = 1; //--- Toggle artillery magazines like mines and AT mines (0: Disabled, 1: Enabled)
 CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
 
-CTI_BOUNTY_COEF = 2; //--- Bounty coefficient multiplicator based on the unit original cost
-CTI_BOUNTY_COEF_PVP = 2; //--- Bounty coefficient multiplicator based on the killed unit score
+CTI_BOUNTY_COEF = 1.2; //--- Bounty coefficient multiplicator based on the unit original cost
+CTI_BOUNTY_COEF_PVP = 1; //--- Bounty coefficient multiplicator based on the killed unit score
 
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 30; //--- Keep values of 10
 
@@ -509,7 +514,7 @@ CTI_MARKERS_VEHICLES_DEAD_DELAY = 125;
 CTI_PLAYER_DEFAULT_ALIAS = "Soldier";
 
 CTI_RESPAWN_AI_RANGE = 600;
-CTI_RESPAWN_CAMPS_CONDITION_LIMITED = 4; //--- With this condition, a unit may only spawn x times on a camp during a capture cycle
+CTI_RESPAWN_CAMPS_CONDITION_LIMITED = 10; //--- With this condition, a unit may only spawn x times on a camp during a capture cycle
 CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_ENEMY = 5; //--- Coefficient applied upon camp fee on enemy held town respawn
 CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_FRIENDLY = 5; //--- Coefficient applied upon camp fee on friendly held town respawn
 CTI_RESPAWN_CAMPS_RANGE_CLASSIC = 550; //--- Determine the range needed to respawn at a town's camps (from the town center)
@@ -582,10 +587,14 @@ with missionNamespace do {
 	if (isNil 'CTI_ECONOMY_STARTUP_SUPPLY_EAST') then {CTI_ECONOMY_STARTUP_SUPPLY_EAST = 1200};
 	if (isNil 'CTI_ECONOMY_STARTUP_SUPPLY_WEST') then {CTI_ECONOMY_STARTUP_SUPPLY_WEST = 1200};
 	
-	// CTI_ECONOMY_STARTUP_FUNDS_EAST = 80000;
-	// CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER = 400000;
-	// CTI_ECONOMY_STARTUP_FUNDS_WEST = 80000;
-	// CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER = 400000;
+	if (CTI_DEV_MODE > 0) then {
+		CTI_ECONOMY_STARTUP_FUNDS_EAST = 1000000;
+		CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER = 1000000;
+		CTI_ECONOMY_STARTUP_SUPPLY_EAST = 1000000;
+		CTI_ECONOMY_STARTUP_FUNDS_WEST = 1000000;
+		CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER = 1000000;
+		CTI_ECONOMY_STARTUP_SUPPLY_WEST = 1000000;
+	};
 	
 	if (isNil 'CTI_ECONOMY_TOWNS_OCCUPATION') then {CTI_ECONOMY_TOWNS_OCCUPATION = 1}; //--- Determine if towns need to be occupied to bring more resources
 	
@@ -614,7 +623,6 @@ with missionNamespace do {
 	if (isNil 'CTI_WEATHER_ALLOWRAIN') then {CTI_WEATHER_ALLOWRAIN = 0};
 	
 	if (isNil 'CTI_CUP_ADDON') then {CTI_CUP_ADDON = 1};
-	if (isNil 'CTI_ACE_ADDON') then {CTI_ACE_ADDON = 1};
 	if (isNil 'CTI_OFPS_ADDON') then {CTI_OFPS_ADDON = 1};
 	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 0};
 };

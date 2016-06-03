@@ -21,13 +21,13 @@ class Params {
 		title = "BASE: HQ Repairable";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_BASE_FOB_MAX {
 		title = "BASE: FOB Limit";
 		values[] = {0,1,2,3,4,5,6,7,8,9,10};
 		texts[] = {"Disabled","1","2","3","4","5","6","7","8","9","10"};
-		default = 2;
+		default = 4;
 	};
 	class CTI_BASE_STARTUP_PLACEMENT {
 		title = "BASE: Startup Placement";
@@ -45,37 +45,37 @@ class Params {
 		title = "INCOME: Starting Funds (East Commander)";
 		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
 		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
-		default = 15000;
+		default = 50000;
 	};
 	class CTI_ECONOMY_STARTUP_SUPPLY_EAST {
-		title = "SUPPLY: Starting Supply (East Commander)";
+		title = "SUPPLY: Starting Supply (East Team)";
 		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
 		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
-		default = 9000;
+		default = 20000;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_EAST {
 		title = "INCOME: Starting Funds (East Players)";
 		values[] = {900,1500,2400,3200,6000,8000,10000,12500,15000,20000,100000000};
 		texts[] = {"$900","$1500","$2400","$3200","$6000","$8000","$10000","$12500","$15000","$20000","$100000000"};
-		default = 900;
+		default = 10000;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER {
 		title = "INCOME: Starting Funds (West Commander)";
 		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
 		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
-		default = 15000;
+		default = 50000;
 	};
 	class CTI_ECONOMY_STARTUP_SUPPLY_WEST {
-		title = "SUPPLY: Starting Supply (East Commander)";
+		title = "SUPPLY: Starting Supply (West Team)";
 		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
 		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
-		default = 9000;
+		default = 20000;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_WEST {
 		title = "INCOME: Starting Funds (West Players)";
 		values[] = {900,1500,2400,3200,6000,8000,10000,12500,15000,20000,100000000};
 		texts[] = {"$900","$1500","$2400","$3200","$6000","$8000","$10000","$12500","$15000","$20000","$100000000"};
-		default = 900;
+		default = 10000;
 	};
 	class CTI_ECONOMY_TOWNS_OCCUPATION {
 		title = "INCOME: Towns Occupation";
@@ -87,7 +87,7 @@ class Params {
 		title = "RESPAWN: AI Members";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_RESPAWN_CAMPS {
 		title = "RESPAWN: Camps";
@@ -99,31 +99,61 @@ class Params {
 		title = "RESPAWN: Camps Condition";
 		values[] = {0,1,2};
 		texts[] = {"No limits","Priced","Limited"};
-		default = 2;
+		default = 1;
 	};
 	class CTI_RESPAWN_FOB_RANGE {
 		title = "RESPAWN: FOB Range";
 		values[] = {500,750,1000,1250,1500,1750,2000};
 		texts[] = {"0.50 KM","0.75 KM","1 KM","1.25 KM","1.5 KM","1.75 KM","2 KM"};
-		default = 1250;
+		default = 1500;
 	};
 	class CTI_RESPAWN_MOBILE {
 		title = "RESPAWN: Mobile";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_RESPAWN_TIMER {
 		title = "RESPAWN: Delay";
 		values[] = {15,20,25,30,35,40,45,50,55,60};
 		texts[] = {"15 Seconds","20 Seconds","25 Seconds","30 Seconds","35 Seconds","40 Seconds","45 Seconds","50 Seconds","55 Seconds","60 Seconds"};
-		default = 30;
+		default = 15;
 	};
 	class CTI_TOWNS_OCCUPATION {
 		title = "TOWNS: Occupation";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
+	};
+	class CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE {
+		title = "TOWNS: Resistance Occupation Level";
+		values[] = {6,8,10,12,14};
+		texts[] = {"Noob","Low","Medium","High","Insane"};
+		default = 10;
+	};
+	class CTI_TOWNS_OCCUPATION_LEVEL {
+		title = "TOWNS: Side Occupation Level";
+		values[] = {6,8,10,12,14};
+		texts[] = {"Noob","Low","Medium","High","Insane"};
+		default = 8;
+	};
+	class CTI_TOWNS_OCCUPATION_RESISTANCE {
+		title = "TOWNS: Resistance Occupation Forces";
+		values[] = {0,1,2};
+		texts[] = {"Vanilla","CUP","Mixed"};
+		default = 2;
+	};
+	class CTI_TOWNS_OCCUPATION_WEST {
+		title = "TOWNS: Blufor Occupation Forces";
+		values[] = {0,1,2};
+		texts[] = {"Vanilla","CUP","Mixed"};
+		default = 2;
+	};
+	class CTI_TOWNS_OCCUPATION_EAST {
+		title = "TOWNS: Opfor Occupation Forces";
+		values[] = {0,1,2};
+		texts[] = {"Vanilla","CUP","Mixed"};
+		default = 2;
 	};
 	class CTI_TOWNS_PEACE {
 		title = "TOWNS: Peace";
@@ -225,7 +255,7 @@ class Params {
 		title = "WEATHER: Day Duration";
 		values[] = {1,2,3,4,5,6,7,8,9,10,11,12};
 		texts[] = {"1 hour","2 hours","3 hours","4 hours","5 hours","6 hours","7 hours","8 hours","9 hours","10 hours","11 hours","12 hours"};
-		default = 6;
+		default = 5;
 	};
   	class CTI_WEATHER_FAST_NIGHT {
 		title = "WEATHER: Night Duration";
@@ -235,12 +265,6 @@ class Params {
 	};
 	class CTI_CUP_ADDON {
 		title = "ADDON: CUP Support, Units, Vehicles, Weapons";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 1;
-	};
-	class CTI_ACE_ADDON {
-		title = "ADDON: ACE Support";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
 		default = 1;

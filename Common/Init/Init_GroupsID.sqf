@@ -1,6 +1,6 @@
 Private ["_m","_milalpha"];
 
-_milalpha = ["Commander", "Alpha","Bravo","Charlie","Delta","Echo","Foxtrot","Golf","Hotel","India","Juliet","Kilo","Lima","Mike",
+_milalpha = ["Zulu", "Alpha","Bravo","Charlie","Delta","Echo","Foxtrot","Golf","Hotel","India","Juliet","Kilo","Lima","Mike",
 "November","Oscar","Papa","Quebec","Romeo","Sierra","Tango","Uniform","Victor","Whiskey","X-Ray","Yankee","Zulu",
 "Razor","Fatman","StarForce","Frostbite","Battlemage","Manhattan","Firefly","Swordsman","Sabre","Hammer","Reaper",
 "Anvil","Fortune"];
