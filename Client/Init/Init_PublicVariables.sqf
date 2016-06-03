@@ -151,6 +151,7 @@ with missionNamespace do {
 	CTI_PVF_Client_ReceiveServerFPS = { CTI_P_ServerFPS = _this };
 	
 	CTI_PVF_Client_AddHQDamagerHandler = {
+		_this addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CL_FNC_OnHQDestroyed", CTI_P_SideID]];
 		_this addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", CTI_P_SideID]];
 	};
 	
