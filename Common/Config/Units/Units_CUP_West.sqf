@@ -736,7 +736,7 @@ _d pushBack 0;
 _c pushBack 'CUP_B_UH1Y_GUNSHIP_USMC';
 _p pushBack '';
 _n pushBack '';
-_o pushBack 12000;
+_o pushBack 9000;
 _t pushBack 20;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_AIR;
