@@ -9,13 +9,13 @@ item4[] = {"Held_by_Resistan",4,218,-100.000000,-100.000000,0.000000,-50.000000,
 item5[] = {"Gameover",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
 item6[] = {"Enemy_Near_",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Enemy Near?"};
 item7[] = {"Not_held_by_Resi",4,218,50.000000,-200.000000,150.000000,-150.000000,1.000000,"Not held by" \n "Resistance"};
-item8[] = {"Resistance_Timeout",2,250,175.000000,100.000000,275.000000,150.000000,0.000000,"Resistance" \n "Timeout?"};
+item8[] = {"Resistance_Timeout",2,4346,175.000000,100.000000,275.000000,150.000000,0.000000,"Resistance" \n "Timeout?"};
 item9[] = {"Active",8,218,175.000000,0.000000,275.000000,50.000000,0.000000,"Active"};
 item10[] = {"Inactive",4,218,175.000000,-200.000000,275.000000,-150.000000,1.000000,"Inactive"};
 item11[] = {"Still_active",8,218,300.000000,0.000000,400.000000,50.000000,0.000000,"Still active"};
 item12[] = {"Timed_out",4,218,375.000000,100.000000,475.000000,150.000000,1.000000,"Timed out"};
 item13[] = {"Skip",2,250,300.000000,-200.000000,400.000000,-150.000000,0.000000,"Skip"};
-item14[] = {"Cleanup",2,4346,375.000000,-400.000000,475.000000,-350.000000,0.000000,"Cleanup"};
+item14[] = {"Cleanup",2,250,375.000000,-400.000000,475.000000,-350.000000,0.000000,"Cleanup"};
 item15[] = {"Resistance_Active",2,250,50.000000,-100.000000,150.000000,-50.000000,0.000000,"Resistance" \n "Active?"};
 item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
 item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
@@ -194,7 +194,7 @@ class FSM
        "	_lives = 0;" \n
        "	{_lives = _lives + count(_x call CTI_CO_FNC_GetLiveUnits)} forEach _town_groups;" \n
        "	" \n
-       "	[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is still active with [%2] units alive amongst the [%3] groups"", _town getVariable ""cti_town_name"", _lives, _town_groups]] call CTI_CO_FNC_Log;" \n
+       "	//[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is still active with [%2] units alive amongst the [%3] groups"", _town getVariable ""cti_town_name"", _lives, _town_groups]] call CTI_CO_FNC_Log;" \n
        "	" \n
        "	if (_lives >= CTI_TOWNS_RESISTANCE_MIN_ACTIVE) then { //--- There's still some units fighting! it's not that inactive!" \n
        "		_town setVariable [""cti_town_resistance_activeTime"", time];" \n

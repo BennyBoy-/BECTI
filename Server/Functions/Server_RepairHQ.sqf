@@ -39,7 +39,7 @@ _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 _hq_wreck = (_side) call CTI_CO_FNC_GetSideHQ;
-_position = getPos _hq_wreck;
+_position = [getPos _hq_wreck, 30, "meadow", 8, 3, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
 _direction = getDir _hq_wreck;
 
 if (alive _hq_wreck) exitWith {};

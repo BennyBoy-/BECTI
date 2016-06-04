@@ -30,5 +30,5 @@ _group = _this;
 _side = side _group;
 
 _commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;
-if (isNull _commander) exitWith {false};
-if (_commander == _group) then {true} else {false}
+// if (isNull _commander) exitWith {false};
+if (_commander isEqualTo _group) then {true} else {false}

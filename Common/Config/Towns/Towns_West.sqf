@@ -49,12 +49,12 @@ if (CTI_TOWNS_OCCUPATION_WEST == 0) then {
 	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = [""];
 	WEST_NAVAL_LARGE_ASSAULT_BOAT = [""];
 	//---Manual Set SQUAD - odd bug
-	WEST_TOWNS_SQUAD_NAVAL1 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F"];
-	WEST_TOWNS_SQUAD_NAVAL2 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AA_F"];
-	WEST_TOWNS_SQUAD_NAVAL3 = ["I_diver_TL_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AT_F", "I_Soldier_AA_F", "I_Soldier_AA_F"];
+	WEST_TOWNS_SQUAD_NAVAL1 = ["B_diver_TL_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F"];
+	WEST_TOWNS_SQUAD_NAVAL2 = ["B_diver_TL_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_Soldier_AT_F", "B_Soldier_AA_F"];
+	WEST_TOWNS_SQUAD_NAVAL3 = ["B_diver_TL_F", "B_diver_F", "B_Soldier_AT_F", "B_Soldier_AT_F", "B_Soldier_AA_F", "B_Soldier_AA_F"];
 };
 if (CTI_TOWNS_OCCUPATION_WEST == 1) then { 
-//--- CUP TOWN OCCUPATION
+//--- CUP - US Army TOWN OCCUPATION
 	//--- Infantry
 	WEST_SOLDIER = "CUP_B_US_Soldier";
 	WEST_SOLDIER_AA = "CUP_B_US_Soldier_AA";
@@ -91,9 +91,9 @@ if (CTI_TOWNS_OCCUPATION_WEST == 1) then {
 	WEST_VEHICLE_ARMORED2 = ["CUP_B_M1A2_TUSK_MG_US_Army"];
 	WEST_VEHICLE_ARMORED3 = ["CUP_B_M1A2_TUSK_MG_US_Army"];
 	//--- AA Vehicles
-	WEST_VEHICLE_AA1 = ["CUP_B_M163_USA"];
-	WEST_VEHICLE_AA2 = ["CUP_B_HMMWV_Avenger_USMC"];
-	WEST_VEHICLE_AA3 = ["CUP_B_ZSU23_CDF"];
+	WEST_VEHICLE_AA1 = ["CUP_B_HMMWV_Avenger_USMC"];
+	WEST_VEHICLE_AA2 = ["CUP_B_ZSU23_CDF"];
+	WEST_VEHICLE_AA3 = ["CUP_B_M163_USA"];
 	//--- Air
 	WEST_AIR_HELI1 = ["CUP_B_UH1D_GER_KSK_Des"];
 	WEST_AIR_HELI2 = [""];
@@ -106,9 +106,9 @@ if (CTI_TOWNS_OCCUPATION_WEST == 1) then {
 	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = ["rhsusf_mkvsoc"];
 	WEST_NAVAL_LARGE_ASSAULT_BOAT = ["sfp_rbb_norrkoping"];
 	//---Manual Set SQUAD - odd bug
-	WEST_TOWNS_SQUAD_NAVAL1 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F"];
-	WEST_TOWNS_SQUAD_NAVAL2 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AA_F"];
-	WEST_TOWNS_SQUAD_NAVAL3 = ["I_diver_TL_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AT_F", "I_Soldier_AA_F", "I_Soldier_AA_F"];
+	WEST_TOWNS_SQUAD_NAVAL1 = ["B_diver_TL_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F"];
+	WEST_TOWNS_SQUAD_NAVAL2 = ["B_diver_TL_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_Soldier_AT_F", "B_Soldier_AA_F"];
+	WEST_TOWNS_SQUAD_NAVAL3 = ["B_diver_TL_F", "B_diver_F", "B_Soldier_AT_F", "B_Soldier_AT_F", "B_Soldier_AA_F", "B_Soldier_AA_F"];
 };
 if (CTI_TOWNS_OCCUPATION_WEST == 2) then { 
 //--- MIXED TOWN OCCUPATION - vanilla/cup/ofps/etc..
@@ -148,8 +148,8 @@ if (CTI_TOWNS_OCCUPATION_WEST == 2) then {
 	WEST_VEHICLE_ARMORED2 = ["CUP_B_M1A2_TUSK_MG_US_Army"];	
 	WEST_VEHICLE_ARMORED3 = ["B_MBT_01_TUSK_F"];
 	//--- AA Vehicles
-	WEST_VEHICLE_AA1 = ["CUP_B_M163_USA"];
-	WEST_VEHICLE_AA2 = ["CUP_B_HMMWV_Avenger_USMC"];
+	WEST_VEHICLE_AA1 = ["CUP_B_HMMWV_Avenger_USMC"];
+	WEST_VEHICLE_AA2 = ["CUP_B_M163_USA"];
 	WEST_VEHICLE_AA3 = ["B_APC_Tracked_01_AA_F"];
 	//--- Air
 	WEST_AIR_HELI1 = ["CUP_B_UH1D_GER_KSK_Des"];
@@ -163,9 +163,9 @@ if (CTI_TOWNS_OCCUPATION_WEST == 2) then {
 	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = ["rhsusf_mkvsoc"];
 	WEST_NAVAL_LARGE_ASSAULT_BOAT = ["sfp_rbb_norrkoping"];
 	//---Manual Set SQUAD - odd bug
-	WEST_TOWNS_SQUAD_NAVAL1 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F"];
-	WEST_TOWNS_SQUAD_NAVAL2 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AA_F"];
-	WEST_TOWNS_SQUAD_NAVAL3 = ["I_diver_TL_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AT_F", "I_Soldier_AA_F", "I_Soldier_AA_F"];
+	WEST_TOWNS_SQUAD_NAVAL1 = ["B_diver_TL_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F"];
+	WEST_TOWNS_SQUAD_NAVAL2 = ["B_diver_TL_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_Soldier_AT_F", "B_Soldier_AA_F"];
+	WEST_TOWNS_SQUAD_NAVAL3 = ["B_diver_TL_F", "B_diver_F", "B_Soldier_AT_F", "B_Soldier_AT_F", "B_Soldier_AA_F", "B_Soldier_AA_F"];
 };
 //--- Town Teams Templates
 //--- Infantry Squads

@@ -69,7 +69,7 @@ if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then { //--- Attempt to deploy 
 		deleteVehicle _current_hq;
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FILE: Server\Functions\Server_ToggleHQ.sqf", format["HQ from side [%1] was deployed at position [%2]", _side, _structure]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FILE: Server\Functions\Server_ToggleHQ.sqf", format["HQ from side [%1] was deployed at position [%2]", _side, _position]] call CTI_CO_FNC_Log;
 		};
 	};
 } else { //--- Attempt to mobilize the HQ
@@ -97,7 +97,7 @@ if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then { //--- Attempt to deploy 
 		};
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FILE: Server\Functions\Server_ToggleHQ.sqf", format["HQ from side [%1] was mobilized at position [%2]", _side, _structure]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FILE: Server\Functions\Server_ToggleHQ.sqf", format["HQ from side [%1] was mobilized at position [%2]", _side, _position]] call CTI_CO_FNC_Log;
 		};
 	};
 };
