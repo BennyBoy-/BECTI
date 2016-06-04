@@ -54,6 +54,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 //--- Units - Barracks
 _u = [];
 _u pushBack "B_soldier_AR_F";
+_u pushBack "B_HeavyGunner_F";
 _u pushBack "B_Soldier_A_F";
 _u pushBack "B_soldier_exp_F";
 _u pushBack "B_Soldier_GL_F";
@@ -71,6 +72,22 @@ _u pushBack "B_spotter_F";
 _u pushBack "B_soldier_UAV_F";
 _u pushBack "B_Helipilot_F";
 _u pushBack "B_crew_F";
+_u pushBack "B_Soldier_TL_F";
+_u pushBack "B_Soldier_SL_F";
+//--- CUP UNITS
+if (CTI_CUP_ADDON > 0) then { 
+_u pushBack 'CUP_B_US_Soldier';
+_u pushBack 'CUP_B_US_Soldier_AA';
+_u pushBack 'CUP_B_US_Soldier_AR';
+_u pushBack 'CUP_B_US_Crew';
+_u pushBack 'CUP_B_US_Soldier_AT';
+_u pushBack 'CUP_B_US_Soldier_HAT';
+_u pushBack 'CUP_B_US_Soldier_Engineer_EOD';
+_u pushBack 'CUP_B_US_Soldier_GL';
+_u pushBack 'CUP_B_US_Medic';
+_u pushBack 'CUP_B_US_Pilot';
+_u pushBack 'CUP_B_US_Sniper_M107';
+};
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u];
 
 _u = [];

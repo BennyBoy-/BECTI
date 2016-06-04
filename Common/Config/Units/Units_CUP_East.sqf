@@ -12,6 +12,115 @@ _s = []; //--- Script
 _d = []; //--- Extra Distance (From Factory)
 
 //--- Infantry
+_c pushBack 'CUP_O_RU_Soldier';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 75;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_RU_Soldier_AA';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_RU_Soldier_AR';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 100;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_RU_Crew';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 75;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_RU_Soldier_AT';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 250;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_RU_Soldier_HAT';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_RU_Engineer';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_RU_Soldier_TL';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 100;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_RU_Medic';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 100;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_RU_Pilot';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 75;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_RU_Sniper_KSVK';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 125;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
 
 //--- Light Vehicles
 _c pushBack 'CUP_M1030';

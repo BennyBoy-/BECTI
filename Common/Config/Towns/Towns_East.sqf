@@ -49,12 +49,12 @@ if (CTI_TOWNS_OCCUPATION_EAST == 0) then {
 	EAST_NAVAL_MEDIUM_ASSAULT_BOAT = ["O_Boat_Armed_01_hmg_F"];
 	EAST_NAVAL_LARGE_ASSAULT_BOAT = ["O_Boat_Armed_01_hmg_F"];
 	//---Manual Set SQUAD - odd bug
-	EAST_TOWNS_SQUAD_NAVAL1 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F"];
-	EAST_TOWNS_SQUAD_NAVAL2 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AA_F"];
-	EAST_TOWNS_SQUAD_NAVAL3 = ["I_diver_TL_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AT_F", "I_Soldier_AA_F", "I_Soldier_AA_F"];
+	EAST_TOWNS_SQUAD_NAVAL1 = ["O_diver_TL_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F"];
+	EAST_TOWNS_SQUAD_NAVAL2 = ["O_diver_TL_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_Soldier_AT_F", "O_Soldier_AA_F"];
+	EAST_TOWNS_SQUAD_NAVAL3 = ["O_diver_TL_F", "O_diver_F", "O_Soldier_AT_F", "O_Soldier_AT_F", "O_Soldier_AA_F", "O_Soldier_AA_F"];
 };
 if (CTI_TOWNS_OCCUPATION_EAST == 1) then { 
-//--- CUP TOWN OCCUPATION
+//--- CUP - Russians TOWN OCCUPATION
 	//--- Infantry
 	EAST_SOLDIER = "CUP_O_RU_Soldier";
 	EAST_SOLDIER_AA = "CUP_O_RU_Soldier_AA";
@@ -106,9 +106,9 @@ if (CTI_TOWNS_OCCUPATION_EAST == 1) then {
 	EAST_NAVAL_MEDIUM_ASSAULT_BOAT = ["O_Boat_Armed_01_hmg_F"];
 	EAST_NAVAL_LARGE_ASSAULT_BOAT = ["O_Boat_Armed_01_hmg_F"];
 	//---Manual Set SQUAD - odd bug
-	EAST_TOWNS_SQUAD_NAVAL1 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F"];
-	EAST_TOWNS_SQUAD_NAVAL2 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AA_F"];
-	EAST_TOWNS_SQUAD_NAVAL3 = ["I_diver_TL_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AT_F", "I_Soldier_AA_F", "I_Soldier_AA_F"];
+	EAST_TOWNS_SQUAD_NAVAL1 = ["O_diver_TL_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F"];
+	EAST_TOWNS_SQUAD_NAVAL2 = ["O_diver_TL_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_Soldier_AT_F", "O_Soldier_AA_F"];
+	EAST_TOWNS_SQUAD_NAVAL3 = ["O_diver_TL_F", "O_diver_F", "O_Soldier_AT_F", "O_Soldier_AT_F", "O_Soldier_AA_F", "O_Soldier_AA_F"];
 };
 if (CTI_TOWNS_OCCUPATION_EAST == 2) then { 
 //--- MIXED TOWN OCCUPATION - vanilla/cup/ofps/etc..
@@ -163,9 +163,9 @@ if (CTI_TOWNS_OCCUPATION_EAST == 2) then {
 	EAST_NAVAL_MEDIUM_ASSAULT_BOAT = ["rhsusf_mkvsoc"];
 	EAST_NAVAL_LARGE_ASSAULT_BOAT = ["sfp_rbb_norrkoping"];
 	//---Manual Set SQUAD - odd bug
-	EAST_TOWNS_SQUAD_NAVAL1 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_diver_F"];
-	EAST_TOWNS_SQUAD_NAVAL2 = ["I_diver_TL_F", "I_diver_F", "I_diver_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AA_F"];
-	EAST_TOWNS_SQUAD_NAVAL3 = ["I_diver_TL_F", "I_diver_F", "I_Soldier_AT_F", "I_Soldier_AT_F", "I_Soldier_AA_F", "I_Soldier_AA_F"];
+	EAST_TOWNS_SQUAD_NAVAL1 = ["O_diver_TL_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_diver_F"];
+	EAST_TOWNS_SQUAD_NAVAL2 = ["O_diver_TL_F", "O_diver_F", "O_diver_F", "O_diver_F", "O_Soldier_AT_F", "O_Soldier_AA_F"];
+	EAST_TOWNS_SQUAD_NAVAL3 = ["O_diver_TL_F", "O_diver_F", "O_Soldier_AT_F", "O_Soldier_AT_F", "O_Soldier_AA_F", "O_Soldier_AA_F"];
 };
 //--- Town Teams Templates
 //--- Infantry Squads
