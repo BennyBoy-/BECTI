@@ -37,9 +37,9 @@ if (CTI_TOWNS_OCCUPATION_WEST == 0) then {
 	WEST_VEHICLE_ARMORED2 = ["B_MBT_01_TUSK_F"];
 	WEST_VEHICLE_ARMORED3 = ["B_MBT_01_TUSK_F"];
 	//--- AA Vehicles
-	WEST_VEHICLE_AA = ["B_APC_Tracked_01_AA_F"];
-	WEST_VEHICLE_AA = ["B_APC_Tracked_01_AA_F"];
-	WEST_VEHICLE_AA = ["B_APC_Tracked_01_AA_F"];
+	WEST_VEHICLE_AA1 = ["B_APC_Tracked_01_AA_F"];
+	WEST_VEHICLE_AA2 = ["B_APC_Tracked_01_AA_F"];
+	WEST_VEHICLE_AA3 = ["B_APC_Tracked_01_AA_F"];
 	//--- Air
 	WEST_AIR_HELI1 = ["B_Heli_Light_01_armed_F"]; //pawnee
 	WEST_AIR_HELI2 = ["B_Heli_Transport_01_F"]; //ghosthawk

@@ -37,9 +37,9 @@ if (CTI_TOWNS_OCCUPATION_EAST == 0) then {
 	EAST_VEHICLE_ARMORED2 = ["O_MBT_02_cannon_F"];
 	EAST_VEHICLE_ARMORED3 = ["O_MBT_02_cannon_F"];
 	//--- AA Vehicles
-	EAST_VEHICLE_AA = ["O_APC_Tracked_02_AA_F"];
-	EAST_VEHICLE_AA = ["O_APC_Tracked_02_AA_F"];
-	EAST_VEHICLE_AA = ["O_APC_Tracked_02_AA_F"];
+	EAST_VEHICLE_AA1 = ["O_APC_Tracked_02_AA_F"];
+	EAST_VEHICLE_AA2 = ["O_APC_Tracked_02_AA_F"];
+	EAST_VEHICLE_AA3 = ["O_APC_Tracked_02_AA_F"];
 	//--- Air
 	EAST_AIR_HELI1 = ["O_Heli_Light_02_F"];
 	EAST_AIR_HELI2 = ["O_Heli_Light_02_v2_F"];
