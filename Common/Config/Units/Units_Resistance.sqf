@@ -508,16 +508,6 @@ _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_I_FV510_GB_D_SLAT';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 3000;
-_t pushBack 30;
-_u pushBack 0;
-_f pushBack CTI_FACTORY_HEAVY;
-_s pushBack "";
-_d pushBack 0;
-
 //--- Tanks
 _c pushBack 'CUP_I_T34_NAPA';
 _p pushBack '';
