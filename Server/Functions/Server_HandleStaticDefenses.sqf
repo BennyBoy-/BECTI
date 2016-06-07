@@ -73,12 +73,20 @@ while {alive _structure} do {
 						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Creating a unit to man the defense [%1] (%2)", _x, typeOf _x]] call CTI_CO_FNC_Log;
 					};
 					
-					//--- Was there an AI in there previously?
+					//--- Was there an AI assigned in there previously?
 					if !(isNull assignedGunner _x) then {
 						if (CTI_Log_Level >= CTI_Log_Debug) then {
 							["DEBUG", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Defense [%1] (%2) has an assigned gunner (%3), attempting to unassign him", _x, typeOf _x, assignedGunner _x]] call CTI_CO_FNC_Log;
 						};
 						unassignVehicle (assignedGunner _x);
+					};
+					
+					//--- Check if the AI is still the gunner
+					if !(isNull gunner _x) then {
+						if (CTI_Log_Level >= CTI_Log_Debug) then {
+							["DEBUG", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Defense [%1] (%2) has a gunner (%3), attempting to delete him", _x, typeOf _x, gunner _x]] call CTI_CO_FNC_Log;
+						};
+						_x deleteVehicleCrew gunner _x;
 					};
 					
 					//--- Do we have an HC?
