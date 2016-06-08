@@ -114,7 +114,7 @@ while {alive _structure} do {
 						_ai moveInGunner _x;
 					} else {
 						//--- At least one HC is available
-						[_x, _defense_team, _sideID, _ai_args] Call CTI_SE_FNC_AttemptDefenseDelegation;
+						[_x, _defense_team, _side, _ai_args] Call CTI_SE_FNC_AttemptDefenseDelegation;
 					};
 					
 				};
