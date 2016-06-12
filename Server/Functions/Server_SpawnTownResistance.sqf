@@ -64,7 +64,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 	switch (true) do {
 		case (_value < 50) : { 
 			_pool_units = [
-				["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 99],  
+				["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 99],
+				["GUER_TOWNS_SQUAD_AT1", 1, 99],			
 				[
 					["GUER_TOWNS_SQUAD_LIGHT1_MIXED", 2, 75],
 					["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 25]
@@ -73,8 +74,9 @@ if (isNil {_town getVariable "cti_naval"}) then {
 		};
 		case (_value >= 50 && _value <= 60) : { 
 			_pool_units = [
-				["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 99],
-				["GUER_TOWNS_SQUAD_SNIPER", 1, 75],				
+				["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 75],
+				["GUER_TOWNS_SQUAD_SNIPER", 1, 75],
+				["GUER_TOWNS_SQUAD_AT1", 1, 75],				
 				[
 					["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 25],
 					["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 3, 75],
@@ -89,9 +91,9 @@ if (isNil {_town getVariable "cti_naval"}) then {
 		case (_value > 60 && _value <= 80) : { 
 			_pool_units = [
 				[
-					["GUER_TOWNS_SQUAD_RIFLEMEN3", 2, 50], 
+					["GUER_TOWNS_SQUAD_RIFLEMEN3", 1, 50], 
 					["GUER_TOWNS_SQUAD_SNIPER", 1, 20], 
-					["GUER_TOWNS_SQUAD_AT1", 2, 30] 				
+					["GUER_TOWNS_SQUAD_AT2", 2, 75] 				
 				],
 				[
 					["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 1, 20],
@@ -110,10 +112,10 @@ if (isNil {_town getVariable "cti_naval"}) then {
 		case (_value > 80 && _value <= 100) : { 
 			_pool_units = [
 				[
-					["GUER_TOWNS_SQUAD_RIFLEMEN3", 4, 50],
+					["GUER_TOWNS_SQUAD_RIFLEMEN3", 2, 50],
 					["GUER_TOWNS_SQUAD_SNIPER", 1, 10], 
-					["GUER_TOWNS_SQUAD_AT2", 2, 20], 
-					["GUER_TOWNS_SQUAD_AA", 2, 20]
+					["GUER_TOWNS_SQUAD_AT2", 2, 75], 
+					["GUER_TOWNS_SQUAD_AA", 2, 65]
 				],
 				[
 					["GUER_TOWNS_SQUAD_LIGHT4_MIXED", 1, 20],
@@ -149,10 +151,10 @@ if (isNil {_town getVariable "cti_naval"}) then {
 		case (_value > 100 && _value <= 120) : { 
 			_pool_units = [
 				[
-					["GUER_TOWNS_SQUAD_RIFLEMEN3", 2, 50],
+					["GUER_TOWNS_SQUAD_RIFLEMEN3", 1, 50],
 					["GUER_TOWNS_SQUAD_SNIPER", 1, 50], 
-					["GUER_TOWNS_SQUAD_AT2", 3, 50], 
-					["GUER_TOWNS_SQUAD_AA", 3, 50]
+					["GUER_TOWNS_SQUAD_AT2", 3, 75], 
+					["GUER_TOWNS_SQUAD_AA", 3, 65]
 				],
 				[
 					["GUER_TOWNS_SQUAD_LIGHT5_MIXED", 1, 50],
@@ -189,10 +191,10 @@ if (isNil {_town getVariable "cti_naval"}) then {
 		case (_value > 120) : { 
 			_pool_units = [
 				[
-					["GUER_TOWNS_SQUAD_RIFLEMEN3", 2, 60],
+					["GUER_TOWNS_SQUAD_RIFLEMEN3", 1, 50],
 					["GUER_TOWNS_SQUAD_SNIPER", 1, 50], 
-					["GUER_TOWNS_SQUAD_AT2", 4, 60], 
-					["GUER_TOWNS_SQUAD_AA", 4, 60]
+					["GUER_TOWNS_SQUAD_AT2", 4, 75], 
+					["GUER_TOWNS_SQUAD_AA", 4, 65]
 				],
 				[
 					["GUER_TOWNS_SQUAD_LIGHT6_MIXED", 1, 30],

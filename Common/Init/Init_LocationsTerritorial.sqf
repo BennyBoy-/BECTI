@@ -102,6 +102,69 @@ switch (toLower(worldName)) do {
 };
 
 switch (toLower(worldName)) do {
+	case "tanoa": {
+		Tuvanaka setVariable ["cti_town_neighbors", [TuvanakaAirbase,Belfort]];
+		TuvanakaAirbase setVariable ["cti_town_neighbors", [Tuvanaka,CampRemnants]];
+		Nani setVariable ["cti_town_neighbors", [Belfort,WindFarm,Sosovu]];
+		Belfort setVariable ["cti_town_neighbors", [Tuvanaka,HarborRemnants,Nani]];
+		HarborRemnants setVariable ["cti_town_neighbors", [Belfort,CampRemnants,OuaQueLumberyard]];
+		CampRemnants setVariable ["cti_town_neighbors", [TuvanakaAirbase,HarborRemnants,lleSainteMarie]];
+		WindFarm setVariable ["cti_town_neighbors", [Nani,Muaceba]];
+		Sosovu setVariable ["cti_town_neighbors", [Muaceba,Regina]];
+		Muaceba setVariable ["cti_town_neighbors", [WindFarm,Sosovu,Tavu,Balavu]];
+		Tavu setVariable ["cti_town_neighbors", [Muaceba,Balavu,Laikoro]];
+		Balavu setVariable ["cti_town_neighbors", [Muaceba,Tavu,Laikoro,Rautake]];
+		Laikoro setVariable ["cti_town_neighbors", [Tavu,Balavu,Namuvaka]];
+		Namuvaka setVariable ["cti_town_neighbors", [Laikoro,Rautake,Cerebu]];
+		Rautake setVariable ["cti_town_neighbors", [Balavu,Namuvaka,Ferry]];
+		Cerebu setVariable ["cti_town_neighbors", [Namuvaka,Yanukka]];
+		Koumac setVariable ["cti_town_neighbors", [Laili,Yanukka]];
+		Yanukka setVariable ["cti_town_neighbors", [Laili,Cerebu,Koumac]];
+		Laili setVariable ["cti_town_neighbors", [Katkoula,Yanukka,Koumac]];
+		Ferry setVariable ["cti_town_neighbors", [Rautake,Katkoula]];
+		Katkoula setVariable ["cti_town_neighbors", [Ferry,Savaka,Laili]];
+		Savaka setVariable ["cti_town_neighbors", [Katkoula,OilRig,Moddergat]];
+		OilRig setVariable ["cti_town_neighbors", [Savaka,Moddergat,TuaduaIsland]];
+		TuaduaIsland setVariable ["cti_town_neighbors", [OilRig,Blerick]];
+		Moddergat setVariable ["cti_town_neighbors", [Savaka,OilRig,Losi,Blerick]];
+		Losi setVariable ["cti_town_neighbors", [Moddergat,Harcourt]];
+		Harcourt setVariable ["cti_town_neighbors", [Doodstil,Losi,Kotomo]];
+		Doodstil setVariable ["cti_town_neighbors", [PortBoise,Harcourt,FuelDepot]];
+		PortBoise setVariable ["cti_town_neighbors", [Lijnhaven,Rereki,Doodstil]];
+		Lijnhaven setVariable ["cti_town_neighbors", [Blerick,PortBoise,Rereki]];
+		Rereki setVariable ["cti_town_neighbors", [Lijnhaven,PortBoise]];
+		Blerick setVariable ["cti_town_neighbors", [TuaduaIsland,Moddergat,Lijnhaven]];
+		FuelDepot setVariable ["cti_town_neighbors", [Doodstil,Oumere]];
+		lleSainteMarie setVariable ["cti_town_neighbors", [CampRemnants,CoralReef]];
+		CoralReef setVariable ["cti_town_neighbors", [lleSainteMarie,TikiHotel,SaintPaul]];
+		TikiHotel setVariable ["cti_town_neighbors", [CoralReef,HotelResort]];
+		HotelResort setVariable ["cti_town_neighbors", [TikiHotel,Aerodrome]];
+		OuaQueLumberyard setVariable ["cti_town_neighbors", [HarborRemnants,Nicolet,Georgetown]];
+		Nicolet setVariable ["cti_town_neighbors", [OuaQueLumberyard,SaintPaul]];
+		SaintPaul setVariable ["cti_town_neighbors", [CoralReef,Nicolet,LaRochelle,Galili]];
+		LaRochelle setVariable ["cti_town_neighbors", [SaintPaul,Aerodrome,CommsAlpha]];
+		Aerodrome setVariable ["cti_town_neighbors", [HotelResort,LaRochelle,IndustrialPort]];
+		IndustrialPort setVariable ["cti_town_neighbors", [Aerodrome,Vatukoulo,CommsBravo]];
+		Galili setVariable ["cti_town_neighbors", [SaintPaul,CommsAlpha,Tanouka]];
+		CommsAlpha setVariable ["cti_town_neighbors", [LaRochelle,CommsBravo,Galili]];
+		CommsBravo setVariable ["cti_town_neighbors", [CommsAlpha,Vagalala,IndustrialPort]];
+		Vatukoulo setVariable ["cti_town_neighbors", [IndustrialPort,Luganville,Vagalala]];
+		Georgetown setVariable ["cti_town_neighbors", [OuaQueLumberyard,TempleOfDeath,Regina]];
+		TempleOfDeath setVariable ["cti_town_neighbors", [Georgetown,Tanouka]];
+		Tanouka setVariable ["cti_town_neighbors", [Galili,TempleOfDeath,Vagalala,AeroportdeTanoa]];
+		Vagalala setVariable ["cti_town_neighbors", [Vatukoulo,CommsBravo,Tanouka,Lakatoro]];
+		Regina setVariable ["cti_town_neighbors", [Georgetown,Sosovu,AeroportdeTanoa]];
+		AeroportdeTanoa setVariable ["cti_town_neighbors", [Regina,Tanouka,Lumberyard]];
+		Lakatoro setVariable ["cti_town_neighbors", [Lumberyard,Vagalala]];
+		Lumberyard setVariable ["cti_town_neighbors", [AeroportdeTanoa,Lakatoro,Plantation,Kotomo]];
+		Plantation setVariable ["cti_town_neighbors", [Lumberyard,Oumere]];
+		Kotomo setVariable ["cti_town_neighbors", [Harcourt,Lumberyard,Oumere]];
+		Oumere setVariable ["cti_town_neighbors", [FuelDepot,Kotomo,Plantation,Luganville]];
+		Luganville setVariable ["cti_town_neighbors", [Vatukoulo,Oumere]];
+	};
+};
+
+switch (toLower(worldName)) do {
 	case "chernarus": {
 		Kamenka setVariable ["cti_town_neighbors", [Pavlovo, Komarovo]];
 		Komarovo setVariable ["cti_town_neighbors", [Pavlovo, Balota, Kamenka]];
