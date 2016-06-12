@@ -118,11 +118,11 @@ switch (toLower(worldName)) do {
 		Namuvaka setVariable ["cti_town_neighbors", [Laikoro,Rautake,Cerebu]];
 		Rautake setVariable ["cti_town_neighbors", [Balavu,Namuvaka,Ferry]];
 		Cerebu setVariable ["cti_town_neighbors", [Namuvaka,Yanukka]];
-		Koumac setVariable ["cti_town_neighbors", [Laili,Yanukka]];
-		Yanukka setVariable ["cti_town_neighbors", [Laili,Cerebu,Koumac]];
-		Laili setVariable ["cti_town_neighbors", [Katkoula,Yanukka,Koumac]];
+		Koumac setVariable ["cti_town_neighbors", [Lailai,Yanukka]];
+		Yanukka setVariable ["cti_town_neighbors", [Lailai,Cerebu,Koumac]];
+		Lailai setVariable ["cti_town_neighbors", [Katkoula,Yanukka,Koumac]];
 		Ferry setVariable ["cti_town_neighbors", [Rautake,Katkoula]];
-		Katkoula setVariable ["cti_town_neighbors", [Ferry,Savaka,Laili]];
+		Katkoula setVariable ["cti_town_neighbors", [Ferry,Savaka,Lailai]];
 		Savaka setVariable ["cti_town_neighbors", [Katkoula,OilRig,Moddergat]];
 		OilRig setVariable ["cti_town_neighbors", [Savaka,Moddergat,TuaduaIsland]];
 		TuaduaIsland setVariable ["cti_town_neighbors", [OilRig,Blerick]];
