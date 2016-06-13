@@ -44,7 +44,7 @@ switch (_action) do {
 					{[_x, _order, [0,0]] call CTI_UI_AIMicromanagement_TrySetOrder} forEach _units_effective; //--- Assign a new order
 				};
 				case (_order == CTI_ORDER_CLIENT_MOVE): {
-					uiNamespace setVariable ["cti_dialog_ui_mapcommandmenu_mapclick", true];
+					uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick", true];
 					((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270013) ctrlSetStructuredText parseText format["<t color='#efa12b' align='center'>Click on the map to terminate the order assignment</t>"];
 				};
 			};
