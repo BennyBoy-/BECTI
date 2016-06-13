@@ -35,6 +35,7 @@ CTI_SE_FNC_StartFactoryQueue = compileFinal preprocessFileLineNumbers "Server\Fu
 CTI_SE_FNC_StartUpgrade = compileFinal preprocessFileLineNumbers "Server\Functions\Server_StartUpgrade.sqf";
 CTI_SE_FNC_ToggleHQ = compileFinal preprocessFileLineNumbers "Server\Functions\Server_ToggleHQ.sqf";
 CTI_SE_FNC_TrashObject = compileFinal preprocessFileLineNumbers "Server\Functions\Server_TrashObject.sqf";
+CTI_SE_FNC_UpdateBaseAreas = compileFinal preprocessFileLineNumbers "Server\Functions\Server_UpdateBaseAreas.sqf";
 CTI_SE_FNC_VoteForCommander = compileFinal preprocessFileLineNumbers "Server\Functions\Server_VoteForCommander.sqf";
 CTI_SE_FNC_Weather_Hook= compileFinal preprocessFileLineNumbers "Server\Functions\Server_Weather_Hook.sqf";
 
@@ -223,7 +224,7 @@ skipTime _it;
 	};
 };
 //TeamStack
-0 execFSM "Server\FSM\TEAMSTACK_count.fsm";
+// 0 execFSM "Server\FSM\TEAMSTACK_count.fsm";
 
 // Zeus admin for players
 if !( isNil "ADMIN_ZEUS") then {
