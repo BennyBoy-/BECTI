@@ -22,6 +22,8 @@ if (CTI_IsServer) then {
 	_town setVariable ["cti_town_sv", _town_sv_default, true];
 	_town setVariable ["cti_town_lastSideID", _sideID, true];
 	_town setVariable ["cti_town_sideID", _sideID, true];
+	_town setVariable ["cti_town_active_east", false, true];
+	_town setVariable ["cti_town_active_west", false, true];
 	
 	(_town) execFSM "Server\FSM\town_capture.fsm";
 	(_town) execFSM "Server\FSM\town_resistance.fsm";
