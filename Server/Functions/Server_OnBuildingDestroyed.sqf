@@ -91,37 +91,8 @@ if !(_sell) then {
 	
 	// diag_log format ["DEBUG:: Server_OnBuildingDestroyed.sqf:: structure %1 on side %2 was destroyed (not sold), killer %3", ((_var select 1) select 1), _sideID, _killer];
 } else { //--- The structure was sold
-	private ["_areas", "_closest", "_delete_pos", "_need_update", "_structures_positions"];
-	//--- We update the base area array to remove potential empty areas. First we get the 2D positions of our structures
-	_areas = _logic getVariable "cti_structures_areas";
-	_structures_positions = [];
-	{
-		_pos = getPos _x;
-		_pos = [_pos select 0, _pos select 1];
-		_structures_positions pushBack _pos;
-	} forEach ((_side call CTI_CO_FNC_GetSideStructures) + (_logic getVariable "cti_structures_wip"));
-
-	//--- Check for empty areas now
-	_need_update = false;
-	_delete_pos = [];
-	{
-		_closest = [_x, _structures_positions] call CTI_CO_FNC_GetClosestEntity;
-		if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _delete_pos pushBack _x; _areas set [_forEachIndex, "!nil!"]};
-		// if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _areas deleteAt _forEachIndex};
-	} forEach +_areas;
-
-	//--- Only update if we have to
-	if (_need_update) then {
-		_areas = _areas - ["!nil!"];
-		_logic setVariable ["cti_structures_areas", _areas, true];
-		
-		//--- Wipe the defense/structures upon area expiration
-		{
-			{
-				if !(isNil {_x getVariable "cti_managed"}) then {deleteVehicle _x};
-			} forEach (nearestObjects [_x, missionNamespace getVariable format ["CTI_%1_DEFENSES_NAMES", _side], CTI_BASE_AREA_RANGE]);
-		} forEach _delete_pos;
-	};
+	//--- Update base areas
+	(_side) call CTI_SE_FNC_UpdateBaseAreas;
 };
 
 sleep 5;

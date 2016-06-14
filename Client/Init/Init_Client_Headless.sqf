@@ -51,12 +51,14 @@ with missionNamespace do {
 		if !(isNull _gunner) then {
 			if (CTI_Log_Level >= CTI_Log_Debug) then {
 				["DEBUG", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["Defense [%1] (%2) has an assigned gunner (%3), attempting to unassign him", _static, typeOf _static, assignedGunner _static]] call CTI_CO_FNC_Log;
-				diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - BEFORE UNASSIGN] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+				diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - BEFORE unassignVehicle] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 			};
 			unassignVehicle (assignedGunner _static);
-			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER UNASSIGN] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER unassignVehicle] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+			_static deleteVehicleCrew _gunner;
+			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER deleteVehicleCrew] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 			deleteVehicle _gunner;
-			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER DELETE] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER deleteVehicle] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 			deleteVehicle (gunner _static);
 		};
 		

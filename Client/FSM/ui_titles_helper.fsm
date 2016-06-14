@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, ui_titles_helper.fsm">*/
+/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, ui_titles_helper.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Init"};
@@ -20,8 +20,8 @@ link6[] = {5,3};
 link7[] = {6,5};
 link8[] = {7,8};
 link9[] = {8,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,25,6316128,1,-160.035034,340.672852,767.721619,-295.226898,415,881,1};
-window[] = {2,-1,-1,-1,-1,682,225,993,225,3,433};
+globals[] = {25.000000,1,0,0,0,640,480,1,25,6316128,1,-160.035034,340.672852,767.721619,-295.226898,415,911,1};
+window[] = {2,-1,-1,-1,-1,582,125,893,125,3,433};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -84,7 +84,7 @@ class FSM
        "	_upgrade_txt = ""No Upgrade Running"";" \n
        "	_running = CTI_P_SideLogic getVariable ""cti_upgrade"";" \n
        "	if (_running > -1) then {" \n
-       "		_upgrade_txt = format [""Upgrading: %1 %2"", (missionNamespace getVariable format[""CTI_%1_UPGRADES_LABELS"", CTI_P_SideJoined]) select _running, ((CTI_P_SideJoined call CTI_CO_FNC_GetSideUpgrades) select _running)+1];" \n
+       "		_upgrade_txt = format [""Upgrading: %1 %2"", ((missionNamespace getVariable format[""CTI_%1_UPGRADES_LABELS"", CTI_P_SideJoined]) select _running) select 0, ((CTI_P_SideJoined call CTI_CO_FNC_GetSideUpgrades) select _running)+1];" \n
        "	};" \n
        "	" \n
        "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601002) ctrlSetText format[""%1 | $ %2 | %3 S | %4%5 HP"", CTI_P_SideJoined, call CTI_CL_FNC_GetPlayerFunds, (CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply, round(100 - (getDammage player * 100)), ""%""];" \n
