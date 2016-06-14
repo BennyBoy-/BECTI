@@ -212,9 +212,11 @@ switch (_action) do {
 					
 					if !(isNull _nearest) then {
 						if (_mappos distance _nearest < 500) then {
-							_active = _nearest getVariable [format["cti_town_active_%1", CTI_P_SideJoined], false];
-							_active = if (_active) then {false} else {true};
-							_nearest setVariable [format["cti_town_active_%1", CTI_P_SideJoined], _active, true];
+							if (count(CTI_P_SideJoined call CTI_CO_FNC_GetActiveTownsOccupation) < (missionNamespace getVariable "CTI_TOWNS_OCCUPATION_ACTIVE")) then {
+								_active = _nearest getVariable [format["cti_town_active_%1", CTI_P_SideJoined], false];
+								_active = if (_active) then {false} else {true};
+								_nearest setVariable [format["cti_town_active_%1", CTI_P_SideJoined], _active, true];
+							};
 						};
 					};
 				};
