@@ -1,6 +1,7 @@
 CTI_P_SideJoined = side player;
 CTI_P_SideID = CTI_P_SideJoined call CTI_CO_FNC_GetSideID;
 CTI_P_SideLogic = CTI_P_SideJoined call CTI_CO_FNC_GetSideLogic;
+CTI_P_SideColor = CTI_P_SideJoined call CTI_CO_FNC_GetSideColoration;
 
 player setPos ([getMarkerPos format["CTI_%1Respawn", CTI_P_SideJoined], 3, 15] call CTI_CO_FNC_GetRandomPosition); //--- Preplace
 

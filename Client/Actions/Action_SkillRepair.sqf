@@ -25,8 +25,13 @@ if (alive player && vehicle player == player && alive _vehicle && _vehicle dista
 	//--- Parts repairs (No limits)
 	//--- TODO: If locality does not match the player's, delegate to the vehicle owner (like lockpick).
 	{
+		diag_log format ["temp debug (repair): dealing with hitpoint %1", _x];
 		_damages = _vehicle getHit _x;
-		if (_dammages > 0) then {_vehicle setHit [_x, _damages - 0.10]};
+		if !(isNil '_damages') then {
+			if (_dammages > 0) then {_vehicle setHit [_x, _damages - 0.10]};
+		} else {
+			diag_log format ["temp debug (repair): hitpoint %1 gethit is nil", _x];
+		};
 	} forEach _hitPoints;
 	
 	//--- Fuel

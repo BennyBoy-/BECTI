@@ -12,7 +12,7 @@ class RscTitles {
 		class controls {
 			class CTI_Progress : RscProgress {
 				idc = 601000;
-				x = "SafeZoneX + (SafeZoneW * 0.6)";
+				x = "SafeZoneX + (SafeZoneW * 0.55)";
 				y = "((SafeZoneH + SafeZoneY) - (1 + 0.07))*-1";
 				w = 0.4;
 				h = 0.06;
@@ -23,7 +23,7 @@ class RscTitles {
 				style = ST_CENTER;
 				colorText[] = {0.258823529, 0.713725490, 1, 1};
 				shadow = 2;
-				x = "SafeZoneX + (SafeZoneW * 0.6)";
+				x = "SafeZoneX + (SafeZoneW * 0.55)";
 				w = 0.4;
 				y = "((SafeZoneH + SafeZoneY) - (1 + 0.079))*-1";
 			};	
@@ -33,27 +33,30 @@ class RscTitles {
 				style = ST_RIGHT;
 				colorText[] = {1,1,1,1};
 				shadow = 2;
-				x = "SafeZoneX + (SafeZoneW * 0.6)";
+				
+				SizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.65)";
+				
+				x = "SafeZoneX + (SafeZoneW * 0.55)";
 				w = 0.4;
-				y = "((SafeZoneH + SafeZoneY) - (1 + 0.139))*-1";
+				y = "((SafeZoneH + SafeZoneY) - (1 + 0.129))*-1";
 			};
 			
 			class CTI_Com_Label : CTI_Intel_Label {
 				idc = 601003;
 
-				y = "((SafeZoneH + SafeZoneY) - (1 + 0.18))*-1";
+				y = "((SafeZoneH + SafeZoneY) - (1 + 0.155))*-1";
 			};
 			
 			class CTI_Upgrade_Label : CTI_Intel_Label {
 				idc = 601004;
 
-				y = "((SafeZoneH + SafeZoneY) - (1 + 0.221))*-1";
+				y = "((SafeZoneH + SafeZoneY) - (1 + 0.181))*-1";
 			};
 			
 			class CTI_FPS_Label : CTI_Intel_Label {
 				idc = 601005;
 
-				y = "((SafeZoneH + SafeZoneY) - (1 + 0.262))*-1";
+				y = "((SafeZoneH + SafeZoneY) - (1 + 0.207))*-1";
 			};
 		};
 	};

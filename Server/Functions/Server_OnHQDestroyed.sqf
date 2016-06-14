@@ -65,6 +65,9 @@ if (_was_deployed) then {
 	
 	//--- Just in case, remove the old wreck if needed
 	if !(isNull _killed) then {deleteVehicle _killed}; 
+	
+	//--- Update base areas
+	(_side) call CTI_SE_FNC_UpdateBaseAreas;
 };
 
 //--- Bounty
