@@ -134,10 +134,6 @@ switch (_action) do {
 			ctrlMapAnimCommit ((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220001);
 		};
 	};
-	case "onToggleOccupationPressed": {
-		uiNamespace setVariable ["cti_dialog_ui_mapcommandmenu_mapclick", "toggleOccupation"];
-		((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220013) ctrlSetStructuredText parseText format["<t color='#efa12b' align='center'>Click on the map to toggle the force of an Occupied Town on or off</t>"];
-	};
 	case "onMapButtonDown": {
 		_event = _this select 1;
 		_button = _event select 1;
@@ -202,20 +198,6 @@ switch (_action) do {
 										[_who, _order, _mappos] call CTI_UI_MapCommanding_TrySetOrder;
 									};
 								};
-							};
-						};
-					};
-				};
-				case "toggleOccupation": { //--- Todo: add hint msg
-					_mappos = ((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220001) ctrlMapScreenToWorld [_mx, _my];
-					_nearest = [_mappos, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestFriendlyTown;
-					
-					if !(isNull _nearest) then {
-						if (_mappos distance _nearest < 500) then {
-							if (count(CTI_P_SideJoined call CTI_CO_FNC_GetActiveTownsOccupation) < (missionNamespace getVariable "CTI_TOWNS_OCCUPATION_ACTIVE")) then {
-								_active = _nearest getVariable [format["cti_town_active_%1", CTI_P_SideJoined], false];
-								_active = if (_active) then {false} else {true};
-								_nearest setVariable [format["cti_town_active_%1", CTI_P_SideJoined], _active, true];
 							};
 						};
 					};

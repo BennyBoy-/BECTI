@@ -117,6 +117,7 @@ with missionNamespace do {
 			// };
 		} forEach _groups; //--- Delete the group client-sided.
 	};*/
+	
 	CTI_PVF_Client_OnTownDelegationReceived = {
 		private ["_groups", "_hc_tvar", "_positions", "_side", "_sleep_thread", "_teams", "_town", "_town_vehicles"];
 		
@@ -131,21 +132,17 @@ with missionNamespace do {
 			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnTownDelegationReceived", format["A Delegation request was received from the server for [%1] teams in town [%2] on [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
 		
-		sleep _sleep_thread;
-		
-		[_town, _side, _teams, _groups, _positions] spawn CTI_HC_CreateTownUnits;
-		
 		_hc_tvar = if (_side == resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
 		
+		//--- Register each groups on the town for deletion
 		{
-			//--- Register each groups on the town for deletion
 			if (isNil {_town getVariable _hc_tvar}) then {_town setVariable [_hc_tvar, [_x]]} else {_town setVariable [_hc_tvar, (_town getVariable _hc_tvar) + [_x]]};
-		// commented in for delegation removal via pvf
-			/*_x spawn {
-				while {count units _this > 0} do {sleep 5}; 
-				deleteGroup _this;
-			};*/
-		} forEach _groups; //--- Delete the group client-sided.
+		} forEach _groups;
+		
+		sleep _sleep_thread;
+		
+		//--- Create the desired units
+		[_town, _side, _teams, _groups, _positions] spawn CTI_HC_CreateTownUnits;
 	};
 	
 	CTI_PVF_Client_OnTownDelegationRemoval = {
@@ -185,13 +182,37 @@ with missionNamespace do {
 			//--- Destroy the variable at the end
 			_town setVariable [_hc_tvar, nil];
 		};
+		
+		//--- Wave System update, flush the current variable
+		_hc_tvar = if (_side == resistance) then {"cti_hc_town_groups_resistance"} else {"cti_hc_town_groups_occupation"};
+		_town setVariable [_hc_tvar, []];
+		
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Unregistered town [%1] groups for side [%2]", _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+		};
+	};
+
+	CTI_PVF_Client_UpdateTownGroups = {
+		private ["_groups", "_hc_tvar", "_side", "_town"];
+		
+		_town = _this select 0;
+		_side = _this select 1;
+		_groups = _this select 2;
+		
+		_hc_tvar = if (_side == resistance) then {"cti_hc_town_groups_resistance"} else {"cti_hc_town_groups_occupation"};
+		
+		_town setVariable [_hc_tvar, (_town getVariable [_hc_tvar, []]) + _groups];
+		
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FUNCTION: CTI_PVF_Client_UpdateTownGroups", format["Registered [%1] Town Groups [%2] for town [%3] on side [%4] ", count(_groups), _groups, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+		};
 	};
 };
 
 
 //--- Extra function
 CTI_HC_CreateTownUnits = {
-	private ["_groups", "_positions", "_side", "_sideID", "_teams", "_town"];
+	private ["_groups", "_index", "_positions", "_side", "_sideID", "_teams", "_town", "_town_groups"];
 
 	_town = _this select 0;
 	_side = _this select 1;
@@ -201,8 +222,63 @@ CTI_HC_CreateTownUnits = {
 
 	_sideID = (_side) call CTI_CO_FNC_GetSideID;
 
+	//--- Waves Management goes here
+	_hc_tvar = if (_side == resistance) then {"cti_hc_town_groups_resistance"} else {"cti_hc_town_groups_occupation"};
+	_limit = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI"};
+	_ratio = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO"};
+	
+	_index = 0;
+	_ratio = round(count _groups * (_ratio/100));
+	if (_ratio < 1) then {_ratio = 1};
+	
+	while {true} do {
+		_town_groups = _town getVariable [_hc_tvar, []];
+		
+		//--- Town got de-activated?
+		_valid_groups = 0;
+		{if (_x in _town_groups && !isNull _x) then {_valid_groups = _valid_groups + 1}} forEach _groups;
+		
+		//--- Remove Abort if there are no more valid groups
+		if (_valid_groups < 1) exitWith {};
+		
+		//--- Retrieve the total town AI
+		_total = 0;
+		{
+			{if !(isNull _x) then {_total = _total + count(_x call CTI_CO_FNC_GetLiveUnits)}} foreach (_x getVariable [_hc_tvar, []]);
+		} forEach CTI_Towns;
+		
+		//--- Retrieve this town's total AI along with it's active squads
+		_current = 0;
+		_active_squads = 0;
+		{
+			if !(isNull _x) then {
+				_live = count(_x call CTI_CO_FNC_GetLiveUnits);
+				_current = _current + _live;
+				if (_live > 0) then {_active_squads = _active_squads + 1};
+				
+			};
+		} foreach _town_groups;
+		
+		//--- Create if the total AI count is below the given limit and if the the active squad value is below the threshold or if the current town AI size is below the given value
+		if ((_total < _limit && _active_squads < _ratio) || _current < 4) then {
+			_position = _positions select _index;
+			_team = _teams select _index;
+			_group = _groups select _index;
+			
+			_index = _index + 1;
+			
+			[_team, _position, _side, _group, true, false, true, _town] Spawn CTI_HC_CreateTeam;
+		};
+		
+		if (_index >= count _groups) exitWith {}; //--- All groups are allocated
+		
+		sleep 3;
+	};
+	
+	///
+	
 	//--- Create all the requested units for a town at the explicit given location
-	for '_i' from 0 to count(_groups)-1 do {
+	/*for '_i' from 0 to count(_groups)-1 do {
 		_position = _positions select _i;
 		_team = _teams select _i;
 		_group = _groups select _i;
@@ -211,7 +287,7 @@ CTI_HC_CreateTownUnits = {
 		[_team, _position, _side, _group, true, false, true, _town] Spawn CTI_HC_CreateTeam;
 		
 		sleep 5; // delay while HC are fubar
-	};
+	};*/
 };
 
 CTI_HC_CreateTeam = {
@@ -232,6 +308,8 @@ CTI_HC_CreateTeam = {
 	_created_units = [];
 	_created_vehicles = [];
 
+	sleep 2;
+	
 	{
 		if (_x isKindOf "Man") then {
 			_unit = [_x, _group, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, _sideID] call CTI_CO_FNC_CreateUnit;

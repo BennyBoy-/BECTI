@@ -125,12 +125,6 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
-	class CTI_TOWNS_OCCUPATION_ACTIVE {
-		title = "TOWNS: Occupation Active Towns";
-		values[] = {1,2,3,4,5,7,10,15,20,25,50,100,200,1000};
-		texts[] = {"1","2","3","4","5","7","10","15","20","25","50","100","200","1000"};
-		default = 10;
-	};
 	class CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE {
 		title = "TOWNS: Resistance Occupation Level";
 		values[] = {6,8,10,12,14};
