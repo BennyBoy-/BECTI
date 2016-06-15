@@ -364,7 +364,6 @@ CTI_TOWNS_TERRITORIAL_MARKER_SIZE = [350, 350]; //--- Size of the helper marker
 //--- Towns: Parameters
 with missionNamespace do {
 	if (isNil 'CTI_TOWNS_OCCUPATION') then {CTI_TOWNS_OCCUPATION = 1}; //--- Determine whether occupation is enabled or not
-	if (isNil 'CTI_TOWNS_OCCUPATION_ACTIVE') then {CTI_TOWNS_OCCUPATION_ACTIVE = 10}; //--- Determine how many active occupation towns may be set per side
 	if (isNil 'CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE') then {CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE = 10}; //--Set town occ max group for resistance
 	if (isNil 'CTI_TOWNS_OCCUPATION_LEVEL') then {CTI_TOWNS_OCCUPATION_LEVEL = 8}; //-- Set Town occ max group
 	if (isNil 'CTI_TOWNS_OCCUPATION_RESISTANCE') then {CTI_TOWNS_OCCUPATION_RESISTANCE = 0}; //--- Set Town Occupation Forces

@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, update_markers_towns.fsm">*/
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, update_markers_towns.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-346.052856,249.315308,147.414398,-362.214325,743,636,1};
-window[] = {0,-1,-1,-1,-1,931,150,1405,150,1,761};
+window[] = {0,-1,-1,-1,-1,956,175,1430,175,1,761};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -54,12 +54,11 @@ class FSM
        "	_town = _x;" \n
        "	_visible = false;" \n
        "	if ((_town getVariable ""cti_town_sideID"") == CTI_P_SideID) then {_visible = true} else {{if (_town distance _x < CTI_TOWNS_MARKERS_MAP_RANGE) then {_visible = true}} forEach _units};" \n
-       "	_active = if (_town getVariable [format[""cti_town_active_%1"", CTI_P_SideJoined], false]) then {""[A]""} else {""""};" \n
        "	" \n
        "	if (_visible) then {" \n
-       "		(format[""cti_town_marker_%1"", _town]) setMarkerTextLocal Format[""  %1 %2 | SV: %3/%4"", _active, _town getVariable ""cti_town_name"", _town getVariable ""cti_town_sv"", _town getVariable ""cti_town_sv_max""];" \n
+       "		(format[""cti_town_marker_%1"", _town]) setMarkerTextLocal Format[""  %1 | SV: %2/%3"", _town getVariable ""cti_town_name"", _town getVariable ""cti_town_sv"", _town getVariable ""cti_town_sv_max""];" \n
        "	} else {" \n
-       "		(format[""cti_town_marker_%1"", _town]) setMarkerTextLocal format[""  %1 %2"", _active, _town getVariable ""cti_town_name""];" \n
+       "		(format[""cti_town_marker_%1"", _town]) setMarkerTextLocal format[""  %1"", _town getVariable ""cti_town_name""];" \n
        "	};" \n
        "} forEach CTI_Towns;" \n
        "" \n

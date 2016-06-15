@@ -3267,13 +3267,13 @@ class CTI_RscMapCommandMenu {
 			idc = 220707;
 			
 			y = "SafeZoneY + (SafezoneH * 0.645)";
-			h = "SafeZoneH * 0.15";
+			h = "SafeZoneH * 0.20";
 		};
 		class CTI_Menu_OrdersParam_Background : CTI_Menu_List_Background {
 			idc = 220710;
 			
 			y = "SafeZoneY + (SafezoneH * 0.645)";
-			h = "SafeZoneH * 0.15";
+			h = "SafeZoneH * 0.20";
 		};
 		class CTI_Background_Intel : RscText {
 			idc = 220711;
@@ -3323,34 +3323,26 @@ class CTI_RscMapCommandMenu {
 			idc = 220010;
 			
 			y = "SafeZoneY + (SafezoneH * 0.645)";
-			h = "SafeZoneH * 0.15";
+			h = "SafeZoneH * 0.20";
 			
 			onLBDblClick = "['onOrdersParamLBDblClick', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_MapCommandMenu.sqf'";
 			onLBSelChanged = "";
 		};
 		
-		class CTI_Menu_Control_ToggleOccupation : RscButton_Opac {
-			idc = 220014;
+		class CTI_Menu_Control_SetOrder : RscButton_Opac {
+			idc = 220011;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.785)";
-			y = "SafeZoneY + (SafeZoneH * 0.81)";
+			y = "SafeZoneY + (SafeZoneH * 0.86)";
 			h = "SafeZoneH * 0.04";
 			w = "SafeZoneW * 0.2";
 			
 			sizeEx = "0.85 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 			
-			text = "Toggle Occupation";
-			action = "['onToggleOccupationPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_MapCommandMenu.sqf'";
-		};
-		class CTI_Menu_Control_SetOrder : CTI_Menu_Control_ToggleOccupation {
-			idc = 220011;
-			
-			y = "SafeZoneY + (SafeZoneH * 0.86)";
-			
 			text = "Set Order";
 			action = "['onSetOrderPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_MapCommandMenu.sqf'";
 		};
-		class CTI_Menu_Control_SetMapOrder : CTI_Menu_Control_ToggleOccupation {
+		class CTI_Menu_Control_SetMapOrder : CTI_Menu_Control_SetOrder {
 			idc = 220012;
 			
 			y = "SafeZoneY + (SafeZoneH * 0.91)";
