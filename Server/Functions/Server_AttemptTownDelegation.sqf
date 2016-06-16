@@ -47,6 +47,9 @@ if !(isNil '_candidates') then {
 		//--- Mix it so that we have different HC clients all the time
 		if (count _candidates > 1) then {_candidates = (_candidates) call CTI_CO_FNC_ArrayShuffle};
 		
+		//--- Update the HC town groups
+		{[["CLIENT", _x select 1], "Client_UpdateTownGroups", [_town, _side, _groups]] call CTI_CO_FNC_NetSend} forEach _candidates;
+		
 		//--- Attempt to perform a load-balanced creation
 		_delegation_table = [];
 		for '_i' from 0 to _candidates_count do {

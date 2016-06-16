@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, ui_titles_helper.fsm">*/
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, ui_titles_helper.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Init"};
@@ -20,8 +20,8 @@ link6[] = {5,3};
 link7[] = {6,5};
 link8[] = {7,8};
 link9[] = {8,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,25,6316128,1,-160.035034,340.672852,767.721619,-295.226898,415,911,1};
-window[] = {2,-1,-1,-1,-1,582,125,893,125,3,433};
+globals[] = {25.000000,1,0,0,0,640,480,1,25,6316128,1,-160.035034,340.672852,767.721619,-295.226898,415,771,1};
+window[] = {2,-1,-1,-1,-1,482,1705,2473,25,3,433};
 *//*%FSM</HEAD>*/
 class FSM
 {
