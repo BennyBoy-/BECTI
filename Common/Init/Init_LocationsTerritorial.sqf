@@ -45,7 +45,7 @@ switch (toLower(worldName)) do {
 		AACAirfield setVariable ["cti_town_neighbors",[Zaros,Neochori,Makrynisi]];
 		MolosAirfield setVariable ["cti_town_neighbors",[FuelDepot,Molos]];
 		Panochori setVariable ["cti_town_neighbors",[Kavala,Stadium,Zaros,OilRig]];
-		HotelComplex setVariable ["cti_town_neighbors",[Military,Loannina,Nidasos]];
+		HotelComplex setVariable ["cti_town_neighbors",[MilitaryOutpost,Loannina,Nidasos]];
 		Stadium setVariable ["cti_town_neighbors",[Negades,Kavala,Panochori]];
 		Limni setVariable ["cti_town_neighbors",[Paros,Chalkeia,ResearchPlatform]];
 		AgiosKonstantinos setVariable ["cti_town_neighbors",[TheDump,Negades,Oreokastro,WindFarm]];
