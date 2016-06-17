@@ -226,6 +226,7 @@ CTI_HC_CreateTownUnits = {
 	_hc_tvar = if (_side == resistance) then {"cti_hc_town_groups_resistance"} else {"cti_hc_town_groups_occupation"};
 	_limit = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI"};
 	_ratio = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO"};
+	_safe_range = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE} else {CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE};
 	
 	_index = 0;
 	_ratio = round(count _groups * (_ratio/100));
@@ -264,6 +265,25 @@ CTI_HC_CreateTownUnits = {
 			_position = _positions select _index;
 			_team = _teams select _index;
 			_group = _groups select _index;
+			
+			//--- If the position holds enemies, try to get a new "safe" one, only applies to meadow areas
+			if (isNil {_town getVariable "cti_naval"}) then {
+				if (([_position nearEntities _safe_range, _side] call CTI_CO_FNC_GetAreaEnemiesCount) > 0) then {
+					{
+						if (([_x nearEntities _safe_range, _side] call CTI_CO_FNC_GetAreaEnemiesCount) < 1) exitWith {
+							_position = _x;
+							
+							if (CTI_Log_Level >= CTI_Log_Information) then {
+								["INFORMATION", "FUNCTION: CTI_HC_CreateTownUnits", format["Retrieved a new enemy-free position within [%1] meters to spawn the [%2] units in group [%3] for town [%4], the new position is [%5]", count _team, _group, _town getVariable "cti_town_name", _side, _position]] call CTI_CO_FNC_Log;
+							};
+						};
+					} forEach ([_position, _safe_range*3, "meadow", 8, 6, 0.1, false] call CTI_CO_FNC_GetRandomBestPlaces);
+				};
+			};
+			
+			if (CTI_Log_Level >= CTI_Log_Information) then {
+				["INFORMATION", "FUNCTION: CTI_HC_CreateTownUnits", format["Spawning [%1] units in group [%2] for town [%3] on side [%4]. Total Towns AI [%5] and current limit [%6]. Active Squad [%7] with current Ratio [%8]. Current Live AI [%9]", count _team, _group, _town getVariable "cti_town_name", _side, _total, _limit, _active_squads, _ratio, _current]] call CTI_CO_FNC_Log;
+			};
 			
 			_index = _index + 1;
 			
