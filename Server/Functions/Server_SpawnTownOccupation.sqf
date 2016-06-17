@@ -406,6 +406,9 @@ _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 	};
 } forEach _teams;
 
+//--- Update the town with the groups
+_town setVariable ["cti_town_occupation_groups", _groups];
+
 if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format["Composed [%1] Occupation Teams for town [%2] on side [%3] with the current SV [%4]", count _teams, _town getVariable "cti_town_name", _side, _value]] call CTI_CO_FNC_Log;
 };

@@ -60,8 +60,8 @@ link28[] = {23,15};
 link29[] = {24,23};
 link30[] = {25,1};
 link31[] = {26,25};
-globals[] = {25.000000,1,0,0,0,640,480,1,164,6316128,1,-460.798950,699.015015,398.847656,-575.244629,918,881,1};
-window[] = {2,-1,-1,-1,-1,906,125,1380,125,3,936};
+globals[] = {25.000000,1,0,0,0,640,480,1,164,6316128,1,-505.019409,654.794556,371.052368,-603.039917,918,881,1};
+window[] = {2,-1,-1,-1,-1,831,50,1305,50,3,936};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -333,6 +333,7 @@ class FSM
        "	};" \n
        "} forEach (_town getVariable ""cti_town_resistance_active_vehicles"");" \n
        "" \n
+       "_town setVariable [""cti_town_resistance_groups"", []];" \n
        "_town setVariable [""cti_town_resistance_active_vehicles"", []];" \n
        "_town setVariable [""cti_town_resistance_active"", false];" \n
        "" \n
@@ -401,8 +402,7 @@ class FSM
        "" \n
        "//--- If we couldn't delegate it then we create it from the server" \n
        "if !(_delegated) then {" \n
-       "	_town_vehicles = [_town, resistance, _town_teams, _town_groups, _town_positions] call CTI_CO_FNC_CreateTownUnits;" \n
-       "	_town setVariable [""cti_town_resistance_active_vehicles"", (_town getVariable ""cti_town_resistance_active_vehicles"") + _town_vehicles];" \n
+       "	[_town, resistance, _town_teams, _town_groups, _town_positions] spawn CTI_CO_FNC_CreateTownUnits;" \n
        "};" \n
        "" \n
        "_town setVariable [""cti_town_resistance_activeTime"", time];" \n

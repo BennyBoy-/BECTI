@@ -171,7 +171,8 @@ if (_model isKindOf "Man") then {
 	//--- Sanitize the artillery loadout, mines may lag the server for instance
 	if (CTI_ARTILLERY_FILTER == 1) then {if (_model in (missionNamespace getVariable ["CTI_ARTILLERY", []])) then {(_vehicle) call CTI_CO_FNC_SanitizeArtillery}};
 	
-	["SERVER", "Request_HandleAction", ["empty", _vehicle]] call CTI_CO_FNC_NetSend; //--- Ask the server to track our vehicle emptyness
+	//--- Track this vehicle
+	["SERVER", "Request_HandleEmptyVehicles", _vehicle] call CTI_CO_FNC_NetSend;
 };
 
 {

@@ -40,38 +40,8 @@ private ["_accessories", "_gear", "_item", "_magazines", "_new", "_unit"];
 _unit = _this select 0;
 _gear = _this select 1;
 
-//--- [Equipment check-in]
-_new = _gear select 1;
 
-//--- Check if the containers are ok
-if (((_gear select 1) select 2) select 0 != backpack _unit || [((_gear select 1) select 2) select 1, backpackItems _unit] call CTI_CO_FNC_ArrayDiffers) then {
-	[_unit, ((_gear select 1) select 2) select 0, ((_gear select 1) select 2) select 1] call CTI_CO_FNC_EquipContainerBackpack;
-};
-if (((_gear select 1) select 1) select 0 != vest _unit || [((_gear select 1) select 1) select 1, vestItems _unit] call CTI_CO_FNC_ArrayDiffers) then {
-	[_unit, ((_gear select 1) select 1) select 0, ((_gear select 1) select 1) select 1] call CTI_CO_FNC_EquipContainerVest;
-};
-if (((_gear select 1) select 0) select 0 != uniform _unit || [((_gear select 1) select 0) select 1, uniformItems _unit] call CTI_CO_FNC_ArrayDiffers) then {
-	[_unit, ((_gear select 1) select 0) select 0, ((_gear select 1) select 0) select 1] call CTI_CO_FNC_EquipContainerUniform;
-};
-
-//--- [Assigned items check-in]
-removeAllAssignedItems _unit; //--- Due to the lack of commands for some of them, we remove everything first aside from goggles and headgear
-_new = _gear select 2;
-
-_item = _new select 0;
-if (_item != headgear _unit) then {removeHeadgear _unit};
-if (_item != "") then {_unit addHeadgear _item};
-
-_item = _new select 1;
-if (_item != goggles _unit) then {removeGoggles _unit};
-if (_item != "") then {_unit addGoggles _item};
-
-{ if (_x != "") then {_unit linkItem _x} } forEach ([((_gear select 3) select 0) select 0] + ((_gear select 3) select 1));
-
-//--- Binoculars are special, they can't be linked like the other items.
-if (((_gear select 3) select 0) select 1 != "") then {_unit addWeapon (((_gear select 3) select 0) select 1)};
-
-//--- [Weapons check-in]
+//--- ######## [Weapons check-in] ########
 //--- Primary
 _new = (_gear select 0) select 0;
 _item = _new select 0;
@@ -121,3 +91,36 @@ if (_item != "") then {
 		if !("this" in _muzzles) then {_unit selectWeapon (_muzzles select 0)} else {_unit selectWeapon _x}; 
 	};
 } forEach [primaryWeapon _unit, handgunWeapon _unit, secondaryWeapon _unit];
+
+
+//--- ######## [Equipment check-in] ########
+_new = _gear select 1;
+
+//--- Check if the containers are ok
+if (((_gear select 1) select 2) select 0 != backpack _unit || [((_gear select 1) select 2) select 1, backpackItems _unit] call CTI_CO_FNC_ArrayDiffers) then {
+	[_unit, ((_gear select 1) select 2) select 0, ((_gear select 1) select 2) select 1] call CTI_CO_FNC_EquipContainerBackpack;
+};
+if (((_gear select 1) select 1) select 0 != vest _unit || [((_gear select 1) select 1) select 1, vestItems _unit] call CTI_CO_FNC_ArrayDiffers) then {
+	[_unit, ((_gear select 1) select 1) select 0, ((_gear select 1) select 1) select 1] call CTI_CO_FNC_EquipContainerVest;
+};
+if (((_gear select 1) select 0) select 0 != uniform _unit || [((_gear select 1) select 0) select 1, uniformItems _unit] call CTI_CO_FNC_ArrayDiffers) then {
+	[_unit, ((_gear select 1) select 0) select 0, ((_gear select 1) select 0) select 1] call CTI_CO_FNC_EquipContainerUniform;
+};
+
+
+//--- ######## [Assigned items check-in] ########
+removeAllAssignedItems _unit; //--- Due to the lack of commands for some of them, we remove everything first aside from goggles and headgear
+_new = _gear select 2;
+
+_item = _new select 0;
+if (_item != headgear _unit) then {removeHeadgear _unit};
+if (_item != "") then {_unit addHeadgear _item};
+
+_item = _new select 1;
+if (_item != goggles _unit) then {removeGoggles _unit};
+if (_item != "") then {_unit addGoggles _item};
+
+{ if (_x != "") then {_unit linkItem _x} } forEach ([((_gear select 3) select 0) select 0] + ((_gear select 3) select 1));
+
+//--- Binoculars are special, they can't be linked like the other items.
+if (((_gear select 3) select 0) select 1 != "") then {_unit addWeapon (((_gear select 3) select 0) select 1)};

@@ -98,7 +98,7 @@ with missionNamespace do {
 		if (CTI_Log_Level >= CTI_Log_Information) then {
 			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnTownDelegationReceived", format["A Delegation request was received from the server for [%1] teams in town [%2] on [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
-		
+// IMPORTANT: Change it if HC AI spawn ever get fixed, the function will be spawned instead of being called
 		_town_vehicles = [_town, _side, _teams, _groups, _positions] call CTI_CO_FNC_CreateTownUnits;
 		
 		if (count _town_vehicles > 0) then {
@@ -184,7 +184,7 @@ with missionNamespace do {
 		};
 		
 		//--- Wave System update, flush the current variable
-		_hc_tvar = if (_side == resistance) then {"cti_hc_town_groups_resistance"} else {"cti_hc_town_groups_occupation"};
+		_hc_tvar = if (_side == resistance) then {"cti_town_resistance_groups"} else {"cti_town_occupation_groups"};
 		_town setVariable [_hc_tvar, []];
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
@@ -199,7 +199,7 @@ with missionNamespace do {
 		_side = _this select 1;
 		_groups = _this select 2;
 		
-		_hc_tvar = if (_side == resistance) then {"cti_hc_town_groups_resistance"} else {"cti_hc_town_groups_occupation"};
+		_hc_tvar = if (_side == resistance) then {"cti_town_resistance_groups"} else {"cti_town_occupation_groups"};
 		
 		_town setVariable [_hc_tvar, (_town getVariable [_hc_tvar, []]) + _groups];
 		
@@ -223,7 +223,7 @@ CTI_HC_CreateTownUnits = {
 	_sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 	//--- Waves Management goes here
-	_hc_tvar = if (_side == resistance) then {"cti_hc_town_groups_resistance"} else {"cti_hc_town_groups_occupation"};
+	_hc_tvar = if (_side == resistance) then {"cti_town_resistance_groups"} else {"cti_town_occupation_groups"};
 	_limit = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI"};
 	_ratio = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO"};
 	_safe_range = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE} else {CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE};
@@ -239,10 +239,14 @@ CTI_HC_CreateTownUnits = {
 		_valid_groups = 0;
 		{if (_x in _town_groups && !isNull _x) then {_valid_groups = _valid_groups + 1}} forEach _groups;
 		
-		//--- Remove Abort if there are no more valid groups
-		if (_valid_groups < 1) exitWith {};
+		//--- Abort if there are no more valid groups
+		if (_valid_groups < 1) exitWith {
+			if (CTI_Log_Level >= CTI_Log_Information) then {
+				["INFORMATION", "FUNCTION: CTI_HC_CreateTownUnits", format["Town [%1] has been de-activated. Queued units for side [%2] will not be spawned", _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+			};
+		};
 		
-		//--- Retrieve the total town AI
+		//--- Retrieve the total towns AI
 		_total = 0;
 		{
 			{if !(isNull _x) then {_total = _total + count(_x call CTI_CO_FNC_GetLiveUnits)}} foreach (_x getVariable [_hc_tvar, []]);
@@ -282,7 +286,7 @@ CTI_HC_CreateTownUnits = {
 			};
 			
 			if (CTI_Log_Level >= CTI_Log_Information) then {
-				["INFORMATION", "FUNCTION: CTI_HC_CreateTownUnits", format["Spawning [%1] units in group [%2] for town [%3] on side [%4]. Total Towns AI [%5] and current limit [%6]. Active Squad [%7] with current Ratio [%8]. Current Live AI [%9]", count _team, _group, _town getVariable "cti_town_name", _side, _total, _limit, _active_squads, _ratio, _current]] call CTI_CO_FNC_Log;
+				["INFORMATION", "FUNCTION: CTI_HC_CreateTownUnits", format["Spawning [%1] units in group [%2] for town [%3] on side [%4]. Overall AI [%5] and current limit [%6]. Active Squad in town [%7] with current Ratio [%8]. Current Live AI in town [%9]", count _team, _group, _town getVariable "cti_town_name", _side, _total, _limit, _active_squads, _ratio, _current]] call CTI_CO_FNC_Log;
 			};
 			
 			_index = _index + 1;
@@ -290,9 +294,13 @@ CTI_HC_CreateTownUnits = {
 			[_team, _position, _side, _group, true, false, true, _town] Spawn CTI_HC_CreateTeam;
 		};
 		
-		if (_index >= count _groups) exitWith {}; //--- All groups are allocated
+		if (_index >= count _groups) exitWith { //--- All groups are allocated
+			if (CTI_Log_Level >= CTI_Log_Information) then {
+				["INFORMATION", "FUNCTION: CTI_HC_CreateTownUnits", format["All the units for town [%1] were spawned on side [%2]", _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+			};
+		};
 		
-		sleep 3;
+		sleep 35; //--- Since we need to add a delay for units creation on HCs, add a delay here
 	};
 	
 	///
@@ -344,7 +352,6 @@ CTI_HC_CreateTeam = {
 			_vehicle = [_x, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, random 360, _sideID, _locked, _net, _bounty] call CTI_CO_FNC_CreateVehicle;
 			_created_vehicles pushBack _vehicle;
 			[_vehicle, _crew, _group, _sideID] spawn CTI_HC_ManVehicle;
-			["SERVER", "Request_HandleAction", ["empty", _vehicle]] call CTI_CO_FNC_NetSend;
 		};
 		
 		sleep 5;
@@ -353,12 +360,15 @@ CTI_HC_CreateTeam = {
 	{_group addVehicle _x} forEach _created_vehicles;
 	_group allowFleeing 0;
 	
-	["SERVER", "Request_TownAddVehicles", [_town, _side, _created_vehicles]] call CTI_CO_FNC_NetSend;
+	if (count _created_vehicles > 0) then {	
+		["SERVER", "Request_HandleEmptyVehicles", _created_vehicles] call CTI_CO_FNC_NetSend;
+		["SERVER", "Request_TownAddVehicles", [_town, _side, _created_vehicles]] call CTI_CO_FNC_NetSend;
+	};
 	
 	if (CTI_SHK_BUILDING_ENABLED) then {
 		if (count _created_vehicles < 1 && ((CTI_SHK_BUILDING_PLACEMENT_CHANCE > random 100 && count _created_units <= CTI_SHK_GROUP_SIZE_MAX) || !isNil {_town getVariable "cti_naval"})) then {
-			if (CTI_Log_Level >= CTI_Log_Debug) then {
-				["DEBUG", "FUNCTION: CTI_HC_CreateTeam", format["Group [%1] members in town [%2] will be placed in nearby building if possible via SHK", _group, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
+			if (CTI_Log_Level >= CTI_Log_Information) then {
+				["INFORMATION", "FUNCTION: CTI_HC_CreateTeam", format["Group [%1] members in town [%2] will be placed in nearby building if possible via SHK", _group, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
 			};
 			
 			_scan_range = if (isNil {_town getVariable "cti_naval"}) then {CTI_SHK_BUILDING_SCAN_RANGE} else {CTI_SHK_BUILDING_SCAN_RANGE * 1.75};
