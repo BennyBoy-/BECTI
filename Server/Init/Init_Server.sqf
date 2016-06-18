@@ -37,7 +37,6 @@ CTI_SE_FNC_ToggleHQ = compileFinal preprocessFileLineNumbers "Server\Functions\S
 CTI_SE_FNC_TrashObject = compileFinal preprocessFileLineNumbers "Server\Functions\Server_TrashObject.sqf";
 CTI_SE_FNC_UpdateBaseAreas = compileFinal preprocessFileLineNumbers "Server\Functions\Server_UpdateBaseAreas.sqf";
 CTI_SE_FNC_VoteForCommander = compileFinal preprocessFileLineNumbers "Server\Functions\Server_VoteForCommander.sqf";
-CTI_SE_FNC_Weather_Hook= compileFinal preprocessFileLineNumbers "Server\Functions\Server_Weather_Hook.sqf";
 
 funcCalcAlignPosDir = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fCalcAlignPosDir.sqf";
 funcVectorAdd = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorAdd.sqf";
@@ -45,7 +44,9 @@ funcVectorCross = compileFinal preprocessFileLineNumbers "Server\Functions\Exter
 funcVectorDot = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorDot.sqf";
 funcVectorScale = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorScale.sqf";
 funcVectorSub = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorSub.sqf";
-
+with missionNamespace do {
+CTI_SE_FNC_Weather_Hook= compileFinal preprocessFileLineNumbers "Server\Functions\Server_Weather_Hook.sqf";
+};
 //--- Load Naval Town Structures
 call compile preprocessFileLineNumbers "Server\Init\initTownStructures.sqf";
 

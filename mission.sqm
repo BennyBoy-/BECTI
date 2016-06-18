@@ -140,7 +140,8 @@ addons[]=
 	"sfp_bo105",
 	"sfp_ikv91",
 	"sfp_j12",
-	"rhsusf_c_markvsoc"
+	"rhsusf_c_markvsoc",
+	"Ryanzombies"
 };
 randomSeed=13186954;
 class ScenarioData
