@@ -36,6 +36,8 @@ CTI_CL_FNC_OnStructureConstructed = compileFinal preprocessFile "Client\Function
 CTI_CL_FNC_OnTownCaptured = compileFinal preprocessFile "Client\Functions\Client_OnTownCaptured.sqf";
 CTI_CL_FNC_PurchaseUnit = compileFinal preprocessFile "Client\Functions\Client_PurchaseUnit.sqf";
 CTI_CL_FNC_RemoveRuins = compileFinal preprocessFile "Client\Functions\Client_RemoveRuins.sqf";
+CTI_CL_FNC_ConstructionCam_PlacingBuilding = compileFinal preprocessFile "Client\Functions\Client_ConstructionCam_PlacingBuilding.sqf";
+CTI_CL_FNC_ConstructionCam_PlacingDefense = compileFinal preprocessFile "Client\Functions\Client_ConstructionCam_PlacingDefense.sqf";
 
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateClientAI.sqf";
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateOrders.sqf";
@@ -62,7 +64,7 @@ CTI_P_HookVehicle = objNull;
 CTI_P_LastRootMenu = "";
 CTI_P_LastRepairTime = -600;
 CTI_P_WallsAutoAlign = true;
-CTI_P_DefensesAutoManning = false;
+CTI_P_DefensesAutoManning = true;
 CTI_P_ServerFPS = -1;
 CTI_P_RapidDefence_Actions=[];
 CTI_P_RapidDefence=-1;
@@ -113,6 +115,7 @@ call compile preprocessFile "Client\Functions\UI\Functions_UI_AIMicromanagementM
 call compile preprocessFile "Client\Functions\UI\Functions_UI_ArtilleryMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_GearMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_KeyHandlers.sqf";
+call compile preprocessFile "Client\Functions\UI\Functions_UI_ConstructionKeyHandlers.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_MapCommanding.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_PurchaseMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_RequestMenu.sqf";

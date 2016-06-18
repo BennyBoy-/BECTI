@@ -177,7 +177,244 @@ class CTI_RscBuildMenu {
 		};
 	};
 };
+//####3d Build Menu#################################################################################################################
+class CTI_RscBuildMenu_Cam {
+	movingEnable = 0;
+	idd = 600000;
+	onLoad = "uiNamespace setVariable ['cti_dialog_ui_constructioncam', _this select 0];['onLoad'] execVM 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+	onUnload = "uiNamespace setVariable ['cti_dialog_ui_constructioncam', nil]; ['onUnload'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+	
+	class controlsBackground {
+		class CTI_MouseArea : RscText {
+			idc = 600001;
+			style = ST_MULTI;
+			
+			x = "safezoneX";
+			y = "safezoneY";
+			w = "safezoneW";
+			h = "safezoneH";
+			
+			text = "";
+		};
+		class CTI_Background_RHS : RscText {
+			idc = 600100;
+			x = "SafeZoneX + (SafeZoneW - (SafeZoneW * 0.25))";
+			y = "SafeZoneY";
+			w = "SafeZoneW * 0.25";
+			h = "SafeZoneH * 0.90";
+			colorBackground[] = {0, 0, 0, 0.4};
+		};
+		class CTI_Background_GUI_Bottom : RscText {
+			idc = 600101;
+		
+			x = "SafeZoneX";
+			y = "SafeZoneY + (SafeZoneH * 0.90)";
+			w = "SafeZoneW";
+			h = "SafeZoneH * 0.10";
+			colorBackground[] = {0, 0, 0, 0.4};
+		};
+	};
+	class controls {
+		class CTI_Background : RscText { //--- Render out.
+			idc = 600002;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.8)";
+			y = "SafeZoneY + (SafezoneH * 3.06)";
+			w = "SafeZoneW * 0.19";
+			h = "SafeZoneH * 0.55";
+			colorBackground[] = {0, 0, 0, 0.5};
+		};
+		class CTI_Control_Back : RscButton {
+			idc = 600017;
 
+			x = "SafeZoneX + (SafeZoneW - (SafeZoneW * 0.10))";
+			y = "SafeZoneY + (SafeZoneH * 0.01)";
+			w = "SafeZoneW * 0.04";
+			h = "SafeZoneH * 0.04";
+			
+			text = "<<";
+			action = "closeDialog 0";
+		};
+		class CTI_Control_Exit : CTI_Control_Back {
+			idc = 600016;
+			
+			x = "SafeZoneX + (SafeZoneW - (SafeZoneW * 0.05))";
+			
+			text = "X";
+			action = "closeDialog 0";
+		};	
+/* No more workers		
+		
+		class CTI_Menu_Control_AddWorker : RscButton {
+			idc = 100005;
+
+			x = "SafeZoneX + (SafeZoneW - (SafeZoneW * 0.25))";
+			y = "SafeZoneY + (SafeZoneH * 0.06)";
+			w = "SafeZoneW * 0.245";
+			h = "SafeZoneH * 0.04";
+
+			text = "Add Worker";
+			action = "['onAddWorker'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+*/	
+		class CTI_Menu_Control_Info : RscStructuredText {
+			idc = 100008;
+
+			x = "SafeZoneX + (SafeZoneW - (SafeZoneW * 0.25))";
+			y = "SafeZoneY + (SafeZoneH * 0.11)";
+			w = "SafeZoneW * 0.245";
+			h = "SafeZoneH * 0.04";
+
+			size = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+		};
+		class CTI_Menu_Control_InfoWorkers : CTI_Menu_Control_Info {
+			idc = 100009;
+
+			y = "SafeZoneY+safezoneH*0.105";
+		};
+		class CTI_Menu_Control_BuildStructure : RscButton {
+			idc = 600008;
+			
+			x = "SafeZoneX + (SafeZoneW - (SafeZoneW * 0.25))";
+			y = "SafeZoneY + (SafeZoneH * 0.13)";
+			w = "SafeZoneW * 0.245";
+			h = "SafeZoneH * 0.04";
+			
+			text = "Build Structure";
+			action = "['onBuildStructure', lnbCurSelRow 600009] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+		class CTI_Menu_Control_BuildingList : RscListNBox {
+			idc = 600009;
+			
+			x = "SafeZoneX + (SafeZoneW - (SafeZoneW * 0.25))";
+			y = "SafeZoneY + (SafeZoneH * 0.18)";
+			w = "SafeZoneW * 0.245";
+			h = "SafeZoneH * 0.25";
+			
+			rowHeight = "1.3 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			sizeEx = "0.78 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0.5,0.5,0.5,0.5};
+			itemBackground[] = {1,1,1,0.1};
+			// columns[] = {0.001, 0.26};
+			columns[] = {0.001, 0.18};
+			
+			onLBDblClick = "['onBuildStructure', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+		class CTI_Menu_Control_BuildDefense : CTI_Menu_Control_BuildStructure {
+			idc = 600007;
+			
+			y = "SafeZoneY + (SafeZoneH * 0.44)";
+			
+			text = "Build Defense";
+			action = "['onBuildDefense', lnbCurSelRow 600015] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+		class CTI_Menu_Control_DefenseList : CTI_Menu_Control_BuildingList {
+			idc = 600015;
+			
+			y = "SafeZoneY + (SafezoneH * 0.49)";
+			h = "SafeZoneH * 0.41";
+			
+			onLBDblClick = "['onBuildDefense', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+		class CTI_Menu_Control_Mode : RscButton_Opac {
+			idc = 600013;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.01)";
+			y = "SafeZoneY + (SafeZoneH * 0.95)";
+			h = "SafeZoneH * 0.04";
+			w = "SafeZoneW * 0.14";
+			
+			text = "";
+			action = "['onViewModeChanged'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+		class CTI_Menu_Control_Undo : CTI_Menu_Control_Mode {
+			idc = 600003;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.16)";
+			
+			text = "Undo Structure";
+			action = "['onUndoStructure'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+		class CTI_Menu_Control_UndoDefense : CTI_Menu_Control_Mode {
+			idc = 600004;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.31)";
+			
+			text = "Undo Defense";
+			action = "['onUndoDefense'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+		class CTI_Menu_Control_AutoManning : CTI_Menu_Control_Mode {
+			idc = 600006;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.46)";
+			
+			text = "";
+			action = "['onAutoManning'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+		class CTI_Menu_Control_AutoAlign : CTI_Menu_Control_Mode {
+			idc = 600005;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.61)";
+			
+			text = "";
+			action = "['onAutoAlign'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+		class CTI_Menu_Control_CancelDefense : CTI_Menu_Control_Mode {
+			idc = 600011;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.76)";
+			y = "SafeZoneY + (SafeZoneH * 0.91)";
+			w = "SafeZoneW * 0.23";
+			h = "SafeZoneH * 0.08";
+			
+			text = "Cancel Selected";
+			action = "['onCancelSelected'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+		class CTI_Menu_Constrol_Rotation : RscXSliderH {
+			idc = 600014;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.01)";
+			y = "SafeZoneY + (SafezoneH * 0.905)";
+			w = "SafeZoneW * 0.59";
+			h = "SafeZoneH * 0.035";
+			
+			onSliderPosChanged = "['onViewSliderChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+		
+		class CTI_Menu_Control_ToggleMap : CTI_Menu_Control_AutoAlign {
+			idc = 600018;
+			
+			//x = "SafeZoneX + (SafeZoneW * 0.61)";
+			y = "SafeZoneY + (SafezoneH * 0.905)";
+			
+			text = "";
+			action = "['onToggleMap'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+		// Minimap
+		class CTI_Background_Map : RscText { //--- Render out.
+			idc = 600019;
+			
+			x = "SafeZoneX + (SafeZoneW * .585)";
+			y = "SafeZoneY + (SafezoneH * .615)";
+			w = "SafeZoneW * 0.165";
+			h = "SafeZoneH * 0.285";
+			colorBackground[] = {0, 0, 0, 0.5};
+		};
+		class CTI_Menu_Map : RscMapControl { //--- Render out.
+			idc = 600020;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.59)";
+			y = "SafeZoneY + (SafezoneH * .62)";
+			w = "SafeZoneW * 0.16";
+			h = "SafeZoneH * 0.28";
+			
+			showCountourInterval = 1;
+		};
+		// No organization of idcs.  Last one is 600020
+	};
+};
 class CTI_RscPurchaseMenu {
 	movingEnable = 0;
 	idd = 110000;
@@ -2410,239 +2647,255 @@ class CTI_RscUnitsCamera {
 	idd = 180000;
 	onLoad = "uiNamespace setVariable ['cti_dialog_ui_unitscam', _this select 0];['onLoad'] execVM 'Client\Events\Events_UI_UnitsCamera.sqf'";
 	onUnload = "uiNamespace setVariable ['cti_dialog_ui_unitscam', nil]; ['onUnload'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
-	
+
 	class controlsBackground {
 		class CTI_MouseArea : RscText {
 			idc = 180001;
 			style = ST_MULTI;
-			
+
 			x = "safezoneX";
 			y = "safezoneY";
 			w = "safezoneW";
 			h = "safezoneH";
-			
+
 			text = "";
 		};
 	};
-	
+
 	class controls {
 		class CTI_Background : RscText { //--- Render out.
 			idc = 180002;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.8)";
-			y = "SafeZoneY + (SafezoneH * 3.06)";
+			y = "SafeZoneY + (SafezoneH * 0.06)";
 			w = "SafeZoneW * 0.19";
 			h = "SafeZoneH * 0.55";
-			
+
 			colorBackground[] = {0, 0, 0, 0.5};
 		};
 		class CTI_Menu_Control_UnitsList_Label : RscText { //--- Render out.
 			idc = 180003;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.805)";
-			y = "SafeZoneY + (SafezoneH * 3.0605)";
+			y = "SafeZoneY + (SafezoneH * 0.0605)";
 			w = "SafeZoneW * 0.19";
 			h = "SafeZoneH * 0.03";
-			
+
 			text = "Teams :";
 			colorText[] = {0.231372549, 0.580392157, 0.929411765, 1};
 			sizeEx = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
 		class CTI_Menu_Control_UnitsList_Frame : RscFrame { //--- Render out.
 			idc = 180004;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.805)";
-			y = "SafeZoneY + (SafeZoneH * 3.10)";
+			y = "SafeZoneY + (SafeZoneH * 0.10)";
 			h = "SafeZoneH * 0.3";
 			w = "SafeZoneW * 0.18";
 		};
 		class CTI_Menu_Control_UnitsAIList_Label : CTI_Menu_Control_UnitsList_Label { //--- Render out.
 			idc = 180005;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.805)";
-			y = "SafeZoneY + (SafezoneH * 3.41)";
+			y = "SafeZoneY + (SafezoneH * 0.41)";
 			w = "SafeZoneW * 0.19";
 			h = "SafeZoneH * 0.03";
-			
+
 			text = "AI Members :";
 		};
 		class CTI_Menu_Control_UnitsAIList_Frame : CTI_Menu_Control_UnitsList_Frame { //--- Render out.
 			idc = 180006;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.805)";
-			y = "SafeZoneY + (SafeZoneH * 3.45)";
+			y = "SafeZoneY + (SafeZoneH * 0.45)";
 			h = "SafeZoneH * 0.15";
 			w = "SafeZoneW * 0.18";
 		};
 		class CTI_Menu_Control_ToggleGroups : RscButton_Opac {
 			idc = 180007;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.8)";
 			y = "SafeZoneY + (SafeZoneH * 0.01)";
 			h = "SafeZoneH * 0.04";
 			w = "SafeZoneW * 0.19";
-			
+
 			text = "";
 			action = "['onToggleGroup'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		class CTI_Menu_Control_ToggleMap : CTI_Menu_Control_ToggleGroups {
 			idc = 180008;
-			
+
 			y = "SafeZoneY + (SafeZoneH * 0.95)";
-			
+
 			text = "";
 			action = "['onToggleMap'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		class CTI_Background_Map : CTI_Background { //--- Render out.
 			idc = 180009;
-			
-			y = "SafeZoneY + (SafezoneH * 3.62)";
+
+			y = "SafeZoneY + (SafezoneH * 0.62)";
 			h = "SafeZoneH * 0.32";
 		};
 		class CTI_Menu_Map : RscMapControl { //--- Render out.
 			idc = 180010;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.805)";
-			y = "SafeZoneY + (SafezoneH * 3.63)";
+			y = "SafeZoneY + (SafezoneH * 0.63)";
 			w = "SafeZoneW * 0.18";
 			h = "SafeZoneH * 0.30";
-			
+
 			showCountourInterval = 1;
 		};
 		class CTI_Background_Top : CTI_Background {
 			idc = 180011;
 			style = ST_CENTER;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.33)";
 			y = "SafeZoneY + (SafezoneH * 0.01)";
 			w = "SafeZoneW * 0.34";
 			h = "SafeZoneH * 0.04";
-			
+
 			text = "";
 			sizeEx = "0.94 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
 		class CTI_Menu_Control_Exit : RscButton_Opac {
 			idc = 180012;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.01)";
 			y = "SafeZoneY + (SafeZoneH * 0.95)";
 			h = "SafeZoneH * 0.04";
 			w = "SafeZoneW * 0.14";
-			
+
 			text = "Exit";
 			action = "closeDialog 0";
 		};
 		class CTI_Menu_Control_Mode : CTI_Menu_Control_Exit {
 			idc = 180013;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.16)";
-			
+
 			text = "";
 			action = "['onViewModeChanged'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		class CTI_Menu_UnitCamJump : CTI_Menu_Control_Exit { //--- Render out
 			idc = 180014;
-			
-			x = "SafeZoneX + (SafeZoneW * 3.31)";
-			
+
+			x = "SafeZoneX + (SafeZoneW * 0.31)";
+
 			text = "Satellite Camera";
 			action = "['onSatelliteCameraJump'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		class CTI_Menu_Control_ToggleInfo : CTI_Menu_Control_ToggleGroups {
 			idc = 180015;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.01)";
 			y = "SafeZoneY + (SafeZoneH * 0.01)";
-			
+
 			text = "";
 			action = "['onToggleInfo'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		class CTI_Background_Info : CTI_Background { //--- Render out.
 			idc = 180016;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.01)";
-			y = "SafeZoneY + (SafezoneH * 3.06)";
+			y = "SafeZoneY + (SafezoneH * 0.06)";
 			w = "SafeZoneW * 0.31";
 			h = "SafeZoneH * 0.6";
 		};
 		class CTI_Menu_Help_ControlsGroup : RscControlsGroup { //--- Render out.
 			idc = 180018;
 			x = "SafeZoneX + (SafeZoneW * 0.01)";
-			y = "SafeZoneY + (SafezoneH * 3.06)";
+			y = "SafeZoneY + (SafezoneH * 0.06)";
 			w = "SafeZoneW * 0.31";
 			h = "SafeZoneH * 0.6";
-			
+
 			class controls {
 				class CTI_Menu_Control_Info : RscStructuredText {
 					idc = 180017;
-					
+
 					x = 0;
 					y = 0;
 					w = "SafeZoneW * 0.31";
 					h = "SafeZoneH * 1";
-					
+
 					size = "0.75 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 				};
 			};
 		};
 		class CTI_Menu_Control_IronSight : RscButton_Opac {
 			idc = 180019;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.01)";
 			y = "SafeZoneY + (SafeZoneH * 0.90)";
 			h = "SafeZoneH * 0.04";
 			w = "SafeZoneW * 0.14";
-			
+
 			text = "Iron Sight";
 			action = "['onCamChange', 'ironsight'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		class CTI_Menu_Control_Internal : CTI_Menu_Control_IronSight {
 			idc = 180020;
-			
+
 			y = "SafeZoneY + (SafeZoneH * 0.85)";
-			
+
 			text = "Internal";
 			action = "['onCamChange', 'internal'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		class CTI_Menu_Control_External : CTI_Menu_Control_IronSight { //--- Render out.
 			idc = 180021;
-			
-			y = "SafeZoneY + (SafeZoneH * 3.80)";
-			
+
+			y = "SafeZoneY + (SafeZoneH * 0.80)";
+
 			text = "External";
 			action = "['onCamChange', 'external'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
-		class CTI_Menu_Control_Disband : CTI_Menu_Control_IronSight { //--- Render out.
+		class CTI_Menu_Control_Unflip : CTI_Menu_Control_IronSight {
 			idc = 180022;
-			
-			y = "SafeZoneY + (SafeZoneH * 3.75)";
-			
+
+			y = "SafeZoneY + (SafeZoneH * 0.75)";
+
+			text = "Unflip Unit";
+			action = "['onUnitUnflip'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
+		};
+		class CTI_Menu_Control_Disband : CTI_Menu_Control_IronSight { //--- Render out.
+			idc = 180023;
+
+			y = "SafeZoneY + (SafeZoneH * 0.70)";
+
 			text = "Disband Unit";
 			action = "['onUnitDisband'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
-		
+		/*class CTI_Menu_Control_Remote : CTI_Menu_Control_IronSight {
+			idc = 180024;
+
+			y = "SafeZoneY + (SafeZoneH * 0.65)";
+
+			text = "Remote Control";
+			action = "['onRemote'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
+		};*/
+
 		class CTI_Menu_Control_UnitsList : RscListBox { //--- Render out.
 			idc = 180100;
-			
+
 			x = "SafeZoneX + (SafeZoneW * 0.805)";
-			y = "SafeZoneY + (SafeZoneH * 3.10)";
+			y = "SafeZoneY + (SafeZoneH * 0.10)";
 			h = "SafeZoneH * 0.3";
 			w = "SafeZoneW * 0.18";
-			
+
 			rowHeight = "1 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 			sizeEx = "0.78 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-			
+
 			colorText[] = {1,1,1,1};
 			colorBackground[] = {0,0,0,0};
-			
+
 			onLBSelChanged = "['onUnitsLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		class CTI_Menu_Control_UnitsAIList : CTI_Menu_Control_UnitsList { //--- Render out.
 			idc = 180101;
-			
-			y = "SafeZoneY + (SafeZoneH * 3.45)";
+
+			y = "SafeZoneY + (SafeZoneH * 0.45)";
 			h = "SafeZoneH * 0.15";
-			
+
 			onLBSelChanged = "['onUnitsAILBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 	};
