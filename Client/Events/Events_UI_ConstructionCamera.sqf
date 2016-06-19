@@ -169,6 +169,7 @@ switch (_action) do {
 	};
 	case "onBuildStructure": {
 		_selected = _this select 1;
+		CTI_ConstructionCam_BuildingID = CTI_ConstructionCam_BuildingID + 1;
 		
 		if (_selected != -1) then {
 			_selected = lnbData[600009, [_selected, 0]];
