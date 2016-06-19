@@ -47,12 +47,6 @@ class Params {
 		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
 		default = 50000;
 	};
-	class CTI_ECONOMY_STARTUP_SUPPLY_EAST {
-		title = "SUPPLY: Starting Supply (East Team)";
-		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
-		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
-		default = 20000;
-	};
 	class CTI_ECONOMY_STARTUP_FUNDS_EAST {
 		title = "INCOME: Starting Funds (East Players)";
 		values[] = {900,1500,2400,3200,6000,8000,10000,12500,15000,20000,100000000};
@@ -65,12 +59,6 @@ class Params {
 		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
 		default = 50000;
 	};
-	class CTI_ECONOMY_STARTUP_SUPPLY_WEST {
-		title = "SUPPLY: Starting Supply (West Team)";
-		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
-		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
-		default = 20000;
-	};
 	class CTI_ECONOMY_STARTUP_FUNDS_WEST {
 		title = "INCOME: Starting Funds (West Players)";
 		values[] = {900,1500,2400,3200,6000,8000,10000,12500,15000,20000,100000000};
@@ -82,6 +70,18 @@ class Params {
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
+	};
+	class CTI_ECONOMY_STARTUP_SUPPLY_EAST {
+		title = "SUPPLY: Starting Supply (East Team)";
+		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
+		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
+		default = 20000;
+	};
+	class CTI_ECONOMY_STARTUP_SUPPLY_WEST {
+		title = "SUPPLY: Starting Supply (West Team)";
+		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
+		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
+		default = 20000;
 	};
 	class CTI_RESPAWN_AI {
 		title = "RESPAWN: AI Members";
@@ -215,6 +215,18 @@ class Params {
 		texts[] = {"1 Minute","2 Minutes","3 Minutes","4 Minutes","5 Minutes","10 Minutes","20 Minutes","30 Minutes","40 Minutes","50 Minutes","1 Hour"};
 		default = 600;
 	};
+	class CTI_SM_NONV {
+		title = "GAMEPLAY: No NVs, No Thermal";
+		values[] = {0,1};
+		texts[] = {"False","True"};
+		default = 0;
+	};
+	class CTI_SM_NV_THER_VEH {
+		title = "GAMEPLAY: Disable NVs, Thermal on Vehicles, Statics";
+		values[] = {0,1};
+		texts[] = {"False","True"};
+		default = 0;
+	};
 	class CTI_GRAPHICS_TG_MAX {
 		title = "VISUAL: Terrain Grid";
 		values[] = {10,20,30,50};
@@ -283,6 +295,18 @@ class Params {
 	};		
 	class CTI_DEV_MODE {
 		title = "DEV: Dev Mode";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};
+	class CTI_ZOMBIE_MODE {
+		title = "GAMEMODE: Zombie Mode";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};
+	class CTI_GUERILLA_MODE {
+		title = "GAMEMODE: Guerilla Mode (Low Tech)";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
 		default = 0;

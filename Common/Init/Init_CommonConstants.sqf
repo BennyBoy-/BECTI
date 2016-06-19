@@ -625,6 +625,8 @@ with missionNamespace do {
 	if (isNil 'CTI_MARKERS_INFANTRY') then {CTI_MARKERS_INFANTRY = 1}; //--- Track infantry on map
 	
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 0};
+	if (isnil 'CTI_SM_NONV') then {CTI_SM_NONV = 1};
+	if (isnil 'CTI_SM_NV_THER_VEH') then {CTI_SM_NV_THER_VEH = 0};
 	
 	if (isNil 'CTI_WEATHER_FAST') then {CTI_WEATHER_FAST = 12};
 	if (isNil 'CTI_WEATHER_FAST_NIGHT') then {CTI_WEATHER_FAST_NIGHT = 1};
@@ -635,4 +637,6 @@ with missionNamespace do {
 	if (isNil 'CTI_CUP_ADDON') then {CTI_CUP_ADDON = 1};
 	if (isNil 'CTI_OFPS_ADDON') then {CTI_OFPS_ADDON = 1};
 	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 0};
+	if (isNil 'CTI_ZOMBIE_MODE') then {CTI_ZOMBIE_MODE = 0};
+	if (isNil 'CTI_GUERILLA_MODE') then {CTI_GUERILLA_MODE = 0};
 };
