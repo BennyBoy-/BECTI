@@ -132,7 +132,7 @@ _u pushBack 'Land_Pod_Heli_Transport_04_medevac_F';
 if (CTI_APEX_ADDON > 0) then { 
 	_u pushback 'I_C_Offroad_02_unarmed_F';
 	_u pushBack 'O_T_LSV_02_unarmed_F';
-	_u pushBack 'O_T_LSV_02_armed_FF';
+	_u pushBack 'O_T_LSV_02_armed_F';
 };
 
 //--- CUP UNITS
@@ -272,7 +272,6 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'OFPS_BUZAA_O';
 	_u pushBack 'O_PAKFA_F';
 	_u pushBack 'usaf_b1b';
-	_u pushBack 'pook_tu142M';
 	_u pushBack 'pook_tu953M80';
 	_u pushBack 'pook_tu95ms';
 	_u pushBack 'pook_tu95ms16';

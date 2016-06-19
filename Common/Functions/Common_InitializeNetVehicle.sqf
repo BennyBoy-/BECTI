@@ -72,6 +72,11 @@ if (_vehicle isKindOf "Ship") then {
 };
 if (_vehicle isKindOf "Plane") then {_vehicle addAction ["<t color='#86F078'>Taxi Reverse</t>","Client\Actions\Action_TaxiReverse.sqf", [], 99, false, true, "", 'driver _target == _this && alive _target && speed _target < 4 && speed _target > -4 && getPos _target select 2 < 4']};
 
+//--- Static Line Drop
+if (_vehicle isKindOf "Plane" || _vehicle isKindOf "Helicopter") then {
+	_vehicle addAction ["<t color='#2E9AFE'>Eject With Parachute</t>", "Client\Actions\Action_Eject.sqs",[],0,true,true,"","player in _target && getPos _target select 2 >100"];
+};
+
 //--- Perform side-speficic operations
 if (_sideID != CTI_P_SideID) exitWith {};
 

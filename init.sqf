@@ -103,3 +103,8 @@ if (CTI_IsHeadless) then {
 
 //--- Set the group ID
 execVM "Common\Init\Init_GroupsID.sqf";
+
+//-- Explosives on Vehicles Script
+waitUntil {time > 0};
+execVM "Client\Actions\Action_Attach_charge.sqf";
+waitUntil {!isNil "EtVInitialized"};

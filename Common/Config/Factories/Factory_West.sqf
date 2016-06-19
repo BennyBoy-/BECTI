@@ -292,7 +292,6 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'sab_alphajet2';
 	_u pushBack 'OFPS_BUZZA_B';
 	_u pushBack 'usaf_b1b';
-	_u pushBack 'pook_tu142M_CDF';
 	_u pushBack 'pook_tu953M80_CDF';
 	_u pushBack 'pook_tu95ms_CDF';
 	_u pushBack 'pook_tu95ms16_CDF';
