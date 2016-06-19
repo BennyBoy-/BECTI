@@ -24,8 +24,4 @@
 	  -> Returns true if the player is the current commander
 */
 
-private["_commander"];
-
-_commander = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommanderTeam;
-if (isNull _commander) exitWith {false};
-if (_commander == group player) then {true} else {false}
+(CTI_P_SideJoined call CTI_CO_FNC_GetSideCommanderTeam) isEqualTo group player

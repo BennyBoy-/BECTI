@@ -73,7 +73,7 @@ _side = _get select 3; //--- Get the last side joined
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Player [%1] [%2] group is [%3] on last side [%4]", _name, _uid, _team, _side]] call CTI_CO_FNC_Log};
 
 _funds = (_team) call CTI_CO_FNC_GetFundsTeam;
-_is_commander = if (_team call CTI_CO_FNC_IsGroupCommander) then {true} else {false};
+_is_commander = _team call CTI_CO_FNC_IsGroupCommander;
 _hq = (_side) call CTI_CO_FNC_GetSideHQ;
 
 //--- We force the unit out of it's vehicle.

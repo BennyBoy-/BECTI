@@ -60,4 +60,10 @@ switch (_action) do {
 			createDialog "CTI_RscArtilleryMenu";
 		};
 	};
+	case "onConstructionCamPressed": {
+		if (CTI_Base_HQInRange && call CTI_CL_FNC_IsPlayerCommander) then {
+			closeDialog 0;
+			createDialog "CTI_RscBuildMenu_Cam";
+		};
+	};
 };

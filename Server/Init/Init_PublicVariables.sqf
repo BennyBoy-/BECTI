@@ -38,13 +38,20 @@ with missionNamespace do {
 	
 	CTI_PVF_Request_Worker = { _this spawn CTI_SE_FNC_CreateWorker };
 	
+	CTI_PVF_Request_HandleEmptyVehicles = { 
+		if (typeName _this == "ARRAY") then {
+			{[_x] spawn CTI_SE_FNC_HandleEmptyVehicle} forEach _this;
+		} else {
+			[_this] spawn CTI_SE_FNC_HandleEmptyVehicle;
+		};
+	};
+	
 	CTI_PVF_Request_HandleAction = { 
 		private ["_action", "_param"];
 		_action = _this select 0;
 		_param = _this select 1;
 		
 		switch (_action) do {
-			case "empty": {[_param] spawn CTI_SE_FNC_HandleEmptyVehicle};
 			case "repair": {_param execFSM "Server\FSM\update_repairtruck.fsm"};
 			case "salvager": {_param execFSM "Server\FSM\update_salvager.fsm"};
 		};

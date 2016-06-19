@@ -108,6 +108,11 @@ call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_East.sqf";
 (west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_East.sqf";
 
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_APEX_West.sqf";
+(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_APEX_East.sqf";
+};
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
 (west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_West.sqf";

@@ -450,7 +450,7 @@ CTI_BASE_WORKERS_WANDER_RANGE_MAX = 225; //--- Worker may wander no further than
 
 //--- Base: Parameters
 with missionNamespace do {
-	if (isNil 'CTI_BASE_AREA_MAX') then {CTI_BASE_AREA_MAX = 2}; //--- Maximum amount of FOBs which a side may place
+	if (isNil 'CTI_BASE_AREA_MAX') then {CTI_BASE_AREA_MAX = 2}; //--- Amount of base areas which may be built
 	if (isNil 'CTI_BASE_CONSTRUCTION_MODE') then {CTI_BASE_CONSTRUCTION_MODE = 0}; //--- Construction mode to use for structures (0: Timed, 1: Workers)
 	if (isNil 'CTI_BASE_FOB_MAX') then {CTI_BASE_FOB_MAX = 2}; //--- Maximum amount of FOBs which a side may place
 	if (isNil 'CTI_BASE_HQ_REPAIR') then {CTI_BASE_HQ_REPAIR = 1}; //--- Determine whether the HQ can be repaired or not
@@ -532,6 +532,8 @@ CTI_RESPAWN_MOBILE_RANGE = 300;
 
 CTI_SATCAM_ZOOM_MIN = 50;
 CTI_SATCAM_ZOOM_MAX = 800;
+CTI_CONSTRUCTIONCAM_ZOOM_MIN = 5;
+CTI_CONSTRUCTIONCAM_ZOOM_MAX = 54;
 
 CTI_SERVICE_PRICE_REPAIR = 300;
 CTI_SERVICE_PRICE_REPAIR_COEF = 0.2;
@@ -629,6 +631,7 @@ with missionNamespace do {
 	if (isNil 'CTI_WEATHER_INITIAL') then {CTI_WEATHER_INITIAL = 10};
 	if (isNil 'CTI_WEATHER_ALLOWRAIN') then {CTI_WEATHER_ALLOWRAIN = 0};
 	
+	if (isNil 'CTI_APEX_ADDON') then {CTI_APEX_ADDON = 1};
 	if (isNil 'CTI_CUP_ADDON') then {CTI_CUP_ADDON = 1};
 	if (isNil 'CTI_OFPS_ADDON') then {CTI_OFPS_ADDON = 1};
 	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 0};

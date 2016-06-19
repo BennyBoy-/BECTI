@@ -1,1 +1,1 @@
-createDialog "CTI_RscBuildMenu";
+createDialog "CTI_RscBuildMenu_Cam";
