@@ -180,7 +180,7 @@ if (CTI_IsClient) then {
 		["(DISABLED) Halo", "Enable HALO Jumping from the Air factory"], //--- Halo
 		["(DISABLED) Air Radar", "Enable Air Radars"], //--- Air Radar
 		["(DISABLED) Artillery Radar", "Enable Artillery radar on Air Radars"], //--- Art Radar
-		["(DISABLED) Respawn Range", "Increase the max range of the respawn truck."], //--- Respawn Range
+		["Respawn Range", "Increase the max range of the respawn truck."], //--- Respawn Range
 		["(DISABLED) IR Smoke", "Enable IR Smoke Deployment from Vehicles"], //--- IR Smoke
 		["(DISABLED) Satellite", "Allows the use of the satellite camera"], //--- Satellite
 		["(DISABLED) Nuclear Arms Deal", "Unlock Nuke Truck in Light Factory"] //--- Nuke
