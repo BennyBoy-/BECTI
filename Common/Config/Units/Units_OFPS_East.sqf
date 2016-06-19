@@ -192,6 +192,56 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'pook_tu142M';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 20000;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 20;
+
+_c pushBack 'pook_tu953M80';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 20000;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 20;
+
+_c pushBack 'pook_tu95ms';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 20000;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 20;
+
+_c pushBack 'pook_tu95ms16';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 20000;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 20;
+
+_c pushBack 'pook_tu95MSM';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 20000;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 20;
+
 //--- Naval Vehicles
 
 _c pushBack 'Burnes_LCAC_1';
