@@ -74,6 +74,29 @@ _u pushBack "B_Helipilot_F";
 _u pushBack "B_crew_F";
 _u pushBack "B_Soldier_TL_F";
 _u pushBack "B_Soldier_SL_F";
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+	_u pushBack 'B_T_soldier_AR_F';
+	_u pushBack 'B_T_Soldier_A_F';
+	_u pushBack 'B_T_Soldier_exp_F';
+	_u pushBack 'B_T_Soldier_GL_F';
+	_u pushBack 'B_T_Soldier_M_F';
+	_u pushBack 'B_T_Medic_F';
+	_u pushBack 'B_T_Soldier_F';
+	_u pushBack 'B_T_Soldier_PG_F';
+	_u pushBack 'B_T_Engineer_F';
+	_u pushBack 'B_T_Sniper_F';
+	_u pushBack 'B_T_Soldier_repair_F';
+	_u pushBack 'B_T_Soldier_LAT_F';
+	_u pushBack 'B_T_Soldier_AA_F';
+	_u pushBack 'B_T_Soldier_AT_F';
+	_u pushBack 'B_T_Spotter_F';
+	_u pushBack 'B_T_Soldier_UAV_F';
+	_u pushBack 'B_T_Helipilot_F';
+	_u pushBack 'B_T_Crew_F';
+	_u pushBack 'B_T_Soldier_TL_F';
+	_u pushBack 'B_T_Soldier_SL_F';
+};
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
 _u pushBack 'CUP_B_US_Soldier';
@@ -103,6 +126,13 @@ _u pushBack "B_UGV_01_F";
 _u pushBack "B_UGV_01_rcws_F";
 _u pushBack "B_Truck_01_medical_F";
 _u pushBack 'B_Slingload_01_Medevac_F';
+
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+	_u pushback 'I_C_Offroad_02_unarmed_F';
+	_u pushBack 'B_T_LSV_01_unarmed_F';
+	_u pushBack 'B_T_LSV_01_armed_F';
+};
 
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
@@ -199,6 +229,14 @@ _u pushBack "B_Heli_Attack_01_F";
 _u pushBack "B_UAV_02_CAS_F";
 _u pushBack "B_UAV_02_F";
 _u pushBack "B_Plane_CAS_01_F";
+
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+	_u pushBack 'B_T_UAV_03_F';
+	_u pushBack 'B_T_VTOL_01_infantry_F';
+	_u pushBack 'B_T_VTOL_01_vehicle_F';
+	_u pushBack 'B_T_VTOL_01_armed_F';
+};
 
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
@@ -299,6 +337,12 @@ _u pushBack "B_Boat_Transport_01_F";
 _u pushBack "B_Boat_Armed_01_minigun_F";
 _u pushBack 'C_Boat_Civil_01_police_F';
 _u pushBack "B_SDV_01_F";
+
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+	_u pushBack "C_Scooter_Transport_01_F";
+	_u pushBack "I_C_Boat_Transport_02_F";
+};
 
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 

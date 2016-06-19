@@ -25,7 +25,7 @@ class EditorData
 binarizationWanted=0;
 addons[]=
 {
-        "A3_Structures_F_Mil_Flags",
+    "A3_Structures_F_Mil_Flags",
 	"A3_Modules_F",
 	"A3_Characters_F_OPFOR",
 	"a3_characters_f",
@@ -34,6 +34,12 @@ addons[]=
 	"A3_Characters_F_Gamma",
 	"A3_Characters_F_Common",
 	"A3_Structures_F_Mil_BagBunker",
+	"A3_Characters_F_Exp",
+	"A3_Soft_F_Exp_Offroad_02",
+	"A3_Soft_F_Exp_LSV_01",
+	"A3_Air_F_Exp_UAV_03",
+	"A3_Air_F_Exp_VTOL_01",
+	"A3_Boat_F_Exp_Boat_Transport_02",
 	"CUP_Creatures_People_Military_DummyInfantrySet",
 	"CUP_Creatures_Military_USArmy",
 	"CUP_Creatures_Military_SLA",

@@ -263,6 +263,12 @@ class Params {
 		texts[] = {"1 hour","2 hours","3 hours","4 hours","5 hours","6 hours","7 hours","8 hours","9 hours","10 hours","11 hours","12 hours"};
 		default = 1;
 	};
+	class CTI_APEX_ADDON {
+		title = "ADDON: APEX DLC Support";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 1;
+	};
 	class CTI_CUP_ADDON {
 		title = "ADDON: CUP Support, Units, Vehicles, Weapons";
 		values[] = {0,1};
@@ -274,7 +280,7 @@ class Params {
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
-	};	
+	};		
 	class CTI_DEV_MODE {
 		title = "DEV: Dev Mode";
 		values[] = {0,1};
