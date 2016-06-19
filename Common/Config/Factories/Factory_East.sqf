@@ -272,6 +272,11 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'OFPS_BUZAA_O';
 	_u pushBack 'O_PAKFA_F';
 	_u pushBack 'usaf_b1b';
+	_u pushBack 'pook_tu142M';
+	_u pushBack 'pook_tu953M80';
+	_u pushBack 'pook_tu95ms';
+	_u pushBack 'pook_tu95ms16';
+	_u pushBack 'pook_tu95MSM';
 };
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _u];

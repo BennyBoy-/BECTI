@@ -94,7 +94,7 @@ _in_area = false;
 {if ([_pos select 0, _pos select 1] distance [_x select 0, _x select 1] <= CTI_BASE_AREA_RANGE) exitWith {_in_area = true}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
 
 //--- Maybe we have no area in range?
-if !(_in_area) then {
+if (!(_in_area) && ! CTI_VAR_StructureCanceled && (_buildingID == CTI_ConstructionCam_BuildingID)) then {
 	//--- If we have none, then have we reached our limit?
 	if (count (CTI_P_SideLogic getVariable "cti_structures_areas") < (missionNamespace getVariable "CTI_BASE_AREA_MAX")) then {
 		//--- We create a new area if we still have room for areas and of course, we allow the construction
@@ -108,7 +108,7 @@ if !(_in_area) then {
 //todo: structure 'build' mode expires > check areas for other structures + buildings (if 0 then remove)
 
 //--- If there's no problems then we place it.
-if !(CTI_VAR_StructureCanceled) then {
+if (!CTI_VAR_StructureCanceled && (_buildingID == CTI_ConstructionCam_BuildingID)) then {
 	if (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply) >= (_var select 2)) then {
 		[CTI_P_SideJoined, -(_var select 2)] call CTI_CO_FNC_ChangeSideSupply;
 		

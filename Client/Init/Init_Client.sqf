@@ -128,10 +128,20 @@ call compile preprocessFile "Client\Functions\UI\Functions_UI_UpgradeMenu.sqf";
 if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_West.sqf"};
 if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_East.sqf"};
 
+//--- Load APEX Gear
+if (CTI_APEX_ADDON > 0) then { 
+	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_APEX_West.sqf"};
+	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_APEX_East.sqf"};
+};
 //--- Load CUP Gear
 if (CTI_CUP_ADDON > 0) then { 
 	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_West.sqf"};
 	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_East.sqf"};
+};
+//--- Load OFPS Gear
+if (CTI_OFPS_ADDON > 0) then { 
+	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_OFPS_West.sqf"};
+	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_OFPS_East.sqf"};
 };
 
 CTI_InitClient = true;

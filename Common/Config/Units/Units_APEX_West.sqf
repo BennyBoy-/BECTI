@@ -285,7 +285,7 @@ _d pushBack 0;
 _c pushBack 'B_T_UAV_03_F';
 _p pushBack '';
 _n pushBack '';
-_o pushBack 35000;
+_o pushBack 15000;
 _t pushBack 50;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_AIR;

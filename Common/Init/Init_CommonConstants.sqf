@@ -528,7 +528,7 @@ CTI_RESPAWN_CAMPS_RANGE_CLASSIC = 550; //--- Determine the range needed to respa
 CTI_RESPAWN_CAMPS_RANGE_ENHANCED = 350; //--- Determine the range needed to respawn at a town's camps (from a camp)
 CTI_RESPAWN_CAMPS_SAFE = 1; //--- Disable a camp's respawn if enemies are around it
 CTI_RESPAWN_CAMPS_SAFE_RANGE = 15; //--- Disable a camp's respawn if enemies are around it
-CTI_RESPAWN_MOBILE_RANGE = 300;
+CTI_RESPAWN_MOBILE_RANGE = 500;
 
 CTI_SATCAM_ZOOM_MIN = 50;
 CTI_SATCAM_ZOOM_MAX = 800;
