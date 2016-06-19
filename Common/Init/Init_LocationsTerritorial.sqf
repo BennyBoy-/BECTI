@@ -152,14 +152,14 @@ switch (toLower(worldName)) do {
 		Georgetown setVariable ["cti_town_neighbors", [OuaQueLumberyard,TempleOfDeath,Regina]];
 		TempleOfDeath setVariable ["cti_town_neighbors", [Georgetown,Tanouka]];
 		Tanouka setVariable ["cti_town_neighbors", [Galili,TempleOfDeath,Vagalala,AeroportdeTanoa]];
-		Vagalala setVariable ["cti_town_neighbors", [Vatukoulo,CommsBravo,Tanouka,Lakatoro]];
+		Vagalala setVariable ["cti_town_neighbors", [Vatukoulo,CommsBravo,Tanouka,Lakatoro,BloodRuins]];
 		Regina setVariable ["cti_town_neighbors", [Georgetown,Sosovu,AeroportdeTanoa]];
 		AeroportdeTanoa setVariable ["cti_town_neighbors", [Regina,Tanouka,Lumberyard]];
 		Lakatoro setVariable ["cti_town_neighbors", [Lumberyard,Vagalala]];
-		Lumberyard setVariable ["cti_town_neighbors", [AeroportdeTanoa,Lakatoro,Plantation,Kotomo]];
-		Plantation setVariable ["cti_town_neighbors", [Lumberyard,Oumere]];
+		Lumberyard setVariable ["cti_town_neighbors", [AeroportdeTanoa,Lakatoro,BloodRuins,Kotomo]];
+		BloodRuins setVariable ["cti_town_neighbors", [Lumberyard,Oumere,Vagalala]];
 		Kotomo setVariable ["cti_town_neighbors", [Harcourt,Lumberyard,Oumere]];
-		Oumere setVariable ["cti_town_neighbors", [FuelDepot,Kotomo,Plantation,Luganville]];
+		Oumere setVariable ["cti_town_neighbors", [FuelDepot,Kotomo,BloodRuins,Luganville]];
 		Luganville setVariable ["cti_town_neighbors", [Vatukoulo,Oumere]];
 	};
 };

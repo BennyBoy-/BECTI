@@ -61,7 +61,7 @@ _tries = 400;
 
 //--- Pool data: [<GROUP>, <PRESENCE>, {<SPAWN PROBABILITY>}], nesting is possible to narrow down some choices
 if (isNil {_town getVariable "cti_naval"}) then {
-	if (isNil {_town getVariable "cti_zombie"}) then {
+	if (CTI_ZOMBIE_MODE == 0 && isNil {_town getVariable "cti_zombie"}) then {
 		switch (true) do {
 			case (_value < 50) : { 
 				_pool_units = [

@@ -37,6 +37,7 @@ CTI_SE_FNC_ToggleHQ = compileFinal preprocessFileLineNumbers "Server\Functions\S
 CTI_SE_FNC_TrashObject = compileFinal preprocessFileLineNumbers "Server\Functions\Server_TrashObject.sqf";
 CTI_SE_FNC_UpdateBaseAreas = compileFinal preprocessFileLineNumbers "Server\Functions\Server_UpdateBaseAreas.sqf";
 CTI_SE_FNC_VoteForCommander = compileFinal preprocessFileLineNumbers "Server\Functions\Server_VoteForCommander.sqf";
+CTI_SE_FNC_Weather_Hook= compileFinal preprocessFileLineNumbers "Server\Functions\Server_Weather_Hook.sqf";
 
 funcCalcAlignPosDir = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fCalcAlignPosDir.sqf";
 funcVectorAdd = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorAdd.sqf";
@@ -44,9 +45,7 @@ funcVectorCross = compileFinal preprocessFileLineNumbers "Server\Functions\Exter
 funcVectorDot = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorDot.sqf";
 funcVectorScale = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorScale.sqf";
 funcVectorSub = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorSub.sqf";
-with missionNamespace do {
-CTI_SE_FNC_Weather_Hook= compileFinal preprocessFileLineNumbers "Server\Functions\Server_Weather_Hook.sqf";
-};
+
 //--- Load Naval Town Structures
 call compile preprocessFileLineNumbers "Server\Init\initMapStructures.sqf";
 call compile preprocessFileLineNumbers "Server\Init\initTownStructures.sqf";
@@ -184,6 +183,19 @@ if (_attempts >= 500) then {
 		};
 	} forEach (synchronizedObjects _logic);
 	
+	//--- Disable Thermals and Statics
+	if ( (missionNamespace getVariable 'CTI_SM_NV_THER_VEH')==1 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {
+		0 spawn {
+			while {! CTi_GameOver} do {
+				{
+					_x disableTIEquipment true;
+					_x disableNVGEquipment true;
+				}
+				forEach vehicles;
+				sleep 10;
+			};
+		};
+	};
 	_logic setVariable ["cti_teams", _teams, true];
 } forEach [[west, CTI_WEST, _westLocation], [east, CTI_EAST, _eastLocation]];
 
@@ -201,29 +213,36 @@ if (_attempts >= 500) then {
 };
 
 // Date init
-_it=0;
-_possible_it_off=[0,0,0,0,0,0,6,6,6,12,12,12,18];
-if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 10) then {
-	_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL")*6;
+if (CTI_ZOMBIE_MODE == 0) then {
+	_it=0;
+	_possible_it_off=[0,0,0,0,0,0,6,6,6,12,12,12,18];
+	if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 10) then {
+		_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL")*6;
+	} else {
+		_it= _possible_it_off select floor random (count _possible_it_off);
+	};
+	skipTime _it;
 } else {
-	_it= _possible_it_off select floor random (count _possible_it_off);
+	// set time to dusk 6pm
+	skipTime 12;
 };
-skipTime _it;
 
-// dynamic wheather
+// dynamic weather
 0 spawn CTI_SE_FNC_Weather_Hook;
 		
 // Fast time compression
-0 spawn {
-	_day_ratio = 14/CTI_WEATHER_FAST;
-	_night_ratio = 10/CTI_WEATHER_FAST_NIGHT;
-	while {!CTI_Gameover} do {
-		if (daytime > 5 && daytime <19 ) then {
-			if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio ; };
-		} else {
-			if (timeMultiplier !=  _night_ratio) then {setTimeMultiplier _night_ratio ; };
+if (CTI_ZOMBIE_MODE == 0) then {
+	0 spawn {
+		_day_ratio = 14/CTI_WEATHER_FAST;
+		_night_ratio = 10/CTI_WEATHER_FAST_NIGHT;
+		while {!CTI_Gameover} do {
+			if (daytime > 5 && daytime <19 ) then {
+				if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio ; };
+			} else {
+				if (timeMultiplier !=  _night_ratio) then {setTimeMultiplier _night_ratio ; };
+			};
+			sleep 120;
 		};
-		sleep 120;
 	};
 };
 

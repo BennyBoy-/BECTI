@@ -46,6 +46,29 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[50000] //--- Nuke
 ]];
 
+if (CTI_GUERILLA_MODE == 1 || CTI_ZOMBIE_MODE == 1) then {
+missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
+	3, //--- Gear
+	2, //--- Barracks
+	2, //--- Light
+	0, //--- Heavy
+	1, //--- Naval
+	1, //--- Air
+	0, //--- Air FFAR
+	0, //--- Air DAR
+	0, //--- Air AT
+	0, //--- Air AA
+	0, //--- Air CM
+	0, //--- Towns Occupation
+	0, //--- Halo
+	0, //--- Air Radar
+	0, //--- Art Radar
+	3, //--- Respawn Range
+	0, //--- IR Smoke
+	0, //--- Satellite
+	0 //--- Nuke
+]];
+} else {
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	3, //--- Gear
 	3, //--- Barracks
@@ -67,6 +90,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	1, //--- Satellite
 	1 //--- Nuke
 ]];
+};
 
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[],[],[]], //--- Gear

@@ -302,6 +302,11 @@ if (profileNamespace getVariable "CTI_PERSISTENT_HINTS") then {
 if (CTI_BASE_NOOBPROTECTION == 1) then {player addEventHandler ["fired", {_this spawn CTI_CL_FNC_OnPlayerFired}]}; //--- Trust me, you want that
 if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
 
+// Thermal / NV restriction
+if ( (missionNamespace getVariable 'CTI_SM_NONV')==1 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {
+	0 execVM "Client\Functions\Client_NvThermR.sqf";
+};
+
 if (CTI_DEBUG) then {
 	// hint "DEBUG MODE IS ENABLED! DON'T FORGET TO TURN IT OFF!";
 	// onMapSingleClick "vehicle player setPos _pos";
