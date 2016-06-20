@@ -140,7 +140,7 @@ if !(CTI_VAR_StructureCanceled) then {
 		if !(((_var select 0) select 0) in [CTI_HQ_DEPLOY, CTI_HQ_MOBILIZE]) then {
 			["SERVER", "Request_Building", [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player]] call CTI_CO_FNC_NetSend;
 		} else {
-			["SERVER", "Request_HQToggle", [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir]] call CTI_CO_FNC_NetSend;
+			[_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir] remoteExec ["CTI_PVF_SRV_RequestHQToggle", CTI_PV_SERVER];
 		};
 	} else {
 		hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to place that structure.";

@@ -26,25 +26,9 @@ with missionNamespace do {
 		_hq setOwner (owner _target);
 	};
 	
-	CTI_PVF_Request_AddScore = { _this spawn CTI_SE_FNC_AddScore };
-	
 	CTI_PVF_Request_Building = { _this spawn CTI_SE_FNC_BuildStructure };
 	CTI_PVF_Request_Defense = { _this spawn CTI_SE_FNC_BuildDefense };
-	CTI_PVF_Request_HQToggle = { _this spawn CTI_SE_FNC_ToggleHQ };
 	
-	CTI_PVF_Request_Purchase = { _this spawn CTI_SE_FNC_OnClientPurchase };
-	CTI_PVF_Request_PurchaseCancel = { _this spawn CTI_SE_FNC_OnClientPurchaseCancelled };
-	CTI_PVF_Answer_Purchase = { _this spawn CTI_SE_FNC_OnClientPurchaseComplete };
-	
-	CTI_PVF_Request_Worker = { _this spawn CTI_SE_FNC_CreateWorker };
-	
-	CTI_PVF_Request_HandleEmptyVehicles = { 
-		if (typeName _this == "ARRAY") then {
-			{[_x] spawn CTI_SE_FNC_HandleEmptyVehicle} forEach _this;
-		} else {
-			[_this] spawn CTI_SE_FNC_HandleEmptyVehicle;
-		};
-	};
 	
 	CTI_PVF_Request_HandleAction = { 
 		private ["_action", "_param"];
@@ -55,24 +39,6 @@ with missionNamespace do {
 			case "repair": {_param execFSM "Server\FSM\update_repairtruck.fsm"};
 			case "salvager": {_param execFSM "Server\FSM\update_salvager.fsm"};
 		};
-	};
-	
-	CTI_PVF_Request_AIOrderAction = {
-		private ["_groups", "_order", "_side"];
-		_groups = _this select 0;
-		_order = _this select 1;
-		_side = _this select 2;
-		
-		if (typeName _groups != "ARRAY") then {_groups = [_groups]};
-		
-		{
-			switch (_order) do {
-				case CTI_ORDER_EMBARKCOMMANDVEH: {[["CLIENT", _side], "Client_OnMessageReceived", ["order-getin", leader _x]] call CTI_CO_FNC_NetSend; (_x) call CTI_FSM_UpdateAI_EmbarkCommandableVehicles};
-				case CTI_ORDER_DISEMBARKCOMMANDVEH: {[["CLIENT", _side], "Client_OnMessageReceived", ["order-getout", leader _x]] call CTI_CO_FNC_NetSend; (_x) call CTI_FSM_UpdateAI_DisembarkCommandableVehicles};
-				case CTI_ORDER_EMBARKCARGOVEH: {[["CLIENT", _side], "Client_OnMessageReceived", ["order-getinc", leader _x]] call CTI_CO_FNC_NetSend; (_x) call CTI_FSM_UpdateAI_EmbarkCargoVehicles};
-				case CTI_ORDER_DISEMBARKCARGOVEH: {[["CLIENT", _side], "Client_OnMessageReceived", ["order-getoutc", leader _x]] call CTI_CO_FNC_NetSend; (_x) call CTI_FSM_UpdateAI_DisembarkCargoVehicles};
-			};
-		} forEach _groups;
 	};
 	
 	CTI_PVF_Request_Join = {
@@ -91,7 +57,7 @@ with missionNamespace do {
 			
 			if (_side_origin != _side) then { //--- The joined side differs from the original one.
 				_join = false;
-				["CLIENT", "Client_OnMessageReceived", ["teamswap", _name]] call CTI_CO_FNC_NetSend;
+				["teamswap", _name] remoteExec ["CTI_PVF_CLT_OnMessageReceived", CTI_PV_CLIENTS];
 				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_Request_Join", format["Player [%1] [%2] tried to teamswap from it's original side [%3] to side [%4]. The server explicitely answered that he should be sent back to the lobby.", _name, _uid, _side_origin, _side]] call CTI_CO_FNC_Log};
 			};
 		} else {
@@ -103,14 +69,8 @@ with missionNamespace do {
 		_was_jailed = false;
 		_get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
 		if !(isNil '_get') then {if (_get select 1 == 1) then {_was_jailed = true}};
-		[["CLIENT", _client], "Client_JoinRequestAnswer", [_join, _was_jailed]] call CTI_CO_FNC_NetSend;
+		[_join, _was_jailed] remoteExec ["CTI_PVF_Client_JoinRequestAnswer", owner _client];
 	};
-	
-	CTI_PVF_Request_NoobLogger = { _this spawn CTI_SE_FNC_NoobLogger };
-	CTI_PVF_Request_NoobLoggerEnd = { _this spawn CTI_SE_FNC_NoobLoggerEnd };
-	CTI_PVF_Request_Upgrade = { _this spawn CTI_SE_FNC_StartUpgrade };
-	CTI_PVF_Request_EventDestroyedHQ = { _this spawn CTI_SE_FNC_OnHQDestroyed };
-	CTI_PVF_Request_HQRepair = { _this spawn CTI_SE_FNC_RepairHQ };
 	
 	CTI_PVF_Request_HCRegister = { 
 		private ["_client", "_ownerID", "_uid"];
@@ -125,10 +85,10 @@ with missionNamespace do {
 			_candidates pushBack [_ownerID, _client, _uid];
 			missionNamespace setVariable ["CTI_HEADLESS_CLIENTS", _candidates];
 			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_Request_HCRegister", format["Headless Client [%1] with owner ID [%2] has been registered as a valid Headless Client. There is now [%3] Headless Clients", _uid, _ownerID, count _candidates]] call CTI_CO_FNC_Log};
-			[["CLIENT", _client], "Client_OnRegisterAnswer", true] call CTI_CO_FNC_NetSend;
+			(true) remoteExec ["CTI_PVF_Client_OnRegisterAnswer", _ownerID];
 		} else { //--- An ID of 0 mean that the object is local to the server
 			if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FUNCTION: CTI_PVF_Request_HCRegister", format ["Client [%1] sent a request but his owner ID is 0. It will not be registered as a valid Headless Client", _uid]] call CTI_CO_FNC_Log};
-			[["CLIENT", _client], "Client_OnRegisterAnswer", false] call CTI_CO_FNC_NetSend;
+			(false) remoteExec ["CTI_PVF_Client_OnRegisterAnswer", _ownerID];
 		};
 	};
 	
@@ -150,7 +110,41 @@ with missionNamespace do {
     	(_this select 0) addCuratorEditableObjects [[_this select 1],true] ;
 	};
 	
-	CTI_PVF_Request_CommanderVote = {
+
+	//--- The client answers a purchase request
+	CTI_PVF_SRV_AnswerPurchase = { _this spawn CTI_SE_FNC_OnClientPurchaseComplete };
+	
+	//--- The client forwards the HQ killed EH
+	CTI_PVF_SRV_ForwardHQDestroyed = { _this spawn CTI_SE_FNC_OnHQDestroyed };
+	
+	//--- The client request a score addition
+	CTI_PVF_SRV_RequestAddScore = { _this spawn CTI_SE_FNC_AddScore };
+	
+	//--- The client request a specific AI Order
+	CTI_PVF_SRV_RequestAIOrderAction = {
+		private ["_groups", "_order", "_side"];
+		_groups = _this select 0;
+		_order = _this select 1;
+		_side = _this select 2;
+		
+		if (typeName _groups != "ARRAY") then {_groups = [_groups]};
+		
+		{
+			_message = "";
+			
+			switch (_order) do {
+				case CTI_ORDER_EMBARKCOMMANDVEH: {_message = "order-getin"; (_x) call CTI_FSM_UpdateAI_EmbarkCommandableVehicles};
+				case CTI_ORDER_DISEMBARKCOMMANDVEH: {_message = "order-getout"; (_x) call CTI_FSM_UpdateAI_DisembarkCommandableVehicles};
+				case CTI_ORDER_EMBARKCARGOVEH: {_message = "order-getinc"; (_x) call CTI_FSM_UpdateAI_EmbarkCargoVehicles};
+				case CTI_ORDER_DISEMBARKCARGOVEH: {_message = "order-getoutc"; (_x) call CTI_FSM_UpdateAI_DisembarkCargoVehicles};
+			};
+			
+			if (_message != "") then {[_message, leader _x] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side]};
+		} forEach _groups;
+	};
+	
+	//--- The client request a new commander vote
+	CTI_PVF_SRV_RequestCommanderVote = {
 		private ["_logic", "_name", "_side", "_team"];
 		
 		_side = _this select 0;
@@ -173,25 +167,26 @@ with missionNamespace do {
 			
 			//--- Call in for a vote
 			(_side) Spawn CTI_SE_FNC_VoteForCommander;
-			
-			//--- Send a message to the clients
-			// [["CLIENT", _side], "Client_OnMessageReceived", ["commander-vote-start", _name]] call CTI_CO_FNC_NetSend;
 		};
 	};
 	
-	CTI_PVF_Server_RequestVehicleLock = {
-		private ["_locked", "_vehicle"];
-		_vehicle = _this select 0;
-		_locked = _this select 1;
-		
-		if (local _vehicle) then {
-			_vehicle lock _locked;
+	//--- The client request an empty vehicle handling
+	CTI_PVF_SRV_RequestHandleEmptyVehicles = { 
+		if (typeName _this == "ARRAY") then {
+			{[_x] spawn CTI_SE_FNC_HandleEmptyVehicle} forEach _this;
 		} else {
-			[["CLIENT", owner _vehicle], "Client_RequestVehicleLock", [_vehicle, _locked]] call CTI_CO_FNC_NetSend;
+			[_this] spawn CTI_SE_FNC_HandleEmptyVehicle;
 		};
 	};
 	
-	CTI_PVF_Server_RequestJIPGear = {
+	//--- The client request an HQ repair
+	CTI_PVF_SRV_RequestHQRepair = { _this spawn CTI_SE_FNC_RepairHQ };
+	
+	//--- The client request an HQ toggle (deployed/mobilized)
+	CTI_PVF_SRV_RequestHQToggle = { _this spawn CTI_SE_FNC_ToggleHQ };
+	
+	//--- The client request his Join in Progress gear if possible
+	CTI_PVF_SRV_RequestJIPGear = {
 		private ["_get", "_loadout"];
 		
 		_get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", getPlayerUID _this], []];
@@ -200,8 +195,38 @@ with missionNamespace do {
 			_loadout = _get select 4;
 			
 			if (count _loadout > 0) then { //--- Make sure that there is a valid loadout in there
-				(_loadout) remoteExec ["CTI_PVF_Client_RequestJIPGear", owner _this];
+				(_loadout) remoteExec ["CTI_PVF_CLT_OnJIPGearReceived", owner _this];
 			};
 		};
 	};
+	
+	//--- The client request a noob logging
+	CTI_PVF_SRV_RequestNoobLogger = { _this spawn CTI_SE_FNC_NoobLogger };
+	
+	//--- The client request the end of the noob logging
+	CTI_PVF_SRV_RequestNoobLoggerEnd = { _this spawn CTI_SE_FNC_NoobLoggerEnd };
+	
+	//--- The client request a unit purchase
+	CTI_PVF_SRV_RequestPurchase = { _this spawn CTI_SE_FNC_OnClientPurchase };
+	
+	//--- The client request a unit purchase cancellation
+	CTI_PVF_SRV_RequestPurchaseCancel = { _this spawn CTI_SE_FNC_OnClientPurchaseCancelled };
+	
+	//--- The client request an upgrade
+	CTI_PVF_SRV_RequestUpgrade = { _this spawn CTI_SE_FNC_StartUpgrade };
+	
+	//--- The client request a vehicle lock toggle
+	CTI_PVF_SRV_RequestVehicleLock = {
+		private ["_locked", "_vehicle"];
+		_vehicle = _this select 0;
+		_locked = _this select 1;
+		
+		if (local _vehicle) then {
+			_vehicle lock _locked;
+		} else {
+			[_vehicle, _locked] remoteExec ["CTI_PVF_Client_RequestVehicleLock", owner _vehicle];
+		};
+	};
+	
+	CTI_PVF_SRV_RequestWorker = { _this spawn CTI_SE_FNC_CreateWorker };
 };

@@ -82,7 +82,7 @@ if !(_sell) then {
 				_award = round((_var select 2) * CTI_BASE_CONSTRUCTION_BOUNTY);
 				
 				[["CLIENT", _killer], "Client_AwardBountyStructure", [_label, _award]] call CTI_CO_FNC_NetSend;
-				["CLIENT", "Client_OnMessageReceived", ["structure-destroyed", [name _killer, _label]]] call CTI_CO_FNC_NetSend;
+				["structure-destroyed", [name _killer, _label]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", CTI_PV_CLIENTS];
 			} else {
 				//--- AI Reward
 			};

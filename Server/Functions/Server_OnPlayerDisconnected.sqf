@@ -119,7 +119,7 @@ if (_is_commander && !isNull _team) then {
 	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Player [%1] [%2] was commander, sending a notification to side [%3]", _name, _uid, _side]] call CTI_CO_FNC_Log};
 	
 	//--- Send a message!
-	[["CLIENT", _side], "Client_OnMessageReceived", ["commander-disconnected"]] call CTI_CO_FNC_NetSend;
+	["commander-disconnected"] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 	
 	if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1) then { (_side) execFSM "Server\FSM\update_commander.fsm" }; //--- AI commander takeover
 };

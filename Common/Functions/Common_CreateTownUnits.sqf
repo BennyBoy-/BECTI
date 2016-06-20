@@ -93,7 +93,7 @@ while {true} do {
 				{[_x] spawn CTI_SE_FNC_HandleEmptyVehicle} forEach _vehicles;
 				_town setVariable [_vvar, (_town getVariable [_vvar, []]) + _vehicles];
 			} else { //--- HC
-				["SERVER", "Request_HandleEmptyVehicles", _vehicles] call CTI_CO_FNC_NetSend;
+				(_vehicles) remoteExec ["CTI_PVF_SRV_RequestHandleEmptyVehicles", CTI_PV_SERVER];
 				["SERVER", "Request_TownAddVehicles", [_town, _side, _vehicles]] call CTI_CO_FNC_NetSend;
 			};
 		};

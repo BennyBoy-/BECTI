@@ -51,7 +51,7 @@ _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 
 if (time - (_logic getVariable "cti_structures_lasthit") > 30 && _damage >= 0.02 && alive _damaged) then {
 	_logic setVariable ["cti_structures_lasthit", time];
-	[["CLIENT", _side], "Client_OnMessageReceived", ["structure-attacked", [_variable, _position]]] call CTI_CO_FNC_NetSend;
+	["structure-attacked", [_variable, _position]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 };
 
 _damage

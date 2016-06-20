@@ -78,11 +78,11 @@ if !(isNull _killer) then {
 			_award = round((_var select 2) * CTI_BASE_HQ_BOUNTY);
 			
 			[["CLIENT", _killer], "Client_AwardBountyStructure", [_label, _award]] call CTI_CO_FNC_NetSend;
-			["CLIENT", "Client_OnMessageReceived", ["structure-destroyed", [name _killer, _label]]] call CTI_CO_FNC_NetSend;
+			["structure-destroyed", [name _killer, _label]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 		} else {
 			//--- AI Reward
 		};
 	};
 };
 
-[["CLIENT", _side], "Client_OnMessageReceived", ["hq-destroyed"]] call CTI_CO_FNC_NetSend;
+["hq-destroyed"] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];

@@ -27,10 +27,10 @@
 	["town-capture", [_town, _value]] call CTI_CL_FNC_DisplayMessage;
 	  -> Display some message on the client
 	  
-	[["CLIENT", West], "Client_OnMessageReceived", ["commander-disconnected"]] call CTI_CO_FNC_NetSend;
-	  -> Display a message for the west side, the "Client_OnMessageReceived" will call this function
-	[["CLIENT", West], "Client_OnMessageReceived", ["structure-preplaced", [_this select 0, _position]]] call CTI_CO_FNC_NetSend;
-	  -> Display a parameterized message for the west side, the "Client_OnMessageReceived" will call this function
+	["commander-disconnected"] remoteExec ["CTI_PVF_CLT_OnMessageReceived", east];
+	  -> Display a message for the east side via the "CTI_PVF_CLT_OnMessageReceived" PVF
+	["teamswap", name player] remoteExec ["CTI_PVF_CLT_OnMessageReceived", CTI_PV_CLIENTS];
+	  -> Display a parameterized message for all client via the "CTI_PVF_CLT_OnMessageReceived" PVF
 */
 
 private ["_message_var", "_parameters"];

@@ -28,7 +28,6 @@
 	Common Function: CTI_CO_FNC_ChangeFunds
 	Common Function: CTI_CO_FNC_GetFunds
 	Common Function: CTI_CO_FNC_InitializeCustomVehicle
-	Common Function: CTI_CO_FNC_NetSend
 	Common Function: CTI_CO_FNC_SanitizeAircraft
 	
   # EXAMPLE #
@@ -72,7 +71,7 @@ _req_time_out = time + (_var_classname select CTI_UNIT_TIME);
 
 //--- Soft limit (skip for empty vehicles)
 if !(_process) then { if ((count units (group player))+1 <= CTI_PLAYERS_GROUPSIZE) then { _process = true }};
-if !(_process) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend }; //--- Can't do it but we answer to the server.
+if !(_process) exitWith { [_req_seed, _req_classname, _req_buyer, _factory] remoteExec ["CTI_PVF_SRV_AnswerPurchase", CTI_PV_SERVER] }; //--- Can't do it but we answer to the server.
 
 //--- Check if the buyer has enough funds to perform this operation
 _cost = _var_classname select CTI_UNIT_PRICE;
@@ -96,7 +95,7 @@ if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 };
 
 _funds = (_req_buyer) call CTI_CO_FNC_GetFunds;
-if (_funds < _cost) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; };
+if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_buyer, _factory] remoteExec ["CTI_PVF_SRV_AnswerPurchase", CTI_PV_SERVER] };
 // [_req_buyer, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
 
 while { time <= _req_time_out && alive _factory } do { sleep .25 };
@@ -105,10 +104,10 @@ if !(alive _factory) exitWith { diag_log "the factory is dead" };
 
 //--- Soft limit (skip for empty vehicles)
 if !(_process) then { if ((count units (group player))+1 <= CTI_PLAYERS_GROUPSIZE) then { _process = true }};
-if !(_process) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend }; //--- Can't do it but we answer to the server.
+if !(_process) exitWith { [_req_seed, _req_classname, _req_buyer, _factory] remoteExec ["CTI_PVF_SRV_AnswerPurchase", CTI_PV_SERVER] }; //--- Can't do it but we answer to the server.
 
 _funds = (_req_buyer) call CTI_CO_FNC_GetFunds;
-if (_funds < _cost) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; };
+if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_buyer, _factory] remoteExec ["CTI_PVF_SRV_AnswerPurchase", CTI_PV_SERVER] };
 [_req_buyer, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
 
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\Functions\Client_OnPurchaseOrderReceived.sqf", format["Purchase order concerning classname [%1] with seed [%2] from [%3] on factory [%4, (%5)] is done. Processing the creation...", _req_classname, _req_seed, _req_buyer, _factory, _factory getVariable "cti_structure_type"]] call CTI_CO_FNC_Log };
@@ -172,7 +171,7 @@ if (_model isKindOf "Man") then {
 	if (CTI_ARTILLERY_FILTER == 1) then {if (_model in (missionNamespace getVariable ["CTI_ARTILLERY", []])) then {(_vehicle) call CTI_CO_FNC_SanitizeArtillery}};
 	
 	//--- Track this vehicle
-	["SERVER", "Request_HandleEmptyVehicles", _vehicle] call CTI_CO_FNC_NetSend;
+	(_vehicle) remoteExec ["CTI_PVF_SRV_RequestHandleEmptyVehicles", CTI_PV_SERVER];
 };
 
 {
@@ -190,4 +189,4 @@ _picture = if ((_var_classname select CTI_UNIT_PICTURE) != "") then {format["<im
 hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />%4<t>Your <t color='#ccffaf'>%1</t> has arrived from the <t color='#fcffaf'>%2</t> at grid <t color='#beafff'>%3</t></t>", _var_classname select CTI_UNIT_LABEL, (_var select 0) select 1, mapGridPosition _position, _picture];
 
 //--- send a notice to the server that our order is now complete
-["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend;
+[_req_seed, _req_classname, _req_buyer, _factory] remoteExec ["CTI_PVF_SRV_AnswerPurchase", CTI_PV_SERVER];

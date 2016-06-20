@@ -54,8 +54,7 @@ switch (_action) do {
 							
 							if !(_link_needed) then {
 								[CTI_P_SideJoined, -(_upgrade_price)] call CTI_CO_FNC_ChangeSideSupply;
-								
-								["SERVER", "Request_Upgrade", [CTI_P_SideJoined, _selected, _upgrade_current]] call CTI_CO_FNC_NetSend;
+								[CTI_P_SideJoined, _selected, _upgrade_current] remoteExec ["CTI_PVF_SRV_RequestUpgrade", CTI_PV_SERVER];
 								CTI_P_SideLogic setVariable ["cti_upgrade", _selected,true];
 								
 								_label = ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select _selected) select 0;

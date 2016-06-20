@@ -32,8 +32,8 @@
 	["CLIENT", "Client_RemoveRuins", [_position, _ruins]] call CTI_CO_FNC_NetSend
 	  -> Execute the Function "CTI_PVF_Client_RemoveRuins" on all clients with some parameters
 	  
-	[["CLIENT", _side_killed], "Client_OnMessageReceived", ["penalty", [_var_name, _group_killer, _penalty]], _show_local] call CTI_CO_FNC_NetSend;
-	  -> Execute the Function "CTI_PVF_Client_OnMessageReceived" on all clients of the given side with some parameters and call a local execution for the sender
+	[["CLIENT", _side_killed], "CTI_PVF_CLT_OnMessageReceived", ["penalty", [_var_name, _group_killer, _penalty]], _show_local] call CTI_CO_FNC_NetSend;
+	  -> Execute the Function "CTI_PVF_CLT_OnMessageReceived" on all clients of the given side with some parameters and call a local execution for the sender
 	[["CLIENT", _killer], "Client_OnTeamkill"] call CTI_CO_FNC_NetSend
 	  -> Execute the Function "CTI_PVF_Client_OnTeamkill" on a single player
 
@@ -42,7 +42,7 @@
 	["SERVER", "Request_Building", [_placed, CTI_CL_VAR_SideJoined, getPos _preview, getDir _preview]] call CTI_CO_FNC_NetSend
 	  -> Execute the Function "CTI_PVF_Request_Building" on the server with some parameters
 	["SERVER", "Request_HQRepair", CTI_P_SideJoined] call CTI_CO_FNC_NetSend
-	  -> Execute the Function "CTI_PVF_Request_HQRepair" on the server with a single parameter
+	  -> Execute the Function "CTI_PVF_SRV_RequestHQRepair" on the server with a single parameter
 */
 
 private ["_pv_destination", "_pv_exec_local", "_pv_filter_exec", "_pv_name", "_pv_parameters", "_pv_target", "_pv_who"];

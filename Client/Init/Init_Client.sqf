@@ -141,7 +141,7 @@ if !(CTI_IsServer) then { //--- Pure client execution
 	[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit;
 	
 	if (didJIP) then { //--- Attempt to retrieve the last known JIP gear if possible.
-		(player) remoteExec ["CTI_PVF_Server_RequestJIPGear", CTI_PV_SERVER];
+		(player) remoteExec ["CTI_PVF_SRV_RequestJIPGear", CTI_PV_SERVER];
 	};
 };
 
