@@ -223,11 +223,9 @@ skipTime _it;
 		sleep 120;
 	};
 };
-<<<<<<< HEAD
+
 //TeamStack
 // 0 execFSM "Server\FSM\TEAMSTACK_count.fsm";
-=======
->>>>>>> refs/remotes/origin/master
 
 // Zeus admin for players
 if !( isNil "ADMIN_ZEUS") then {
