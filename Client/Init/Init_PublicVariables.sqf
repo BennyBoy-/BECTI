@@ -162,4 +162,6 @@ with missionNamespace do {
 		
 		_vehicle lock _locked;
 	};
+	
+	CTI_PVF_Client_RequestJIPGear = { [player, _this] call CTI_CO_FNC_EquipUnit };
 };

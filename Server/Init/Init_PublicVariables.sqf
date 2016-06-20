@@ -190,4 +190,18 @@ with missionNamespace do {
 			[["CLIENT", owner _vehicle], "Client_RequestVehicleLock", [_vehicle, _locked]] call CTI_CO_FNC_NetSend;
 		};
 	};
+	
+	CTI_PVF_Server_RequestJIPGear = {
+		private ["_get", "_loadout"];
+		
+		_get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", getPlayerUID _this], []];
+		
+		if (count _get > 0) then {
+			_loadout = _get select 4;
+			
+			if (count _loadout > 0) then { //--- Make sure that there is a valid loadout in there
+				(_loadout) remoteExec ["CTI_PVF_Client_RequestJIPGear", owner _this];
+			};
+		};
+	};
 };

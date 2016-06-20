@@ -137,7 +137,13 @@ CTI_InitClient = true;
 waitUntil {!isNil {(group player) getVariable "cti_funds"}};
 
 player addEventHandler ["killed", {_this spawn CTI_CL_FNC_OnPlayerKilled}];
-if !(CTI_IsServer) then {[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit}; //--- Equip pure clients
+if !(CTI_IsServer) then { //--- Pure client execution
+	[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit;
+	
+	if (didJIP) then { //--- Attempt to retrieve the last known JIP gear if possible.
+		(player) remoteExec ["CTI_PVF_Server_RequestJIPGear", CTI_PV_SERVER];
+	};
+};
 
 if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileNamespace setVariable ["CTI_PERSISTENT_HINTS", true]; saveProfileNamespace };
 
