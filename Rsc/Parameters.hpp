@@ -139,20 +139,20 @@ class Params {
 	};
 	class CTI_TOWNS_OCCUPATION_RESISTANCE {
 		title = "TOWNS: Resistance Occupation Forces";
-		values[] = {0,1,2};
-		texts[] = {"Vanilla","CUP","Mixed"};
-		default = 2;
+		values[] = {0,1,2,3,4,5,6};
+		texts[] = {"Vanilla - AAF","Vanilla - FIA","CUP - ION PMC","CUP - NAPA Chernarus","CUP - Royal Army Corp Of Sahrani","CUP - Takistani Locals","Mixed"};
+		default = 6;
 	};
 	class CTI_TOWNS_OCCUPATION_WEST {
 		title = "TOWNS: Blufor Occupation Forces";
 		values[] = {0,1,2};
-		texts[] = {"Vanilla","CUP","Mixed"};
+		texts[] = {"Vanilla","CUP - US Army","Mixed"};
 		default = 2;
 	};
 	class CTI_TOWNS_OCCUPATION_EAST {
 		title = "TOWNS: Opfor Occupation Forces";
 		values[] = {0,1,2};
-		texts[] = {"Vanilla","CUP","Mixed"};
+		texts[] = {"Vanilla","CUP - Russians","Mixed"};
 		default = 2;
 	};
 	class CTI_TOWNS_PEACE {

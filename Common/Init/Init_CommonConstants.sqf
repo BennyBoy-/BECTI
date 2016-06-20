@@ -405,7 +405,7 @@ with missionNamespace do {
 CTI_BASE_AREA_RANGE = 500;
 
 //--- Base: Construction
-CTI_BASE_CONSTRUCTION_BOUNTY = 0.50; //--- The bounty awarded upon a hostile structure destruction
+CTI_BASE_CONSTRUCTION_BOUNTY = 3; //--- The bounty awarded upon a hostile structure destruction
 CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 500; //--- Decay starts after x seconds unattended.
 CTI_BASE_CONSTRUCTION_DECAY_DELAY = 10; //--- Decay each x seconds.
 CTI_BASE_CONSTRUCTION_DECAY_FROM = 10; //--- Decay of x / 100 each y seconds.

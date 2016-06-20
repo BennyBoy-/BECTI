@@ -144,6 +144,26 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'O_Soldier_TL_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 100;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_Soldier_SL_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 100;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'O_Soldier_lite_F';
 _p pushBack '';
 _n pushBack '';
@@ -215,6 +235,26 @@ _s pushBack "";
 _d pushBack 0;
 
 _c pushBack 'O_soldier_UAV_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 250;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_diver_TL_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 250;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_diver_F';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 250;
