@@ -107,7 +107,7 @@ class FSM
        "CTI_Base_GearInRange_FOB = _in_range;" \n
        "" \n
        "if (CTI_GEAR_RESPAWN_WITH_LAST > 0) then {" \n
-       "	if (alive player && !CTI_P_Respawning) then {CTI_P_CurrentGear = (player) call CTI_UI_Gear_GetUnitEquipment};" \n
+       "	if (alive player && !CTI_P_Respawning) then {CTI_P_CurrentGear = (player) call CTI_CO_FNC_GetUnitLoadout};" \n
        "};" \n
        "" \n
        "//--- Actions" \n

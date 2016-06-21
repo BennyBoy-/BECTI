@@ -84,7 +84,7 @@ switch (_action) do {
 			if !(_order in CTI_AI_ORDERS_ONETIMERS) then {
 				if (_order != (_who getVariable "cti_order")) then {_who setVariable ["cti_order", _order, true]};
 			} else {
-				if!(isPlayer leader _who) then {["SERVER", "Request_AIOrderAction", [_who, _order, CTI_P_SideJoined]] call CTI_CO_FNC_NetSend};
+				if!(isPlayer leader _who) then {[_who, _order, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestAIOrderAction", CTI_PV_SERVER]};
 			};
 		};
 	};
@@ -132,7 +132,7 @@ switch (_action) do {
 			} else {
 				_ais = [];
 				{if!(isPlayer leader _x) then {_ais pushBack _x}} forEach (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups");
-				if (count _ais > 0) then {["SERVER", "Request_AIOrderAction", [_ais, _order, CTI_P_SideJoined]] call CTI_CO_FNC_NetSend};
+				if (count _ais > 0) then {[_ais, _order, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestAIOrderAction", CTI_PV_SERVER]};
 			};
 		};
 	};

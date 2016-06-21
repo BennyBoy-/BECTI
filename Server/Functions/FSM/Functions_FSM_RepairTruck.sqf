@@ -10,7 +10,7 @@ CTI_FSM_RepairTruck_Construct = {
 		_target setVariable ["cti_completion", _addin];
 		if (_completion != _addin) then {
 			_group = group driver _vehicle;
-			if (isPlayer leader _group) then {[["CLIENT", leader _group], "Client_OnMessageReceived", ["build-by", [driver _vehicle, _target getVariable "cti_structure_type", round _addin]]] call CTI_CO_FNC_NetSend};
+			if (isPlayer leader _group) then {["build-by", [driver _vehicle, _target getVariable "cti_structure_type", round _addin]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", leader _group]};
 		};
 	};
 };
@@ -35,5 +35,5 @@ CTI_FSM_RepairTruck_Repair = {
 	};
 	
 	_group = group driver _vehicle;
-	if (isPlayer leader _group) then {[["CLIENT", leader _group], "Client_OnMessageReceived", ["repair-by", [driver _vehicle, _target getVariable "cti_structure_type", round((1 - _addin)*100)]]] call CTI_CO_FNC_NetSend};
+	if (isPlayer leader _group) then {["repair-by", [driver _vehicle, _target getVariable "cti_structure_type", round((1 - _addin)*100)]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", leader _group]};
 };

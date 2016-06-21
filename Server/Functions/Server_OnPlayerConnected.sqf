@@ -80,7 +80,7 @@ if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
 
 if (isNil '_get') then { //--- The player has joined for the first time.
 	//--- Format is [UID, Funds, First Joined side, Last Joined side (current one)]
-	missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], [_uid, 0, _side, _side]];
+	missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], [_uid, 0, _side, _side, []]];
 	
 	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] information were stored for the first time on side [%3]", _name, _uid, _side]] call CTI_CO_FNC_Log};
 } else { //--- The player has joined before.

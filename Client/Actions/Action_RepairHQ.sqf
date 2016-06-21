@@ -21,7 +21,7 @@ if (_hq distance _vehicle <= CTI_BASE_HQ_REPAIR_RANGE) then {
 		if (_delay <= 0) then {
 			if (_funds >= CTI_BASE_HQ_REPAIR_PRICE) then {
 				-CTI_BASE_HQ_REPAIR_PRICE call CTI_CL_FNC_ChangePlayerFunds;
-				["SERVER", "Request_HQRepair", CTI_P_SideJoined] call CTI_CO_FNC_NetSend;
+				(CTI_P_SideJoined) remoteExec ["CTI_PVF_SRV_RequestHQRepair", CTI_PV_SERVER];
 			} else {
 				hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t color='%1'>$%2</t> is needed to repair the HQ", CTI_P_Coloration_Money, CTI_BASE_HQ_REPAIR_PRICE];
 			};

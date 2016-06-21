@@ -38,7 +38,7 @@ CTI_P_ChatID commandChat format ["%1 is now available at grid %2.", (_var select
 //--- Add score for the commander
 if (call CTI_CL_FNC_IsPlayerCommander) then {
 	_score = round((_var select 2) / CTI_SCORE_BUILD_VALUE_PERPOINT);
-	if (_score > 0) then {["SERVER", "Request_AddScore", [player, _score]] call CTI_CO_FNC_NetSend}; //--- Award some score
+	if (_score > 0) then {[player, _score] remoteExec ["CTI_PVF_SRV_RequestAddScore", CTI_PV_SERVER]}; //--- Award some score
 };
 
 [_structure, _var] call CTI_CL_FNC_InitializeStructure;

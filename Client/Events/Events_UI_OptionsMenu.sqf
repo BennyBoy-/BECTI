@@ -71,11 +71,12 @@ switch (_action) do {
 	case "onCommanderVotePressed": {
 		if (CTI_P_SideLogic getVariable ["cti_votetime", -1] < 0) then { //--- No vote's running
 			//--- Request a new vote
-			["SERVER", "Request_CommanderVote", [CTI_P_SideJoined, name player]] call CTI_CO_FNC_NetSend;
+			[CTI_P_SideJoined, name player] remoteExec ["CTI_PVF_SRV_RequestCommanderVote", CTI_PV_SERVER];
 			
 			//--- Don't lock this script
 			0 spawn {
-				[["CLIENT", CTI_P_SideJoined], "Client_OnNewCommanderVote", name player] call CTI_CO_FNC_NetSend;
+				(name player) remoteExec ["CTI_PVF_CLT_OnNewCommanderVote", CTI_P_SideJoined];
+				
 			
 				waitUntil{CTI_P_SideLogic getVariable "cti_votetime" > -1 || !alive player || !dialog};
 				

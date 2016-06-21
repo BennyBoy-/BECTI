@@ -154,8 +154,8 @@ switch (_action) do {
 			if (_funds >= CTI_VEHICLES_SALVAGER_PRICE) then {
 				if (count(CTI_P_SideLogic getVariable "cti_salvagers") < CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX) then { 
 					if (time - CTI_P_LastIndepSalvagerPurchased > 5) then {
-						CTI_P_LastIndepSalvagerPurchased = time;
-						["SERVER", "Request_Purchase", [CTI_P_SideJoined, group player, CTI_P_SideJoined, format["CTI_Salvager_Independent_%1", CTI_P_SideJoined], uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", [], (time + random 10000 - random 500 + diag_frameno)]] call CTI_CO_FNC_NetSend;
+						CTI_P_LastIndepSalvagerPurchased = time;						
+						[CTI_P_SideJoined, group player, CTI_P_SideJoined, format["CTI_Salvager_Independent_%1", CTI_P_SideJoined], uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", [], (time + random 10000 - random 500 + diag_frameno)] remoteExec ["CTI_PVF_SRV_RequestPurchase", CTI_PV_SERVER];
 					} else {
 						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Please wait a few seconds before performing this operation again.";
 					};
@@ -202,7 +202,7 @@ switch (_action) do {
 					CTI_P_PurchaseRequests deleteAt _index;
 					
 					//--- Notify the server thread that our request has been canceled.
-					["SERVER", "Request_PurchaseCancel", [_seed, _classname, _req_factory, _req_team, group player]] call CTI_CO_FNC_NetSend;
+					[_seed, _classname, _req_factory, _req_team, group player] remoteExec ["CTI_PVF_SRV_RequestPurchaseCancel", CTI_PV_SERVER];
 				} else {
 					hint "commander assigned units may not be removed";
 				};

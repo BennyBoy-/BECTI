@@ -17,9 +17,6 @@
   # SYNTAX #
 	0 spawn CTI_CL_FNC_OnJailed
 	
-  # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_NetSend
-	
   # EXAMPLE #
 	0 spawn CTI_CL_FNC_OnJailed
 */
@@ -50,7 +47,7 @@ while {true} do {
 };
 
 CTI_P_Jailed = false;
-["SERVER", "Request_NoobLoggerEnd", player] call CTI_CO_FNC_NetSend;
+(player) remoteExec ["CTI_PVF_SRV_RequestNoobLoggerEnd", CTI_PV_SERVER];
 
 hintSilent "You are free!\n\nWe hope that you've enjoyed your stay!";
 player setPos [(_pos select 0), (_pos select 1)-10, 0.75];

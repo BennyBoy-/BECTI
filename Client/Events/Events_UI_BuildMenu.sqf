@@ -60,7 +60,7 @@ switch (_action) do {
 					//--- HQ Mobilize
 					if ((CTI_P_SideJoined) call CTI_CO_FNC_IsHQDeployed) then {
 						_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
-						["SERVER", "Request_HQToggle", [_selected, CTI_P_SideJoined, position _hq, direction _hq]] call CTI_CO_FNC_NetSend;
+						[_selected, CTI_P_SideJoined, position _hq, direction _hq] remoteExec ["CTI_PVF_SRV_RequestHQToggle", CTI_PV_SERVER];
 						closeDialog 0;
 					};
 				};
@@ -120,8 +120,7 @@ switch (_action) do {
 			if (_funds >= CTI_BASE_WORKERS_PRICE) then {
 				-(CTI_BASE_WORKERS_PRICE) call CTI_CL_FNC_ChangePlayerFunds;
 				CTI_P_SideLogic setVariable ["cti_workers", _workers + [""], true];
-				
-				["SERVER", "Request_Worker", [CTI_P_SideJoined]] call CTI_CO_FNC_NetSend;
+				[CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestWorker", CTI_PV_SERVER];
 			} else {
 				hint "not enough funds dude";
 			};

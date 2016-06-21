@@ -79,4 +79,4 @@ if (isNull _commander) then {
 	};
 };
 
-[["CLIENT", _side], "Client_OnMessageReceived", ["commander-vote-end", _commander]] call CTI_CO_FNC_NetSend;
+["commander-vote-end", _commander] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
