@@ -94,7 +94,7 @@ while {true} do {
 				_town setVariable [_vvar, (_town getVariable [_vvar, []]) + _vehicles];
 			} else { //--- HC
 				(_vehicles) remoteExec ["CTI_PVF_SRV_RequestHandleEmptyVehicles", CTI_PV_SERVER];
-				["SERVER", "Request_TownAddVehicles", [_town, _side, _vehicles]] call CTI_CO_FNC_NetSend;
+				[_town, _side, _vehicles] remoteExec ["CTI_PVF_SRV_RequestTownAddVehicles", CTI_PV_SERVER];
 			};
 		};
 		
@@ -110,8 +110,14 @@ while {true} do {
 			};
 		};
 		
-		//--- Zeus
-		if !( isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [_men, true]};
+		//--- ZEUS Curator Editable
+		if !(isNil "ADMIN_ZEUS") then {
+			if (CTI_IsServer) then {
+				ADMIN_ZEUS addCuratorEditableObjects [_men, true];
+			} else {
+				[ADMIN_ZEUS, _men] remoteExec ["CTI_PVF_SRV_RequestAddCuratorEditable", CTI_PV_SERVER];
+			};
+		};
 	};
 	
 	if (_index >= count _groups) exitWith {

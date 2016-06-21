@@ -81,7 +81,7 @@ if !(_sell) then {
 				_label = ((_var select 0) select 1);
 				_award = round((_var select 2) * CTI_BASE_CONSTRUCTION_BOUNTY);
 				
-				[["CLIENT", _killer], "Client_AwardBountyStructure", [_label, _award]] call CTI_CO_FNC_NetSend;
+				[_label, _award] remoteExec ["CTI_PVF_CLI_OnBountyStructure", _killer];
 				["structure-destroyed", [name _killer, _label]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", CTI_PV_CLIENTS];
 			} else {
 				//--- AI Reward
@@ -103,5 +103,5 @@ _classnames = if (count _classnames > 2) then {[_classnames select 1] + (_classn
 
 {if (isNil {_x getVariable "cti_completion"}) then { deleteVehicle _x }} forEach (nearestObjects [_position, _classnames, 25]);
 
-[["CLIENT", _side], "Client_OnStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;
-["CLIENT", "Client_RemoveRuins", [_position, _variable]] call CTI_CO_FNC_NetSend;
+[_position, _variable, _sell] remoteExec ["CTI_PVF_CLT_OnFriendlyStructureDestroyed", _side];
+[_position, _variable] remoteExec ["CTI_PVF_CLI_RemoveRuins", CTI_PV_CLIENTS];

@@ -93,7 +93,7 @@ if (isMultiplayer) then {
 	
 	_last_req = -100;
 	while {!CTI_P_CanJoin} do {
-		if (time - _last_req > 15) then {_last_req = time; ["SERVER", "Request_Join", [player, CTI_P_SideJoined]] call CTI_CO_FNC_NetSend};
+		if (time - _last_req > 15) then { _last_req = time; [player, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestJoin", CTI_PV_SERVER]};
 		sleep 1;
 	};
 	

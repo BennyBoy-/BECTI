@@ -21,7 +21,6 @@
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideFromID
 	Common Function: CTI_CO_FNC_GetSideID
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
     [Gravette, Camp0, West] call CTI_SE_FNC_OnCampCaptured
@@ -44,4 +43,4 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Server\Functions\Server_OnCampCaptured.sqf", format["Camp [%1] from Town [%2] has been captured, from [%3] to [%4]", _camp, _town getVariable "cti_town_name", (_currentSideID) Call CTI_CO_FNC_GetSideFromID, _newSide]] call CTI_CO_FNC_Log;
 };
 
-["CLIENT", "Client_OnCampCaptured", [_town, _camp, _newSideID, _currentSideID]] call CTI_CO_FNC_NetSend;
+[_town, _camp, _newSideID, _currentSideID] remoteExec ["CTI_PVF_CLI_OnCampCaptured", CTI_PV_CLIENTS];

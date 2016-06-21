@@ -22,7 +22,6 @@
 	Client Function: CTI_CO_FNC_ChangeSideSupply
 	Common Function: CTI_CO_FNC_GetDirTo
 	Client Function: CTI_CO_FNC_GetSideSupply
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
     [_selected, CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ, CTI_BASE_CONSTRUCTION_RANGE] spawn CTI_CL_FNC_PlacingBuilding;
@@ -138,7 +137,7 @@ if !(CTI_VAR_StructureCanceled) then {
 		
 		//--- Check whether we're dealing with the HQ or a normal structure
 		if !(((_var select 0) select 0) in [CTI_HQ_DEPLOY, CTI_HQ_MOBILIZE]) then {
-			["SERVER", "Request_Building", [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player]] call CTI_CO_FNC_NetSend;
+			[_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player] remoteExec ["CTI_PVF_SRV_RequestJIPGear", CTI_PV_SERVER];
 		} else {
 			[_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir] remoteExec ["CTI_PVF_SRV_RequestHQToggle", CTI_PV_SERVER];
 		};

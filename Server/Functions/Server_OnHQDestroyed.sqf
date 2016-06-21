@@ -21,7 +21,6 @@
 	
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideFromID
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
     _hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_SE_FNC_OnHQDestroyed", _sideID]];
@@ -77,7 +76,7 @@ if !(isNull _killer) then {
 			_label = ((_var select 0) select 1);
 			_award = round((_var select 2) * CTI_BASE_HQ_BOUNTY);
 			
-			[["CLIENT", _killer], "Client_AwardBountyStructure", [_label, _award]] call CTI_CO_FNC_NetSend;
+			[_label, _award] remoteExec ["CTI_PVF_CLI_OnBountyStructure", _killer];
 			["structure-destroyed", [name _killer, _label]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 		} else {
 			//--- AI Reward

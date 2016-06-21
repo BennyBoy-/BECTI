@@ -7,7 +7,7 @@ while {isNull player} do {
 
 //--- PVF
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\Init\Init_Client_Headless.sqf", "Attempting to register this Headless Client on the server..."] call CTI_CO_FNC_Log };
-["SERVER", "Request_HCRegister", player] call CTI_CO_FNC_NetSend;
+(player) remoteExec ["CTI_PVF_SRV_RequestHCRegister", CTI_PV_SERVER];
 
 with missionNamespace do {
 	CTI_PVF_Client_OnDefenseDelegationLocalityChanged = {
@@ -102,7 +102,7 @@ with missionNamespace do {
 		_town_vehicles = [_town, _side, _teams, _groups, _positions] call CTI_CO_FNC_CreateTownUnits;
 		
 		if (count _town_vehicles > 0) then {
-			["SERVER", "Request_TownAddVehicles", [_town, _side, _town_vehicles]] call CTI_CO_FNC_NetSend;
+			[_town, _side, _town_vehicles] remoteExec ["CTI_PVF_SRV_RequestTownAddVehicles", CTI_PV_SERVER];
 		};
 		
 		_hc_tvar = if (_side == resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
@@ -362,7 +362,7 @@ CTI_HC_CreateTeam = {
 	
 	if (count _created_vehicles > 0) then {	
 		(_created_vehicles) remoteExec ["CTI_PVF_SRV_RequestHandleEmptyVehicles", CTI_PV_SERVER];
-		["SERVER", "Request_TownAddVehicles", [_town, _side, _created_vehicles]] call CTI_CO_FNC_NetSend;
+		[_town, _side, _created_vehicles] remoteExec ["CTI_PVF_SRV_RequestTownAddVehicles", CTI_PV_SERVER];
 	};
 	
 	if (CTI_SHK_BUILDING_ENABLED) then {

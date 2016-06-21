@@ -22,7 +22,6 @@
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideLogic
 	Common Function: CTI_CO_FNC_GetSideUpgrades
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
     [West, CTI_UPGRADE_BARRACKS, 0] spawn CTI_SE_FNC_StartUpgrade

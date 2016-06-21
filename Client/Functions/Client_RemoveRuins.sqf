@@ -3,7 +3,7 @@
 	Script: 		Client\Functions\Client_RemoveRuins.sqf
 	Alias:			CTI_CL_FNC_RemoveRuins
 	Description:	Called by the server whenever a structure get destroyed to remove the "local" ruins
-					The PVF "CTI_PVF_Client_RemoveRuins" calls it
+					The PVF "CTI_PVF_CLI_RemoveRuins" calls it
 	Author: 		Benny
 	Creation Date:	20-09-2013
 	Revision Date:	20-09-2013

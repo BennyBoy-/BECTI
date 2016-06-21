@@ -19,9 +19,6 @@
   # SYNTAX #
 	[SEED, CLASSNAME, BUYER, FACTORY] call CTI_SE_FNC_OnClientPurchaseComplete
 	
-  # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_NetSend
-	
   # EXAMPLE #
     [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete;
 */
