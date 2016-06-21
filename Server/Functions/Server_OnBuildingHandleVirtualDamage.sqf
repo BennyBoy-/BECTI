@@ -29,7 +29,6 @@
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideFromID
 	Common Function: CTI_CO_FNC_GetSideLogic
-	Common Function: CTI_CO_FNC_NetSend
 	Server Function: CTI_SE_FNC_OnBuildingDestroyed
 	
   # EXAMPLE #

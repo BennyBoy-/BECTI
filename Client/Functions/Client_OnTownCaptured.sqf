@@ -3,7 +3,7 @@
 	Script: 		Client\Functions\Client_OnTownCaptured.sqf
 	Alias:			CTI_CL_FNC_OnTownCaptured
 	Description:	Called by the server whenever a town is captured by either side
-					Note this function is called automatically by the PVF "Client_OnTownCaptured"
+					Note this function is called automatically by the PVF "CTI_PVF_CLI_OnTownCaptured"
 	Author: 		Benny
 	Creation Date:	19-09-2013
 	Revision Date:	19-09-2013
@@ -25,7 +25,6 @@
 	Common Function: CTI_CO_FNC_GetLiveUnits
 	Common Function: CTI_CO_FNC_GetSideColoration
 	Common Function: CTI_CO_FNC_GetSideFromID
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
 	[_structure, _variable] call CTI_CL_FNC_OnTownCaptured

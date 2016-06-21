@@ -3,7 +3,7 @@
 	Script: 		Client\Functions\Client_OnPurchaseDelegationReceived.sqf
 	Alias:			CTI_CL_FNC_OnPurchaseDelegationReceived
 	Description:	Triggered when the commander or another leading unit buy an entity to another one (delegation)
-					Note this function is called automatically upon a delegated purchase by the "Client_OnPurchaseDelegationReceived" PVF
+					Note this function is called automatically upon a delegated purchase by the "CTI_PVF_CLI_OnPurchaseDelegationReceived" PVF
 	Author: 		Benny
 	Creation Date:	19-09-2013
 	Revision Date:	19-09-2013

@@ -84,12 +84,12 @@ if (_handle) then {
 	_vehicle setVariable ["cti_occupant", _side call CTI_CO_FNC_GetSideFromID];
 };
 
-//AdminZeus
-if !( isNil "ADMIN_ZEUS") then {
-	if !(CTI_isServer) then {
-		["SERVER", "Server_Addeditable",[ADMIN_ZEUS,_vehicle]] call CTI_CO_FNC_NetSend;
+//--- ZEUS Curator Editable
+if !(isNil "ADMIN_ZEUS") then {
+	if (CTI_IsServer) then {
+		ADMIN_ZEUS addCuratorEditableObjects [[_vehicle], true];
 	} else {
-		ADMIN_ZEUS addCuratorEditableObjects [[_vehicle],true] ;
+		[ADMIN_ZEUS, _vehicle] remoteExec ["CTI_PVF_SRV_RequestAddCuratorEditable", CTI_PV_SERVER];
 	};
 };
 

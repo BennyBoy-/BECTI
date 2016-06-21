@@ -18,9 +18,6 @@
   # SYNTAX #
 	[STRUCTURE, VARIABLE] call CTI_CL_FNC_OnStructureConstructed
 	
-  # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_NetSend
-	
   # EXAMPLE #
 	[_structure, _variable] call CTI_CL_FNC_OnStructureConstructed
 */

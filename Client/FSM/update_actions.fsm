@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-554.049622,262.642029,242.139771,-456.939575,854,881,1};
-window[] = {2,-1,-1,-1,-1,831,50,1305,50,3,872};
+window[] = {2,-1,-1,-1,-1,1006,225,1480,225,3,872};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -73,7 +73,7 @@ class FSM
        "	if (!isNull _commander) then {" \n
        "		if (_commander == group player) then {" \n
        "			CTI_HQ_BuildAction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_BuildMenu.sqf"", """", 93, false, true, """", ""_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange""];" \n
-       "			(_hq) spawn (missionNamespace getVariable ""CTI_PVF_Client_AddHQActions"");" \n
+       "			(_hq) spawn (missionNamespace getVariable ""CTI_PVF_CLI_AddHQActions"");" \n
        "		};" \n
        "	};" \n
        "};" \n
