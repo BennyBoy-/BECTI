@@ -20,12 +20,9 @@
   # SYNTAX #
 	[KILLED, KILLER, SIDE ID] call CTI_CL_FNC_OnHQDestroyed
 	
-  # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_NetSend
-	
   # EXAMPLE #
     _hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CL_FNC_OnHQDestroyed", CTI_P_SideID]];
 	  -> The EH will only fire is the HQ is local to the client, then it'll forward it to the server
 */
 
-["SERVER", "Request_EventDestroyedHQ", _this] call CTI_CO_FNC_NetSend;
+_this remoteExec ["CTI_PVF_SRV_ForwardHQDestroyed", CTI_PV_SERVER];

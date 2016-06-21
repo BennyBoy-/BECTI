@@ -57,6 +57,7 @@ CTI_CO_FNC_GetTeamVehicles = compileFinal preprocessFileLineNumbers "Common\Func
 CTI_CO_FNC_GetTownCamps = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTownCamps.sqf";
 CTI_CO_FNC_GetTownCampsOnSide = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTownCampsOnSide.sqf";
 CTI_CO_FNC_GetTownsResources = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTownsResources.sqf";
+CTI_CO_FNC_GetUnitLoadout = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetUnitLoadout.sqf";
 CTI_CO_FNC_GetUnitsScore = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetUnitsScore.sqf";
 CTI_CO_FNC_GetVehicleTurrets = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetVehicleTurrets.sqf";
 CTI_CO_FNC_HasOrderedChanged = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasOrderedChanged.sqf";

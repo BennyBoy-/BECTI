@@ -29,7 +29,7 @@ switch (_action) do {
 		uiNamespace setVariable ["cti_dialog_ui_gear_target", _target];
 		
 		//--- Get the target's equipment
-		_gear = (_target) call CTI_UI_Gear_GetUnitEquipment;
+		_gear = (_target) call CTI_CO_FNC_GetUnitLoadout;
 		
 		//--- Calculate the initial mass
 		_mass = (_gear) call CTI_UI_Gear_GetTotalMass;

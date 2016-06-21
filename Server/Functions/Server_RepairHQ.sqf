@@ -3,7 +3,7 @@
 	Script: 		Server\Functions\Server_RepairHQ.sqf
 	Alias:			CTI_SE_FNC_RepairHQ
 	Description:	Perform an HQ repair over the old HQ wreck.
-					Note that the PVF "CTI_PVF_Request_HQRepair" calls it
+					Note that the PVF "CTI_PVF_SRV_RequestHQRepair" calls it
 	Author: 		Benny
 	Creation Date:	23-09-2013
 	Revision Date:	23-09-2013
@@ -60,7 +60,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Server\Functions\Server_RepairHQ.sqf", format["HQ from side [%1] has been repaired at position [%2]", _side, _position]] call CTI_CO_FNC_Log;
 };
 
-[["CLIENT", _side], "Client_OnMessageReceived", ["hq-repair"]] call CTI_CO_FNC_NetSend;
+["hq-repair"] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 
 //--- Set the HQ to be local to a player commander if possible.
 _commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;

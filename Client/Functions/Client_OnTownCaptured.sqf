@@ -56,7 +56,7 @@ if (_side_new == CTI_P_SideJoined) then { //--- The player's side has captured i
 		};
 		
 		_score = round(_value / CTI_SCORE_TOWN_VALUE_PERPOINT);
-		if (_score > 0) then {["SERVER", "Request_AddScore", [player, _score]] call CTI_CO_FNC_NetSend}; //--- Award some score
+		if (_score > 0) then {[player, _score] remoteExec ["CTI_PVF_SRV_RequestAddScore", CTI_PV_SERVER]}; //--- Award some score
 		(_value) call CTI_CL_FNC_ChangePlayerFunds; //--- Award some money
 		["town-capture", [_town, _value]] call CTI_CL_FNC_DisplayMessage;
 	};

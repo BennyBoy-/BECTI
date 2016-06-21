@@ -29,7 +29,7 @@ switch (_action) do {
 		// To be tested, used to be _forEachIndex
 		{CTI_P_TeamsRequests deleteAt _x} forEach _removes;
 		
-		// ([group player, 0, [], round(random 200 + random 10000 - random 5000), "Benny"]) call CTI_PVF_Client_OnRequestReceived;
+		// ([group player, 0, [], round(random 200 + random 10000 - random 5000), "Benny"]) call CTI_PVF_CLT_OnRequestReceived;
 		// CTI_P_TeamsRequests = CTI_P_TeamsRequests + [[group player, 0, [], round(random 200 + random 10000 - random 5000), "Benny"]];
 		
 		execVM "Client\GUI\GUI_RequestMenu.sqf";
@@ -69,7 +69,7 @@ switch (_action) do {
 				if !(isNil '_origin') then {
 					if (_name == name leader _origin) then {
 						if (isPlayer leader _origin) then { //--- Answer the client
-							[["CLIENT", leader _origin], "Client_OnRequestAnswered", ["accept", _type]] call CTI_CO_FNC_NetSend;
+							["accept", _type] remoteExec ["CTI_PVF_CLT_OnRequestAnswered", leader _origin];
 						} else { //--- Answer the server (AI)
 							//tbd
 						};
@@ -104,7 +104,7 @@ switch (_action) do {
 				if !(isNil '_origin') then {
 					if (_name == name leader _origin) then {
 						if (isPlayer leader _origin) then { //--- Answer the client
-							[["CLIENT", leader _origin], "Client_OnRequestAnswered", ["deny", _type]] call CTI_CO_FNC_NetSend;
+							["deny", _type] remoteExec ["CTI_PVF_CLT_OnRequestAnswered", leader _origin];
 						} else { //--- Answer the server (AI)
 							//tbd
 						};

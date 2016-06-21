@@ -22,7 +22,6 @@
 	Common Function: CTI_CO_FNC_GetClosestEntity
 	Common Function: CTI_CO_FNC_GetSideHQ
 	Common Function: CTI_CO_FNC_GetSideStructures
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
     [_unit, _projectile] spawn CTI_CL_FNC_OnExplosivePlaced
@@ -44,6 +43,7 @@ if (_closest distance _unit < 30) then {
 		_label = (_var select 0) select 1;
 	};
 	
-	[["CLIENT", CTI_P_SideJoined], "Client_OnMessageReceived", ["structure-teamkill-attempt", [name _unit, (group _unit) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], _label]]] call CTI_CO_FNC_NetSend;
-	if (isPlayer _unit) then {["SERVER", "Request_NoobLogger", [_unit, 1]] call CTI_CO_FNC_NetSend};
+	["structure-teamkill-attempt", [name _unit, (group _unit) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], _label]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", CTI_P_SideJoined];
+	
+	if (isPlayer _unit) then {[_unit, 1] remoteExec ["CTI_PVF_SRV_RequestNoobLogger", CTI_PV_SERVER]};
 };

@@ -3,7 +3,7 @@
 	Script: 		Server\Functions\Server_StartUpgrade.sqf
 	Alias:			CTI_SE_FNC_StartUpgrade
 	Description:	Start upgrading an element, The server-side can spawn it straigh away.
-					Use the PVF "CTI_PVF_Request_Upgrade" for a client-request
+					Use the PVF "CTI_PVF_SRV_RequestUpgrade" for a client-request
 	Author: 		Benny
 	Creation Date:	23-09-2013
 	Revision Date:	23-09-2013
@@ -46,4 +46,4 @@ _upgrades set [_upgrade, (_upgrades select _upgrade) + 1];
 _logic setVariable ["cti_upgrades", _upgrades, true];
 _logic setVariable ["cti_upgrade", -1, true];
 
-[["CLIENT", _side], "Client_OnMessageReceived", ["upgrade-ended", [_upgrade, _level+1]]] call CTI_CO_FNC_NetSend;
+["upgrade-ended", [_upgrade, _level+1]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];

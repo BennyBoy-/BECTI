@@ -7,7 +7,6 @@ with missionNamespace do {
 	CTI_PVF_Client_OnPurchaseDelegationReceived = { _this spawn CTI_CL_FNC_OnPurchaseDelegationReceived };
 	
 	CTI_PVF_Client_OnMissionEnding = { _this spawn CTI_CL_FNC_OnMissionEnding };
-	CTI_PVF_Client_OnMessageReceived = { _this spawn CTI_CL_FNC_DisplayMessage };
 	CTI_PVF_Client_OnStructureKilled = { _this spawn CTI_CL_FNC_OnFriendlyStructureDestroyed };
 	
 	CTI_PVF_Client_ReceiveStructureBase = {	CTI_P_LastStructurePreBuilt = _this };
@@ -98,7 +97,7 @@ with missionNamespace do {
 		["teamkill"] call CTI_CL_FNC_DisplayMessage;
 		if (time - CTI_P_LastTeamkill > 5) then {
 			CTI_P_LastTeamkill = time;
-			["SERVER", "Request_NoobLogger", [player, 1]] call CTI_CO_FNC_NetSend;
+			[player, 1] remoteExec ["CTI_PVF_SRV_RequestNoobLogger", CTI_PV_SERVER];
 		};
 	};
 	
@@ -112,8 +111,8 @@ with missionNamespace do {
 		_this addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 0'];
 	};
 	
-	CTI_PVF_Client_OnRequestAnswered = { _this spawn CTI_UI_Request_OnRequestAnswered }; //--- The commander answer a request
-	CTI_PVF_Client_OnRequestReceived = { _this spawn CTI_UI_Request_OnRequestReceived }; //--- The commander receive a request
+	
+	
 	
 	CTI_PVF_Client_OnSpecialConstructed = {
 		_fob = _this select 0;
@@ -135,18 +134,7 @@ with missionNamespace do {
 		};
 	};
 	
-	CTI_PVF_Client_OnNewCommanderVote = {
-		_name = _this;
-		
-		["commander-vote-start", _name] call CTI_CL_FNC_DisplayMessage;
-		
-		waitUntil{CTI_P_SideLogic getVariable "cti_votetime" > -1 || !alive player};
-		
-		if (alive player) then {
-			closeDialog 0;
-			createDialog "CTI_RscVoteMenu";
-		};
-	};
+
 	
 	CTI_PVF_Client_ReceiveServerFPS = { CTI_P_ServerFPS = _this };
 	
@@ -162,4 +150,30 @@ with missionNamespace do {
 		
 		_vehicle lock _locked;
 	};
+	
+	//--- The client receives his Join in Progress gear
+	CTI_PVF_CLT_OnJIPGearReceived = { [player, _this] call CTI_CO_FNC_EquipUnit };
+	
+	//--- The client receives a message
+	CTI_PVF_CLT_OnMessageReceived = { _this spawn CTI_CL_FNC_DisplayMessage };
+	
+	//--- The client receives a new commander vote
+	CTI_PVF_CLT_OnNewCommanderVote = {
+		_name = _this;
+		
+		["commander-vote-start", _name] call CTI_CL_FNC_DisplayMessage;
+		
+		waitUntil{CTI_P_SideLogic getVariable "cti_votetime" > -1 || !alive player};
+		
+		if (alive player) then {
+			closeDialog 0;
+			createDialog "CTI_RscVoteMenu";
+		};
+	};
+	
+	//--- The client receives a request answer
+	CTI_PVF_CLT_OnRequestAnswered = { _this spawn CTI_UI_Request_OnRequestAnswered };
+	
+	//--- The client receives a request
+	CTI_PVF_CLT_OnRequestReceived = { _this spawn CTI_UI_Request_OnRequestReceived };
 };

@@ -361,7 +361,7 @@ CTI_HC_CreateTeam = {
 	_group allowFleeing 0;
 	
 	if (count _created_vehicles > 0) then {	
-		["SERVER", "Request_HandleEmptyVehicles", _created_vehicles] call CTI_CO_FNC_NetSend;
+		(_created_vehicles) remoteExec ["CTI_PVF_SRV_RequestHandleEmptyVehicles", CTI_PV_SERVER];
 		["SERVER", "Request_TownAddVehicles", [_town, _side, _created_vehicles]] call CTI_CO_FNC_NetSend;
 	};
 	
