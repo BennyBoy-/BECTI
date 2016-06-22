@@ -83,7 +83,7 @@ if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then { //--- Attempt to deploy 
 		_hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_SE_FNC_OnHQDestroyed", _sideID]];
 		if (CTI_BASE_NOOBPROTECTION == 1) then {
 			_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", _sideID]]; //--- You want that on public
-			[["CLIENT", _side], "Client_AddHQDamagerHandler", _hq] call CTI_CO_FNC_NetSend;
+			(_hq) remoteExec ["CTI_PVF_CLI_AddHQDamagerHandler", _side];
 		};
 		
 		_logic setVariable ["cti_hq", _hq, true];
@@ -93,7 +93,7 @@ if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then { //--- Attempt to deploy 
 		_commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;
 		if (isPlayer leader _commander) then {
 			_hq setOwner (owner leader _commander);
-			[["CLIENT", leader _commander], "Client_AddHQActions", _hq] call CTI_CO_FNC_NetSend;
+			(_hq) remoteExec ["CTI_PVF_CLI_AddHQActions", leader _commander];
 		};
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {

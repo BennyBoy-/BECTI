@@ -4,7 +4,7 @@
 	Alias:			CTI_CL_FNC_OnFriendlyStructureDestroyed
 	Description:	Called by the server "Killed" EH whenever a friendly structure is destroyed
 					Note this function is automatically called by the EH but can be called manually
-					It is called from the PVF "CTI_PVF_Client_OnStructureKilled"
+					It is called from the PVF "CTI_PVF_CLT_OnFriendlyStructureDestroyed"
 	Author: 		Benny
 	Creation Date:	19-09-2013
 	Revision Date:	19-09-2013

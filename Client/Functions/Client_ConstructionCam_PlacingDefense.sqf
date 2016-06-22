@@ -102,7 +102,7 @@ while {(_buildingID == CTI_ConstructionCam_BuildingID)} do {
 			_funds = call CTI_CL_FNC_GetPlayerFunds;
 			if (_funds >= (_var select 2)) then {
 				-(_var select 2) call CTI_CL_FNC_ChangePlayerFunds;
-				["SERVER", "Request_Defense", [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player, CTI_P_WallsAutoAlign, CTI_P_DefensesAutoManning]] call CTI_CO_FNC_NetSend;
+				[_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player, CTI_P_WallsAutoAlign, CTI_P_DefensesAutoManning] remoteExec ["CTI_PVF_SRV_RequestDefense", CTI_PV_SERVER];
 			} else {
 				player groupChat format ["HQ: Insufficient Funds."];
 			};

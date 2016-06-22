@@ -27,7 +27,6 @@
 	Common Function: CTI_CO_FNC_GetSideCommanderTeam
 	Common Function: CTI_CO_FNC_GetSideHQ
 	Common Function: CTI_CO_FNC_GetSideStructures
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
     onPlayerDisconnected {[_uid, _name, _id] call CTI_SE_FNC_OnPlayerDisconnected};
