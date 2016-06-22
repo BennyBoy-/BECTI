@@ -4,7 +4,7 @@
 	Alias:			CTI_CL_FNC_OnPurchaseOrderReceived
 	Description:	Triggered when the client order is being processed
 					Note this function is called automatically when the client purchase is ready by
-					the "CTI_PVF_CLI_OnPurchaseOrderReceived" PVF
+					the "CTI_PVF_CLT_OnPurchaseOrderReceived" PVF
 	Author: 		Benny
 	Creation Date:	19-09-2013
 	Revision Date:	19-09-2013

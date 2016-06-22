@@ -50,7 +50,7 @@ _hq setVariable ["cti_ai_prohib", true]; //--- HQ may not be used by AI as a com
 _hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_SE_FNC_OnHQDestroyed", _sideID]];
 if (CTI_BASE_NOOBPROTECTION == 1) then {
 	_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", _sideID]]; //--- You want that on public
-	(_hq) remoteExec ["CTI_PVF_CLI_AddHQDamagerHandler", _side];
+	(_hq) remoteExec ["CTI_PVF_CLT_AddHQDamagerHandler", _side];
 };
 
 _logic setVariable ["cti_hq", _hq, true];
@@ -65,5 +65,5 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 _commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;
 if (isPlayer leader _commander) then {
 	_hq setOwner (owner leader _commander);
-	(_hq) remoteExec ["CTI_PVF_CLI_AddHQActions", leader _commander];
+	(_hq) remoteExec ["CTI_PVF_CLT_AddHQActions", leader _commander];
 };

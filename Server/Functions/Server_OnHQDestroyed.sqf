@@ -76,7 +76,7 @@ if !(isNull _killer) then {
 			_label = ((_var select 0) select 1);
 			_award = round((_var select 2) * CTI_BASE_HQ_BOUNTY);
 			
-			[_label, _award] remoteExec ["CTI_PVF_CLI_OnBountyStructure", _killer];
+			[_label, _award] remoteExec ["CTI_PVF_CLT_OnBountyStructure", _killer];
 			["structure-destroyed", [name _killer, _label]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 		} else {
 			//--- AI Reward

@@ -3,7 +3,7 @@
 	Script: 		Client\Functions\Client_OnStructureConstructed.sqf
 	Alias:			CTI_CL_FNC_OnStructureConstructed
 	Description:	Called by the server whenever a friendly structure construction is achieved
-					Note this function is called automatically by the PVF "Client_OnStructureConstructed"
+					Note this function is called automatically by the PVF "CTI_PVF_CLT_OnStructureConstructed"
 	Author: 		Benny
 	Creation Date:	19-09-2013
 	Revision Date:	14-10-2013

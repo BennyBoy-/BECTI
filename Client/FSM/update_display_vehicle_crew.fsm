@@ -1,0 +1,112 @@
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, update_display_vehicle_crew.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-100.000000,-425.000000,0.000000,-375.000000,0.000000,"Init"};
+item1[] = {"Loop",4,218,-100.000000,-325.000000,0.000000,-275.000000,1.000000,"Loop"};
+item2[] = {"End",1,250,-100.000000,-25.000000,0.000000,25.000000,0.000000,"End"};
+item3[] = {"Vehicle_Crew_Display",2,4346,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Vehicle Crew" \n "Display Update"};
+item4[] = {"Gameover",4,218,-100.000000,-125.000000,0.000000,-75.000000,0.000000,"Gameover"};
+link0[] = {0,1};
+link1[] = {1,3};
+link2[] = {3,1};
+link3[] = {3,4};
+link4[] = {4,2};
+globals[] = {25.000000,1,0,0,0,640,480,1,277,6316128,1,-489.064819,425.210815,396.643402,-572.168213,855,771,1};
+window[] = {2,-1,-1,-1,-1,806,1705,2960,25,3,873};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "update_display_vehicle_crew.fsm";
+  class States
+  {
+    /*%FSM<STATE "Init">*/
+    class Init
+    {
+      name = "Init";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = 0;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Loop">*/
+        class Loop
+        {
+          priority = 1.000000;
+          to="Vehicle_Crew_Display";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle && !CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End">*/
+    class End
+    {
+      name = "End";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Vehicle_Crew_Display">*/
+    class Vehicle_Crew_Display
+    {
+      name = "Vehicle_Crew_Display";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 1;" \n
+       "" \n
+       "_vehicle = vehicle player;" \n
+       "if (player != _vehicle) then {" \n
+       "	_titleText = """";" \n
+       "	_crewCount = (count crew _vehicle) - 1;" \n
+       "	" \n
+       "	{" \n
+       "		_display = true;" \n
+       "		if (CTI_UI_DISPLAY_VEHICLE_CREW == 2) then { //--- Players only" \n
+       "			if !(isPlayer _x) then {_display = false}; //--- Hide if it isn't a player" \n
+       "		}; " \n
+       "		" \n
+       "		if (_display && alive _x && !CTI_P_Respawning) then {" \n
+       "			_spacing = if (_crewCount != _forEachIndex) then {""      ""} else {""""};" \n
+       "			_titleText = _titleText + _spacing + name _x;" \n
+       "		};" \n
+       "	} forEach crew _vehicle;" \n
+       "	" \n
+       "	if (_titleText != """") then {titleText [_titleText, ""PLAIN DOWN"", 1.2]};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Loop">*/
+        class Loop
+        {
+          priority = 1.000000;
+          to="Vehicle_Crew_Display";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle && !CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Gameover">*/
+        class Gameover
+        {
+          priority = 0.000000;
+          to="End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Init";
+  finalStates[] =
+  {
+    "End",
+  };
+};
+/*%FSM</COMPILE>*/

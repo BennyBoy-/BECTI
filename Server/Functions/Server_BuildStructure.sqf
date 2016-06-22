@@ -23,7 +23,6 @@
 	
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideLogic
-	Common Function: CTI_CO_FNC_NetSend
 	Server Function: CTI_SE_FNC_HandleStructureConstruction
 	
   # EXAMPLE #
@@ -63,9 +62,7 @@ _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wi
 
 ["structure-preplaced", [_classname, _position]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 
-if !(isNull _origin) then {
-	[["CLIENT", _origin], "Client_ReceiveStructureBase", _structure] call CTI_CO_FNC_NetSend;
-};
+if !(isNull _origin) then { (_structure) remoteExec ["CTI_PVF_CLT_OnStructurePlaced", _origin] };
 
 //AdminZeus
 if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_structure],true];};

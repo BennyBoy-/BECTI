@@ -23,7 +23,6 @@
 	Common Function: CTI_CO_FNC_GetSideLogic
 	Common Function: CTI_CO_FNC_GetSideStructures
 	Common Function: CTI_CO_FNC_IsGroupPlayable
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
     [CTI_P_SideJoined, group player] call CTI_SE_FNC_ObservateEnvironment;
@@ -87,7 +86,7 @@ _spotted_structure = objNull;
 		if (isNil '_last_report') then {_last_report = -1000};
 
 		if (time - _last_report > (_x select 1)) then {
-			[["CLIENT", _side], "Client_OnSpottedTargetReceived", [getPos _what, _x select 3, leader _group]] call CTI_CO_FNC_NetSend;
+			[getPos _what, _x select 3, leader _group] remoteExec ["CTI_PVF_CLT_OnSpottedTargetReceived", _side];
 			_group setVariable [_x select 2, time];
 			_side_logic setVariable [_x select 4, (_side_logic getVariable (_x select 4)) + [_what]];
 		};

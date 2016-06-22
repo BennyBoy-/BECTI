@@ -70,9 +70,7 @@ CTI_CO_FNC_IsGroupPlayable = compileFinal preprocessFileLineNumbers "Common\Func
 CTI_CO_FNC_IsHQDeployed = compileFinal preprocessFileLineNumbers "Common\Functions\Common_IsHQDeployed.sqf";
 CTI_CO_FNC_ManVehicle = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ManVehicle.sqf";
 CTI_CO_FNC_MarkerUpdate = compileFinal preprocessFileLineNumbers "Common\Functions\Common_MarkerUpdate.sqf";
-CTI_CO_FNC_NetSend = compileFinal preprocessFileLineNumbers "Common\Functions\Common_NetSend.sqf";
 CTI_CO_FNC_OnHQHandleDamage = compileFinal preprocessFileLineNumbers "Common\Functions\Common_OnHQHandleDamage.sqf";
-CTI_CO_FNC_OnPVFReceived = compileFinal preprocessFileLineNumbers "Common\Functions\Common_OnPVFReceived.sqf";
 CTI_CO_FNC_OnUnitGetOut = compileFinal preprocessFileLineNumbers "Common\Functions\Common_OnUnitGetOut.sqf";
 CTI_CO_FNC_OnUnitHit = compileFinal preprocessFileLineNumbers "Common\Functions\Common_OnUnitHit.sqf";
 CTI_CO_FNC_OnUnitKilled = compileFinal preprocessFileLineNumbers "Common\Functions\Common_OnUnitKilled.sqf";
@@ -111,13 +109,13 @@ call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_East.sqf";
 
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
-(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_West.sqf";
-(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_East.sqf";
+	(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_West.sqf";
+	(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_East.sqf";
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
-(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_OFPS_West.sqf";
-(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_OFPS_East.sqf";
+	(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_OFPS_West.sqf";
+	(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_OFPS_East.sqf";
 };
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_West.sqf";
@@ -128,9 +126,6 @@ if (CTI_OFPS_ADDON > 0) then {
 
 //--- External Functions/Modules
 (east) call compile preprocessFileLineNumbers "Common\Functions\External\Functions_SHK.sqf";
-
-//--- Network communication handler
-"CTI_NetCom" addPublicVariableEventHandler {(_this select 1) Spawn CTI_CO_FNC_OnPVFReceived};
 
 //--- Respawn markers
 createMarkerLocal ["respawn_east",getMarkerPos "CTI_EastRespawn"];
