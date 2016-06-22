@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,162,6316128,1,-620.422607,163.824570,138.236649,-571.857727,973,881,1};
-window[] = {2,-1,-1,-1,-1,931,150,1405,150,3,991};
+window[] = {2,-1,-1,-1,-1,956,175,1430,175,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -58,17 +58,17 @@ class FSM
        "	{_factories = _factories + count([_x, _structures] call CTI_CO_FNC_GetSideStructuresByType)} forEach (missionNamespace getVariable format[""CTI_%1_Factories"", _side]);" \n
        "	" \n
        "	if (!(alive _hq) && _factories == 0 && !CTI_GameOver) exitWith {" \n
-       "		[""CLIENT"", ""Client_OnMissionEnding"", [_x, ""loose""]] call CTI_CO_FNC_NetSend;" \n
+       "		[_x, ""loose""] remoteExec [""CTI_PVF_CLT_OnMissionEnding"", CTI_PV_CLIENTS];" \n
        "		CTI_GameOver = true;" \n
        "	};" \n
        "	if (_towns == _total && !CTI_GameOver) exitWith {" \n
-       "		[""CLIENT"", ""Client_OnMissionEnding"", [_x, ""win""]] call CTI_CO_FNC_NetSend;" \n
+       "		[_x, ""win""] remoteExec [""CTI_PVF_CLT_OnMissionEnding"", CTI_PV_CLIENTS];" \n
        "		CTI_GameOver = true;" \n
        "	};" \n
        "} forEach [west, east];" \n
        "" \n
        "//--- Send the server FPS to the clients at each cycles" \n
-       "[""CLIENT"", ""Client_ReceiveServerFPS"", round diag_fps] call CTI_CO_FNC_NetSend;"/*%FSM</STATEINIT""">*/;
+       "(round diag_fps) remoteExec [""CTI_PVF_CLT_OnServerFPSUpdate"", CTI_PV_CLIENTS];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

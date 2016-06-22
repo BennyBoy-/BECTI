@@ -561,6 +561,7 @@ CTI_SCORE_SALVAGE_VALUE_PERPOINT = 2000; //--- Unit value / x
 CTI_SCORE_TOWN_VALUE_PERPOINT = 10; //--- Town value / x
 
 CTI_UI_TOWNS_PROGRESSBAR_DISTANCE = 550;
+CTI_UI_DISPLAY_VEHICLE_CREW = 2; //--- Display via titleText the crew of the player's vehicle (0: Off, 1: All, 2: Players)
 
 CTI_GC_DELAY = 90;
 CTI_GC_DELAY_AIR = 360;

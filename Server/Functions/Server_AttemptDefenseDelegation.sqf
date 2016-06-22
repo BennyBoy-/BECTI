@@ -19,9 +19,6 @@
   # SYNTAX #
 	[UNIT, GROUP, SIDE ID, AI ARRAY ARGS] call CTI_SE_FNC_AttemptTownDelegation
 	
-  # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_NetSend
-	
   # EXAMPLE #
     [ai1, defGroup, 1, ["B_Soldier_R", defGroup, [500, 600, 0], 1, true]] Call CTI_SE_FNC_AttemptDefenseDelegation;
 */
@@ -59,7 +56,7 @@ if (groupOwner _group != _hc) then {
 	
 	//--- If the ownership was successfully changed, we want to add back the killed EH again on the non-initialized units.
 	if (_result) then {
-		[["CLIENT", _hc], "CTI_PVF_Client_OnDefenseDelegationLocalityChanged", [_group, _sideID]] call CTI_CO_FNC_NetSend;
+		[_group, _sideID] remoteExec ["CTI_PVF_HC_OnDefenseDelegationLocalityChanged", _hc];
 	};
 };
 
@@ -88,6 +85,6 @@ if !(isNil {_static getVariable "cti_delegated"}) then {
 _static setVariable ["cti_delegated", true];
 
 //--- Send the creation request to the HC now
-[["CLIENT", _hc], "Client_OnDefenseDelegationReceived", [_static, _ai_args]] call CTI_CO_FNC_NetSend;
+[_static, _ai_args] remoteExec ["CTI_PVF_HC_OnDefenseDelegationLocalityChanged", _hc];
 
 true

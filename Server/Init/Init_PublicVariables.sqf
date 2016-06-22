@@ -1,34 +1,5 @@
 //--- PVF Are store within the mission namespace
 with missionNamespace do {
-	//--- Forward a PVF to a client (client to client communication)
-	CTI_PVF_Server_Forwarder = {
-		private ["_pv_who"];
-		
-		_pv_who = (_this select 0) select 1;
-		if (typeName _pv_who == "OBJECT") then { _pv_who = owner _pv_who };
-		
-		if (typeName _pv_who != "SCALAR") exitWith {
-			if (CTI_Log_Level >= CTI_Log_Error) then { //--- Error
-				["ERROR", "FUNCTION: CTI_PVF_Server_Forwarder", format ["PVF [%1] could not be forwarded to the desired client since it isn't an OBJECT (Target: [%2], Type [%3])", _this select 1, _pv_who, typeName _pv_who]] call CTI_CO_FNC_Log
-			};
-		};
-		
-		CTI_NetCom = _this; //--- Compose the net message (again)
-		_pv_who publicVariableClient "CTI_NetCom";
-	};
-	
-	CTI_PVF_Request_HQLocality = { 
-		private ["_hq", "_side", "_target"];
-		_side = _this select 0;
-		_target = _this select 1;
-		
-		_hq = (_side) call CTI_CO_FNC_GetSideHQ;
-		_hq setOwner (owner _target);
-	};
-	
-
-	
-
 	//--- The client answers a purchase request
 	CTI_PVF_SRV_AnswerPurchase = { _this spawn CTI_SE_FNC_OnClientPurchaseComplete };
 	
@@ -141,10 +112,10 @@ with missionNamespace do {
 			_candidates pushBack [_ownerID, _client, _uid];
 			missionNamespace setVariable ["CTI_HEADLESS_CLIENTS", _candidates];
 			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestHCRegister", format["Headless Client [%1] with owner ID [%2] has been registered as a valid Headless Client. There is now [%3] Headless Clients", _uid, _ownerID, count _candidates]] call CTI_CO_FNC_Log};
-			(true) remoteExec ["CTI_PVF_Client_OnRegisterAnswer", _ownerID];
+			(true) remoteExec ["CTI_PVF_HC_OnRegisterAnswer", _ownerID];
 		} else { //--- An ID of 0 mean that the object is local to the server
 			if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FUNCTION: CTI_PVF_SRV_RequestHCRegister", format ["Client [%1] sent a request but his owner ID is 0. It will not be registered as a valid Headless Client", _uid]] call CTI_CO_FNC_Log};
-			(false) remoteExec ["CTI_PVF_Client_OnRegisterAnswer", _ownerID];
+			(false) remoteExec ["CTI_PVF_HC_OnRegisterAnswer", _ownerID];
 		};
 	};
 	
@@ -198,7 +169,7 @@ with missionNamespace do {
 		_was_jailed = false;
 		_get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
 		if !(isNil '_get') then {if (_get select 1 == 1) then {_was_jailed = true}};
-		[_join, _was_jailed] remoteExec ["CTI_PVF_Client_JoinRequestAnswer", owner _client];
+		[_join, _was_jailed] remoteExec ["CTI_PVF_CLT_JoinRequestAnswer", owner _client];
 	};
 	
 	//--- The client request a noob logging
@@ -238,9 +209,10 @@ with missionNamespace do {
 		if (local _vehicle) then {
 			_vehicle lock _locked;
 		} else {
-			[_vehicle, _locked] remoteExec ["CTI_PVF_Client_RequestVehicleLock", owner _vehicle];
+			[_vehicle, _locked] remoteExec ["CTI_PVF_CLT_RequestVehicleLock", owner _vehicle];
 		};
 	};
 	
+	//--- The client request a worker creation
 	CTI_PVF_SRV_RequestWorker = { _this spawn CTI_SE_FNC_CreateWorker };
 };

@@ -17,9 +17,6 @@
   # SYNTAX #
 	[PROPLAYER, SCORE] spawn CTI_SE_FNC_NoobLogger
 	
-  # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_NetSend
-	
   # EXAMPLE #
     [player, 2] spawn CTI_SE_FNC_NoobLogger;
 	  -> Add 2 points!
@@ -38,7 +35,7 @@ _get set [0, (_get select 0) + _score];
 //--- Did the pro player reached the top?
 if ((_get select 0) > 3) then {
 	//--- Send to mcfly dungeon
-	[["CLIENT", _proplayer], "Client_OnUbernessReached"] call CTI_CO_FNC_NetSend;
+	remoteExec ["CTI_PVF_CLT_OnUbernessReached", _proplayer];
 	_get set [0, 0];
 	_get set [1, 1];
 } else {

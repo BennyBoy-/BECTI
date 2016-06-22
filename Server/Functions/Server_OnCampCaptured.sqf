@@ -43,4 +43,4 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Server\Functions\Server_OnCampCaptured.sqf", format["Camp [%1] from Town [%2] has been captured, from [%3] to [%4]", _camp, _town getVariable "cti_town_name", (_currentSideID) Call CTI_CO_FNC_GetSideFromID, _newSide]] call CTI_CO_FNC_Log;
 };
 
-[_town, _camp, _newSideID, _currentSideID] remoteExec ["CTI_PVF_CLI_OnCampCaptured", CTI_PV_CLIENTS];
+[_town, _camp, _newSideID, _currentSideID] remoteExec ["CTI_PVF_CLT_OnCampCaptured", CTI_PV_CLIENTS];

@@ -40,8 +40,8 @@ if !(_sell) then {
 };
 
 {
-	// if !(alive (_x select 3)) then {CTI_P_PurchaseRequests set [_forEachIndex, "!REMOVE!"]};
-	if !(alive (_x select 3)) then {CTI_P_PurchaseRequests deleteAt _forEachIndex};
+	if !(alive (_x select 3)) then {CTI_P_PurchaseRequests set [_forEachIndex, "!REMOVE!"]};
+	// if !(alive (_x select 3)) then {CTI_P_PurchaseRequests deleteAt _forEachIndex};
 } forEach +CTI_P_PurchaseRequests;
 
-// CTI_P_PurchaseRequests = CTI_P_PurchaseRequests - ["!REMOVE!"];
+CTI_P_PurchaseRequests = CTI_P_PurchaseRequests - ["!REMOVE!"];

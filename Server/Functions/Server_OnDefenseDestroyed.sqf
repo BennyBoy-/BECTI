@@ -56,7 +56,7 @@ if (_ruins != "") then {
 	{deleteVehicle _x} forEach (nearestObjects [_position, [_ruins], 25]);
 	
 	//--- Current clients need to clean the remains.
-	[_position, _ruins] remoteExec ["CTI_PVF_CLI_RemoveRuins", CTI_PV_CLIENTS];
+	[_position, _ruins] remoteExec ["CTI_PVF_CLT_RemoveRuins", CTI_PV_CLIENTS];
 };
 
 deleteVehicle _killed;

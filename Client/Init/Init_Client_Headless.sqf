@@ -10,21 +10,21 @@ if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\I
 (player) remoteExec ["CTI_PVF_SRV_RequestHCRegister", CTI_PV_SERVER];
 
 with missionNamespace do {
-	CTI_PVF_Client_OnDefenseDelegationLocalityChanged = {
+	CTI_PVF_HC_OnDefenseDelegationLocalityChanged = {
 		private ["_group", "_sideID"];
 		
 		_group = _this select 0;
 		_sideID = _this select 1;
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationLocalityChanged", format["Attempting to find the units which could lack initialization on this HC for group [%1]", _group]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FUNCTION: CTI_PVF_HC_OnDefenseDelegationLocalityChanged", format["Attempting to find the units which could lack initialization on this HC for group [%1]", _group]] call CTI_CO_FNC_Log;
 		};
 		
 		//--- Find the units which could miss the Killed EH
 		{
 			if (alive _x && isNil {_x getVariable "cti_hc_managed"}) then {
 				if (CTI_Log_Level >= CTI_Log_Debug) then {
-					["DEBUG", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationLocalityChanged", format["Unit [%1] (%2) was not initialized by this HC. Initializing it now", _x, typeOf _x]] call CTI_CO_FNC_Log;
+					["DEBUG", "FUNCTION: CTI_PVF_HC_OnDefenseDelegationLocalityChanged", format["Unit [%1] (%2) was not initialized by this HC. Initializing it now", _x, typeOf _x]] call CTI_CO_FNC_Log;
 				};
 				
 				_x addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
@@ -33,7 +33,7 @@ with missionNamespace do {
 		} forEach units _group;
 	};
 
-	CTI_PVF_Client_OnDefenseDelegationReceived = {
+	CTI_PVF_HC_OnDefenseDelegationReceived = {
 		private ["_ai", "_ai_args", "_static"];
 		
 		_static = _this select 0;
@@ -42,23 +42,23 @@ with missionNamespace do {
 		_gunner = gunner _static;
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["A Delegation request was received from the server for the static [%1] (%2) with AI arguments [%3]", _static, typeOf _static, _ai_args]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FUNCTION: CTI_PVF_HC_OnDefenseDelegationReceived", format["A Delegation request was received from the server for the static [%1] (%2) with AI arguments [%3]", _static, typeOf _static, _ai_args]] call CTI_CO_FNC_Log;
 		};
 		
-		diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - START] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+		diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - START] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 		
 		//--- Was there an AI in there previously?
 		if !(isNull _gunner) then {
 			if (CTI_Log_Level >= CTI_Log_Debug) then {
-				["DEBUG", "FUNCTION: CTI_PVF_Client_OnDefenseDelegationReceived", format["Defense [%1] (%2) has an assigned gunner (%3), attempting to unassign him", _static, typeOf _static, assignedGunner _static]] call CTI_CO_FNC_Log;
-				diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - BEFORE unassignVehicle] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+				["DEBUG", "FUNCTION: CTI_PVF_HC_OnDefenseDelegationReceived", format["Defense [%1] (%2) has an assigned gunner (%3), attempting to unassign him", _static, typeOf _static, assignedGunner _static]] call CTI_CO_FNC_Log;
+				diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - BEFORE unassignVehicle] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 			};
 			unassignVehicle (assignedGunner _static);
-			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER unassignVehicle] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+			diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - AFTER unassignVehicle] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 			_static deleteVehicleCrew _gunner;
-			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER deleteVehicleCrew] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+			diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - AFTER deleteVehicleCrew] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 			deleteVehicle _gunner;
-			diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - AFTER deleteVehicle] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+			diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - AFTER deleteVehicle] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 			deleteVehicle (gunner _static);
 		};
 		
@@ -75,18 +75,18 @@ with missionNamespace do {
 		[_ai] orderGetIn true;
 		_ai moveInGunner _static;
 		
-		diag_log format ["[CTI_PVF_Client_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
+		diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 	};
 	
-	CTI_PVF_Client_OnRegisterAnswer = {
+	CTI_PVF_HC_OnRegisterAnswer = {
 		if (_this) then {
-			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_Client_OnRegisterAnswer", "The Headless Client has been registered"] call CTI_CO_FNC_Log};
+			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_HC_OnRegisterAnswer", "The Headless Client has been registered"] call CTI_CO_FNC_Log};
 		} else {
-			if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FUNCTION: CTI_PVF_Client_OnRegisterAnswer", "The Headless Client could not be registered"] call CTI_CO_FNC_Log};
+			if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FUNCTION: CTI_PVF_HC_OnRegisterAnswer", "The Headless Client could not be registered"] call CTI_CO_FNC_Log};
 		};
 	};
 	
-	/*CTI_PVF_Client_OnTownDelegationReceived = {
+	/*CTI_PVF_HC_OnTownDelegationReceived = {
 		private ["_groups", "_hc_tvar", "_positions", "_side", "_teams", "_town", "_town_vehicles"];
 		
 		_town = _this select 0;
@@ -96,7 +96,7 @@ with missionNamespace do {
 		_positions = _this select 4;
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnTownDelegationReceived", format["A Delegation request was received from the server for [%1] teams in town [%2] on [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FUNCTION: CTI_PVF_HC_OnTownDelegationReceived", format["A Delegation request was received from the server for [%1] teams in town [%2] on [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
 // IMPORTANT: Change it if HC AI spawn ever get fixed, the function will be spawned instead of being called
 		_town_vehicles = [_town, _side, _teams, _groups, _positions] call CTI_CO_FNC_CreateTownUnits;
@@ -118,7 +118,7 @@ with missionNamespace do {
 		} forEach _groups; //--- Delete the group client-sided.
 	};*/
 	
-	CTI_PVF_Client_OnTownDelegationReceived = {
+	CTI_PVF_HC_OnTownDelegationReceived = {
 		private ["_groups", "_hc_tvar", "_positions", "_side", "_sleep_thread", "_teams", "_town", "_town_vehicles"];
 		
 		_town = _this select 0;
@@ -129,7 +129,7 @@ with missionNamespace do {
 		_sleep_thread = _this select 5;//--- Debug: add a delay while HC are fucked
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnTownDelegationReceived", format["A Delegation request was received from the server for [%1] teams in town [%2] on [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FUNCTION: CTI_PVF_HC_OnTownDelegationReceived", format["A Delegation request was received from the server for [%1] teams in town [%2] on [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
 		
 		_hc_tvar = if (_side == resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
@@ -145,7 +145,7 @@ with missionNamespace do {
 		[_town, _side, _teams, _groups, _positions] spawn CTI_HC_CreateTownUnits;
 	};
 	
-	CTI_PVF_Client_OnTownDelegationRemoval = {
+	CTI_PVF_HC_OnTownDelegationRemoval = {
 		private ["_hc_tvar", "_side", "_town"];
 		
 		_town = _this select 0;
@@ -156,25 +156,25 @@ with missionNamespace do {
 		//--- Triggered only if we have units over here
 		if !(isNil {_town getVariable _hc_tvar}) then {
 			if (CTI_Log_Level >= CTI_Log_Information) then {
-				["INFORMATION", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["A Delegation removal request was received from the server for [%1] teams present in town [%2] on side [%3]", count(_town getVariable _hc_tvar), _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+				["INFORMATION", "FUNCTION: CTI_PVF_HC_OnTownDelegationRemoval", format["A Delegation removal request was received from the server for [%1] teams present in town [%2] on side [%3]", count(_town getVariable _hc_tvar), _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 			};
 		
 			{
-				["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] group [%2] units will be removed", _town getVariable "cti_town_name", _x]] call CTI_CO_FNC_Log;
+				["DEBUG", "FUNCTION: CTI_PVF_HC_OnTownDelegationRemoval", format["Town [%1] group [%2] units will be removed", _town getVariable "cti_town_name", _x]] call CTI_CO_FNC_Log;
 				if !(isNil '_x') then {
-					["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] group [%2] is not nil", _town getVariable "cti_town_name", _x]] call CTI_CO_FNC_Log;
+					["DEBUG", "FUNCTION: CTI_PVF_HC_OnTownDelegationRemoval", format["Town [%1] group [%2] is not nil", _town getVariable "cti_town_name", _x]] call CTI_CO_FNC_Log;
 					if !(isNull _x) then {
-						["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] group [%2] is not null ([%3] units), is local? [%4]", _town getVariable "cti_town_name", _x, count units _x, local _x]] call CTI_CO_FNC_Log;
+						["DEBUG", "FUNCTION: CTI_PVF_HC_OnTownDelegationRemoval", format["Town [%1] group [%2] is not null ([%3] units), is local? [%4]", _town getVariable "cti_town_name", _x, count units _x, local _x]] call CTI_CO_FNC_Log;
 						{
-							["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] deleting unit [%2] from group [%3], local? [%4]", _town getVariable "cti_town_name", _x, group _x, local _x]] call CTI_CO_FNC_Log;
+							["DEBUG", "FUNCTION: CTI_PVF_HC_OnTownDelegationRemoval", format["Town [%1] deleting unit [%2] from group [%3], local? [%4]", _town getVariable "cti_town_name", _x, group _x, local _x]] call CTI_CO_FNC_Log;
 							deleteVehicle _x;
 							sleep 4;
-							["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] is unit removed? unit [%2]", _town getVariable "cti_town_name", _x]] call CTI_CO_FNC_Log;
+							["DEBUG", "FUNCTION: CTI_PVF_HC_OnTownDelegationRemoval", format["Town [%1] is unit removed? unit [%2]", _town getVariable "cti_town_name", _x]] call CTI_CO_FNC_Log;
 						} forEach units _x;
-						["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] group [%2] is about to be removed, units count [%3]", _town getVariable "cti_town_name", _x, count units _x]] call CTI_CO_FNC_Log;
+						["DEBUG", "FUNCTION: CTI_PVF_HC_OnTownDelegationRemoval", format["Town [%1] group [%2] is about to be removed, units count [%3]", _town getVariable "cti_town_name", _x, count units _x]] call CTI_CO_FNC_Log;
 						sleep 2;
 						deleteGroup _x;
-						["DEBUG", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Town [%1] group [%2] was deleted?", _town getVariable "cti_town_name", _x]] call CTI_CO_FNC_Log;
+						["DEBUG", "FUNCTION: CTI_PVF_HC_OnTownDelegationRemoval", format["Town [%1] group [%2] was deleted?", _town getVariable "cti_town_name", _x]] call CTI_CO_FNC_Log;
 					};
 				};
 			} forEach (_town getVariable _hc_tvar);
@@ -188,11 +188,12 @@ with missionNamespace do {
 		_town setVariable [_hc_tvar, []];
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FUNCTION: CTI_PVF_Client_OnTownDelegationRemoval", format["Unregistered town [%1] groups for side [%2]", _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FUNCTION: CTI_PVF_HC_OnTownDelegationRemoval", format["Unregistered town [%1] groups for side [%2]", _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
 	};
 
-	CTI_PVF_Client_UpdateTownGroups = {
+	//--- The Headless Client receives a town groups update
+	CTI_PVF_HC_UpdateTownGroups = {
 		private ["_groups", "_hc_tvar", "_side", "_town"];
 		
 		_town = _this select 0;
@@ -204,7 +205,7 @@ with missionNamespace do {
 		_town setVariable [_hc_tvar, (_town getVariable [_hc_tvar, []]) + _groups];
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FUNCTION: CTI_PVF_Client_UpdateTownGroups", format["Registered [%1] Town Groups [%2] for town [%3] on side [%4] ", count(_groups), _groups, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FUNCTION: CTI_PVF_HC_UpdateTownGroups", format["Registered [%1] Town Groups [%2] for town [%3] on side [%4] ", count(_groups), _groups, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
 	};
 };

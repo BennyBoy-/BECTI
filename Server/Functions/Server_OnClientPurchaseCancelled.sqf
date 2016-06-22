@@ -49,5 +49,5 @@ if (_index != -1) then {
 };
 
 if (_req_target != _req_buyer && isPlayer leader _req_target) then { //--- Notify the remote target
-	[_req_seed, _req_classname, _factory] remoteExec ["CTI_PVF_CLI_OnPurchaseOrderCancelled", leader _req_target];
+	[_req_seed, _req_classname, _factory] remoteExec ["CTI_PVF_CLT_OnPurchaseOrderCancelled", leader _req_target];
 };

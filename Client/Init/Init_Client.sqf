@@ -85,7 +85,7 @@ if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") != -1) then {enableEngi
 
 if (isMultiplayer) then {
 	//--- Can I join?
-	missionNamespace setVariable ["CTI_PVF_Client_JoinRequestAnswer", {_this spawn CTI_CL_FNC_JoinRequestAnswer}]; //--- Early PVF, do not spoil the game with the others.
+	missionNamespace setVariable ["CTI_PVF_CLT_JoinRequestAnswer", {_this spawn CTI_CL_FNC_JoinRequestAnswer}]; //--- Early PVF, do not spoil the game with the others.
 
 	//--- Enable the player again (sim + visu) in case of no-ai settings
 	/*if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
@@ -160,12 +160,13 @@ if !(CTI_IsServer) then { //--- Pure client execution
 
 if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileNamespace setVariable ["CTI_PERSISTENT_HINTS", true]; saveProfileNamespace };
 
-//--- Marker init thread
+//--- Markers/UI init thread
 0 spawn {
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_teams"}};
 	
 	execFSM "Client\FSM\update_markers_team.fsm";
 	execFSM "Client\FSM\update_netunits_team.fsm";
+	if (CTI_UI_DISPLAY_VEHICLE_CREW != 0) then {execFSM "Client\FSM\update_display_vehicle_crew.fsm"};	
 };
 
 //--- Town init thread
