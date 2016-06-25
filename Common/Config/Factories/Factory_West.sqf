@@ -76,6 +76,7 @@ _u pushBack "B_Soldier_TL_F";
 _u pushBack "B_Soldier_SL_F";
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
+	//NATO Pacific
 	_u pushBack 'B_T_soldier_AR_F';
 	_u pushBack 'B_T_Soldier_A_F';
 	_u pushBack 'B_T_Soldier_exp_F';
@@ -85,17 +86,36 @@ if (CTI_APEX_ADDON > 0) then {
 	_u pushBack 'B_T_Soldier_F';
 	_u pushBack 'B_T_Soldier_PG_F';
 	_u pushBack 'B_T_Engineer_F';
-	_u pushBack 'B_T_Sniper_F';
 	_u pushBack 'B_T_Soldier_repair_F';
 	_u pushBack 'B_T_Soldier_LAT_F';
 	_u pushBack 'B_T_Soldier_AA_F';
 	_u pushBack 'B_T_Soldier_AT_F';
-	_u pushBack 'B_T_Spotter_F';
 	_u pushBack 'B_T_Soldier_UAV_F';
 	_u pushBack 'B_T_Helipilot_F';
 	_u pushBack 'B_T_Crew_F';
 	_u pushBack 'B_T_Soldier_TL_F';
 	_u pushBack 'B_T_Soldier_SL_F';
+	//Special Forces
+	_u pushBack 'B_T_Diver_F';
+	_u pushBack 'B_T_Diver_TL_F';
+	_u pushBack 'B_T_Recon_Exp_F';
+	_u pushBack 'B_T_Recon_JTAC_F';
+	_u pushBack 'B_T_Recon_Medic_F';
+	_u pushBack 'B_T_Recon_F';
+	_u pushBack 'B_T_Recon_LAT_F';
+	_u pushBack 'B_T_Recon_TL_F';
+	_u pushBack 'B_T_Sniper_F';
+	_u pushBack 'B_T_ghillie_tna_F';
+	_u pushBack 'B_T_Spotter_F';
+	//--- Infantry CTRG Special
+	_u pushBack 'B_CTRG_Soldier_AR_tna_F';
+	_u pushBack 'B_CTRG_Soldier_Exp_tna_F';
+	_u pushBack 'B_CTRG_Soldier_JTAC_tna_F';
+	_u pushBack 'B_CTRG_Soldier_M_tna_F';
+	_u pushBack 'B_CTRG_Soldier_Medic_tna_F';
+	_u pushBack 'B_CTRG_Soldier_tna_F';
+	_u pushBack 'B_CTRG_Soldier_LAT_tna_F';
+	_u pushBack 'B_CTRG_Soldier_TL_tna_F';
 };
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
@@ -232,6 +252,7 @@ _u pushBack "B_Plane_CAS_01_F";
 
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
+	_u pushBack 'C_Plane_Civil_01_racing_F';
 	_u pushBack 'B_T_UAV_03_F';
 	_u pushBack 'B_T_VTOL_01_infantry_F';
 	_u pushBack 'B_T_VTOL_01_vehicle_F';

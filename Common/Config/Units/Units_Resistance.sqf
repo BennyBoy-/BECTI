@@ -1184,5 +1184,45 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
+//--- Zombies
+_c pushBack 'RyanZombieboss15';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'RyanZombieB_Soldier_02_f';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 300;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'RyanZombieB_Soldier_02_fmedium';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 200;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'RyanZombieB_Soldier_02_fwalker';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 150;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s, _d] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";
