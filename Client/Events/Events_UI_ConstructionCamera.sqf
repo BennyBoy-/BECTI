@@ -38,14 +38,8 @@ switch (_action) do {
 			{((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl _x) ctrlShow false} forEach [600019, 600020];
 		};
 		
-		//--- Structures
-		{
-			_var = missionNamespace getVariable _x;
-			if (call (_var select 6)) then { //--- If the item's condition is met, we can append it to the listbox
-				_row = ((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600009) lnbAddRow [format ["S%1", _var select 2], (_var select 0) select 1];
-				((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600009) lnbSetData [[_row, 0], _x];
-			};
-		} forEach (missionNamespace getVariable format ["CTI_%1_STRUCTURES", CTI_P_SideJoined]);
+		//--- List Structures
+		call CTI_CL_FNC_LoadBuildMenu;
 		
 		{
 			_var = missionNamespace getVariable _x;
@@ -190,6 +184,8 @@ switch (_action) do {
 					if ((CTI_P_SideJoined) call CTI_CO_FNC_IsHQDeployed) then {
 						_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 						[_selected, CTI_P_SideJoined, position _hq, direction _hq] remoteExec ["CTI_PVF_SRV_RequestHQToggle", CTI_PV_SERVER];
+						//--- Refresh Structures List
+						call CTI_CL_FNC_LoadBuildMenu;
 					};
 				};
 			} else {
