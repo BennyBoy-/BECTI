@@ -74,6 +74,7 @@ _u pushBack 'O_Soldier_TL_F';
 _u pushBack 'O_Soldier_SL_F';
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
+	//CAST Pacfic
 	_u pushBack 'O_T_soldier_AR_F';
 	_u pushBack 'O_T_Soldier_A_F';
 	_u pushBack 'O_T_Soldier_exp_F';
@@ -83,17 +84,35 @@ if (CTI_APEX_ADDON > 0) then {
 	_u pushBack 'O_T_Soldier_F';
 	_u pushBack 'O_T_Soldier_PG_F';
 	_u pushBack 'O_T_Engineer_F';
-	_u pushBack 'O_T_Sniper_F';
 	_u pushBack 'O_T_Soldier_repair_F';
 	_u pushBack 'O_T_Soldier_LAT_F';
 	_u pushBack 'O_T_Soldier_AA_F';
 	_u pushBack 'O_T_Soldier_AT_F';
-	_u pushBack 'O_T_Spotter_F';
 	_u pushBack 'O_T_Soldier_UAV_F';
 	_u pushBack 'O_T_Helipilot_F';
 	_u pushBack 'O_T_Crew_F';
 	_u pushBack 'O_T_Soldier_TL_F';
 	_u pushBack 'O_T_Soldier_SL_F';
+	//Special Forces
+	_u pushBack 'O_T_Diver_F';
+	_u pushBack 'O_T_Diver_TL_F';
+	_u pushBack 'O_T_Recon_Exp_F';
+	_u pushBack 'O_T_Recon_JTAC_F';
+	_u pushBack 'O_T_Recon_Medic_F';
+	_u pushBack 'O_T_Recon_F';
+	_u pushBack 'O_T_Recon_LAT_F';
+	_u pushBack 'O_T_Recon_TL_F';
+	_u pushBack 'O_T_Sniper_F';
+	_u pushBack 'O_T_ghillie_tna_F';
+	_u pushBack 'O_T_Spotter_F';
+	//PACIFIC Viper
+	_u pushBack 'O_V_Soldier_Exp_ghex_F';
+	_u pushBack 'O_V_Soldier_JTAC_ghex_F';
+	_u pushBack 'O_V_Soldier_M_ghex_F';
+	_u pushBack 'O_V_Soldier_ghex_F';
+	_u pushBack 'O_V_Soldier_Medic_ghex_F';
+	_u pushBack 'O_V_Soldier_LAT_ghex_F';
+	_u pushBack 'O_V_Soldier_TL_ghex_F';
 };
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
@@ -227,6 +246,7 @@ _u pushBack 'O_Plane_CAS_02_F';
 
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
+	_u pushBack "C_Plane_Civil_01_F";
 	_u pushBack "O_T_UAV_04_CAS_F";
 	_u pushBack "O_T_VTOL_02_infantry_F";
 	_u pushBack "O_T_VTOL_02_vehicle_F";
