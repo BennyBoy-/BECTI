@@ -24,7 +24,6 @@
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideID
 	Common Function: CTI_CO_FNC_GetSideLogic
-	Common Function: CTI_CO_FNC_NetSend
 	Server Function: CTI_SE_FNC_HandleStaticDefenses
 	Server Function: funcCalcAlignPosDir
 	
@@ -80,7 +79,7 @@ if (_defense isKindOf "Building") then {
 };
 
 if (_fob) then {
-	[["CLIENT", _side], "Client_OnSpecialConstructed", [_defense, "FOB"]] call CTI_CO_FNC_NetSend;
+	(_defense) remoteExec ["CTI_PVF_CLT_OnFOBDeployment", _side];
 	_logic setVariable ["cti_fobs", (_logic getVariable "cti_fobs") + [_defense], true];
 };
 
@@ -89,7 +88,7 @@ _defense setPos _position;
 if (_defense emptyPositions "gunner" < 1 && !_fob) then { //--- Soft defense
 	_defense setDir _direction;
 	// _defense setVectorUp [0,0,0];
-	if !(isNull _origin) then {[["CLIENT", _origin], "Client_ReceiveDefense", _defense] call CTI_CO_FNC_NetSend};
+	if !(isNull _origin) then {(_defense) remoteExec ["CTI_PVF_CLT_OnDefensePlaced", _origin]};
 };
 
 //--- Make the defense stronger?

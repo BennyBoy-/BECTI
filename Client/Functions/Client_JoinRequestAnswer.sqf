@@ -3,7 +3,7 @@
 	Script: 		Client\Functions\Client_JoinRequestAnswer.sqf
 	Alias:			CTI_CL_FNC_JoinRequestAnswer
 	Description:	Determine whether the client can join a game in progress
-					Note that this function is called by a PVF "CTI_PVF_Client_JoinRequestAnswer"
+					Note that this function is called by a PVF "CTI_PVF_CLT_JoinRequestAnswer"
 					which is defined in:
 					 - Client\Init\Init_Client.sqf
 	Author: 		Benny

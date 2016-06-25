@@ -36,8 +36,8 @@ if (isMultiplayer) then {sleep 5}; //--- Wait in MP for the net var to kick in
 	_x setVariable ["cti_ai_order_pos", [0,0]];
 } forEach ((units player - [player]) call CTI_CO_FNC_GetLiveUnits); //--- Track players AI if needed
 
-//--- Track FOB if needed
-{[_x, "FOB"] spawn CTI_PVF_Client_OnSpecialConstructed} forEach (CTI_P_SideLogic getVariable ["cti_fobs", []]);
+//--- Track FOB(s) if needed
+{(_x) spawn CTI_PVF_CLT_OnFOBDeployment} forEach (CTI_P_SideLogic getVariable ["cti_fobs", []]);
 
 //--- Add lock/unlock to team vehicles if needed.
 {

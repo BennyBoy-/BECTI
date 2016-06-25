@@ -23,7 +23,6 @@
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_ArrayShuffle
 	Common Function: CTI_CO_FNC_Log
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
     [Town0, West, [["ClassA","ClassB"], ["ClassA"]], [GroupA, GroupB], [[652, 231, 0], [600, 200, 0]]] call CTI_SE_FNC_AttemptTownDelegation
@@ -48,7 +47,7 @@ if !(isNil '_candidates') then {
 		if (count _candidates > 1) then {_candidates = (_candidates) call CTI_CO_FNC_ArrayShuffle};
 		
 		//--- Update the HC town groups
-		{[["CLIENT", _x select 1], "Client_UpdateTownGroups", [_town, _side, _groups]] call CTI_CO_FNC_NetSend} forEach _candidates;
+		{[_town, _side, _groups] remoteExec ["CTI_PVF_CLT_OnDefensePlaced", _x select 1]} forEach _candidates;
 		
 		//--- Attempt to perform a load-balanced creation
 		_delegation_table = [];
@@ -93,8 +92,8 @@ if !(isNil '_candidates') then {
 				};
 			} forEach _x;
 			
-			// [["CLIENT", _hc_entity], "Client_OnTownDelegationReceived", [_town, _side, _sub_teams, _sub_groups, _sub_positions]] call CTI_CO_FNC_NetSend;
-			[["CLIENT", _hc_entity], "Client_OnTownDelegationReceived", [_town, _side, _sub_teams, _sub_groups, _sub_positions, _sleep_thread]] call CTI_CO_FNC_NetSend; //--- Debug: add a delay while HC are fucked
+			// [_town, _side, _sub_teams, _sub_groups, _sub_positions] remoteExec ["CTI_PVF_HC_OnTownDelegationReceived", _hc_entity];
+			[_town, _side, _sub_teams, _sub_groups, _sub_positions, _sleep_thread] remoteExec ["CTI_PVF_HC_OnTownDelegationReceived", _hc_entity]; //--- debug while hc is fubar, add a delay
 			
 			_sleep_thread = _sleep_thread + 10; //--- Debug: add a delay while HC are fucked
 			

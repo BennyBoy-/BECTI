@@ -26,7 +26,6 @@
 	Common Function: CTI_CO_FNC_GetSideID
 	Common Function: CTI_CO_FNC_GetSideLogic
 	Common Function: CTI_CO_FNC_GetSideStructures
-	Common Function: CTI_CO_FNC_NetSend
 	Server Function: CTI_SE_FNC_OnBuildingDestroyed
 	Server Function: CTI_SE_FNC_OnBuildingHandleDamage
 	Server Function: CTI_SE_FNC_OnBuildingHandleVirtualDamage
@@ -118,7 +117,7 @@ if (_completion >= 100) then {
 		["INFORMATION", "FILE: Server\Functions\Server_HandleStructureConstruction.sqf", format["A [%1] from side [%2] Construction has been completed on position [%3], was it destroyed? [%4]", (_var select 0) select 1, _side, _position, _isDestroyed]] call CTI_CO_FNC_Log;
 	};
 
-	[["CLIENT", _side], "Client_OnStructureConstructed", [_structure, _variable]] call CTI_CO_FNC_NetSend;
+	[_structure, _variable] remoteExec ["CTI_PVF_CLT_OnStructureConstructed", _side];
 } else {
 	private ["_areas", "_closest", "_delete_pos", "_need_update", "_structures_positions"];
 	//--- We update the base area array to remove potential empty areas. First we get the 2D positions of our structures

@@ -110,7 +110,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 				//--- Award
 				{
 					if (_x call CTI_CO_FNC_IsGroupPlayable) then {
-						if (isPlayer leader _x) then {[_var_name, _bounty, _killed_pname] remoteExec ["CTI_PVF_CLI_OnBountyUnit", leader _x]} else {[_x, _bounty] call CTI_CO_FNC_ChangeFunds};
+						if (isPlayer leader _x) then {[_var_name, _bounty, _killed_pname] remoteExec ["CTI_PVF_CLT_OnBountyUnit", leader _x]} else {[_x, _bounty] call CTI_CO_FNC_ChangeFunds};
 					};
 				} forEach _award_groups;
 			};
@@ -135,7 +135,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 							[_group_killer, -_penalty] call CTI_CO_FNC_ChangeFunds;
 							_show_local = if (CTI_IsHostedServer || CTI_IsClient) then {true} else {false};
 							["penalty", [_var_name, _group_killer, _penalty]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side_killed];
-							remoteExec ["CTI_PVF_CLI_OnTeamkill", _killer];
+							remoteExec ["CTI_PVF_CLT_OnTeamkill", _killer];
 						};
 					};
 				};

@@ -26,7 +26,6 @@
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideFromID
 	Common Function: CTI_CO_FNC_GetSideLogic
-	Common Function: CTI_CO_FNC_NetSend
 	Server Function: CTI_SE_FNC_HandleStructureConstruction
 	
   # EXAMPLE #
@@ -81,7 +80,7 @@ if !(_sell) then {
 				_label = ((_var select 0) select 1);
 				_award = round((_var select 2) * CTI_BASE_CONSTRUCTION_BOUNTY);
 				
-				[_label, _award] remoteExec ["CTI_PVF_CLI_OnBountyStructure", _killer];
+				[_label, _award] remoteExec ["CTI_PVF_CLT_OnBountyStructure", _killer];
 				["structure-destroyed", [name _killer, _label]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", CTI_PV_CLIENTS];
 			} else {
 				//--- AI Reward
@@ -104,4 +103,4 @@ _classnames = if (count _classnames > 2) then {[_classnames select 1] + (_classn
 {if (isNil {_x getVariable "cti_completion"}) then { deleteVehicle _x }} forEach (nearestObjects [_position, _classnames, 25]);
 
 [_position, _variable, _sell] remoteExec ["CTI_PVF_CLT_OnFriendlyStructureDestroyed", _side];
-[_position, _variable] remoteExec ["CTI_PVF_CLI_RemoveRuins", CTI_PV_CLIENTS];
+[_position, _variable] remoteExec ["CTI_PVF_CLT_RemoveRuins", CTI_PV_CLIENTS];

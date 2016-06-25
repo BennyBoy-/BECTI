@@ -37,7 +37,6 @@ CTI_SE_FNC_ToggleHQ = compileFinal preprocessFileLineNumbers "Server\Functions\S
 CTI_SE_FNC_TrashObject = compileFinal preprocessFileLineNumbers "Server\Functions\Server_TrashObject.sqf";
 CTI_SE_FNC_UpdateBaseAreas = compileFinal preprocessFileLineNumbers "Server\Functions\Server_UpdateBaseAreas.sqf";
 CTI_SE_FNC_VoteForCommander = compileFinal preprocessFileLineNumbers "Server\Functions\Server_VoteForCommander.sqf";
-CTI_SE_FNC_Weather_Hook= compileFinal preprocessFileLineNumbers "Server\Functions\Server_Weather_Hook.sqf";
 
 funcCalcAlignPosDir = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fCalcAlignPosDir.sqf";
 funcVectorAdd = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorAdd.sqf";
@@ -228,8 +227,8 @@ if (CTI_ZOMBIE_MODE == 0) then {
 };
 
 // dynamic weather
-0 spawn CTI_SE_FNC_Weather_Hook;
-		
+execVM "Server\Functions\Server_Weather_Hook.sqf";	
+	
 // Fast time compression
 if (CTI_ZOMBIE_MODE == 0) then {
 	0 spawn {
