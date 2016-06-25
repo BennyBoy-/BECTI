@@ -47,7 +47,7 @@ if !(isNil '_candidates') then {
 		if (count _candidates > 1) then {_candidates = (_candidates) call CTI_CO_FNC_ArrayShuffle};
 		
 		//--- Update the HC town groups
-		{[_town, _side, _groups] remoteExec ["CTI_PVF_CLT_OnDefensePlaced", _x select 1]} forEach _candidates;
+		{[_town, _side, _groups] remoteExec ["CTI_PVF_HC_UpdateTownGroups", _x select 1]} forEach _candidates;
 		
 		//--- Attempt to perform a load-balanced creation
 		_delegation_table = [];

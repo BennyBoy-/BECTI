@@ -38,6 +38,7 @@ CTI_CL_FNC_PurchaseUnit = compileFinal preprocessFile "Client\Functions\Client_P
 CTI_CL_FNC_RemoveRuins = compileFinal preprocessFile "Client\Functions\Client_RemoveRuins.sqf";
 CTI_CL_FNC_ConstructionCam_PlacingBuilding = compileFinal preprocessFile "Client\Functions\Client_ConstructionCam_PlacingBuilding.sqf";
 CTI_CL_FNC_ConstructionCam_PlacingDefense = compileFinal preprocessFile "Client\Functions\Client_ConstructionCam_PlacingDefense.sqf";
+CTI_CL_FNC_LoadBuildMenu = compileFinal preprocessFile "Client\Functions\Client_LoadBuildMenu.sqf";
 
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateClientAI.sqf";
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateOrders.sqf";
