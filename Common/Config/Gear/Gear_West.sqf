@@ -661,9 +661,29 @@ _i pushBack "B_Bergen_sgg";
 _u pushBack 0;
 _p pushBack 25;
 
+_i pushBack "B_Carryall_ocamo";
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "B_Carryall_mcamo";
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "B_Carryall_cbr";
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "B_Carryall_khk";
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "B_Carryall_oli";
+_u pushBack 3;
+_p pushBack 800;
+
 _i pushBack "B_Carryall_oucamo";
-_u pushBack 0;
-_p pushBack 30;
+_u pushBack 3;
+_p pushBack 800;
 
 _i pushBack "B_Parachute";
 _u pushBack 0;

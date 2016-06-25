@@ -561,9 +561,6 @@ _i pushBack "B_Carryall_oucamo";
 _u pushBack 3;
 _p pushBack 800;
 
-
-
-
 _i pushBack "B_Parachute";
 _u pushBack 1;
 _p pushBack 1;
