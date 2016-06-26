@@ -237,17 +237,17 @@ if (isNil {_town getVariable "cti_naval"}) then {
 			};
 			case (_value >= 50 && _value <= 60) : { 
 				_pool_units = [
-					["GUER_TOWNS_SQUAD_ZOMBIE1", 8, 99]
+					["GUER_TOWNS_SQUAD_ZOMBIE2", 8, 99]
 				];
 			};
 			case (_value > 60 && _value <= 80) : { 
 				_pool_units = [
-					["GUER_TOWNS_SQUAD_ZOMBIE2", 8, 99]
+					["GUER_TOWNS_SQUAD_ZOMBIE3", 8, 99]
 				];
 			};
 			case (_value > 80 && _value <= 100) : { 
 				_pool_units = [
-					["GUER_TOWNS_SQUAD_ZOMBIE2", 8, 99]
+					["GUER_TOWNS_SQUAD_ZOMBIE3", 8, 99]
 				];
 			};
 			case (_value > 100 && _value <= 120) : { 
