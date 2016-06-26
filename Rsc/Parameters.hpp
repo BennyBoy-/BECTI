@@ -173,14 +173,14 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
-	class CTI_VEHICLES_AIR_FFAR - NO FUNCTION YET {
-		title = "UNITS: Aircraft FFAR";
+	class CTI_VEHICLES_AIR_FFAR {
+		title = "UNITS: Aircraft FFAR NO FUNCTION YET";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
 		default = 0;
 	};
-	class CTI_VEHICLES_AIR_DAR - NO FUNCTION YET {
-		title = "UNITS: Aircraft DAR";
+	class CTI_VEHICLES_AIR_DAR {
+		title = "UNITS: Aircraft DAR NO FUNCTION YET";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
 		default = 0;
@@ -246,7 +246,7 @@ class Params {
 		default = 2500;
 	};
 	class CTI_TEAMSWAP {
-		title = "TEAM: Team swap protection - NO FUNCTION YET";
+		title = "TEAM: Team swap protection NO FUNCTION YET";
 		values[] = {0,1};
 		texts[] = {"off","on"};
 		default = 0;

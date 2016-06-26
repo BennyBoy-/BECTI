@@ -63,7 +63,10 @@ switch (_message_var) do {
 		};
 	};
 	case "commander-vote-start": {CTI_P_ChatID commandChat format["%1 has initiated a commander vote!", _parameters]};//--- Todo, popup system with helper on/off
-	case "hq-destroyed": {CTI_P_ChatID commandChat "The HQ has been destroyed!"};
+	case "hq-destroyed": {
+			CTI_P_ChatID commandChat "The HQ has been destroyed!";
+			playMusic "EventTrack02_F_Curator";
+	};
 	case "hq-repair": {CTI_P_ChatID commandChat "The HQ has been repaired"};
 	case "funds-transfer": {player groupChat format ["%2 has transfered you $%1", _parameters select 0, (_parameters select 1) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]]};
 	case "order-taketowns": {_parameters sideChat "Acknowledged.  Advancing on neutral or enemy towns"};
@@ -101,6 +104,7 @@ switch (_message_var) do {
 	case "structure-attacked": {
 		_var = missionNamespace getVariable (_parameters select 0);
 		CTI_P_ChatID commandChat format ["%1 is under attack at grid %2!", (_var select 0) select 1, mapGridPosition (_parameters select 1)];
+		playsound "air_raid";
 	};
 	case "structure-destroyed": {player globalChat format ["%1 has destroyed a %2 structure", _parameters select 0, _parameters select 1]};
 	case "structure-sold": {player commandChat format ["Sold a %1 structure for S%2", _parameters select 0, _parameters select 1]};
@@ -109,9 +113,15 @@ switch (_message_var) do {
 	};
 	case "teamkill": {CTI_P_ChatID sideChat "Watch your fire! you're shooting on friendly!"};
 	case "teamswap": {CTI_P_ChatID commandChat format ["Player %1 has been sent back to the lobby after teamswaping", _parameters]};
-	case "town-capture": {player groupChat format ["$%1 awarded for the capture of %2", _parameters select 1, (_parameters select 0) getVariable "cti_town_name"]};
-	case "town-hostilenear": {CTI_P_ChatID commandChat format ["Hostile detected near %1", _parameters getVariable "cti_town_name"]};
+	case "town-capture": {
+		player groupChat format ["$%1 awarded for the capture of %2", _parameters select 1, (_parameters select 0) getVariable "cti_town_name"];
+	};
+	case "town-hostilenear": {
+		CTI_P_ChatID commandChat format ["Hostile detected near %1", _parameters getVariable "cti_town_name"];
+		playsound "Alarm";
+	};
 	case "upgrade-ended": {
 		CTI_P_ChatID commandChat format ["%1 has been upgraded to level %2", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select (_parameters select 0)) select 0, (_parameters select 1)];
+		playMusic "LeadTrack03a_F_EPA";
 	};
 };
