@@ -33,7 +33,7 @@ class Params {
 		title = "BASE: Startup Placement";
 		values[] = {2000,3000,4000,5000,6000,7000,8000,9000,10000,12000,15000,20000};
 		texts[] = {"2 KM","3 KM","4 KM","5 KM","6 KM","7 KM","8 KM","9 KM","10 KM","12 KM","15 KM","20 KM"};
-		default = 4000;
+		default = 6000;
 	};
 	class CTI_ECONOMY_INCOME_CYCLE {
 		title = "INCOME: Delay";
@@ -119,6 +119,12 @@ class Params {
 		texts[] = {"15 Seconds","20 Seconds","25 Seconds","30 Seconds","35 Seconds","40 Seconds","45 Seconds","50 Seconds","55 Seconds","60 Seconds"};
 		default = 15;
 	};
+	class CTI_PLAYERS_GROUPSIZE {
+		title = "PLAYER AI: Group Size";
+		values[] = {0,1,2,3,4,5,8,10,12,14,16};
+		texts[] = {"AutoAdaptative","1","2","3","4","5","8","10","12","14","16"};
+		default = 5;
+	};
 	class CTI_TOWNS_OCCUPATION {
 		title = "TOWNS: Occupation";
 		values[] = {0,1};
@@ -167,13 +173,13 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
-	class CTI_VEHICLES_AIR_FFAR {
+	class CTI_VEHICLES_AIR_FFAR - NO FUNCTION YET {
 		title = "UNITS: Aircraft FFAR";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
 		default = 0;
 	};
-	class CTI_VEHICLES_AIR_DAR {
+	class CTI_VEHICLES_AIR_DAR - NO FUNCTION YET {
 		title = "UNITS: Aircraft DAR";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
@@ -240,7 +246,7 @@ class Params {
 		default = 2500;
 	};
 	class CTI_TEAMSWAP {
-		title = "TEAM: Team swap protection";
+		title = "TEAM: Team swap protection - NO FUNCTION YET";
 		values[] = {0,1};
 		texts[] = {"off","on"};
 		default = 0;
