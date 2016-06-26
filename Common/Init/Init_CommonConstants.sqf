@@ -104,7 +104,7 @@ CTI_AI_TEAMS_UNITS_DELETE_ON_DISCONNECT = 1; //--- Remove AI units on player d/c
 
 //--- AI Teams: Parameters
 with missionNamespace do {
-	CTI_AI_TEAMS_GROUPSIZE = 12; //--- AI Teams may get up to x units
+	CTI_AI_TEAMS_GROUPSIZE = 8; //--- AI Teams may get up to x units
 	if (isNil 'CTI_AI_TEAMS_ENABLED') then {CTI_AI_TEAMS_ENABLED = 1}; //--- Determine whether AI Teams are enabled or not
 };
 //-----------------------------------------------------------------------------------------------------------------------//
@@ -320,7 +320,7 @@ CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to mat
 //--- Towns: Capture
 CTI_TOWNS_CAPTURE_BOUNTY_COEF = 50; //--- Bounty coefficient upon capture, (max sv * coefficient)
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 300; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
-CTI_TOWNS_CAPTURE_RANGE = 50; //--- The range which a unit/vehicle has to be from a town center to capture it
+CTI_TOWNS_CAPTURE_RANGE = 250; //--- The range which a unit/vehicle has to be from a town center to capture it
 CTI_TOWNS_CAPTURE_RATE = 1; //--- Determine how fast a town may be captured/protected
 CTI_TOWNS_CAPTURE_RATE_CAMPS = 5; //--- Determine how fast a town may be captured while holding it's camps
 CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
@@ -341,11 +341,11 @@ CTI_TOWNS_PATROL_RANGE = 375; //--- Patrol range in a town
 //--- Towns: Occupation
 CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
 CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
-CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE = 75; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
+CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE = 50; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
 //CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
-CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered
+CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 180; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_OCCUPATION_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 
 //--- Towns: Resistance
@@ -355,7 +355,7 @@ CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE = 75; //--- Determine the "safe" range for
 //CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
-CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered
+CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 180; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 
 //--- Towns: Supply
@@ -614,8 +614,6 @@ with missionNamespace do {
 	if (isNil 'CTI_GRAPHICS_VD_MAX') then {CTI_GRAPHICS_VD_MAX = 2500};
 	if (isNil 'CTI_GRAPHICS_TG_MAX') then {CTI_GRAPHICS_TG_MAX = 50};
 	
-	CTI_PLAYERS_GROUPSIZE = 12;
-	
 	if (isNil 'CTI_RESPAWN_AI') then {CTI_RESPAWN_AI = 1};
 	if (isNil 'CTI_RESPAWN_CAMPS') then {CTI_RESPAWN_CAMPS = 1}; //--- Camp mode (1: Classic, 2: Nearby)
 	if (isNil 'CTI_RESPAWN_CAMPS_CONDITION') then {CTI_RESPAWN_CAMPS_CONDITION = 2}; //--- Camp respawn condition (0: Unlimited, 1: Priced, 2: Limited per capture)
@@ -627,6 +625,8 @@ with missionNamespace do {
 	if (isNil 'CTI_TEAMSTACK') then {CTI_TEAMSTACK = 1}; 
 	
 	if (isNil 'CTI_MARKERS_INFANTRY') then {CTI_MARKERS_INFANTRY = 1}; //--- Track infantry on map
+	
+	if (isNil 'CTI_PLAYERS_GROUPSIZE') then {CTI_PLAYERS_GROUPSIZE = 10}; //--Limit Player AI
 	
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 0};
 	if (isnil 'CTI_SM_NONV') then {CTI_SM_NONV = 1};

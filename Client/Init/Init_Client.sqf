@@ -315,6 +315,11 @@ if ( (missionNamespace getVariable 'CTI_SM_NONV')==1 || (missionNamespace getVar
 	0 execVM "Client\Functions\Client_NvThermR.sqf";
 };
 
+//adaptative group size
+if ( CTI_PLAYERS_GROUPSIZE == 0) then {
+	0 execVM "Client\Functions\Client_AdaptGroup.sqf";
+};
+
 if (CTI_DEBUG) then {
 	// hint "DEBUG MODE IS ENABLED! DON'T FORGET TO TURN IT OFF!";
 	// onMapSingleClick "vehicle player setPos _pos";

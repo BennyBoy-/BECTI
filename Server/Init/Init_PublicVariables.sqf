@@ -153,12 +153,13 @@ with missionNamespace do {
 		_get = missionNamespace getVariable Format["CTI_SERVER_CLIENT_%1",_uid];
 		
 		if !(isNil '_get') then { //--- Retrieve JIP Information if there's any.
-			_side_origin = _get select 2; //--- Get the original side.
-			
-			if (_side_origin != _side) then { //--- The joined side differs from the original one.
-				_join = false;
-				["teamswap", _name] remoteExec ["CTI_PVF_CLT_OnMessageReceived", CTI_PV_CLIENTS];
-				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] tried to teamswap from it's original side [%3] to side [%4]. The server explicitely answered that he should be sent back to the lobby.", _name, _uid, _side_origin, _side]] call CTI_CO_FNC_Log};
+			if (CTI_TEAMSWAP == 1) then {
+				_side_origin = _get select 2; //--- Get the original side.
+				if (_side_origin != _side) then { //--- The joined side differs from the original one.
+					_join = false;
+					["teamswap", _name] remoteExec ["CTI_PVF_CLT_OnMessageReceived", CTI_PV_CLIENTS];
+					if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] tried to teamswap from it's original side [%3] to side [%4]. The server explicitely answered that he should be sent back to the lobby.", _name, _uid, _side_origin, _side]] call CTI_CO_FNC_Log};
+				};
 			};
 		} else {
 			if (CTI_Log_Level >= CTI_Log_Warning) then {["WARNING", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] doesn't have any JIP information yet. If this is the start of the mission then this message can be safely ignored.", _name, _uid]] call CTI_CO_FNC_Log};

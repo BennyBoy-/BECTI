@@ -237,17 +237,17 @@ if (isNil {_town getVariable "cti_naval"}) then {
 			};
 			case (_value >= 50 && _value <= 60) : { 
 				_pool_units = [
-					["GUER_TOWNS_SQUAD_ZOMBIE1", 8, 99]
+					["GUER_TOWNS_SQUAD_ZOMBIE2", 8, 99]
 				];
 			};
 			case (_value > 60 && _value <= 80) : { 
 				_pool_units = [
-					["GUER_TOWNS_SQUAD_ZOMBIE2", 8, 99]
+					["GUER_TOWNS_SQUAD_ZOMBIE3", 8, 99]
 				];
 			};
 			case (_value > 80 && _value <= 100) : { 
 				_pool_units = [
-					["GUER_TOWNS_SQUAD_ZOMBIE2", 8, 99]
+					["GUER_TOWNS_SQUAD_ZOMBIE3", 8, 99]
 				];
 			};
 			case (_value > 100 && _value <= 120) : { 
@@ -403,7 +403,7 @@ _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 	
 	//--- A group may spawn close to a camp or somewhere in the town
 	if (isNil {_town getVariable "cti_naval"}) then {
-		if (count _camps > 0 && random 100 > 50) then {
+		if (count _camps > 0 && random 100 > 30) then {
 			_camp_index = floor(random count _camps);
 			_position = [ASLToAGL getPosASL(_camps select _camp_index), 10, CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS, _tries] call CTI_CO_FNC_GetRandomPosition;
 			_position = [_position, 30, "meadow", 8, 3, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
