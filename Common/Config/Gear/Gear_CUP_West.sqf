@@ -523,7 +523,7 @@ _p pushBack 1100;
 
 _i pushBack "CUP_launch_M136";
 _u pushBack 0;
-_p pushBack 500;
+_p pushBack 100;
 
 
 //---Caliber 5.45x39mm
@@ -1238,10 +1238,6 @@ _p pushBack 100;
 _i pushBack "CUP_SMAW_HEDP_M";
 _u pushBack 2;
 _p pushBack 350;
-
-_i pushBack "CUP_M136_M";
-_u pushBack 0;
-_p pushBack 10;
 
 _i pushBack "CUP_MAAWS_HEDP_M";
 _u pushBack 0;
