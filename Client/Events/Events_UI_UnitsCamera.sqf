@@ -20,7 +20,7 @@ switch (_action) do {
 		CTI_UnitsCamera camSetRelPos _pos;
 		CTI_UnitsCamera camCommit 0;
 		
-		if (difficultyEnabled "thirdPersonView") then {
+		if (difficultyOption "thirdPersonView") then {
 			uiNamespace setVariable ["cti_dialog_ui_unitscam_camview", "external"];
 			CTI_UnitsCamera cameraEffect ["Internal", "back"];
 			
@@ -227,7 +227,7 @@ switch (_action) do {
 					uiNamespace setVariable ["cti_dialog_ui_unitscam_camview", "internal"];
 				};
 				case "external": {
-					if (difficultyEnabled "thirdPersonView") then {
+					if (difficultyOption "thirdPersonView") then {
 						vehicle player switchCamera (uiNamespace getVariable "cti_dialog_ui_unitscam_camview_in");
 						CTI_UnitsCamera cameraEffect ["Internal", "back"];
 						uiNamespace setVariable ["cti_dialog_ui_unitscam_camview", "external"];
