@@ -114,8 +114,7 @@ switch (_action) do {
 	};
 	case "onAutoManning": {
 		CTI_P_DefensesAutoManning = !CTI_P_DefensesAutoManning;
-		_def_count=count (units ((CTI_P_SideLogic getVariable ["cti_defensive_team",grpNull])));
-		if (CTI_P_DefensesAutoManning) then { ctrlSetText [600006, format ["Auto-Manning: On (%2/ %3)",ctrlText ((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600006),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] } else { ctrlSetText [600006,ctrlSetText [600006, format ["Auto-Manning: Off (%2/ %3)",ctrlText ((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600006),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] ] };
+		if (CTI_P_DefensesAutoManning) then { ctrlSetText [100011, "Defenses Auto-Manning: On"] } else { ctrlSetText [100011, "Defenses Auto-Manning: Off"] };
 	};
 	case "onAddWorker": {
 		//--- Check the worker limit
