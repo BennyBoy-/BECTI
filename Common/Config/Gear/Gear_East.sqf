@@ -563,7 +563,7 @@ _p pushBack 800;
 
 _i pushBack "B_Parachute";
 _u pushBack 1;
-_p pushBack 1;
+_p pushBack 5;
 
 _i pushBack "O_UAV_01_backpack_F";
 _u pushBack 2;
