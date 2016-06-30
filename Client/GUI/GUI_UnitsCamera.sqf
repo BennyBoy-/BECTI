@@ -1,6 +1,6 @@
 _last_tracked = objNull;
 _last_campos = [0,0,0];
-_thirdperson = if (difficultyEnabled "thirdPersonView") then {true} else {false};
+_thirdperson = if (difficultyEnabled "3rdPersonView") then {true} else {false};
 
 while { true } do {
 	if (isNil {uiNamespace getVariable "cti_dialog_ui_unitscam"}) exitWith {}; //--- Menu is closed.
