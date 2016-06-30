@@ -292,25 +292,6 @@ _prices pushBack 		4000;
 _placements pushBack 	[0, 50];
 _categories pushBack 	"Fortification";
 
-if (CTI_CUP_ADDON > 0) then {
-_headers = _headers 		+ ["H-Barrier10xTall"];
-_classes = _classes 		+ ["Base_WarfareBBarrier10xTall"];
-_prices = _prices 			+ [10];
-_placements = _placements 	+ [[90, 7]];
-_categories = _categories 	+ ["Fortification"];
-
-_headers = _headers 		+ ["H-Barrier10x"];
-_classes = _classes 		+ ["Base_WarfareBBarrier10x"];
-_prices = _prices 			+ [10];
-_placements = _placements 	+ [[90, 7]];
-_categories = _categories 	+ ["Fortification"];
-
-_headers = _headers 		+ ["H-Barrier5x"];
-_classes = _classes 		+ ["Base_WarfareBBarrier5x"];
-_prices = _prices 			+ [10];
-_placements = _placements 	+ [[90, 7]];
-_categories = _categories 	+ ["Fortification"];
-};
 /* Do not add in cannot be destroyed
 _headers pushBack 		"H-Barrier (Small) (1 Block)";
 _classes pushBack 		"Land_HBarrier_1_F";
