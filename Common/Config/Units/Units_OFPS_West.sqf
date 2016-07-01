@@ -225,6 +225,7 @@ _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "";
 _d pushBack 50;
 
+/* has jammer stopping all guided missles needs rebalance
 _c pushBack 'OFPS_Frigate_Blu';
 _p pushBack '';
 _n pushBack '';
@@ -234,6 +235,6 @@ _u pushBack 2;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "service-ammotruck";
 _d pushBack 130;
-
+*/
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s, _d] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";
