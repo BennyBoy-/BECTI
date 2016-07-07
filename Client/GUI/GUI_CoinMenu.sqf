@@ -48,6 +48,7 @@ with missionNamespace do {
 	CTI_COIN_HELPER = objNull;
 	CTI_COIN_KEYS = [];
 	CTI_COIN_MENU = nil;
+	CTI_COIN_MENUTRANS = false;
 	CTI_COIN_PARAM = nil;
 	CTI_COIN_PARAM_KIND = nil;
 	CTI_COIN_PREVIEW = nil;
@@ -169,8 +170,8 @@ with missionNamespace do {
 					CTI_COIN_HELPER setDir direction CTI_COIN_PREVIEW;
 				};
 			};
-		} else { //--- The player's commanding menu is gone (parent hierarchy is lost on menu refresh)
-			if (commandingMenu == '') then {
+		} else { //--- The player's commanding menu is gone
+			if (commandingMenu == '' && !CTI_COIN_MENUTRANS) then {
 				showCommandingMenu '#USER:CTI_COIN_Categories_0';
 			};
 		};

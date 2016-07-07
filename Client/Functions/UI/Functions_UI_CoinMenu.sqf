@@ -330,6 +330,7 @@ CTI_Coin_OnPreviewPlacement = {
 //--- The HQ is being deployed or mobilized
 CTI_Coin_OnHQToggle = {
 	with missionNamespace do {
+		CTI_COIN_MENUTRANS = true;
 		_state = (CTI_P_SideJoined call CTI_CO_FNC_IsHQDeployed);
 		_start = time;
 		waitUntil {!(_state isEqualTo (CTI_P_SideJoined call CTI_CO_FNC_IsHQDeployed)) || CTI_COIN_EXIT || time - _start > 7};
@@ -343,6 +344,8 @@ CTI_Coin_OnHQToggle = {
 			if !(isNil 'CTI_COIN_CAMCONSTRUCT') then {CTI_COIN_CAMCONSTRUCT camConstuctionSetParams ([getPos (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ)] + _areaSize)};
 			CTI_COIN_RANGE = _areaSize select 0;
 		};
+		
+		CTI_COIN_MENUTRANS = false;
 	};
 };
 
