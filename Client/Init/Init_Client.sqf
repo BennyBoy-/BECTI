@@ -111,6 +111,7 @@ call compile preprocessFile "Client\Init\Init_PublicVariables.sqf";
 //--- Call the UI Functions
 call compile preprocessFile "Client\Functions\UI\Functions_UI_AIMicromanagementMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_ArtilleryMenu.sqf";
+call compile preprocessFile "Client\Functions\UI\Functions_UI_CoinMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_GearMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_KeyHandlers.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_MapCommanding.sqf";
@@ -153,7 +154,6 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 	
 	execFSM "Client\FSM\update_markers_team.fsm";
 	execFSM "Client\FSM\update_netunits_team.fsm";
-	if (CTI_UI_DISPLAY_VEHICLE_CREW != 0) then {execFSM "Client\FSM\update_display_vehicle_crew.fsm"};	
 };
 
 //--- Town init thread
@@ -278,12 +278,12 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_
 
 // onMapSingleClick "{(vehicle leader _x) setPos ([_pos, 8, 30] call CTI_CO_FNC_GetRandomPosition)} forEach (CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups)";
 
-if (CTI_DEV_MODE > 0) then { 
+// if (CTI_DEV_MODE > 0) then { 
 	onMapSingleClick "vehicle player setPos _pos"; //--- benny debug: teleport
 	//player addEventHandler ["HandleDamage", {if (player != (_this select 3)) then {(_this select 3) setDammage 1}; false}]; //--- God-Slayer mode.
 	player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
 	// player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_BuildMenu.sqf"];//debug
-};
+// };
 
 if (profileNamespace getVariable "CTI_PERSISTENT_HINTS") then {
 	0 spawn {

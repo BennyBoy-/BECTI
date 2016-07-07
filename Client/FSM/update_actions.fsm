@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, update_actions.fsm">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, update_actions.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-554.049622,262.642029,242.139771,-456.939575,854,881,1};
-window[] = {2,-1,-1,-1,-1,831,50,1305,50,3,872};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-554.049622,262.642029,242.139771,-456.939575,417,598,1};
+window[] = {2,-1,-1,-1,-1,833,-972,283,52,3,435};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -72,7 +72,7 @@ class FSM
        "	};" \n
        "	if (!isNull _commander) then {" \n
        "		if (_commander == group player) then {" \n
-       "			CTI_HQ_BuildAction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_BuildMenu.sqf"", """", 93, false, true, """", ""_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange""];" \n
+       "			CTI_HQ_BuildAction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_CoinBuild.sqf"", ""HQ"", 93, false, true, """", ""_target == player && CTI_Base_HQInRange""];" \n
        "			(_hq) spawn (missionNamespace getVariable ""CTI_PVF_CLT_AddHQActions"");" \n
        "		};" \n
        "	};" \n
