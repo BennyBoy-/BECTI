@@ -139,10 +139,11 @@ with missionNamespace do {
 			if (isNil {_town getVariable _hc_tvar}) then {_town setVariable [_hc_tvar, [_x]]} else {_town setVariable [_hc_tvar, (_town getVariable _hc_tvar) + [_x]]};
 		} forEach _groups;
 		
-		sleep _sleep_thread;
+		// sleep _sleep_thread;
 		
 		//--- Create the desired units
-		[_town, _side, _teams, _groups, _positions] spawn CTI_HC_CreateTownUnits;
+		// [_town, _side, _teams, _groups, _positions] spawn CTI_HC_CreateTownUnits;
+		[_town, _side, _teams, _groups, _positions] spawn CTI_CO_FNC_CreateTownUnits;
 	};
 	
 	CTI_PVF_HC_OnTownDelegationRemoval = {
