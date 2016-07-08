@@ -379,7 +379,7 @@ with missionNamespace do {
 	if (isNil 'CTI_TOWNS_PEACE') then {CTI_TOWNS_PEACE = 180}; //--- Enable or disable the Town Peace mode (Expressed in seconds, 0 is disabled)
 	if (isNil 'CTI_TOWNS_RESISTANCE_LIMIT_AI') then {CTI_TOWNS_RESISTANCE_LIMIT_AI = 150}; //--- Determine the soft limit for overall resistance Town AI
 	if (isNil 'CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO') then {CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO = 40}; //--- Determine the AI queue ratio (Queued unit = Groups * ratio/100)
-	if (isNil 'CTI_TOWNS_TERRITORIAL') then {CTI_TOWNS_TERRITORIAL = 1}; //--- Enable or disable the Territorial mode (Neighbors Capture)
+	if (isNil 'CTI_TOWNS_TERRITORIAL') then {CTI_TOWNS_TERRITORIAL = 0}; //--- Enable or disable the Territorial mode (Neighbors Capture)
 };
 //-----------------------------------------------------------------------------------------------------------------------//
 
@@ -514,6 +514,11 @@ CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
 CTI_BOUNTY_COEF = 1.2; //--- Bounty coefficient multiplicator based on the unit original cost
 CTI_BOUNTY_COEF_PVP = 1; //--- Bounty coefficient multiplicator based on the killed unit score
 
+CTI_COIN_AREA_DEFAULT = [30, 10];
+CTI_COIN_AREA_HQ_DEPLOYED = [120, 25];
+CTI_COIN_AREA_HQ_MOBILIZED = [20, 10];
+CTI_COIN_AREA_REPAIR = [45, 10];
+
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 30; //--- Keep values of 10
 
 CTI_MARKERS_OPACITY = 0.5;
@@ -559,7 +564,6 @@ CTI_SCORE_SALVAGE_VALUE_PERPOINT = 2000; //--- Unit value / x
 CTI_SCORE_TOWN_VALUE_PERPOINT = 10; //--- Town value / x
 
 CTI_UI_TOWNS_PROGRESSBAR_DISTANCE = 550;
-CTI_UI_DISPLAY_VEHICLE_CREW = 2; //--- Display via titleText the crew of the player's vehicle (0: Off, 1: All, 2: Players)
 
 CTI_GC_DELAY = 90;
 CTI_GC_DELAY_AIR = 360;
@@ -598,6 +602,7 @@ with missionNamespace do {
 	if (isNil 'CTI_ECONOMY_STARTUP_SUPPLY_EAST') then {CTI_ECONOMY_STARTUP_SUPPLY_EAST = 1200};
 	if (isNil 'CTI_ECONOMY_STARTUP_SUPPLY_WEST') then {CTI_ECONOMY_STARTUP_SUPPLY_WEST = 1200};
 	
+	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 1};
 	if (CTI_DEV_MODE > 0) then {
 		CTI_ECONOMY_STARTUP_FUNDS_EAST = 1000000;
 		CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER = 1000000;
@@ -638,7 +643,9 @@ with missionNamespace do {
 	if (isNil 'CTI_APEX_ADDON') then {CTI_APEX_ADDON = 1};
 	if (isNil 'CTI_CUP_ADDON') then {CTI_CUP_ADDON = 1};
 	if (isNil 'CTI_OFPS_ADDON') then {CTI_OFPS_ADDON = 1};
+
 	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 0};
 	if (isNil 'CTI_ZOMBIE_MODE') then {CTI_ZOMBIE_MODE = 0};
 	if (isNil 'CTI_GUERILLA_MODE') then {CTI_GUERILLA_MODE = 0};
+
 };

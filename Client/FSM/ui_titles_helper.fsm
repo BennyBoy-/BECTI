@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, ui_titles_helper.fsm">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ui_titles_helper.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Init"};
@@ -20,8 +20,8 @@ link6[] = {5,3};
 link7[] = {6,5};
 link8[] = {7,8};
 link9[] = {8,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,25,6316128,1,-160.035034,340.672852,767.721619,-295.226898,415,771,1};
-window[] = {2,-1,-1,-1,-1,482,1705,2473,25,3,433};
+globals[] = {25.000000,1,0,0,0,640,480,1,25,6316128,1,-260.176819,240.531586,696.536133,-366.411682,415,598,1};
+window[] = {2,-1,-1,-1,-1,561,-920,-152,104,3,433};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -91,6 +91,10 @@ class FSM
        "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601003) ctrlSetText format[""Commander: %1"", _commander];" \n
        "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601004) ctrlSetText _upgrade_txt;" \n
        "	((uiNamespace getVariable ""cti_title_capture"") displayCtrl 601005) ctrlSetText format[""Server: %1 | Client: %2"", CTI_P_ServerFPS, round diag_fps];" \n
+       "};" \n
+       "" \n
+       "if (isNull (uiNamespace getVariable ""cti_title_capture"") && isNull (uiNamespace getVariable ""cti_title_coin"")) then {" \n
+       "	600200 cutRsc[""CTI_CaptureBar"",""PLAIN"",0];" \n
        "};" \n
        "" \n
        "_snap = time + 2;"/*%FSM</STATEINIT""">*/;
@@ -166,7 +170,7 @@ class FSM
        "};" \n
        "" \n
        "if (_sideID != _lastSID) then {_delay = 0};" \n
-       "if (isNull (uiNamespace getVariable ""cti_title_capture"")) then {600200 cutRsc[""CTI_CaptureBar"",""PLAIN"",0];_delay = 0};" \n
+       "" \n
        "if !(isNull (uiNamespace getVariable ""cti_title_capture"")) then {" \n
        "" \n
        "	_barColor = switch (_sideID) do {" \n
@@ -213,7 +217,6 @@ class FSM
     {
       name = "Hide";
       init = /*%FSM<STATEINIT""">*/"_delay = 0;" \n
-       "if (isNull (uiNamespace getVariable ""cti_title_capture"")) then {600200 cutRsc[""CTI_CaptureBar"",""PLAIN"",0]};" \n
        "if (!isNull (uiNamespace getVariable ""cti_title_capture"")) then {" \n
        "	{((uiNamespace getVariable ""cti_title_capture"") displayCtrl _x) ctrlShow false} forEach [601000,601001];" \n
        "};"/*%FSM</STATEINIT""">*/;
