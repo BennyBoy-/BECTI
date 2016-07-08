@@ -17,25 +17,25 @@ _p pushBack 300;
 
 //(Carryall- large)
 _i pushBack "B_Carryall_ghex_F";
-_u pushBack 1;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 800;
 
 //(SF Harness- very large)
 _i pushBack "B_ViperHarness_ghex_F";
-_u pushBack 1;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 500;
 
 _i pushBack "B_ViperLightHarness_ghex_F";
-_u pushBack 1;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 500;
 
 _i pushBack "B_ViperHarness_blk_F";
-_u pushBack 1;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 500;
 
 _i pushBack "B_ViperLightHarness_blk_F";
-_u pushBack 1;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 500;
 
 //Vests:
 //(Bandolier- small)
@@ -45,18 +45,18 @@ _p pushBack 300;
 
 //(LBV- large)
 _i pushBack "V_HarnessO_ghex_F";
-_u pushBack 1;
-_p pushBack 300;
+_u pushBack 2;
+_p pushBack 400;
 
 _i pushBack "V_HarnessOGL_ghex_F";
-_u pushBack 1;
-_p pushBack 300;
+_u pushBack 2;
+_p pushBack 400;
 
 
 //Helmets:
 //(Assassin)
 _i pushBack "H_HelmetSpecO_ghex_F";
-_u pushBack 1;
+_u pushBack 2;
 _p pushBack 300;
 
 //(Crew)
@@ -66,12 +66,12 @@ _p pushBack 300;
 
 //(Defender)
 _i pushBack "H_HelmetLeaderO_ghex_F";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 300;
 
 //(Protector)
 _i pushBack "H_HelmetO_ghex_F";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 300;
 
 //(Officer)
@@ -142,53 +142,53 @@ _p pushBack 300;
 //(Ak-74)
 _i pushBack "arifle_AKM_F";
 _u pushBack 1;
-_p pushBack 300;
+_p pushBack 100;
 
 //(Ak-74U)
 _i pushBack "arifle_AKS_F";
 _u pushBack 1;
-_p pushBack 300;
+_p pushBack 100;
 
 //(CAR-95)
 _i pushBack "arifle_CTAR_ghex_F";
 _u pushBack 1;
-_p pushBack 300;
+_p pushBack 600;
 
 _i pushBack "arifle_CTAR_blk_F";
 _u pushBack 1;
-_p pushBack 300;
+_p pushBack 600;
 
 //(CAR-95GL)
 _i pushBack "arifle_CTAR_GL_ghex_F";
 _u pushBack 1;
-_p pushBack 300;
+_p pushBack 650;
 
 _i pushBack "arifle_CTAR_GL_blk_F";
 _u pushBack 1;
-_p pushBack 300;
+_p pushBack 650;
 
 //(CAR-95LMG)
 _i pushBack "arifle_CTARS_ghex_F";
-_u pushBack 1;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 950;
 
 _i pushBack "arifle_CTARS_blk_F";
-_u pushBack 1;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 950;
 
 //(CMR-76 Sniper)
 _i pushBack "srifle_DMR_07_ghex_F";
-_u pushBack 1;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 600;
 
 _i pushBack "srifle_DMR_07_blk_F";
-_u pushBack 1;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 600;
 
 //(GM6 .50)
 _i pushBack "srifle_GM6_ghex_F";
-_u pushBack 1;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 1250;
 
 //(Type 115 AR/CQB Hybrid)
 _i pushBack "arifle_ARX_ghex_F";
@@ -330,12 +330,12 @@ _u pushBack 1;
 _p pushBack 1000;
 
 _i pushBack "launch_O_Titan_ghex_F";
-_u pushBack 1;
-_p pushBack 3000;
+_u pushBack 3;
+_p pushBack 6000;
 
 _i pushBack "launch_O_Titan_short_ghex_F";
-_u pushBack 1;
-_p pushBack 3000;
+_u pushBack 3;
+_p pushBack 8000;
 
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf"; 

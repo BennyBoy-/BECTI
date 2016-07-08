@@ -31,7 +31,11 @@ for '_i' from 0 to (count _c)-1 do {
 			if (_picture == "") then { 
 				_picture = if (_classname isKindOf "Man") then { getText(configFile >> "CfgVehicles" >> _classname >> "portrait") } else { getText(configFile >> "CfgVehicles" >> _classname >> "picture") }
 			};
-			_label = if ((_n select _i) == "") then { getText(configFile >> "CfgVehicles" >> _classname >> "displayName") } else { _n select _i };
+			_label = switch (typeName (_n select _i)) do {
+				case "ARRAY": {format[_n select _i, getText(configFile >> "CfgVehicles" >> _classname >> "displayName")]};
+				case "STRING": {if ((_n select _i) == "") then { getText(configFile >> "CfgVehicles" >> _classname >> "displayName") } else { _n select _i }};
+				default {""};
+			};
 			_turrets = if !(_classname isKindOf "Man") then { (_classname) call compile preprocessFileLineNumbers "Common\Config\Units\Get_DetailedTurrets.sqf" } else { "" };
 			
 			_scripts = _s select _i;

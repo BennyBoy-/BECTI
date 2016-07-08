@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, update_markers_towns.fsm">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, update_markers_towns.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-346.052856,249.315308,147.414398,-362.214325,743,636,1};
-window[] = {0,-1,-1,-1,-1,956,175,1430,175,1,761};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-346.052856,249.315308,147.414398,-362.214325,743,635,1};
+window[] = {0,-1,-1,-1,-1,888,86,1341,107,1,761};
 *//*%FSM</HEAD>*/
 class FSM
 {

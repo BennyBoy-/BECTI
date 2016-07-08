@@ -135,9 +135,9 @@ _d pushBack 0;
 _c pushBack 'sab_alphajet8';
 _p pushBack '';
 _n pushBack '';
-_o pushBack 30000;
+_o pushBack 20000;
 _t pushBack 20;
-_u pushBack 2;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
@@ -267,21 +267,23 @@ _d pushBack 1;
 _c pushBack 'sfp_rbb_norrkoping';
 _p pushBack '';
 _n pushBack '';
-_o pushBack 30000;
+_o pushBack 40000;
 _t pushBack 25;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "";
 _d pushBack 50;
 
+/* has jammer stopping all guided missles needs rebalance
 _c pushBack 'OFPS_Frigate_CSAT';
 _p pushBack '';
 _n pushBack '';
-_o pushBack 80000;
+_o pushBack 100000;
 _t pushBack 25;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "service-ammotruck";
 _d pushBack 130;
+*/
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s, _d] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";

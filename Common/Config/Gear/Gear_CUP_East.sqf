@@ -352,7 +352,7 @@ _p pushBack 700;
 
 _i pushBack "CUP_launch_RPG18";
 _u pushBack 0;
-_p pushBack 400;
+_p pushBack 100;
 
 
 //---Caliber 5.45x39mm

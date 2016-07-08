@@ -261,6 +261,7 @@ _prices pushBack 		500;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
 
+if (CTI_OFPS_ADDON > 0) then {
 _headers pushBack 		"Mil Shed";
 _classes pushBack 		"Land_sfp_mil_shed";
 _prices pushBack 		1000;
@@ -278,6 +279,7 @@ _classes pushBack 		"Land_sfp_torebodahangar_alt2";
 _prices pushBack 		1500;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
+};
 
 _headers pushBack 		"Dome (Small)";
 _classes pushBack 		"Land_Dome_Small_F";
@@ -291,7 +293,7 @@ _prices pushBack 		4000;
 _placements pushBack 	[0, 50];
 _categories pushBack 	"Fortification";
 
-/* 
+/* Do not add in cannot be destoryed
 _headers pushBack 		"H-Barrier (Small) (1 Block)";
 _classes pushBack 		"Land_HBarrier_1_F";
 _prices pushBack 		10;
@@ -383,6 +385,7 @@ _prices pushBack 		10000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
+if (CTI_CUP_ADDON > 0) then {
 _headers pushBack 		"M2 Machine Gun";
 _classes pushBack 		"CUP_B_M2StaticMG_USMC";
 _prices pushBack 		150;
@@ -418,12 +421,15 @@ _classes pushBack 		"C_at_phalanx_35AI";
 _prices pushBack 		80000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
+};
 
+if (CTI_OFPS_ADDON > 0) then {
 _headers pushBack 		"C-RAM Phalanx Missle";
 _classes pushBack 		"C_at_phalanx_missile_35AI";
 _prices pushBack 		100000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
+};
 
 _headers pushBack 		["Heli Pad", [["DMG_Reduce", 1]]];
 _classes pushBack 		"Land_HelipadSquare_F";

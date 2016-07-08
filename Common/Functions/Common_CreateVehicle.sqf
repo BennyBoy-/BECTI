@@ -44,7 +44,7 @@
 	  -> Create a locked and handled "B_Quadbike_01_F" at the player's position facing South on the player's initial side
 */
 
-private ["_direction", "_handle", "_locked", "_net", "_position", "_side", "_special", "_type", "_vehicle"];
+private ["_direction", "_handle", "_locked", "_net", "_position", "_side", "_special", "_type", "_vehicle", "_velocity"];
 
 _type = _this select 0;
 _position = _this select 1;
@@ -60,7 +60,10 @@ if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 
 _vehicle = createVehicle [_type, _position, [], 7, _special];
+_velocity = velocity _vehicle;
+_vehicle allowDamage false;
 _vehicle setDir _direction;
+
 _vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1]; //--- Make the vehicle spawn above the ground level to prevent any bisteries
 if (isNull _created) then {
 	_vehicle setDir _direction;
