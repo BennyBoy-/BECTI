@@ -14,7 +14,7 @@ _d = []; //--- Extra Distance (From Factory)
 //--- Infantry
 _c pushBack 'CUP_B_US_Soldier';
 _p pushBack '';
-_n pushBack '';
+_n pushBack ["%1 (USMC)"]; 
 _o pushBack 75;
 _t pushBack 5;
 _u pushBack 0;
@@ -24,7 +24,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_AA';
 _p pushBack '';
-_n pushBack '';
+_n pushBack ["%1 (USMC)"]; 
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 1;
@@ -34,7 +34,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_AR';
 _p pushBack '';
-_n pushBack '';
+_n pushBack ["%1 (USMC)"]; 
 _o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;
@@ -44,7 +44,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Crew';
 _p pushBack '';
-_n pushBack '';
+_n pushBack ["%1 (USMC)"]; 
 _o pushBack 75;
 _t pushBack 5;
 _u pushBack 0;
@@ -54,7 +54,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_AT';
 _p pushBack '';
-_n pushBack '';
+_n pushBack ["%1 (USMC)"]; 
 _o pushBack 250;
 _t pushBack 5;
 _u pushBack 1;
@@ -64,7 +64,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_HAT';
 _p pushBack '';
-_n pushBack '';
+_n pushBack ["%1 (USMC)"]; 
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 2;
@@ -74,7 +74,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_Engineer_EOD';
 _p pushBack '';
-_n pushBack '';
+_n pushBack ["%1 (USMC)"]; 
 _o pushBack 120;
 _t pushBack 5;
 _u pushBack 0;
@@ -84,7 +84,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_GL';
 _p pushBack '';
-_n pushBack '';
+_n pushBack ["%1 (USMC)"]; 
 _o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;
@@ -94,7 +94,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Medic';
 _p pushBack '';
-_n pushBack '';
+_n pushBack ["%1 (USMC)"]; 
 _o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;
@@ -104,7 +104,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Pilot';
 _p pushBack '';
-_n pushBack '';
+_n pushBack ["%1 (USMC)"]; 
 _o pushBack 75;
 _t pushBack 5;
 _u pushBack 0;
@@ -114,7 +114,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Sniper_M107';
 _p pushBack '';
-_n pushBack '';
+_n pushBack ["%1 (USMC)"]; 
 _o pushBack 125;
 _t pushBack 5;
 _u pushBack 0;

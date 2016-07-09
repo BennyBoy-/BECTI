@@ -14,7 +14,7 @@ _d = []; //--- Extra Distance (From Factory)
 //--- Infantry Pacific
 _c pushBack 'B_T_Soldier_A_F';
 _p pushBack '';
-_n pushBack 'Ammo Bearer - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 75;
 _t pushBack 5;
 _u pushBack 0;
@@ -24,7 +24,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_AA_F';
 _p pushBack '';
-_n pushBack 'Missle Specialist AA - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 1;
@@ -34,7 +34,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_AT_F';
 _p pushBack '';
-_n pushBack 'Missle Specialist AT - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 450;
 _t pushBack 5;
 _u pushBack 1;
@@ -44,7 +44,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_AR_F';
 _p pushBack '';
-_n pushBack 'Autorifleman - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;
@@ -54,7 +54,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Crew_F';
 _p pushBack '';
-_n pushBack 'Crewman - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 75;
 _t pushBack 5;
 _u pushBack 0;
@@ -64,7 +64,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Engineer_F';
 _p pushBack '';
-_n pushBack 'Engineer - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 120;
 _t pushBack 5;
 _u pushBack 0;
@@ -74,7 +74,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_Exp_F';
 _p pushBack '';
-_n pushBack 'Explosive Specialist - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 110;
 _t pushBack 5;
 _u pushBack 0;
@@ -84,7 +84,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_GL_F';
 _p pushBack '';
-_n pushBack 'Grenadier - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;
@@ -94,7 +94,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Helipilot_F';
 _p pushBack '';
-_n pushBack 'Heli Pilot - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 75;
 _t pushBack 5;
 _u pushBack 0;
@@ -104,7 +104,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_M_F';
 _p pushBack '';
-_n pushBack 'Marksman - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 125;
 _t pushBack 5;
 _u pushBack 0;
@@ -114,7 +114,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Medic_F';
 _p pushBack '';
-_n pushBack 'Medic - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;
@@ -124,7 +124,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Officer_F';
 _p pushBack '';
-_n pushBack 'Officer - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;
@@ -134,7 +134,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_TL_F';
 _p pushBack '';
-_n pushBack 'TeamLeader - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;
@@ -144,7 +144,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_SL_F';
 _p pushBack '';
-_n pushBack 'SquadLeader - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;
@@ -154,7 +154,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_F';
 _p pushBack '';
-_n pushBack 'Rifleman - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 75;
 _t pushBack 5;
 _u pushBack 0;
@@ -164,7 +164,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_soldier_PG_F';
 _p pushBack '';
-_n pushBack 'Para Trooper - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;
@@ -174,7 +174,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_Repair_F';
 _p pushBack '';
-_n pushBack 'Repair Specialist - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;
@@ -184,7 +184,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_LAT_F';
 _p pushBack '';
-_n pushBack 'Rifleman AT - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 200;
 _t pushBack 5;
 _u pushBack 0;
@@ -194,7 +194,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_soldier_UAV_F';
 _p pushBack '';
-_n pushBack 'UAV Operator - Pacific';
+_n pushBack ["%1 (Pacific)"]; 
 _o pushBack 250;
 _t pushBack 5;
 _u pushBack 1;
@@ -206,7 +206,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Diver_F';
 _p pushBack '';
-_n pushBack 'Assault Diver - Special Forces';
+_n pushBack ["%1 (Special Forces)"]; 
 _o pushBack 250;
 _t pushBack 5;
 _u pushBack 1;
@@ -216,7 +216,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Diver_TL_F';
 _p pushBack '';
-_n pushBack 'Diver Team Leader - Special Forces';
+_n pushBack ["%1 (Special Forces)"]; 
 _o pushBack 250;
 _t pushBack 5;
 _u pushBack 1;
@@ -226,7 +226,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Recon_Exp_F';
 _p pushBack '';
-_n pushBack 'Recon Demo Specialist - Special Forces';
+_n pushBack ["%1 (Special Forces)"]; ;
 _o pushBack 250;
 _t pushBack 5;
 _u pushBack 1;
@@ -236,7 +236,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Recon_JTAC_F';
 _p pushBack '';
-_n pushBack 'Recon JTAC - Special Forces';
+_n pushBack ["%1 (Special Forces)"]; 
 _o pushBack 250;
 _t pushBack 5;
 _u pushBack 1;
@@ -246,7 +246,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Recon_Medic_F';
 _p pushBack '';
-_n pushBack 'Recon Medic - Special Forces';
+_n pushBack ["%1 (Special Forces)"]; 
 _o pushBack 250;
 _t pushBack 5;
 _u pushBack 1;
@@ -256,7 +256,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Recon_F';
 _p pushBack '';
-_n pushBack 'Recon Scout - Special Forces';
+_n pushBack ["%1 (Special Forces)"]; 
 _o pushBack 250;
 _t pushBack 5;
 _u pushBack 1;
@@ -266,7 +266,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Recon_LAT_F';
 _p pushBack '';
-_n pushBack 'Recon Scout AT - Special Forces';
+_n pushBack ["%1 (Special Forces)"]; 
 _o pushBack 250;
 _t pushBack 5;
 _u pushBack 1;
@@ -276,7 +276,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Recon_TL_F';
 _p pushBack '';
-_n pushBack 'Recon Team Leader - Special Forces';
+_n pushBack ["%1 (Special Forces)"]; 
 _o pushBack 250;
 _t pushBack 5;
 _u pushBack 1;
@@ -286,7 +286,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Sniper_F';
 _p pushBack '';
-_n pushBack 'Sniper - Special Forces';
+_n pushBack ["%1 (Special Forces)"]; 
 _o pushBack 250;
 _t pushBack 5;
 _u pushBack 1;
@@ -296,7 +296,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_ghillie_tna_F';
 _p pushBack '';
-_n pushBack 'Sniper Jungle - Special Forces';
+_n pushBack ["%1 (Special Forces)"]; 
 _o pushBack 250;
 _t pushBack 5;
 _u pushBack 1;
@@ -306,7 +306,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Spotter_F';
 _p pushBack '';
-_n pushBack 'Spotter - Special Forces';
+_n pushBack ["%1 (Special Forces)"]; 
 _o pushBack 120;
 _t pushBack 5;
 _u pushBack 0;
@@ -317,7 +317,7 @@ _d pushBack 0;
 //--- Infantry CTRG Special
 _c pushBack 'B_CTRG_Soldier_AR_tna_F';
 _p pushBack '';
-_n pushBack 'Autorifleman - CTRG Special';
+_n pushBack ["%1 (CTRG Special)"]; 
 _o pushBack 200;
 _t pushBack 5;
 _u pushBack 1;
@@ -327,7 +327,7 @@ _d pushBack 0;
 
 _c pushBack 'B_CTRG_Soldier_Exp_tna_F';
 _p pushBack '';
-_n pushBack 'Demo Specialist - CTRG Special';
+_n pushBack ["%1 (CTRG Special)"]; 
 _o pushBack 200;
 _t pushBack 5;
 _u pushBack 1;
@@ -337,7 +337,7 @@ _d pushBack 0;
 
 _c pushBack 'B_CTRG_Soldier_JTAC_tna_F';
 _p pushBack '';
-_n pushBack 'JTAC - CTRG Special';
+_n pushBack ["%1 (CTRG Special)"]; 
 _o pushBack 200;
 _t pushBack 5;
 _u pushBack 1;
@@ -347,7 +347,7 @@ _d pushBack 0;
 
 _c pushBack 'B_CTRG_Soldier_M_tna_F';
 _p pushBack '';
-_n pushBack 'Marksman - CTRG Special';
+_n pushBack ["%1 (CTRG Special)"]; 
 _o pushBack 200;
 _t pushBack 5;
 _u pushBack 1;
@@ -357,7 +357,7 @@ _d pushBack 0;
 
 _c pushBack 'B_CTRG_Soldier_Medic_tna_F';
 _p pushBack '';
-_n pushBack 'Paramedic - CTRG Special';
+_n pushBack ["%1 (CTRG Special)"]; 
 _o pushBack 200;
 _t pushBack 5;
 _u pushBack 1;
@@ -367,7 +367,7 @@ _d pushBack 0;
 
 _c pushBack 'B_CTRG_Soldier_tna_F';
 _p pushBack '';
-_n pushBack 'Scout - CTRG Special';
+_n pushBack ["%1 (CTRG Special)"]; 
 _o pushBack 200;
 _t pushBack 5;
 _u pushBack 1;
@@ -377,7 +377,7 @@ _d pushBack 0;
 
 _c pushBack 'B_CTRG_Soldier_LAT_tna_F';
 _p pushBack '';
-_n pushBack 'Scout AT - CTRG Special';
+_n pushBack ["%1 (CTRG Special)"]; 
 _o pushBack 200;
 _t pushBack 5;
 _u pushBack 1;
@@ -387,7 +387,7 @@ _d pushBack 0;
 
 _c pushBack 'B_CTRG_Soldier_TL_tna_F';
 _p pushBack '';
-_n pushBack 'Team Leader - CTRG Special';
+_n pushBack ["%1 (CTRG Special)"]; 
 _o pushBack 200;
 _t pushBack 5;
 _u pushBack 1;
