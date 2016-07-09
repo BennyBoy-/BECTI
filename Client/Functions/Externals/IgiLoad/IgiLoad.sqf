@@ -1,9 +1,9 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	IgiLoad v0.9.10_RC_e_(Arma3_1.32)																		//
+//	IgiLoad v0.9.10_RC_d																					//
 //	Version info: This is not official version of IgiLoad it is only WIP (RC)								//
 //	Author: Igi_PL																							//
 //	Web: http://www.igipl.net/																				//
-//	Version date: 2014.10.16																				//
+//	Version date: 2014.06.22																				//
 //																											//
 //	USE:																									//
 //	1. In mission "init.sqf" add line: "0 = execVM "Client\Functions\Externals\IgiLoad\IgiLoadInit.sqf";".								//
@@ -103,8 +103,8 @@ if (isnil "IL_Variables") then
 
 	//
 	//IL_SDistU = 20;//No longer needed
-	IL_SDistL = 2.5;
-	IL_SDistL_Heli_offset = 1;
+	IL_SDistL = 3.5;  //ss83 changed from 2.5 to 3.5
+	IL_SDistL_Heli_offset = 6; //ss83 changed from 1 to 6
 
 	//Load and unload (not para) max speed in km/h
 	IL_LU_Speed = 10;
@@ -119,13 +119,13 @@ if (isnil "IL_Variables") then
 	// Supported vehicles
 	IL_Supported_Vehicles_OFFROAD = ["C_Offroad_01_F", "B_G_Offroad_01_F", "B_mas_mar_Offroad_01_F"];
 	IL_Supported_Vehicles_VAN = ["C_Van_01_box_F", "B_G_Van_01_transport_F", "C_Van_01_transport_F"];
-	IL_Supported_Vehicles_HEMTT = ["B_Truck_01_covered_F", "B_Truck_01_transport_F", "B_Truck_01_box_F", "Marinir_Truck_01_box_FG", "Marinir_Truck_01_transport_FG", "Marinir_Truck_01_covered_FG", "B_mas_mar_Truck_01_covered_F", "B_mas_mar_Truck_01_transport_F"];
+	IL_Supported_Vehicles_HEMTT = ["B_Truck_01_Repair_F", "B_Truck_01_medical_F", "B_Truck_01_covered_F", "B_Truck_01_transport_F", "B_Truck_01_box_F", "Marinir_Truck_01_box_FG", "Marinir_Truck_01_transport_FG", "Marinir_Truck_01_covered_FG"];  //added more truck SS83
 	IL_Supported_Vehicles_KAMAZ = ["I_Truck_02_transport_F", "O_Truck_02_transport_F", "I_Truck_02_covered_F", "O_Truck_02_covered_F", "caf_HLVW_open_AR", "caf_HLVW_open", "caf_HLVW_covered_ar", "caf_HLVW_covered"];
-	IL_Supported_Vehicles_TEMPEST = ["O_Truck_03_transport_F", "O_Truck_03_covered_F"];
-	IL_Supported_Vehicles_MOHAWK = ["I_Heli_Transport_02_F", "CH49_Mohawk_FG", "Marinir_CH49_Mohawk_FG"];
-	IL_Supported_Vehicles_CHINOOK = ["CH_147F", "CH_47F", "kyo_MH47E_HC", "kyo_MH47E_Ramp", "kyo_MH47E_base"];
+	IL_Supported_Vehicles_TEMPEST = ["O_Truck_03_medical_F","O_Truck_03_repair_F", "O_Truck_03_transport_F", "O_Truck_03_covered_F"]; //ss83 added medical truck
+	IL_Supported_Vehicles_MOHAWK = ["I_Heli_Transport_02_F", "CH49_Mohawk_FG", "Marinir_CH49_Mohawk_FG", "CUP_B_MH60S_USMC", "CUP_B_CH53E_USMC", "Mi-17 ama", "Mi-8AMT medevac", "Mi-8MT", "Mi-8MTV3"];
+	IL_Supported_Vehicles_CHINOOK = ["CH_147F", "CH_47F", "kyo_MH47E_HC", "kyo_MH47E_Ramp", "kyo_MH47E_base", "CUP_B_MI6A_CDF", "CUP_B_MI6T_CDF"];
 	IL_Supported_Vehicles_MH9 = ["B_Heli_Light_01_F", "B_mas_mar_Heli_Light_01_F"];
-	IL_Supported_Vehicles_C130J = ["C130J_Cargo", "C130J"];
+	IL_Supported_Vehicles_C130J = ["C130J_Cargo", "C130J", "CUP_B_C130J_USMC", "CUP_B_C130J_Cargo_USMC", "CUP_O_C130J_TKA", "CUP_O_C130J_Cargo_TKA", "CUP_B_MV22_USMC"];
 	IL_Supported_Vehicles_C17 = ["globemaster_c17_altus", "globemaster_c17_701", "globemaster_c17_703", "globemaster_c17_704", "globemaster_c17_705", "globemaster_c17_dover", "globemaster_c17_edwards", "globemaster_c17_Elmendorf", "globemaster_c17", "globemaster_c17_hickam", "globemaster_c17_IAF", "globemaster_c17_March", "globemaster_c17_mcchord", "globemaster_c17_McGuire", "globemaster_c17_Mississipi", "globemaster_c17_NATO", "globemaster_c17_natoPAPA", "globemaster_c17_Qatar", "globemaster_c17_RAAF", "globemaster_c17_ZZ172_RAF", "globemaster_c17_RCAF", "globemaster_c17_Stewart", "globemaster_c17_therock", "globemaster_c17_travis", "globemaster_c17_UAE", "globemaster_c17_wright_patt"];
 	
 	IL_Supported_Vehicles_All = IL_Supported_Vehicles_C130J + IL_Supported_Vehicles_C17 + IL_Supported_Vehicles_MH9 + IL_Supported_Vehicles_MOHAWK + IL_Supported_Vehicles_KAMAZ + IL_Supported_Vehicles_TEMPEST + IL_Supported_Vehicles_HEMTT + IL_Supported_Vehicles_VAN + IL_Supported_Vehicles_OFFROAD + IL_Supported_Vehicles_CHINOOK;
@@ -145,7 +145,7 @@ if (isnil "IL_Variables") then
 	IL_Supported_OFFROAD = ["C_Offroad_01_F", "B_G_Offroad_01_F", "B_G_Offroad_01_armed_F", "JTF2_Offroad_armed_01", "B_mas_mar_Offroad_01_F", "B_mas_mar_Offroad_01_armed_F"];
 	IL_Supported_SUV = ["C_SUV_01_F"];
 	IL_Supported_Hatchback = ["C_Hatchback_01_F", "C_Hatchback_01_sport_F"];
-	IL_Supported_Hummvee = ["rc_hmmwv", "HMMWV2", "HMMWV_M1035", "M1114_AGS_ACR", "HMMWV_M1151_M2", "HMMWV2_M2", "HMMWV2_MK19", "HMMWV2_TOW", "HMMWV", "HMMWV_M2", "HMMWV_MK19", "HMMWV_TOW"];
+	IL_Supported_Hummvee = ["rc_hmmwv", "HMMWV2", "HMMWV_M1035", "M1114_AGS_ACR", "HMMWV_M1151_M2", "HMMWV2_M2", "HMMWV2_MK19", "HMMWV2_TOW", "HMMWV", "HMMWV_M2", "HMMWV_MK19", "HMMWV_TOW", "CUP_B_HMMWV_Unarmed_USMC", "CUP_B_HMMWV_Ambulance_USMC", "CUP_B_HMMWV_Crows_M2_USA", "CUP_B_HMMWV_Crows_MK19_USA", "CUP_B_HMMWV_AGS_GPK_ACR", "CUP_B_HMMWV_DSHKM_GPK_ACR", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_MK19_USMC", "CUP_B_HMMWV_SOV_USA", "CUP_B_HMMWV_TOW_USMC", "CUP_B_HMMWV_Transport_USA", "CUP_B_HMMWV_Terminal_USA", "CUP_C_LR_Transport_CTK", "CUP_B_UAZ_Unarmed_CDF", "CUP_O_UAZ_AMB_RU", "CUP_B_UAZ_Open_CDF", "CUP_O_Ural_RU", "CUP_O_Ural_Empty_RU"];
 	IL_Supported_Quadbike = ["I_Quadbike_01_F", "C_Quadbike_01_F", "O_Quadbike_01_F", "B_G_Quadbike_01_F", "B_Quadbike_01_F", "CAF_Quadbike_OD", "CAF_Quadbike_AR", "Marinir_Quadbike_01_FG", "B_mas_mar_Quadbike_01_F"];
 	IL_Supported_Supply_Crate = ["B_supplyCrate_F", "IG_supplyCrate_F", "O_supplyCrate_F", "I_supplyCrate_F", "C_supplyCrate_F"];
 	IL_Supported_Veh_Ammo = ["Box_NATO_AmmoVeh_F", "Box_East_AmmoVeh_F", "Box_IND_AmmoVeh_F", "Land_CargoBox_V1_F", "ASC_B_box"];
@@ -153,9 +153,9 @@ if (isnil "IL_Variables") then
 	IL_Supported_Tank = ["Land_WaterBarrel_F", "Land_WaterTank_F"];
 	IL_Supported_Rubberboat = ["I_Boat_Transport_01_F", "O_Boat_Transport_01_F", "B_G_Boat_Transport_01_F", "B_Boat_Transport_01_F", "C_Rubberboat", "O_Lifeboat", "B_Lifeboat", "Marinir_duck_base_F", "B_mas_mar_Boat_Transport_01_F"];
 	IL_Supported_SDV = ["I_SDV_01_F", "O_SDV_01_F", "B_SDV_01_F", "B_mas_mar_SDV_01_F"];
-	IL_Supported_Box_H1 = ["Box_NATO_Wps_F", "Box_East_Wps_F", "Box_IND_Wps_F", "Box_East_WpsLaunch_F", "Box_NATO_WpsLaunch_F", "Box_IND_WpsLaunch_F", "Box_IND_WpsSpecial_F", "Box_East_WpsSpecial_F", "Box_NATO_WpsSpecial_F", "Box_mas_all_rifle_Wps_F", "Box_mas_us_rifle_Wps_F", "Box_mas_ru_rifle_Wps_F", "Box_mas_mar_NATO_equip_F", "Box_mas_mar_NATO_Wps_F"];
+	IL_Supported_Box_H1 = ["B_supplyCrate_F", "O_supplyCrate_F", "Box_IND_Wps_F", "Box_East_WpsLaunch_F", "Box_NATO_WpsLaunch_F", "Box_IND_WpsLaunch_F", "Box_IND_WpsSpecial_F", "Box_East_WpsSpecial_F", "Box_NATO_WpsSpecial_F", "Box_mas_all_rifle_Wps_F", "Box_mas_us_rifle_Wps_F", "Box_mas_ru_rifle_Wps_F", "Box_mas_mar_NATO_equip_F", "Box_mas_mar_NATO_Wps_F"];
 	IL_Supported_Box_H2 = ["Box_NATO_AmmoOrd_F", "Box_East_AmmoOrd_F", "Box_IND_AmmoOrd_F", "Box_NATO_Grenades_F", "Box_East_Grenades_F", "Box_IND_Grenades_F", "Box_NATO_Ammo_F", "Box_East_Ammo_F", "Box_IND_Ammo_F", "Box_IND_Support_F", "Box_East_Support_F", "Box_NATO_Support_F"];
-	IL_Supported_Cargo20 = ["Land_Cargo20_blue_F", "Land_Cargo20_brick_red_F", "Land_Cargo20_cyan_F", "Land_Cargo20_grey_F", "Land_Cargo20_light_blue_F", "Land_Cargo20_light_green_F", "Land_Cargo20_military_green_F", "Land_Cargo20_orange_F", "Land_Cargo20_red_F", "Land_Cargo20_sand_F", "Land_Cargo20_white_F", "Land_Cargo20_yellow_F"];
+	IL_Supported_Cargo20 = ["Land_Cargo20_blue_F", "Land_Cargo20_brick_red_F", "Land_Cargo20_cyan_F", "Land_Cargo20_grey_F", "Land_Cargo20_light_blue_F", "Land_Cargo20_light_green_F", "Land_Cargo20_military_green_F", "Land_Cargo20_orange_F", "Land_Cargo20_red_F", "Land_Cargo20_sand_F", "Land_Cargo20_white_F", "Land_Cargo20_yellow_F", "Land_Pod_Heli_Transport_04_box_F", "B_Slingload_01_Cargo_F" ,"Land_Pod_Heli_Transport_04_ammo_F", "Land_Pod_Heli_Transport_04_repair_F", "Land_Pod_Heli_Transport_04_fuel_F", "B_Slingload_01_Repair_F", "B_Slingload_01_Fuel_F", "B_Slingload_01_Ammo_F"];
 	//TODO
 	//IL_Supported_Backpack = ["B_AssaultPack_blk", "B_AssaultPack_cbr", "B_AssaultPack_dgtl", "B_AssaultPack_khk", "B_AssaultPack_mcamo", "B_AssaultPack_ocamo", "B_AssaultPack_rgr", "B_AssaultPack_sgg", "B_AssaultPackG", "B_Bergen_blk", "B_Bergen_mcamo", "B_Bergen_rgr", "B_Bergen_sgg", "B_BergenC_blu", "B_BergenC_grn", "B_BergenC_red", "B_BergenG", "B_Carryall_cbr", "B_Carryall_khk", "B_Carryall_mcamo", "B_Carryall_ocamo", "B_Carryall_oli", "B_Carryall_oucamo", "B_FieldPack_blk", "B_FieldPack_cbr", "B_FieldPack_khk", "B_FieldPack_ocamo", "B_FieldPack_oli", "B_FieldPack_oucamo", "B_HuntingBackpack", "B_Kitbag_cbr", "B_Kitbag_mcamo", "B_Kitbag_sgg", "B_OutdoorPack_blk", "B_OutdoorPack_blu", "B_OutdoorPack_tan", "B_TacticalPack_blk", "B_TacticalPack_mcamo", "B_TacticalPack_ocamo", "B_TacticalPack_oli", "B_TacticalPack_rgr", "C_Bergen_blu", "C_Bergen_grn", "C_Bergen_red", "G_AssaultPack", "G_Bergen"];
 	//IL_Supported_Backpack_Support = ["B_HMG_01_support_F", "B_HMG_01_support_high_F", "B_Mortar_01_support_F", "I_Mortar_01_support_F", "O_Mortar_01_support_F"];
@@ -199,7 +199,7 @@ if (isnil "IL_Variables") then
 	IL_Supported_Cargo_C130J = IL_Supported_Cargo_Veh_C130J + IL_Supported_Cargo_NonVeh_C130J;
 	
 	IL_Supported_Cargo_Veh_C17 = IL_Supported_Cargo_Veh_C130J;
-	IL_Supported_Cargo_NonVeh_C17 = IL_Supported_Cargo_NonVeh_C130J;
+	IL_Supported_Cargo_NonVeh_C17 = IL_Supported_Cargo_NonVeh_C130J + IL_Supported_Cargo20;
 	IL_Supported_Cargo_C17 = IL_Supported_Cargo_Veh_C17 + IL_Supported_Cargo_NonVeh_C17;
 };
 //	END VARIABLES
@@ -250,7 +250,7 @@ if (isnil "IL_Procedures") then
 			if ((isNil {_obj getVariable "can_outside"}) || (_force)) then {_obj setVariable["can_outside", IL_Can_Outside, true];};
 			if ((isNil {_obj getVariable "zload"}) || (_force)) then {_obj setVariable["zload", -4.57, true];};
 			if ((isNil {_obj getVariable "usable_ramp"}) || (_force)) then {_obj setVariable["usable_ramp", IL_Ramp, true];};
-			if (_obj_type == "C130J_Cargo") then
+			if (_obj_type == "C130J_Cargo" || _obj_type == "CUP_B_C130J_USMC" || _obj_type ==  "CUP_B_C130J_Cargo_USMC" || _obj_type == "CUP_O_C130J_TKA" || _obj_type == "CUP_O_C130J_Cargo_TKA" || _obj_type == "CUP_B_MV22_USMC") then
 			{
 				if ((isNil {_obj getVariable "slots_num"}) || (_force)) then {_obj setVariable["slots_num", IL_Num_Slots_C130J, true];};
 				if ((isNil {_obj getVariable "load_offset"}) || (_force)) then {_obj setVariable["load_offset", 8.5, true];};
@@ -1781,7 +1781,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MOHAWK) then
 	{
 		[_this select 0, _this select 1, false] call IL_GetOut;
 	},[],IL_Action_LU_Priority,false,true,"",
-	"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (abs(speed _target) <= IL_LU_Speed) && (((getPos _target) select 2) <= IL_LU_Alt) && (_target animationPhase 'CargoRamp_Open' > 0.43) && (_target getVariable 'usable_ramp')"
+	"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (abs(speed _target) <= IL_LU_Speed) && (((getPos _target) select 2) <= IL_LU_Alt) && (_target animationPhase 'CargoRamp_Open' > 0.43) && (_target getVariable 'usable_ramp')"
 	];
 
 	_obj_main addAction [
@@ -1789,7 +1789,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MOHAWK) then
 	{
 		[_this select 0, _this select 1, true] call IL_GetOut;
 	},[],IL_Action_LU_Priority,false,true,"",
-	"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Jump_ATL) && (_target animationPhase 'CargoRamp_Open' > 0.43) && (_target getVariable 'usable_ramp')"
+	"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Jump_ATL) && (_target animationPhase 'CargoRamp_Open' > 0.43) && (_target getVariable 'usable_ramp')"
 	];
 	
 	_obj_main addAction [
@@ -1822,7 +1822,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MOHAWK) then
 	_obj_main addAction [
 	"<t color=""#0000ff"">Open cargo ramp in CH-49</t>",
 	{
-		_this select 0 animatedoor ['CargoRamp_Open', 1];
+		_this select 0 animate ['CargoRamp_Open', 1];
 	},[],IL_Action_O_Priority,false,true,"",
 	"((driver _target == _this) || (('Turret' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (_target getVariable 'can_copilot')) || ((_this in (nearestObjects[ _target modelToWorld [0,-6,-3], [], IL_SDistL + IL_SDistL_Heli_offset])) && (_target getVariable 'can_outside'))) && (_target animationPhase 'CargoRamp_Open' == 0) && (_target getVariable 'can_load')"
 	];
@@ -1830,7 +1830,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MOHAWK) then
 	_obj_main addAction [
 	"<t color=""#0000ff"">Close cargo ramp in CH-49</t>",
 	{
-		_this select 0 animatedoor ['CargoRamp_Open', 0];
+		_this select 0 animate ['CargoRamp_Open', 0];
 	},[],IL_Action_O_Priority,false,true,"",
 	"((driver _target == _this) || (('Turret' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (_target getVariable 'can_copilot')) || ((_this in (nearestObjects[ _target modelToWorld [0,-6,-3], [], IL_SDistL + IL_SDistL_Heli_offset])) && (_target getVariable 'can_outside'))) && (_target animationPhase 'CargoRamp_Open' == 1) && (_target getVariable 'can_load')"
 	];
@@ -1934,7 +1934,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		{
 			[_this select 0, _this select 1, false] call IL_GetOut;
 		},[],IL_Action_LU_Priority,false,true,"",
-		"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (abs(speed _target) <= IL_LU_Speed) && (((getPos _target) select 2) <= IL_LU_Alt) && (_target animationPhase 'ani_ramp' > 0.43) && (_target getVariable 'usable_ramp')"
+		"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (abs(speed _target) <= IL_LU_Speed) && (((getPos _target) select 2) <= IL_LU_Alt) && (_target animationPhase 'ani_ramp' > 0.43) && (_target getVariable 'usable_ramp')"
 		];
 
 		_obj_main addAction [
@@ -1942,7 +1942,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		{
 			[_this select 0, _this select 1, true] call IL_GetOut;
 		},[],IL_Action_LU_Priority,false,true,"",
-		"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Jump_ATL) && (_target animationPhase 'ani_ramp' > 0.43) && (_target getVariable 'usable_ramp')"
+		"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Jump_ATL) && (_target animationPhase 'ani_ramp' > 0.43) && (_target getVariable 'usable_ramp')"
 		];
 		
 		_obj_main addAction [
@@ -2032,7 +2032,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		{
 			[_this select 0, _this select 1, false] call IL_GetOut;
 		},[],IL_Action_LU_Priority,false,true,"",
-		"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (abs(speed _target) <= IL_LU_Speed) && (((getPos _target) select 2) <= IL_LU_Alt) && (_target animationPhase 'Ramp' > 0.43) && (_target getVariable 'usable_ramp')"
+		"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (abs(speed _target) <= IL_LU_Speed) && (((getPos _target) select 2) <= IL_LU_Alt) && (_target animationPhase 'Ramp' > 0.43) && (_target getVariable 'usable_ramp')"
 		];
 
 		_obj_main addAction [
@@ -2040,7 +2040,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		{
 			[_this select 0, _this select 1, true] call IL_GetOut;
 		},[],IL_Action_LU_Priority,false,true,"",
-		"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Jump_ATL) && (_target animationPhase 'Ramp' > 0.43) && (_target getVariable 'usable_ramp')"
+		"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Jump_ATL) && (_target animationPhase 'Ramp' > 0.43) && (_target getVariable 'usable_ramp')"
 		];
 		
 		_obj_main addAction [
@@ -2128,7 +2128,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		{
 			[_this select 0, _this select 1, false] call IL_GetOut;
 		},[],IL_Action_LU_Priority,false,true,"",
-		"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (abs(speed _target) <= IL_LU_Speed) && (((getPos _target) select 2) <= IL_LU_Alt) && (_target animationPhase 'Ani_Ramp' < 0.43) && (_target getVariable 'usable_ramp')"
+		"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (abs(speed _target) <= IL_LU_Speed) && (((getPos _target) select 2) <= IL_LU_Alt) && (_target animationPhase 'Ani_Ramp' < 0.43) && (_target getVariable 'usable_ramp')"
 		];
 
 		_obj_main addAction [
@@ -2136,11 +2136,11 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		{
 			[_this select 0, _this select 1, true] call IL_GetOut;
 		},[],IL_Action_LU_Priority,false,true,"",
-		"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Jump_ATL) && (_target animationPhase 'Ani_Ramp' < 0.43) && (_target getVariable 'usable_ramp')"
+		"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Jump_ATL) && (_target animationPhase 'Ani_Ramp' < 0.43) && (_target getVariable 'usable_ramp')"
 		];
 		
 		_obj_main addAction [
-		"<img image='IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from Chinook</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from Chinook</t>",
 		{
 			[_this select 0] call IL_Do_Unload;
 		},[],IL_Action_LU_Priority,false,true,"",
@@ -2148,7 +2148,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 
 		_obj_main addAction [
-		"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute</t>",
 		{
 			[_this select 0, true] call IL_Do_Unload;
 		},[],IL_Action_LU_Priority,false,true,"",
@@ -2156,7 +2156,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 		
 		_obj_main addAction [
-		"<img image='IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
 		{
 			while {((_this select 0) getVariable "box_num") != 0} do
 			{
@@ -2240,28 +2240,28 @@ if (_obj_main_type in IL_Supported_Vehicles_C130J) then
 	_vsupported = true;
 	[_obj_main] call IL_Init_Veh;
 	
-	if (_obj_main_type == "C130J") then
+	if (_obj_main_type == "C130J" || _obj_main_type == "CUP_B_C130J_USMC" || _obj_main_type ==  "CUP_B_C130J_Cargo_USMC" || _obj_main_type == "CUP_O_C130J_TKA" || _obj_main_type == "CUP_O_C130J_Cargo_TKA" || _obj_main_type == "CUP_B_MV22_USMC") then
 	{
 		_obj_main addAction [
 		"<t color=""#ff0000"">Get out on the side of ramp</t>",
 		{
 			[_this select 0, _this select 1, false] call IL_GetOut;
 		},[],IL_Action_LU_Priority,false,true,"",
-		"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (abs(speed _target) <= IL_LU_Speed) && (((getPos _target) select 2) <= IL_LU_Alt) && (_target animationPhase 'ramp_bottom' > 0.43) && (_target getVariable 'usable_ramp')"
+		"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (abs(speed _target) <= IL_LU_Speed) && (((getPos _target) select 2) <= IL_LU_Alt) && (_target animationPhase 'ramp_bottom' > 0.43) && (_target getVariable 'usable_ramp')"
 		];
 
 		_obj_main addAction [
-		"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
 		{
 			[_this select 0, _this select 1, true] call IL_GetOut;
 		},[],IL_Action_LU_Priority,false,true,"",
-		"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Drop_ATL) && (_target animationPhase 'ramp_bottom' > 0.9) && (_target getVariable 'usable_ramp')"
+		"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Drop_ATL) && (_target animationPhase 'ramp_bottom' > 0.9) && (_target getVariable 'usable_ramp')"
 		];
-//		"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Jump_ATL) && (_target animationPhase 'ramp_bottom' < 0.1) && (_target getVariable 'usable_ramp')"
+//		"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Jump_ATL) && (_target animationPhase 'ramp_bottom' < 0.1) && (_target getVariable 'usable_ramp')"
 	};
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on C-130J</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on C-130J</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_NonVeh_C130J] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2269,7 +2269,7 @@ if (_obj_main_type in IL_Supported_Vehicles_C130J) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on C-130J</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on C-130J</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_Veh_C130J] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2277,7 +2277,7 @@ if (_obj_main_type in IL_Supported_Vehicles_C130J) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from C-130J</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from C-130J</t>",
 	{
 		[_this select 0] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -2285,7 +2285,7 @@ if (_obj_main_type in IL_Supported_Vehicles_C130J) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute</t>",
 	{
 		[_this select 0, true] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -2293,7 +2293,7 @@ if (_obj_main_type in IL_Supported_Vehicles_C130J) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
 	{
 		while {((_this select 0) getVariable "box_num") != 0} do
 		{
@@ -2377,7 +2377,7 @@ if (_obj_main_type in IL_Supported_Vehicles_C17) then
 	[_obj_main] call IL_Init_Veh;
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on C17</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on C17</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_C17] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2385,7 +2385,7 @@ if (_obj_main_type in IL_Supported_Vehicles_C17) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on C17</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on C17</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_C17] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2405,19 +2405,19 @@ if (_obj_main_type in IL_Supported_Vehicles_C17) then
 	{
 		[_this select 0, _this select 1, false] call IL_GetOut;
 	},[],IL_Action_LU_Priority,false,true,"",
-	"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (abs(speed _target) <= IL_LU_Speed) && (((getPos _target) select 2) <= IL_LU_Alt) && (_target animationPhase 'back_ramp' > 0.43) && (_target getVariable 'usable_ramp')"
+	"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (abs(speed _target) <= IL_LU_Speed) && (((getPos _target) select 2) <= IL_LU_Alt) && (_target animationPhase 'back_ramp' > 0.43) && (_target getVariable 'usable_ramp')"
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
 	{
 		[_this select 0, _this select 1, true] call IL_GetOut;
 	},[],IL_Action_LU_Priority,false,true,"",
-	"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Drop_ATL) && (_target animationPhase 'back_ramp' > 0.43) && (_target getVariable 'usable_ramp')"
+	"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Drop_ATL) && (_target animationPhase 'back_ramp' > 0.43) && (_target getVariable 'usable_ramp')"
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from C17</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from C17</t>",
 	{
 		[_this select 0] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -2425,7 +2425,7 @@ if (_obj_main_type in IL_Supported_Vehicles_C17) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute</t>",
 	{
 		[_this select 0, true] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -2433,7 +2433,7 @@ if (_obj_main_type in IL_Supported_Vehicles_C17) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
 	{
 		while {((_this select 0) getVariable "box_num") != 0} do
 		{
@@ -2522,7 +2522,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MH9) then
 	[_obj_main] call IL_Init_Veh;
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on left MH-9</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on left MH-9</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_MH9, "L"] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2530,7 +2530,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MH9) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on right MH-9</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on right MH-9</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_MH9, "R"] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2538,7 +2538,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MH9) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from left MH-9</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from left MH-9</t>",
 	{
 		[_this select 0, false, "L"] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -2546,7 +2546,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MH9) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from right MH-9</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from right MH-9</t>",
 	{ 
 		[_this select 0, false, "R"] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -2554,7 +2554,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MH9) then
 	];
 ///////////////////////////
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute left MH-9</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute left MH-9</t>",
 	{
 		[_this select 0, true, "L"] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -2562,7 +2562,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MH9) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute right MH-9</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute right MH-9</t>",
 	{
 		[_this select 0, true, "R"] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -2570,7 +2570,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MH9) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
 	{
 		[_this select 0, true, "L"] call IL_Do_Unload;
 		[_this select 0, true, "R"] call IL_Do_Unload;
@@ -2579,11 +2579,11 @@ if (_obj_main_type in IL_Supported_Vehicles_MH9) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
 	{
 		[_this select 0, _this select 1, true] call IL_GetOut;
 	},[],IL_Action_LU_Priority,false,true,"",
-	"('cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Jump_ATL) && (_target getVariable 'usable_ramp')"
+	"('Cargo' in (assignedVehicleRole _this)) && (vehicle _this == _target) && (((getPosATL _target) select 2) >= IL_Para_Jump_ATL) && (_target getVariable 'usable_ramp')"
 	];
 //////////////////////////////////////////////////
 	_obj_main addAction [
@@ -2645,7 +2645,7 @@ if (_obj_main_type in IL_Supported_Vehicles_OFFROAD) then
 	[_obj_main] call IL_Init_Veh;
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on Offroad</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on Offroad</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_NonVeh_OFFROAD] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2653,7 +2653,7 @@ if (_obj_main_type in IL_Supported_Vehicles_OFFROAD) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on Offroad</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on Offroad</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_Veh_OFFROAD] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2661,7 +2661,7 @@ if (_obj_main_type in IL_Supported_Vehicles_OFFROAD) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from Offroad</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from Offroad</t>",
 	{
 		[_this select 0] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -2693,7 +2693,7 @@ if (_obj_main_type in IL_Supported_Vehicles_VAN) then
 	[_obj_main] call IL_Init_Veh;
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on VAN</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on VAN</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_NonVeh_VAN] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2701,7 +2701,7 @@ if (_obj_main_type in IL_Supported_Vehicles_VAN) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on VAN</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on VAN</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_Veh_VAN] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2709,7 +2709,7 @@ if (_obj_main_type in IL_Supported_Vehicles_VAN) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from VAN</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from VAN</t>",
 	{
 		[_this select 0] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -2742,7 +2742,7 @@ if (_obj_main_type in IL_Supported_Vehicles_KAMAZ) then
 	[_obj_main] call IL_Init_Veh;
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on ZAMAK</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on ZAMAK</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_NonVeh_Kamaz] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2750,7 +2750,7 @@ if (_obj_main_type in IL_Supported_Vehicles_KAMAZ) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on ZAMAK</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on ZAMAK</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_Veh_Kamaz] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2758,7 +2758,7 @@ if (_obj_main_type in IL_Supported_Vehicles_KAMAZ) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from ZAMAK</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from ZAMAK</t>",
 	{
 		[_this select 0] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -2790,7 +2790,7 @@ if (_obj_main_type in IL_Supported_Vehicles_TEMPEST) then
 	[_obj_main] call IL_Init_Veh;
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on TEMPEST</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on TEMPEST</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_NonVeh_TEMPEST] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2798,7 +2798,7 @@ if (_obj_main_type in IL_Supported_Vehicles_TEMPEST) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on TEMPEST</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on TEMPEST</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_Veh_TEMPEST] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2806,7 +2806,7 @@ if (_obj_main_type in IL_Supported_Vehicles_TEMPEST) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from TEMPEST</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from TEMPEST</t>",
 	{
 		[_this select 0] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -2838,7 +2838,7 @@ if (_obj_main_type in IL_Supported_Vehicles_HEMTT) then
 	[_obj_main] call IL_Init_Veh;
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on HEMTT</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on HEMTT</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_NonVeh_HEMTT] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2846,7 +2846,7 @@ if (_obj_main_type in IL_Supported_Vehicles_HEMTT) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on HEMTT</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on HEMTT</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_Veh_HEMTT] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -2854,7 +2854,7 @@ if (_obj_main_type in IL_Supported_Vehicles_HEMTT) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from HEMTT</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from HEMTT</t>",
 	{
 		[_this select 0] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
