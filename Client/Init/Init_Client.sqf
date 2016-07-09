@@ -315,6 +315,9 @@ if ( (missionNamespace getVariable 'CTI_SM_NONV')==1 || (missionNamespace getVar
 // 3P restrict
 0 execVM "Client\Functions\Client_3pRestrict.sqf";
 
+// Map Markers
+0 execVM "Client\Functions\Externals\MapMarkersTitling.sqf";
+
 //adaptative group size
 if ( CTI_PLAYERS_GROUPSIZE == 0) then {
 	0 execVM "Client\Functions\Client_AdaptGroup.sqf";
