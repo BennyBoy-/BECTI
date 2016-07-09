@@ -405,7 +405,7 @@ with missionNamespace do {
  */
 
 //--- Base: Area
-CTI_BASE_AREA_RANGE = 500;
+CTI_BASE_AREA_RANGE = 200;
 
 //--- Base: Construction
 CTI_BASE_CONSTRUCTION_BOUNTY = 3; //--- The bounty awarded upon a hostile structure destruction
