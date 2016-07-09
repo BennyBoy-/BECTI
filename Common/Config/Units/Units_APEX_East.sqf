@@ -15,7 +15,6 @@ _d = []; //--- Extra Distance (From Factory)
 _c pushBack 'O_T_Soldier_A_F';
 _p pushBack '';
 _n pushBack ["%1 (Pacific)"]; 
-_n pushBack '';
 _o pushBack 75;
 _t pushBack 5;
 _u pushBack 0;

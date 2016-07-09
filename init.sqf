@@ -108,3 +108,13 @@ execVM "Common\Init\Init_GroupsID.sqf";
 waitUntil {time > 0};
 execVM "Client\Actions\Action_Attach_charge.sqf";
 waitUntil {!isNil "EtVInitialized"};
+
+//-- disable ambient life
+//waitUntil {time > 0};
+//enableEnvironment false;
+
+//--- No more weapon sway
+if (local player) then { 
+	player setCustomAimCoef CTI_WEAPON_SWAY; 
+	player addMPEventhandler ["MPRespawn", {player setCustomAimCoef CTI_WEAPON_SWAY;}]; 
+};

@@ -632,6 +632,8 @@ with missionNamespace do {
 	if (isNil 'CTI_PLAYERS_GROUPSIZE') then {CTI_PLAYERS_GROUPSIZE = 10}; //--Limit Player AI
 	
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 0};
+	if (isNil 'CTI_GAMEPLAY_3P') then {CTI_GAMEPLAY_3P = -1};
+	if (isNil 'CTI_WEAPON_SWAY') then {CTI_WEAPON_SWAY = 0.5};
 	if (isnil 'CTI_SM_NONV') then {CTI_SM_NONV = 1};
 	if (isnil 'CTI_SM_NV_THER_VEH') then {CTI_SM_NV_THER_VEH = 0};
 	

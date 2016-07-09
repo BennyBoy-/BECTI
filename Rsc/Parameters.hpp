@@ -221,6 +221,18 @@ class Params {
 		texts[] = {"1 Minute","2 Minutes","3 Minutes","4 Minutes","5 Minutes","10 Minutes","20 Minutes","30 Minutes","40 Minutes","50 Minutes","1 Hour"};
 		default = 600;
 	};
+	class CTI_GAMEPLAY_3P {
+		title = "GAMEPLAY: 3P view";
+		values[] = {-1,0,1,2};
+		texts[] = {"All","No group view","Vehicle","None"};
+		default = 0;
+	};
+	class CTI_WEAPON_SWAY {
+		title = "GAMEPLAY: Weapon Sway Level";
+		values[] = {0,0.25,0.5,0.75,1};
+		texts[] = {"None","Little","Normal","Alot","Full"};
+		default = 0.5;
+	};
 	class CTI_SM_NONV {
 		title = "GAMEPLAY: No NVs, No Thermal";
 		values[] = {0,1};
