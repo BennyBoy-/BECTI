@@ -6,8 +6,8 @@
 //	Version date: 2014.10.16																				//
 //																											//
 //	USE:																									//
-//	1. In mission "init.sqf" add line: "0 = execVM "IgiLoad\IgiLoadInit.sqf";".								//
-//	2. In vehicles "INITIALIZATION" field type: "0 = [this] execVM "IgiLoad\IgiLoad.sqf";"					//
+//	1. In mission "init.sqf" add line: "0 = execVM "Client\Functions\Externals\IgiLoad\IgiLoadInit.sqf";".								//
+//	2. In vehicles "INITIALIZATION" field type: "0 = [this] execVM "Client\Functions\Externals\IgiLoad\IgiLoad.sqf";"					//
 //	3. Unload from script or trigger:																		//
 //		a) Unloading cargo from script. Force unload: "0 = [Car, true, "L"] spawn IL_Do_Unload;"			//
 //		b) Unloading cargo from script. Force unload: "0 = [Car, true] spawn IL_Do_Unload;"					//
@@ -1753,7 +1753,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MOHAWK) then
 	[_obj_main] call IL_Init_Veh;
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on CH-49</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on CH-49</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_NonVeh_Mohawk] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -1761,7 +1761,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MOHAWK) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on CH-49</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on CH-49</t>",
 	{
 		[_this select 0, IL_Supported_Cargo_Veh_Mohawk] call IL_Do_Load;
 	},[],IL_Action_LU_Priority,true,true,"",
@@ -1785,7 +1785,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MOHAWK) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
 	{
 		[_this select 0, _this select 1, true] call IL_GetOut;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -1793,7 +1793,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MOHAWK) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from CH-49</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from CH-49</t>",
 	{
 		[_this select 0] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -1801,7 +1801,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MOHAWK) then
 	];
 
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute</t>",
 	{
 		[_this select 0, true] call IL_Do_Unload;
 	},[],IL_Action_LU_Priority,false,true,"",
@@ -1809,7 +1809,7 @@ if (_obj_main_type in IL_Supported_Vehicles_MOHAWK) then
 	];
 	
 	_obj_main addAction [
-	"<img image='IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
+	"<img image='Client\Functions\Externals\IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
 	{
 		while {((_this select 0) getVariable "box_num") != 0} do
 		{
@@ -1895,7 +1895,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 	if (typeOf _obj_main == "CH_147F") then
 	{
 		_obj_main addAction [
-		"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on Chinook</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on Chinook</t>",
 		{
 			[_this select 0, IL_Supported_Cargo_NonVeh_CHINOOK] call IL_Do_Load;
 		},[],IL_Action_LU_Priority,true,true,"",
@@ -1903,7 +1903,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 
 		_obj_main addAction [
-		"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on Chinook</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on Chinook</t>",
 		{
 			[_this select 0, IL_Supported_Cargo_Veh_CHINOOK] call IL_Do_Load;
 		},[],IL_Action_LU_Priority,true,true,"",
@@ -1938,7 +1938,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 
 		_obj_main addAction [
-		"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
 		{
 			[_this select 0, _this select 1, true] call IL_GetOut;
 		},[],IL_Action_LU_Priority,false,true,"",
@@ -1946,7 +1946,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 		
 		_obj_main addAction [
-		"<img image='IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from Chinook</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from Chinook</t>",
 		{
 			[_this select 0] call IL_Do_Unload;
 		},[],IL_Action_LU_Priority,false,true,"",
@@ -1954,7 +1954,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 
 		_obj_main addAction [
-		"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute</t>",
 		{
 			[_this select 0, true] call IL_Do_Unload;
 		},[],IL_Action_LU_Priority,false,true,"",
@@ -1962,7 +1962,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 		
 		_obj_main addAction [
-		"<img image='IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
 		{
 			while {((_this select 0) getVariable "box_num") != 0} do
 			{
@@ -1993,7 +1993,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 	if (typeOf _obj_main == "CH_47F") then
 	{
 		_obj_main addAction [
-		"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on Chinook</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on Chinook</t>",
 		{
 			[_this select 0, IL_Supported_Cargo_NonVeh_CHINOOK] call IL_Do_Load;
 		},[],IL_Action_LU_Priority,true,true,"",
@@ -2001,7 +2001,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 
 		_obj_main addAction [
-		"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on Chinook</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on Chinook</t>",
 		{
 			[_this select 0, IL_Supported_Cargo_Veh_CHINOOK] call IL_Do_Load;
 		},[],IL_Action_LU_Priority,true,true,"",
@@ -2036,7 +2036,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 
 		_obj_main addAction [
-		"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
 		{
 			[_this select 0, _this select 1, true] call IL_GetOut;
 		},[],IL_Action_LU_Priority,false,true,"",
@@ -2044,7 +2044,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 		
 		_obj_main addAction [
-		"<img image='IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from Chinook</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\unload.paa' /><t color=""#ff0000"">  Unload cargo from Chinook</t>",
 		{
 			[_this select 0] call IL_Do_Unload;
 		},[],IL_Action_LU_Priority,false,true,"",
@@ -2052,7 +2052,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 
 		_obj_main addAction [
-		"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff"">  Unload cargo with parachute</t>",
 		{
 			[_this select 0, true] call IL_Do_Unload;
 		},[],IL_Action_LU_Priority,false,true,"",
@@ -2060,7 +2060,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 		
 		_obj_main addAction [
-		"<img image='IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\unload_all_para.paa' /><t color=""#a50b00"">  Unload ALL cargo with parachute</t>",
 		{
 			while {((_this select 0) getVariable "box_num") != 0} do
 			{
@@ -2089,7 +2089,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 	if (typeOf _obj_main in ["kyo_MH47E_HC", "kyo_MH47E_Ramp", "kyo_MH47E_base"]) then
 	{
 		_obj_main addAction [
-		"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on Chinook</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load cargo on Chinook</t>",
 		{
 			[_this select 0, IL_Supported_Cargo_NonVeh_CHINOOK] call IL_Do_Load;
 		},[],IL_Action_LU_Priority,true,true,"",
@@ -2097,7 +2097,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 
 		_obj_main addAction [
-		"<img image='IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on Chinook</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\load.paa' /><t color=""#007f0e"">  Load vehicle on Chinook</t>",
 		{
 			[_this select 0, IL_Supported_Cargo_Veh_CHINOOK] call IL_Do_Load;
 		},[],IL_Action_LU_Priority,true,true,"",
@@ -2132,7 +2132,7 @@ if (_obj_main_type in IL_Supported_Vehicles_CHINOOK) then
 		];
 
 		_obj_main addAction [
-		"<img image='IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
+		"<img image='Client\Functions\Externals\IgiLoad\images\unload_para.paa' /><t color=""#b200ff""> Eject</t>",
 		{
 			[_this select 0, _this select 1, true] call IL_GetOut;
 		},[],IL_Action_LU_Priority,false,true,"",
