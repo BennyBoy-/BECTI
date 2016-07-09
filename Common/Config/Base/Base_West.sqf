@@ -415,15 +415,15 @@ _classes pushBack 		"CUP_B_M252_USMC";
 _prices pushBack 		15000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
+};
 
+if (CTI_OFPS_ADDON > 0) then {
 _headers pushBack 		"C-RAM Phalanx";
 _classes pushBack 		"C_at_phalanx_35AI";
 _prices pushBack 		80000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
-};
 
-if (CTI_OFPS_ADDON > 0) then {
 _headers pushBack 		"C-RAM Phalanx Missle";
 _classes pushBack 		"C_at_phalanx_missile_35AI";
 _prices pushBack 		100000;

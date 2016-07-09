@@ -446,13 +446,13 @@ _classes pushBack 		"C_at_phalanx_35AI";
 _prices pushBack 		80000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
-};
 
 _headers pushBack 		"C-RAM Phalanx Missle";
 _classes pushBack 		"C_at_phalanx_missile_35AI";
 _prices pushBack 		100000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
+};
 
 _headers pushBack 		["Heli Pad", [["DMG_Reduce", 1]]];
 _classes pushBack 		"Land_HelipadSquare_F";
