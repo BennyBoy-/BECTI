@@ -515,7 +515,7 @@ CTI_BOUNTY_COEF = 1.2; //--- Bounty coefficient multiplicator based on the unit 
 CTI_BOUNTY_COEF_PVP = 1; //--- Bounty coefficient multiplicator based on the killed unit score
 
 CTI_COIN_AREA_DEFAULT = [30, 10];
-CTI_COIN_AREA_HQ_DEPLOYED = [120, 25];
+CTI_COIN_AREA_HQ_DEPLOYED = [200, 25];
 CTI_COIN_AREA_HQ_MOBILIZED = [20, 10];
 CTI_COIN_AREA_REPAIR = [45, 10];
 
