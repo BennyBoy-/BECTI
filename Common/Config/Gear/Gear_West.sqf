@@ -564,11 +564,11 @@ _p pushBack 100;
 
 _i pushBack "launch_B_Titan_F";
 _u pushBack 0;
-_p pushBack 125;
+_p pushBack 6000;
 
 _i pushBack "launch_B_Titan_short_F";
 _u pushBack 0;
-_p pushBack 250;
+_p pushBack 8000;
 
 _i pushBack "hgun_P07_F";
 _u pushBack 0;

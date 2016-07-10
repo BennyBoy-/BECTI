@@ -10,6 +10,7 @@ missionNamespace setVariable [format["CTI_%1_Soldier", _side], "B_Soldier_F"];
 missionNamespace setVariable [format["CTI_%1_Crew", _side], "B_crew_F"];
 missionNamespace setVariable [format["CTI_%1_Pilot", _side], "B_Helipilot_F"];
 
+if (CTI_CUP_ADDON > 0) then { 
 missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
 	["B_Truck_01_medical_F", [
 		["CUP_arifle_M16A2_GL", 2], ["CUP_30Rnd_556x45_Stanag", 50],
@@ -22,7 +23,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["CUP_1Rnd_SmokeGreen_M203", 8],
 		["firstaidkit", 20],
 		["Chemlight_blue", 36],
-		["acc_flashlight", 5],
+		["acc_flashlight", 10],
 		["Toolkit", 4],
 		["B_Bergen_sgg", 4]
 	]],
@@ -50,6 +51,32 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 	//,	["B_Heli_Transport_01_F", []]
 
 ]];
+} else {
+missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
+	["B_Truck_01_medical_F", [
+		["arifle_mx_gl_f", 2], ["30Rnd_65x39_caseless_mag", 50],
+		["arifle_MXM_F", 1],
+		["launch_NLAW_F", 5], ["NLAW_F", 20],
+		["HandGrenade", 20],
+		["30Rnd_556x45_Stanag", 15],
+		["30Rnd_65x39_caseless_mag_Tracer", 6],
+		["3rnd_he_grenade_shell", 8],
+		["3Rnd_UGL_FlareWhite_F", 9],
+		["3rnd_smokeblue_grenade_shell", 3],
+		["SmokeShellBlue", 8],
+		["firstaidkit", 20],
+		["Chemlight_blue", 36],
+		["acc_flashlight", 10],
+		["optic_ACO_grn", 3],
+		["optic_Holosight", 2],
+		["optic_MRCO", 1],
+		["optic_arco", 2],
+		["Toolkit", 1],
+		["B_Bergen_sgg", 4]
+	]],
+	["B_MRAP_01_F", [["Toolkit", 1],["firstaidkit", 10],["30Rnd_556x45_Stanag", 15],["launch_NLAW_F", 5], ["NLAW_F", 20]]]
+]];
+};
 
 //--- Units - Barracks
 _u = [];

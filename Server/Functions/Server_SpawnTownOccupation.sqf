@@ -68,7 +68,7 @@ _tries = 400;
 //--- Pool data: [<GROUP>, <PRESENCE>, {<SPAWN PROBABILITY>}], nesting is possible to narrow down some choices
 if (isNil {_town getVariable "cti_naval"}) then {
 	switch (true) do {
-		case (_value < 50) : { 
+		case (_value < 70) : {
 			_pool_units = [
 				["TOWNS_SQUAD_RIFLEMEN1", 1, 99],
 				["TOWNS_SQUAD_AT1", 1, 99],				
@@ -78,7 +78,20 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				]
 			];
 		};
-		case (_value >= 50 && _value <= 60) : { 
+		case (_value >= 70 && _value < 80) : {  
+			_pool_units = [
+				["TOWNS_SQUAD_RIFLEMEN1", 1, 99],
+				["TOWNS_SQUAD_AT1", 1, 99],				
+				[
+					["TOWNS_SQUAD_LIGHT1_MIXED", 2, 75],
+					["TOWNS_SQUAD_LIGHT2_MIXED", 2, 25]
+				],
+				[
+					["TOWNS_SQUAD_APC1_MIXED", 2, 80]
+				]
+			];
+		};
+		case (_value >= 80 && _value < 90) : {
 			_pool_units = [
 				["TOWNS_SQUAD_RIFLEMEN1", 1, 99],
 				["TOWNS_SQUAD_SNIPER", 1, 75],
@@ -90,11 +103,11 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				],
 				[
 					["TOWNS_SQUAD_APC1_MIXED", 3, 80],
-					["TOWNS_SQUAD_APC2_MIXED", 1, 50]
+					["TOWNS_SQUAD_APC2_MIXED", 1, 20]
 				]
 			];
 		};
-		case (_value > 60 && _value <= 80) : { 
+		case (_value >= 90 && _value < 100) : { 
 			_pool_units = [
 				[
 					["TOWNS_SQUAD_RIFLEMEN3", 1, 50], 
@@ -115,7 +128,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				]
 			];
 		};
-		case (_value > 80 && _value <= 100) : { 
+		case (_value >= 100 && _value < 110) : { 
 			_pool_units = [
 				[
 					["TOWNS_SQUAD_RIFLEMEN3", 2, 50],
@@ -154,7 +167,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				]
 			];
 		};
-		case (_value > 100 && _value <= 120) : { 
+		case (_value >= 110 && _value < 120) : {
 			_pool_units = [
 				[
 					["TOWNS_SQUAD_RIFLEMEN3", 1, 50],
@@ -194,7 +207,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				]
 			];
 		};
-		case (_value > 120) : { 
+		case (_value >= 120) : { 
 			_pool_units = [
 				[
 					["TOWNS_SQUAD_RIFLEMEN3", 1, 50],
@@ -235,35 +248,41 @@ if (isNil {_town getVariable "cti_naval"}) then {
 	};
 } else {
 	switch (true) do {
-		case (_value < 50) : { 
+		case (_value < 70) : { 
 			_pool_units = [
 				["TOWNS_SQUAD_NAVAL1", 1, 99],
 				["TOWNS_SQUAD_ASSAULT_BOAT1", 4, 99]
 			];
 		};
-		case (_value >= 50 && _value <= 60) : { 
+		case (_value >= 70 && _value < 80) : { 
+			_pool_units = [
+				["TOWNS_SQUAD_NAVAL1", 1, 99],
+				["TOWNS_SQUAD_ASSAULT_BOAT1", 4, 99]
+			];
+		};
+		case (_value >= 80 && _value < 90) : { 
 			_pool_units = [
 				["TOWNS_SQUAD_NAVAL2", 1, 99],
 				["TOWNS_SQUAD_ASSAULT_BOAT1", 2, 40],
 				["TOWNS_SQUAD_ASSAULT_BOAT2", 2, 60]
 			];
 		};
-		case (_value > 60 && _value <= 80) : { 
+		case (_value >= 90 && _value < 100) : { 
 			_pool_units = [
 				["TOWNS_SQUAD_NAVAL2", 1, 99],
 				["TOWNS_SQUAD_ASSAULT_BOAT1", 2, 30],
 				["TOWNS_SQUAD_ASSAULT_BOAT2", 2, 70]
 			];
 		};
-		case (_value > 80 && _value <= 100) : { 
+		case (_value >= 100 && _value < 110) : { 
 			_pool_units = [
 				["TOWNS_SQUAD_NAVAL3", 1, 99],
 				["TOWNS_SQUAD_ASSAULT_BOAT1", 3, 30],
 				["TOWNS_SQUAD_ASSAULT_BOAT2", 3, 70],
 				["TOWNS_SQUAD_MEDIUM_ASSAULT_BOAT", 1, 50]
 			];
-		};
-		case (_value > 100 && _value <= 120) : { 
+		}; 
+		case (_value >= 110 && _value < 120) : {
 			_pool_units = [ 
 				["TOWNS_SQUAD_NAVAL3", 1, 99],
 				["TOWNS_SQUAD_ASSAULT_BOAT1", 3, 20],
@@ -271,7 +290,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				["TOWNS_SQUAD_MEDIUM_ASSAULT_BOAT", 2, 90]
 			];
 		};
-		case (_value > 120) : { 
+		case (_value >= 120) : {  
 			_pool_units = [
 				["TOWNS_SQUAD_NAVAL3", 1, 99],
 				["TOWNS_SQUAD_ASSAULT_BOAT1", 3, 10],

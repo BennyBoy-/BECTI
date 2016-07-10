@@ -37,6 +37,8 @@ CTI_CL_FNC_OnTownCaptured = compileFinal preprocessFile "Client\Functions\Client
 CTI_CL_FNC_PurchaseUnit = compileFinal preprocessFile "Client\Functions\Client_PurchaseUnit.sqf";
 CTI_CL_FNC_RemoveRuins = compileFinal preprocessFile "Client\Functions\Client_RemoveRuins.sqf";
 CTI_CL_FNC_LoadBuildMenu = compileFinal preprocessFile "Client\Functions\Client_LoadBuildMenu.sqf";
+CTI_CL_FNC_EarPlugsSpawn = compileFinal preprocessFile "Client\Functions\Externals\cmEarplugs\earplugs_spawn.sqf";
+CTI_CL_FNC_EarPlugsDeath = compileFinal preprocessFile "Client\Functions\Externals\cmEarplugs\earplugs_death.sqf";
 
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateClientAI.sqf";
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateOrders.sqf";
@@ -312,10 +314,19 @@ if ( (missionNamespace getVariable 'CTI_SM_NONV')==1 || (missionNamespace getVar
 	0 execVM "Client\Functions\Client_NvThermR.sqf";
 };
 
+// 3P restrict
+0 execVM "Client\Functions\Client_3pRestrict.sqf";
+
+// Map Markers
+0 execVM "Client\Functions\Externals\MapMarkersTitling.sqf";
+
 //adaptative group size
 if ( CTI_PLAYERS_GROUPSIZE == 0) then {
 	0 execVM "Client\Functions\Client_AdaptGroup.sqf";
 };
+
+//Earplugs
+0 spawn { call CTI_CL_FNC_EarPlugsSpawn; };
 
 if (CTI_DEBUG) then {
 	// hint "DEBUG MODE IS ENABLED! DON'T FORGET TO TURN IT OFF!";

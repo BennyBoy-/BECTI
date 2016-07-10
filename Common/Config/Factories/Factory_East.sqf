@@ -10,6 +10,7 @@ missionNamespace setVariable [format["CTI_%1_Soldier", _side], "O_Soldier_F"];
 missionNamespace setVariable [format["CTI_%1_Crew", _side], "O_crew_F"];
 missionNamespace setVariable [format["CTI_%1_Pilot", _side], "O_Helipilot_F"];
 
+if (CTI_CUP_ADDON > 0) then { 
 missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
 	["O_Truck_03_medical_F", [
 		["CUP_arifle_AK74_GL", 4], ["CUP_30Rnd_762x39_AK47_M", 50],
@@ -23,6 +24,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["SmokeShellRed", 8],
 		["firstaidkit", 20],
 		["Chemlight_red", 36],
+		["acc_flashlight", 10],
 		["Toolkit", 4],
 		["B_Kitbag_cbr", 4]
 	]],
@@ -49,6 +51,30 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 	]]
 	//,	["O_Heli_Light_02_unarmed_F", []]
 ]];
+} else {
+missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
+	["O_Truck_03_medical_F", [
+		["arifle_Katiba_GL_F", 2], ["30rnd_65x39_caseless_green", 50],
+		["launch_RPG32_F", 5], ["RPG32_F", 20],
+		["HandGrenade", 20],
+		["30Rnd_556x45_Stanag", 15],
+		["30Rnd_65x39_caseless_green_mag_Tracer", 6],
+		["1Rnd_HE_Grenade_shell", 24],
+		["UGL_FlareRed_F", 27],
+		["1Rnd_SmokeRed_Grenade_shell", 9],
+		["SmokeShellRed", 8],
+		["firstaidkit", 20],
+		["Chemlight_red", 36],
+		["acc_flashlight", 10],
+		["optic_ACO_grn", 3],
+		["optic_Holosight", 2],
+		["optic_MRCO", 1],
+		["Toolkit", 1],
+		["B_Kitbag_cbr", 4]
+	]],
+	["O_MRAP_02_F", [	["Toolkit", 1],["firstaidkit", 10],["30Rnd_556x45_Stanag", 15],["launch_RPG32_F", 5], ["RPG32_F", 20]]]
+]];
+};
 
 //--- Units - Barracks
 _u = [];
@@ -152,6 +178,16 @@ if (CTI_APEX_ADDON > 0) then {
 	_u pushback 'I_C_Offroad_02_unarmed_F';
 	_u pushBack 'O_T_LSV_02_unarmed_F';
 	_u pushBack 'O_T_LSV_02_armed_F';
+	//reskins
+	_u pushBack 'O_T_Quadbike_01_ghex_F';
+	_u pushBack 'O_T_Truck_03_transport_ghex_F';
+	_u pushBack 'O_T_Truck_03_covered_ghex_F';
+	_u pushBack 'O_T_MRAP_02_ghex_F';
+	_u pushBack 'O_T_MRAP_02_gmg_ghex_F';
+	_u pushBack 'O_T_MRAP_02_hmg_ghex_F';
+	_u pushBack 'O_T_UGV_01_ghex_F';
+	_u pushBack 'O_T_UGV_01_rcws_ghex_F';
+	_u pushBack 'O_T_Truck_03_medical_ghex_F';
 };
 
 //--- CUP UNITS
@@ -206,6 +242,16 @@ _u pushBack "O_APC_Tracked_02_cannon_F";
 _u pushBack "O_MBT_02_cannon_F";
 _u pushBack "O_APC_Tracked_02_AA_F";
 _u pushBack "O_MBT_02_arty_F";
+
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+	//reskins
+	_u pushBack 'O_T_APC_Wheeled_02_rcws_ghex_F';
+	_u pushBack 'O_T_APC_Tracked_02_cannon_ghex_F';
+	_u pushBack 'O_T_MBT_02_cannon_ghex_F';
+	_u pushBack 'O_T_APC_Tracked_02_AA_ghex_F';
+	_u pushBack 'O_T_MBT_02_arty_ghex_F';
+};
 
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
@@ -309,6 +355,13 @@ _u pushBack "O_Truck_03_fuel_F";
 _u pushBack "Land_Pod_Heli_Transport_04_repair_F";
 _u pushBack "Land_Pod_Heli_Transport_04_fuel_F";
 
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+	//reskins
+	_u pushBack 'O_T_Truck_03_fuel_ghex_F';
+	_u pushBack 'O_T_Truck_03_repair_ghex_F';
+};
+
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
 	_u pushBack 'CUP_O_Ural_Refuel_RU';
@@ -327,6 +380,12 @@ _u pushBack "O_Truck_03_Ammo_F";
 _u pushBack "Box_East_Wps_F";
 _u pushBack "O_supplyCrate_F";
 _u pushBack "Land_Pod_Heli_Transport_04_ammo_F";
+
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+	//reskins
+	_u pushBack 'O_T_Truck_03_ammo_ghex_F';
+};
 
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
@@ -350,6 +409,9 @@ _u pushBack 'O_SDV_01_F';
 if (CTI_APEX_ADDON > 0) then { 
 	_u pushBack "C_Scooter_Transport_01_F";
 	_u pushBack "I_C_Boat_Transport_02_F";
+	//reskins
+	_u pushBack 'O_T_Boat_Transport_01_F';
+	_u pushBack 'O_T_Boat_Armed_01_hmg_F';
 };
 
 //--- CUP UNITS

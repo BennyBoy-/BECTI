@@ -85,6 +85,6 @@ if !(isNil {_static getVariable "cti_delegated"}) then {
 _static setVariable ["cti_delegated", true];
 
 //--- Send the creation request to the HC now
-[_static, _ai_args] remoteExec ["CTI_PVF_HC_OnDefenseDelegationLocalityChanged", _hc];
+[_static, _ai_args] remoteExec ["CTI_PVF_HC_OnDefenseDelegationReceived", _hc];
 
 true
