@@ -6,8 +6,8 @@
 //	Version date: 2014.10.16																				//
 //																											//
 //	USE:																									//
-//	1. In mission "init.sqf" add line: "0 = execVM "IgiLoad\IgiLoadInit.sqf";".								//
-//	2. In vehicles "INITIALIZATION" field type: "0 = [this] execVM "IgiLoad\IgiLoad.sqf";"					//
+//	1. In mission "init.sqf" add line: "0 = execVM "Client\Functions\Externals\IgiLoad\IgiLoadInit.sqf";".								//
+//	2. In vehicles "INITIALIZATION" field type: "0 = [this] execVM "Client\Functions\Externals\IgiLoad\IgiLoad.sqf";"					//
 //	3. Unload from script or trigger:																		//
 //		a) Unloading cargo from script. Force unload: "0 = [Car, true, "L"] spawn IL_Do_Unload;"			//
 //		b) Unloading cargo from script. Force unload: "0 = [Car, true] spawn IL_Do_Unload;"					//
