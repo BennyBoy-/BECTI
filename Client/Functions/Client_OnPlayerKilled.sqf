@@ -90,3 +90,6 @@ waitUntil {camCommitted CTI_DeathCamera};
 
 CTI_DeathCamera camSetRelPos [1,1,20];
 CTI_DeathCamera camCommit (missionNamespace getVariable "CTI_RESPAWN_TIMER")+2;
+
+//Call Earplugs on death
+call CTI_CL_FNC_EarPlugsDeath;

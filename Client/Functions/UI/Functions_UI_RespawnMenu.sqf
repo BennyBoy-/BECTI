@@ -291,5 +291,9 @@ CTI_UI_Respawn_OnRespawnReady = {
 	};
 	
 	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
+	
+	//Earplugs
+	player spawn {call CTI_CL_FNC_EarPlugsSpawn; };
+	
 	CTI_P_Respawning = false;
 };

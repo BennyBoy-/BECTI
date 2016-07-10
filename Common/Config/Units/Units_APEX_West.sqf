@@ -14,7 +14,7 @@ _d = []; //--- Extra Distance (From Factory)
 //--- Infantry Pacific
 _c pushBack 'B_T_Soldier_A_F';
 _p pushBack '';
-_n pushBack ["%1 (Pacific)"]; 
+_n pushBack ["%1 (Pacific)"];
 _o pushBack 75;
 _t pushBack 5;
 _u pushBack 0;
@@ -24,7 +24,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_AA_F';
 _p pushBack '';
-_n pushBack ["%1 (Pacific)"]; 
+_n pushBack ["%1 (Pacific)"];
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 1;
@@ -34,7 +34,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_AT_F';
 _p pushBack '';
-_n pushBack ["%1 (Pacific)"]; 
+_n pushBack ["%1 (Pacific)"];
 _o pushBack 450;
 _t pushBack 5;
 _u pushBack 1;
@@ -44,7 +44,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_Soldier_AR_F';
 _p pushBack '';
-_n pushBack ["%1 (Pacific)"]; 
+_n pushBack ["%1 (Pacific)"];
 _o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;

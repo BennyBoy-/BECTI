@@ -42,6 +42,10 @@ class Mission
 		forecastWind=0;
 		forecastWaves=0.099999994;
 		forecastLightnings=0.099999994;
+		rainForced=1;
+		lightningsForced=1;
+		wavesForced=1;
+		windForced=1;
 		year=2012;
 		month=7;
 		day=6;

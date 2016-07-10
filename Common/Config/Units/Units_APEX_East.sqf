@@ -386,7 +386,6 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-
 //--- Light Vehicles
 _c pushBack 'I_C_Offroad_02_unarmed_F';
 _p pushBack '';
@@ -418,11 +417,182 @@ _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'O_T_Quadbike_01_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 75;
+_t pushBack 10;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_T_Truck_03_transport_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 300;
+_t pushBack 15;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_T_Truck_03_covered_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 400;
+_t pushBack 15;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_T_MRAP_02_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 325;
+_t pushBack 15;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_T_MRAP_02_hmg_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 550;
+_t pushBack 20;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_T_MRAP_02_gmg_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 700;
+_t pushBack 20;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_T_UGV_01_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 800;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0; 
+
+_c pushBack 'O_T_UGV_01_rcws_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 1000;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_T_Truck_03_medical_ghex_F';
+_p pushBack '';
+_n pushBack (format ["Wheeled Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
+_o pushBack 4500;
+_t pushBack 20;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "service-medic";
+_d pushBack 0;
+
+_c pushBack 'O_T_APC_Wheeled_02_rcws_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 2500;
+_t pushBack 30;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
 //--- Heavy Vehicles
+
+_c pushBack 'O_T_APC_Tracked_02_cannon_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 10000;
+_t pushBack 30;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_T_MBT_02_cannon_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 28000;
+_t pushBack 30;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_T_APC_Tracked_02_AA_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 6000;
+_t pushBack 30;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_T_MBT_02_arty_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 150000;
+_t pushBack 30;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
 
 //--- Repair Vehicles
 
+_c pushBack 'O_T_Truck_03_repair_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 4000;
+_t pushBack 25;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_REPAIR;
+_s pushBack "service-repairtruck";
+_d pushBack 0;
+
+_c pushBack 'O_T_Truck_03_fuel_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 200;
+_t pushBack 25;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_REPAIR;
+_s pushBack "service-fueltruck";
+_d pushBack 0;
+
 //--- Ammo Vehicles
+
+_c pushBack 'O_T_Truck_03_ammo_ghex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 2000;
+_t pushBack 25;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_AMMO;
+_s pushBack "service-ammotruck";
+_d pushBack 0;
+
 
 //--- Air Vehicles
 _c pushBack 'C_Plane_Civil_01_F';
@@ -483,6 +653,26 @@ _n pushBack '';
 _o pushBack 300;
 _t pushBack 25;
 _u pushBack 0;
+_f pushBack CTI_FACTORY_NAVAL;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_T_Boat_Transport_01_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 275;
+_t pushBack 15;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_NAVAL;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_T_Boat_Armed_01_hmg_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 750;
+_t pushBack 25;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "";
 _d pushBack 0;

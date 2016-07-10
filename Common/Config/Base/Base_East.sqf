@@ -527,5 +527,10 @@ _prices pushBack 		1;
 _placements pushBack 	[0, 5];
 _categories pushBack 	"Structures";
 
+_headers pushBack 		"WindSock";
+_classes pushBack 		"Windsock_01_F";
+_prices pushBack 		1;
+_placements pushBack 	[0, 5];
+_categories pushBack 	"Structures";
 
 [_side, _headers, _classes, _prices, _placements, _categories] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Defenses.sqf";

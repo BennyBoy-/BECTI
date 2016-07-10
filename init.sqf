@@ -107,6 +107,13 @@ execVM "Common\Init\Init_GroupsID.sqf";
 //---Igiload script
 _igiload = execVM "Client\Functions\Externals\IgiLoad\IgiLoadInit.sqf";
 
+//--Drag and drop
+attached = false;
+0 = execVM "Client\Functions\Externals\BDD\Greifer.sqf";
+
+//cmEARPLUGS
+call compile preProcessFileLineNumbers "Client\Functions\Externals\cmEarplugs\config.sqf";
+
 //-- Explosives on Vehicles Script
 waitUntil {time > 0};
 execVM "Client\Actions\Action_Attach_charge.sqf";
@@ -118,6 +125,10 @@ waitUntil {!isNil "EtVInitialized"};
 
 //--- No more weapon sway
 if (local player) then { 
-	player setCustomAimCoef CTI_WEAPON_SWAY; 
-	player addMPEventhandler ["MPRespawn", {player setCustomAimCoef CTI_WEAPON_SWAY;}]; 
+	_swayamount = CTI_WEAPON_SWAY / 100;
+	player setCustomAimCoef _swayamount; 
+	player addMPEventhandler ["MPRespawn", {player setCustomAimCoef _swayamount;}]; 
 };
+
+//Briefing Entries
+0 execVM "Briefing.sqf";

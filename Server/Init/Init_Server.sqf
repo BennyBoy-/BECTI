@@ -227,7 +227,7 @@ if (CTI_ZOMBIE_MODE == 0) then {
 
 // dynamic weather
 execVM "Server\Functions\Server_Weather_Hook.sqf";	
-	
+
 // Fast time compression
 if (CTI_ZOMBIE_MODE == 0) then {
 	0 spawn {
