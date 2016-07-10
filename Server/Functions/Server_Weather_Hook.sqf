@@ -19,7 +19,7 @@ _nexttime = 0;
 _nexttime setRain _rain_setting;
 _nexttime setOvercast _overcast_setting;
 _nexttime setFog [_fog_setting, 0.01 + random (0.04), random(10)];
-setWind [random [-10,0,-10], random [-10,0,-10], false];
+setWind [random [-10,0,10], random [-10,0,10], false];
 _nexttime setWindStr _wind_setting;
 //_nexttime setWindDir random 360;
 _nexttime setWaves _waves_setting;
@@ -40,7 +40,7 @@ while {!CTI_GameOver} do {
 	while {true} do {
 		//update wind every 30min
 		sleep 1800;
-		setWind [random [-10,0,-10], random [-10,0,-10], false];
+		setWind [random [-10,0,10], random [-10,0,10], false];
 		_nexttime setWindStr _wind_setting;
 		//_nexttime setWindDir random 360;
 	}
