@@ -10,7 +10,7 @@ if (CTI_WEATHER_OVERCAST >= 0) then { _overcast_setting = CTI_WEATHER_OVERCAST /
 if (CTI_WEATHER_FOG ==-1) then { _fog_setting = 0 };
 if (CTI_WEATHER_FOG >= 0) then { _fog_setting = CTI_WEATHER_FOG / 100 };
 if (CTI_WEATHER_WIND ==-1) then { _wind_setting = 0 };
-if (CTI_WEATHER_WIND >= 0) then { _wind_setting = CTI_WEATHER_WIND / 100 };
+if (CTI_WEATHER_WIND >= 0) then { _wind_setting = CTI_WEATHER_WIND / 10 };
 if (CTI_WEATHER_WAVES ==-1) then { _waves_setting = 0 };
 if (CTI_WEATHER_WAVES >= 0) then { _waves_setting = CTI_WEATHER_WAVES / 100 };
 
@@ -19,7 +19,9 @@ _nexttime = 0;
 _nexttime setRain _rain_setting;
 _nexttime setOvercast _overcast_setting;
 _nexttime setFog [_fog_setting, 0.01 + random (0.04), random(10)];
-setWind [random 3, random 3, true];
+setWind [random [-10,0,-10], random [-10,0,-10], false];
+_nexttime setWindStr _wind_setting;
+//_nexttime setWindDir random 360;
 _nexttime setWaves _waves_setting;
 _fog_forecast = fogForecast;
 _overcast_forecast = overcastForecast;
@@ -38,7 +40,9 @@ while {!CTI_GameOver} do {
 	while {true} do {
 		//update wind every 30min
 		sleep 1800;
-		setWind [random 3, random 3, true];
+		setWind [random [-10,0,-10], random [-10,0,-10], false];
+		_nexttime setWindStr _wind_setting;
+		//_nexttime setWindDir random 360;
 	}
 }
 

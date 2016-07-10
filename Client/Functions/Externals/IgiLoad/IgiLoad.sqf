@@ -119,7 +119,9 @@ if (isnil "IL_Variables") then
 	// Supported vehicles
 	IL_Supported_Vehicles_OFFROAD = ["C_Offroad_01_F", "B_G_Offroad_01_F", "B_mas_mar_Offroad_01_F"];
 	IL_Supported_Vehicles_VAN = ["C_Van_01_box_F", "B_G_Van_01_transport_F", "C_Van_01_transport_F"];
+	IL_Supported_Vehicles_HEMTT = ["B_Truck_01_Repair_F", "B_Truck_01_medical_F", "B_Truck_01_covered_F", "B_Truck_01_transport_F", "B_Truck_01_box_F", "Marinir_Truck_01_box_FG", "Marinir_Truck_01_transport_FG", "Marinir_Truck_01_covered_FG"];
 	IL_Supported_Vehicles_KAMAZ = ["I_Truck_02_transport_F", "O_Truck_02_transport_F", "I_Truck_02_covered_F", "O_Truck_02_covered_F", "caf_HLVW_open_AR", "caf_HLVW_open", "caf_HLVW_covered_ar", "caf_HLVW_covered"];
+	IL_Supported_Vehicles_TEMPEST = ["O_Truck_03_medical_F","O_Truck_03_repair_F", "O_Truck_03_transport_F", "O_Truck_03_covered_F"];
 	IL_Supported_Vehicles_MOHAWK = ["I_Heli_Transport_02_F", "CH49_Mohawk_FG", "Marinir_CH49_Mohawk_FG", "CUP_B_MH60S_USMC", "CUP_B_CH53E_USMC", "Mi-17 ama", "Mi-8AMT medevac", "Mi-8MT", "Mi-8MTV3"];
 	IL_Supported_Vehicles_CHINOOK = ["CH_147F", "CH_47F", "kyo_MH47E_HC", "kyo_MH47E_Ramp", "kyo_MH47E_base", "CUP_B_MI6A_CDF", "CUP_B_MI6T_CDF"];
 	IL_Supported_Vehicles_MH9 = ["B_Heli_Light_01_F", "B_mas_mar_Heli_Light_01_F"];

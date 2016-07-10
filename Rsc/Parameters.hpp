@@ -324,7 +324,7 @@ class Params {
 		default = 0;
 	};
 	class CTI_WEATHER_RAIN {
-		title = "WEATHER: Rain";
+		title = "WEATHER: Rain (Rain Requires Overcast Greater High)";
 		values[] = {-1,0,30,50,75,100};
 		texts[] = {"Random","Clear","Light","Medium","High","Max"};
 		default = 0;
