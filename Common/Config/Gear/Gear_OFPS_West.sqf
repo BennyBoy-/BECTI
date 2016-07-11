@@ -16,7 +16,7 @@ _p pushBack 500;
 
 _i pushBack "hlc_500rnd_762x51_Cinematic";
 _u pushBack 3;
-_p pushBack 500;
+_p pushBack 1000;
 
 //-- Noob Punisher
 _i pushBack "HLC_wp_M134Painless";
