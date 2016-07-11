@@ -105,19 +105,19 @@ class Params {
 		title = "TOWNS: Resistance Occupation Forces";
 		values[] = {0,1,2,3,4,5,6,7};
 		texts[] = {"Vanilla - AAF","Vanilla - FIA","CUP - ION PMC","CUP - NAPA Chernarus","CUP - Royal Army Corp Of Sahrani","CUP - Takistani Locals","Mixed","Syndikat Paramilitary"};
-		default = 6;
+		default = 4;
 	};
 	class CTI_TOWNS_OCCUPATION_WEST {
 		title = "TOWNS: Blufor Occupation Forces";
 		values[] = {0,1,2,3};
 		texts[] = {"Vanilla","CUP - US Army","Mixed","Pacific Special Forces"};
-		default = 2;
+		default = 1;
 	};
 	class CTI_TOWNS_OCCUPATION_EAST {
 		title = "TOWNS: Opfor Occupation Forces";
 		values[] = {0,1,2,3};
 		texts[] = {"Vanilla","CUP - Russians","Mixed","Pacific Special Forces"};
-		default = 2;
+		default = 1;
 	};
 	class CTI_TOWNS_PEACE {
 		title = "TOWNS: Peace";
@@ -243,7 +243,7 @@ class Params {
 		title = "UNITS: Vehicles Reycling Delay";
 		values[] = {60,120,180,240,300,600,1200,1800,2400,3000,3600};
 		texts[] = {"1 Minute","2 Minutes","3 Minutes","4 Minutes","5 Minutes","10 Minutes","20 Minutes","30 Minutes","40 Minutes","50 Minutes","1 Hour"};
-		default = 600;
+		default = 1200;
 	};
 	class CTI_ARTILLERY_SETUP {
 		title = "ARTILLERY: Setup";
@@ -261,13 +261,13 @@ class Params {
 		title = "GAMEPLAY: 3P view";
 		values[] = {-1,0,1,2};
 		texts[] = {"All","No group view","Vehicle","None"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_WEAPON_SWAY {
 		title = "GAMEPLAY: Weapon Sway Level";
 		values[] = {0,25,50,75,100};
 		texts[] = {"None","Little","Normal","Allot","Full"};
-		default = 50;
+		default = 25;
 	};
 	class CTI_SM_NONV {
 		title = "GAMEPLAY: No NVs, No Thermal";
@@ -315,7 +315,7 @@ class Params {
 		title = "VISUAL: View Distance";
 		values[] = {1000,1500,2000,2500,3000,3500,4000};
 		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM"};
-		default = 2500;
+		default = 3000;
 	};
 	class CTI_WEATHER_INITIAL {
 		title = "WEATHER: Inital Time";
