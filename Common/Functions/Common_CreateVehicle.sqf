@@ -65,6 +65,7 @@ _vehicle allowDamage false;
 _vehicle setDir _direction;
 
 _vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1]; //--- Make the vehicle spawn above the ground level to prevent any bisteries
+_vehicle allowDamage true;
 if (isNull _created) then {
 	_vehicle setDir _direction;
 	//Unmanned Unit fix
