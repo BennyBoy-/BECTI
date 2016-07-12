@@ -153,7 +153,7 @@ cm_EP_LOOP = {
 			if (_checkington == "hasNoMenu") then {
 				_null = _cm_whatImInATM addaction ["<img image='Client\Functions\Externals\cmEarplugs\earplugs.paa' /><t color=""#38eeff""> Earplugs</t>","[] call cm_Earplugs_FUNc","",0,false,false,"","[] call EP_req_1"];							
 				_cm_whatImInATM setVariable ["HasEarplugMenu","hasMenu"];
-				systemChat "Earplugs menu has been added.";
+				//systemChat "Earplugs menu has been added.";
 			};
 			
 		waitUntil {uisleep 0.5; vehicle player == player}; 

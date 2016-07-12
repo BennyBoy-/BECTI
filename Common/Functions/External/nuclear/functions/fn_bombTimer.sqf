@@ -2,7 +2,7 @@ private ["_time", "_object", "_target", "_time_difference"];
 
 cutText ["BOMB ARMED", "PLAIN DOWN"];
 
-_time = 60;
+_time = 600;
 _object = _this select 0;
 
 _object setVariable ["nukearmtime", serverTime, true];
