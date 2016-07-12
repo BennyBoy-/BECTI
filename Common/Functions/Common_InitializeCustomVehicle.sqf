@@ -42,4 +42,7 @@ switch (_script) do {
 	case "service-repairtruck": {_vehicle setVariable ["cti_spec", CTI_SPECIAL_REPAIRTRUCK, true]; if (CTI_IsServer) then {[_vehicle, _side] execFSM "Server\FSM\update_repairtruck.fsm"} else {["repair", [_vehicle, _side]] remoteExec ["CTI_PVF_SRV_RequestHandleSpecialVehicle", CTI_PV_SERVER]}};
 	case "service-ammotruck": {_vehicle setVariable ["cti_spec", CTI_SPECIAL_AMMOTRUCK, true]};
 	case "service-medic": {if ((missionNamespace getVariable "CTI_RESPAWN_MOBILE") > 0) then {_vehicle setVariable ["cti_spec", CTI_SPECIAL_MEDICALVEHICLE, true]}};
+	case "service-gear": {_vehicle setVariable ["cti_spec", [CTI_SPECIAL_GEAR], true]};
+	case "nuke-truck": {_vehicle setVariable ["cti_spec", [CTI_SPECIAL_NUKETRUCK], true]};
+	
 };

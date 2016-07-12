@@ -44,7 +44,7 @@ while {true} do {
 		_x setVariable ["BDD_actionid", _bdd]; // This variable stores the action index of the "drag" action. Which we need so we know which action to remove later.
 	} foreach _gueter;
 	
-sleep 2;
+sleep 4;
 };
 
 hintSilent "Drag&Drop Initialized";

@@ -59,18 +59,26 @@ if (CTI_SPECIAL_REPAIRTRUCK in _special) then { //--- Repair truck.
 if (CTI_SPECIAL_AMMOTRUCK in _special) then { //--- Ammo truck.
 	_marker_size = [0.75,0.75];
 	_marker_type = CTI_P_MarkerPrefix+"support";
+	_vehicle setAmmoCargo 0;  // No free ammo
 };
+
 if (CTI_SPECIAL_MEDICALVEHICLE in _special) then { //--- Medical vehicle.
 	_marker_size = [0.75,0.75];
 	_marker_type = CTI_P_MarkerPrefix+"med";
 };
-if (typeOf _vehicle in (CTI_VEHICLES_HOOKERS+CTI_VEHICLES_HOOKERS_EX)) then {_vehicle addAction ["<t color='#86F078'>Hook (Main)</t>", "Client\Actions\Action_HookMenu.sqf", "", 99, false, true, "", "alive _target && local _target && _this == driver _target"]};
+//if (typeOf _vehicle in (CTI_VEHICLES_HOOKERS+CTI_VEHICLES_HOOKERS_EX)) then {_vehicle addAction ["<t color='#86F078'>Hook (Main)</t>", "Client\Actions\Action_HookMenu.sqf", "", 99, false, true, "", "alive _target && local _target && _this == driver _target"]};
 
 if (_vehicle isKindOf "Ship") then {
 	_vehicle addAction ["<t color='#86F078'>Push</t>","Client\Actions\Action_Push.sqf", [], 99, false, true, "", 'driver _target == _this && alive _target && speed _target < 10'];
 	_vehicle addAction ["<t color='#86F078'>Push (Reverse)</t>","Client\Actions\Action_TaxiReverse.sqf", [], 99, false, true, "", 'driver _target == _this && alive _target && speed _target < 10 && speed _target > -4'];
 };
 if (_vehicle isKindOf "Plane") then {_vehicle addAction ["<t color='#86F078'>Taxi Reverse</t>","Client\Actions\Action_TaxiReverse.sqf", [], 99, false, true, "", 'driver _target == _this && alive _target && speed _target < 4 && speed _target > -4 && getPos _target select 2 < 4']};
+
+if (CTI_SPECIAL_NUKETRUCK in _special) then { //--- Nuke vehicle.
+	_vehicle call {[_this, 30] execvm "Common\Functions\External\nuclear\geiger.sqf"};
+	_vehicle addAction ["<t color='#ff0000'>ARM NUCLEAR DEVICE</t>", "Common\Functions\External\nuclear\functions\fn_bombArm.sqf", [], 93, false, true, "", "_this == player"];
+	//[[[_vehicle], "Common\Functions\External\nuclear\functions\fn_bombTimer.sqf"], "BIS_fnc_execVM", true] call BIS_fnc_MP;
+};
 
 //--- Static Line Drop
 if (_vehicle isKindOf "Plane" || _vehicle isKindOf "Helicopter") then {
