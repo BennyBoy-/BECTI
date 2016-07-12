@@ -363,8 +363,8 @@ _o pushBack 800;
 _t pushBack 20;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_LIGHT;
-_s pushBack "LoadUGV";
-_d pushBack 0; // Radioman - Init LoadUGV script
+_s pushBack "";
+_d pushBack 0; 
 
 _c pushBack 'O_UGV_01_rcws_F';
 _p pushBack '';
@@ -414,6 +414,16 @@ _t pushBack 30;
 _u pushBack 3;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'O_Truck_03_device_F';
+_p pushBack '';
+_n pushBack (format ["Nuke Truck"]);
+_o pushBack 60000;
+_t pushBack 25;
+_u pushBack 4;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "nuke-truck";
 _d pushBack 0;
 
 //--- Heavy Vehicles

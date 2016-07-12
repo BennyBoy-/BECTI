@@ -111,6 +111,9 @@ _igiload = execVM "Client\Functions\Externals\IgiLoad\IgiLoadInit.sqf";
 attached = false;
 0 = execVM "Client\Functions\Externals\BDD\Greifer.sqf";
 
+//--Advanced Rapel
+execVM "Client\Functions\Externals\fn_advancedRappellingInit.sqf";
+
 //cmEARPLUGS
 call compile preProcessFileLineNumbers "Client\Functions\Externals\cmEarplugs\config.sqf";
 

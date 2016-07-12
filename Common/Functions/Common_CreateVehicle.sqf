@@ -87,6 +87,19 @@ if (_handle) then {
 	_vehicle setVariable ["cti_occupant", _side call CTI_CO_FNC_GetSideFromID];
 };
 
+if (getAmmoCargo _vehicle > 0) then {_vehicle setAmmoCargo  0};
+//Clear out the cargo of the vehicle
+clearItemCargoGlobal _vehicle;
+clearMagazineCargoGlobal _vehicle;
+clearWeaponCargoGlobal _vehicle;
+clearBackpackCargoGlobal _vehicle;
+
+//slingload modification
+if (_type isKindOf 'Slingload_01_Base_F') then {_vehicle setmass [4000,0]};
+if (_type isKindOf "Pod_Heli_Transport_04_base_F") then {_vehicle setmass [2000,0]};
+// weight fix
+if ((_vehicle isKindOf "Pod_Heli_Transport_04_base_F") || (_vehicle isKindOf "Slingload_01_Base_F")  ) then { _vehicle setmass [2000,0];};
+		
 //--- ZEUS Curator Editable
 if !(isNil "ADMIN_ZEUS") then {
 	if (CTI_IsServer) then {

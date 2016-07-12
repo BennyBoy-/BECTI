@@ -27,7 +27,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], [
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500,2500,3500], //--- Gear
 	[1500,2500,3500], //--- Barracks
-	[1500,2500,3500], //--- Light
+	[1500,2500,3500,4500], //--- Light
 	[1500,2500,3500], //--- Heavy
 	[1500,2500], //--- Naval
 	[1500,2500,3500], //--- Air
@@ -43,7 +43,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500,2500,3500], //--- Respawn Range
 	[1500], //--- IR SMOKE
 	[75000], //--- Satellite
-	[50000] //--- Nuke
+	[100000] //--- Nuke
 ]];
 
 if (CTI_GUERILLA_MODE == 1 || CTI_ZOMBIE_MODE == 1) then {
@@ -72,7 +72,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	3, //--- Gear
 	3, //--- Barracks
-	3, //--- Light
+	4, //--- Light
 	3, //--- Heavy
 	2, //--- Naval
 	3, //--- Air
@@ -95,7 +95,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[],[],[]], //--- Gear
 	[[],[],[]], //--- Barracks
-	[[],[],[]], //--- Light
+	[[],[],[],[CTI_UPGRADE_NUKE, 1]], //--- Light
 	[[],[],[]], //--- Heavy
 	[[],[]], //--- Naval
 	[[],[],[]], //--- Air
@@ -111,14 +111,14 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[],[],[]], //--- Respawn Range
 	[[]], //--- IR Smoke
 	[[CTI_UPGRADE_AIR, 3]], //--- Satellite
-	[[CTI_UPGRADE_HEAVY,3]] //--- Nuke
+	[[CTI_UPGRADE_LIGHT,3]] //--- Nuke
 ]];
 
 if (CTI_DEV_MODE > 0) then { 
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[1, 1, 1], //--- Gear
 		[1, 1, 1], //--- Barracks
-		[1, 1, 1], //--- Light
+		[1, 1, 1, 1], //--- Light
 		[1, 1, 1], //--- Heavy
 		[1, 1], //--- Naval
 		[1, 1, 1], //--- Air
@@ -140,7 +140,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[60,60,60], //--- Gear
 		[60,60,60], //--- Barracks
-		[60,60,60], //--- Light
+		[60,60,60,60], //--- Light
 		[60,60,60], //--- Heavy
 		[60,60], //--- Naval
 		[60,60,60], //--- Air
@@ -207,7 +207,7 @@ if (CTI_IsClient) then {
 		["Respawn Range", "Increase the max range of the respawn truck."], //--- Respawn Range
 		["(DISABLED) IR Smoke", "Enable IR Smoke Deployment from Vehicles"], //--- IR Smoke
 		["(DISABLED) Satellite", "Allows the use of the satellite camera"], //--- Satellite
-		["(DISABLED) Nuclear Arms Deal", "Unlock Nuke Truck in Light Factory"] //--- Nuke
+		["Nuclear Arms Deal", "Unlock Nuke Truck in Light Factory"] //--- Nuke
 	]];
 };
 

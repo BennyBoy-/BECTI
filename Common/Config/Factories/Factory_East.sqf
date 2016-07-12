@@ -172,6 +172,7 @@ _u pushBack 'O_UGV_01_rcws_F';
 _u pushBack 'O_Truck_02_medical_F';
 _u pushBack 'O_Truck_03_medical_F';
 _u pushBack 'Land_Pod_Heli_Transport_04_medevac_F';
+_u pushBack 'O_Truck_03_device_F';
 
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
@@ -336,7 +337,7 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'sfp_j12_rb15';
 	_u pushBack 'sfp_j12_cap';
 	_u pushBack 'OFPS_BUZAA_O';
-	_u pushBack 'O_PAKFA_F';
+	//_u pushBack 'O_PAKFA_F';
 	_u pushBack 'usaf_b1b';
 	_u pushBack 'pook_tu953M80';
 	_u pushBack 'pook_tu95ms';
