@@ -4,11 +4,11 @@ respawnDelay = 3;
 respawnDialog = false;
 
 //--- Respawn Revive - Doesn't work ATM, needs Benny's touch!
-//respawnTemplates[] = {"Revive"};
-//respawnOnStart = -1;
-//reviveDelay = 15;
-//reviveForceRespawnDelay = 3;
-//reviveBleedOutDelay = 450;
+respawnTemplates[] = {"Revive"};
+respawnOnStart = -1;
+reviveDelay = 15;
+reviveForceRespawnDelay = 3;
+reviveBleedOutDelay = 450;
 
 //--- Require briefing.html to show up.
 onLoadMission = "OFPS Benny Warfare";

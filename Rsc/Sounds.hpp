@@ -62,19 +62,19 @@ class CfgSounds {
 	class AR_Rappel_Loop
 	{
 		name = "AR_Rappel_Loop";
-		sound[] = {"\AR_AdvancedRappelling\sounds\AR_Rappel_Loop.ogg",10,1};
+		sound[] = {"Rsc\Sounds\AR_Rappel_Loop.ogg",10,1};
 		titles[] = {0,""};
 	};
 	class AR_Rappel_Start
 	{
 		name = "AR_Rappel_Start";
-		sound[] = {"\AR_AdvancedRappelling\sounds\AR_Rappel_Start.ogg",10,1};
+		sound[] = {"Rsc\Sounds\AR_Rappel_Start.ogg",10,1};
 		titles[] = {0,""};
 	};
 	class AR_Rappel_End
 	{
 		name = "AR_Rappel_End";
-		sound[] = {"\AR_AdvancedRappelling\sounds\AR_Rappel_End.ogg",10,1};
+		sound[] = {"Rsc\Sounds\AR_Rappel_End.ogg",10,1};
 		titles[] = {0,""};
 	};
 };
