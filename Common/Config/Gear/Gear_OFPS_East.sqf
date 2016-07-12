@@ -23,12 +23,12 @@ _p pushBack 5;
 
 //-- Magazines
 _i pushBack "hlc_500rnd_762x51_Belt";
-_u pushBack 2;
-_p pushBack 50;
+_u pushBack 3;
+_p pushBack 500;
 
 _i pushBack "hlc_500rnd_762x51_Cinematic";
-_u pushBack 2;
-_p pushBack 50;
+_u pushBack 3;
+_p pushBack 1000;
 
 //-- Noob Punisher
 _i pushBack "HLC_wp_M134Painless";

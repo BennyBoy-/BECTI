@@ -25,19 +25,23 @@ _p pushBack 50;
 
 _i pushBack "CUP_arifle_AK74";  
 _u pushBack 0;
-_p pushBack 75;
+_p pushBack 50;
 
 _i pushBack "CUP_arifle_AK74M";
 _u pushBack 0;
-_p pushBack 75;
+_p pushBack 50;
 
 _i pushBack "CUP_arifle_AK74_GL";
+_u pushBack 0;
+_p pushBack 75;
+
+_i pushBack "CUP_arifle_AK74_GL_kobra";
 _u pushBack 0;
 _p pushBack 100;
 
 _i pushBack "CUP_arifle_AKS";
-_u pushBack 1;
-_p pushBack 100;
+_u pushBack 0;
+_p pushBack 50;
 
 _i pushBack "CUP_arifle_AKS_Gold";
 _u pushBack 1;
@@ -45,11 +49,15 @@ _p pushBack 600;
 
 _i pushBack "CUP_arifle_AKS74";
 _u pushBack 1;
-_p pushBack 100;
+_p pushBack 50;
+
+_i pushBack "CUP_arifle_AKS74_kobra";
+_u pushBack 1;
+_p pushBack 75;
 
 _i pushBack "CUP_arifle_AKS74U";
 _u pushBack 1;
-_p pushBack 100;
+_p pushBack 50;
 
 _i pushBack "CUP_arifle_AK107";
 _u pushBack 1;
