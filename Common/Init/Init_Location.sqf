@@ -23,6 +23,9 @@ if (CTI_IsServer) then {
 	_town setVariable ["cti_town_lastSideID", _sideID, true];
 	_town setVariable ["cti_town_sideID", _sideID, true];
 	
+	//--- Update the flag texture
+	if (typeOf _town == "FlagPole_F") then {_town setFlagTexture (missionNamespace getVariable [format["%1_TOWNS_FLAG_TEXTURE", _town_side], CTI_TOWNS_FLAG_TEXTURE_PEACE])};
+	
 	(_town) execFSM "Server\FSM\town_capture.fsm";
 	(_town) execFSM "Server\FSM\town_resistance.fsm";
 	if (missionNamespace getVariable "CTI_TOWNS_OCCUPATION" > 0) then {(_town) execFSM "Server\FSM\town_occupation.fsm"};
