@@ -215,28 +215,28 @@ class CTI_RscPurchaseMenu {
 		
 		class CTI_Menu_UnitsListFrame : RscFrame {
 			x = "SafeZoneX + (SafeZoneW * 0.225)";
-			y = "SafeZoneY + (SafezoneH * 0.419)";
+			y = "SafeZoneY + (SafezoneH * 0.415)";
 			w = "SafeZoneW * 0.275";
-			h = "SafeZoneH * 0.391";
+			h = "SafeZoneH * 0.398";
 		};
 		class CTI_Menu_Info : CTI_Menu_UnitsListFrame {
 			y = "SafeZoneY + (SafezoneH * 0.245)";
-			h = "SafeZoneH * 0.064";
+			h = "SafeZoneH * 0.060";
 		};
 		class CTI_Menu_Info_Background : RscText {
 			x = "SafeZoneX + (SafeZoneW * 0.225)";
 			y = "SafeZoneY + (SafezoneH * 0.245)";
 			w = "SafeZoneW * 0.275";
-			h = "SafeZoneH * 0.064";
+			h = "SafeZoneH * 0.060";
 			colorBackground[] = {0.5, 0.5, 0.5, 0.25};
 		};
 		class CTI_Menu_ResourcesInfo_Background : CTI_Menu_Info_Background {
-			y = "SafeZoneY + (SafezoneH * 0.373)";
+			y = "SafeZoneY + (SafezoneH * 0.369)";
 			h = "SafeZoneH * 0.030";
 		};
 		
 		class CTI_Menu_SubInfo : CTI_Menu_Info {
-			y = "SafeZoneY + (SafezoneH * 0.325)";
+			y = "SafeZoneY + (SafezoneH * 0.321)";
 			h = "SafeZoneH * 0.078";
 		};
 		
@@ -315,7 +315,7 @@ class CTI_RscPurchaseMenu {
 			
 			x = "SafeZoneX + (SafeZoneW * 0.6725)";
 		};
-		class CTI_Icon_Barracks : RscActiveText {
+		/*class CTI_Icon_Barracks : RscActiveText {
 			idc = 110001;
 			style = ST_KEEP_ASPECT_RATIO;
 			x = "SafeZoneX + (SafeZoneW * 0.225)";
@@ -374,11 +374,84 @@ class CTI_RscPurchaseMenu {
 			text = "Rsc\Pictures\icon_wf_building_naval.paa";
 			action = "['onIconSet', 6, CTI_NAVAL] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
 		};
+		class CTI_Icon_Depot : CTI_Icon_Barracks {
+			idc = 110008;
+			x = "SafeZoneX + (SafeZoneW * 0.47)";
+			
+			text = "Rsc\Pictures\icon_wf_building_depot.paa";
+			action = "['onIconSet', 7, CTI_FACTORY_DEPOT] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};*/
+		class CTI_Icon_Barracks : RscActiveText {
+			idc = 110001;
+			style = ST_KEEP_ASPECT_RATIO;
+			x = "SafeZoneX + (SafeZoneW * 0.226)";
+			y = "SafeZoneY + (SafezoneH * 0.243)";
+			w = "SafeZoneW * 0.034";
+			h = "SafeZoneH * 0.064";
+			
+			color[] = {0.75,0.75,0.75,0.7};
+			colorActive[] = {1,1,1,0.7};
+			colorBackground[] = {0.6, 0.8392, 0.4706, 0.7};
+			colorBackgroundSelected[] = {0.6, 0.8392, 0.4706, 0.7};
+			colorFocused[] = {0.0, 0.0, 0.0, 0};
+			
+			text = "Rsc\Pictures\icon_wf_building_barracks.paa";
+			action = "['onIconSet', 0, CTI_BARRACKS] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
+		class CTI_Icon_Light : CTI_Icon_Barracks {
+			idc = 110002;
+			x = "SafeZoneX + (SafeZoneW * 0.26)";
+			
+			text = "Rsc\Pictures\icon_wf_building_lvs.paa";
+			action = "['onIconSet', 1, CTI_LIGHT] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
+		class CTI_Icon_Heavy : CTI_Icon_Barracks {
+			idc = 110003;
+			x = "SafeZoneX + (SafeZoneW * 0.294)";
+			
+			text = "Rsc\Pictures\icon_wf_building_hvs.paa";
+			action = "['onIconSet', 2, CTI_HEAVY] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
+		class CTI_Icon_Air : CTI_Icon_Barracks {
+			idc = 110004;
+			x = "SafeZoneX + (SafeZoneW * 0.328)";
+			
+			text = "Rsc\Pictures\icon_wf_building_air.paa";
+			action = "['onIconSet', 3, CTI_AIR] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
+		class CTI_Icon_Repair : CTI_Icon_Barracks {
+			idc = 110005;
+			x = "SafeZoneX + (SafeZoneW * 0.362)";
+			
+			text = "Rsc\Pictures\icon_wf_building_repair.paa";
+			action = "['onIconSet', 4, CTI_REPAIR] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
+		class CTI_Icon_Ammo : CTI_Icon_Barracks {
+			idc = 110006;
+			x = "SafeZoneX + (SafeZoneW * 0.396)";
+			
+			text = "Rsc\Pictures\icon_wf_building_ammo.paa";
+			action = "['onIconSet', 5, CTI_AMMO] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
+		class CTI_Icon_Naval : CTI_Icon_Barracks {
+			idc = 110007;
+			x = "SafeZoneX + (SafeZoneW * 0.43)";
+			
+			text = "Rsc\Pictures\icon_wf_building_naval.paa";
+			action = "['onIconSet', 6, CTI_NAVAL] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
+		class CTI_Icon_Depot : CTI_Icon_Barracks {
+			idc = 110008;
+			x = "SafeZoneX + (SafeZoneW * 0.464)";
+			
+			text = "Rsc\Pictures\icon_wf_building_depot.paa";
+			action = "['onIconSet', 7, CTI_DEPOT] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
 		
 		class CTI_Icon_Driver : CTI_Icon_Barracks {
 			idc = 110100;
 			x = "SafeZoneX + (SafeZoneW * 0.34)";
-			y = "SafeZoneY + (SafezoneH * 0.325)";
+			y = "SafeZoneY + (SafezoneH * 0.321)";
 			w = "SafeZoneW * 0.03";
 			h = "SafeZoneH * 0.048";
 			
@@ -427,12 +500,13 @@ class CTI_RscPurchaseMenu {
 			idc = 111007;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.225)";
-			y = "SafeZoneY + (SafezoneH * 0.419)";
+			y = "SafeZoneY + (SafezoneH * 0.415)";
 			w = "SafeZoneW * 0.275";
-			h = "SafeZoneH * 0.391";
+			h = "SafeZoneH * 0.398";
 			
 			// rowHeight = "1.5 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-			rowHeight = "1.35 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			// rowHeight = "1.35 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			rowHeight = "1.4 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 			sizeEx = "0.78 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 			
 			colorText[] = {1,1,1,1};
@@ -446,7 +520,7 @@ class CTI_RscPurchaseMenu {
 		};
 		
 		class CTI_Menu_ComboTeam : RscCombo {
-			idc = 110008;
+			idc = 110016;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.6075)";
 			y = "SafeZoneY + (SafezoneH * 0.257)";
@@ -512,7 +586,7 @@ class CTI_RscPurchaseMenu {
 		class CTI_Menu_Control_Cost : RscStructuredText {
 			idc = 110014;
 			x = "SafeZoneX + (SafeZoneW * 0.225)";
-			y = "SafeZoneY + (SafezoneH * 0.373)";
+			y = "SafeZoneY + (SafezoneH * 0.369)";
 			w = "SafeZoneW * 0.1375";
 			h = "SafeZoneH * 0.03";
 			

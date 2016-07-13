@@ -197,30 +197,32 @@ if (_attempts >= 500) then {
 	{_x Spawn CTI_SE_FNC_VoteForCommander} forEach CTI_PLAYABLE_SIDES;
 };
 
-// Date init
-_it=0;
-_possible_it_off=[0,0,0,0,0,0,6,6,6,12,12,12,18];
-if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 10) then {
-	_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL")*6;
-} else {
-	_it= _possible_it_off select floor random (count _possible_it_off);
-};
-skipTime _it;
+if (missionNamespace getVariable "CTI_DEV_MODE" < 1) then {
+	// Date init
+	_it=0;
+	_possible_it_off=[0,0,0,0,0,0,6,6,6,12,12,12,18];
+	if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 10) then {
+		_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL")*6;
+	} else {
+		_it= _possible_it_off select floor random (count _possible_it_off);
+	};
+	skipTime _it;
 
-// dynamic wheather
-0 spawn CTI_SE_FNC_Weather_Hook;
-		
-// Fast time compression
-0 spawn {
-	_day_ratio = 14/CTI_WEATHER_FAST;
-	_night_ratio = 10/CTI_WEATHER_FAST_NIGHT;
-	while {!CTI_Gameover} do {
-		if (daytime > 5 && daytime <19 ) then {
-			if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio ; };
-		} else {
-			if (timeMultiplier !=  _night_ratio) then {setTimeMultiplier _night_ratio ; };
+	// dynamic wheather
+	0 spawn CTI_SE_FNC_Weather_Hook;
+			
+	// Fast time compression
+	0 spawn {
+		_day_ratio = 14/CTI_WEATHER_FAST;
+		_night_ratio = 10/CTI_WEATHER_FAST_NIGHT;
+		while {!CTI_Gameover} do {
+			if (daytime > 5 && daytime <19 ) then {
+				if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio ; };
+			} else {
+				if (timeMultiplier !=  _night_ratio) then {setTimeMultiplier _night_ratio ; };
+			};
+			sleep 120;
 		};
-		sleep 120;
 	};
 };
 

@@ -13,6 +13,11 @@ _source = _this select 1;
 _areaSize = _this select 2;
 
 _startPos = getPos _origin;
+
+//--- Check if the HQ is within a construction area
+if (_source == 'HQ') then {
+	{if (_startPos distance2D _x <= CTI_BASE_AREA_RANGE) exitWith {_startPos = _x}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
+};
 /*
 //--- HQ Area checkin
 _area_max = false;
