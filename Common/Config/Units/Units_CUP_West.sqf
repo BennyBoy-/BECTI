@@ -544,6 +544,27 @@ _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'CUP_B_Wolfhound_GMG_GB_W';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 800;
+_t pushBack 10;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+
+_c pushBack 'CUP_B_Wolfhound_HMG_GB_W';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 800;
+_t pushBack 10;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'CUP_B_Ridgback_GMG_GB_D';
 _p pushBack '';
 _n pushBack '';
@@ -952,10 +973,20 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_C_C47_CIV';
+_c pushBack 'CUP_B_C47_USA';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 2000;
+_t pushBack 20;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_AC47_Spooky_USA';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 30000;
 _t pushBack 20;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_AIR;
