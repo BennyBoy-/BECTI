@@ -1,4 +1,6 @@
 with missionNamespace do {
+	WEST_TOWNS_FLAG_TEXTURE = "\A3\Data_F\Flags\Flag_blue_CO.paa";
+
 if (CTI_TOWNS_OCCUPATION_WEST == 0) then { 
 //--- VANILLA TOWN OCCUPATION
 //--- Infantry
