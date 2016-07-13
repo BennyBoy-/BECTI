@@ -368,6 +368,8 @@ CTI_TOWNS_SUPPLY_TIME_INCREASE = 1; //--- Determine the town SV increment when t
 //--- Towns: Territorial
 CTI_TOWNS_TERRITORIAL_MARKER_SIZE = [350, 350]; //--- Size of the helper marker
 
+CTI_TOWNS_FLAG_TEXTURE_PEACE = "\A3\Data_F\Flags\Flag_white_CO.paa"; //--- Determines the texture used by a town's flag in peace mode
+
 //--- Towns: Parameters
 with missionNamespace do {
 	if (isNil 'CTI_TOWNS_OCCUPATION') then {CTI_TOWNS_OCCUPATION = 1}; //--- Determine whether occupation is enabled or not
