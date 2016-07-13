@@ -525,7 +525,7 @@ _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_O_ZSU23_CSAT.jpg';
+_c pushBack 'CUP_O_ZSU23_CSAT';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 5000;
