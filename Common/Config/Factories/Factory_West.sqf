@@ -227,6 +227,8 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_Mastiff_HMG_GB_D';
 	_u pushBack 'CUP_B_Ridgback_GMG_GB_D';
 	_u pushBack 'CUP_B_Ridgback_HMG_GB_D';
+	_u pushBack 'CUP_B_Wolfhound_GMG_GB_W';
+	_u pushBack 'CUP_B_Wolfhound_HMG_GB_W';
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
@@ -326,6 +328,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_AV8B_GBU12_USMC';
 	_u pushBack 'CUP_B_F35B_AA_USMC';
 	_u pushBack 'CUP_B_F35B_LGB_USMC';
+	_u pushBack 'CUP_B_AC47_Spooky_USA';
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 

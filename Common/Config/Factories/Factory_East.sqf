@@ -35,14 +35,14 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["CUP_launch_RPG18", 5],
 		["CUP_RPG18_M", 10]
 	]],
-	["OFPS_BRDM2", [
+	["CUP_O_BRDM2_CSAT", [
 		["Toolkit", 2],
 		["firstaidkit", 10],
 		["CUP_30Rnd_762x39_AK47_M", 25],
 		["CUP_launch_RPG18", 5],
 		["CUP_RPG18_M", 10]
 	]],
-	["OFPS_BTR60", [
+	["CUP_O_BTR60_CSAT", [
 		["Toolkit", 2],
 		["firstaidkit", 10],
 		["CUP_30Rnd_762x39_AK47_M", 25],
@@ -200,10 +200,10 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_I_SUV_Armored_ION';
 	_u pushBack 'CUP_C_Datsun';
 	_u pushBack 'CUP_O_Datsun_PK_Random';
-	_u pushBack 'OFPS_BRDM2';
-	_u pushBack 'OFPS_BRDM2ATGM';
-	_u pushBack 'OFPS_BRDM2HQ';
-	_u pushBack 'OFPS_BTR60';
+	_u pushBack 'CUP_O_BRDM2_CSAT';
+	_u pushBack 'CUP_O_BRDM2_ATGM_CSAT';
+	_u pushBack 'CUP_O_BRDM2_HQ_CSAT';
+	_u pushBack 'CUP_O_BTR60_CSAT';
 	_u pushBack 'CUP_O_BTR90_RU';
 	_u pushBack 'CUP_O_BTR90_HQ_RU';
 	_u pushBack 'CUP_B_LR_Ambulance_CZ_W';
@@ -213,11 +213,11 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'OFPS_LR_SX';
 	_u pushBack 'CUP_C_LR_Transport_CTK';
 	_u pushBack 'CUP_B_UAZ_Unarmed_CDF';
-	_u pushBack 'OFPS_UAZ_AGS30';
-	_u pushBack 'OFPS_UAZ_MG';
-	_u pushBack 'OFPS_UAZ_METIS';
-	_u pushBack 'OFPS_UAZ';
-	_u pushBack 'OFPS_UAZ_SPG9';
+	_u pushBack 'CUP_O_UAZ_AGS30_CSAT';
+	_u pushBack 'CUP_O_UAZ_MG_CSAT';
+	_u pushBack 'CUP_O_UAZ_METIS_CSAT';
+	_u pushBack 'CUP_O_UAZ_Open_CSAT';
+	_u pushBack 'CUP_O_UAZ_SPG9_CSAT';
 	_u pushBack 'CUP_O_Ural_RU';
 	_u pushBack 'CUP_O_Ural_Empty_RU';
 	_u pushBack 'CUP_O_Ural_Open_RU';
@@ -228,6 +228,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_GAZ_Vodnik_AGS_RU';
 	_u pushBack 'CUP_O_GAZ_Vodnik_BPPU_RU';
 	_u pushBack 'CUP_O_GAZ_Vodnik_MedEvac_RU';
+	_u pushBack 'CUP_I_Datsun_PK';
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
@@ -256,15 +257,16 @@ if (CTI_APEX_ADDON > 0) then {
 
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
-	_u pushBack 'OFPS_BMP1';
-	_u pushBack 'OFPS_BMP1P';
-	_u pushBack 'OFPS_BMP2';
-	_u pushBack 'OFPS_BMP2_HQ';
-	_u pushBack 'OFPS_BMP2_M';
-	_u pushBack 'OFPS_BMP2_ZSU';
-	_u pushBack 'OFPS_T55';
-	_u pushBack 'OFPS_T72A';
-	_u pushBack 'OFPS_ZSU23';
+	_u pushBack 'CUP_O_BMP1_CSAT';
+	_u pushBack 'CUP_O_BMP1P_CSAT';
+	_u pushBack 'CUP_O_BMP2_CSAT';
+	_u pushBack 'CUP_O_BMP_HQ_CSAT';
+	_u pushBack 'CUP_O_BMP2_AMB_CSAT';
+	_u pushBack 'CUP_O_BMP2_ZU_CSAT';
+	_u pushBack 'CUP_O_T55_CSAT';
+	_u pushBack 'CUP_O_T72_CSAT';
+	_u pushBack 'CUP_B_T72_CZ';
+	_u pushBack 'CUP_O_ZSU23_CSAT';
 	_u pushBack 'CUP_O_BM21_RU';
 	_u pushBack 'CUP_O_2S6M_RU';
 	_u pushBack 'OFPS_BMP3';
@@ -301,6 +303,7 @@ if (CTI_APEX_ADDON > 0) then {
 
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
+	_u pushBack 'CUP_RU_Pchela1T';
 	_u pushBack 'CUP_O_UH1H_TKA';
 	_u pushBack 'CUP_O_Mi8_CHDKZ';
 	_u pushBack 'CUP_O_Mi8_SLA_2';
@@ -319,8 +322,8 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_C130J_TKA';
 	_u pushBack 'CUP_O_C130J_Cargo_TKA';
 	_u pushBack 'OFPS_SU25';
-	_u pushBack 'OFPS_SU34_LGB';
-	_u pushBack 'OFPS_SU34_AGM';
+	_u pushBack 'CUP_O_SU34_LGB_CSAT';
+	_u pushBack 'CUP_O_SU34_AGM_CSAT';
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
