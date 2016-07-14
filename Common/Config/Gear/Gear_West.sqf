@@ -127,7 +127,7 @@ _p pushBack 4;
 
 _i pushBack "NLAW_F";
 _u pushBack 0;
-_p pushBack 50;
+_p pushBack 200;
 
 _i pushBack "Titan_AA";
 _u pushBack 0;
@@ -560,7 +560,7 @@ _p pushBack 100;
 
 _i pushBack "launch_NLAW_F";
 _u pushBack 0;
-_p pushBack 100;
+_p pushBack 1000;
 
 _i pushBack "launch_B_Titan_F";
 _u pushBack 0;
