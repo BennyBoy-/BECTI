@@ -496,17 +496,17 @@ _p pushBack 1000;
 */
 _i pushBack "CUP_BAF_NLAW_Launcher";
 _u pushBack 3;
-_p pushBack 3000;
+_p pushBack 1000;
 
 //FGM-148 Javelin Family
 
 _i pushBack "CUP_launch_Javelin";
 _u pushBack 3;
-_p pushBack 7000;
+_p pushBack 3000;
 /*
 _i pushBack "CUP_Javelin";
 _u pushBack 3;
-_p pushBack 2500;
+_p pushBack 2000;
 */
 //MK153 SMAW Family
 
@@ -1225,7 +1225,7 @@ _p pushBack 150;
 
 _i pushBack "CUP_MAAWS_HEAT_M";
 _u pushBack 1;
-_p pushBack 100;
+_p pushBack 200;
 
 _i pushBack "CUP_NLAW_M";
 _u pushBack 3;
@@ -1233,35 +1233,15 @@ _p pushBack 400;
 
 _i pushBack "CUP_SMAW_HEAA_M";
 _u pushBack 2;
-_p pushBack 100;
+_p pushBack 150;
 
 _i pushBack "CUP_SMAW_HEDP_M";
 _u pushBack 2;
-_p pushBack 350;
-
-_i pushBack "CUP_MAAWS_HEDP_M";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "CUP_MAAWS_HEAT_M";
-_u pushBack 0;
-_p pushBack 100;
+_p pushBack 150;
 
 _i pushBack "CUP_AT13_M";
 _u pushBack 0;
-_p pushBack 200;
-
-_i pushBack "CUP_NLAW_M";
-_u pushBack 0;
-_p pushBack 200;
-
-_i pushBack "CUP_SMAW_HEAA_M";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "CUP_SMAW_HEDP_M";
-_u pushBack 0;
-_p pushBack 100;
+_p pushBack 400;
 
 
 //--CUP Attachments
