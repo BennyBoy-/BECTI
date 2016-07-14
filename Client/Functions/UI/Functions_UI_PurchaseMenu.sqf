@@ -71,6 +71,11 @@ CTI_UI_Purchase_FillUnitsList = {
 	
 	lnbClear ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007);
 	
+	//--- If we're dealing with a depot, determine whether it is on ground or on water
+	if (_type == CTI_DEPOT) then {
+		if (((uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory") getVariable "cti_depot") getVariable ["cti_naval", false]) then {_type = CTI_DEPOT_NAVAL};
+	};
+	
 	_upgrade = switch (_type) do {
 		case CTI_BARRACKS: {CTI_UPGRADE_BARRACKS};
 		case CTI_LIGHT: {CTI_UPGRADE_LIGHT};

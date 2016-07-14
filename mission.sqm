@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=125;
+		nextID=136;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2209.8831,162.37219,2730.425};
-		dir[]={0.8252241,-0.12930398,0.54996169};
-		up[]={0.10770269,0.99157417,0.071779273};
-		aside[]={0.55462265,3.4837285e-007,-0.83221138};
+		pos[]={5000.7871,241.49232,5807.3872};
+		dir[]={-0.11369058,-0.38664785,0.91520733};
+		up[]={-0.047665477,0.92222255,0.38370499};
+		aside[]={0.99238354,-2.8616341e-008,0.12327807};
 	};
 };
 binarizationWanted=0;
@@ -68,7 +68,7 @@ class AddonsMetaData
 		class Item4
 		{
 			className="A3_Modules_F_Curator";
-			name="Arma 3 Zeus Update - Scripted features";
+			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
@@ -104,7 +104,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=85;
+		items=86;
 		class Item0
 		{
 			dataType="Marker";
@@ -306,7 +306,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Camp Rogain"", resistance, 20, 80] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Camp Rogain"", west, 20, 80] execVM ""Common\Init\Init_Location.sqf""";
 				name="CampRogain";
 			};
 			id=20;
@@ -604,7 +604,8 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={3763.1663,9.4672222,7958.0659};
+				position[]={3763.3123,9.4883099,7958.0161};
+				angles[]={0.034986377,0,0.13173254};
 			};
 			name="CTI_EAST";
 			id=36;
@@ -1995,6 +1996,23 @@ class Mission
 				};
 				nAttributes=5;
 			};
+		};
+		class Item85
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={5022.7983,209.63042,5916.1909};
+				angles[]={6.2656889,3.1816654,0.027492445};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="this setVariable [""cti_depot"", CampRogain];";
+			};
+			id=132;
+			type="Land_BagBunker_Large_F";
 		};
 	};
 	class Connections
