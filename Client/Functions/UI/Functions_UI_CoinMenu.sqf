@@ -242,7 +242,7 @@ CTI_Coin_UpdateBaseAreaLimits = {
 	with missionNamespace do {
 		if (CTI_COIN_SOURCE == 'HQ') then {
 			_in_area = false;
-			{if ([_position select 0, _position select 1] distance [_x select 0, _x select 1] <= CTI_BASE_AREA_RANGE) exitWith {_in_area = true}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
+			{if (_position distance2D _x <= CTI_BASE_AREA_RANGE) exitWith {_in_area = true}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
 			
 			if !(_in_area) then {
 				if (count (CTI_P_SideLogic getVariable "cti_structures_areas") < (missionNamespace getVariable "CTI_BASE_AREA_MAX")) then {
@@ -341,7 +341,11 @@ CTI_Coin_OnHQToggle = {
 			
 			//--- Update the camera area
 			_areaSize = if (CTI_P_SideJoined call CTI_CO_FNC_IsHQDeployed) then {CTI_COIN_AREA_HQ_DEPLOYED} else {CTI_COIN_AREA_HQ_MOBILIZED};
-			if !(isNil 'CTI_COIN_CAMCONSTRUCT') then {CTI_COIN_CAMCONSTRUCT camConstuctionSetParams ([getPos (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ)] + _areaSize)};
+			if !(isNil 'CTI_COIN_CAMCONSTRUCT') then {
+				_position = getPos (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ);
+				{if (_position distance2D _x <= CTI_BASE_AREA_RANGE) exitWith {_position = _x}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
+				CTI_COIN_CAMCONSTRUCT camConstuctionSetParams ([_position] + _areaSize);
+			};
 			CTI_COIN_RANGE = _areaSize select 0;
 		};
 		
