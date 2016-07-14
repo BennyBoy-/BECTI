@@ -7054,8 +7054,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={6380.1655,4.6703644,2370.8901};
-				angles[]={0,3.1415901,0};
+				position[]={6377.1655,3.6703644,2372.8901};
+				angles[]={0,1.5708,0};
 			};
 			side="Empty";
 			flags=1;
@@ -7065,15 +7065,15 @@ class Mission
 			};
 			id=198;
 			type="Land_Lighthouse_small_F";
-			atlOffset=96.243805;
+			atlOffset=95.3584;
 		};
 		class Item176
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={2080.7549,4.6708603,7204.6475};
-				angles[]={0,3.1415901,0};
+				position[]={2077.7549,3.6708603,7206.6475};
+				angles[]={0,1.5708,0};
 			};
 			side="Empty";
 			flags=1;
@@ -7083,15 +7083,15 @@ class Mission
 			};
 			id=199;
 			type="Land_Lighthouse_small_F";
-			atlOffset=48.534805;
+			atlOffset=47.6688;
 		};
 		class Item177
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={491.12131,4.6703644,3097.9604};
-				angles[]={0,3.1415901,0};
+				position[]={488.12131,3.6703644,3099.9604};
+				angles[]={0,1.5708,0};
 			};
 			side="Empty";
 			flags=1;
@@ -7101,7 +7101,7 @@ class Mission
 			};
 			id=200;
 			type="Land_Lighthouse_small_F";
-			atlOffset=119.50576;
+			atlOffset=118.586;
 		};
 		class Item178
 		{

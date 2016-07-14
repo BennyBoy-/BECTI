@@ -333,7 +333,7 @@ CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI
 
 //--- Towns: Depot
 CTI_TOWNS_DEPOT_BUILD_DIRECTION = 0; //--- Determine the direction a vehicle will use while being spawned from the depot
-CTI_TOWNS_DEPOT_BUILD_DISTANCE = 25; //--- Determine how far a unit/vehicle will spawn from the depot
+CTI_TOWNS_DEPOT_BUILD_DISTANCE = 20; //--- Determine how far a unit/vehicle will spawn from the depot
 CTI_TOWNS_DEPOT_CLASSNAME = ["Land_BagBunker_Large_F","Land_BagBunker_large_green_F","Land_Lighthouse_small_F"]; //--- The classname(s) used for town depots in editor
 CTI_TOWNS_DEPOT_RANGE = 15; //--- Determine how far a player needs to be from a depot in order to use it
 
