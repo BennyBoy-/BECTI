@@ -524,7 +524,7 @@ with missionNamespace do {
 CTI_ARTILLERY_FILTER = 1; //--- Toggle artillery magazines like mines and AT mines (0: Disabled, 1: Enabled)
 CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
 
-CTI_BOUNTY_COEF = 1.2; //--- Bounty coefficient multiplicator based on the unit original cost
+CTI_BOUNTY_COEF = 0.70; //--- Bounty coefficient multiplicator based on the unit original cost
 CTI_BOUNTY_COEF_PVP = 1; //--- Bounty coefficient multiplicator based on the killed unit score
 
 CTI_COIN_AREA_DEFAULT = [30, 10];
