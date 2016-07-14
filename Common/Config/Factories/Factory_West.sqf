@@ -415,3 +415,9 @@ if (CTI_OFPS_ADDON > 0) then {
 };
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
+
+_u = [];
+_u pushBack "B_Quadbike_01_F";
+_u pushBack "B_G_Offroad_01_F";
+
+missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_DEPOT], _u];

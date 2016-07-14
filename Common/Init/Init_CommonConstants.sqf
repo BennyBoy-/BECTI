@@ -6,7 +6,8 @@ CTI_FACTORY_AIR = 3;
 CTI_FACTORY_REPAIR = 4;
 CTI_FACTORY_AMMO = 5;
 CTI_FACTORY_NAVAL = 6;
-CTI_FACTORY_RADAR = 7;
+CTI_FACTORY_DEPOT = 7;
+CTI_FACTORY_RADAR = 8;
 
 CTI_PV_SERVER = 2;
 CTI_PV_CLIENTS = -2;
@@ -19,6 +20,7 @@ CTI_AIR = "Air";
 CTI_REPAIR = "Repair";
 CTI_AMMO = "Ammo";
 CTI_NAVAL = "Naval";
+CTI_DEPOT = "Depot";
 CTI_RADAR = "Radar";
 CTI_HQ_DEPLOY = "HQDeployed";
 CTI_HQ_MOBILIZE = "HQMobilized";
@@ -327,6 +329,12 @@ CTI_TOWNS_CAPTURE_RATE = 1; //--- Determine how fast a town may be captured/prot
 CTI_TOWNS_CAPTURE_RATE_CAMPS = 5; //--- Determine how fast a town may be captured while holding it's camps
 CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
+
+//--- Towns: Depot
+CTI_TOWNS_DEPOT_BUILD_DIRECTION = 0; //--- Determine the direction a vehicle will use while being spawned from the depot
+CTI_TOWNS_DEPOT_BUILD_DISTANCE = 10; //--- Determine how far a unit/vehicle will spawn from the depot
+CTI_TOWNS_DEPOT_CLASSNAME = "Land_BagBunker_Large_F"; //--- The classname used for town depots in editor
+CTI_TOWNS_DEPOT_RANGE = 15; //--- Determine how far a player needs to be from a depot in order to use it
 
 //--- Towns: Economy
 CTI_TOWNS_INCOME_RATIO = 6; //--- A value above 1 will increase the resources ($) generation ((Current SV) * ratio)
