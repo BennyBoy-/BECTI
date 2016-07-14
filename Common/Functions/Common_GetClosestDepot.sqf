@@ -42,6 +42,6 @@ if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSid
 	};
 	
 	if !(isNull _closest) exitWith {};
-} forEach (nearestObjects [_center, [CTI_TOWNS_DEPOT_CLASSNAME], CTI_TOWNS_DEPOT_RANGE]);
+} forEach (nearestObjects [_center, CTI_TOWNS_DEPOT_CLASSNAME, CTI_TOWNS_DEPOT_RANGE]);
 
 _closest
