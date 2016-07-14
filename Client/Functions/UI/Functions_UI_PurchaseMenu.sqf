@@ -2,7 +2,7 @@ CTI_UI_Purchase_SetIcons = {
 	private ["_IDCs", "_index", "_selected"];
 	_index = _this;
 	
-	_IDCs = [110001, 110002, 110003, 110004, 110005, 110006, 110007];
+	_IDCs = [110001, 110002, 110003, 110004, 110005, 110006, 110007, 110008];
 	_selected = _IDCs select _index;
 	_IDCS = _IDCS - [_selected];
 	
@@ -19,10 +19,15 @@ CTI_UI_Purchase_GetFirstAvailableFactories = {
 	_index = -1;
 	_type = "";
 	
+	//--- Retrieve the current structures
 	_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 	_factories = [CTI_BARRACKS, CTI_LIGHT, CTI_HEAVY, CTI_AIR, CTI_REPAIR, CTI_AMMO, CTI_NAVAL];
 	_availables = [];
 	{_availables = _availables + ([_x, _structures, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType)} forEach _factories;
+	
+	//--- Check for depot
+	_depot = [player, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
+	if !(isNull _depot) then {_availables pushBack _depot};
 	
 	if (count _availables > 0) then {
 		_fetched = [player, _availables] call CTI_CO_FNC_GetClosestEntity;
@@ -32,21 +37,30 @@ CTI_UI_Purchase_GetFirstAvailableFactories = {
 				_fetched = _nearAction;
 			};
 		};
+		
 		_var = _fetched getVariable "cti_structure_type";
-		if (isNil '_var') exitWith {_fetched = objNull};
-		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _var];
-		_type = (_var select 0) select 0;
-		_index = switch (_type) do {
-			case CTI_BARRACKS: {CTI_FACTORY_BARRACKS};
-			case CTI_LIGHT: {CTI_FACTORY_LIGHT};
-			case CTI_HEAVY: {CTI_FACTORY_HEAVY};
-			case CTI_AIR: {CTI_FACTORY_AIR};
-			case CTI_REPAIR: {CTI_FACTORY_REPAIR};
-			case CTI_AMMO: {CTI_FACTORY_AMMO};
-			case CTI_NAVAL: {CTI_FACTORY_NAVAL};
-			default {-1};
+		if !(isNil '_var') then {
+			_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _var];
+			_type = (_var select 0) select 0;
+			_index = switch (_type) do {
+				case CTI_BARRACKS: {CTI_FACTORY_BARRACKS};
+				case CTI_LIGHT: {CTI_FACTORY_LIGHT};
+				case CTI_HEAVY: {CTI_FACTORY_HEAVY};
+				case CTI_AIR: {CTI_FACTORY_AIR};
+				case CTI_REPAIR: {CTI_FACTORY_REPAIR};
+				case CTI_AMMO: {CTI_FACTORY_AMMO};
+				case CTI_NAVAL: {CTI_FACTORY_NAVAL};
+				default {-1};
+			};
+		} else {			
+			if !(isNil {_fetched getVariable "cti_depot"}) then {
+				_index = CTI_FACTORY_DEPOT;
+				_type = CTI_DEPOT;
+			};
 		};
 	};
+	
+	if (_index < 0) then {_fetched = objNull};
 	
 	[_fetched, _index, _type];
 };
@@ -188,18 +202,29 @@ CTI_UI_Purchase_LoadFactories = {
 	private ["_closest", "_fetched", "_structures", "_structure_text", "_type", "_var"];
 	_type = _this;
 	
-	_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-	_fetched = [_type, _structures, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType;
-	
-	_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _type];
-	_structure_text = (_var select 0) select 1;
+	_fetched = [];
 	
 	lbClear ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110009);
 	
-	{
-		_closest = _x call CTI_CO_FNC_GetClosestTown;
-		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110009) lbAdd format ["%1 - %2 (%3m)", _structure_text, _closest getVariable "cti_town_name", round(_closest distance _x)];
-	} forEach _fetched;
+	if (_type != CTI_DEPOT) then {
+		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
+		_fetched = [_type, _structures, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType;
+		
+		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _type];
+		_structure_text = (_var select 0) select 1;
+		
+		{
+			_closest = _x call CTI_CO_FNC_GetClosestTown;
+			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110009) lbAdd format ["%1 - %2 (%3m)", _structure_text, _closest getVariable "cti_town_name", round(_closest distance _x)];
+		} forEach _fetched;
+	} else {
+		_depot = [player, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
+		if !(isNull _depot) then {
+			_fetched = [_depot];
+			
+			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110009) lbAdd format ["Depot - %1", (_depot getVariable "cti_depot") getVariable ["cti_town_name", ""]];
+		};
+	};
 	
 	uiNamespace setVariable ["cti_dialog_ui_purchasemenu_factory", _fetched select 0];
 	uiNamespace setVariable ["cti_dialog_ui_purchasemenu_factory_type", _type];
