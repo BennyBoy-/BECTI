@@ -32,12 +32,12 @@ switch (_action) do {
 
 		uiNamespace setVariable ["cti_dialog_ui_purchasemenu_team", group player];
 		
+		(_factory_type) call CTI_UI_Purchase_LoadFactories;
 		call CTI_UI_Purchase_SetVehicleIconsColor;
 		(_factory_index) call CTI_UI_Purchase_SetIcons;
 		(_factory_type) call CTI_UI_Purchase_FillUnitsList;
 		call CTI_UI_Purchase_OnUnitListLoad;
 		
-		(_factory_type) call CTI_UI_Purchase_LoadFactories;
 		
 		if (_factory_type != CTI_REPAIR || !(call CTI_CL_FNC_IsPlayerCommander)) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlShow false};
 		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.535), SafeZoneY + (SafeZoneH * 0.825), SafeZoneW * 0.275, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlCommit 0;
@@ -77,11 +77,11 @@ switch (_action) do {
 		_available = [CTI_Base_BarracksInRange, CTI_Base_LightInRange, CTI_Base_HeavyInRange, CTI_Base_AirInRange, CTI_Base_RepairInRange, CTI_Base_AmmoInRange, CTI_Base_NavalInRange, CTI_Base_DepotInRange];
 		
 		if (_available select _factory_index) then {
+			(_factory_type) call CTI_UI_Purchase_LoadFactories;
 			(_factory_index) call CTI_UI_Purchase_SetIcons;
 			(_factory_type) call CTI_UI_Purchase_FillUnitsList;
 			call CTI_UI_Purchase_OnUnitListLoad;
 			
-			(_factory_type) call CTI_UI_Purchase_LoadFactories;
 			if (call CTI_CL_FNC_IsPlayerCommander) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlShow (if (_factory_type == CTI_REPAIR) then {true} else {false})};
 		};
 	};

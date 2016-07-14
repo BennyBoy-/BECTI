@@ -439,3 +439,9 @@ _u pushBack 'O_Quadbike_01_F';
 _u pushBack "O_G_Offroad_01_F";
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_DEPOT], _u];
+
+_u = [];
+_u pushBack 'C_Boat_Civil_01_F';
+_u pushBack 'O_Boat_Transport_01_F';
+
+missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_DEPOT_NAVAL], _u];

@@ -129,6 +129,7 @@ _position set [2, .5];
 _net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then { true } else { false };
 _vehicle = objNull;
 _units = [];
+
 if (_model isKindOf "Man") then {
 	_vehicle = [_model, group player, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit;
 	_units pushBack _vehicle;
