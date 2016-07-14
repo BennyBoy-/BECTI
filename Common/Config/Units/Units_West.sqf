@@ -419,21 +419,21 @@ _u pushBack 2;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
-
+//Slammer105
 _c pushBack 'B_MBT_01_TUSK_F';  
 _p pushBack '';
 _n pushBack '';
-_o pushBack 24000;
+_o pushBack 21000;
 _t pushBack 30;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
-
+//slammer120
 _c pushBack 'B_MBT_01_cannon_F';
 _p pushBack '';
 _n pushBack '';
-_o pushBack 26000;
+_o pushBack 24000;
 _t pushBack 30;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_HEAVY;

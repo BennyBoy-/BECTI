@@ -21,6 +21,7 @@ CTI_REPAIR = "Repair";
 CTI_AMMO = "Ammo";
 CTI_NAVAL = "Naval";
 CTI_DEPOT = "Depot";
+CTI_DEPOT_NAVAL = "DepotNaval";
 CTI_RADAR = "Radar";
 CTI_HQ_DEPLOY = "HQDeployed";
 CTI_HQ_MOBILIZE = "HQMobilized";
@@ -332,13 +333,13 @@ CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI
 
 //--- Towns: Depot
 CTI_TOWNS_DEPOT_BUILD_DIRECTION = 0; //--- Determine the direction a vehicle will use while being spawned from the depot
-CTI_TOWNS_DEPOT_BUILD_DISTANCE = 10; //--- Determine how far a unit/vehicle will spawn from the depot
-CTI_TOWNS_DEPOT_CLASSNAME = "Land_BagBunker_Large_F"; //--- The classname used for town depots in editor
+CTI_TOWNS_DEPOT_BUILD_DISTANCE = 20; //--- Determine how far a unit/vehicle will spawn from the depot
+CTI_TOWNS_DEPOT_CLASSNAME = ["Land_BagBunker_Large_F","Land_BagBunker_large_green_F","Land_Lighthouse_small_F"]; //--- The classname(s) used for town depots in editor
 CTI_TOWNS_DEPOT_RANGE = 15; //--- Determine how far a player needs to be from a depot in order to use it
 
 //--- Towns: Economy
 CTI_TOWNS_INCOME_RATIO = 6; //--- A value above 1 will increase the resources ($) generation ((Current SV) * ratio)
-CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = 0.25; //--- Determine how much value an unoccupied town bring to the side.
+CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = 0.40; //--- Determine how much value an unoccupied town bring to the side.
 
 //--- Towns: Markers
 CTI_TOWNS_MARKERS_MAP_RANGE = 600; //--- Distance required to show the town SV on the map (from a player/player's unit)

@@ -339,13 +339,13 @@ _p pushBack 2500;
 		
 _i pushBack "CUP_launch_M47";
 _u pushBack 3;
-_p pushBack 2500;
+_p pushBack 1500;
 
 //METIS Family
 
 _i pushBack "CUP_launch_Metis";
 _u pushBack 3;
-_p pushBack 6000;
+_p pushBack 3000;
 
 
 
@@ -963,13 +963,13 @@ _i pushBack "CUP_Igla_M";
 _u pushBack 2;
 _p pushBack 350;
 
-_i pushBack "CUP_Dragon_EP1_M";
+_i pushBack "CUP_Dragon_EP1_M"; //M47 Dragon
 _u pushBack 0;
-_p pushBack 550;
+_p pushBack 250;
 
 _i pushBack "CUP_AT13_M";  //metis missiles
 _u pushBack 3;
-_p pushBack 800;
+_p pushBack 400;
 
 _i pushBack "CUP_RPG18_M";
 _u pushBack 0;
@@ -983,17 +983,9 @@ _i pushBack "CUP_MAAWS_HEAT_M";
 _u pushBack 0;
 _p pushBack 150;
 
-_i pushBack "CUP_AT13_M";
-_u pushBack 0;
-_p pushBack 200;
-
-_i pushBack "CUP_RPG18_M";
-_u pushBack 0;
-_p pushBack 10;
-
 _i pushBack "CUP_PG7V_M";
 _u pushBack 1;
-_p pushBack 150;
+_p pushBack 100;
 
 _i pushBack "CUP_PG7VL_M";
 _u pushBack 1;

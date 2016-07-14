@@ -127,19 +127,19 @@ _p pushBack 4;
 
 _i pushBack "NLAW_F";
 _u pushBack 0;
-_p pushBack 50;
+_p pushBack 200;
 
 _i pushBack "Titan_AA";
 _u pushBack 0;
-_p pushBack 75;
+_p pushBack 400;
 
 _i pushBack "Titan_AP";
 _u pushBack 1;
-_p pushBack 85;
+_p pushBack 1000;
 
 _i pushBack "Titan_AT";
 _u pushBack 1;
-_p pushBack 150;
+_p pushBack 1500;
 
 _i pushBack "HandGrenade";
 _u pushBack 0;
@@ -560,15 +560,15 @@ _p pushBack 100;
 
 _i pushBack "launch_NLAW_F";
 _u pushBack 0;
-_p pushBack 100;
+_p pushBack 1000;
 
 _i pushBack "launch_B_Titan_F";
 _u pushBack 0;
-_p pushBack 6000;
+_p pushBack 3000;
 
 _i pushBack "launch_B_Titan_short_F";
 _u pushBack 0;
-_p pushBack 8000;
+_p pushBack 4000;
 
 _i pushBack "hgun_P07_F";
 _u pushBack 0;

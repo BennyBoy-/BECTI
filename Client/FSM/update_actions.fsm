@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-457.107819,165.700150,575.219543,-317.919952,417,598,1};
-window[] = {2,-1,-1,-1,-1,937,-868,387,156,3,435};
+window[] = {2,-1,-1,-1,-1,807,-998,257,26,3,435};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -102,6 +102,7 @@ class FSM
        "//--- Depot check" \n
        "_depot = [player, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;" \n
        "CTI_Base_DepotInRange = if (isNull _depot) then {false} else {true};" \n
+       "CTI_Base_GearInRange_Depot = CTI_Base_DepotInRange;" \n
        "" \n
        "//--- FOB Check" \n
        "_in_range = false;" \n

@@ -477,7 +477,7 @@ _d pushBack 10;
 _c pushBack 'B_T_VTOL_01_armed_F';
 _p pushBack '';
 _n pushBack '';
-_o pushBack 40000;
+_o pushBack 90000;
 _t pushBack 50;
 _u pushBack 3;
 _f pushBack CTI_FACTORY_AIR;

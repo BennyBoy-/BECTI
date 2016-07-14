@@ -359,11 +359,11 @@ _p pushBack 30;
 //Launchers:
 _i pushBack "launch_B_Titan_tna_F";
 _u pushBack 1;
-_p pushBack 6000;
+_p pushBack 3000;
 
 _i pushBack "launch_B_Titan_short_tna_F";
 _u pushBack 1;
-_p pushBack 8000;
+_p pushBack 4000;
 
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf"; 
