@@ -142,17 +142,17 @@ if (CTI_APEX_ADDON > 0) then {
 };
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
-_u pushBack 'CUP_O_RU_Soldier';
-_u pushBack 'CUP_O_RU_Soldier_AA';
-_u pushBack 'CUP_O_RU_Soldier_AR';
-_u pushBack 'CUP_O_RU_Crew';
-_u pushBack 'CUP_O_RU_Soldier_AT';
-_u pushBack 'CUP_O_RU_Soldier_HAT';
-_u pushBack 'CUP_O_RU_Engineer';
-_u pushBack 'CUP_O_RU_Soldier_TL';
-_u pushBack 'CUP_O_RU_Medic';
-_u pushBack 'CUP_O_RU_Pilot';
-_u pushBack 'CUP_O_RU_Sniper_KSVK';
+	_u pushBack 'CUP_O_RU_Soldier';
+	_u pushBack 'CUP_O_RU_Soldier_AA';
+	_u pushBack 'CUP_O_RU_Soldier_AR';
+	_u pushBack 'CUP_O_RU_Crew';
+	_u pushBack 'CUP_O_RU_Soldier_AT';
+	_u pushBack 'CUP_O_RU_Soldier_HAT';
+	_u pushBack 'CUP_O_RU_Engineer';
+	_u pushBack 'CUP_O_RU_Soldier_TL';
+	_u pushBack 'CUP_O_RU_Medic';
+	_u pushBack 'CUP_O_RU_Pilot';
+	_u pushBack 'CUP_O_RU_Sniper_KSVK';
 };
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u];
@@ -437,6 +437,18 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
 _u = [];
 _u pushBack 'O_Quadbike_01_F';
 _u pushBack "O_G_Offroad_01_F";
+_u pushBack "O_G_Offroad_01_armed_F";
+_u pushBack 'C_Van_01_transport_F';
+_u pushBack 'O_Truck_02_transport_F';
+_u pushBack 'O_Truck_03_transport_F';
+_u pushBack 'O_MRAP_02_F';
+_u pushBack 'O_MRAP_02_hmg_F';
+_u pushBack 'O_MRAP_02_gmg_F';
+_u pushBack 'O_UGV_01_F';
+_u pushBack 'O_UGV_01_rcws_F';
+_u pushBack 'O_Truck_02_medical_F';
+_u pushBack 'O_Truck_03_medical_F';
+_u pushBack 'Land_Pod_Heli_Transport_04_medevac_F';
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_DEPOT], _u];
 

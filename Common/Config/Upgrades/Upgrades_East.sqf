@@ -200,7 +200,7 @@ if (CTI_IsClient) then {
 		["Aircraft AT", "Unlocks the Anti Tank Missiles for Aircrafts"], //--- Air AT
 		["Aircraft AA", "Unlocks the Anti Air Missiles for Aircrafts"], //--- Air AA
 		["Aircraft Countermeasures", "Allows Aircraft to deploy countermeasures"], //--- Air CM
-		["(DISABLED) Towns Occupation", "Increase Speed of Supply"], //--- Towns Occupation
+		["Towns Depot", "Improves Vehicles available at Depots"], //--- Towns Depot
 		["(DISABLED) Halo", "Enable HALO Jumping from the Air factory"], //--- Halo
 		["(DISABLED) Air Radar", "Enable Air Radars"], //--- Air Radar
 		["(DISABLED) Artillery Radar", "Enable Artillery radar on Air Radars"], //--- Art Radar
