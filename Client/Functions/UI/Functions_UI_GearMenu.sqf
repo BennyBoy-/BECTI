@@ -183,6 +183,12 @@ CTI_UI_Gear_DisplayShoppingItems = {
 	
 	_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
 	_upgrade_gear = _upgrades select CTI_UPGRADE_GEAR;
+	
+	//--- Depot only? use the town upgrade level then
+	if (CTI_Base_GearInRange_Depot && !(CTI_Base_GearInRange || CTI_Base_GearInRange_Mobile || CTI_Base_GearInRange_FOB)) then {
+		_upgrade_gear = _upgrades select CTI_UPGRADE_TOWNS;
+	};
+	
 	if (CTI_DEBUG) then {_upgrade_gear=10};
 	
 	if (_tab != CTI_GEAR_TAB_TEMPLATES) then { //--- Generic items

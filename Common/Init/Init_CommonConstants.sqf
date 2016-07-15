@@ -333,7 +333,7 @@ CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI
 CTI_TOWNS_DEPOT_BUILD_DIRECTION = 0; //--- Determine the direction a vehicle will use while being spawned from the depot
 CTI_TOWNS_DEPOT_BUILD_DISTANCE = 25; //--- Determine how far a unit/vehicle will spawn from the depot
 CTI_TOWNS_DEPOT_CLASSNAME = ["Land_BagBunker_Large_F"]; //--- The classname(s) used for town depots in editor
-CTI_TOWNS_DEPOT_RANGE = 15; //--- Determine how far a player needs to be from a depot in order to use it
+CTI_TOWNS_DEPOT_RANGE = 15; //--- Determine how far a player needs to be from a depot in order to use it (Factory / Gear / Service)
 
 //--- Towns: Economy
 CTI_TOWNS_INCOME_RATIO = 6; //--- A value above 1 will increase the resources ($) generation ((Current SV) * ratio)
@@ -565,10 +565,13 @@ CTI_SERVICE_AMMO_DEPOT_RANGE = 150;
 CTI_SERVICE_AMMO_DEPOT_TIME = 30;
 CTI_SERVICE_AMMO_TRUCK_RANGE = 35;
 CTI_SERVICE_AMMO_TRUCK_TIME = 60;
+CTI_SERVICE_AMMO_TOWN_DEPOT_TIME = 50;
 CTI_SERVICE_REPAIR_DEPOT_RANGE = 150;
 CTI_SERVICE_REPAIR_DEPOT_TIME = 30;
 CTI_SERVICE_REPAIR_TRUCK_RANGE = 35;
 CTI_SERVICE_REPAIR_TRUCK_TIME = 50;
+CTI_SERVICE_REPAIR_TOWN_DEPOT_TIME = 50;
+
 
 CTI_SCORE_BUILD_VALUE_PERPOINT = 1500; //--- Structure value / x
 CTI_SCORE_SALVAGE_VALUE_PERPOINT = 2000; //--- Unit value / x
