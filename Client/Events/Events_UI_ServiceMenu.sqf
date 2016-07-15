@@ -18,6 +18,9 @@ switch (_action) do {
 		_available_repair_depots = [vehicle player, _repair_depots, CTI_SERVICE_REPAIR_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 		_available_ammo_depots = [vehicle player, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 		
+		_available_depot = [vehicle player, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
+		_available_depot = if (isNull _available_depot) then {[]} else {[_available_depot]};
+		
 		//--- Get the outter vehicles near our mobile supports
 		{
 			_range = _x select 1;
@@ -26,7 +29,7 @@ switch (_action) do {
 					if !(_x in _list) then {_list pushBack _x};
 				} forEach (_x nearEntities [["Car", "Ship", "Motorcycle", "Tank", "Air", "StaticWeapon"], _range]);
 			} forEach (_x select 0);
-		} forEach [[_available_repair_depots, CTI_SERVICE_REPAIR_DEPOT_RANGE],[_available_ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE],[_player_support_repair, CTI_SERVICE_REPAIR_TRUCK_RANGE],[_player_support_ammo, CTI_SERVICE_AMMO_TRUCK_RANGE]];
+		} forEach [[_available_repair_depots, CTI_SERVICE_REPAIR_DEPOT_RANGE],[_available_ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE],[_player_support_repair, CTI_SERVICE_REPAIR_TRUCK_RANGE],[_player_support_ammo, CTI_SERVICE_AMMO_TRUCK_RANGE],[_available_depot, CTI_TOWNS_DEPOT_RANGE]];
 		
 		_list_real = [];
 		_list_content = [];
@@ -36,9 +39,11 @@ switch (_action) do {
 			if (_x isKindOf "Man") then { //--- Infantry
 				_available_repair_depots = [_x, _repair_depots, CTI_SERVICE_REPAIR_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 				_available_repair_trucks = [_x, CTI_SPECIAL_REPAIRTRUCK, CTI_SERVICE_REPAIR_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
-				if (count _available_repair_depots > 0 || count _available_repair_trucks > 0) then {
+				_available_depot = [_x, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
+				_available_depot = if (isNull _available_depot) then {[]} else {[_available_depot]};
+				if (count _available_repair_depots > 0 || count _available_repair_trucks > 0 || count _available_depot > 0) then {
 					_load_content = true; 
-					_content set [3, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks]]];
+					_content set [3, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks], ["Depot", _available_depot]]];
 				};
 			} else { //--- Vehicle
 				_vehicle = vehicle _x;
@@ -46,15 +51,17 @@ switch (_action) do {
 				_available_repair_trucks = [_vehicle, CTI_SPECIAL_REPAIRTRUCK, CTI_SERVICE_REPAIR_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
 				_available_ammo_depots = [_vehicle, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 				_available_ammo_trucks = [_vehicle, CTI_SPECIAL_AMMOTRUCK, CTI_SERVICE_AMMO_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
-				if (count _available_repair_depots > 0 || count _available_repair_trucks > 0) then {
+				_available_depot = [_vehicle, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
+				_available_depot = if (isNull _available_depot) then {[]} else {[_available_depot]};
+				if (count _available_repair_depots > 0 || count _available_repair_trucks > 0 || count _available_depot > 0) then {
 					_load_content = true;
-					_content set [0, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks]]];
-					_content set [2, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks]]];
-					_content set [3, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks]]];
+					_content set [0, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks], ["Depot", _available_depot]]];
+					_content set [2, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks], ["Depot", _available_depot]]];
+					_content set [3, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks], ["Depot", _available_depot]]];
 				};
-				if (count _available_ammo_depots > 0 || count _available_ammo_trucks > 0) then {
+				if (count _available_ammo_depots > 0 || count _available_ammo_trucks > 0 || count _available_depot > 0) then {
 					_load_content = true;
-					_content set [1, [["Base", _available_ammo_depots], ["Mobile", _available_ammo_trucks]]];
+					_content set [1, [["Base", _available_ammo_depots], ["Mobile", _available_ammo_trucks], ["Depot", _available_depot]]];
 				};
 			};
 			
@@ -140,12 +147,12 @@ switch (_action) do {
 			//--- Do we still have something alive in range?
 			if !(isNil '_selected') then {
 				if (alive _selected) then {
-					if (count ([_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE], 0] call CTI_UI_Service_RangeStill) > 0) then {
+					if (count ([_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE, CTI_TOWNS_DEPOT_RANGE], 0] call CTI_UI_Service_RangeStill) > 0) then {
 						_funds = call CTI_CL_FNC_GetPlayerFunds;
 						_price = [_selected, CTI_SERVICE_PRICE_REPAIR, CTI_SERVICE_PRICE_REPAIR_COEF] call CTI_UI_Service_GetPrice;
 						if (_funds >= _price) then {
 							-(_price) call CTI_CL_FNC_ChangePlayerFunds;
-							[_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE], [CTI_SERVICE_REPAIR_DEPOT_TIME, CTI_SERVICE_REPAIR_TRUCK_TIME], 0] spawn CTI_UI_Service_ProcessRepair;
+							[_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE, CTI_TOWNS_DEPOT_RANGE], [CTI_SERVICE_REPAIR_DEPOT_TIME, CTI_SERVICE_REPAIR_TRUCK_TIME, CTI_SERVICE_REPAIR_TOWN_DEPOT_TIME], 0] spawn CTI_UI_Service_ProcessRepair;
 						} else {
 							hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to perform this opertion";
 						};
@@ -170,12 +177,12 @@ switch (_action) do {
 			//--- Do we still have something alive in range?
 			if !(isNil '_selected') then {
 				if (alive _selected) then {
-					if (count ([_selected, _selected_content, [CTI_SERVICE_AMMO_DEPOT_RANGE, CTI_SERVICE_AMMO_TRUCK_RANGE], 1] call CTI_UI_Service_RangeStill) > 0) then {
+					if (count ([_selected, _selected_content, [CTI_SERVICE_AMMO_DEPOT_RANGE, CTI_SERVICE_AMMO_TRUCK_RANGE, CTI_TOWNS_DEPOT_RANGE], 1] call CTI_UI_Service_RangeStill) > 0) then {
 						_funds = call CTI_CL_FNC_GetPlayerFunds;
 						_price = [_selected, CTI_SERVICE_PRICE_REAMMO, CTI_SERVICE_PRICE_REAMMO_COEF] call CTI_UI_Service_GetPrice;
 						if (_funds >= _price) then {
 							-(_price) call CTI_CL_FNC_ChangePlayerFunds;
-							[_selected, _selected_content, [CTI_SERVICE_AMMO_DEPOT_RANGE, CTI_SERVICE_AMMO_TRUCK_RANGE], [CTI_SERVICE_AMMO_DEPOT_TIME, CTI_SERVICE_AMMO_TRUCK_TIME], 1] spawn CTI_UI_Service_ProcessRearm;
+							[_selected, _selected_content, [CTI_SERVICE_AMMO_DEPOT_RANGE, CTI_SERVICE_AMMO_TRUCK_RANGE, CTI_TOWNS_DEPOT_RANGE], [CTI_SERVICE_AMMO_DEPOT_TIME, CTI_SERVICE_AMMO_TRUCK_TIME, CTI_SERVICE_AMMO_TOWN_DEPOT_TIME], 1] spawn CTI_UI_Service_ProcessRearm;
 						} else {
 							hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to perform this opertion";
 						};
@@ -200,12 +207,12 @@ switch (_action) do {
 			//--- Do we still have something alive in range?
 			if !(isNil '_selected') then {
 				if (alive _selected) then {
-					if (count ([_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE], 2] call CTI_UI_Service_RangeStill) > 0) then {
+					if (count ([_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE, CTI_TOWNS_DEPOT_RANGE], 2] call CTI_UI_Service_RangeStill) > 0) then {
 						_funds = call CTI_CL_FNC_GetPlayerFunds;
 						_price = [_selected, CTI_SERVICE_PRICE_REFUEL, CTI_SERVICE_PRICE_REFUEL_COEF] call CTI_UI_Service_GetPrice;
 						if (_funds >= _price) then {
 							-(_price) call CTI_CL_FNC_ChangePlayerFunds;
-							[_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE], [CTI_SERVICE_REPAIR_DEPOT_TIME, CTI_SERVICE_REPAIR_TRUCK_TIME], 2] spawn CTI_UI_Service_ProcessRefuel;
+							[_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE, CTI_TOWNS_DEPOT_RANGE], [CTI_SERVICE_REPAIR_DEPOT_TIME, CTI_SERVICE_REPAIR_TRUCK_TIME, CTI_SERVICE_REPAIR_TOWN_DEPOT_TIME], 2] spawn CTI_UI_Service_ProcessRefuel;
 						} else {
 							hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to perform this opertion";
 						};
@@ -230,13 +237,13 @@ switch (_action) do {
 			//--- Do we still have something alive in range?
 			if !(isNil '_selected') then {
 				if (alive _selected) then {
-					if (count ([_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE], 3] call CTI_UI_Service_RangeStill) > 0) then {
+					if (count ([_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE, CTI_TOWNS_DEPOT_RANGE], 3] call CTI_UI_Service_RangeStill) > 0) then {
 						_funds = call CTI_CL_FNC_GetPlayerFunds;
 						_price = CTI_SERVICE_PRICE_HEAL;
 						if (count crew _selected > 0) then {_price = CTI_SERVICE_PRICE_HEAL * count crew _selected};
 						if (_funds >= _price) then {
 							-(_price) call CTI_CL_FNC_ChangePlayerFunds;
-							[_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE], [CTI_SERVICE_REPAIR_DEPOT_TIME, CTI_SERVICE_REPAIR_TRUCK_TIME], 3] spawn CTI_UI_Service_ProcessHeal;
+							[_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE, CTI_TOWNS_DEPOT_RANGE], [CTI_SERVICE_REPAIR_DEPOT_TIME, CTI_SERVICE_REPAIR_TRUCK_TIME, CTI_SERVICE_REPAIR_TOWN_DEPOT_TIME], 3] spawn CTI_UI_Service_ProcessHeal;
 						} else {
 							hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to perform this opertion";
 						};

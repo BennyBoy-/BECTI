@@ -16,7 +16,7 @@ _startPos = getPos _origin;
 
 //--- Check if the HQ is within a construction area
 if (_source == 'HQ') then {
-	{if (_startPos distance2D _x <= CTI_BASE_AREA_RANGE) exitWith {_startPos = _x}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
+	{if (_startPos distance2D _x <= CTI_BASE_AREA_RANGE) exitWith {_startPos = [_x select 0, _x select 1, 0]}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
 };
 /*
 //--- HQ Area checkin
