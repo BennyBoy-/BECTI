@@ -691,7 +691,7 @@ _p pushBack 5;
 
 _i pushBack "B_UAV_01_backpack_F";
 _u pushBack 0;
-_p pushBack 250;
+_p pushBack 2000;
 
 _i pushBack "B_HMG_01_support_F";
 _u pushBack 0;
