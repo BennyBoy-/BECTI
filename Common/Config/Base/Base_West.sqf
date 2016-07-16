@@ -183,6 +183,14 @@ _prices pushBack 		15;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
 
+if (CTI_APEX_ADDON > 0) then {
+_headers pushBack 		"Bunker (Small) Green";
+_classes pushBack 		"Land_BagBunker_01_small_green_F";
+_prices pushBack 		15;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Fortification";
+};
+
 _headers pushBack 		"Razor Wire";
 _classes pushBack 		"Land_Razorwire_F";
 _prices pushBack 		1;
