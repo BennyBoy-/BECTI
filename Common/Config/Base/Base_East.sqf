@@ -251,13 +251,13 @@ _placements pushBack 	[0, 30];
 _categories pushBack 	"Fortification";
 
 if (CTI_APEX_ADDON > 0) then {
-_headers pushBack 		["Cargo Tower (big) Jungle";
+_headers pushBack 		"Cargo Tower (big) Jungle";
 _classes pushBack 		"Land_Cargo_Tower_V4_F";
 _prices pushBack 		2000;
 _placements pushBack 	[0, 30];
 _categories pushBack 	"Fortification";
 
-_headers pushBack 		["Air Tower";
+_headers pushBack 		"Air Tower";
 _classes pushBack 		"Land_Airport_01_controlTower_F";
 _prices pushBack 		300;
 _placements pushBack 	[0, 30];
