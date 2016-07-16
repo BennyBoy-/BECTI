@@ -383,6 +383,12 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
+	class CTI_CUP_CORE_ADDON {
+		title = "ADDON: CUP CORE and CUP Terrains";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};
 	class CTI_OFPS_ADDON {
 		title = "ADDON: OFPS MOD Pack Support";
 		values[] = {0,1};

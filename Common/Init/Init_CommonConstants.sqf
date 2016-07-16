@@ -665,6 +665,7 @@ with missionNamespace do {
 	
 	if (isNil 'CTI_APEX_ADDON') then {CTI_APEX_ADDON = 1};
 	if (isNil 'CTI_CUP_ADDON') then {CTI_CUP_ADDON = 1};
+	if (isNil 'CTI_CUP_CORE_ADDON') then {CTI_CUP_CORE_ADDON = 0};
 	if (isNil 'CTI_OFPS_ADDON') then {CTI_OFPS_ADDON = 1};
 
 	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 0};
