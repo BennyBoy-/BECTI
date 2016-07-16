@@ -233,7 +233,7 @@ _o pushBack 100000;
 _t pushBack 25;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_NAVAL;
-_s pushBack "service-ammotruck";
+_s pushBack "service-medic";
 _d pushBack 130;
 
 
