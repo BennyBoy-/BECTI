@@ -417,6 +417,26 @@ _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 };
 
+if (CTI_CUP_CORE_ADDON > 0) then { 
+_headers pushBack 		"H-Barrier10xTall";
+_classes pushBack 		"Base_WarfareBBarrier10xTall";
+_prices pushBack 		10;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+
+_headers pushBack 		"H-Barrier10x";
+_classes pushBack 		"Base_WarfareBBarrier10x";
+_prices pushBack 		10;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+
+_headers pushBack 		"H-Barrier5x";
+_classes pushBack 		"Base_WarfareBBarrier5x";
+_prices pushBack 		10;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+};
+
 if (CTI_OFPS_ADDON > 0) then {
 _headers pushBack 		"C-RAM Phalanx";
 _classes pushBack 		"C_at_phalanx_35AI";

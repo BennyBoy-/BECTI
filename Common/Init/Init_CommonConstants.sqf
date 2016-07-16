@@ -338,7 +338,7 @@ CTI_TOWNS_DEPOT_CLASSNAME = ["Land_BagBunker_Large_F","Land_BagBunker_large_gree
 CTI_TOWNS_DEPOT_RANGE = 15; //--- Determine how far a player needs to be from a depot in order to use it
 
 //--- Towns: Economy
-CTI_TOWNS_INCOME_RATIO = 6; //--- A value above 1 will increase the resources ($) generation ((Current SV) * ratio)
+CTI_TOWNS_INCOME_RATIO = 5; //--- A value above 1 will increase the resources ($) generation ((Current SV) * ratio)
 CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = 0.40; //--- Determine how much value an unoccupied town bring to the side.
 
 //--- Towns: Markers
@@ -665,6 +665,7 @@ with missionNamespace do {
 	
 	if (isNil 'CTI_APEX_ADDON') then {CTI_APEX_ADDON = 1};
 	if (isNil 'CTI_CUP_ADDON') then {CTI_CUP_ADDON = 1};
+	if (isNil 'CTI_CUP_CORE_ADDON') then {CTI_CUP_CORE_ADDON = 0};
 	if (isNil 'CTI_OFPS_ADDON') then {CTI_OFPS_ADDON = 1};
 
 	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 0};
