@@ -581,6 +581,7 @@ _s pushBack "";
 _d pushBack 0;
 
 //--- Naval
+/*
 _c pushBack 'CUP_B_RHIB2Turret_USMC';
 _p pushBack '';
 _n pushBack '';
@@ -610,7 +611,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "";
 _d pushBack 0;
-
+*/
 //--- Air
 
 //-------------- ION PMC
