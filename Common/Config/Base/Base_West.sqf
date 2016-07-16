@@ -415,6 +415,25 @@ _classes pushBack 		"CUP_B_M252_USMC";
 _prices pushBack 		15000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
+
+ +_headers = _headers 		+ ["H-Barrier10xTall"];
++_classes = _classes 		+ ["Base_WarfareBBarrier10xTall"];
++_prices = _prices 			+ [10];
++_placements = _placements 	+ [[90, 7]];
++_categories = _categories 	+ ["Fortification"];
++
++_headers = _headers 		+ ["H-Barrier10x"];
++_classes = _classes 		+ ["Base_WarfareBBarrier10x"];
++_prices = _prices 			+ [10];
++_placements = _placements 	+ [[90, 7]];
++_categories = _categories 	+ ["Fortification"];
++
++_headers = _headers 		+ ["H-Barrier5x"];
++_classes = _classes 		+ ["Base_WarfareBBarrier5x"];
++_prices = _prices 			+ [10];
++_placements = _placements 	+ [[90, 7]];
++_categories = _categories 	+ ["Fortification"];
++
 };
 
 if (CTI_OFPS_ADDON > 0) then {
