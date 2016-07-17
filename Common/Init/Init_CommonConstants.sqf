@@ -80,7 +80,7 @@ CTI_AI_COMMANDER_TEAMS_UPDATE_DELAY = 360;
 //---------------------------------------------------AI TEAMS------------------------------------------------------------//
 /*
  * The AI Teams are lead by playable leaders which perform different tasks by themselves depending on the commander's orders.
- * 
+ *
  * Those scripts are used by AI teams:
  * - Server\FSM\update_ai.fsm: This controls the AI Teams "flow"
  * - Server\Functions\FSM\Functions_FSM_UpdateAI.sqf: This contains the functions related to the FSM
@@ -122,12 +122,12 @@ with missionNamespace do {
  * The orders determine the actions that AI Team Leaders will perform, they are executed in a different thread in order
  * to enhance the missions maker freedom (Delay, behaviour...).
  *
- * The main AI thread (the FSM) detect whether an order has changed thanks to a "seed" system, if the seed differ then a 
+ * The main AI thread (the FSM) detect whether an order has changed thanks to a "seed" system, if the seed differ then a
  * new order was assigned. Some orders can be reloaded (when a unit dies or resume it's main task). Keep in mind that
  * some orders are not "real" orders since they only require one action like embark/disembark.
- * 
+ *
  * New orders may be added below, still they need to be defined in both FSM within the "Duty" state
- * 
+ *
  * - Client\FSM\update_orders.fsm: Controls the Player "flow".
  * - Client\Functions\FSM\Functions_FSM_UpdateOrders.sqf: Contains the functions related to the Player FSM
  * - Server\FSM\update_ai.fsm: Controls the AI Team Leader "flow".
@@ -175,16 +175,16 @@ CTI_PLAYER_ORDER_TAKEHOLDTOWNS_TIME = 200; //--- Order: TAKE HOLD units may patr
 /*
  * Those orders are sligthly different from the main ones as they only deal with individual units, still those units may
  * create a sub-formation with some members.
- * 
+ *
  * The principle remain the same, a seed is used to check whether the order has changed or not and the order is executed
  * in a different thread to keep a simple flow within the ai FSM and a flexible one with the orders.
- * 
+ *
  * New orders may be added below, still they need to be defined in the FSM within the "Duty" state
- * 
+ *
  * - Client\FSM\update_client_ai.fsm: Controls the Player AI "flow".
  * - Client\Functions\FSM\Functions_FSM_UpdateClientAI.sqf: Contains the functions related to the Player AI FSM
  */
- 
+
 //--- Orders Player AI: ID (Unique)
 CTI_ORDER_CLIENT_NONE = 0; //--- AI: No order, follow the group
 CTI_ORDER_CLIENT_TAKETOWNS = 1; //--- AI: Take any towns (trigger CTI_ORDER_TAKETOWN_AUTO)
@@ -211,9 +211,9 @@ CTI_ORDER_CLIENT_PATROL_RANGE = 325; //--- AI: Patrol a position.
 /*
  * The upgrade can be seen as an "ingame-feature-evolution" where everything can be upgraded beyond your wildest dreams,
  * the ID determine the position of an upgrade in the upgrade arrays
- * 
+ *
  * The upgrade array count and order shall be identical for both sides
- * 
+ *
  * The upgrades are defined in:
  * - Common\Config\Upgrades\Upgrades_xxx.sqf (where xxx is the side/faction)
  */
@@ -248,7 +248,7 @@ CTI_UPGRADE_NUKE = 18;
 /*
  * The requests are special actions which a player may request such as a FOB construction. The commander receive them and
  * can either accept or deny them.
- * 
+ *
  * The request and their actions are defined in:
  * - Client\Functions\UI\Functions_UI_RequestMenu.sqf
  */
@@ -268,10 +268,10 @@ CTI_REQUESTS_TIMEOUT = 160; //--- A request will vanish after x seconds if left 
 /*
  * The gear system is defined by IDs where each items belong to a specific class (Pistol, Vest, Item...), those class are
  * determined by IDs. The IDs are defined in config so we set them here!
- * 
+ *
  * Note that the sub IDs are not defined at the same location
  */
- 
+
 //--- Gear: Config ID
 CTI_TYPE_RIFLE = 1;
 CTI_TYPE_PISTOL = 2;
@@ -304,26 +304,26 @@ CTI_GEAR_RESPAWN_WITH_LAST = 1; //--- Determine whether the player should respaw
 /*
  * The towns are location marked by a marker (flag), they generate a different value depending on the value set within the
  * editor. A town is either held by resistance or by the occupation, units may spawn to defend them.
- * 
+ *
  * When captured, the possible remaining units will try to capture it back.
- * 
+ *
  * Note that the AI are not managed with waypoints
- * 
+ *
  * There are several scripts about towns:
  * - Server\FSM\town_capture.fsm: This controls the town value/capture "flow"
  * - Server\FSM\town_occupation.fsm: This controls the town occupation defensive "flow"
  * - Server\FSM\town_patrol.fsm: This controls the town units patrol "flow" for either resistance or occupation
  * - Server\FSM\town_resistance.fsm: This controls the town resistance defensive "flow"
  */
- 
+
 //--- Towns: Camps
-CTI_TOWNS_CAMPS_CAPTURE_RANGE = 10; //--- Range needed to capture/protect a camp
+CTI_TOWNS_CAMPS_CAPTURE_RANGE = 15; //--- Range needed to capture/protect a camp
 CTI_TOWNS_CAMPS_CAPTURE_RATE = 2; //--- Determine how fast a camp may be captured/protected
 CTI_TOWNS_CAMPS_CAPTURE_VALUE_CEIL = 30; //--- The camp value's ceiling
 CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE), proc all 5 seconds.
- 
+
 //--- Towns: Capture
-CTI_TOWNS_CAPTURE_BOUNTY_COEF = 50; //--- Bounty coefficient upon capture, (max sv * coefficient)
+CTI_TOWNS_CAPTURE_BOUNTY_COEF = 100; //--- Bounty coefficient upon capture, (max sv * coefficient)
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 300; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
 CTI_TOWNS_CAPTURE_RANGE = 250; //--- The range which a unit/vehicle has to be from a town center to capture it
 CTI_TOWNS_CAPTURE_RATE = 1; //--- Determine how fast a town may be captured/protected
@@ -347,25 +347,25 @@ CTI_TOWNS_MARKERS_PEACE_COLOR = "ColorYellow"; //--- The color used for peace-mo
 
 //--- Towns: Patrol
 CTI_TOWNS_PATROL_HOPS = 7; //--- Towns patrol hops (non-waypoint)
-CTI_TOWNS_PATROL_RANGE = 375; //--- Patrol range in a town
+CTI_TOWNS_PATROL_RANGE = 200; //--- Patrol range in a town
 
 //--- Towns: Occupation
-CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 150; //--- Determine how far the units may spawn from the town center
 CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
-CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE = 50; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
+CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE = 35; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
 //CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
-CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
-CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
+CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 600; //--- Determine how far a threat may be detected from the town center
+CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 20; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 180; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_OCCUPATION_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 
 //--- Towns: Resistance
-CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 150; //--- Determine how far the units may spawn from the town center
 CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
-CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE = 75; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
+CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE = 35; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
 //CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
-CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
-CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
+CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 600; //--- Determine how far a threat may be detected from the town center
+CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 20; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 180; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 
@@ -403,17 +403,17 @@ with missionNamespace do {
 /*
  * At the begining of the game an HQ is available for both side where the commander may build from it. It also act as a
  * mobile respawn point for your team.
- * 
+ *
  * Structures such as Barracks, Light Vehicles Factory or even Command Center may be built from it. A repair truck may also
  * be used to construct defenses or special structures such as FOB.
- * 
+ *
  * When a structure is placed, it goes in a "ruins" state where workers may build it up (the same applies on destruction). If
  * a structure in ruins state is left unattended for too long then it'll be removed.
- * 
+ *
  * Defenses created near a Barracks will be automatically manned by an AI if enabled in both parameter and GUI.
- * 
+ *
  * To prevent long games, bases need to be build in an area which is limited by a parameter
- * 
+ *
  * - Common\Config\Base\Base_xxx.sqf: Define the structures and defenses for a side (where xxx is the side/faction)
  */
 
@@ -432,10 +432,10 @@ CTI_BASE_CONSTRUCTION_REFUNDS = 0.60; //--- The refund value of a structure (str
 
 //--- Base: Defenses
 CTI_BASE_DEFENSES_AUTO_DELAY = 240; //--- Delay after which a new unit will replace a dead one for a defense
-CTI_BASE_DEFENSES_AUTO_LIMIT = 30; //--- Amount of independent units which may man nearby defenses
+CTI_BASE_DEFENSES_AUTO_LIMIT = 25; //--- Amount of independent units which may man nearby defenses
 CTI_BASE_DEFENSES_AUTO_RANGE = 600; //--- Range from the nearest barrack at which AI may auto man a defense
-CTI_BASE_DEFENSES_AUTO_REARM_RANGE = 600; //--- Range needed for a defense to be able to rearm at a service point
-CTI_BASE_DEFENSES_EMPTY_TIMEOUT = 1200; //--- Delay after which an empty defense is considered empty
+CTI_BASE_DEFENSES_AUTO_REARM_RANGE = CTI_BASE_AREA_RANGE; //--- Range needed for a defense to be able to rearm at a service point
+CTI_BASE_DEFENSES_EMPTY_TIMEOUT = 500; //--- Delay after which an empty defense is considered empty
 
 //--- Base: HQ
 CTI_BASE_HQ_BOUNTY = 2.50; //--- The bounty awarded upon HQ destruction
@@ -481,12 +481,12 @@ with missionNamespace do {
 /*
  * Vehicles is a word with regroup units and vehicles, they are present on the battlefield and they are handled depending
  * on their nature.
- * 
+ *
  * Vehicles such as cars, tanks, ships or aircraft are checked each x seconds for their emptiness and destroyed if they remain
  * empty for too long (this way we don't end up with 1000 cars on the map)
- * 
+ *
  * Vehicles and units are cleaned up automatically by the server depending on the Garbage Collector settings
- * 
+ *
  * - Server\FSM\update_garbage_collector.fsm: This handle the vehicles/units destruction "flow"
  * - Server\FSM\update_repairtruck.fsm: This handle the Repair Truck repairing "flow"
  * - Server\FSM\update_salvager.fsm: This handle the Salvager Truck "flow"
@@ -603,22 +603,22 @@ CTI_SHK_GROUP_SIZE_MAX = 12; //--- If the group has more than x members, skip it
 
 with missionNamespace do {
 	if (isNil 'CTI_ARTILLERY_SETUP') then {CTI_ARTILLERY_SETUP = 0}; //--- Artillery status (-2: Disabled, -1: Artillery Computer, 0: Short, 1: Medium, 2: Long, 3: Far)
-	
+
 	if (isNil 'CTI_ECONOMY_INCOME_CYCLE') then {CTI_ECONOMY_INCOME_CYCLE = 60};
-	
+
 	CTI_ECONOMY_POOL_AWARD_PERCENTAGE_WEST = 0.1;
 	CTI_ECONOMY_POOL_AWARD_PERCENTAGE_EAST = 0.1;
 	CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_WEST = 0.3;
 	CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_EAST = 0.3;
-	
+
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_EAST') then {CTI_ECONOMY_STARTUP_FUNDS_EAST = 900};
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER') then {CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER = 9000};
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_WEST') then {CTI_ECONOMY_STARTUP_FUNDS_WEST = 900};
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER') then {CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER = 9000};
-	
+
 	if (isNil 'CTI_ECONOMY_STARTUP_SUPPLY_EAST') then {CTI_ECONOMY_STARTUP_SUPPLY_EAST = 1200};
 	if (isNil 'CTI_ECONOMY_STARTUP_SUPPLY_WEST') then {CTI_ECONOMY_STARTUP_SUPPLY_WEST = 1200};
-	
+
 	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 1};
 	if (CTI_DEV_MODE > 0) then {
 		CTI_ECONOMY_STARTUP_FUNDS_EAST = 1000000;
@@ -628,32 +628,32 @@ with missionNamespace do {
 		CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER = 1000000;
 		CTI_ECONOMY_STARTUP_SUPPLY_WEST = 1000000;
 	};
-	
+
 	if (isNil 'CTI_ECONOMY_TOWNS_OCCUPATION') then {CTI_ECONOMY_TOWNS_OCCUPATION = 1}; //--- Determine if towns need to be occupied to bring more resources
-	
+
 	if (isNil 'CTI_GRAPHICS_VD_MAX') then {CTI_GRAPHICS_VD_MAX = 2500};
 	if (isNil 'CTI_GRAPHICS_TG_MAX') then {CTI_GRAPHICS_TG_MAX = 50};
-	
+
 	if (isNil 'CTI_RESPAWN_AI') then {CTI_RESPAWN_AI = 1};
 	if (isNil 'CTI_RESPAWN_CAMPS') then {CTI_RESPAWN_CAMPS = 1}; //--- Camp mode (1: Classic, 2: Nearby)
 	if (isNil 'CTI_RESPAWN_CAMPS_CONDITION') then {CTI_RESPAWN_CAMPS_CONDITION = 2}; //--- Camp respawn condition (0: Unlimited, 1: Priced, 2: Limited per capture)
 	if (isNil 'CTI_RESPAWN_FOB_RANGE') then {CTI_RESPAWN_FOB_RANGE = 1750}; //--- Range at which a unit can spawn at a FOB
 	if (isNil 'CTI_RESPAWN_MOBILE') then {CTI_RESPAWN_MOBILE = 1};
 	if (isNil 'CTI_RESPAWN_TIMER') then {CTI_RESPAWN_TIMER = 30};
-	
-	if (isNil 'CTI_TEAMSWAP') then {CTI_TEAMSWAP = 1}; 
-	if (isNil 'CTI_TEAMSTACK') then {CTI_TEAMSTACK = 1}; 
-	
+
+	if (isNil 'CTI_TEAMSWAP') then {CTI_TEAMSWAP = 1};
+	if (isNil 'CTI_TEAMSTACK') then {CTI_TEAMSTACK = 1};
+
 	if (isNil 'CTI_MARKERS_INFANTRY') then {CTI_MARKERS_INFANTRY = 1}; //--- Track infantry on map
-	
+
 	if (isNil 'CTI_PLAYERS_GROUPSIZE') then {CTI_PLAYERS_GROUPSIZE = 10}; //--Limit Player AI
-	
+
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 0};
 	if (isNil 'CTI_GAMEPLAY_3P') then {CTI_GAMEPLAY_3P = -1};
 	if (isNil 'CTI_WEAPON_SWAY') then {CTI_WEAPON_SWAY = 50};
 	if (isnil 'CTI_SM_NONV') then {CTI_SM_NONV = 1};
 	if (isnil 'CTI_SM_NV_THER_VEH') then {CTI_SM_NV_THER_VEH = 0};
-	
+
 	if (isNil 'CTI_WEATHER_FAST') then {CTI_WEATHER_FAST = 12};
 	if (isNil 'CTI_WEATHER_FAST_NIGHT') then {CTI_WEATHER_FAST_NIGHT = 1};
 	if (isNil 'CTI_WEATHER_INITIAL') then {CTI_WEATHER_INITIAL = 10};
@@ -662,7 +662,7 @@ with missionNamespace do {
 	if (isNil 'CTI_WEATHER_FOG') then {CTI_WEATHER_FOG = -1};
 	if (isNil 'CTI_WEATHER_WIND') then {CTI_WEATHER_WIND = -1};
 	if (isNil 'CTI_WEATHER_WAVES') then {CTI_WEATHER_WAVES = -1};
-	
+
 	if (isNil 'CTI_APEX_ADDON') then {CTI_APEX_ADDON = 1};
 	if (isNil 'CTI_CUP_ADDON') then {CTI_CUP_ADDON = 1};
 	if (isNil 'CTI_CUP_CORE_ADDON') then {CTI_CUP_CORE_ADDON = 0};
