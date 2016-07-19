@@ -93,7 +93,7 @@ class Params {
 		title = "TOWNS: Resistance Occupation Level";
 		values[] = {6,8,10,12,14};
 		texts[] = {"Noob","Low","Medium","High","Insane"};
-		default = 10;
+		default = 8;
 	};
 	class CTI_TOWNS_OCCUPATION_LEVEL {
 		title = "TOWNS: Side Occupation Level";
@@ -105,25 +105,25 @@ class Params {
 		title = "TOWNS: Resistance Occupation Forces";
 		values[] = {0,1,2,3,4,5,6,7};
 		texts[] = {"Vanilla - AAF","Vanilla - FIA","CUP - ION PMC","CUP - NAPA Chernarus","CUP - Royal Army Corp Of Sahrani","CUP - Takistani Locals","Mixed","Syndikat Paramilitary"};
-		default = 0;
+		default = 6;
 	};
 	class CTI_TOWNS_OCCUPATION_WEST {
 		title = "TOWNS: Blufor Occupation Forces";
 		values[] = {0,1,2,3};
 		texts[] = {"Vanilla","CUP - US Army","Mixed","Pacific Special Forces"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_TOWNS_OCCUPATION_EAST {
 		title = "TOWNS: Opfor Occupation Forces";
 		values[] = {0,1,2,3};
 		texts[] = {"Vanilla","CUP - Russians","Mixed","Pacific Special Forces"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_TOWNS_PEACE {
 		title = "TOWNS: Peace";
 		values[] = {0,60,120,180,300,600};
 		texts[] = {"Disabled","1 Minute","2 Minutes","3 Minutes","5 Minutes","10 Minutes"};
-		default = 600;
+		default = 300;
 	};
 	class CTI_TOWNS_TERRITORIAL {
 		title = "TOWNS: Territorial Mode";
@@ -381,19 +381,19 @@ class Params {
 		title = "ADDON: CUP Support, Units, Vehicles, Weapons";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_CUP_CORE_ADDON {
 		title = "ADDON: CUP CORE and CUP Terrains";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_OFPS_ADDON {
 		title = "ADDON: OFPS MOD Pack Support";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class SEPARATOR10 {
 		title = "========================== GAMEMODES ============================";
