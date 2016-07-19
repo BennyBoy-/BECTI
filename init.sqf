@@ -117,6 +117,9 @@ execVM "Client\Functions\Externals\fn_advancedRappellingInit.sqf";
 //cmEARPLUGS
 call compile preProcessFileLineNumbers "Client\Functions\Externals\cmEarplugs\config.sqf";
 
+//Vehicle HUD
+0 execVM	 "Client\Functions\Externals\Veh_Hud\HUD_init.sqf";
+
 //-- Explosives on Vehicles Script
 waitUntil {time > 0};
 execVM "Client\Actions\Action_Attach_charge.sqf";
