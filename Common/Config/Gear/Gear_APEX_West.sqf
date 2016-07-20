@@ -17,7 +17,7 @@ _p pushBack 300;
 
 //(Bergen- very large)
 _i pushBack "B_Bergen_tna_F";
-_u pushBack 1;
+_u pushBack 3;
 _p pushBack 800;
 
 
@@ -33,11 +33,11 @@ _p pushBack 300;
 
 //(Heavy Plate- large)
 _i pushBack "V_PlateCarrierSpec_tna_F";
-_u pushBack 3;
+_u pushBack 2;
 _p pushBack 500;
 
 _i pushBack "V_PlateCarrierGL_tna_F";
-_u pushBack 3;
+_u pushBack 2;
 _p pushBack 500;
 
 
@@ -59,7 +59,7 @@ _p pushBack 300;
 
 //(Extra Fancy Kevlar)
 _i pushBack "H_HelmetB_Light_tna_F";
-_u pushBack 3;
+_u pushBack 2;
 _p pushBack 300;
 
 //(Officer)
@@ -69,7 +69,7 @@ _p pushBack 5;
 
 //(Stealth Combat Helmet)
 _i pushBack "H_HelmetB_TI_tna_F";
-_u pushBack 2;
+_u pushBack 3;
 _p pushBack 300;
 
 
@@ -83,19 +83,19 @@ _p pushBack 5;
 //NATO
 //(Stealth Balaclava)
 _i pushBack "G_Balaclava_TI_blk_F";
-_u pushBack 0;
+_u pushBack 3;
 _p pushBack 5;
 
 _i pushBack "G_Balaclava_TI_G_blk_F";
-_u pushBack 0;
+_u pushBack 3;
 _p pushBack 5;
 
 _i pushBack "G_Balaclava_TI_tna_F";
-_u pushBack 0;
+_u pushBack 3;
 _p pushBack 5;
 
 _i pushBack "G_Balaclava_TI_G_tna_F";
-_u pushBack 0;
+_u pushBack 3;
 _p pushBack 5;
 
 
@@ -136,32 +136,32 @@ _p pushBack 300;
 
 //(CRTG)
 _i pushBack "U_B_CTRG_Soldier_F";
-_u pushBack 0;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 500;
 
 _i pushBack "U_B_CTRG_Soldier_2_F";
-_u pushBack 0;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 500;
 
 _i pushBack "U_B_CTRG_Soldier_3_F";
-_u pushBack 0;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 500;
 
 _i pushBack "U_B_CTRG_Soldier_urb_1_F";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 300;
 
 _i pushBack "U_B_CTRG_Soldier_urb_2_F";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 300;
 
 _i pushBack "U_B_CTRG_Soldier_urb_3_F";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 300;
 
 //(Full Ghillie)
 _i pushBack "U_B_T_FullGhillie_tna_F";
-_u pushBack 1;
+_u pushBack 2;
 _p pushBack 300;
 
 //(Half Ghillie)
@@ -207,34 +207,34 @@ _p pushBack 400;
 
 //(SPAR-16)
 _i pushBack "arifle_SPAR_01_khk_F";
-_u pushBack 1;
+_u pushBack 2;
 _p pushBack 500;
 
 _i pushBack "arifle_SPAR_01_blk_F";
-_u pushBack 1;
+_u pushBack 2;
 _p pushBack 500;
 
 //(SPAR-16S)
 _i pushBack "arifle_SPAR_02_khk_F";
-_u pushBack 1;
+_u pushBack 2;
 _p pushBack 500;
 
 _i pushBack "arifle_SPAR_02_blk_F";
-_u pushBack 1;
+_u pushBack 2;
 _p pushBack 500;
 
 //(SPAR-17)
 _i pushBack "arifle_SPAR_03_khk_F";
-_u pushBack 1;
+_u pushBack 2;
 _p pushBack 700;
 
 _i pushBack "arifle_SPAR_03_blk_F";
-_u pushBack 1;
+_u pushBack 2;
 _p pushBack 700;
 
 //(Protector SMG)
 _i pushBack "SMG_05_F";
-_u pushBack 1;
+_u pushBack 0;
 _p pushBack 300;
 
 //(LIM-85 LMG)
@@ -246,46 +246,46 @@ _p pushBack 800;
 //Ammo:
 //(SPAR-16)
 _i pushBack "30Rnd_556x45_Stanag";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 30;
 
 _i pushBack "30Rnd_556x45_Stanag_Tracer_Red";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 30;
 
 _i pushBack "30Rnd_556x45_Stanag_Tracer_Green";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 30;
 
 _i pushBack "30Rnd_556x45_Stanag_Tracer_Yellow";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 30;
 
 //(SPAR-16S)
 _i pushBack "150Rnd_556x45_Drum_Mag_F";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 30;
 
 _i pushBack "150Rnd_556x45_Drum_Mag_Tracer_F";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 30;
 
 //(SPAR-17)
 _i pushBack "20Rnd_762x51_Mag";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 30;
 
 //(LIM-85 LMG)
 _i pushBack "200Rnd_556x45_Box_F";
-_u pushBack 0;
+_u pushBack 1;
 _p pushBack 30;
 
 _i pushBack "200Rnd_556x45_Box_Tracer_F";
-_u pushBack 0;
+_u pushBack 1;
 _p pushBack 30;
 
 _i pushBack "200Rnd_556x45_Box_Tracer_Red_F";
-_u pushBack 0;
+_u pushBack 1;
 _p pushBack 30;
 
 
@@ -330,7 +330,7 @@ _u pushBack 1;
 _p pushBack 100;
 
 _i pushBack "optic_LRPS_tna_F";
-_u pushBack 1;
+_u pushBack 2;
 _p pushBack 100;
 
 _i pushBack "optic_Holosight_khk_F";
@@ -338,11 +338,11 @@ _u pushBack 1;
 _p pushBack 100;
 
 _i pushBack "optic_SOS_khk_F";
-_u pushBack 1;
+_u pushBack 2;
 _p pushBack 100;
 
 _i pushBack "optic_Holosight_smg_blk_F";
-_u pushBack 1;
+_u pushBack 0;
 _p pushBack 100;
 
 _i pushBack "optic_Hamr_khk_F";
@@ -358,12 +358,12 @@ _p pushBack 30;
 
 //Launchers:
 _i pushBack "launch_B_Titan_tna_F";
-_u pushBack 1;
-_p pushBack 3000;
+_u pushBack 2;
+_p pushBack 2000;
 
 _i pushBack "launch_B_Titan_short_tna_F";
-_u pushBack 1;
-_p pushBack 4000;
+_u pushBack 3;
+_p pushBack 3000;
 
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf"; 

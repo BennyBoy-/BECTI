@@ -1,6 +1,8 @@
+#define HUD_IDC	1500000
+
 class RscTitles {
 	
-	titles[] = {CTI_CaptureBar, CTI_ConstructionInterface};
+	titles[] = {CTI_CaptureBar, CTI_ConstructionInterface, CTI_HUD_RSC};
 	
 	class CTI_CaptureBar {
 		idd = 600100;
@@ -144,4 +146,22 @@ class RscTitles {
 			};
 		};
 	};
+		class CTI_HUD_RSC {
+			idd=-1;
+			duration=1e+011;
+			name="HUD_RSC";
+			movingEnable = false;
+			onLoad="uiNamespace setVariable ['HUD', _this select 0];";
+			objects[]={};
+			class controls {
+				class HUD_Vehicle: RscStructuredText {
+					idc = HUD_IDC+2;
+					x = 0.80 * safezoneW + safezoneX;
+					y = 0.60 * safezoneH + safezoneY;
+					w = 0.2 * safezoneW;
+					h = 0.20 * safezoneH;
+					colorBackground[] = {0, 0, 0, 0};
+				};
+			};
+		};
 };
