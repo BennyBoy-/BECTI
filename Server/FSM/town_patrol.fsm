@@ -205,7 +205,7 @@ class FSM
        "};" \n
        "" \n
        "_last_action = _action;" \n
-       "_last_SV = _town getVariable 'cti_town_sv_default';"/*%FSM</STATEINIT""">*/;
+       "_last_SV = _town getVariable 'cti_town_sv';"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
