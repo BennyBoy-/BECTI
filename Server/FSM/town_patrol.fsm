@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, town_patrol.fsm">*/
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_patrol.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,-300.000000,-475.000000,-200.000000,-425.000000,0.000000,"Init"};
@@ -8,8 +8,8 @@ item3[] = {"Path_Renewal",4,218,275.000000,-575.000000,375.000000,-525.000000,2.
 item4[] = {"Alive",4,218,275.000000,-375.000000,375.000000,-325.000000,1.000000,"Alive"};
 item5[] = {"Done",8,218,425.000000,-475.000000,525.000000,-425.000000,0.000000,"Done"};
 item6[] = {"End",1,250,575.000000,-475.000000,675.000000,-425.000000,0.000000,"End"};
-item7[] = {"Renewal",2,4346,-150.000000,-575.000000,-50.000000,-525.000000,0.000000,"Renewal"};
-item8[] = {"Determine_Action",2,250,275.000000,-275.000000,375.000000,-225.000000,0.000000,"Determine" \n "Action"};
+item7[] = {"Renewal",2,250,-150.000000,-575.000000,-50.000000,-525.000000,0.000000,"Renewal"};
+item8[] = {"Determine_Action",2,4346,275.000000,-275.000000,375.000000,-225.000000,0.000000,"Determine" \n "Action"};
 item9[] = {"Patrol",4,218,125.000000,-275.000000,225.000000,-225.000000,1.000000,"Patrol"};
 item10[] = {"Town_Defense",4,218,125.000000,-200.000000,225.000000,-150.000000,0.000000,"Town" \n "Defense"};
 item11[] = {"Town_Defense",2,250,-25.000000,-200.000000,75.000000,-150.000000,0.000000,"Town" \n "Defense"};
@@ -33,8 +33,8 @@ link13[] = {11,14};
 link14[] = {12,13};
 link15[] = {13,1};
 link16[] = {14,13};
-globals[] = {25.000000,1,0,0,0,640,480,1,53,6316128,1,-287.623657,567.451172,111.563057,-676.796509,769,709,1};
-window[] = {0,-1,-1,-1,-1,923,358,1818,69,1,787};
+globals[] = {25.000000,1,0,0,0,640,480,1,53,6316128,1,-273.168518,581.906311,114.898514,-673.460571,634,709,1};
+window[] = {0,-1,-1,-1,-1,1029,175,1635,175,1,652};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -205,7 +205,7 @@ class FSM
        "};" \n
        "" \n
        "_last_action = _action;" \n
-       "_last_SV = _town getVariable 'cti_town_sv_default';"/*%FSM</STATEINIT""">*/;
+       "_last_SV = _town getVariable 'cti_town_sv';"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
