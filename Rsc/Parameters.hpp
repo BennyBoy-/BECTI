@@ -93,7 +93,7 @@ class Params {
 		title = "TOWNS: Resistance Occupation Level";
 		values[] = {6,8,10,12,14};
 		texts[] = {"Noob","Low","Medium","High","Insane"};
-		default = 8;
+		default = 12;
 	};
 	class CTI_TOWNS_OCCUPATION_LEVEL {
 		title = "TOWNS: Side Occupation Level";
