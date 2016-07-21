@@ -125,6 +125,30 @@ class Params {
 		texts[] = {"Disabled","1 Minute","2 Minutes","3 Minutes","5 Minutes","10 Minutes"};
 		default = 300;
 	};
+	class CTI_TOWNS_OCCUPATION_LIMIT_AI {
+		title = "TOWNS: Occupation Soft max AI Limit";
+		values[] = {50,100,150,200,250,300,350,400};
+		texts[] = {"50","100","150","200","250","300","350","400"};
+		default = 150;
+	};
+	class CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO {
+		title = "TOWNS: Occupation Squad Queue Ratio";
+		values[] = {0,10,20,30,40,50,60,70,80,90,100};
+		texts[] = {"0","10","20","30","40","50","60","70","80","90","100"};
+		default = 50;
+	};
+	class CTI_TOWNS_RESISTANCE_LIMIT_AI {
+		title = "TOWNS: Resistance Soft max AI Limit";
+		values[] = {50,100,150,200,250,300,350,400};
+		texts[] = {"50","100","150","200","250","300","350","400"};
+		default = 150;
+	};
+	class CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO {
+		title = "TOWNS: Resistance Squad Queue Ratio";
+		values[] = {0,10,20,30,40,50,60,70,80,90,100};
+		texts[] = {"0","10","20","30","40","50","60","70","80","90","100"};
+		default = 50;
+	};
 	class CTI_TOWNS_TERRITORIAL {
 		title = "TOWNS: Territorial Mode";
 		values[] = {0,1};
