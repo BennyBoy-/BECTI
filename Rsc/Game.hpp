@@ -17,6 +17,8 @@ onLoadName = "OFPS Benny Warfare";
 
 briefingName = "OFPS Benny Warfare";
 
+0 enableChannel [true, false]; // Enable user ability to send text but disable voice on global channel
+
 //--- ArmA 3 Specifics
 dev = "Benny";
 author = "Benny";
