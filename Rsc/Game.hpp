@@ -17,6 +17,7 @@ onLoadName = "OFPS Benny Warfare";
 
 briefingName = "OFPS Benny Warfare";
 
+//--- Disabling VON for Global
 0 enableChannel [true, false]; // Enable user ability to send text but disable voice on global channel
 
 //--- ArmA 3 Specifics
