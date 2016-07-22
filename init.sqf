@@ -77,7 +77,7 @@ if ((missionNamespace getVariable "CTI_TOWNS_TERRITORIAL") > 0) then {
 };
 
 //--- Common Part is over
-CTI_Init_Common = true; 
+CTI_Init_Common = true;
 
 //--- Server execution
 if (CTI_IsServer) then {
@@ -86,18 +86,18 @@ if (CTI_IsServer) then {
 };
 
 //--- Pure client execution
-if (CTI_IsClient && !CTI_IsHeadless) then {	
+if (CTI_IsClient && !CTI_IsHeadless) then {
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: init.sqf", "Running client initialization"] call CTI_CO_FNC_Log	};
-	
+
 	waitUntil {!(isNull player)};
-	
+
 	execVM "Client\Init\Init_Client.sqf";
 };
 
 //--- Headless client execution
 if (CTI_IsHeadless) then {
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: init.sqf", "Running headless client initialization"] call CTI_CO_FNC_Log };
-	
+
 	execVM "Client\Init\Init_Client_Headless.sqf";
 };
 
@@ -122,7 +122,7 @@ call compile preProcessFileLineNumbers "Client\Functions\Externals\cmEarplugs\co
 
 //-- Explosives on Vehicles Script
 waitUntil {time > 0};
-execVM "Client\Actions\Action_Attach_charge.sqf";
+execVM "Client\Functions\Externals\Attach_Charge\Action_Attach_charge.sqf";
 waitUntil {!isNil "EtVInitialized"};
 
 //-- disable ambient life
@@ -130,10 +130,10 @@ waitUntil {!isNil "EtVInitialized"};
 //enableEnvironment false;
 
 //--- No more weapon sway
-if (local player) then { 
+if (local player) then {
 	_swayamount = CTI_WEAPON_SWAY / 100;
-	player setCustomAimCoef _swayamount; 
-	player addMPEventhandler ["MPRespawn", {player setCustomAimCoef _swayamount;}]; 
+	player setCustomAimCoef _swayamount;
+	player addMPEventhandler ["MPRespawn", {player setCustomAimCoef _swayamount;}];
 };
 
 //Briefing Entries
