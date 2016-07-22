@@ -93,15 +93,15 @@ if (isMultiplayer) then {
 		player enableSimulationGlobal true;
 		player hideObjectGlobal false;
 	};*/
-	
+
 	_last_req = -100;
 	while {!CTI_P_CanJoin} do {
 		if (time - _last_req > 15) then { _last_req = time; [player, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestJoin", CTI_PV_SERVER]};
 		sleep 1;
 	};
-	
+
 	12452 cutText ["Receiving mission intel...", "BLACK IN", 5];
-	
+
 	if (CTI_P_Jailed) then {
 		hintSilent "The ride never ends!";
 		0 spawn CTI_CL_FNC_OnJailed;
@@ -130,17 +130,17 @@ if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumber
 if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_East.sqf"};
 
 //--- Load APEX Gear
-if (CTI_APEX_ADDON > 0) then { 
+if (CTI_APEX_ADDON > 0) then {
 	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_APEX_West.sqf"};
 	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_APEX_East.sqf"};
 };
 //--- Load CUP Gear
-if (CTI_CUP_ADDON > 0) then { 
+if (CTI_CUP_ADDON > 0) then {
 	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_West.sqf"};
 	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_East.sqf"};
 };
 //--- Load OFPS Gear
-if (CTI_OFPS_ADDON > 0) then { 
+if (CTI_OFPS_ADDON > 0) then {
 	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_OFPS_West.sqf"};
 	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_OFPS_East.sqf"};
 };
@@ -153,7 +153,7 @@ waitUntil {!isNil {(group player) getVariable "cti_funds"}};
 player addEventHandler ["killed", {_this spawn CTI_CL_FNC_OnPlayerKilled}];
 if !(CTI_IsServer) then { //--- Pure client execution
 	[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit;
-	
+
 	if (didJIP) then { //--- Attempt to retrieve the last known JIP gear if possible.
 		(player) remoteExec ["CTI_PVF_SRV_RequestJIPGear", CTI_PV_SERVER];
 	};
@@ -164,7 +164,7 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 //--- Markers/UI init thread
 0 spawn {
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_teams"}};
-	
+
 	execFSM "Client\FSM\update_markers_team.fsm";
 	execFSM "Client\FSM\update_netunits_team.fsm";
 };
@@ -172,7 +172,7 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 //--- Town init thread
 0 spawn {
 	waitUntil {!isNil 'CTI_InitTowns'};
-	
+
 	execFSM "Client\FSM\update_markers_towns.fsm";
 	execFSM "Client\FSM\ui_titles_helper.fsm";
 	if ((missionNamespace getVariable "CTI_TOWNS_TERRITORIAL") > 0) then {
@@ -184,54 +184,57 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 //--- HQ / Base markers thread
 0 spawn {
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_structures"} && !isNil {CTI_P_SideLogic getVariable "cti_hq"}};
-	
+
 	//--- Initialize the structures (JIP or prefab) along with HQ.
 	execVM "Client\Init\Init_JIP.sqf";
-	
+
 	//--- Execute the client update context
 	execFSM "Client\FSM\update_actions.fsm";
-	
+
 	//--- Place the player the "best" location (if not jailed!).
 	if !(CTI_P_Jailed) then {
 		_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-		
+
 		_spawn_at = _hq;
 		if (count _structures > 0) then { _spawn_at = [_hq, _structures] call CTI_CO_FNC_GetClosestEntity };
-		
+		//--- Adding sleep in hopes to fix player spawning in empty object on first join
+		 sleep 1;
 		_spawn_at = [_spawn_at, 8, 30] call CTI_CO_FNC_GetRandomPosition;
 		player setPos _spawn_at;
+		//--- Adding sleep in hopes to fix player spawning in empty object on first join
+		sleep 1;
 	};
 };
 
 //--- Delayed thread
 0 spawn {
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_hq"} && !isNil {CTI_P_SideLogic getVariable "cti_salvagers"}};
-	
+
 	_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
-	
+
 	// if !(call CTI_CL_FNC_IsPlayerCommander) then {
 		//--- Execute the client orders context
 		execFSM "Client\FSM\update_orders.fsm";
 	// };
-	
+
 	call CTI_CL_FNC_AddMissionActions;
-	
+
 	if (alive _hq) then {
 		//--- Pure clients
 		if (CTI_IsClient && !CTI_IsServer) then {
 			_hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CL_FNC_OnHQDestroyed", CTI_P_SideID]];
-			
+
 			if (CTI_BASE_NOOBPROTECTION == 1) then {
 				_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", CTI_P_SideID]]; //--- You want that on public
 			};
 		};
 	};
-	
+
 	waitUntil {time > 0};
-	
+
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_votetime"}};
-	
+
 	if (CTI_P_SideLogic getVariable "cti_votetime" > 0) then {createDialog "CTI_RscVoteMenu"};
 };
 
@@ -246,43 +249,43 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_
 	//--- View Distance
 	_distance = profileNamespace getVariable "CTI_PERSISTENT_VIEW_DISTANCE";
 	_distance_max = missionNamespace getVariable "CTI_GRAPHICS_VD_MAX";
-	
+
 	if (isNil "_distance") then { _distance = viewDistance };
 	if (typeName _distance != "SCALAR") then { _distance = viewDistance };
 	if (_distance < 1) then { _distance = 500 };
 	if (_distance > _distance_max) then { _distance = _distance_max };
 	setViewDistance _distance;
-	
+
 	//--- Object Distance (scales to View Distance)
 	_distance = profileNamespace getVariable "CTI_PERSISTENT_OBJECT_DISTANCE";
 	if (isNil "_distance") then { _distance = viewDistance };
 	if (_distance < 1) then { _distance = 500 };
 	if (_distance > viewDistance) then { _distance = viewDistance };
 	setObjectViewDistance _distance;
-	
+
 	//--- Shadows Distance.
 	_distance = profileNamespace getVariable "CTI_PERSISTENT_SHADOWS_DISTANCE";
-	if !(isNil "_distance") then { 
-		if (typeName _distance == "SCALAR") then { 
+	if !(isNil "_distance") then {
+		if (typeName _distance == "SCALAR") then {
 			if (_distance < 50) then { _distance = 50 };
 			if (_distance > 200) then { _distance = 200 };
 			setShadowDistance _distance;
 		};
 	};
-	
+
 	//--- Terrain Grid
 	_grid = profileNamespace getVariable "CTI_PERSISTENT_TG";
 	_grid_max = missionNamespace getVariable "CTI_GRAPHICS_TG_MAX";
-	
+
 	if (isNil "_grid") then { _grid = 25 };
-	if (typeName _grid != "SCALAR") then { 
+	if (typeName _grid != "SCALAR") then {
 		_grid = 0;
 	} else {
 		if (_grid < 0) then { _grid = 0 };
 	};
 	if (_grid > _grid_max) then { _grid = _grid_max };
 	setTerrainGrid _grid;
-	
+
 };
 
 // CTI_PurchaseMenu = player addAction ["<t color='#a5c4ff'>DEBUG: Purchase Units</t>", "Client\Actions\Action_PurchaseMenu.sqf", "HQ", 1, false, true, "", "_target == player"];//debug
@@ -291,7 +294,7 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_
 
 // onMapSingleClick "{(vehicle leader _x) setPos ([_pos, 8, 30] call CTI_CO_FNC_GetRandomPosition)} forEach (CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups)";
 
-if (CTI_DEV_MODE > 0) then { 
+if (CTI_DEV_MODE > 0) then {
 	onMapSingleClick "vehicle player setPos _pos"; //--- benny debug: teleport
 	player addEventHandler ["HandleDamage", {if (player != (_this select 3)) then {(_this select 3) setDammage 1}; false}]; //--- God-Slayer mode.
 	player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
@@ -315,14 +318,14 @@ if ( (missionNamespace getVariable 'CTI_SM_NONV')==1 || (missionNamespace getVar
 };
 
 // 3P restrict
-0 execVM "Client\Functions\Client_3pRestrict.sqf";
+0 execVM "Client\Functions\Externals\Restrict_3dperson\Client_3pRestrict.sqf";
 
 // Map Markers
-0 execVM "Client\Functions\Externals\MapMarkersTitling.sqf";
+0 execVM "Client\Functions\Externals\Prodavec_markers\MapMarkersTitling.sqf";
 
 //adaptative group size
 if ( CTI_PLAYERS_GROUPSIZE == 0) then {
-	0 execVM "Client\Functions\Client_AdaptGroup.sqf";
+	0 execVM "Client\Functions\Externals\Adaptive_playerAI\Client_AdaptGroup.sqf";
 };
 
 //Earplugs
