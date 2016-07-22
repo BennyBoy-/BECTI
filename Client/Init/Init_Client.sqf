@@ -318,14 +318,14 @@ if ( (missionNamespace getVariable 'CTI_SM_NONV')==1 || (missionNamespace getVar
 };
 
 // 3P restrict
-0 execVM "Client\Functions\Client_3pRestrict.sqf";
+0 execVM "Client\Functions\Externals\Restrict_3dperson\Client_3pRestrict.sqf";
 
 // Map Markers
-0 execVM "Client\Functions\Externals\MapMarkersTitling.sqf";
+0 execVM "Client\Functions\Externals\Prodavec_markers\MapMarkersTitling.sqf";
 
 //adaptative group size
 if ( CTI_PLAYERS_GROUPSIZE == 0) then {
-	0 execVM "Client\Functions\Client_AdaptGroup.sqf";
+	0 execVM "Client\Functions\Externals\Adaptive_playerAI\Client_AdaptGroup.sqf";
 };
 
 //Earplugs
