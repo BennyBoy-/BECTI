@@ -84,6 +84,9 @@ player createDiarySubject ["menu8", "OFPS"];
 player createDiaryRecord ["menu8",["OFPS","<br/>
 <font color='#2ae916' size='14'>OFPS Forums</font><br/>
 - http://ofps.net/ <br/><br/>
+- https://discord.gg/HM6wYwk<br/>
+- ID: 205771840268795905<br/>
+- Link on Forums OFPS.net<br/>
 <font color='#2ae916' size='14'>OFPS TeamSpeak IP</font><br/>
 - 209.160.28.180<br/>
 - arma.ofps.net<br/><br/>
