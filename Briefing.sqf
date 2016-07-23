@@ -84,6 +84,7 @@ player createDiarySubject ["menu8", "OFPS"];
 player createDiaryRecord ["menu8",["OFPS","<br/>
 <font color='#2ae916' size='14'>OFPS Forums</font><br/>
 - http://ofps.net/ <br/><br/>
+<font color='#2ae916' size='14'>Discord Server</font><br/>
 - https://discord.gg/HM6wYwk<br/>
 - ID: 205771840268795905<br/>
 - Link on Forums OFPS.net<br/>
