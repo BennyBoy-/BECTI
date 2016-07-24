@@ -207,13 +207,14 @@ switch (toLower(worldName)) do {
 		Vybor setVariable ["cti_town_neighbors", [Kabanino, Lopatino, Pustoshka, Pogorevka]];
 		Pustoshka setVariable ["cti_town_neighbors", [Vybor, Myshkino, Lopatino, Pogorevka]];
 		PobedaDam setVariable ["cti_town_neighbors", [Gvozdno, Krasnostav]];
-		Airfield setVariable ["cti_town_neighbors", [Vybor, Lopatino, Kabanino, Petrovka, Grishino]];		
+		Airfield setVariable ["cti_town_neighbors", [Vybor, Lopatino, Kabanino, Petrovka, Grishino]];
 		Tulga setVariable ["cti_town_neighbors", [Solnichniy, Kamyshovo, Msta]];
 		Altar setVariable ["cti_town_neighbors", [NovySobor, Gorka, Gvozdno]];
 		DevilsCastle setVariable ["cti_town_neighbors", [Grishino, Gvozdno, Petrovka]];
 		NovySobor setVariable ["cti_town_neighbors", [StarySobor, Guglovo, Gorka, Altar]];
 	};
 };
+
 switch (toLower(worldName)) do {
 	case "sara_dbe1": {
 		IslaDelVida setVariable ["cti_town_neighbors",[Hunapu,WorkCamp,FuelDepot]];
@@ -224,10 +225,10 @@ switch (toLower(worldName)) do {
 		RockQuarry setVariable ["cti_town_neighbors",[Malaredo,RocaDelDror]];
 		RocaDelDror setVariable ["cti_town_neighbors",[Epomia,RockQuarry,Antigua]];
 		Epomia setVariable ["cti_town_neighbors",[Malaredo,RocaDelDror,Carmen]];
-		Carmen setVariable ["cti_town_neighbors",[Epomia,Tlaloc]];
+		Carmen setVariable ["cti_town_neighbors",[Epomia,Tlaloc,Bagango]];
 		Tlaloc setVariable ["cti_town_neighbors",[Pacamac,OilRig,Carmen,Mercalillo]];
 		Benoma setVariable ["cti_town_neighbors",[Bagango,Masbee]];
-		Bagango setVariable ["cti_town_neighbors",[Mercalillo,Obregan,Benoma]];
+		Bagango setVariable ["cti_town_neighbors",[Mercalillo,Obregan,Benoma,Carmen]];
 		Mercalillo setVariable ["cti_town_neighbors",[Tlaloc,Bagango,Obregan]];
 		Masbee setVariable ["cti_town_neighbors",[Antigua,Benoma,Pita,TresValles]];
 		Pita setVariable ["cti_town_neighbors",[Masbee,TresValles]];
@@ -251,5 +252,41 @@ switch (toLower(worldName)) do {
 		FuelDepot setVariable ["cti_town_neighbors",[IslaDelVida,Estrella,Rahmandi,OilRig]];
 		OilRig setVariable ["cti_town_neighbors",[Tlaloc,Pacamac,Rashidah,FuelDepot]];
 		WindFarm setVariable ["cti_town_neighbors",[Rahmandi,Everon,Iguana,Dolores]];
+	};
+};
+
+switch (toLower(worldName)) do {
+	case "takistan": {
+		Nur setVariable ["cti_town_neighbors", [Nagara]];
+		Nagara setVariable ["cti_town_neighbors", [Nur,Shamali,Gospandi,Rasman]];
+		Shamali setVariable ["cti_town_neighbors", [Nagara,Rasman]];
+		Rasman setVariable ["cti_town_neighbors", [Nagara,Gospandi,Bastam,Shamali,Zavarak]];
+		Gospandi setVariable ["cti_town_neighbors", [Nagara,Mulladost,Bastam,Rasman]];
+		Mulladost setVariable ["cti_town_neighbors", [Gospandi,Khushab]];
+		Khushab setVariable ["cti_town_neighbors", [Mulladost, Jilavur]];
+		Jilavur setVariable ["cti_town_neighbors", [Khushab,Sakhe,FeruzAbad,Shukurkalay]];
+		Shukurkalay setVariable ["cti_town_neighbors", [Jilavur, Chaman]];
+		Chaman setVariable ["cti_town_neighbors", [Shukurkalay]];
+		Sakhe setVariable ["cti_town_neighbors", [Jilavur,ChakChak,FeruzAbad,Kakaru]];
+		ChakChak setVariable ["cti_town_neighbors", [Sakhe,Landay,Huzrutimam,Kakaru]];
+		Landay setVariable ["cti_town_neighbors", [ChakChak]];
+		Huzrutimam setVariable ["cti_town_neighbors", [ChakChak,Sultansafe]];
+		Sultansafe setVariable ["cti_town_neighbors", [Huzrutimam,LoyManara]];
+		LoyManara setVariable ["cti_town_neighbors", [Sultansafe,Jaza,Chardarakht,Timurkalay]];
+		Jaza setVariable ["cti_town_neighbors", [LoyManara,Chardarakht]];
+		Chardarakht setVariable ["cti_town_neighbors", [Jaza,LoyManara,HazarBagh]];
+		HazarBagh setVariable ["cti_town_neighbors", [Chardarakht]];
+		Timurkalay setVariable ["cti_town_neighbors", [LoyManara,Anar,Garmarud]];
+		Anar setVariable ["cti_town_neighbors", [Timurkalay,FeruzAbad,Kakaru,Falar]];
+		FeruzAbad setVariable ["cti_town_neighbors", [Jilavur,Anar,Sakhe,Kakaru,Falar]];
+		Kakaru setVariable ["cti_town_neighbors", [FeruzAbad,ChakChak,Anar,Sakhe]];
+		Falar setVariable ["cti_town_neighbors", [FeruzAbad,Anar,Bastam]];
+		Bastam setVariable ["cti_town_neighbors", [Rasman,Gospandi,Falar,Imarat]];
+		Imarat setVariable ["cti_town_neighbors", [Bastam,Zavarak,Garmarud]];
+		Garmarud setVariable ["cti_town_neighbors", [Imarat,Timurkalay,Garmsar]];
+		Garmsar setVariable ["cti_town_neighbors", [Garmarud]];
+		Zavarak setVariable ["cti_town_neighbors", [Imarat,Ravanay,Karachinar,Rasman]];
+		Ravanay setVariable ["cti_town_neighbors", [Zavarak,Karachinar]];
+		Karachinar setVariable ["cti_town_neighbors", [Zavarak,Ravanay]];
 	};
 };
