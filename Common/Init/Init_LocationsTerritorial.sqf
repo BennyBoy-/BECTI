@@ -215,7 +215,7 @@ switch (toLower(worldName)) do {
 	};
 };
 switch (toLower(worldName)) do {
-	case "unitedsahrani": {
+	case "sara_dbe1": {
 		IslaDelVida setVariable ["cti_town_neighbors",[Hunapu,WorkCamp,FuelDepot]];
 		Hunapu setVariable ["cti_town_neighbors",[IslaDelVida,WorkCamp,Pacamac]];
 		WorkCamp setVariable ["cti_town_neighbors",[IslaDelVida,Hunapu,Malaredo]];
