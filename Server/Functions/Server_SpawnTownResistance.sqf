@@ -243,7 +243,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				};
 			};
 		} else {
-			switch (true) do {
+				switch (true) do {
 					case (_value < 80) : { 
 						_pool_units = [
 						["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 99],
@@ -400,9 +400,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 						]
 						];
 					};
-				};
-		
-			};	
+				};	
 		};
 	} else {
 		switch (true) do {

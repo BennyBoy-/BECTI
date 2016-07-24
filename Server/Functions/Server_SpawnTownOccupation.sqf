@@ -407,8 +407,6 @@ if (isNil {_town getVariable "cti_naval"}) then {
 						];
 					};
 				};
-		
-			};	
 		};
 	} else {
 		switch (true) do {
