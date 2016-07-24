@@ -224,10 +224,10 @@ switch (toLower(worldName)) do {
 		RockQuarry setVariable ["cti_town_neighbors",[Malaredo,RocaDelDror]];
 		RocaDelDror setVariable ["cti_town_neighbors",[Epomia,RockQuarry,Antigua]];
 		Epomia setVariable ["cti_town_neighbors",[Malaredo,RocaDelDror,Carmen]];
-		Carmen setVariable ["cti_town_neighbors",[Epomia,Tlaloc]];
+		Carmen setVariable ["cti_town_neighbors",[Epomia,Tlaloc,Bagango]];
 		Tlaloc setVariable ["cti_town_neighbors",[Pacamac,OilRig,Carmen,Mercalillo]];
 		Benoma setVariable ["cti_town_neighbors",[Bagango,Masbee]];
-		Bagango setVariable ["cti_town_neighbors",[Mercalillo,Obregan,Benoma]];
+		Bagango setVariable ["cti_town_neighbors",[Mercalillo,Obregan,Benoma,Carmen]];
 		Mercalillo setVariable ["cti_town_neighbors",[Tlaloc,Bagango,Obregan]];
 		Masbee setVariable ["cti_town_neighbors",[Antigua,Benoma,Pita,TresValles]];
 		Pita setVariable ["cti_town_neighbors",[Masbee,TresValles]];
