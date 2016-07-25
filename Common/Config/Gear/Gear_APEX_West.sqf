@@ -121,8 +121,8 @@ _p pushBack 300;
 
 //Binocs
 _i pushBack "Laserdesignator_01_khk_F";
-_u pushBack 0;
-_p pushBack 1000;
+_u pushBack 3;
+_p pushBack 1500;
 
 
 //Uniforms
@@ -330,8 +330,8 @@ _u pushBack 1;
 _p pushBack 100;
 
 _i pushBack "optic_LRPS_tna_F";
-_u pushBack 2;
-_p pushBack 100;
+_u pushBack 3;
+_p pushBack 1500;
 
 _i pushBack "optic_Holosight_khk_F";
 _u pushBack 1;
@@ -352,8 +352,8 @@ _p pushBack 100;
 
 //Bipod:
 _i pushBack "bipod_01_F_khk";
-_u pushBack 0;
-_p pushBack 30;
+_u pushBack 2;
+_p pushBack 50;
 
 
 //Launchers:

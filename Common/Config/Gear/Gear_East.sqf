@@ -144,10 +144,6 @@ _i pushBack "MiniGrenade";
 _u pushBack 0;
 _p pushBack 5;
 
-//_i pushBack "HandGrenade_Stone";
-//_u pushBack 0;
-//_p pushBack 1;
-
 _i pushBack "SmokeShell";
 _u pushBack 0;
 _p pushBack 0;
@@ -349,8 +345,6 @@ _i pushBack "arifle_Katiba_GL_F";
 _u pushBack 3;
 _p pushBack 400;
 
-
-
 _i pushBack "LMG_Zafir_F";
 _u pushBack 2;
 _p pushBack 950;
@@ -509,9 +503,6 @@ _u pushBack 0;
 _p pushBack 10;
 
 
-
-
-
 //--- Backpacks
 _i pushBack "B_AssaultPack_khk";
 _u pushBack 0;
@@ -571,15 +562,15 @@ _p pushBack 2000;
 
 _i pushBack "O_HMG_01_support_F";
 _u pushBack 1;
-_p pushBack 100;
+_p pushBack 50;
 
 _i pushBack "O_HMG_01_support_high_F";
 _u pushBack 1;
-_p pushBack 100;
+_p pushBack 50;
 
 _i pushBack "O_HMG_01_weapon_F";
 _u pushBack 1;
-_p pushBack 500;
+_p pushBack 400;
 
 _i pushBack "O_GMG_01_weapon_F";
 _u pushBack 1;
@@ -590,33 +581,34 @@ _u pushBack 1;
 _p pushBack 400;
 
 _i pushBack "O_GMG_01_high_weapon_F";
-_u pushBack 2;
+_u pushBack 1;
 _p pushBack 500;
 
 _i pushBack "O_HMG_01_A_weapon_F";
 _u pushBack 1;
-_p pushBack 500;
+_p pushBack 400;
 
 _i pushBack "O_GMG_01_A_weapon_F";
-_u pushBack 2;
+_u pushBack 1;
 _p pushBack 500;
 
 _i pushBack "O_HMG_01_support_F";
-_u pushBack 2;
-_p pushBack 100;
+_u pushBack 1;
+_p pushBack 50;
 
 _i pushBack "O_GMG_01_support_F";
-_u pushBack 2;
-_p pushBack 100;
+_u pushBack 1;
+_p pushBack 50;
 
-/* OPFOR gets the PODNOS for mortars
-_i pushBack "O_Mortar_01_support_F";
-_u pushBack 3;
-_p pushBack 150000;
-_i pushBack "O_Mortar_01_weapon_F";
-_u pushBack 3;
-_p pushBack 15000;
-*/
+//---- OPFOR gets the PODNOS for mortars (that would be great but what happens when we disable cup?-Apollo)
+
+_i pushBack "B_Mortar_01_support_F";
+_u pushBack 2;
+_p pushBack 50;
+
+_i pushBack "B_Mortar_01_weapon_F";
+_u pushBack 2;
+_p pushBack 10000;
 
 
 //--- Glasses
@@ -976,9 +968,8 @@ _u pushBack 0;
 _p pushBack 5;
 
 
-
-
 //--- Accessories
+//--- Silencers
 _i pushBack "muzzle_snds_acp";
 _u pushBack 1;
 _p pushBack 500;
@@ -1007,6 +998,7 @@ _i pushBack "muzzle_snds_M";
 _u pushBack 1;
 _p pushBack 1000;
 
+//--- Optics
 _i pushBack "optic_arco";
 _u pushBack 1;
 _p pushBack 500;
@@ -1027,11 +1019,9 @@ _i pushBack "optic_ACO_grn";
 _u pushBack 0;
 _p pushBack 200;
 
-
 _i pushBack "optic_SOS";
 _u pushBack 1;
 _p pushBack 1200;
-
 
 _i pushBack "optic_NVS";
 _u pushBack 1;
@@ -1057,7 +1047,6 @@ _i pushBack "optic_LRPS";
 _u pushBack 3;
 _p pushBack 1500;
 
-
 _i pushBack "optic_MRD";
 _u pushBack 1;
 _p pushBack 50;
@@ -1074,6 +1063,39 @@ _i pushBack "acc_pointer_IR";
 _u pushBack 0;
 _p pushBack 20;
 
+//---  Bipods
+_i pushBack "bipod_01_F_snd";
+_u pushBack 2;
+_p pushBack 50;
+
+_i pushBack "bipod_01_F_blk";
+_u pushBack 2;
+_p pushBack 50;
+
+_i pushBack "bipod_01_F_mtp";
+_u pushBack 2;
+_p pushBack 50;
+
+_i pushBack "bipod_02_F_blk";
+_u pushBack 2;
+_p pushBack 50;
+
+_i pushBack "bipod_02_F_tan";
+_u pushBack 2;
+_p pushBack 50;
+
+_i pushBack "bipod_02_F_hex";
+_u pushBack 2;
+_p pushBack 50;
+
+_i pushBack "bipod_03_F_blk";
+_u pushBack 2;
+_p pushBack 50;
+
+_i pushBack "bipod_03_F_oli";
+_u pushBack 2;
+_p pushBack 50;
+
 //--- Items
 _i pushBack "NVGoggles_OPFOR";
 _u pushBack 1;
@@ -1083,11 +1105,9 @@ _i pushBack "Binocular";
 _u pushBack 0;
 _p pushBack 5;
 
-
 _i pushBack "Rangefinder";
 _u pushBack 0;
 _p pushBack 250;
-
 
 _i pushBack "Laserdesignator_02";
 _u pushBack 3;

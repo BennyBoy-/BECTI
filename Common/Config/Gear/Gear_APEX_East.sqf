@@ -108,8 +108,8 @@ _p pushBack 300;
 //Binocs:
 //CSAT
 _i pushBack "Laserdesignator_02_ghex_F";
-_u pushBack 0;
-_p pushBack 300;
+_u pushBack 3;
+_p pushBack 1500;
 
 
 //Uniforms:
@@ -307,21 +307,20 @@ _p pushBack 100;
 //Optics:
 _i pushBack "optic_Arco_ghex_F";
 _u pushBack 1;
-_p pushBack 100;
+_p pushBack 500;
 
 _i pushBack "optic_DMS_ghex_F";
 _u pushBack 2;
 _p pushBack 100;
 
 _i pushBack "optic_LRPS_ghex_F";
-_u pushBack 2;
-_p pushBack 100;
-
+_u pushBack 3;
+_p pushBack 1500;
 
 //Bipod:
 _i pushBack "bipod_01_F_khk";
-_u pushBack 0;
-_p pushBack 30;
+_u pushBack 2;
+_p pushBack 50;
 
 
 //Launchers:
