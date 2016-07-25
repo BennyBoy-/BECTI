@@ -325,8 +325,8 @@ _p pushBack 50;
 
 //Launchers:
 _i pushBack "launch_RPG32_ghex_F";
-_u pushBack 1;
-_p pushBack 1000;
+_u pushBack 2;
+_p pushBack 1500;
 
 _i pushBack "launch_O_Titan_ghex_F";
 _u pushBack 2;
