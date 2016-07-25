@@ -29,7 +29,7 @@ if (alive player && vehicle player == player && alive _vehicle && _vehicle dista
 		[_vehicle, 0] remoteExec ["CTI_PVF_SRV_RequestVehicleLock", CTI_PV_SERVER];
 		hint "The vehicle has been lockedpicked!";
 	} else {
-		hint "Failed to lockpick the vehicle";
+		hint "Failed to lockpick the vehicle, the lockpick broke";
 	};
 } else {
 	hint "Failed to lockpick the vehicle";
