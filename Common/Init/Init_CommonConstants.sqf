@@ -594,12 +594,10 @@ CTI_GC_DELAY_BUILDING = 30;
 CTI_VOTE_TIME = 60; //--- Commander Vote time
 
 //--- SHK Specific
-CTI_SHK_BUILDING_ENABLED = false;
-CTI_SHK_BUILDING_PLACEMENT_CHANCE = 25; //--- An AI Group has x% of chance to be placed in a building
+CTI_SHK_BUILDING_ENABLED = true;
 CTI_SHK_BUILDING_SAFE_RANGE = 30; //--- Determine whether a building should be used for unit positioning or not if units are present within this range
 CTI_SHK_BUILDING_SCAN_RANGE = 150; //--- The range used to search for building from the town's center
 CTI_SHK_BUILDING_SCAN_RANGE_RAN = 50; //--- Add a random range, works as min max -> RANGE + (random value - random value)
-CTI_SHK_GROUP_SIZE_MAX = 12; //--- If the group has more than x members, skip it
 
 with missionNamespace do {
 	if (isNil 'CTI_ARTILLERY_SETUP') then {CTI_ARTILLERY_SETUP = 0}; //--- Artillery status (-2: Disabled, -1: Artillery Computer, 0: Short, 1: Medium, 2: Long, 3: Far)
