@@ -818,7 +818,7 @@ _p pushBack 500;
 
 _i pushBack "optic_Aco";
 _u pushBack 0;
-_p pushBack 200
+_p pushBack 200;
 
 _i pushBack "optic_ACO_grn";
 _u pushBack 0;
@@ -834,7 +834,7 @@ _p pushBack 200;
 
 _i pushBack "optic_Nightstalker";
 _u pushBack 2;
-_p pushBack 1000
+_p pushBack 1000;
 
 _i pushBack "optic_tws";
 _u pushBack 3;
@@ -854,7 +854,7 @@ _p pushBack 1500;
 
 _i pushBack "optic_MRD";
 _u pushBack 1;
-_p pushBack 50
+_p pushBack 50;
 
 _i pushBack "optic_Yorris";
 _u pushBack 1;
