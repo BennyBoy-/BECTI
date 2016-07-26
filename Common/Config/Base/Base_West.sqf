@@ -455,6 +455,11 @@ _classes pushBack 		"CUP_B_M252_USMC";
 _prices pushBack 		15000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
+
+_headers pushBack 		"ZU-23";
+_prices pushBack 		2000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
 };
 
 if (CTI_CUP_CORE_ADDON > 0) then { 
