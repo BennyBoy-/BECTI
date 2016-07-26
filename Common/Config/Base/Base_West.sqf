@@ -186,7 +186,7 @@ _categories pushBack 	"Fortification";
 
 if (CTI_APEX_ADDON > 0) then {
 
-/* Can't be destroyed
+/* Can't be destroyed need to encourage cup to make a destructable model of apex assets
 _headers pushBack 		"Bunker (Small) Green";
 _classes pushBack 		"Land_BagBunker_01_small_green_F";
 _prices pushBack 		15;
@@ -205,7 +205,6 @@ _classes pushBack 		"Land_IRMaskingCover_01_F";
 _prices pushBack 		15;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
-
 };
 
 
@@ -333,7 +332,7 @@ _prices pushBack 		4000;
 _placements pushBack 	[0, 50];
 _categories pushBack 	"Fortification";
 
-/* Do not add in cannot be destoryed
+/* Do not add in cannot be destroyed. Can we just Delete these then?-Apollo
 _headers pushBack 		"H-Barrier (Small) (1 Block)";
 _classes pushBack 		"Land_HBarrier_1_F";
 _prices pushBack 		10;
@@ -547,7 +546,9 @@ _prices pushBack 		10;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Signs";
 
-/* Why have these?
+
+//--- Misc
+/* Why have these? only adds clutter
 _headers pushBack 		"Lamp";
 _classes pushBack 		"Land_LampHalogen_F";
 _prices pushBack 		5;
