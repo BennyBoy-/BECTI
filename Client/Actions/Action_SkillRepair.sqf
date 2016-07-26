@@ -15,8 +15,8 @@ sleep 3;
 waitUntil {animationState player != "Acts_carFixingWheel" || !alive player || vehicle player != player || !alive _vehicle || _vehicle distance player > 5};
 
 if (alive player && vehicle player == player && alive _vehicle && _vehicle distance player <= 5) then {
-	//--- Overall repairs (75% limit)
-	if (_dammages <= 0.25) then {
+	//--- Overall repairs (no limit)
+ 		if (_dammages > 0) then {
 		_dammages = _dammages - 0.15;
 		if (_dammages < 0) then {_dammages = 0};
 		_vehicle setDammage _dammages;
