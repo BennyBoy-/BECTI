@@ -207,47 +207,13 @@ with missionNamespace do {
 			["INFORMATION", "FUNCTION: CTI_PVF_HC_UpdateTownGroups", format["Registered [%1] Town Groups [%2] for town [%3] on side [%4] ", count(_groups), _groups, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
 	};
-};
-	private ["_crew", "_config", "_config_sub", "_group", "_net", "_position", "_sideID", "_turrets", "_units", "_vehicle"];
-
-	_vehicle = _this select 0;
-	_crew = _this select 1;
-	_group = _this select 2;
-	_sideID = _this select 3;
-
-	_turrets = [];
-	_config = configFile >> "CfgVehicles" >> typeOf _vehicle >> "turrets";
-	for '_i' from 0 to (count _config)-1 do {
-		_turret_main = _config select _i;
-		_turrets = _turrets + [[_i]];
+	
+	//--- The Headless Client receives a vehicle lock request
+	CTI_PVF_CLT_RequestVehicleLock = {
+		private ["_locked", "_vehicle"];
+		_vehicle = _this select 0;
+		_locked = _this select 1;
 		
-		_config_sub = _turret_main >> "turrets";
-		for '_j' from 0 to (count _config_sub) -1 do {
-			_turret_sub = _config_sub select _j;
-			_turrets = _turrets + [[_i, _j]];
-		};
+		_vehicle lock _locked;
 	};
-
-	// _turrets
-	_units = [];
-	_position = getPos _vehicle;
-	_position = [(_position select 0) + 5, (_position select 1) + 5, 0];
-
-	_net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1 && _sideID in [CTI_WEST_ID, CTI_EAST_ID]) then { true } else { false };
-
-	if (_vehicle emptyPositions "driver" > 0) then {
-		sleep 5;
-		_unit = [_crew, _group, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
-		_unit moveInDriver _vehicle;
-		_units = _units + [_unit];
-	};
-
-	{
-		sleep 5;
-		_unit = [_crew, _group, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
-		_unit moveInTurret [_vehicle, _x];
-		_units = _units + [_unit];
-	} forEach _turrets;
-
-	_units
 };

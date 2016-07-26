@@ -12,7 +12,6 @@ _vvar = if (_side == resistance) then {"cti_town_resistance_active_vehicles"} el
 _tvar = if (_side == resistance) then {"cti_town_resistance_groups"} else {"cti_town_occupation_groups"};
 _limit = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI"};
 _ratio = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO"};
-_threshold = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI_THRESHOLD"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI_THRESHOLD"};
 _safe_range = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE} else {CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE};
 
 _index = 0;
@@ -52,7 +51,7 @@ while {true} do {
 	} foreach _town_groups;
 	
 	//--- Create if the total AI count is below the given limit and if the the active squad value is below the threshold or if the current town AI size is below the given value
-	if ((_total < _limit && _active_squads < _ratio) || _current < _threshold) then {
+	if ((_total < _limit && _active_squads < _ratio) || _current < _active_squads) then {
 		_position = _positions select _index;
 		_team = _teams select _index;
 		_group = _groups select _index;

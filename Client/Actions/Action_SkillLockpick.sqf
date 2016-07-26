@@ -26,10 +26,14 @@ if (alive player && vehicle player == player && alive _vehicle && _vehicle dista
 	if (((random 100)-CTI_P_ActionLockPickChance) <= _min) then {
 		//--- Unlocked, gain experience.
 		if (CTI_P_ActionLockPickChance > -51) then {CTI_P_ActionLockPickChance = CTI_P_ActionLockPickChance - 1};
-		[_vehicle, 0] remoteExec ["CTI_PVF_SRV_RequestVehicleLock", CTI_PV_SERVER];
+		if (local _vehicle) then {
+			_vehicle lock 0;
+		} else {
+			[_vehicle, 0] remoteExec ["CTI_PVF_SRV_RequestVehicleLock", CTI_PV_SERVER];
+		};
 		hint "The vehicle has been lockedpicked!";
 	} else {
-		hint "Failed to lockpick the vehicle, the lockpick broke";
+		hint "Failed to lockpick the vehicle, the lock resisted";
 	};
 } else {
 	hint "Failed to lockpick the vehicle";
