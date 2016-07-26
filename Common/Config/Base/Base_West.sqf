@@ -457,6 +457,7 @@ _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
 _headers pushBack 		"ZU-23";
+_classes pushBack 		"CUP_B_ZU23_CDF";
 _prices pushBack 		2000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
