@@ -455,11 +455,13 @@ _prices pushBack 		15000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
+/* Waiting for cup to fix its rearm issue
 _headers pushBack 		"ZU-23";
 _classes pushBack 		"CUP_B_ZU23_CDF";
 _prices pushBack 		2000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
+*/
 };
 
 if (CTI_CUP_CORE_ADDON > 0) then { 
@@ -546,9 +548,6 @@ _prices pushBack 		10;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Signs";
 
-
-//--- Misc
-/* Why have these? only adds clutter
 _headers pushBack 		"Lamp";
 _classes pushBack 		"Land_LampHalogen_F";
 _prices pushBack 		5;
@@ -620,6 +619,6 @@ _classes pushBack 		"Windsock_01_F";
 _prices pushBack 		1;
 _placements pushBack 	[0, 5];
 _categories pushBack 	"Structures";
-*/
+
 
 [_side, _headers, _classes, _prices, _placements, _categories] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Defenses.sqf";
