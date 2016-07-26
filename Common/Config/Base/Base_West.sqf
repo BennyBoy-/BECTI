@@ -183,13 +183,31 @@ _prices pushBack 		15;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
 
+
 if (CTI_APEX_ADDON > 0) then {
+
+/* Can't be destroyed
 _headers pushBack 		"Bunker (Small) Green";
 _classes pushBack 		"Land_BagBunker_01_small_green_F";
 _prices pushBack 		15;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
+*/
+
+_headers pushBack 		"IR/Termal Cover Small";
+_classes pushBack 		"Land_IRMaskingCover_02_F";
+_prices pushBack 		15;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Fortification";
+
+_headers pushBack 		"IR/Termal Cover Large";
+_classes pushBack 		"Land_IRMaskingCover_01_F";
+_prices pushBack 		15;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Fortification";
+
 };
+
 
 _headers pushBack 		"Razor Wire";
 _classes pushBack 		"Land_Razorwire_F";
@@ -440,24 +458,67 @@ _categories pushBack 	"Defense";
 };
 
 if (CTI_CUP_CORE_ADDON > 0) then { 
-_headers pushBack 		"H-Barrier10xTall";
+_headers pushBack 		["H-Barrier10xTall",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Base_WarfareBBarrier10xTall";
 _prices pushBack 		10;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
-_headers pushBack 		"H-Barrier10x";
+_headers pushBack 		["H-Barrier10x",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Base_WarfareBBarrier10x";
 _prices pushBack 		10;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
-_headers pushBack 		"H-Barrier5x";
+_headers pushBack 		["H-Barrier5x",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Base_WarfareBBarrier5x";
 _prices pushBack 		10;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
+
+_headers pushBack 		"Concrete Vehicle Bunker";
+_classes pushBack 		"Land_Ammostore2";
+_prices pushBack 		200;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+
+_headers pushBack 		"Large Hangar (Green)";
+_classes pushBack 		"Land_Ss_hangar";
+_prices pushBack 		3000;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+
+_headers pushBack 		"Large Hangar (Desert)";
+_classes pushBack 		"Land_Ss_hangard";
+_prices pushBack 		3000;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+
+_headers pushBack 		"EarthenNest (Green)";
+_classes pushBack 		"Land_fort_artillery_nest";
+_prices pushBack 		50;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+
+_headers pushBack 		"EarthenWall (Green)";
+_classes pushBack 		"Land_fort_rampart";
+_prices pushBack 		50;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+
+_headers pushBack 		"EarthenNest (Desert)";
+_classes pushBack 		"Land_fort_artillery_nest_EP1";
+_prices pushBack 		50;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+
+_headers pushBack 		"EarthenWall (Desert)";
+_classes pushBack 		"Land_fort_rampart_EP1";
+_prices pushBack 		50;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
 };
+
 
 if (CTI_OFPS_ADDON > 0) then {
 _headers pushBack 		"C-RAM Phalanx";
@@ -473,12 +534,14 @@ _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 };
 
+
 _headers pushBack 		["Heli Pad", [["DMG_Reduce", 1]]];
 _classes pushBack 		"Land_HelipadSquare_F";
 _prices pushBack 		10;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Signs";
 
+/* Why have these?
 _headers pushBack 		"Lamp";
 _classes pushBack 		"Land_LampHalogen_F";
 _prices pushBack 		5;
@@ -550,5 +613,6 @@ _classes pushBack 		"Windsock_01_F";
 _prices pushBack 		1;
 _placements pushBack 	[0, 5];
 _categories pushBack 	"Structures";
+*/
 
 [_side, _headers, _classes, _prices, _placements, _categories] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Defenses.sqf";
