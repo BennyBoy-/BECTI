@@ -421,7 +421,7 @@ _o pushBack 5000;
 _t pushBack 10;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_LIGHT;
-_s pushBack "";
+_s pushBack "service-medic";
 _d pushBack 0;
 
 _c pushBack 'CUP_B_M1135_ATGMV_Desert';
