@@ -76,7 +76,6 @@ CTI_P_ActionLockPickChance = 0;
 CTI_P_ActionLockPickDelay = 30;
 CTI_P_ActionLockPickNextUse = -1;
 CTI_P_ActionRepair = false;
-CTI_P_ActionRepairDelay = 90;
 CTI_P_ActionRepairNextUse = -1;
 
 CTI_P_Coloration_Money = "#BAFF81";
