@@ -11,6 +11,7 @@
 #include "Rsc\Sounds.hpp"
 #include "Rsc\Debriefing.hpp"
 #include "Rsc\Parameters.hpp"
+#include "Rsc\Rapelactions.hpp"
 
 // ^HS^ for Headless Client
 joinUnassigned = 0;

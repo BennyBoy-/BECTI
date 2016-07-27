@@ -111,8 +111,17 @@ _igiload = execVM "Client\Functions\Externals\IgiLoad\IgiLoadInit.sqf";
 attached = false;
 0 = execVM "Client\Functions\Externals\BDD\Greifer.sqf";
 
+//--Advanced Towing
+execVM "Client\Functions\Externals\AdvancedTowing\fn_advancedTowingInit.sqf";
+
+//--Advanced Sling Loading
+execVM "Client\Functions\Externals\AdvancedSlingLoad\fn_advancedSlingLoadingInit.sqf";
+
 //--Advanced Rapel
 execVM "Client\Functions\Externals\AdvnacedRappel\fn_advancedRappellingInit.sqf";
+
+//--Advanced Urban Rapel
+execVM "Client\Functions\Externals\AdvancedUrbanRapel\functions\fn_advancedUrbanRappellingInit.sqf";
 
 //cmEARPLUGS
 call compile preProcessFileLineNumbers "Client\Functions\Externals\cmEarplugs\config.sqf";
