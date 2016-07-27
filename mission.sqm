@@ -23,16 +23,6 @@ class EditorData
 	};
 };
 binarizationWanted=0;
-addons[]=
-{
-	"A3_Ui_F",
-	"A3_Structures_F_Mil_Flags",
-	"A3_Modules_F",
-	"A3_Characters_F",
-	"A3_Structures_F_Mil_BagBunker",
-	"A3_Modules_F_Curator_Curator",
-	"A3_Structures_F_Dominants_Lighthouse"
-};
 class AddonsMetaData
 {
 	class List
@@ -5362,8 +5352,7 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={4292.0513,-21.130127,1416.9023};
-			name="alpha_test";
-			text=" BECTI BENNY OFPS ALPHA TEST";
+			name="alpha_";
 			type="mil_warning";
 			alpha=0.29548854;
 			id=166;
@@ -5373,8 +5362,8 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={5404.6006,-68.890099,7673.8784};
-			name="alpha_test_1";
-			text=" BECTI BENNY OFPS ALPHA TEST";
+			name="alpha__1";
+			text=" BECTI BENNY OFPS BETA";
 			type="mil_warning";
 			alpha=0.29548854;
 			id=167;
@@ -5383,8 +5372,7 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={398.63721,-106.56055,6717.0981};
-			name="alpha_test_2";
-			text=" BECTI BENNY OFPS ALPHA TEST";
+			name="alpha__2";
 			type="mil_warning";
 			alpha=0.29548854;
 			id=168;
