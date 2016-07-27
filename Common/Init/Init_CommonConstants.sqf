@@ -356,6 +356,8 @@ CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 750; //--- Determine how far a threat may
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_OCCUPATION_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
+CTI_TOWNS_OCCUPATION_SPAWN_AI_MAX = 32;  //--- Determine the max occupation AI count to present in a town (if the count is below the given limit, a new wave will spawn)
+CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN = 12; //--- Determine the min occupation AI count to present in a town
 
 //--- Towns: Resistance
 CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
@@ -366,6 +368,12 @@ CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
+CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX = 35; //--- Determine the max resistance AI count to present in a town (if the count is below the given limit, a new wave will spawn)
+CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN = 12; //--- Determine the min resistance AI count to present in a town
+
+//--- Towns: Spawn System
+CTI_TOWNS_SPAWN_SV_MAX = 200; //--- Determine the max SV used for a town as a reference for AI units spawning (min max scaling)
+CTI_TOWNS_SPAWN_SV_MIN = 10; //--- Determine the min SV used for a town as a reference for AI units spawning (min max scaling)
 
 //--- Towns: Supply
 CTI_TOWNS_SUPPLY_MODE = 1; //--- Supply Mode: (0: Default, 1: Timed)
@@ -385,17 +393,11 @@ with missionNamespace do {
 	if (isNil 'CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE') then {CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE = 10}; //--Set town occ max group for resistance
 	if (isNil 'CTI_TOWNS_OCCUPATION_LEVEL') then {CTI_TOWNS_OCCUPATION_LEVEL = 8}; //-- Set Town occ max group
 	if (isNil 'CTI_TOWNS_OCCUPATION_RESISTANCE') then {CTI_TOWNS_OCCUPATION_RESISTANCE = 0}; //--- Set Town Occupation Forces
-	if (isNil 'CTI_TOWNS_OCCUPATION_SPAWN_AI_MAX') then {CTI_TOWNS_OCCUPATION_SPAWN_AI_MAX = 32}; //--- Determine the max occupation AI count to present in a town
-	if (isNil 'CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN') then {CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN = 12}; //--- Determine the min occupation AI count to present in a town
 	if (isNil 'CTI_TOWNS_OCCUPATION_WEST') then {CTI_TOWNS_OCCUPATION_WEST = 0};
 	if (isNil 'CTI_TOWNS_OCCUPATION_EAST') then {CTI_TOWNS_OCCUPATION_EAST = 0};
 	if (isNil 'CTI_TOWNS_PEACE') then {CTI_TOWNS_PEACE = 180}; //--- Enable or disable the Town Peace mode (Expressed in seconds, 0 is disabled)
 	if (isNil 'CTI_TOWNS_RESISTANCE_LIMIT_AI') then {CTI_TOWNS_RESISTANCE_LIMIT_AI = 150}; //--- Determine the soft limit for overall resistance Town AI
 	if (isNil 'CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO') then {CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO = 40}; //--- Determine the AI queue ratio (Queued unit = Groups * ratio/100)
-	if (isNil 'CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX') then {CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX = 35}; //--- Determine the max resistance AI count to present in a town
-	if (isNil 'CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN') then {CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN = 12}; //--- Determine the min resistance AI count to present in a town
-	if (isNil 'CTI_TOWNS_SPAWN_SV_MAX') then {CTI_TOWNS_SPAWN_SV_MAX = 200}; //--- Determine the max SV used for a town as a reference for AI units spawning
-	if (isNil 'CTI_TOWNS_SPAWN_SV_MIN') then {CTI_TOWNS_SPAWN_SV_MIN = 10}; //--- Determine the min SV used for a town as a reference for AI units spawning
 	if (isNil 'CTI_TOWNS_TERRITORIAL') then {CTI_TOWNS_TERRITORIAL = 0}; //--- Enable or disable the Territorial mode (Neighbors Capture)
 };
 //-----------------------------------------------------------------------------------------------------------------------//

@@ -15,27 +15,28 @@ sleep 3;
 waitUntil {animationState player != "Acts_carFixingWheel" || !alive player || vehicle player != player || !alive _vehicle || _vehicle distance player > 5};
 
 if (alive player && vehicle player == player && alive _vehicle && _vehicle distance player <= 5) then {
-	//--- Overall repairs (75% limit)
-	if (_dammages <= 0.25) then {
-		_dammages = _dammages - 0.15;
+	//--- Overall repairs (Global Arg)
+	if (_dammages > 0) then {
+		_dammages = _dammages - .15;
 		if (_dammages < 0) then {_dammages = 0};
 		_vehicle setDammage _dammages;
 	};
 	
-	//--- Parts repairs (No limits)
-	//--- TODO: If locality does not match the player's, delegate to the vehicle owner (like lockpick).
-	{
-		diag_log format ["temp debug (repair): dealing with hitpoint %1", _x];
-		_damages = _vehicle getHit _x;
-		if !(isNil '_damages') then {
-			if (_dammages > 0) then {_vehicle setHit [_x, _damages - 0.10]};
-		} else {
-			diag_log format ["temp debug (repair): hitpoint %1 gethit is nil", _x];
-		};
-	} forEach _hitPoints;
+	//--- Parts repairs (Local Arg)
+	if (local _vehicle) then {
+		[_vehicle, _hitPoints, .10] call CTI_PVF_CLT_RequestVehicleHitPointsRepair;
+	} else {
+		[_vehicle, _hitPoints, .10] remoteExec ["CTI_PVF_SRV_RequestVehicleHitPointsRepair", CTI_PV_SERVER];
+	};
 	
-	//--- Fuel
-	if (fuel _vehicle < 0.10) then {_vehicle setFuel 0.10};
+	//--- Fuel (Local Arg)
+	if (fuel _vehicle < .10) then {
+		if (local _vehicle) then {
+			_vehicle setFuel .10;
+		} else {
+			[_vehicle, .10] remoteExec ["CTI_PVF_SRV_RequestVehicleRefuel", CTI_PV_SERVER];
+		};
+	};
 	
 	hint "The vehicle has been partially repaired";
 } else {

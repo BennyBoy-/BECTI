@@ -200,6 +200,19 @@ with missionNamespace do {
 	//--- The client request an upgrade
 	CTI_PVF_SRV_RequestUpgrade = { _this spawn CTI_SE_FNC_StartUpgrade };
 	
+	//--- The client request a vehicle refuel
+	CTI_PVF_SRV_RequestVehicleRefuel = {
+		private ["_fuel", "_vehicle"];
+		_vehicle = _this select 0;
+		_fuel = _this select 1;
+		
+		if (local _vehicle) then {
+			_vehicle setFuel _fuel;
+		} else {
+			[_vehicle, _fuel] remoteExec ["CTI_PVF_CLT_RequestVehicleRefuel", owner _vehicle];
+		};
+	};
+	
 	//--- The client request a vehicle lock toggle
 	CTI_PVF_SRV_RequestVehicleLock = {
 		private ["_locked", "_vehicle"];
@@ -210,6 +223,29 @@ with missionNamespace do {
 			_vehicle lock _locked;
 		} else {
 			[_vehicle, _locked] remoteExec ["CTI_PVF_CLT_RequestVehicleLock", owner _vehicle];
+		};
+	};
+	
+	//--- The client requests a vehicle part(s) repair
+	CTI_PVF_SRV_RequestVehicleHitPointsRepair = {
+		private ["_damages", "_locked", "_repair", "_vehicle"];
+		_vehicle = _this select 0;
+		_hitPoints = _this select 1;
+		_repair = _this select 2;
+		
+		if (local _vehicle) then {
+			{
+				_damages = _vehicle getHit _x;
+				
+				if !(isNil '_damages') then {
+					if (_damages > 0) then {
+						_repair = if (_damages - _repair < 0) then {0} else {_damages - _repair};
+						_vehicle setHit [_x, _repair];
+					};
+				};
+			} forEach _hitPoints;
+		} else {
+			[_vehicle, _hitPoints, _repair] remoteExec ["CTI_PVF_CLT_RequestVehicleHitPointsRepair", owner _vehicle];
 		};
 	};
 	
