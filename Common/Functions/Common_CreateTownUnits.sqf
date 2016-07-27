@@ -14,9 +14,18 @@ _limit = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_
 _ratio = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO"};
 _safe_range = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE} else {CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE};
 
+//--- Determine how many AI should be present at a given time (perform a min max from the given SV range)
+_spawn_max_ai = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX} else {CTI_TOWNS_OCCUPATION_SPAWN_AI_MAX};
+_spawn_min_ai = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN} else {CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN};
+_spawn_town_sv = if (_side == resistance) then {_town getVariable "cti_town_sv_max"} else {_town getVariable "cti_town_sv"};
+_active_units = (((_spawn_max_ai - _spawn_min_ai) * (_spawn_town_sv - CTI_TOWNS_SPAWN_SV_MIN)) / (CTI_TOWNS_SPAWN_SV_MAX - CTI_TOWNS_SPAWN_SV_MIN)) + _spawn_min_ai;
+
 _index = 0;
 _ratio = round(count _groups * (_ratio/100));
 if (_ratio < 1) then {_ratio = 1};
+
+//--- HC Specific: Sleep for a random second to delay the threads (if there is more than one HC, information such as remote units count will sync better)
+if (CTI_IsHeadless) then {sleep (random 1)};
 
 while {true} do {
 	_town_groups = _town getVariable [_tvar, []];
@@ -51,7 +60,7 @@ while {true} do {
 	} foreach _town_groups;
 	
 	//--- Create if the total AI count is below the given limit and if the the active squad value is below the threshold or if the current town AI size is below the given value
-	if ((_total < _limit && _active_squads < _ratio) || _current < _active_squads) then {
+	if ((_total < _limit && _active_squads < _ratio) || _current < _active_units) then {
 		_position = _positions select _index;
 		_team = _teams select _index;
 		_group = _groups select _index;
@@ -72,7 +81,7 @@ while {true} do {
 		};
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Spawning [%1] units in group [%2] for town [%3] on side [%4]. Overall AI [%5] and current limit [%6]. Active Squad in town [%7] with current Ratio [%8]. Current Live AI in town [%9]", count _team, _group, _town getVariable "cti_town_name", _side, _total, _limit, _active_squads, _ratio, _current]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Spawning [%1] units in group [%2] for town [%3] on side [%4]. Overall AI [%5] and current limit [%6]. Active Squad in town [%7] with current Ratio [%8]. Current Live AI in town [%9], AI Spawn threshold is set to [%10]", count _team, _group, _town getVariable "cti_town_name", _side, _total, _limit, _active_squads, _ratio, _current, _active_units]] call CTI_CO_FNC_Log;
 		};
 		
 		_index = _index + 1;
