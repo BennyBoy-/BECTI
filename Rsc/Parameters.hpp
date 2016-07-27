@@ -123,7 +123,7 @@ class Params {
 		title = "TOWNS: Peace";
 		values[] = {0,60,120,180,300,600};
 		texts[] = {"Disabled","1 Minute","2 Minutes","3 Minutes","5 Minutes","10 Minutes"};
-		default = 600;
+		default = 300;
 	};
 	class CTI_TOWNS_OCCUPATION_LIMIT_AI {
 		title = "TOWNS: Occupation Soft max AI Limit";
@@ -418,7 +418,7 @@ class Params {
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
-	};		
+	};
 	class SEPARATOR10 {
 		title = "========================== GAMEMODES ============================";
 		values[] = {1};

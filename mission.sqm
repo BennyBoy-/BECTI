@@ -5353,6 +5353,7 @@ class Mission
 			dataType="Marker";
 			position[]={4292.0513,-21.130127,1416.9023};
 			name="alpha_";
+			text=" BECTI BENNY OFPS BETA";
 			type="mil_warning";
 			alpha=0.29548854;
 			id=166;
@@ -5373,6 +5374,7 @@ class Mission
 			dataType="Marker";
 			position[]={398.63721,-106.56055,6717.0981};
 			name="alpha__2";
+			text=" BECTI BENNY OFPS BETA";
 			type="mil_warning";
 			alpha=0.29548854;
 			id=168;
