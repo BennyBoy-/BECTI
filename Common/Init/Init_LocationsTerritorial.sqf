@@ -260,8 +260,8 @@ switch (toLower(worldName)) do {
 		Nur setVariable ["cti_town_neighbors", [Nagara]];
 		Nagara setVariable ["cti_town_neighbors", [Nur,Shamali,Gospandi,Rasman]];
 		Shamali setVariable ["cti_town_neighbors", [Nagara,Rasman]];
-		Rasman setVariable ["cti_town_neighbors", [Nagara,Gospandi,Bastam,Shamali,Zavarak]];
-		Gospandi setVariable ["cti_town_neighbors", [Nagara,Mulladost,Bastam,Rasman]];
+		Rasman setVariable ["cti_town_neighbors", [Nagara,Bastam,Shamali,Zavarak]];
+		Gospandi setVariable ["cti_town_neighbors", [Nagara,Mulladost,Bastam]];
 		Mulladost setVariable ["cti_town_neighbors", [Gospandi,Khushab]];
 		Khushab setVariable ["cti_town_neighbors", [Mulladost, Jilavur]];
 		Jilavur setVariable ["cti_town_neighbors", [Khushab,Sakhe,FeruzAbad,Shukurkalay]];

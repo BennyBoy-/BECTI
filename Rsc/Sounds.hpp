@@ -1,5 +1,5 @@
 class CfgSounds {
-	sounds[] = {prison,nuke,nuclear_boom,nuclear_heartbeat,nuclear_geiger,geiger_1,geiger_2,geiger_3,akbar,choppa,AR_Rappel_Loop,AR_Rappel_Start,AR_Rappel_End};
+	sounds[] = {prison,nuke,nuclear_boom,nuclear_heartbeat,nuclear_geiger,geiger_1,geiger_2,geiger_3,akbar,choppa,AR_Rappel_Loop,AR_Rappel_Start,AR_Rappel_End,AUR_Rappel_Loop,AUR_Rappel_Start,AUR_Rappel_End};
 	class prison {
 		name = "prison";
 		sound[] = {"Rsc\Sounds\prison.ogg", 1, 1.0};
@@ -62,19 +62,37 @@ class CfgSounds {
 	class AR_Rappel_Loop
 	{
 		name = "AR_Rappel_Loop";
-		sound[] = {"Rsc\Sounds\AR_Rappel_Loop.ogg",10,1};
+		sound[] = {"Client\Functions\Externals\AdvancedSlingLoad\sounds\AR_Rappel_Loop.ogg",10,1};
 		titles[] = {0,""};
 	};
 	class AR_Rappel_Start
 	{
 		name = "AR_Rappel_Start";
-		sound[] = {"Rsc\Sounds\AR_Rappel_Start.ogg",10,1};
+		sound[] = {"Client\Functions\Externals\AdvancedSlingLoad\sounds\AR_Rappel_Start.ogg",10,1};
 		titles[] = {0,""};
 	};
 	class AR_Rappel_End
 	{
 		name = "AR_Rappel_End";
-		sound[] = {"Rsc\Sounds\AR_Rappel_End.ogg",10,1};
+		sound[] = {"Client\Functions\Externals\AdvancedSlingLoad\sounds\AR_Rappel_End.ogg",10,1};
+		titles[] = {0,""};
+	};
+	class AUR_Rappel_Loop
+	{
+		name = "AUR_Rappel_Loop";
+		sound[] = {"Client\Functions\Externals\AdvancedUrbanRapel\sounds\AUR_Rappel_Loop.ogg",1.7782794,1};
+		titles[] = {0,""};
+	};
+	class AUR_Rappel_Start
+	{
+		name = "AUR_Rappel_Start";
+		sound[] = {"Client\Functions\Externals\AdvancedUrbanRapel\sounds\AUR_Rappel_Start.ogg",3.1622777,1};
+		titles[] = {0,""};
+	};
+	class AUR_Rappel_End
+	{
+		name = "AUR_Rappel_End";
+		sound[] = {"Client\Functions\Externals\AdvancedUrbanRapel\sounds\AUR_Rappel_End.ogg",3.1622777,1};
 		titles[] = {0,""};
 	};
 };

@@ -51,7 +51,7 @@ while {true} do {
 	} foreach _town_groups;
 	
 	//--- Create if the total AI count is below the given limit and if the the active squad value is below the threshold or if the current town AI size is below the given value
-	if ((_total < _limit && _active_squads < _ratio) || _current < 4) then {
+	if ((_total < _limit && _active_squads < _ratio) || _current < _active_squads) then {
 		_position = _positions select _index;
 		_team = _teams select _index;
 		_group = _groups select _index;
@@ -100,7 +100,7 @@ while {true} do {
 		
 		//--- Man the nearby structures if needed
 		if (CTI_SHK_BUILDING_ENABLED) then {
-			if (count _vehicles < 1 && ((CTI_SHK_BUILDING_PLACEMENT_CHANCE > random 100 && count _men <= CTI_SHK_GROUP_SIZE_MAX) || !isNil {_town getVariable "cti_naval"})) then {
+			if !(isNil {_town getVariable "cti_naval"}) then {
 				if (CTI_Log_Level >= CTI_Log_Information) then {
 					["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Group [%1] members in town [%2] will be placed in nearby building if possible via SHK", _group, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
 				};
