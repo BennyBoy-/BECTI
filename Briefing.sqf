@@ -80,7 +80,7 @@ player createDiaryRecord ["menu7",["Training","<br/>
 - https://www.youtube.com/user/SpanishSurfer/videos <br/><br/>
 "]];
 
-player createDiarySubject ["menu8", "OFPS"];
+player createDiarySubject ["menu8", "Contact"];
 player createDiaryRecord ["menu8",["OFPS","<br/>
 <font color='#2ae916' size='14'>OFPS Forums</font><br/>
 - http://ofps.net/ <br/><br/>
@@ -93,4 +93,24 @@ player createDiaryRecord ["menu8",["OFPS","<br/>
 - arma.ofps.net<br/><br/>
 <font color='#2ae916' size='14'>Remote connect Info</font><br/>
 arma.ofps.net:2320<br/><br/>
+"]];
+
+player createDiarySubject ["menu8", "Credits"];
+player createDiaryRecord ["menu8",["Credits","<br/>
+<font color='#2ae916' size='14'>Credits</font><br/>
+- Benny - Main DEV<br/>
+- Liveandletdie - Editor / Manager<br/>
+- Omon XR - Tester / Manager<br/>
+- MagnetASS - Skin Director <br/>
+- Apollodeathstar - Editor<br/>
+- BlubFisch - Mission integration<br/>
+- Schmeisser - Editor<br/>
+"]];
+
+player createDiarySubject ["menu8", "Mission Update"];
+player createDiaryRecord ["menu8",["Mission Update","<br/>
+<font color='#2ae916' size='14'>What changed in this update?</font><br/>
+- Repair kit (now fixed 25%) and has cool down of 30 sec<br/>
+- Forcelock been fixed <br/>
+
 "]];
