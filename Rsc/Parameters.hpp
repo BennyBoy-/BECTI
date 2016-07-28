@@ -171,7 +171,7 @@ class Params {
 		title = "RESPAWN: Camps";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Town Classic","Nearby Camps"};
-		default = 1;
+		default = 2;
 	};
 	class CTI_RESPAWN_CAMPS_CONDITION {
 		title = "RESPAWN: Camps Condition";

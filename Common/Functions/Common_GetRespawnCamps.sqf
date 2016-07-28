@@ -22,7 +22,7 @@
     _camps = [deathpos, sideplayer, group player] call CTI_CO_FNC_GetRespawnCamps
 */
 
-private ["_camps", "_group", "_location", "_side", "_sideID","_up","_respawnrange"];
+private ["_camps", "_group", "_location", "_side", "_sideID","_up","_respawnrange","_respawnrangeclas"];
 
 _location = _this select 0;
 _sideID = _this select 1;
@@ -61,7 +61,7 @@ switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS") do {
 		
 		//--- Check the friendly camps of each nearby towns
 		{
-			_list = [_town, _sideID] call CTI_CO_FNC_GetTownCampsOnSide;
+			_list = [_x, _sideID] call CTI_CO_FNC_GetTownCampsOnSide;
 			{
 				if (_x distance _location <= _respawnrange) then {
 					if (CTI_RESPAWN_CAMPS_SAFE > 0) then { //--- Safeguard? check for enemies around the camps
