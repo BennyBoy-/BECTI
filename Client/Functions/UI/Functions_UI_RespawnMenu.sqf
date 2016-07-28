@@ -1,5 +1,5 @@
 CTI_UI_Respawn_GetAvailableLocations = {
-	private ["_fobs", "_hq", "_ignore_mobile_crew", "_list", "_mobile", "_structures"];
+	private ["_fobs", "_hq", "_ignore_mobile_crew", "_list", "_mobile", "_structures","_up","_respawnrangefob"];
 	
 	_list = [];
 	
