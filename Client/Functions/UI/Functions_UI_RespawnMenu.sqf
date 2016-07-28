@@ -12,7 +12,9 @@ CTI_UI_Respawn_GetAvailableLocations = {
 	//--- Add FOBs if available.
 	if (CTI_BASE_FOB_MAX > 0) then {
 		_fobs = CTI_P_SideLogic getVariable ["cti_fobs", []];
-		{if (alive _x && _x distance CTI_DeathPosition <= CTI_RESPAWN_FOB_RANGE) then {_list pushBack _x}} forEach _fobs;
+		_up=if (!( count ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) == 0)) then {((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_REST} else {0};
+		_respawnrangefob=CTI_RESPAWN_FOB_RANGE+500*_up;
+		{if (alive _x && _x distance CTI_DeathPosition <= _respawnrangefob) then {_list pushBack _x}} forEach _fobs;
 	};
 	
 	//--- Add camps if camp respawn is enabled
