@@ -95,8 +95,8 @@ player createDiaryRecord ["menu8",["OFPS","<br/>
 arma.ofps.net:2320<br/><br/>
 "]];
 
-player createDiarySubject ["menu8", "Credits"];
-player createDiaryRecord ["menu8",["Credits","<br/>
+player createDiarySubject ["menu9", "Credits"];
+player createDiaryRecord ["menu9",["Credits","<br/>
 <font color='#2ae916' size='14'>Credits</font><br/>
 - Benny - Main DEV<br/>
 - Liveandletdie - Editor / Manager<br/>
