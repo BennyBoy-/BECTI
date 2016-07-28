@@ -171,7 +171,7 @@ class Params {
 		title = "RESPAWN: Camps";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Town Classic","Nearby Camps"};
-		default = 1;
+		default = 2;
 	};
 	class CTI_RESPAWN_CAMPS_CONDITION {
 		title = "RESPAWN: Camps Condition";
@@ -198,7 +198,7 @@ class Params {
 		default = 15;
 	};
 	class SEPARATOR4 {
-		title = "========================== AI ============================";
+		title = "============================ AI ==============================";
 		values[] = {1};
 		texts[] = {""};
 		default = 1;
@@ -216,7 +216,7 @@ class Params {
 		default = 5;
 	};
 	class SEPARATOR5 {
-		title = "========================== UNITS ============================";
+		title = "=========================== UNITS ============================";
 		values[] = {1};
 		texts[] = {""};
 		default = 1;
@@ -273,10 +273,10 @@ class Params {
 		title = "ARTILLERY: Setup";
 		values[] = {-2,-1,0,1,2,3};
 		texts[] = {"Disabled","Ballistic Computer","Short","Medium","Long","Extreme"};
-		default = 0;
+		default = -1;
 	};
 	class SEPARATOR6 {
-		title = "========================== GAMEPLAY ============================";
+		title = "========================== GAMEPLAY ===========================";
 		values[] = {1};
 		texts[] = {""};
 		default = 1;
@@ -306,25 +306,25 @@ class Params {
 		default = 0;
 	};
 	class SEPARATOR7 {
-		title = "========================== TEAMPLAY ============================";
+		title = "========================== TEAMPLAY ===========================";
 		values[] = {1};
 		texts[] = {""};
 		default = 1;
 	};
 	class CTI_TEAMSWAP {
-		title = "TEAM: Team swap protection NO FUNCTION YET";
+		title = "TEAM: Team swap protection";
 		values[] = {0,1};
 		texts[] = {"off","on"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_TEAMSTACK {
-		title = "TEAM: Team Stack protection";
+		title = "TEAM: Team Stack protection (NO FUNCTION YET)";
 		values[] = {0,1};
 		texts[] = {"off","on"};
 		default = 0;
 	};
 	class SEPARATOR8 {
-		title = "========================== MAP SETTINGS ============================";
+		title = "======================== MAP SETTINGS =========================";
 		values[] = {1};
 		texts[] = {""};
 		default = 1;
@@ -390,7 +390,7 @@ class Params {
 		default = 1;
 	};
 	class SEPARATOR9 {
-		title = "========================== ADDONS ============================";
+		title = "=========================== ADDONS ============================";
 		values[] = {1};
 		texts[] = {""};
 		default = 1;
@@ -420,7 +420,7 @@ class Params {
 		default = 1;
 	};
 	class SEPARATOR10 {
-		title = "========================== GAMEMODES ============================";
+		title = "========================= GAMEMODES ===========================";
 		values[] = {1};
 		texts[] = {""};
 		default = 1;
@@ -438,7 +438,7 @@ class Params {
 		default = 0;
 	};
 	class SEPARATOR11 {
-		title = "========================== DEV MODE ============================";
+		title = "========================== DEV MODE ===========================";
 		values[] = {1};
 		texts[] = {""};
 		default = 1;

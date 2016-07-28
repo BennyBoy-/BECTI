@@ -208,6 +208,15 @@ with missionNamespace do {
 		};
 	};
 	
+	//--- The Headless Client receives a vehicle refuel request
+	CTI_PVF_CLT_RequestVehicleRefuel = {
+		private ["_fuel", "_vehicle"];
+		_vehicle = _this select 0;
+		_fuel = _this select 1;
+		
+		_vehicle setFuel _fuel;
+	};
+	
 	//--- The Headless Client receives a vehicle lock request
 	CTI_PVF_CLT_RequestVehicleLock = {
 		private ["_locked", "_vehicle"];
@@ -215,5 +224,24 @@ with missionNamespace do {
 		_locked = _this select 1;
 		
 		_vehicle lock _locked;
+	};
+	
+	//--- The Headless Client receives receives a vehicle part(s) repair request
+	CTI_PVF_CLT_RequestVehicleHitPointsRepair = {
+		private ["_damages", "_locked", "_repair", "_vehicle"];
+		_vehicle = _this select 0;
+		_hitPoints = _this select 1;
+		_repair = _this select 2;
+		
+		{
+			_damages = _vehicle getHit _x;
+			
+			if !(isNil '_damages') then {
+				if (_damages > 0) then {
+					_repair = if (_damages - _repair < 0) then {0} else {_damages - _repair};
+					_vehicle setHit [_x, _repair];
+				};
+			};
+		} forEach _hitPoints;
 	};
 };

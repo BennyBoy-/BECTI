@@ -11,20 +11,20 @@ _p = [];
 //-- Grenades
 _i pushBack "sfp_handgrenade_shgr07";
 _u pushBack 0;
-_p pushBack 5;
+_p pushBack 50;
 
 _i pushBack "sfp_handgrenade_shgr56";
 _u pushBack 0;
-_p pushBack 5;
+_p pushBack 50;
 
 _i pushBack "sfp_handgrenade_shgr2000";
 _u pushBack 0;
-_p pushBack 5;
+_p pushBack 50;
 
 //-- Magazines
 _i pushBack "hlc_500rnd_762x51_Belt";
 _u pushBack 3;
-_p pushBack 500;
+_p pushBack 800;
 
 _i pushBack "hlc_500rnd_762x51_Cinematic";
 _u pushBack 3;

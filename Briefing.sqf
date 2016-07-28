@@ -103,14 +103,16 @@ player createDiaryRecord ["menu8",["Credits","<br/>
 - Omon XR - Tester / Manager<br/>
 - MagnetASS - Skin Director <br/>
 - Apollodeathstar - Editor<br/>
-- BlubFisch - Mission integration<br/>
+- BlubFisch - Island integration<br/>
 - Schmeisser - Editor<br/>
+<br/>
+-Big thanks to everyone who put time into this!<br/>
 "]];
 
 player createDiarySubject ["menu8", "Mission Update"];
 player createDiaryRecord ["menu8",["Mission Update","<br/>
 <font color='#2ae916' size='14'>What changed in this update?</font><br/>
-- Repair kit (now fixed 25%) and has cool down of 30 sec<br/>
+- Repair kit (now fixes 25% of damage) and has cool down of 30 sec<br/>
 - Forcelock been fixed <br/>
 
 "]];
