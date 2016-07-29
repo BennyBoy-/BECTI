@@ -1,4 +1,4 @@
-private ["_bounty", "_created_units", "_created_vehicles", "_crew", "_crews", "_group", "_locked", "_net", "_position", "_side", "_sideID", "_unit", "_units", "_vehicle", "_vehicle_crew"];
+private ["_bounty", "_created_units", "_created_vehicles", "_crew", "_crews", "_extra_units", "_group", "_locked", "_net", "_position", "_side", "_sideID", "_unit", "_units", "_vehicle", "_vehicle_crew"];
 
 _units = _this select 0;
 _position = _this select 1;
@@ -7,6 +7,7 @@ _group = _this select 3;
 _locked = if (count _this > 4) then {_this select 4} else {true};
 _net = if (count _this > 5) then {_this select 5} else {false};
 _bounty = if (count _this > 6) then {_this select 6} else {false};
+_extra_units = if (count _this > 7) then {_this select 7} else {true};
 
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 if (isNull _group) then {_group = createGroup _side};
@@ -28,7 +29,7 @@ _crews = [];
 		if (typeName _crew == "ARRAY") then {_crew = _crew select 0};
 		_vehicle = [_x, [_position, 2, 15, 50] call CTI_CO_FNC_GetRandomPosition, random 360, _sideID, _locked, _net, _bounty] call CTI_CO_FNC_CreateVehicle;
 		_created_vehicles pushBack _vehicle;
-		_vehicle_crew = [_vehicle, _crew, _group, _sideID] call CTI_CO_FNC_ManVehicle;
+		_vehicle_crew = [_vehicle, _crew, _group, _sideID, _extra_units] call CTI_CO_FNC_ManVehicle;
 		_crews = _crews + _vehicle_crew;
 	};
 } forEach _units;
