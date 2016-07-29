@@ -90,16 +90,16 @@ class Params {
 		default = 1;
 	};
 	class CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE {
-		title = "TOWNS: Resistance Occupation Level";
-		values[] = {6,8,10,12,14,16,18,20};
-		texts[] = {"Noob","Low","Medium","High","Insane","Seriously","Just Die","HAHAHA"};
-		default = 12;
+		title = "TOWNS: Resistance Occupation Squad Count";
+		values[] = {5,10,15,20,25,30,35,40};
+		texts[] = {"Amateur","Novice","Average","Skilled","Professional","Specialist","Expert","Chuck Norris"};
+		default = 15;
 	};
 	class CTI_TOWNS_OCCUPATION_LEVEL {
-		title = "TOWNS: Side Occupation Level";
-		values[] = {6,8,10,12,14,16,18,20};
-		texts[] = {"Noob","Low","Medium","High","Insane","Seriously","Just Die","HAHAHA"};
-		default = 8;
+		title = "TOWNS: Side Occupation Squad Count";
+		values[] = {5,10,15,20,25,30,35,40};
+		texts[] = {"Amateur","Novice","Average","Skilled","Professional","Specialist","Expert","Chuck Norris"};
+		default = 15;
 	};
 	class CTI_TOWNS_OCCUPATION_RESISTANCE {
 		title = "TOWNS: Resistance Occupation Forces";
