@@ -25,7 +25,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], [
 ]];
 
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
-	[1500,2500,3500], //--- Gear
+	[1500,2500,3500,4500], //--- Gear
 	[1500,2500,3500], //--- Barracks
 	[1500,2500,3500,4500], //--- Light
 	[1500,2500,3500], //--- Heavy
@@ -48,7 +48,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 
 if (CTI_GUERILLA_MODE == 1 || CTI_ZOMBIE_MODE == 1) then {
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
-	3, //--- Gear
+	4, //--- Gear
 	2, //--- Barracks
 	2, //--- Light
 	0, //--- Heavy
@@ -70,7 +70,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 ]];
 } else {
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
-	3, //--- Gear
+	4, //--- Gear
 	3, //--- Barracks
 	4, //--- Light
 	3, //--- Heavy
@@ -93,7 +93,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 };
 
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
-	[[],[],[]], //--- Gear
+	[[],[],[],[]], //--- Gear
 	[[],[],[]], //--- Barracks
 	[[],[],[],[CTI_UPGRADE_NUKE, 1]], //--- Light
 	[[],[],[]], //--- Heavy
@@ -116,7 +116,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 
 if (CTI_DEV_MODE > 0) then { 
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
-		[1, 1, 1], //--- Gear
+		[1, 1, 1, 1], //--- Gear
 		[1, 1, 1], //--- Barracks
 		[1, 1, 1, 1], //--- Light
 		[1, 1, 1], //--- Heavy
@@ -138,7 +138,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 ]];
 }else {
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
-		[60,60,60], //--- Gear
+		[60,60,60,60], //--- Gear
 		[60,60,60], //--- Barracks
 		[60,60,60,60], //--- Light
 		[60,60,60], //--- Heavy
