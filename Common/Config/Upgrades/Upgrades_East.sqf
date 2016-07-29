@@ -94,7 +94,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[],[],[],[]], //--- Gear
-	[[],[],[]], //--- Barracks
+	[[CTI_UPGRADE_GEAR, 1],[CTI_UPGRADE_GEAR, 2],[CTI_UPGRADE_GEAR, 3]], //--- Barracks
 	[[],[],[],[CTI_UPGRADE_NUKE, 1]], //--- Light
 	[[],[],[]], //--- Heavy
 	[[],[]], //--- Naval
