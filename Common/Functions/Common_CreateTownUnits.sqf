@@ -87,7 +87,7 @@ while {true} do {
 		_index = _index + 1;
 		
 		//--- Create the given team
-		_return = [_team, _position, _side, _group, true, false, true] call CTI_CO_FNC_CreateTeam;
+		_return = [_team, _position, _side, _group, true, false, true, false] call CTI_CO_FNC_CreateTeam;
 		_men = _return select 0;
 		_vehicles = _return select 1;
 		
