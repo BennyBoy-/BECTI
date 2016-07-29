@@ -91,14 +91,14 @@ class Params {
 	};
 	class CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE {
 		title = "TOWNS: Resistance Occupation Level";
-		values[] = {6,8,10,12,14};
-		texts[] = {"Noob","Low","Medium","High","Insane"};
+		values[] = {6,8,10,12,14,16,18,20};
+		texts[] = {"Noob","Low","Medium","High","Insane","Seriously","Just Die","HAHAHA"};
 		default = 12;
 	};
 	class CTI_TOWNS_OCCUPATION_LEVEL {
 		title = "TOWNS: Side Occupation Level";
-		values[] = {6,8,10,12,14};
-		texts[] = {"Noob","Low","Medium","High","Insane"};
+		values[] = {6,8,10,12,14,16,18,20};
+		texts[] = {"Noob","Low","Medium","High","Insane","Seriously","Just Die","HAHAHA"};
 		default = 8;
 	};
 	class CTI_TOWNS_OCCUPATION_RESISTANCE {
