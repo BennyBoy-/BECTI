@@ -25,18 +25,18 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], [
 ]];
 
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
-	[1500,2500,3500,4500], //--- Gear
-	[1500,2500,3500], //--- Barracks
-	[1500,2500,3500,4500], //--- Light
-	[1500,2500,3500], //--- Heavy
-	[1500,2500], //--- Naval
-	[1500,2500,3500], //--- Air
+	[1500,3000,4500,6000], //--- Gear
+	[1500,3000,4500], //--- Barracks
+	[2000,4000,6000,8000], //--- Light
+	[2500,5000,10000], //--- Heavy
+	[2000,4000], //--- Naval
+	[3000,6000,12000], //--- Air
 	[1500], //--- Air FFAR
 	[1500], //--- Air DAR
 	[1500], //--- Air AT
 	[1500], //--- Air AA
 	[1500], //--- Air CM
-	[5000, 20000, 40000], //--- Towns Occupation
+	[10000, 20000, 40000], //--- Towns Depots
 	[1500, 1500], //--- Halo
 	[1500], //--- Air Radar
 	[1500], //--- Art Radar
@@ -96,14 +96,14 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[],[],[],[]], //--- Gear
 	[[CTI_UPGRADE_GEAR, 1],[CTI_UPGRADE_GEAR, 2],[CTI_UPGRADE_GEAR, 3]], //--- Barracks
 	[[],[],[],[CTI_UPGRADE_NUKE, 1]], //--- Light
-	[[],[],[]], //--- Heavy
+	[[CTI_UPGRADE_LIGHT,1],[CTI_UPGRADE_LIGHT,2],[CTI_UPGRADE_LIGHT,3]], //--- Heavy
 	[[],[]], //--- Naval
 	[[],[],[]], //--- Air
 	[[CTI_UPGRADE_AIR, 1]], //--- Air FFAR
 	[[CTI_UPGRADE_AIR, 1]], //--- Air DAR
 	[[CTI_UPGRADE_AIR, 1]], //--- Air AT
 	[[CTI_UPGRADE_AIR, 1]], //--- Air AA
-	[[]], //--- Air CM
+	[[CTI_UPGRADE_AIR, 1]], //--- Air CM
 	[[CTI_UPGRADE_BARRACKS,1],[CTI_UPGRADE_LIGHT,1],[CTI_UPGRADE_HEAVY,1]], //--- Towns Occupation
 	[[CTI_UPGRADE_AIR, 1],[CTI_UPGRADE_AIR, 2]], //--- Halo
 	[[]], //--- Air Radar
