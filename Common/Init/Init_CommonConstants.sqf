@@ -371,11 +371,11 @@ CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 40; //--- Determine how high a threat
 CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 180; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX = 24; //--- Determine the max resistance AI count to present in a town (if the count is below the given limit, a new wave will spawn)
-CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN = 12; //--- Determine the min resistance AI count to present in a town
+CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN = 15; //--- Determine the min resistance AI count to present in a town
 
 //--- Towns: Spawn System
 CTI_TOWNS_SPAWN_SV_MAX = 120; //--- Determine the max SV used for a town as a reference for AI units spawning (min max scaling)
-CTI_TOWNS_SPAWN_SV_MIN = 25; //--- Determine the min SV used for a town as a reference for AI units spawning (min max scaling)
+CTI_TOWNS_SPAWN_SV_MIN = 50; //--- Determine the min SV used for a town as a reference for AI units spawning (min max scaling)
 
 //--- Towns: Supply
 CTI_TOWNS_SUPPLY_MODE = 1; //--- Supply Mode: (0: Default, 1: Timed)

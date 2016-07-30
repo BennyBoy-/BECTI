@@ -105,19 +105,19 @@ class Params {
 		title = "TOWNS: Resistance Occupation Forces";
 		values[] = {0,1,2,3,4,5,6,7};
 		texts[] = {"Vanilla - AAF","Vanilla - FIA","CUP - ION PMC","CUP - NAPA Chernarus","CUP - Royal Army Corp Of Sahrani","CUP - Takistani Locals","Mixed","Syndikat Paramilitary"};
-		default = 1;
+		default = 7;
 	};
 	class CTI_TOWNS_OCCUPATION_WEST {
 		title = "TOWNS: Blufor Occupation Forces";
 		values[] = {0,1,2,3};
 		texts[] = {"Vanilla","CUP - US Army","Mixed","Pacific Special Forces"};
-		default = 0;
+		default = 3;
 	};
 	class CTI_TOWNS_OCCUPATION_EAST {
 		title = "TOWNS: Opfor Occupation Forces";
 		values[] = {0,1,2,3};
 		texts[] = {"Vanilla","CUP - Russians","Mixed","Pacific Special Forces"};
-		default = 0;
+		default = 3;
 	};
 	class CTI_TOWNS_PEACE {
 		title = "TOWNS: Peace";
@@ -129,25 +129,25 @@ class Params {
 		title = "TOWNS: Occupation Soft max AI Limit";
 		values[] = {50,100,150,200,250,300,350,400};
 		texts[] = {"50","100","150","200","250","300","350","400"};
-		default = 150;
+		default = 200;
 	};
 	class CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO {
 		title = "TOWNS: Occupation Squad Queue Ratio";
 		values[] = {0,10,20,30,40,50,60,70,80,90,100};
 		texts[] = {"0","10","20","30","40","50","60","70","80","90","100"};
-		default = 50;
+		default = 30;
 	};
 	class CTI_TOWNS_RESISTANCE_LIMIT_AI {
 		title = "TOWNS: Resistance Soft max AI Limit";
 		values[] = {50,100,150,200,250,300,350,400};
 		texts[] = {"50","100","150","200","250","300","350","400"};
-		default = 150;
+		default = 200;
 	};
 	class CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO {
 		title = "TOWNS: Resistance Squad Queue Ratio";
 		values[] = {0,10,20,30,40,50,60,70,80,90,100};
 		texts[] = {"0","10","20","30","40","50","60","70","80","90","100"};
-		default = 50;
+		default = 30;
 	};
 	class CTI_TOWNS_TERRITORIAL {
 		title = "TOWNS: Territorial Mode";
@@ -411,7 +411,7 @@ class Params {
 		title = "ADDON: CUP CORE and CUP Terrains";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_OFPS_ADDON {
 		title = "ADDON: OFPS MOD Pack Support";
