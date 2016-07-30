@@ -421,7 +421,7 @@ _p pushBack '';
 _n pushBack (format ["Nuke Truck"]);
 _o pushBack 60000;
 _t pushBack 25;
-_u pushBack 4;
+_u pushBack 5;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "nuke-truck";
 _d pushBack 0;
