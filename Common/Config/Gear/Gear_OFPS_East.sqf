@@ -23,16 +23,16 @@ _p pushBack 50;
 
 //-- Magazines
 _i pushBack "hlc_500rnd_762x51_Belt";
-_u pushBack 4;
-_p pushBack 2000;
-
-//_i pushBack "hlc_500rnd_762x51_Cinematic";
-//_u pushBack 4;
-//_p pushBack 3000;
-
+_u pushBack 3;
+_p pushBack 800;
+/* Removed because of player feedback, also causes FPS issues -Apollo
+_i pushBack "hlc_500rnd_762x51_Cinematic";
+_u pushBack 3;
+_p pushBack 1000;
+*/
 //-- Noob Punisher
 _i pushBack "HLC_wp_M134Painless";
-_u pushBack 4;
-_p pushBack 10000;
+_u pushBack 3;
+_p pushBack 8000;
 
-[_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf"; 
+[_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf";
