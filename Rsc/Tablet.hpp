@@ -7,6 +7,7 @@ class RscTabletPictureFrame
     idc = -1;
     type = CT_STATIC;
     style = ST_PICTURE;
+	colorText[] = {1,1,1,1};
     colorBackground[] = {0,0,0,0};
     text = "";   
 };
