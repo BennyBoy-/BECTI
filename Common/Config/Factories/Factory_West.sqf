@@ -12,39 +12,33 @@ missionNamespace setVariable [format["CTI_%1_Pilot", _side], "B_Helipilot_F"];
 
 if (CTI_CUP_ADDON > 0) then { 
 missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
-	["B_Truck_01_medical_F", [
-		["CUP_arifle_M16A2_GL", 2], ["CUP_30Rnd_556x45_Stanag", 50],
+	["CUP_B_HMMWV_Ambulance_USMC", [
 		["CUP_launch_M136", 5], 
 		["CUP_M136_M", 20],
-		["CUP_30Rnd_TE1_Red_Tracer_556x45_G36", 15],
-		["CUP_1Rnd_HE_M203", 8],
-		["CUP_FlareWhite_M203", 9],
-		["CUP_1Rnd_Smoke_M203", 3],
-		["CUP_1Rnd_SmokeGreen_M203", 8],
-		["firstaidkit", 20],
-		["Chemlight_blue", 36],
-		["acc_flashlight", 10],
-		["Toolkit", 4],
-		["B_Bergen_sgg", 4]
+		["CUP_8Rnd_B_Beneli_74Slug", 10],
+		["CUP_8Rnd_B_Beneli_74Pellets", 10],
+		["CUP_sgun_M1014", 10],
+		["CUP_30Rnd_9x19_MP5", 20],
+		["Toolkit", 1]
 	]],
-	["B_MRAP_01_F", [
-		["Toolkit", 2],
-		["firstaidkit", 10],
-		["CUP_30Rnd_556x45_Stanag", 15],
+	["CUP_B_M113_USA", [
 		["CUP_launch_M136", 5],
+		["CUP_30Rnd_9x19_MP5", 20],
 		["CUP_M136_M", 10]
 	]],
-	["CUP_B_HMMWV_M2_GPK_USA", [
-		["Toolkit", 2],
-		["firstaidkit", 10],
-		["CUP_30Rnd_556x45_Stanag", 15],
+	["CUP_B_LR_Special_GMG_GB_W", [
+		["CUP_8Rnd_B_Beneli_74Slug", 20],
+		["CUP_8Rnd_B_Beneli_74Pellets", 20],
+		["CUP_sgun_M1014", 10],
 		["CUP_launch_M136", 5],
+		["CUP_30Rnd_9x19_MP5", 20],
 		["CUP_M136_M", 10]
 	]],
-	["CUP_B_HMMWV_M2_GPK_USA", [
-		["Toolkit", 2],
-		["firstaidkit", 10],
-		["CUP_30Rnd_556x45_Stanag", 15],
+	["CUP_B_HMMWV_M1114_USMC", [
+		["CUP_8Rnd_B_Beneli_74Slug", 10],
+		["CUP_8Rnd_B_Beneli_74Pellets", 10],
+		["CUP_sgun_M1014", 10],
+		["CUP_30Rnd_9x19_MP5", 10],
 		["CUP_launch_M136", 5],
 		["CUP_M136_M", 10]
 	]]
