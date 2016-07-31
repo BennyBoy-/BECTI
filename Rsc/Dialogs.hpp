@@ -4924,7 +4924,7 @@ class CTI_RscTabletDialog
 			x = 0.431261 * safezoneW + safezoneX;
 			y = 0.255 * safezoneH + safezoneY;
 			w = 0.137479 * safezoneW;
-			h = 0.022 * safezoneH;
+			h = 0.044 * safezoneH;
 			colorBackground[] = {0,0,0,0};
 		};
 		class CTI_RscTabletMenu_MissionTime: RscTabletStructuredText
