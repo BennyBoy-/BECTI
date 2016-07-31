@@ -297,5 +297,8 @@ CTI_UI_Respawn_OnRespawnReady = {
 	//Earplugs
 	player spawn {call CTI_CL_FNC_EarPlugsSpawn; };
 	
+	//Spawn Init for Tablet
+	player spawn {call CTI_CL_FNC_Spawn; };
+	
 	CTI_P_Respawning = false;
 };

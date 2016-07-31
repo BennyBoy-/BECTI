@@ -13,6 +13,25 @@
 #define CT_MAP					101
 #define CT_LISTNBOX				102
 
+#define CT_SLIDER           3
+#define CT_CHECKBOXES       7
+#define CT_HTML             9
+#define CT_STATIC_SKEW      10
+#define CT_TREE             12
+#define CT_CONTEXT_MENU     14
+#define CT_XKEYDESC         40
+#define CT_XBUTTON          41
+#define CT_XLISTBOX         42
+#define CT_XCOMBO           44
+#define CT_ANIMATED_TEXTURE 45
+#define CT_OBJECT           80
+#define CT_OBJECT_ZOOM      81
+#define CT_OBJECT_CONTAINER 82
+#define CT_OBJECT_CONT_ANIM 83
+#define CT_LINEBREAK        98
+#define CT_USER             99
+#define CT_MAP_MAIN         101
+
 #include "Styles.hpp"
 
 //--- Text / Picture

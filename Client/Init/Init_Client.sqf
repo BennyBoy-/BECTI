@@ -39,6 +39,9 @@ CTI_CL_FNC_RemoveRuins = compileFinal preprocessFile "Client\Functions\Client_Re
 CTI_CL_FNC_LoadBuildMenu = compileFinal preprocessFile "Client\Functions\Client_LoadBuildMenu.sqf";
 CTI_CL_FNC_EarPlugsSpawn = compileFinal preprocessFile "Client\Functions\Externals\cmEarplugs\earplugs_spawn.sqf";
 CTI_CL_FNC_EarPlugsDeath = compileFinal preprocessFile "Client\Functions\Externals\cmEarplugs\earplugs_death.sqf";
+CTI_CL_FNC_Spawn = compileFinal preprocessFile "Client\Functions\Client_Spawn.sqf";
+CTI_CL_FNC_Death = compileFinal preprocessFile "Client\Functions\Client_Death.sqf";
+
 
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateClientAI.sqf";
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateOrders.sqf";
@@ -115,6 +118,7 @@ call compile preprocessFile "Client\Init\Init_PublicVariables.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_AIMicromanagementMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_ArtilleryMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_CoinMenu.sqf";
+call compile preprocessFile "Client\Functions\UI\Functions_UI_TabletMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_GearMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_KeyHandlers.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_MapCommanding.sqf";
@@ -330,6 +334,9 @@ if ( CTI_PLAYERS_GROUPSIZE == 0) then {
 
 //Earplugs
 0 spawn { call CTI_CL_FNC_EarPlugsSpawn; };
+
+//Spawn init calls tablet
+0 spawn { call CTI_CL_FNC_Spawn; };
 
 if (CTI_DEBUG) then {
 	// hint "DEBUG MODE IS ENABLED! DON'T FORGET TO TURN IT OFF!";

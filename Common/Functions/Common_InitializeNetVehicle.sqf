@@ -49,7 +49,7 @@ if (CTI_SPECIAL_REPAIRTRUCK in _special) then { //--- Repair truck.
 	_marker_size = [0.75,0.75];
 	_marker_type = CTI_P_MarkerPrefix+"maint"; //type is ok? b_support ?
 	
-	_vehicle addAction ["<t color='#a5c4ff'>MENU: Construction (Repair Truck)</t>", "Client\Actions\Action_CoinBuild.sqf", "RepairTruck", 93, false, true, "", "_this == player"];
+	//_vehicle addAction ["<t color='#a5c4ff'>MENU: Construction (Repair Truck)</t>", "Client\Actions\Action_CoinBuild.sqf", "RepairTruck", 93, false, true, "", "_this == player"];
 	
 	//--- HQ can be repaired if fubarized
 	if ((missionNamespace getVariable "CTI_BASE_HQ_REPAIR") > 0) then {

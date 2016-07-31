@@ -31,9 +31,12 @@ player createDiaryRecord ["menu1",
 player createDiarySubject ["menu2","Controls"];
 player createDiaryRecord ["menu2",
 ["Controls","<br/>
-<font color='#2ae916' size='14'>Keybindings</font><br/>
+<font color='#2ae916' size='16'>Keybindings</font><br/>
+- Tablet | Windows Left<br/>
 - EarPlugs | Insert
 <br/>
+<br/>
+We are looking into user remapping
 "]];
 
 player createDiarySubject ["menu6", "Admins"];
