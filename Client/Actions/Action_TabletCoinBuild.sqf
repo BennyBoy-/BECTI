@@ -6,7 +6,7 @@ _origin = player;
 _originnearrep = [vehicle player, CTI_SPECIAL_REPAIRTRUCK, CTI_SERVICE_REPAIR_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
 _originrep = _originnearrep select 0;
 
-if (CTI_Base_HQInRange)then {
+if (call CTI_CL_FNC_IsPlayerCommander && CTI_Base_HQInRange)then {
 	_source = "HQ";
 }else {
 	_source = "RepairTruck";

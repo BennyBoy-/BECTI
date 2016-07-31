@@ -1,4 +1,4 @@
-private ["_action"];
+private ["_action","_upgrades","_enable"];
 _action = _this select 0;
 
 switch (_action) do {
