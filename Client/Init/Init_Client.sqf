@@ -103,7 +103,6 @@ if (isMultiplayer) then {
 		sleep 1;
 	};
 
-	12452 cutText ["Receiving mission intel...", "BLACK IN", 5];
 
 	if (CTI_P_Jailed) then {
 		hintSilent "The ride never ends!";
