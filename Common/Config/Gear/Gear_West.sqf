@@ -65,25 +65,29 @@ _i pushBack "30Rnd_45ACP_Mag_SMG_01";
 _u pushBack 0;
 _p pushBack 50;
 
-//_i pushBack "30Rnd_45ACP_Mag_SMG_01_tracer_green";
-//_u pushBack 0;
-//_p pushBack 30;
+/* 
+_i pushBack "30Rnd_45ACP_Mag_SMG_01_tracer_green";
+_u pushBack 0;
+_p pushBack 30; 
+*/
 
 _i pushBack "30Rnd_556x45_Stanag";
 _u pushBack 1;
 _p pushBack 50;
 
-//_i pushBack "30Rnd_556x45_Stanag_Tracer_Red";
-//_u pushBack 0;
-//_p pushBack 20;
+/* 
+_i pushBack "30Rnd_556x45_Stanag_Tracer_Red";
+_u pushBack 0;
+_p pushBack 20;
 
-//_i pushBack "30Rnd_556x45_Stanag_Tracer_Green";
-//_u pushBack 0;
-//_p pushBack 20;
+_i pushBack "30Rnd_556x45_Stanag_Tracer_Green";
+_u pushBack 0;
+_p pushBack 20;
 
-//_i pushBack "30Rnd_556x45_Stanag_Tracer_Yellow";
-//_u pushBack 0;
-//_p pushBack 20;
+_i pushBack "30Rnd_556x45_Stanag_Tracer_Yellow";
+_u pushBack 0;
+_p pushBack 20; 
+*/
 
 _i pushBack "100Rnd_65x39_caseless_mag";
 _u pushBack 2;
@@ -97,25 +101,29 @@ _i pushBack "200Rnd_65x39_cased_Box";
 _u pushBack 2;
 _p pushBack 300;
 
-//_i pushBack "200Rnd_65x39_cased_Box_Tracer";
-//_u pushBack 0;
-//_p pushBack 200;
+/* 
+_i pushBack "200Rnd_65x39_cased_Box_Tracer";
+_u pushBack 0;
+_p pushBack 200;
 
-//_i pushBack "30Rnd_65x39_caseless_green";
-//_u pushBack 0;
-//_p pushBack 30;
+_i pushBack "30Rnd_65x39_caseless_green";
+_u pushBack 0;
+_p pushBack 30; 
+*/
 
 _i pushBack "30Rnd_65x39_caseless_mag";
 _u pushBack 2;
 _p pushBack 50;
 
-//_i pushBack "30Rnd_65x39_caseless_green_mag_Tracer";
-//_u pushBack 0;
-//_p pushBack 30;
+/* 
+_i pushBack "30Rnd_65x39_caseless_green_mag_Tracer";
+_u pushBack 0;
+_p pushBack 30;
 
-//_i pushBack "30Rnd_65x39_caseless_mag_Tracer";
-//_u pushBack 0;
-//_p pushBack 30;
+_i pushBack "30Rnd_65x39_caseless_mag_Tracer";
+_u pushBack 0;
+_p pushBack 30; 
+*/
 
 _i pushBack "16rnd_9x21_mag";
 _u pushBack 0;
@@ -145,9 +153,11 @@ _i pushBack "HandGrenade";
 _u pushBack 0;
 _p pushBack 50;
 
-//_i pushBack "HandGrenade_Stone";
-//_u pushBack 0;
-//_p pushBack 1;
+/* 
+_i pushBack "HandGrenade_Stone";
+_u pushBack 0;
+_p pushBack 1; 
+*/
 
 _i pushBack "O_IR_Grenade";
 _u pushBack 0;
@@ -165,53 +175,57 @@ _i pushBack "SmokeShellGreen";
 _u pushBack 0;
 _p pushBack 20;
 
-//_i pushBack "SmokeShellYellow";
-//_u pushBack 0;
-//_p pushBack 10;
+/* 
+_i pushBack "SmokeShellYellow";
+_u pushBack 0;
+_p pushBack 10;
 
-//_i pushBack "SmokeShellPurple";
-//_u pushBack 0;
-//_p pushBack 10;
+_i pushBack "SmokeShellPurple";
+_u pushBack 0;
+_p pushBack 10; 
+*/
 
 _i pushBack "SmokeShellBlue";
 _u pushBack 0;
 _p pushBack 20;
 
-//_i pushBack "SmokeShellOrange";
-//_u pushBack 0;
-//_p pushBack 10;
+/* 
+_i pushBack "SmokeShellOrange";
+_u pushBack 0;
+_p pushBack 10;
 
-//_i pushBack "Chemlight_green";
-//_u pushBack 0;
-//_p pushBack 2;
+_i pushBack "Chemlight_green";
+_u pushBack 0;
+_p pushBack 2;
 
-//_i pushBack "Chemlight_red";
-//_u pushBack 0;
-//_p pushBack 2;
+_i pushBack "Chemlight_red";
+_u pushBack 0;
+_p pushBack 2;
 
-//_i pushBack "Chemlight_yellow";
-//_u pushBack 0;
-//_p pushBack 2;
+_i pushBack "Chemlight_yellow";
+_u pushBack 0;
+_p pushBack 2;
 
-//_i pushBack "Chemlight_blue";
-//_u pushBack 0;
-//_p pushBack 2;
+_i pushBack "Chemlight_blue";
+_u pushBack 0;
+_p pushBack 2;
 
-//_i pushBack "FlareWhite_F";
-//_u pushBack 0;
-//_p pushBack 2;
+_i pushBack "FlareWhite_F";
+_u pushBack 0;
+_p pushBack 2;
 
-//_i pushBack "FlareGreen_F";
-//_u pushBack 0;
-//_p pushBack 2;
+_i pushBack "FlareGreen_F";
+_u pushBack 0;
+_p pushBack 2;
 
-//_i pushBack "FlareRed_F";
-//_u pushBack 0;
-//_p pushBack 2;
+_i pushBack "FlareRed_F";
+_u pushBack 0;
+_p pushBack 2;
 
-//_i pushBack "FlareYellow_F";
-//_u pushBack 0;
-//_p pushBack 2;
+_i pushBack "FlareYellow_F";
+_u pushBack 0;
+_p pushBack 2; 
+*/
 
 _i pushBack "1Rnd_HE_Grenade_shell";
 _u pushBack 0;
@@ -221,25 +235,27 @@ _i pushBack "1Rnd_SmokeRed_Grenade_shell";
 _u pushBack 0;
 _p pushBack 20;
 
-//_i pushBack "1Rnd_SmokeGreen_Grenade_shell";
-//_u pushBack 0;
-//_p pushBack 2;
+/* 
+_i pushBack "1Rnd_SmokeGreen_Grenade_shell";
+_u pushBack 0;
+_p pushBack 2;
 
-//_i pushBack "1Rnd_SmokeYellow_Grenade_shell";
-//_u pushBack 0;
-//_p pushBack 2;
+_i pushBack "1Rnd_SmokeYellow_Grenade_shell";
+_u pushBack 0;
+_p pushBack 2;
 
-//_i pushBack "1Rnd_SmokePurple_Grenade_shell";
-//_u pushBack 0;
-//_p pushBack 2;
+_i pushBack "1Rnd_SmokePurple_Grenade_shell";
+_u pushBack 0;
+_p pushBack 2;
 
-//_i pushBack "1Rnd_SmokeBlue_Grenade_shell";
-//_u pushBack 0;
-//_p pushBack 2;
+_i pushBack "1Rnd_SmokeBlue_Grenade_shell";
+_u pushBack 0;
+_p pushBack 2;
 
-//_i pushBack "1Rnd_SmokeOrange_Grenade_shell";
-//_u pushBack 0;
-//_p pushBack 2;
+_i pushBack "1Rnd_SmokeOrange_Grenade_shell";
+_u pushBack 0;
+_p pushBack 2; 
+*/
 
 _i pushBack "UGL_FlareWhite_F";
 _u pushBack 0;
@@ -253,9 +269,11 @@ _i pushBack "UGL_FlareRed_F";
 _u pushBack 0;
 _p pushBack 20;
 
-//_i pushBack "UGL_FlareYellow_F";
-//_u pushBack 0;
-//_p pushBack 2;
+/* 
+_i pushBack "UGL_FlareYellow_F";
+_u pushBack 0;
+_p pushBack 2; 
+*/
 
 _i pushBack "UGL_FlareCIR_F";
 _u pushBack 0;
@@ -269,13 +287,15 @@ _i pushBack "3Rnd_Smoke_Grenade_shell";
 _u pushBack 2;
 _p pushBack 100;
 
-//_i pushBack "3Rnd_SmokeYellow_Grenade_shell";
-//_u pushBack 0;
-//_p pushBack 6;
+/* 
+_i pushBack "3Rnd_SmokeYellow_Grenade_shell";
+_u pushBack 0;
+_p pushBack 6;
 
-//_i pushBack "3Rnd_SmokePurple_Grenade_shell";
-//_u pushBack 0;
-//_p pushBack 6;
+_i pushBack "3Rnd_SmokePurple_Grenade_shell";
+_u pushBack 0;
+_p pushBack 6; 
+*/
 
 _i pushBack "3Rnd_SmokeRed_Grenade_shell";
 _u pushBack 2;
@@ -289,25 +309,31 @@ _i pushBack "3Rnd_SmokeBlue_Grenade_shell";
 _u pushBack 2;
 _p pushBack 100;
 
-//_i pushBack "3Rnd_SmokeOrange_Grenade_shell";
-//_u pushBack 0;
-//_p pushBack 6;
+/* 
+_i pushBack "3Rnd_SmokeOrange_Grenade_shell";
+_u pushBack 0;
+_p pushBack 6; 
+*/
 
 _i pushBack "3Rnd_UGL_FlareWhite_F";
 _u pushBack 2;
 _p pushBack 100;
 
-//_i pushBack "3Rnd_UGL_FlareGreen_F";
-//_u pushBack 0;
-//_p pushBack 6;
+/* 
+_i pushBack "3Rnd_UGL_FlareGreen_F";
+_u pushBack 0;
+_p pushBack 6; 
+*/
 
 _i pushBack "3Rnd_UGL_FlareRed_F";
 _u pushBack 2;
 _p pushBack 100;
 
-//_i pushBack "3Rnd_UGL_FlareYellow_F";
-//_u pushBack 0;
-//_p pushBack 6;
+/* 
+_i pushBack "3Rnd_UGL_FlareYellow_F";
+_u pushBack 0;
+_p pushBack 6; 
+*/
 
 _i pushBack "3Rnd_UGL_FlareCIR_F";
 _u pushBack 2;
@@ -494,54 +520,57 @@ _i pushBack ["arifle_Mk20_GL_ACO_F"];
 _u pushBack 1;
 _p pushBack 400;
 
-//_i pushBack "SMG_01_F";
-//_u pushBack 0;
-//_p pushBack 200;
+/* 
+_i pushBack "SMG_01_F";
+_u pushBack 0;
+_p pushBack 200;
 
-//_i pushBack ["SMG_01_Holo_F"];
-//_u pushBack 0;
-//_p pushBack 200;
+_i pushBack ["SMG_01_Holo_F"];
+_u pushBack 0;
+_p pushBack 200;
 
-//_i pushBack ["SMG_01_Holo_pointer_snds_F"];
-//_u pushBack 0;
-//_p pushBack 200;
+_i pushBack ["SMG_01_Holo_pointer_snds_F"];
+_u pushBack 0;
+_p pushBack 200;
 
-//_i pushBack ["SMG_01_ACO_F"];
-//_u pushBack 0;
-//_p pushBack 200;
+_i pushBack ["SMG_01_ACO_F"];
+_u pushBack 0;
+_p pushBack 200;
 
-//_i pushBack "SMG_02_F";
-//_u pushBack 0;
-//_p pushBack 200;
+_i pushBack "SMG_02_F";
+_u pushBack 0;
+_p pushBack 200;
 
-//_i pushBack ["SMG_02_ACO_F"];
-//_u pushBack 0;
-//_p pushBack 200;
+_i pushBack ["SMG_02_ACO_F"];
+_u pushBack 0;
+_p pushBack 200;
 
-//_i pushBack ["SMG_02_ARCO_pointg_F"];
-//_u pushBack 0;
-//_p pushBack 200;
+_i pushBack ["SMG_02_ARCO_pointg_F"];
+_u pushBack 0;
+_p pushBack 200; 
+*/
 
 _i pushBack "srifle_EBR_F";
 _u pushBack 3;
 _p pushBack 500;
 
-//_i pushBack ["srifle_EBR_ACO_F"];
-//_u pushBack 2;
-//_p pushBack 500;
+/* 
+_i pushBack ["srifle_EBR_ACO_F"];
+_u pushBack 2;
+_p pushBack 500;
 
-//_i pushBack ["srifle_EBR_MRCO_pointer_F"];
-//_u pushBack 2;
-//_p pushBack 500;
+_i pushBack ["srifle_EBR_MRCO_pointer_F"];
+_u pushBack 2;
+_p pushBack 500;
 
-//_i pushBack ["srifle_EBR_ARCO_pointer_F"];
-//_u pushBack 2;
-//_p pushBack 500;
+_i pushBack ["srifle_EBR_ARCO_pointer_F"];
+_u pushBack 2;
+_p pushBack 500;
 
-//_i pushBack ["srifle_EBR_SOS_F"];
-//_u pushBack 2;
-//_p pushBack 500;
-
+_i pushBack ["srifle_EBR_SOS_F"];
+_u pushBack 2;
+_p pushBack 500;
+ */
 _i pushBack "srifle_LRR_F";
 _u pushBack 4;
 _p pushBack 1000;
@@ -592,19 +621,19 @@ _u pushBack 0;
 _p pushBack 400;
 
 //--- Vests
+/* 
+_i pushBack "V_Rangemaster_belt";
+_u pushBack 0;
+_p pushBack 5;
 
-//_i pushBack "V_Rangemaster_belt";
-//_u pushBack 0;
-//_p pushBack 5;
+_i pushBack "V_BandollierB_rgr";
+_u pushBack 0;
+_p pushBack 10;
 
-//_i pushBack "V_BandollierB_rgr";
-//_u pushBack 0;
-//_p pushBack 10;
-
-//_i pushBack "V_PlateCarrier1_rgr";
-//_u pushBack 0;
-//_p pushBack 25;
-
+_i pushBack "V_PlateCarrier1_rgr";
+_u pushBack 0;
+_p pushBack 25;
+ */
 _i pushBack "V_PlateCarrier2_rgr";
 _u pushBack 0;
 _p pushBack 25;
@@ -637,15 +666,15 @@ _p pushBack 400;
 _i pushBack "B_AssaultPack_mcamo";
 _u pushBack 0;
 _p pushBack 15;
+/* 
+_i pushBack "B_FieldPack_blk";
+_u pushBack 0;
+_p pushBack 15;
 
-//_i pushBack "B_FieldPack_blk";
-//_u pushBack 0;
-//_p pushBack 15;
-
-//_i pushBack "B_Kitbag_mcamo";
-//_u pushBack 0;
-//_p pushBack 20;
-
+_i pushBack "B_Kitbag_mcamo";
+_u pushBack 0;
+_p pushBack 20;
+ */
 _i pushBack "B_Bergen_sgg";
 _u pushBack 0;
 _p pushBack 25;
@@ -723,18 +752,18 @@ _i pushBack "G_Diving";
 _u pushBack 0;
 _p pushBack 300;
 
-//_i pushBack "G_Shades_Black";
-//_u pushBack 0;
-//_p pushBack 2;
+/* _i pushBack "G_Shades_Black";
+_u pushBack 0;
+_p pushBack 2;
 
-//_i pushBack "G_Tactical_Clear";
-//_u pushBack 0;
-//_p pushBack 4;
+_i pushBack "G_Tactical_Clear";
+_u pushBack 0;
+_p pushBack 4;
 
-//_i pushBack "G_Sport_Blackred";
-//_u pushBack 0;
-//_p pushBack 2;
-
+_i pushBack "G_Sport_Blackred";
+_u pushBack 0;
+_p pushBack 2;
+ */
 //--- Helms
 _i pushBack "H_HelmetB";
 _u pushBack 0;
@@ -848,27 +877,27 @@ _p pushBack 100;
 _i pushBack "bipod_01_F_blk";
 _u pushBack 2;
 _p pushBack 100;
+/* 
+_i pushBack "bipod_01_F_mtp";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "bipod_01_F_mtp";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "bipod_02_F_blk";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "bipod_02_F_blk";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "bipod_02_F_tan";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "bipod_02_F_tan";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "bipod_02_F_hex";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "bipod_02_F_hex";
-//_u pushBack 0;
-//_p pushBack 100;
-
-//_i pushBack "bipod_03_F_blk";
-//_u pushBack 0;
-//_p pushBack 100;
-
+_i pushBack "bipod_03_F_blk";
+_u pushBack 0;
+_p pushBack 100;
+ */
 //--- Items
 _i pushBack "NVGoggles";
 _u pushBack 0;

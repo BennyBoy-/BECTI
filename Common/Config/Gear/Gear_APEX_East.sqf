@@ -318,9 +318,11 @@ _u pushBack 4;
 _p pushBack 800;
 
 //Bipod:
-//_i pushBack "bipod_01_F_khk";
-//_u pushBack 0;
-//_p pushBack 100;
+/* 
+_i pushBack "bipod_01_F_khk";
+_u pushBack 0;
+_p pushBack 100; 
+*/
 
 //Launchers:
 _i pushBack "launch_RPG32_ghex_F";

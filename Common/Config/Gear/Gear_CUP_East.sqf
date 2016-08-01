@@ -22,11 +22,11 @@ _p pushBack 100;
 _i pushBack "CUP_arifle_AK47";  
 _u pushBack 3;
 _p pushBack 500;		
-
-//_i pushBack "CUP_arifle_AK74";  
-//_u pushBack 1;
-//_p pushBack 300;
-
+/* 
+_i pushBack "CUP_arifle_AK74";  
+_u pushBack 1;
+_p pushBack 300;
+ */
 _i pushBack "CUP_arifle_AK74M";
 _u pushBack 1;
 _p pushBack 300;
@@ -38,27 +38,27 @@ _p pushBack 400;
 _i pushBack "CUP_arifle_AK74_GL_kobra";
 _u pushBack 1;
 _p pushBack 400;
-
-//_i pushBack "CUP_arifle_AKS";
-//_u pushBack 2;
-//_p pushBack 500;
-
+/* 
+_i pushBack "CUP_arifle_AKS";
+_u pushBack 2;
+_p pushBack 500;
+ */
 _i pushBack "CUP_arifle_AKS_Gold";
 _u pushBack 3;
 _p pushBack 500;
-
-//_i pushBack "CUP_arifle_AKS74";
-//_u pushBack 1;
-//_p pushBack 300;
-
+/* 
+_i pushBack "CUP_arifle_AKS74";
+_u pushBack 1;
+_p pushBack 300;
+ */
 _i pushBack "CUP_arifle_AKS74_kobra";
 _u pushBack 1;
 _p pushBack 300;
-
-//_i pushBack "CUP_arifle_AKS74U";
-//_u pushBack 1;
-//_p pushBack 300;
-
+/* 
+_i pushBack "CUP_arifle_AKS74U";
+_u pushBack 1;
+_p pushBack 300;
+ */
 _i pushBack "CUP_arifle_AK107";
 _u pushBack 1;
 _p pushBack 300;
@@ -94,15 +94,15 @@ _u pushBack 3;
 _p pushBack 600;
 
 //VZ 58 Family
+/* 
+_i pushBack "CUP_arifle_Sa58P";
+_u pushBack 2;
+_p pushBack 500;
 
-//_i pushBack "CUP_arifle_Sa58P";
-//_u pushBack 2;
-//_p pushBack 500;
-
-//_i pushBack "CUP_arifle_Sa58V";
-//_u pushBack 2;
-//_p pushBack 500;
-
+_i pushBack "CUP_arifle_Sa58V";
+_u pushBack 2;
+_p pushBack 500;
+ */
 _i pushBack "CUP_arifle_Sa58RIS1";
 _u pushBack 3;
 _p pushBack 500;
@@ -207,15 +207,15 @@ _p pushBack 550;
 _i pushBack "CUP_SVD";
 _u pushBack 3;
 _p pushBack 550;
+/* 
+_i pushBack "CUP_SVD_CAMO";
+_u pushBack 2;
+_p pushBack 550;
 
-//_i pushBack "CUP_SVD_CAMO";
-//_u pushBack 2;
-//_p pushBack 550;
-
-//_i pushBack "CUP_srifle_SVD_des";
-//_u pushBack 2;
-//_p pushBack 550;
-
+_i pushBack "CUP_srifle_SVD_des";
+_u pushBack 2;
+_p pushBack 550;
+ */
 _i pushBack "CUP_srifle_SVD_des_ghillie_pso";
 _u pushBack 3;
 _p pushBack 550;
@@ -233,11 +233,11 @@ _u pushBack 4;
 _p pushBack 1000;
 
 //Lee Enfield Family
-
-//_i pushBack "CUP_srifle_LeeEnfield";
-//_u pushBack 0;
-//_p pushBack 400;
-
+/* 
+_i pushBack "CUP_srifle_LeeEnfield";
+_u pushBack 0;
+_p pushBack 400;
+ */
 _i pushBack "CUP_srifle_LeeEnfield_rail";
 _u pushBack 3;
 _p pushBack 550;
@@ -268,11 +268,11 @@ _p pushBack 200;
 //Handguns
 	
 //CZ75 Family
-
-//_i pushBack "CUP_hgun_Compact";
-//_u pushBack 0;
-//_p pushBack 50;
-
+/* 
+_i pushBack "CUP_hgun_Compact";
+_u pushBack 0;
+_p pushBack 50;
+ */
 _i pushBack "CUP_hgun_Duty";
 _u pushBack 0;
 _p pushBack 100;
@@ -284,19 +284,19 @@ _p pushBack 100;
 _i pushBack "CUP_hgun_Phantom";
 _u pushBack 0;
 _p pushBack 100;
+/* 
+_i pushBack "CUP_CZ_75_D_COMPACT";
+_u pushBack 0;
+_p pushBack 50;
 
-//_i pushBack "CUP_CZ_75_D_COMPACT";
-//_u pushBack 0;
-//_p pushBack 50;
+_i pushBack "CUP_CZ_75_P_07_DUTY";
+_u pushBack 0;
+_p pushBack 50;
 
-//_i pushBack "CUP_CZ_75_P_07_DUTY";
-//_u pushBack 0;
-//_p pushBack 50;
-
-//_i pushBack "CUP_CZ_75_SP_01_PHANTOM";
-//_u pushBack 0;
-//_p pushBack 50;
-
+_i pushBack "CUP_CZ_75_SP_01_PHANTOM";
+_u pushBack 0;
+_p pushBack 50;
+ */
 //Makarov Family
 
 _i pushBack "CUP_MakarovSD";
@@ -378,11 +378,11 @@ _p pushBack 80;
 _i pushBack "CUP_30Rnd_545x39_AK_M";
 _u pushBack 1;
 _p pushBack 50;
-
-//_i pushBack "CUP_30Rnd_TE1_Green_Tracer_545x39_AK_M";
-//_u pushBack 0;
-//_p pushBack 20;
-
+/* 
+_i pushBack "CUP_30Rnd_TE1_Green_Tracer_545x39_AK_M";
+_u pushBack 0;
+_p pushBack 20;
+ */
 _i pushBack "CUP_30Rnd_TE1_Red_Tracer_545x39_AK_M";
 _u pushBack 1;
 _p pushBack 50;
@@ -390,15 +390,15 @@ _p pushBack 50;
 _i pushBack "CUP_30Rnd_TE1_White_Tracer_545x39_AK_M";
 _u pushBack 1;
 _p pushBack 50;
+/* 
+_i pushBack "CUP_30Rnd_TE1_Yellow_Tracer_545x39_AK_M";
+_u pushBack 0;
+_p pushBack 20;
 
-//_i pushBack "CUP_30Rnd_TE1_Yellow_Tracer_545x39_AK_M";
-//_u pushBack 0;
-//_p pushBack 20;
-
-//_i pushBack "CUP_75Rnd_TE4_LRT4_Green_Tracer_545x39_RPK_M";
-//_u pushBack 0;
-//_p pushBack 20;
-
+_i pushBack "CUP_75Rnd_TE4_LRT4_Green_Tracer_545x39_RPK_M";
+_u pushBack 0;
+_p pushBack 20;
+ */
 //---Caliber 5.56x45mm
 
 _i pushBack "30Rnd_556x45_Stanag";
@@ -434,11 +434,11 @@ _p pushBack 150;
 _i pushBack "CUP_30Rnd_Sa58_M_TracerR";
 _u pushBack 3;
 _p pushBack 150;
-
-//_i pushBack "CUP_30Rnd_Sa58_M_TracerY";
-//_u pushBack 0;
-//_p pushBack 40;
-
+/* 
+_i pushBack "CUP_30Rnd_Sa58_M_TracerY";
+_u pushBack 0;
+_p pushBack 40;
+ */
 _i pushBack "CUP_30Rnd_762x39_AK47_M";
 _u pushBack 3;
 _p pushBack 150;
@@ -470,31 +470,31 @@ _p pushBack 150;
 _i pushBack "CUP_20Rnd_762x51_DMR";
 _u pushBack 3;
 _p pushBack 150;
-
-//_i pushBack "CUP_20Rnd_TE1_Yellow_Tracer_762x51_DMR";
-//_u pushBack 0;
-//_p pushBack 40;
-
+/* 
+_i pushBack "CUP_20Rnd_TE1_Yellow_Tracer_762x51_DMR";
+_u pushBack 0;
+_p pushBack 40;
+ */
 _i pushBack "CUP_20Rnd_TE1_Red_Tracer_762x51_DMR";
 _u pushBack 3;
 _p pushBack 150;
+/* 
+_i pushBack "CUP_20Rnd_TE1_Green_Tracer_762x51_DMR";
+_u pushBack 0;
+_p pushBack 40;
 
-//_i pushBack "CUP_20Rnd_TE1_Green_Tracer_762x51_DMR";
-//_u pushBack 0;
-//_p pushBack 40;
-
-//_i pushBack "CUP_20Rnd_TE1_White_Tracer_762x51_DMR";
-//_u pushBack 0;
-//_p pushBack 40;
-
+_i pushBack "CUP_20Rnd_TE1_White_Tracer_762x51_DMR";
+_u pushBack 0;
+_p pushBack 40;
+ */
 _i pushBack "CUP_20Rnd_762x51_CZ805B";
 _u pushBack 3;
 _p pushBack 150;
-
-//_i pushBack "CUP_20Rnd_TE1_Yellow_Tracer_762x51_CZ805B";
-//_u pushBack 0;
-//_p pushBack 40;
-
+/* 
+_i pushBack "CUP_20Rnd_TE1_Yellow_Tracer_762x51_CZ805B";
+_u pushBack 0;
+_p pushBack 40;
+ */
 _i pushBack "CUP_20Rnd_TE1_Red_Tracer_762x51_CZ805B";
 _u pushBack 3;
 _p pushBack 150;
@@ -552,11 +552,11 @@ _p pushBack 200;
 
 
 //---Caliber 7.65x17mm
-
-//_i pushBack "CUP_10Rnd_B_765x17_Ball_M";
-//_u pushBack 0;
-//_p pushBack 30;
-
+/* 
+_i pushBack "CUP_10Rnd_B_765x17_Ball_M";
+_u pushBack 0;
+_p pushBack 30;
+ */
 _i pushBack "CUP_20Rnd_B_765x17_Ball_M";
 _u pushBack 3;
 _p pushBack 150;
@@ -613,52 +613,52 @@ _p pushBack 50;
 _i pushBack "CUP_64Rnd_9x19_Bizon_M";
 _u pushBack 0;
 _p pushBack 70;
+/* 
+_i pushBack "CUP_64Rnd_Green_Tracer_9x19_Bizon_M";
+_u pushBack 0;
+_p pushBack 40;
 
-//_i pushBack "CUP_64Rnd_Green_Tracer_9x19_Bizon_M";
-//_u pushBack 0;
-//_p pushBack 40;
+_i pushBack "CUP_64Rnd_Red_Tracer_9x19_Bizon_M";
+_u pushBack 0;
+_p pushBack 40;
 
-//_i pushBack "CUP_64Rnd_Red_Tracer_9x19_Bizon_M";
-//_u pushBack 0;
-//_p pushBack 40;
-
-//_i pushBack "CUP_64Rnd_Yellow_Tracer_9x19_Bizon_M";
-//_u pushBack 0;
-//_p pushBack 40;
-
+_i pushBack "CUP_64Rnd_Yellow_Tracer_9x19_Bizon_M";
+_u pushBack 0;
+_p pushBack 40;
+ */
 _i pushBack "CUP_64Rnd_White_Tracer_9x19_Bizon_M";
 _u pushBack 0;
 _p pushBack 70;
 
 
 //---Caliber 9x21mm
-
-//_i pushBack "16Rnd_9x21_Mag";
-//_u pushBack 0;
-//_p pushBack 50;
-
+/* 
+_i pushBack "16Rnd_9x21_Mag";
+_u pushBack 0;
+_p pushBack 50;
+ */
 _i pushBack "30Rnd_9x21_Mag";
 _u pushBack 0;
 _p pushBack 50;
 
 
 //---Caliber 9x39mm
-
-//_i pushBack "CUP_10Rnd_9x39_SP5_VSS_M";
-//_u pushBack 0;
-//_p pushBack 50;
-
+/* 
+_i pushBack "CUP_10Rnd_9x39_SP5_VSS_M";
+_u pushBack 0;
+_p pushBack 50;
+ */
 _i pushBack "CUP_20Rnd_9x39_SP5_VSS_M";
 _u pushBack 3;
 _p pushBack 150;
 
 
 //---Caliber .45
-
-//_i pushBack "CUP_6Rnd_45ACP_M";
-//_u pushBack 0;
-//_p pushBack 10;
-
+/* 
+_i pushBack "CUP_6Rnd_45ACP_M";
+_u pushBack 0;
+_p pushBack 10;
+ */
 _i pushBack "CUP_7Rnd_45ACP_1911";
 _u pushBack 0;
 _p pushBack 25;
@@ -756,23 +756,23 @@ _p pushBack 20;
 _i pushBack "CUP_1Rnd_SmokeRed_M203";
 _u pushBack 0;
 _p pushBack 20;
+/* 
+_i pushBack "1Rnd_SmokeYellow_Grenade_shell";
+_u pushBack 0;
+_p pushBack 10;
 
-//_i pushBack "1Rnd_SmokeYellow_Grenade_shell";
-//_u pushBack 0;
-//_p pushBack 10;
+_i pushBack "CUP_1Rnd_SmokeYellow_GP25_M";
+_u pushBack 0;
+_p pushBack 10;
 
-//_i pushBack "CUP_1Rnd_SmokeYellow_GP25_M";
-//_u pushBack 0;
-//_p pushBack 10;
+_i pushBack "CUP_1Rnd_SmokeYellow_M203";
+_u pushBack 0;
+_p pushBack 10;
 
-//_i pushBack "CUP_1Rnd_SmokeYellow_M203";
-//_u pushBack 0;
-//_p pushBack 10;
-
-//_i pushBack "1Rnd_SmokePurple_Grenade_shell";
-//_u pushBack 0;
-//_p pushBack 10;
-
+_i pushBack "1Rnd_SmokePurple_Grenade_shell";
+_u pushBack 0;
+_p pushBack 10;
+ */
 _i pushBack "1Rnd_SmokeGreen_Grenade_shell";
 _u pushBack 0;
 _p pushBack 20;
@@ -819,15 +819,15 @@ _p pushBack 20;
 _i pushBack "UGL_FlareGreen_F";
 _u pushBack 0;
 _p pushBack 20;
+/* 
+_i pushBack "UGL_FlareYellow_F";
+_u pushBack 0;
+_p pushBack 10;
 
-//_i pushBack "UGL_FlareYellow_F";
-//_u pushBack 0;
-//_p pushBack 10;
-
-//_i pushBack "CUP_FlareYellow_GP25_M";
-//_u pushBack 0;
-//_p pushBack 10;
-
+_i pushBack "CUP_FlareYellow_GP25_M";
+_u pushBack 0;
+_p pushBack 10;
+ */
 _i pushBack "CUP_FlareGreen_GP25_M";
 _u pushBack 0;
 _p pushBack 20;
@@ -874,11 +874,11 @@ _p pushBack 120;
 _i pushBack "CUP_6Rnd_FlareRed_M203";
 _u pushBack 1;
 _p pushBack 120;
-
-//_i pushBack "CUP_6Rnd_FlareYellow_M203";
-//_u pushBack 0;
-//_p pushBack 10;
-
+/* 
+_i pushBack "CUP_6Rnd_FlareYellow_M203";
+_u pushBack 0;
+_p pushBack 10;
+ */
 _i pushBack "CUP_6Rnd_HE_GP25_M";
 _u pushBack 1;
 _p pushBack 150;
@@ -888,11 +888,11 @@ _p pushBack 150;
 _i pushBack "CUP_HandGrenade_M67";
 _u pushBack 0;
 _p pushBack 50;
-
-//_i pushBack "CUP_HandGrenade_L109A1_HE";
-//_u pushBack 0;
-//_p pushBack 50;
-
+/* 
+_i pushBack "CUP_HandGrenade_L109A1_HE";
+_u pushBack 0;
+_p pushBack 50;
+ */
 _i pushBack "CUP_HandGrenade_L109A2_HE";
 _u pushBack 0;
 _p pushBack 50;
@@ -907,11 +907,11 @@ _p pushBack 50;
 
 
 //--- Bombs Mines IEDS
-
-//_i pushBack "CUP_TimeBomb_M";
-//_u pushBack 2;
-//_p pushBack 500;
-
+/* 
+_i pushBack "CUP_TimeBomb_M";
+_u pushBack 2;
+_p pushBack 500;
+ */
 _i pushBack "CUP_Mine_M";
 _u pushBack 1;
 _p pushBack 300;
@@ -923,23 +923,23 @@ _p pushBack 300;
 _i pushBack "CUP_PipeBomb_M";
 _u pushBack 2;
 _p pushBack 300;
+/* 
+_i pushBack "CUP_IED_V1_M";
+_u pushBack 0;
+_p pushBack 300;
 
-//_i pushBack "CUP_IED_V1_M";
-//_u pushBack 0;
-//_p pushBack 300;
+_i pushBack "CUP_IED_V2_M";
+_u pushBack 0;
+_p pushBack 300;
 
-//_i pushBack "CUP_IED_V2_M";
-//_u pushBack 0;
-//_p pushBack 300;
+_i pushBack "CUP_IED_V3_M";
+_u pushBack 0;
+_p pushBack 300;
 
-//_i pushBack "CUP_IED_V3_M";
-//_u pushBack 0;
-//_p pushBack 300;
-
-//_i pushBack "CUP_IED_V4_M";
-//_u pushBack 0;
-//_p pushBack 300;
-
+_i pushBack "CUP_IED_V4_M";
+_u pushBack 0;
+_p pushBack 300;
+ */
 //--- Rockets Bombs
 
 _i pushBack "CUP_Strela_2_M";
@@ -1008,35 +1008,35 @@ _p pushBack 100;
 _i pushBack "CUP_optic_HoloBlack";
 _u pushBack 0;
 _p pushBack 200;
-
-//_i pushBack "CUP_optic_HoloWdl";
-//_u pushBack 0;
-//_p pushBack 200;
-
-//_i pushBack "CUP_optic_HoloDesert";
-//_u pushBack 0;
-//_p pushBack 200;
-
-//_i pushBack "CUP_optic_Eotech533";
-//_u pushBack 0;
-//_p pushBack 200;
-
-_i pushBack "CUP_optic_Eotech533Grey";
+/* 
+_i pushBack "CUP_optic_HoloWdl";
 _u pushBack 0;
 _p pushBack 200;
 
-//_i pushBack "CUP_optic_CompM2_Black";
-//_u pushBack 0;
-//_p pushBack 200;
+_i pushBack "CUP_optic_HoloDesert";
+_u pushBack 0;
+_p pushBack 200;
 
-//_i pushBack "CUP_optic_CompM2_Woodland";
-//_u pushBack 0;
-//_p pushBack 200;
+_i pushBack "CUP_optic_Eotech533";
+_u pushBack 0;
+_p pushBack 200;
+ */
+_i pushBack "CUP_optic_Eotech533Grey";
+_u pushBack 0;
+_p pushBack 200;
+/* 
+_i pushBack "CUP_optic_CompM2_Black";
+_u pushBack 0;
+_p pushBack 200;
 
-//_i pushBack "CUP_optic_CompM2_Woodland2";
-//_u pushBack 0;
-//_p pushBack 200;
+_i pushBack "CUP_optic_CompM2_Woodland";
+_u pushBack 0;
+_p pushBack 200;
 
+_i pushBack "CUP_optic_CompM2_Woodland2";
+_u pushBack 0;
+_p pushBack 200;
+ */
 //--CCO Aimpoint Optics
 
 _i pushBack "CUP_optic_CompM4";
@@ -1235,15 +1235,15 @@ _p pushBack 100;
 _i pushBack "CUP_acc_Flashlight";
 _u pushBack 0;
 _p pushBack 100;
+/* 
+_i pushBack "CUP_acc_Flashlight_wdl";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_acc_Flashlight_wdl";
-//_u pushBack 0;
-//_p pushBack 100;
-
-//_i pushBack "CUP_acc_Flashlight_desert";
-//_u pushBack 0;
-//_p pushBack 100;
-
+_i pushBack "CUP_acc_Flashlight_desert";
+_u pushBack 0;
+_p pushBack 100;
+ */
 _i pushBack "CUP_acc_XM8_light_module";
 _u pushBack 0;
 _p pushBack 100;
@@ -1257,39 +1257,39 @@ _u pushBack 0;
 _p pushBack 100;
 
 //--Uniforms
+/* 
+_i pushBack "CUP_U_O_SLA_Officer_Suit";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_U_O_SLA_Officer_Suit";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_U_O_SLA_Overalls_Pilot";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_U_O_SLA_Overalls_Pilot";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_U_O_SLA_Overalls_Tank";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_U_O_SLA_Overalls_Tank";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_U_O_SLA_MixedCamo";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_U_O_SLA_MixedCamo";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_U_O_SLA_Desert";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_U_O_SLA_Desert";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_U_O_SLA_Green";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_U_O_SLA_Green";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_U_O_SLA_Urban";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_U_O_SLA_Urban";
-//_u pushBack 0;
-//_p pushBack 100;
-
-//_i pushBack "CUP_U_O_SLA_Officer";
-//_u pushBack 0;
-//_p pushBack 100;
-
+_i pushBack "CUP_U_O_SLA_Officer";
+_u pushBack 0;
+_p pushBack 100;
+ */
 _i pushBack "CUP_U_O_TK_Ghillie";
 _u pushBack 2;
 _p pushBack 600;
@@ -1311,95 +1311,95 @@ _u pushBack 1;
 _p pushBack 100;
 
 //--Vests
+/* 
+_i pushBack "CUP_V_O_SLA_Flak_Vest01";
+_u pushBack 2;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_O_SLA_Flak_Vest01";
-//_u pushBack 2;
-//_p pushBack 100;
+_i pushBack "CUP_V_O_SLA_Flak_Vest02";
+_u pushBack 2;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_O_SLA_Flak_Vest02";
-//_u pushBack 2;
-//_p pushBack 100;
+_i pushBack "CUP_V_O_SLA_Flak_Vest03";
+_u pushBack 2;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_O_SLA_Flak_Vest03";
-//_u pushBack 2;
-//_p pushBack 100;
+_i pushBack "CUP_V_O_SLA_Carrier_Belt";
+_u pushBack 2;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_O_SLA_Carrier_Belt";
-//_u pushBack 2;
-//_p pushBack 100;
+_i pushBack "CUP_V_O_SLA_Carrier_Belt02";
+_u pushBack 2;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_O_SLA_Carrier_Belt02";
-//_u pushBack 2;
-//_p pushBack 100;
-
-//_i pushBack "CUP_V_O_SLA_Carrier_Belt03";
-//_u pushBack 2;
-//_p pushBack 100;
-
+_i pushBack "CUP_V_O_SLA_Carrier_Belt03";
+_u pushBack 2;
+_p pushBack 100;
+ */
 _i pushBack "CUP_V_O_TK_Vest_1";
 _u pushBack 1;
 _p pushBack 100;
+/* 
+_i pushBack "CUP_V_O_TK_CrewBelt";
+_u pushBack 1;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_O_TK_CrewBelt";
-//_u pushBack 1;
-//_p pushBack 100;
+_i pushBack "CUP_V_O_TK_OfficerBelt";
+_u pushBack 1;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_O_TK_OfficerBelt";
-//_u pushBack 1;
-//_p pushBack 100;
+_i pushBack "CUP_V_O_TK_OfficerBelt2";
+_u pushBack 1;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_O_TK_OfficerBelt2";
-//_u pushBack 1;
-//_p pushBack 100;
+_i pushBack "CUP_V_OI_TKI_Jacket1_01";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_OI_TKI_Jacket1_01";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_V_OI_TKI_Jacket1_02";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_OI_TKI_Jacket1_02";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_V_OI_TKI_Jacket1_03";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_OI_TKI_Jacket1_03";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_V_OI_TKI_Jacket4_04";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_OI_TKI_Jacket4_04";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_V_OI_TKI_Jacket4_05";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_OI_TKI_Jacket4_05";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_V_OI_TKI_Jacket4_02";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_OI_TKI_Jacket4_02";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_V_OI_TKI_Jacket4_06";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_OI_TKI_Jacket4_06";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_V_OI_TKI_Jacket4_03";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_OI_TKI_Jacket4_03";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_V_OI_TKI_Jacket4_01";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_OI_TKI_Jacket4_01";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_V_OI_TKI_Jacket3_02";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_OI_TKI_Jacket3_02";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_V_OI_TKI_Jacket3_03";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_V_OI_TKI_Jacket3_03";
-//_u pushBack 0;
-//_p pushBack 100;
-
-//_i pushBack "CUP_V_OI_TKI_Jacket3_01";
-//_u pushBack 0;
-//_p pushBack 100;
-
+_i pushBack "CUP_V_OI_TKI_Jacket3_01";
+_u pushBack 0;
+_p pushBack 100;
+ */
 _i pushBack "CUP_V_O_TK_Vest_2";
 _u pushBack 1;
 _p pushBack 100;
@@ -1429,19 +1429,19 @@ _p pushBack 500;
 _i pushBack "CUP_B_GER_Pack_Tropentarn";
 _u pushBack 3;
 _p pushBack 500;
+/* 
+_i pushBack "CUP_B_GER_Medic_Desert";
+_u pushBack 3;
+_p pushBack 400;
 
-//_i pushBack "CUP_B_GER_Medic_Desert";
-//_u pushBack 3;
-//_p pushBack 400;
+_i pushBack "CUP_B_GER_Medic_Flecktarn";
+_u pushBack 3;
+_p pushBack 400;
 
-//_i pushBack "CUP_B_GER_Medic_Flecktarn";
-//_u pushBack 3;
-//_p pushBack 400;
-
-//_i pushBack "CUP_B_GER_Medic_Tropentarn";
-//_u pushBack 3;
-//_p pushBack 400;
-
+_i pushBack "CUP_B_GER_Medic_Tropentarn";
+_u pushBack 3;
+_p pushBack 400;
+ */
 _i pushBack "CUP_B_M2_Gun_Bag";
 _u pushBack 3;
 _p pushBack 600;
@@ -1461,11 +1461,11 @@ _p pushBack 175;
 _i pushBack "CUP_B_RUS_Backpack";
 _u pushBack 2;
 _p pushBack 500;
-
-//_i pushBack "CUP_B_AlicePack_Bedroll";
-//_u pushBack 3;
-//_p pushBack 600;
-
+/* 
+_i pushBack "CUP_B_AlicePack_Bedroll";
+_u pushBack 3;
+_p pushBack 600;
+ */
 _i pushBack "CUP_B_AlicePack_Khaki";
 _u pushBack 3;
 _p pushBack 600;
@@ -1477,35 +1477,35 @@ _p pushBack 600;
 
 
 //--Head
+/* 
+_i pushBack "CUP_H_C_Policecap_01";
+_u pushBack 0;
+_p pushBack 10;
 
-//_i pushBack "CUP_H_C_Policecap_01";
-//_u pushBack 0;
-//_p pushBack 10;
+_i pushBack "CUP_H_SLA_BeanieGreen";
+_u pushBack 0;
+_p pushBack 10;
 
-//_i pushBack "CUP_H_SLA_BeanieGreen";
-//_u pushBack 0;
-//_p pushBack 10;
+_i pushBack "CUP_H_SLA_Helmet";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_H_SLA_Helmet";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_H_SLA_OfficerCap";
+_u pushBack 0;
+_p pushBack 10;
 
-//_i pushBack "CUP_H_SLA_OfficerCap";
-//_u pushBack 0;
-//_p pushBack 10;
+_i pushBack "CUP_H_SLA_Pilot_Helmet";
+_u pushBack 0;
+_p pushBack 100;
 
-//_i pushBack "CUP_H_SLA_Pilot_Helmet";
-//_u pushBack 0;
-//_p pushBack 100;
+_i pushBack "CUP_H_SLA_SLCap";
+_u pushBack 0;
+_p pushBack 10;
 
-//_i pushBack "CUP_H_SLA_SLCap";
-//_u pushBack 0;
-//_p pushBack 10;
-
-//_i pushBack "CUP_H_SLA_TankerHelmet";
-//_u pushBack 0;
-//_p pushBack 100;
-
+_i pushBack "CUP_H_SLA_TankerHelmet";
+_u pushBack 0;
+_p pushBack 100;
+ */
 _i pushBack "CUP_H_TK_Beret";
 _u pushBack 0;
 _p pushBack 10;
@@ -1513,23 +1513,23 @@ _p pushBack 10;
 _i pushBack "CUP_H_TK_Helmet";
 _u pushBack 0;
 _p pushBack 10;
-
-//_i pushBack "CUP_H_TK_Lungee";
-//_u pushBack 0;
-//_p pushBack 100;
-
-_i pushBack "CUP_H_TK_PilotHelmet";
+/* 
+_i pushBack "CUP_H_TK_Lungee";
+_u pushBack 0;
+_p pushBack 100;
+ */
+// _i pushBack "CUP_H_TK_PilotHelmet";
 _u pushBack 0;
 _p pushBack 100;
 
 _i pushBack "CUP_H_TK_TankerHelmet";
 _u pushBack 0;
 _p pushBack 100;
-
-//_i pushBack "CUP_H_C_Ushanka_03";
-//_u pushBack 0;
-//_p pushBack 100;
-
+/* 
+_i pushBack "CUP_H_C_Ushanka_03";
+_u pushBack 0;
+_p pushBack 100;
+ */
 _i pushBack "CUP_H_RACS_Helmet_Goggles_DPAT";
 _u pushBack 0;
 _p pushBack 100;
@@ -1572,11 +1572,11 @@ _p pushBack 10;
 
 
 //--Other
-
-//_i pushBack "CUP_NVG_PVS7";
-//_u pushBack 0;
-//_p pushBack 500;
-
+/* 
+_i pushBack "CUP_NVG_PVS7";
+_u pushBack 0;
+_p pushBack 500;
+ */
 _i pushBack "CUP_SOFLAM";
 _u pushBack 3;
 _p pushBack 1000;
