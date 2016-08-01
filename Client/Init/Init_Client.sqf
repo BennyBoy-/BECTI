@@ -103,6 +103,7 @@ if (isMultiplayer) then {
 		sleep 1;
 	};
 
+	12452 cutText ["Welcome, Open Tablet Using Left Windows Key", "BLACK IN", 30];
 
 	if (CTI_P_Jailed) then {
 		hintSilent "The ride never ends!";
@@ -300,7 +301,7 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_
 if (CTI_DEV_MODE > 0) then {
 	onMapSingleClick "vehicle player setPos _pos"; //--- benny debug: teleport
 	player addEventHandler ["HandleDamage", {if (player != (_this select 3)) then {(_this select 3) setDammage 1}; false}]; //--- God-Slayer mode.
-	player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
+	//player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
 	// player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_BuildMenu.sqf"];//debug
 };
 
@@ -341,7 +342,7 @@ if (CTI_DEBUG) then {
 	// hint "DEBUG MODE IS ENABLED! DON'T FORGET TO TURN IT OFF!";
 	// onMapSingleClick "vehicle player setPos _pos";
 	// onMapSingleClick "a2 setPos _pos";
-	player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
+	//player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
 };
 
 CTI_Init_Client = true;
