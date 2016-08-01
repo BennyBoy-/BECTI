@@ -534,7 +534,7 @@ _p pushBack '';
 _n pushBack ["%1 (Pacific)"]; 
 _o pushBack 28000;
 _t pushBack 30;
-_u pushBack 2;
+_u pushBack 3;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;

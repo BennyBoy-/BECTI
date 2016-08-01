@@ -326,14 +326,14 @@ CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to mat
 CTI_TOWNS_CAPTURE_BOUNTY_COEF = 100; //--- Bounty coefficient upon capture, (max sv * coefficient)
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 300; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
 CTI_TOWNS_CAPTURE_RANGE = 80; //--- The range which a unit/vehicle has to be from a town center to capture it
-CTI_TOWNS_CAPTURE_RATE = 0.5; //--- Determine how fast a town may be captured/protected
-CTI_TOWNS_CAPTURE_RATE_CAMPS = 1; //--- Determine how fast a town may be captured while holding it's camps
+CTI_TOWNS_CAPTURE_RATE = 0.3; //--- Determine how fast a town may be captured/protected
+CTI_TOWNS_CAPTURE_RATE_CAMPS = 0.5; //--- Determine how fast a town may be captured while holding it's camps
 CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
 
 //--- Towns: Depot
 CTI_TOWNS_DEPOT_BUILD_DIRECTION = 0; //--- Determine the direction a vehicle will use while being spawned from the depot
-CTI_TOWNS_DEPOT_BUILD_DISTANCE = 20; //--- Determine how far a unit/vehicle will spawn from the depot
+CTI_TOWNS_DEPOT_BUILD_DISTANCE = 10; //--- Determine how far a unit/vehicle will spawn from the depot
 CTI_TOWNS_DEPOT_CLASSNAME = ["Land_BagBunker_Large_F","Land_BagBunker_large_green_F","Land_Lighthouse_small_F"]; //--- The classname(s) used for town depots in editor
 CTI_TOWNS_DEPOT_RANGE = 10; //--- Determine how far a player needs to be from a depot in order to use it
 
@@ -358,7 +358,7 @@ CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 750; //--- Determine how far a threat may
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 40; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 180; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_OCCUPATION_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
-CTI_TOWNS_OCCUPATION_SPAWN_AI_MAX = 32;  //--- Determine the max occupation AI count to present in a town (if the count is below the given limit, a new wave will spawn)
+CTI_TOWNS_OCCUPATION_SPAWN_AI_MAX = 24;  //--- Determine the max occupation AI count to present in a town (if the count is below the given limit, a new wave will spawn)
 CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN = 12; //--- Determine the min occupation AI count to present in a town
 
 //--- Towns: Resistance
@@ -370,12 +370,12 @@ CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 40; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 180; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
-CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX = 35; //--- Determine the max resistance AI count to present in a town (if the count is below the given limit, a new wave will spawn)
-CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN = 12; //--- Determine the min resistance AI count to present in a town
+CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX = 24; //--- Determine the max resistance AI count to present in a town (if the count is below the given limit, a new wave will spawn)
+CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN = 15; //--- Determine the min resistance AI count to present in a town
 
 //--- Towns: Spawn System
-CTI_TOWNS_SPAWN_SV_MAX = 200; //--- Determine the max SV used for a town as a reference for AI units spawning (min max scaling)
-CTI_TOWNS_SPAWN_SV_MIN = 10; //--- Determine the min SV used for a town as a reference for AI units spawning (min max scaling)
+CTI_TOWNS_SPAWN_SV_MAX = 120; //--- Determine the max SV used for a town as a reference for AI units spawning (min max scaling)
+CTI_TOWNS_SPAWN_SV_MIN = 50; //--- Determine the min SV used for a town as a reference for AI units spawning (min max scaling)
 
 //--- Towns: Supply
 CTI_TOWNS_SUPPLY_MODE = 1; //--- Supply Mode: (0: Default, 1: Timed)

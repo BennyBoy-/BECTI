@@ -93,3 +93,6 @@ CTI_DeathCamera camCommit (missionNamespace getVariable "CTI_RESPAWN_TIMER")+2;
 
 //Call Earplugs on death
 call CTI_CL_FNC_EarPlugsDeath;
+
+//Call Tablet on death
+call CTI_CL_FNC_Death;

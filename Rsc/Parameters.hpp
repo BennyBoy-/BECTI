@@ -90,34 +90,34 @@ class Params {
 		default = 1;
 	};
 	class CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE {
-		title = "TOWNS: Resistance Occupation Level";
-		values[] = {6,8,10,12,14};
-		texts[] = {"Noob","Low","Medium","High","Insane"};
-		default = 12;
+		title = "TOWNS: Resistance Occupation Squad Count";
+		values[] = {5,10,15,20,25,30,35,40};
+		texts[] = {"Amateur","Novice","Average","Skilled","Professional","Specialist","Expert","Chuck Norris"};
+		default = 15;
 	};
 	class CTI_TOWNS_OCCUPATION_LEVEL {
-		title = "TOWNS: Side Occupation Level";
-		values[] = {6,8,10,12,14};
-		texts[] = {"Noob","Low","Medium","High","Insane"};
-		default = 8;
+		title = "TOWNS: Side Occupation Squad Count";
+		values[] = {5,10,15,20,25,30,35,40};
+		texts[] = {"Amateur","Novice","Average","Skilled","Professional","Specialist","Expert","Chuck Norris"};
+		default = 15;
 	};
 	class CTI_TOWNS_OCCUPATION_RESISTANCE {
 		title = "TOWNS: Resistance Occupation Forces";
 		values[] = {0,1,2,3,4,5,6,7};
 		texts[] = {"Vanilla - AAF","Vanilla - FIA","CUP - ION PMC","CUP - NAPA Chernarus","CUP - Royal Army Corp Of Sahrani","CUP - Takistani Locals","Mixed","Syndikat Paramilitary"};
-		default = 6;
+		default = 7;
 	};
 	class CTI_TOWNS_OCCUPATION_WEST {
 		title = "TOWNS: Blufor Occupation Forces";
 		values[] = {0,1,2,3};
 		texts[] = {"Vanilla","CUP - US Army","Mixed","Pacific Special Forces"};
-		default = 1;
+		default = 3;
 	};
 	class CTI_TOWNS_OCCUPATION_EAST {
 		title = "TOWNS: Opfor Occupation Forces";
 		values[] = {0,1,2,3};
 		texts[] = {"Vanilla","CUP - Russians","Mixed","Pacific Special Forces"};
-		default = 1;
+		default = 3;
 	};
 	class CTI_TOWNS_PEACE {
 		title = "TOWNS: Peace";
@@ -129,25 +129,25 @@ class Params {
 		title = "TOWNS: Occupation Soft max AI Limit";
 		values[] = {50,100,150,200,250,300,350,400};
 		texts[] = {"50","100","150","200","250","300","350","400"};
-		default = 150;
+		default = 200;
 	};
 	class CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO {
 		title = "TOWNS: Occupation Squad Queue Ratio";
 		values[] = {0,10,20,30,40,50,60,70,80,90,100};
 		texts[] = {"0","10","20","30","40","50","60","70","80","90","100"};
-		default = 50;
+		default = 30;
 	};
 	class CTI_TOWNS_RESISTANCE_LIMIT_AI {
 		title = "TOWNS: Resistance Soft max AI Limit";
 		values[] = {50,100,150,200,250,300,350,400};
 		texts[] = {"50","100","150","200","250","300","350","400"};
-		default = 150;
+		default = 200;
 	};
 	class CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO {
 		title = "TOWNS: Resistance Squad Queue Ratio";
 		values[] = {0,10,20,30,40,50,60,70,80,90,100};
 		texts[] = {"0","10","20","30","40","50","60","70","80","90","100"};
-		default = 50;
+		default = 30;
 	};
 	class CTI_TOWNS_TERRITORIAL {
 		title = "TOWNS: Territorial Mode";

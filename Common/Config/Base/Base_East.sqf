@@ -194,13 +194,13 @@ _categories pushBack 	"Fortification";
 
 _headers pushBack 		"IR/Termal Cover Small";
 _classes pushBack 		"Land_IRMaskingCover_02_F";
-_prices pushBack 		15;
+_prices pushBack 		150;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"IR/Termal Cover Large";
 _classes pushBack 		"Land_IRMaskingCover_01_F";
-_prices pushBack 		15;
+_prices pushBack 		150;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
 };
@@ -261,71 +261,71 @@ _categories pushBack 	"Fortification";
 
 _headers pushBack 		["Cargo Tower (big)",[["RuinOnDestroyed", "Land_Cargo_Tower_V1_ruins_F"], ["DMG_Reduce", 8]]];
 _classes pushBack 		"Land_Cargo_Tower_V1_F";
-_prices pushBack 		2000;
+_prices pushBack 		4000;
 _placements pushBack 	[0, 30];
 _categories pushBack 	"Fortification";
 
 if (CTI_APEX_ADDON > 0) then {
 _headers pushBack 		"Cargo Tower (big) Jungle";
 _classes pushBack 		"Land_Cargo_Tower_V4_F";
-_prices pushBack 		2000;
+_prices pushBack 		4000;
 _placements pushBack 	[0, 30];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"Air Tower";
 _classes pushBack 		"Land_Airport_01_controlTower_F";
-_prices pushBack 		300;
+_prices pushBack 		1000;
 _placements pushBack 	[0, 30];
 _categories pushBack 	"Fortification";
 };
 
 _headers pushBack 		["Shed (Roof)",[["RuinOnDestroyed", "Land_Shed_Big_ruins_F"], ["DMG_Reduce", 8]]];
 _classes pushBack 		"Land_Shed_Big_F";
-_prices pushBack 		200;
+_prices pushBack 		2000;
 _placements pushBack 	[0, 15];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		["Shed (Land)",[["RuinOnDestroyed", "Land_Shed_Small_ruins_F"], ["DMG_Reduce", 5]]];
 _classes pushBack 		"Land_Shed_Small_F";
-_prices pushBack 		200;
+_prices pushBack 		2000;
 _placements pushBack 	[90, 15];
 _categories pushBack 	"Structures_Industrial";
 
 _headers pushBack 		["Tent Hangar",[["RuinOnDestroyed", "Land_TentHangar_V1_ruins_F"], ["DMG_Reduce", 5]]];
 _classes pushBack 		"Land_TentHangar_V1_F";
-_prices pushBack 		500;
+_prices pushBack 		4000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
 
 if (CTI_OFPS_ADDON > 0) then {
 _headers pushBack 		"Mil Shed";
 _classes pushBack 		"Land_sfp_mil_shed";
-_prices pushBack 		1000;
+_prices pushBack 		4000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
 
 _headers pushBack 		"Hangar Wood";
 _classes pushBack 		"Land_sfp_torebodahangar";
-_prices pushBack 		1000;
+_prices pushBack 		4000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
 
 _headers pushBack 		"Hangar Wood Large";
 _classes pushBack 		"Land_sfp_torebodahangar_alt2";
-_prices pushBack 		1500;
+_prices pushBack 		5000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
 };
 
 _headers pushBack 		"Dome (Small)";
 _classes pushBack 		"Land_Dome_Small_F";
-_prices pushBack 		1500;
+_prices pushBack 		4000;
 _placements pushBack 	[0, 30];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"Dome (Big)";
 _classes pushBack 		"Land_Dome_Big_F";
-_prices pushBack 		4000;
+_prices pushBack 		5000;
 _placements pushBack 	[0, 50];
 _categories pushBack 	"Fortification";
 
@@ -381,19 +381,19 @@ _categories pushBack 	"Fortification";
 
 _headers pushBack 		["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"], ["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0))}]]];
 _classes pushBack 		"Land_Medevac_house_V1_F";
-_prices pushBack 		10000;
+_prices pushBack 		15000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"MG Defense";
 _classes pushBack 		"O_HMG_01_High_F";
-_prices pushBack 		200;
+_prices pushBack 		2000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
 _headers pushBack 		"GL Defense";
 _classes pushBack 		"O_GMG_01_high_F";
-_prices pushBack 		300;
+_prices pushBack 		3000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
@@ -405,7 +405,7 @@ _categories pushBack 	"Defense";
 
 _headers pushBack 		"AA Defense";
 _classes pushBack 		"O_static_AA_F";
-_prices pushBack 		3000;
+_prices pushBack 		4000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
@@ -418,37 +418,37 @@ _categories pushBack 	"Defense";
 if (CTI_CUP_ADDON > 0) then {
 _headers pushBack 		"M2 Machine Gun";
 _classes pushBack 		"CUP_B_M2StaticMG_USMC";
-_prices pushBack 		150;
+_prices pushBack 		2000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
 _headers pushBack 		"M2 Mini";
 _classes pushBack 		"CUP_B_M2StaticMG_USMC";
-_prices pushBack 		150;
+_prices pushBack 		2000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
 _headers pushBack 		"AGS-30";
 _classes pushBack 		"CUP_B_AGS_CDF";
-_prices pushBack 		200;
+_prices pushBack 		2000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
 _headers pushBack 		"DShKM";
 _classes pushBack 		"CUP_B_DSHKM_CDF";
-_prices pushBack 		175;
+_prices pushBack 		2500;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
 _headers pushBack 		"DShKM Mini";
 _classes pushBack 		"CUP_B_DSHkM_MiniTriPod_CDF";
-_prices pushBack 		175;
+_prices pushBack 		2500;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
 _headers pushBack 		"KORD Mini";
 _classes pushBack 		"CUP_O_KORD_RU";
-_prices pushBack 		300;
+_prices pushBack 		4000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
@@ -460,7 +460,7 @@ _categories pushBack 	"Defense";
 
 _headers pushBack 		"D-30 AT";
 _classes pushBack 		"CUP_B_D30_AT_CDF";
-_prices pushBack 		7000;
+_prices pushBack 		6000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
@@ -488,61 +488,61 @@ _categories pushBack 	"Defense";
 if (CTI_CUP_CORE_ADDON > 0) then { 
 _headers pushBack 		["H-Barrier10xTall",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Base_WarfareBBarrier10xTall";
-_prices pushBack 		10;
+_prices pushBack 		750;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		["H-Barrier10x",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Base_WarfareBBarrier10x";
-_prices pushBack 		10;
+_prices pushBack 		500;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		["H-Barrier5x",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Base_WarfareBBarrier5x";
-_prices pushBack 		10;
+_prices pushBack 		250;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"Concrete Vehicle Bunker";
 _classes pushBack 		"Land_Ammostore2";
-_prices pushBack 		200;
+_prices pushBack 		10000;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"Large Hangar (Green)";
 _classes pushBack 		"Land_Ss_hangar";
-_prices pushBack 		3000;
+_prices pushBack 		10000;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"Large Hangar (Desert)";
 _classes pushBack 		"Land_Ss_hangard";
-_prices pushBack 		3000;
+_prices pushBack 		10000;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"EarthenNest (Green)";
 _classes pushBack 		"Land_fort_artillery_nest";
-_prices pushBack 		50;
+_prices pushBack 		500;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"EarthenWall (Green)";
 _classes pushBack 		"Land_fort_rampart";
-_prices pushBack 		50;
+_prices pushBack 		500;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"EarthenNest (Desert)";
 _classes pushBack 		"Land_fort_artillery_nest_EP1";
-_prices pushBack 		50;
+_prices pushBack 		500;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"EarthenWall (Desert)";
 _classes pushBack 		"Land_fort_rampart_EP1";
-_prices pushBack 		50;
+_prices pushBack 		500;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 };
@@ -550,20 +550,20 @@ _categories pushBack 	"Fortification";
 if (CTI_OFPS_ADDON > 0) then {
 _headers pushBack 		"C-RAM Phalanx";
 _classes pushBack 		"C_at_phalanx_35AI";
-_prices pushBack 		80000;
+_prices pushBack 		60000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 
 _headers pushBack 		"C-RAM Phalanx Missle";
 _classes pushBack 		"C_at_phalanx_missile_35AI";
-_prices pushBack 		100000;
+_prices pushBack 		80000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 };
 
 _headers pushBack 		["Heli Pad", [["DMG_Reduce", 1]]];
 _classes pushBack 		"Land_HelipadSquare_F";
-_prices pushBack 		10;
+_prices pushBack 		100;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Signs";
 
