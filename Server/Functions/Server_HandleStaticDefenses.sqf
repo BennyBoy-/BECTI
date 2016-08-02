@@ -126,6 +126,10 @@ while {alive _structure} do {
 						_ai assignAsGunner _x;
 						[_ai] orderGetIn true;
 						_ai moveInGunner _x;
+						
+						//--- Change skill
+						_ai setskill 1;
+
 					} else {
 						//--- At least one HC is available
 						[_x, _defense_team, _side, _ai_args] Call CTI_SE_FNC_AttemptDefenseDelegation;
