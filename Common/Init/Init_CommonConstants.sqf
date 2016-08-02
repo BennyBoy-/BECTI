@@ -680,4 +680,7 @@ with missionNamespace do {
 	if (isNil 'CTI_ZOMBIE_MODE') then {CTI_ZOMBIE_MODE = 0};
 	if (isNil 'CTI_GUERILLA_MODE') then {CTI_GUERILLA_MODE = 0};
 
+	//--- AiRadnomSkill
+	if (isNil 'CTI_AI_SKILL') then {CTI_AI_SKILL = 4}; //Done
+
 };

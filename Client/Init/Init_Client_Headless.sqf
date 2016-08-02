@@ -76,7 +76,16 @@ with missionNamespace do {
 		_ai moveInGunner _static;
 
 		//--- Change Skill
-		_ai setskill 1;
+		_ai setSkill ["aimingAccuracy", 1]; // Set accuracy
+		_ai setSkill ["aimingShake", 1]; // Set weapon sway handling
+		_ai setSkill ["aimingSpeed", 1]; // Set aiming speed
+		_ai setSkill ["reloadSpeed", 1]; // Max out reload speed
+		_ai setSkill ["spotDistance", 1]; // Set detection distance
+		_ai setSkill ["spotTime", 1]; // Set detection time
+		_ai setSkill ["courage", 1]; // Never retreat
+		_ai setSkill ["commanding", 1]; // Communication skills
+		_ai setSkill ["general", 1]; //Sets all above
+
 		
 		diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 	};
