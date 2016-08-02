@@ -43,29 +43,40 @@ _p pushBack 500;
 
 //Helmets:
 //(Boonie)
-//_i pushBack "H_Booniehat_tna_F";
-//_u pushBack 0;
-//_p pushBack 5;
+/* 
+_i pushBack "H_Booniehat_tna_F";
+_u pushBack 0;
+_p pushBack 5; 
+*/
 
 //(Kevlar)
-//_i pushBack "H_HelmetB_tna_F";
-//_u pushBack 0;
-//_p pushBack 300;
+/* 
+_i pushBack "H_HelmetB_tna_F";
+_u pushBack 0;
+_p pushBack 300; 
+*/
 
 //(Fancy Kevlar)
-//_i pushBack "H_HelmetB_Enh_tna_F";
-//_u pushBack 1;
-//_p pushBack 300;
+/* 
+_i pushBack "H_HelmetB_Enh_tna_F";
+_u pushBack 1;
+_p pushBack 300; 
+*/
 
 //(Extra Fancy Kevlar)
-//_i pushBack "H_HelmetB_Light_tna_F";
-//_u pushBack 1;
-//_p pushBack 300;
+/* 
+_i pushBack "H_HelmetB_Light_tna_F";
+_u pushBack 1;
+_p pushBack 300; 
+*/
 
 //(Officer)
-//_i pushBack "H_MilCap_tna_F";
-//_u pushBack 0;
-//_p pushBack 5;
+/* 
+_i pushBack "H_MilCap_tna_F";
+_u pushBack 0;
+_p pushBack 5; 
+*/
+
 //(Stealth Combat Helmet)
 _i pushBack "H_HelmetB_TI_tna_F";
 _u pushBack 3;
@@ -75,15 +86,19 @@ _p pushBack 800;
 //Face
 //UNIVERSAL
 //(Green Combat Goggles)
-//_i pushBack "G_Combat_Goggles_tna_F";
-//_u pushBack 0;
-//_p pushBack 5;
+/* 
+_i pushBack "G_Combat_Goggles_tna_F";
+_u pushBack 0;
+_p pushBack 5; 
+*/
 
 //NATO
 //(Stealth Balaclava)
-//_i pushBack "G_Balaclava_TI_blk_F";
-//_u pushBack 3;
-//_p pushBack 300;
+/* 
+_i pushBack "G_Balaclava_TI_blk_F";
+_u pushBack 3;
+_p pushBack 300; 
+*/
 
 _i pushBack "G_Balaclava_TI_G_tna_F";
 _u pushBack 3;
@@ -92,26 +107,31 @@ _p pushBack 300;
 
 //NVG
 //UNIVERSAL
-//_i pushBack "NVGoggles_tna_F";
-//_u pushBack 0;
-//_p pushBack 500;
+/* 
+_i pushBack "NVGoggles_tna_F";
+_u pushBack 0;
+_p pushBack 500; 
+*/
 //NATO
-//_i pushBack "NVGogglesB_grn_F";
-//_u pushBack 3;
-//_p pushBack 1500;
+/* 
+_i pushBack "NVGogglesB_grn_F";
+_u pushBack 3;
+_p pushBack 1500; 
 
-//_i pushBack "NVGogglesB_blk_F";
-//_u pushBack 3;
-//_p pushBack 1500;
-
+_i pushBack "NVGogglesB_blk_F";
+_u pushBack 3;
+_p pushBack 1500;
+*/
 _i pushBack "NVGogglesB_gry_F";
 _u pushBack 3;
 _p pushBack 1500;
 
 //Binocs
-//_i pushBack "Laserdesignator_01_khk_F";
-//_u pushBack 3;
-//_p pushBack 1000;
+/* 
+_i pushBack "Laserdesignator_01_khk_F";
+_u pushBack 3;
+_p pushBack 1000; 
+*/
 
 //Uniforms
 _i pushBack "U_B_T_Soldier_AR_F";
@@ -241,13 +261,15 @@ _i pushBack "30Rnd_556x45_Stanag_Tracer_Red";
 _u pushBack 1;
 _p pushBack 50;
 
-//_i pushBack "30Rnd_556x45_Stanag_Tracer_Green";
-//_u pushBack 0;
-//_p pushBack 20;
+/* 
+_i pushBack "30Rnd_556x45_Stanag_Tracer_Green";
+_u pushBack 0;
+_p pushBack 20;
 
-//_i pushBack "30Rnd_556x45_Stanag_Tracer_Yellow";
-//_u pushBack 0;
-//_p pushBack 20;
+_i pushBack "30Rnd_556x45_Stanag_Tracer_Yellow";
+_u pushBack 0;
+_p pushBack 20; 
+*/
 
 //(SPAR-16S)
 _i pushBack "150Rnd_556x45_Drum_Mag_F";
@@ -267,35 +289,37 @@ _p pushBack 100;
 _i pushBack "200Rnd_556x45_Box_F";
 _u pushBack 1;
 _p pushBack 200;
-
-//_i pushBack "200Rnd_556x45_Box_Tracer_F";
-//_u pushBack 1;
-//_p pushBack 200;
-
+/* 
+_i pushBack "200Rnd_556x45_Box_Tracer_F";
+_u pushBack 1;
+_p pushBack 200;
+ */
 _i pushBack "200Rnd_556x45_Box_Tracer_Red_F";
 _u pushBack 1;
 _p pushBack 200;
 
 //Supressors:
 //(Mk-I EMR)
-//_i pushBack "muzzle_snds_B_khk_F";
-//_u pushBack 2;
-//_p pushBack 700;
+/* 
+_i pushBack "muzzle_snds_B_khk_F";
+_u pushBack 2;
+_p pushBack 700;
 
-//(MX Series)
-//_i pushBack "muzzle_snd";
-//_u pushBack 1;
-//_p pushBack 650;
+(MX Series)
+_i pushBack "muzzle_snd";
+_u pushBack 1;
+_p pushBack 650;
 
-//(Mk-I EMR)
-//_i pushBack "muzzle_snds_B_khk_F";
-//_u pushBack 2;
-//_p pushBack 700;
+(Mk-I EMR)
+_i pushBack "muzzle_snds_B_khk_F";
+_u pushBack 2;
+_p pushBack 700;
 
-//(MX Series)
-//_i pushBack "muzzle_snds_H_khk_F";
-//_u pushBack 1;
-//_p pushBack 650;
+(MX Series)
+_i pushBack "muzzle_snds_H_khk_F";
+_u pushBack 1;
+_p pushBack 650; 
+*/
 
 //(SPAR-17)
 _i pushBack "muzzle_snds_B_khk_F";
@@ -336,9 +360,11 @@ _u pushBack 3;
 _p pushBack 400;
 
 //Bipod:
-//_i pushBack "bipod_01_F_khk";
-//_u pushBack 0;
-//_p pushBack 100;
+/* 
+_i pushBack "bipod_01_F_khk";
+_u pushBack 0;
+_p pushBack 100; 
+*/
 
 //Launchers:
 _i pushBack "launch_B_Titan_tna_F";

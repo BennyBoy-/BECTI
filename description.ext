@@ -15,3 +15,6 @@
 
 // ^HS^ for Headless Client
 joinUnassigned = 0;
+
+// Debug Enable
+enableDebugConsole = 1;
