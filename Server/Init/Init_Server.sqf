@@ -124,6 +124,9 @@ if (_attempts >= 500) then {
 	if (CTI_BASE_DEFENSES_AUTO_LIMIT > 0) then {
 		_defense_team = createGroup _side;
 		_defense_team setGroupID ["Defense Team"];
+		_defense_team setBehaviour "COMBAT";
+		_defense_team setCombatMode "RED";
+		_defense_team enableAttack true;
 		_logic setVariable ["cti_defensive_team", _defense_team];
 	};
 	
