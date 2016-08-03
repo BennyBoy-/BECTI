@@ -127,8 +127,16 @@ while {alive _structure} do {
 						[_ai] orderGetIn true;
 						_ai moveInGunner _x;
 						
-						//--- Change skill
-						_ai setskill 1;
+						//--- Change Skill
+						_ai setSkill ["aimingAccuracy", 1]; // Set accuracy
+						_ai setSkill ["aimingShake", 1]; // Set weapon sway handling
+						_ai setSkill ["aimingSpeed", 1]; // Set aiming speed
+						_ai setSkill ["reloadSpeed", 1]; // Max out reload speed
+						_ai setSkill ["spotDistance", 1]; // Set detection distance
+						_ai setSkill ["spotTime", 1]; // Set detection time
+						_ai setSkill ["courage", 1]; // Never retreat
+						_ai setSkill ["commanding", 1]; // Communication skills
+						_ai setSkill ["general", 1]; //Sets all above
 
 					} else {
 						//--- At least one HC is available

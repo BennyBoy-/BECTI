@@ -215,6 +215,12 @@ class Params {
 		texts[] = {"AutoAdaptative","1","2","3","4","5","8","10","12","14","16"};
 		default = 5;
 	};
+		class CTI_AI_SKILL {
+		title = "AI: AI Skill Level";
+		values[] = {1,2,3,4,5};
+		texts[] = {"Amateur","Average","Skilled","Specialist","Chuck Norris"};
+		default = 3;
+	};
 	class SEPARATOR5 {
 		title = "=========================== UNITS ============================";
 		values[] = {1};
