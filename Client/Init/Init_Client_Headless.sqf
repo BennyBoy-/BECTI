@@ -215,6 +215,12 @@ with missionNamespace do {
 		
 		_town setVariable [_hc_tvar, (_town getVariable [_hc_tvar, []]) + _groups];
 		
+		//--- Set AI to Combat mode
+		_groups setBehaviour "AWARE";
+		_groups setCombatMode "RED";
+		_groups setSpeedMode "FULL";
+		_groups enableAttack true;
+
 		if (CTI_Log_Level >= CTI_Log_Information) then {
 			["INFORMATION", "FUNCTION: CTI_PVF_HC_UpdateTownGroups", format["Registered [%1] Town Groups [%2] for town [%3] on side [%4] ", count(_groups), _groups, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
