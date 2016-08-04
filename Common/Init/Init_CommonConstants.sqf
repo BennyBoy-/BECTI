@@ -326,8 +326,8 @@ CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to mat
 CTI_TOWNS_CAPTURE_BOUNTY_COEF = 100; //--- Bounty coefficient upon capture, (max sv * coefficient)
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 300; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
 CTI_TOWNS_CAPTURE_RANGE = 40; //--- The range which a unit/vehicle has to be from a town center to capture it
-CTI_TOWNS_CAPTURE_RATE = 0.2; //--- Determine how fast a town may be captured/protected
-CTI_TOWNS_CAPTURE_RATE_CAMPS = 0.3; //--- Determine how fast a town may be captured while holding it's camps
+CTI_TOWNS_CAPTURE_RATE = 0.15; //--- Determine how fast a town may be captured/protected
+CTI_TOWNS_CAPTURE_RATE_CAMPS = 0.2; //--- Determine how fast a town may be captured while holding it's camps
 CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
 
@@ -338,7 +338,7 @@ CTI_TOWNS_DEPOT_CLASSNAME = ["Land_BagBunker_Large_F","Land_BagBunker_large_gree
 CTI_TOWNS_DEPOT_RANGE = 10; //--- Determine how far a player needs to be from a depot in order to use it
 
 //--- Towns: Economy
-CTI_TOWNS_INCOME_RATIO = 5.5; //--- A value above 1 will increase the resources ($) generation ((Current SV) * ratio)
+CTI_TOWNS_INCOME_RATIO = 5.0; //--- A value above 1 will increase the resources ($) generation ((Current SV) * ratio)
 CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = 0.40; //--- Determine how much value an unoccupied town bring to the side.
 
 //--- Towns: Markers
@@ -346,29 +346,29 @@ CTI_TOWNS_MARKERS_MAP_RANGE = 600; //--- Distance required to show the town SV o
 CTI_TOWNS_MARKERS_PEACE_COLOR = "ColorYellow"; //--- The color used for peace-mode towns
 
 //--- Towns: Patrol
-CTI_TOWNS_PATROL_HOPS = 7; //--- Towns patrol hops (non-waypoint)
+CTI_TOWNS_PATROL_HOPS = 10; //--- Towns patrol hops (non-waypoint)
 CTI_TOWNS_PATROL_RANGE = 300; //--- Patrol range in a town
 
 //--- Towns: Occupation
-CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 250; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
 CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
-CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE = 50; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
+CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE = 150; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
 //CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 40; //--- Determine how high a threat is considered aerial
-CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 180; //--- Determine how long a town may remain active when triggered
+CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 120; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_OCCUPATION_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 CTI_TOWNS_OCCUPATION_SPAWN_AI_MAX = 24;  //--- Determine the max occupation AI count to present in a town (if the count is below the given limit, a new wave will spawn)
-CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN = 12; //--- Determine the min occupation AI count to present in a town
+CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN = 15; //--- Determine the min occupation AI count to present in a town
 
 //--- Towns: Resistance
-CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 50; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
 CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
-CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE = 50; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
+CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE = 100; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
 //CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 40; //--- Determine how high a threat is considered aerial
-CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 180; //--- Determine how long a town may remain active when triggered
+CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 120; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX = 24; //--- Determine the max resistance AI count to present in a town (if the count is below the given limit, a new wave will spawn)
 CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN = 15; //--- Determine the min resistance AI count to present in a town
@@ -530,10 +530,10 @@ with missionNamespace do {
 //-----------------------------------------------------------------------------------------------------------------------//
 
 CTI_ARTILLERY_FILTER = 1; //--- Toggle artillery magazines like mines and AT mines (0: Disabled, 1: Enabled)
-CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
+CTI_ARTILLERY_TIMEOUT = 380; //--- Delay between each fire mission
 
 CTI_BOUNTY_COEF = 0.70; //--- Bounty coefficient multiplicator based on the unit original cost
-CTI_BOUNTY_COEF_PVP = 1; //--- Bounty coefficient multiplicator based on the killed unit score
+CTI_BOUNTY_COEF_PVP = 0.80; //--- Bounty coefficient multiplicator based on the killed unit score
 
 CTI_COIN_AREA_DEFAULT = [30, 10];
 CTI_COIN_AREA_HQ_DEPLOYED = [CTI_BASE_AREA_RANGE, 25];

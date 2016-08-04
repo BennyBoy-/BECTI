@@ -21,7 +21,7 @@ class Params {
 		title = "BASE: Startup Placement";
 		values[] = {2000,3000,4000,5000,6000,7000,8000,9000,10000,12000,15000,20000};
 		texts[] = {"2 KM","3 KM","4 KM","5 KM","6 KM","7 KM","8 KM","9 KM","10 KM","12 KM","15 KM","20 KM"};
-		default = 6000;
+		default = 9000;
 	};
 	class SEPARATOR1 {
 		title = "========================== INCOME ============================";
@@ -129,25 +129,25 @@ class Params {
 		title = "TOWNS: Occupation Soft max AI Limit";
 		values[] = {50,100,150,200,250,300,350,400};
 		texts[] = {"50","100","150","200","250","300","350","400"};
-		default = 200;
+		default = 300;
 	};
 	class CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO {
 		title = "TOWNS: Occupation Squad Queue Ratio";
 		values[] = {0,10,20,30,40,50,60,70,80,90,100};
 		texts[] = {"0","10","20","30","40","50","60","70","80","90","100"};
-		default = 30;
+		default = 20;
 	};
 	class CTI_TOWNS_RESISTANCE_LIMIT_AI {
 		title = "TOWNS: Resistance Soft max AI Limit";
 		values[] = {50,100,150,200,250,300,350,400};
 		texts[] = {"50","100","150","200","250","300","350","400"};
-		default = 200;
+		default = 300;
 	};
 	class CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO {
 		title = "TOWNS: Resistance Squad Queue Ratio";
 		values[] = {0,10,20,30,40,50,60,70,80,90,100};
 		texts[] = {"0","10","20","30","40","50","60","70","80","90","100"};
-		default = 30;
+		default = 20;
 	};
 	class CTI_TOWNS_TERRITORIAL {
 		title = "TOWNS: Territorial Mode";
@@ -339,13 +339,13 @@ class Params {
 		title = "VISUAL: Terrain Grid";
 		values[] = {10,20,30,50};
 		texts[] = {"Far","Medium","Short","Free"};
-		default = 50;
+		default = 20;
 	};
 	class CTI_GRAPHICS_VD_MAX {
 		title = "VISUAL: View Distance";
 		values[] = {1000,1500,2000,2500,3000,3500,4000};
 		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM"};
-		default = 3000;
+		default = 4000;
 	};
 	class CTI_WEATHER_INITIAL {
 		title = "WEATHER: Inital Time";
