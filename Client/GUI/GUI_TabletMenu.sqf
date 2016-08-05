@@ -26,9 +26,9 @@ while { true } do {
 		_income = call CTI_CL_FNC_GetPlayerIncome;
 		
 		if (_funds != _last_funds) then {
-			((uiNamespace getVariable "cti_dialog_ui_tabletmenu") displayCtrl 777009) ctrlSetStructuredText (parseText format["<t>RESROURCES: <t color='%1'>$%2</t></t>", CTI_P_Coloration_Money, _funds]);
-			((uiNamespace getVariable "cti_dialog_ui_tabletmenu") displayCtrl 779009) ctrlSetStructuredText (parseText format["<t>RESROURCES: <t color='%1'>$%2</t></t>", CTI_P_Coloration_Money, _funds]);
-			((uiNamespace getVariable "cti_dialog_ui_tabletmenu") displayCtrl 780009) ctrlSetStructuredText (parseText format["<t>RESROURCES: <t color='%1'>$%2</t></t>", CTI_P_Coloration_Money, _funds]);
+			((uiNamespace getVariable "cti_dialog_ui_tabletmenu") displayCtrl 777009) ctrlSetStructuredText (parseText format["<t>RESOURCES: <t color='%1'>$%2</t></t>", CTI_P_Coloration_Money, _funds]);
+			((uiNamespace getVariable "cti_dialog_ui_tabletmenu") displayCtrl 779009) ctrlSetStructuredText (parseText format["<t>RESOURCES: <t color='%1'>$%2</t></t>", CTI_P_Coloration_Money, _funds]);
+			((uiNamespace getVariable "cti_dialog_ui_tabletmenu") displayCtrl 780009) ctrlSetStructuredText (parseText format["<t>RESOURCES: <t color='%1'>$%2</t></t>", CTI_P_Coloration_Money, _funds]);
 			_last_funds = _funds;
 		};
 		if (_supply != _last_supply) then {
