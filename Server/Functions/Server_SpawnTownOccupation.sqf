@@ -621,6 +621,12 @@ _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 	_group = createGroup _side;
 	_groups pushBack _group;
 	
+	//--- Set AI to Combat mode
+	_group setBehaviour "AWARE";
+	_group setCombatMode "RED";
+	_group setSpeedMode "FULL";
+	_group enableAttack true;
+
 	if (CTI_Log_Level >= CTI_Log_Information) then {
 		["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format["Composing Occupation Team for town [%1] on side [%2] using group [%3] at position [%4] with units [%5]", _town getVariable "cti_town_name", _side, _group, _position, _x]] call CTI_CO_FNC_Log;
 	};

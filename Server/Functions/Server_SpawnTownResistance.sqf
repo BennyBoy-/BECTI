@@ -608,6 +608,13 @@ _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 	_group = createGroup resistance;
 	_groups pushBack _group;
 	
+	//--- Set AI to Combat mode
+	_group setBehaviour "AWARE";
+	_group setCombatMode "RED";
+	_group setSpeedMode "FULL";
+	_group enableAttack true;
+
+
 	if (CTI_Log_Level >= CTI_Log_Information) then {
 		["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format["Composing Resistance Team for town [%1] using group [%2] at position [%3] with units [%4]", _town getVariable "cti_town_name", _group, _position, _x]] call CTI_CO_FNC_Log;
 	};

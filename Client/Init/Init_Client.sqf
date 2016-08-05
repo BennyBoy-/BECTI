@@ -103,7 +103,7 @@ if (isMultiplayer) then {
 		sleep 1;
 	};
 
-	12452 cutText ["Welcome, Open Tablet Using Left Windows Key", "BLACK IN", 30];
+	12452 cutText ["", "BLACK IN", 30];
 
 	if (CTI_P_Jailed) then {
 		hintSilent "The ride never ends!";
@@ -205,7 +205,9 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 		//--- Adding sleep in hopes to fix player spawning in empty object on first join
 		 sleep 1;
 		_spawn_at = [_spawn_at, 8, 30] call CTI_CO_FNC_GetRandomPosition;
+		_spawn_cam = [_spawn_at, 8, 200] call CTI_CO_FNC_GetRandomPosition;
 		player setPos _spawn_at;
+			
 		//--- Adding sleep in hopes to fix player spawning in empty object on first join
 		sleep 1;
 	};
@@ -237,9 +239,33 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 
 	waitUntil {time > 0};
 
+			MissionIntro = [] spawn {
+			playMusic "EventTrack02a_F_EPB";
+			cutText ["Welcome", "BLACK IN", 3];
+					[[["OFPS CTI WARFARE","<t align = 'center' shadow = '1' size = '1.4' font='PuristaBold'>%1</t><br/>"],["CAPTURE THE ISLAND","<t align = 'center' shadow = '1' size = '1.2' font='PuristaBold'>%1</t><br/>"]
+					],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"] spawn BIS_fnc_typeText;
+				if (!isNil "_camera_run") exitWith {};
+				_camera_run = true;
+				_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
+				_firstshot = [_hq, _hq, _hq, 12, 0.5, 0.4, false, 0, 0, 1] execVM "Client\Events\Events_UI_IntroCamera.sqf";
+				waitUntil {scriptdone _firstshot};
+				cutText ["", "BLACK", 2];
+				cutText ["", "BLACK IN", 2];
+				"dynamicBlur" ppEffectEnable true;   
+				"dynamicBlur" ppEffectAdjust [100];   
+				"dynamicBlur" ppEffectCommit 0;     
+				"dynamicBlur" ppEffectAdjust [0.0];  
+				"dynamicBlur" ppEffectCommit 4; 
+
+			};
+			waitUntil {scriptDone MissionIntro};
+	
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_votetime"}};
+	
 
 	if (CTI_P_SideLogic getVariable "cti_votetime" > 0) then {createDialog "CTI_RscVoteMenu"};
+	waitUntil { !dialog };
+	createDialog "CTI_RscTabletDialogWelcome";	
 };
 
 //--- Gear templates (persitent)

@@ -4876,7 +4876,7 @@ class CTI_RscTabletDialog
 	class controls 
 	{
 
-		class RscTabletFrameTablet: RscTabletPictureFrame
+		class RscTabletFrameTablet_image: RscTabletPictureFrame
 		{
 			idc = 777000;
 			moving = 1;
@@ -4886,25 +4886,17 @@ class CTI_RscTabletDialog
 			y = -0.039 * safezoneH + safezoneY;
 			w = 0.693122 * safezoneW;
 			h = 1.122 * safezoneH;
-		};
-		class CTI_RscTabletMenu: RscTabletFrameBase
-		{
-			idc = 777001;
-			text = ""; //--- ToDo: Localize;
-			x = 0.270869 * safezoneW + safezoneX;
-			y = 0.225 * safezoneH + safezoneY;
-			w = 0.458263 * safezoneW;
-			h = 0.55 * safezoneH;
+			
 		};
 		class CTI_RscTabletMenu_bg: RscTabletScreen
 		{
 			idc = 777002;
-			text = ""; //--- ToDo: Localize;
-			x = 0.270869 * safezoneW + safezoneX;
-			y = 0.225 * safezoneH + safezoneY;
-			w = 0.458263 * safezoneW;
-			h = 0.55 * safezoneH;
-			colorBackground[] = {0.063,0.063,0.063,1};
+
+			x = 0.2715 * safezoneW + safezoneX;
+			y = 0.23 * safezoneH + safezoneY;
+			w = 0.453 * safezoneW;
+			h = 0.5460 * safezoneH;
+			colorBackground[] = {0.063,0.063,0.063,0.5};
 		};
 		class CTI_RscTabletInfo_os: RscTabletTextos
 		{
@@ -4916,161 +4908,1032 @@ class CTI_RscTabletDialog
 			w = 0.137479 * safezoneW;
 			h = 0.022 * safezoneH;
 			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
 		};
 		class CTI_RscTabletInfo_oslink: RscTabletTextlink
 		{
 			idc = 777004;
 
 			x = 0.431261 * safezoneW + safezoneX;
-			y = 0.255 * safezoneH + safezoneY;
+			y = 0.258 * safezoneH + safezoneY;
 			w = 0.137479 * safezoneW;
 			h = 0.044 * safezoneH;
-			colorBackground[] = {0,0,0,0};
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
 		};
-		class CTI_RscTabletMenu_MissionTime: RscTabletStructuredText
+		class CTI_RscTabletMenu_Title: RscTabletTitle
 		{
 			idc = 777005;
 
-			// text = "TIME: 30%";
-			x = 0.574468 * safezoneW + safezoneX;
-			y = 0.236 * safezoneH + safezoneY;
-			w = 0.154664 * safezoneW;
+			text = ""; //--- ToDo: Localize;
+			x = 0.431261 * safezoneW + safezoneX;
+			y = 0.313 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
 			h = 0.022 * safezoneH;
-			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
 		};
-		class CTI_RscTabletMenu_TownsNum: RscTabletStructuredText
+		class CTI_RscTabletMenu_MissionTime: RscTabletStructuredText
 		{
 			idc = 777006;
 
-			// text = "TOWNS: 30%";
-			x = 0.574468 * safezoneW + safezoneX;
-			y = 0.258 * safezoneH + safezoneY;
-			w = 0.154664 * safezoneW;
+			//text = "TIME: 30%"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
 			h = 0.022 * safezoneH;
 			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
 		};
-		class CTI_RscTabletMenu_Awards: RscTabletStructuredText
+		class CTI_RscTabletMenu_TownsNum: RscTabletStructuredText
 		{
 			idc = 777007;
 
-			// text = "AWARDS: 30%";
-			x = 0.574468 * safezoneW + safezoneX;
-			y = 0.28 * safezoneH + safezoneY;
-			w = 0.154664 * safezoneW;
+			//text = "TOWNS: 30%"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
 			h = 0.022 * safezoneH;
 			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
 		};
-		class CTI_RscTabletMenu_Resources: RscTabletStructuredText
+		class CTI_RscTabletMenu_Awards: RscTabletStructuredText
 		{
 			idc = 777008;
 
-			// text = "RESOURCES: 30%";
-			x = 0.276597 * safezoneW + safezoneX;
-			y = 0.236 * safezoneH + safezoneY;
-			w = 0.177577 * safezoneW;
+			//text = "AWARDS: 30%"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.28 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
 			h = 0.022 * safezoneH;
 			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
 		};
-		class CTI_RscTabletMenu_Supply: RscTabletStructuredText
+		class CTI_RscTabletMenu_Resources: RscTabletStructuredText
 		{
 			idc = 777009;
 
-			// text = "SUPPLY: 30%";
-			x = 0.276597 * safezoneW + safezoneX;
-			y = 0.258 * safezoneH + safezoneY;
-			w = 0.177577 * safezoneW;
+			//text = "RESOURCES: 30%"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
 			h = 0.022 * safezoneH;
 			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
 		};
-		class CTI_RscTabletMenu_Income: RscTabletStructuredText
+		class CTI_RscTabletMenu_Supply: RscTabletStructuredText
 		{
 			idc = 777010;
 
-			// text = "INCOME: 30%";
-			x = 0.276597 * safezoneW + safezoneX;
-			y = 0.28 * safezoneH + safezoneY;
-			w = 0.177577 * safezoneW;
+			//text = "SUPPLY: 30%"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
 			h = 0.022 * safezoneH;
 			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Income: RscTabletStructuredText
+		{
+			idc = 777011;
+
+			//text = "INCOME: 30%"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.28 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
 		};
 		class CTI_RscTabletMenu_Equipment: RscTabletButtonMenu
 		{
 			idc = 777101;
+			action = "['onEquipmentPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
 
 			text = "EQUIPMENT"; //--- ToDo: Localize;
 			x = 0.282325 * safezoneW + safezoneX;
 			y = 0.346 * safezoneH + safezoneY;
 			w = 0.137479 * safezoneW;
 			h = 0.176 * safezoneH;
-			action = "['onEquipmentPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+			//colorBackground[] = {0,0,0,0.5};
 		};
 		class CTI_RscTabletMenu_Factory: RscTabletButtonMenu
 		{
 			idc = 777102;
+			action = "['onFactoryPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
 
 			text = "FACTORY"; //--- ToDo: Localize;
 			x = 0.431261 * safezoneW + safezoneX;
 			y = 0.346 * safezoneH + safezoneY;
 			w = 0.137479 * safezoneW;
 			h = 0.176 * safezoneH;
-			action = "['onFactoryPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+			//colorBackground[] = {0,0,0,0.5};
 		};
 		class CTI_RscTabletMenu_Build: RscTabletButtonMenu
 		{
 			idc = 777103;
+			action = "['onBuildPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
 
 			text = "BUILD"; //--- ToDo: Localize;
 			x = 0.580196 * safezoneW + safezoneX;
 			y = 0.346 * safezoneH + safezoneY;
 			w = 0.137479 * safezoneW;
 			h = 0.176 * safezoneH;
-			action = "['onBuildPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+			//colorBackground[] = {0,0,0,0.5};
 		};
 		class CTI_RscTabletMenu_Command: RscTabletButtonMenu
 		{
 			idc = 777104;
+			action = "['onCommandPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
 
 			text = "COMMAND"; //--- ToDo: Localize;
 			x = 0.282325 * safezoneW + safezoneX;
 			y = 0.544 * safezoneH + safezoneY;
 			w = 0.137479 * safezoneW;
 			h = 0.176 * safezoneH;
-			action = "['onCommandPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+			//colorBackground[] = {0,0,0,0.5};
 		};
 		class CTI_RscTabletMenu_Options: RscTabletButtonMenu
 		{
 			idc = 777105;
+			action = "['onOptionsPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
 
 			text = "OPTIONS"; //--- ToDo: Localize;
 			x = 0.431261 * safezoneW + safezoneX;
 			y = 0.544 * safezoneH + safezoneY;
 			w = 0.137479 * safezoneW;
 			h = 0.176 * safezoneH;
-			action = "['onOptionsPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+			//colorBackground[] = {0,0,0,0.5};
 		};
 		class CTI_RscTabletMenu_Halo: RscTabletButtonMenu
 		{
 			idc = 777106;
+			action = "['onHaloPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
 
 			text = "HALO"; //--- ToDo: Localize;
 			x = 0.580196 * safezoneW + safezoneX;
 			y = 0.544 * safezoneH + safezoneY;
 			w = 0.137479 * safezoneW;
 			h = 0.176 * safezoneH;
-			action = "['onHaloPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+			//colorBackground[] = {0,0,0,0.5};
 		};
-		class CTI_RscTabletMenu_ButtonPower: RscTabletButtonPower
+		class CTI_RscTabletMenu_Close: RscTabletCloseButton
 		{
-			idc = 777200;
+			idc = 777300;
+			action = "['onClosePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
 
-			x = 0.488543 * safezoneW + safezoneX;
-			y = 0.797 * safezoneH + safezoneY;
-			w = 0.0229131 * safezoneW;
-			h = 0.033 * safezoneH;
-			colorBackground[] = {0,0,0,0};
-			action = "closeDialog 0";
+			text = "CLOSE"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Back: RscTabletBackButton
+		{
+			idc = 777301;
+			action = "['onBackPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "BACK"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Home: RscTabletHomeButton
+		{
+			idc = 777302;
+			action = "['onHomePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "HOME"; //--- ToDo: Localize;
+			x = 0.431261 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Service: RscTabletServiceButton
+		{
+			idc = 777304;
+			action = "['onTransferPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "TRANSFER FUNDS"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.313 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Transfer: RscTabletTransferButton
+		{
+			idc = 777305;
+			action = "['onServicePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "SERVICE"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.313 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
 		};
 
+};
+};
+class CTI_RscTabletDialogWelcome
+{
+	idd=778777;
+	movingEnable=true;
+	enableSimulation=true;
+	onLoad = "uiNamespace setVariable ['cti_dialog_ui_tabletmenu', _this select 0];['onLoad'] execVM 'Client\Events\Events_UI_TabletMenu.sqf'";
+	onUnload = "uiNamespace setVariable ['cti_dialog_ui_tabletmenu', nil]; ['onUnload'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+	class controls 
+	{
+		class RscTabletFrameTablet_image: RscTabletPictureFrame
+		{
+			idc = 7.787e+006;
+			moving = 1;
+
+			text = "Rsc\Pictures\Tablet_background_ca.paa"; //--- ToDo: Localize;
+			x = 0.184944 * safezoneW + safezoneX;
+			y = -0.039 * safezoneH + safezoneY;
+			w = 0.693122 * safezoneW;
+			h = 1.122 * safezoneH;
+		};
+		class CTI_RscTabletMenu_bg: RscTabletScreen
+		{
+			idc = 778002;
+
+			x = 0.2715 * safezoneW + safezoneX;
+			y = 0.23 * safezoneH + safezoneY;
+			w = 0.453 * safezoneW;
+			h = 0.5460 * safezoneH;
+			colorBackground[] = {0.063,0.063,0.063,0.5};
+		};
+		class CTI_RscTabletInfo_os: RscTabletTextos
+		{
+			idc = 778003;
+
+			text = "OFPS OS"; //--- ToDo: Localize;
+			x = 0.431261 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+		};
+		class CTI_RscTabletMenu_Title: RscTabletTitle
+		{
+			idc = 778005;
+
+			text = "Welcome"; //--- ToDo: Localize;
+			x = 14 * GUI_GRID_W + GUI_GRID_X;
+			y = 4 * GUI_GRID_H + GUI_GRID_Y;
+			w = 12 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class CTI_RscTabletMenu_MissionTime: RscTabletStructuredText
+		{
+			idc = 778006;
+
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+		};
+		class CTI_RscTabletMenu_TownsNum: RscTabletStructuredText
+		{
+			idc = 778007;
+
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+		};
+		class CTI_RscTabletMenu_Awards: RscTabletStructuredText
+		{
+			idc = 778008;
+
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.28 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+		};
+		class CTI_RscTabletMenu_Resources: RscTabletStructuredText
+		{
+			idc = 778009;
+
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+		};
+		class CTI_RscTabletMenu_Supply: RscTabletStructuredText
+		{
+			idc = 778010;
+
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+		};
+		class CTI_RscTabletMenu_Income: RscTabletStructuredText
+		{
+			idc = 778011;
+
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.28 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+		};
+		class CTI_RscTabletMenu_Welcome: RscTabletTextWelcome
+		{
+			idc = 778100;
+
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.269 * safezoneH + safezoneY;
+			w = 0.43535 * safezoneW;
+			h = 0.451 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+		};
+		class CTI_RscTabletMenu_Close: RscTabletCloseButton
+		{
+			idc = 778300;
+			action = "['onClosePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "CLOSE"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class CTI_RscTabletMenu_Home: RscTabletHomeButton
+		{
+			idc = 778302;
+			action = "['onHomePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "HOME"; //--- ToDo: Localize;
+			x = 0.431261 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+};
+};
+
+class CTI_RscTabletDialogOptions
+{
+	idd=779777;
+	movingEnable=true;
+	enableSimulation=true;
+	onLoad = "uiNamespace setVariable ['cti_dialog_ui_tabletmenu', _this select 0];['onLoad'] execVM 'Client\Events\Events_UI_TabletMenu.sqf'";
+	onUnload = "uiNamespace setVariable ['cti_dialog_ui_tabletmenu', nil]; ['onUnload'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+	class controls 
+	{
+		class RscTabletFrameTablet_image: RscTabletPictureFrame
+		{
+			idc = 779000;
+			moving = 1;
+
+			text = "Rsc\Pictures\Tablet_background_ca.paa";
+			x = 0.184944 * safezoneW + safezoneX;
+			y = -0.039 * safezoneH + safezoneY;
+			w = 0.693122 * safezoneW;
+			h = 1.122 * safezoneH;
+			
+		};
+		class CTI_RscTabletMenu_bg: RscTabletScreen
+		{
+			idc = 779002;
+
+			x = 0.2715 * safezoneW + safezoneX;
+			y = 0.23 * safezoneH + safezoneY;
+			w = 0.453 * safezoneW;
+			h = 0.5460 * safezoneH;
+			colorBackground[] = {0.063,0.063,0.063,0.5};
+		};
+		class CTI_RscTabletInfo_os: RscTabletTextos
+		{
+			idc = 779003;
+
+			text = "OFPS OS"; //--- ToDo: Localize;
+			x = 0.431261 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletInfo_oslink: RscTabletTextlink
+		{
+			idc = 779004;
+
+			x = 0.431261 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.044 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Title: RscTabletTitle
+		{
+			idc = 779005;
+
+			text = "OPTIONS MENU"; //--- ToDo: Localize;
+			x = 0.431261 * safezoneW + safezoneX;
+			y = 0.313 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_MissionTime: RscTabletStructuredText
+		{
+			idc = 779006;
+
+			//text = "TIME: 30%"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_TownsNum: RscTabletStructuredText
+		{
+			idc = 779007;
+
+			//text = "TOWNS: 30%"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Awards: RscTabletStructuredText
+		{
+			idc = 779008;
+
+			//text = "AWARDS: 30%"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.28 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Resources: RscTabletStructuredText
+		{
+			idc = 779009;
+
+			//text = "RESOURCES: 30%"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Supply: RscTabletStructuredText
+		{
+			idc = 779010;
+
+			//text = "SUPPLY: 30%"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Income: RscTabletStructuredText
+		{
+			idc = 779011;
+
+			//text = "INCOME: 30%"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.28 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_1: RscTabletButtonMenu
+		{
+			idc = 779101;
+			action = "['onUnflipPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "UNFLIP NEAREST VEHICLE"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.368 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_2: RscTabletButtonMenu
+		{
+			idc = 779102;
+			action = "['onAIMicroPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "AI MANAGEMENT"; //--- ToDo: Localize;
+			
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.434 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+			
+
+		};
+		class CTI_RscTabletMenu_3: RscTabletButtonMenu
+		{
+			idc = 779103;
+			action = "['onUnitsCamPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "UNITS CAM"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+			
+		};
+		class CTI_RscTabletMenu_4: RscTabletButtonMenu
+		{
+			idc = 779104;
+			action = "['onSatCamPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "SAT CAM"; //--- ToDo: Localize;
+			
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.566 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+
+		};
+		class CTI_RscTabletMenu_5: RscTabletButtonMenu
+		{
+			idc = 779105;
+			action = "['onCommanderVotePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "CALL COMMANDER VOTE"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.632 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_6: RscTabletButtonMenu
+		{
+			idc = 779106;
+			action = "['onVideoSettingsPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "VIDEO SETTINGS"; //--- ToDo: Localize;
+			x = 0.505728 * safezoneW + safezoneX;
+			y = 0.368 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_7: RscTabletButtonMenu
+		{
+			idc = 779107;
+			action = "['onOnlineHelpPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "ONLINE HELP"; //--- ToDo: Localize;
+			x = 0.505728 * safezoneW + safezoneX;
+			y = 0.434 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_8: RscTabletButtonMenu
+		{
+			idc = 779108;
+			action = "['onMusicPressedonMusicPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "Play Music: Off"; //--- ToDo: Localize;
+			x = 0.505728 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		/*class CTI_RscTabletMenu_9: RscTabletButtonMenu
+		{
+			idc = 779109;
+			action = "['onEquipmentPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "9"; //--- ToDo: Localize;
+			x = 0.505728 * safezoneW + safezoneX;
+			y = 0.566 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_10: RscTabletButtonMenu
+		{
+			idc = 779110;
+			action = "['onEquipmentPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "10"; //--- ToDo: Localize;
+			x = 0.505728 * safezoneW + safezoneX;
+			y = 0.632 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};*/
+		class CTI_RscTabletMenu_Close: RscTabletCloseButton
+		{
+			idc = 779300;
+			action = "['onClosePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "CLOSE"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Back: RscTabletBackButton
+		{
+			idc = 779301;
+			action = "['onBackPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "BACK"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Home: RscTabletHomeButton
+		{
+			idc = 779302;
+			action = "['onHomePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "HOME"; //--- ToDo: Localize;
+			x = 0.431261 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Service: RscTabletServiceButton
+		{
+			idc = 779304;
+			action = "['onTransferPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "TRANSFER FUNDS"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.313 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Transfer: RscTabletTransferButton
+		{
+			idc = 779305;
+			action = "['onServicePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "SERVICE"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.313 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+
+};
+};
+class CTI_RscTabletCommandMenu
+{
+	idd=780777;
+	movingEnable=true;
+	enableSimulation=true;
+	onLoad = "uiNamespace setVariable ['cti_dialog_ui_tabletmenu', _this select 0];['onLoad'] execVM 'Client\Events\Events_UI_TabletMenu.sqf'";
+	onUnload = "uiNamespace setVariable ['cti_dialog_ui_tabletmenu', nil]; ['onUnload'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+	class controls 
+	{
+		class RscTabletFrameTablet_image: RscTabletPictureFrame
+		{
+			idc = 780000;
+			moving = 1;
+
+			text = "Rsc\Pictures\Tablet_background_ca.paa";
+			x = 0.184944 * safezoneW + safezoneX;
+			y = -0.039 * safezoneH + safezoneY;
+			w = 0.693122 * safezoneW;
+			h = 1.122 * safezoneH;
+			
+		};
+		class CTI_RscTabletMenu_bg: RscTabletScreen
+		{
+			idc = 780002;
+
+			x = 0.2715 * safezoneW + safezoneX;
+			y = 0.23 * safezoneH + safezoneY;
+			w = 0.453 * safezoneW;
+			h = 0.5460 * safezoneH;
+			colorBackground[] = {0.063,0.063,0.063,0.5};
+		};
+		class CTI_RscTabletInfo_os: RscTabletTextos
+		{
+			idc = 780003;
+
+			text = "OFPS OS"; //--- ToDo: Localize;
+			x = 0.431261 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletInfo_oslink: RscTabletTextlink
+		{
+			idc = 780004;
+
+			x = 0.431261 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.044 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Title: RscTabletTitle
+		{
+			idc = 780005;
+
+			text = "COMMAND MENU"; //--- ToDo: Localize;
+			x = 0.431261 * safezoneW + safezoneX;
+			y = 0.313 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_MissionTime: RscTabletStructuredText
+		{
+			idc = 780006;
+
+			//text = "TIME: 30%"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_TownsNum: RscTabletStructuredText
+		{
+			idc = 780007;
+
+			//text = "TOWNS: 30%"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Awards: RscTabletStructuredText
+		{
+			idc = 780008;
+
+			//text = "AWARDS: 30%"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.28 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Resources: RscTabletStructuredText
+		{
+			idc = 780009;
+
+			//text = "RESOURCES: 30%"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Supply: RscTabletStructuredText
+		{
+			idc = 780010;
+
+			//text = "SUPPLY: 30%"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Income: RscTabletStructuredText
+		{
+			idc = 780011;
+
+			//text = "INCOME: 30%"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.28 * safezoneH + safezoneY;
+			w = 0.148935 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {0.886,0.871,0.871,1};
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_1: RscTabletButtonMenu
+		{
+			idc = 780101;
+			action = "['onUpgradesPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "UPGRADES"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.368 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_2: RscTabletButtonMenu
+		{
+			idc = 780102;
+			action = "['onMapPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "MAP COMMANDING"; //--- ToDo: Localize;
+			
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.434 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+			
+
+		};
+		class CTI_RscTabletMenu_3: RscTabletButtonMenu
+		{
+			idc = 780103;
+			action = "['onWorkersPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "BASE MANAGEMENT"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+			
+		};
+		/*class CTI_RscTabletMenu_4: RscTabletButtonMenu
+		{
+			idc = 780104;
+			//action = "['onSatCamPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "4"; //--- ToDo: Localize;
+			
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.566 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+
+		};
+		class CTI_RscTabletMenu_5: RscTabletButtonMenu
+		{
+			idc = 780105;
+			//action = "['onCommanderVotePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "5"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.632 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};*/
+		class CTI_RscTabletMenu_6: RscTabletButtonMenu
+		{
+			idc = 780106;
+			action = "['onTeamsPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "TEAMS"; //--- ToDo: Localize;
+			x = 0.505728 * safezoneW + safezoneX;
+			y = 0.368 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_7: RscTabletButtonMenu
+		{
+			idc = 780107;
+			action = "['onRequestMenuPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "TEAM REQUESTS"; //--- ToDo: Localize;
+			x = 0.505728 * safezoneW + safezoneX;
+			y = 0.434 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_8: RscTabletButtonMenu
+		{
+			idc = 780108;
+			action = "['onArtilleryMenuPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "ARTILLERY"; //--- ToDo: Localize;
+			x = 0.505728 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		/*class CTI_RscTabletMenu_9: RscTabletButtonMenu
+		{
+			idc = 780109;
+			//action = "['onEquipmentPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "9"; //--- ToDo: Localize;
+			x = 0.505728 * safezoneW + safezoneX;
+			y = 0.566 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_10: RscTabletButtonMenu
+		{
+			idc = 780110;
+			//action = "['onEquipmentPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "10"; //--- ToDo: Localize;
+			x = 0.505728 * safezoneW + safezoneX;
+			y = 0.632 * safezoneH + safezoneY;
+			w = 0.211947 * safezoneW;
+			h = 0.055 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};*/
+		class CTI_RscTabletMenu_Close: RscTabletCloseButton
+		{
+			idc = 780300;
+			action = "['onClosePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "CLOSE"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Back: RscTabletBackButton
+		{
+			idc = 780301;
+			action = "['onBackPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "BACK"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Home: RscTabletHomeButton
+		{
+			idc = 780302;
+			action = "['onHomePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "HOME"; //--- ToDo: Localize;
+			x = 0.431261 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Service: RscTabletServiceButton
+		{
+			idc = 780304;
+			action = "['onTransferPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "TRANSFER FUNDS"; //--- ToDo: Localize;
+			x = 0.282325 * safezoneW + safezoneX;
+			y = 0.313 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
+		class CTI_RscTabletMenu_Transfer: RscTabletTransferButton
+		{
+			idc = 780305;
+			action = "['onServicePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TabletMenu.sqf'";
+
+			text = "SERVICE"; //--- ToDo: Localize;
+			x = 0.580196 * safezoneW + safezoneX;
+			y = 0.313 * safezoneH + safezoneY;
+			w = 0.137479 * safezoneW;
+			h = 0.022 * safezoneH;
+			//colorBackground[] = {0,0,0,0.5};
+		};
 
 };
 };
