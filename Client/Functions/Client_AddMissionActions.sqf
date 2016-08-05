@@ -20,7 +20,7 @@
   # EXAMPLE #
     call CTI_CL_FNC_AddMissionActions
 */
-//player addAction ["<t color='#a5c4ff'>TABLET</t>", "Client\Actions\Action_TabletMenu.sqf", "", 90, false, true, "", "!CTI_P_PreBuilding"];
+player addAction ["<t color='#a5c4ff'>TABLET</t>", "Client\Actions\Action_TabletMenu.sqf", "", 90, false, true, "", "!CTI_P_PreBuilding"];
 
 //--- Commander related actions
 if (call CTI_CL_FNC_IsPlayerCommander) then { 

@@ -30,7 +30,7 @@ _z_coord = _this select 9;
 
 
 // ----------------------
-_dist = 500 + random 100;
+_dist = 1000 + random 100;
 _dir = random 360;
 _campos1_random = [(getPos _campos1 select 0) + (sin _dir) * _dist, (getPos _campos1 select 1) + (cos _dir) * _dist, 1000];
 
