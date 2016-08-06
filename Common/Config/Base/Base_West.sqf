@@ -167,19 +167,19 @@ _categories pushBack 	"Fortification";
 
 _headers pushBack 		"Long Sandbag";
 _classes pushBack 		"Land_BagFence_Long_F";
-_prices pushBack 		5;
+_prices pushBack 		10;
 _placements pushBack 	[0, 5];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"Round Sandbag";
 _classes pushBack 		"Land_BagFence_Round_F";
-_prices pushBack 		5;
+_prices pushBack 		10;
 _placements pushBack 	[0, 5];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"Bunker (Small)";
 _classes pushBack 		"Land_BagBunker_Small_F";
-_prices pushBack 		15;
+_prices pushBack 		50;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
 
@@ -467,25 +467,25 @@ _categories pushBack 	"Defense";
 if (CTI_CUP_CORE_ADDON > 0) then { 
 _headers pushBack 		["H-Barrier10xTall",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Base_WarfareBBarrier10xTall";
-_prices pushBack 		750;
+_prices pushBack 		500;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		["H-Barrier10x",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Base_WarfareBBarrier10x";
-_prices pushBack 		500;
+_prices pushBack 		300;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		["H-Barrier5x",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Base_WarfareBBarrier5x";
-_prices pushBack 		250;
+_prices pushBack 		150;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"Concrete Vehicle Bunker";
 _classes pushBack 		"Land_Ammostore2";
-_prices pushBack 		10000;
+_prices pushBack 		1000;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
@@ -503,25 +503,25 @@ _categories pushBack 	"Fortification";
 
 _headers pushBack 		"EarthenNest (Green)";
 _classes pushBack 		"Land_fort_artillery_nest";
-_prices pushBack 		500;
+_prices pushBack 		250;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"EarthenWall (Green)";
 _classes pushBack 		"Land_fort_rampart";
-_prices pushBack 		500;
+_prices pushBack 		100;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"EarthenNest (Desert)";
 _classes pushBack 		"Land_fort_artillery_nest_EP1";
-_prices pushBack 		500;
+_prices pushBack 		250;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 
 _headers pushBack 		"EarthenWall (Desert)";
 _classes pushBack 		"Land_fort_rampart_EP1";
-_prices pushBack 		500;
+_prices pushBack 		100;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 };
