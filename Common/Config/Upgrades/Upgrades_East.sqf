@@ -29,8 +29,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500,3000,4500], //--- Barracks
 	[2000,4000,6000,8000,10000], //--- Light
 	[2500,5000,10000,15000], //--- Heavy
-	[2000,4000], //--- Naval
-	[3000,6000,12000,24000], //--- Air
+	[2000,4000,8000], //--- Naval
+	[3000,6000,12000,18000,24000], //--- Air
 	[1500], //--- Air FFAR
 	[1500], //--- Air DAR
 	[1500], //--- Air AT
@@ -74,8 +74,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	3, //--- Barracks
 	5, //--- Light
 	4, //--- Heavy
-	2, //--- Naval
-	4, //--- Air
+	3, //--- Naval
+	5, //--- Air
 	1, //--- Air FFAR
 	1, //--- Air DAR
 	1, //--- Air AT
@@ -97,8 +97,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[CTI_UPGRADE_GEAR, 1],[CTI_UPGRADE_GEAR, 2],[CTI_UPGRADE_GEAR, 3]], //--- Barracks
 	[[],[],[],[],[CTI_UPGRADE_NUKE, 1]], //--- Light
 	[[CTI_UPGRADE_LIGHT,1],[CTI_UPGRADE_LIGHT,2],[CTI_UPGRADE_LIGHT,3],[CTI_UPGRADE_LIGHT,4]], //--- Heavy
-	[[],[]], //--- Naval
-	[[],[],[],[]], //--- Air
+	[[],[],[]], //--- Naval
+	[[],[],[],[],[]], //--- Air
 	[[CTI_UPGRADE_AIR, 1]], //--- Air FFAR
 	[[CTI_UPGRADE_AIR, 1]], //--- Air DAR
 	[[CTI_UPGRADE_AIR, 1]], //--- Air AT
@@ -120,8 +120,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[1, 1, 1], //--- Barracks
 		[1, 1, 1, 1, 1], //--- Light
 		[1, 1, 1, 1], //--- Heavy
-		[1, 1], //--- Naval
-		[1, 1, 1, 1], //--- Air
+		[1, 1, 1], //--- Naval
+		[1, 1, 1, 1, 1], //--- Air
 		[1], //--- Air FFAR
 		[1], //--- Air DAR
 		[1], //--- Air AT
@@ -138,22 +138,22 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 ]];
 }else {
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
-		[60,60,60,60], //--- Gear
-		[60,60,60], //--- Barracks
-		[60,60,60,60,60], //--- Light
-		[60,60,60,60], //--- Heavy
-		[60,60], //--- Naval
-		[60,60,60,60], //--- Air
+		[60,120,180,240], //--- Gear
+		[60,120,180], //--- Barracks
+		[60,120,180,240], //--- Light
+		[60,120,180], //--- Heavy
+		[60,120,180], //--- Naval
+		[60,120,180,240,300], //--- Air
 		[60], //--- Air FFAR
 		[60], //--- Air DAR
 		[60], //--- Air AT
 		[60], //--- Air AA
 		[60], //--- Air CM
 		[60, 120, 180], //--- Towns Occupation
-		[60, 60], //--- Halo
+		[60, 120], //--- Halo
 		[60], //--- Air Radar
 		[60], //--- Art Radar
-		[60,60,60], //--- Respawn Range
+		[60,120,180], //--- Respawn Range
 		[60], //--- IR Smoke
 		[600], //--- Satellite
 		[300] //--- Nuke

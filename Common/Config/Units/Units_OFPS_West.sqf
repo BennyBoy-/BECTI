@@ -16,23 +16,23 @@ _d = []; //--- Extra Distance (From Factory)
 //--- Light Vehicles
 _c pushBack 'dbo_CIV_new_bike';
 _p pushBack '';
-_n pushBack '';
-_o pushBack 20;
+_n pushBack 'Bike';
+_o pushBack 50;
 _t pushBack 10;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'dbo_CIV_ol_bike';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 20;
-_t pushBack 10;
-_u pushBack 0;
-_f pushBack CTI_FACTORY_LIGHT;
-_s pushBack "";
-_d pushBack 0;
+//_c pushBack 'dbo_CIV_ol_bike';
+//_p pushBack '';
+//_n pushBack '';
+//_o pushBack 20;
+//_t pushBack 10;
+//_u pushBack 0;
+//_f pushBack CTI_FACTORY_LIGHT;
+//_s pushBack "";
+//_d pushBack 0;
 
 
 //--- Heavy Vehicles
@@ -43,9 +43,10 @@ _d pushBack 0;
 
 //--- Air Vehicles
 
+
 _c pushBack 'globemaster_c17_NATO';
 _p pushBack '';
-_n pushBack '';
+_n pushBack 'Transport Plane';
 _o pushBack 15000;
 _t pushBack 50;
 _u pushBack 2;
@@ -53,185 +54,206 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 50;
 
+
+_c pushBack 'O_UAV_02_F';
+_p pushBack '';
+_n pushBack 'UAV AGM';
+_o pushBack 35000;
+_t pushBack 50;
+_u pushBack 4;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 50;
+
+
 _c pushBack 'usaf_b1b';
 _p pushBack '';
-_n pushBack 'B1B Lancer (Mk82)';
-_o pushBack 80000;
+_n pushBack 'Strategic Bomber LGB';
+_o pushBack 120000;
 _t pushBack 50;
-_u pushBack 3;
+_u pushBack 5;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 50;
 
 _c pushBack 'bwi_a3_at6b';
 _p pushBack '';
-_n pushBack '';
-_o pushBack 18000;
-_t pushBack 50;
-_u pushBack 2;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'bwi_a3_at6b_3';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 18000;
-_t pushBack 50;
-_u pushBack 2;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'bwi_a3_t6c';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 5000;
+_n pushBack 'Scout AGM, LGB';
+_o pushBack 15000;
 _t pushBack 50;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'B_UCSV_01';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 4000;
-_t pushBack 20;
-_u pushBack 0;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
+//_c pushBack 'bwi_a3_at6b_3';
+//_p pushBack '';
+//_n pushBack '';
+//_o pushBack 18000;
+//_t pushBack 50;
+//_u pushBack 2;
+//_f pushBack CTI_FACTORY_AIR;
+//_s pushBack "";
+//_d pushBack 0;
+
+//_c pushBack 'bwi_a3_t6c';
+//_p pushBack '';
+//_n pushBack '';
+//_o pushBack 5000;
+//_t pushBack 50;
+//_u pushBack 1;
+//_f pushBack CTI_FACTORY_AIR;
+//_s pushBack "";
+//_d pushBack 0;
+
+//_c pushBack 'B_UCSV_01';
+//_p pushBack '';
+//_n pushBack '';
+//_o pushBack 4000;
+//_t pushBack 20;
+//_u pushBack 0;
+//_f pushBack CTI_FACTORY_AIR;
+//_s pushBack "";
+//_d pushBack 0;
 
 _c pushBack 'B_UCSV_02';
 _p pushBack '';
-_n pushBack '';
-_o pushBack 4000;
+_n pushBack 'Transport UAV';
+_o pushBack 8000;
 _t pushBack 20;
-_u pushBack 0;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'LDL_C130J';
+//_c pushBack 'LDL_C130J';
+//_p pushBack '';
+//_n pushBack '';
+//_o pushBack 40000;
+//_t pushBack 50;
+//_u pushBack 3;
+//_f pushBack CTI_FACTORY_AIR;
+//_s pushBack "";
+//_d pushBack 0;
+
+//_c pushBack 'sab_alphajet';
+//_p pushBack '';
+//_n pushBack '';
+//_o pushBack 20000;
+//_t pushBack 20;
+//_u pushBack 1;
+//_f pushBack CTI_FACTORY_AIR;
+//_s pushBack "";
+//_d pushBack 0;
+
+//_c pushBack 'sab_alphajet2';
+//_p pushBack '';
+//_n pushBack '';
+//_o pushBack 20000;
+//_t pushBack 20;
+//_u pushBack 1;
+//_f pushBack CTI_FACTORY_AIR;
+//_s pushBack "";
+//_d pushBack 0;
+
+_c pushBack 'sab_alphajet5';
 _p pushBack '';
-_n pushBack '';
-_o pushBack 40000;
+_n pushBack 'Alpha Jet Rockets, Bombs';
+_o pushBack 20000;
 _t pushBack 50;
-_u pushBack 3;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'sab_alphajet';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 20000;
-_t pushBack 20;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
-
-_c pushBack 'sab_alphajet2';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 20000;
-_t pushBack 20;
-_u pushBack 1;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
+_d pushBack 20;
 
 _c pushBack 'pook_tu953M80_CDF';
 _p pushBack '';
-_n pushBack '';
-_o pushBack 60000;
+_n pushBack 'TU95 Anti Ship';
+_o pushBack 30000;
 _t pushBack 20;
-_u pushBack 2;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
-_d pushBack 20;
 
-_c pushBack 'pook_tu95ms_CDF';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 60000;
-_t pushBack 20;
-_u pushBack 2;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 20;
+//_c pushBack 'pook_tu95ms_CDF';
+//_p pushBack '';
+//_n pushBack '';
+//_o pushBack 60000;
+//_t pushBack 20;
+//_u pushBack 2;
+//_f pushBack CTI_FACTORY_AIR;
+//_s pushBack "";
+//_d pushBack 20;
 
-_c pushBack 'pook_tu95ms16_CDF';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 100000;
-_t pushBack 20;
-_u pushBack 3;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 20;
+//_c pushBack 'pook_tu95ms16_CDF';
+//_p pushBack '';
+//_n pushBack '';
+//_o pushBack 100000;
+//_t pushBack 20;
+//_u pushBack 3;
+//_f pushBack CTI_FACTORY_AIR;
+//_s pushBack "";
+//_d pushBack 20;
 
-_c pushBack 'pook_tu95MSM_CDF';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 100000;
-_t pushBack 20;
-_u pushBack 3;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 20;
+//_c pushBack 'pook_tu95MSM_CDF';
+//_p pushBack '';
+//_n pushBack '';
+//_o pushBack 100000;
+//_t pushBack 20;
+//_u pushBack 3;
+//_f pushBack CTI_FACTORY_AIR;
+//_s pushBack "";
+//_d pushBack 20;
 
 //--- Naval Vehicles
 
-_c pushBack 'Burnes_LCAC_1';
-_p pushBack '';
-_n pushBack (format ["Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
-_o pushBack 3000;
-_t pushBack 25;
-_u pushBack 1;
-_f pushBack CTI_FACTORY_NAVAL;
-_s pushBack "service-medic";
-_d pushBack 50;
+//_c pushBack 'Burnes_LCAC_1';
+//_p pushBack '';
+//_n pushBack (format ["Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
+//_o pushBack 3000;
+//_t pushBack 25;
+//_u pushBack 1;
+//_f pushBack CTI_FACTORY_NAVAL;
+//_s pushBack "service-medic";
+//_d pushBack 50;
 
-_c pushBack 'sfp_gruppbat';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 300;
-_t pushBack 25;
-_u pushBack 0;
-_f pushBack CTI_FACTORY_NAVAL;
-_s pushBack "";
-_d pushBack 0;
+//_c pushBack 'sfp_gruppbat';
+//_p pushBack '';
+//_n pushBack '';
+//_o pushBack 300;
+//_t pushBack 25;
+//_u pushBack 0;
+//_f pushBack CTI_FACTORY_NAVAL;
+//_s pushBack "";
+//_d pushBack 0;
 
 _c pushBack 'rhsusf_mkvsoc';
 _p pushBack '';
-_n pushBack '';
-_o pushBack 5000;
+_n pushBack 'Speedboat GMG, HMG, GAU';
+_o pushBack 4500;
 _t pushBack 25;
-_u pushBack 0;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "";
 _d pushBack 5;
 
 _c pushBack 'sfp_rbb_norrkoping';
 _p pushBack '';
-_n pushBack '';
-_o pushBack 40000;
+_n pushBack 'Aegis Cruiser';
+_o pushBack 50000;
 _t pushBack 25;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "";
 _d pushBack 50;
 
-
 _c pushBack 'OFPS_Frigate_Blu';
 _p pushBack '';
-_n pushBack '';
-_o pushBack 100000;
+_n pushBack 'Attack Cruiser';
+_o pushBack 130000;
 _t pushBack 25;
-_u pushBack 2;
+_u pushBack 3;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "service-medic";
 _d pushBack 130;
