@@ -860,7 +860,7 @@ _d pushBack 0;
 _c pushBack 'CUP_B_M163_USA';
 _p pushBack '';
 _n pushBack 'M113 Vulcan AA';
-_o pushBack 15000;
+_o pushBack 8000;
 _t pushBack 20;
 _u pushBack 3;
 _f pushBack CTI_FACTORY_HEAVY;
