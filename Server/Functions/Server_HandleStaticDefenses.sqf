@@ -110,7 +110,7 @@ while {alive _structure} do {
 					};
 					
 					//--- The arguments used to create the AI
-					_ai_args = [missionNamespace getVariable format["CTI_%1_Soldier", _side], _defense_team, _position, _sideID, _net];
+					_ai_args = [missionNamespace getVariable format["CTI_%1_Static", _side], _defense_team, _position, _sideID, _net];
 					
 					//--- No delegation possible, create on the server
 					if !(_delegate) then {
