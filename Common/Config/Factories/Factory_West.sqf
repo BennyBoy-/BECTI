@@ -6,7 +6,7 @@ missionNamespace setVariable [format["CTI_%1_Diver", _side], "B_diver_f"];
 missionNamespace setVariable [format["CTI_%1_Soldier", _side], "B_Soldier_F"];
 missionNamespace setVariable [format["CTI_%1_Crew", _side], "B_crew_F"];
 missionNamespace setVariable [format["CTI_%1_Pilot", _side], "B_Helipilot_F"];
-missionNamespace setVariable [format["CTI_%1_Static", _side], "B_officer_F"];
+missionNamespace setVariable [format["CTI_%1_Static", _side], "B_spotter_F"];
 
 if (CTI_CUP_ADDON > 0) then { 
 missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
