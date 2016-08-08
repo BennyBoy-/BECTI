@@ -5,6 +5,10 @@ while {isNull player} do {
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\Init\Init_Client_Headless.sqf", format["Waiting for Headless Client player object to be non-null: %1", player]] call CTI_CO_FNC_Log };
 };
 
+//--- Initial View Distance and Object View Distance for HC
+setViewDistance 4500;
+setObjectViewDistance 4500;
+
 //--- PVF
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\Init\Init_Client_Headless.sqf", "Attempting to register this Headless Client on the server..."] call CTI_CO_FNC_Log };
 (player) remoteExec ["CTI_PVF_SRV_RequestHCRegister", CTI_PV_SERVER];

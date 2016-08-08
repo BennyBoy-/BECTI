@@ -639,7 +639,7 @@ _d pushBack 10;
 
 _c pushBack 'C_Scooter_Transport_01_F';
 _p pushBack '';
-_n pushBack 'Small Transport';
+_n pushBack 'Scooter';
 _o pushBack 200;
 _t pushBack 25;
 _u pushBack 0;

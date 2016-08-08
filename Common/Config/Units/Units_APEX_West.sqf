@@ -487,7 +487,7 @@ _d pushBack 0;
 
 _c pushBack 'B_T_VTOL_01_armed_F';
 _p pushBack '';
-_n pushBack 'Spooky (VTOL)';
+_n pushBack 'Osprey Spooky';
 _o pushBack 30000;
 _t pushBack 50;
 _u pushBack 3;
@@ -499,7 +499,7 @@ _d pushBack 10;
 
 _c pushBack 'C_Scooter_Transport_01_F';
 _p pushBack '';
-_n pushBack 'Small Transport';
+_n pushBack 'Scooter';
 _o pushBack 200;
 _t pushBack 25;
 _u pushBack 0;

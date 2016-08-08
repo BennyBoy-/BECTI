@@ -1175,7 +1175,7 @@ _p pushBack 300;
 
 _i pushBack "CUP_Stinger_M";
 _u pushBack 2;
-_p pushBack 1000;
+_p pushBack 800;
 
 _i pushBack "CUP_Javelin_M";
 _u pushBack 3;

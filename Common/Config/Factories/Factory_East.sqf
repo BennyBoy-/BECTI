@@ -6,6 +6,8 @@ missionNamespace setVariable [format["CTI_%1_Diver", _side], "O_diver_F"];
 missionNamespace setVariable [format["CTI_%1_Soldier", _side], "O_Soldier_F"];
 missionNamespace setVariable [format["CTI_%1_Crew", _side], "O_crew_F"];
 missionNamespace setVariable [format["CTI_%1_Pilot", _side], "O_Helipilot_F"];
+missionNamespace setVariable [format["CTI_%1_Static", _side], "O_G_officer_F"];
+
 if (CTI_CUP_ADDON > 0) then {
 missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 	["CUP_O_GAZ_Vodnik_MedEvac_RU", [
@@ -135,7 +137,7 @@ if (CTI_APEX_ADDON > 0) then {
 if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_RU_Soldier';
 	_u pushBack 'CUP_O_RU_Soldier_AA';
-	_u pushBack 'CUP_O_RU_Soldier_AR';
+	_u pushBack 'CUP_O_RU_Soldier_MG';
 	_u pushBack 'CUP_O_RU_Crew';
 	_u pushBack 'CUP_O_RU_Soldier_AT';
 	_u pushBack 'CUP_O_RU_Soldier_HAT';
@@ -144,12 +146,14 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_RU_Medic';
 	_u pushBack 'CUP_O_RU_Pilot';
 	_u pushBack 'CUP_O_RU_Sniper_KSVK';
+        _u pushBack 'CUP_O_RU_Spotter';
+
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u];
 _u = [];
 //	_u pushBack 'C_SUV_01_F';
 //      _u pushBack 'I_C_Offroad_02_unarmed_F';
-	_u pushBack 'B_T_LSV_01_armed_F';		
+//	_u pushBack 'B_T_LSV_01_armed_F';		
 	_u pushBack 'B_T_LSV_02_armed_F';		
 //	_u pushBack 'O_Quadbike_01_F';			
 	_u pushBack 'O_MRAP_02_gmg_F';			
@@ -224,7 +228,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_LR_SPG9_TKA';
 	_u pushBack 'C_SUV_01_F';
         _u pushBack 'I_C_Offroad_02_unarmed_F';
-	_u pushBack 'B_T_LSV_01_armed_F';		
+//	_u pushBack 'B_T_LSV_01_armed_F';		
 	_u pushBack 'B_T_LSV_02_armed_F';		
 	_u pushBack 'O_Quadbike_01_F';			
 	_u pushBack 'O_MRAP_02_gmg_F';			
@@ -377,16 +381,17 @@ if (CTI_APEX_ADDON > 0) then {
 if (CTI_CUP_ADDON > 0) then { 
 //	_u pushBack 'CUP_B_AW159_Cannon_RN_Grey';	
         _u pushBack 'CUP_O_Ka52_GreyCamo_RU';		
-	_u pushBack 'CUP_B_Mi171Sh_ACR';		
-	_u pushBack 'CUP_O_Mi24_V_RU';			
+	_u pushBack 'CUP_B_Mi171Sh_ACR';
+        _u pushBack 'O_Heli_Attack_02_black_F';	
+        _u pushBack 'CUP_O_Mi24_V_RU';			
 	_u pushBack 'CUP_O_Mi24_P_RU';			
 	_u pushBack 'CUP_I_Mi24_Mk3_FAB_AAF';		
 	_u pushBack 'CUP_I_Mi24_Mk4_AT_AAF';		
 	_u pushBack 'CUP_I_Mi24_Mk3_S8_GSh_AAF';	
 	_u pushBack 'CUP_O_Su25_RU_1';			
 	_u pushBack 'CUP_B_L39_BMB_CZ';			
-	_u pushBack 'CUP_B_SU34_LGB_CSAT';	
-	_u pushBack 'CUP_B_SU34_AGM_CSAT';	
+	_u pushBack 'CUP_O_SU34_LGB_CSAT';	
+	_u pushBack 'CUP_O_SU34_AGM_CSAT';	
 	_u pushBack 'CUP_O_AN2_TK';
 	_u pushBack 'sfp_bo105_unarmed';		
 	_u pushBack 'O_Heli_Light_02_F';		
