@@ -1,14 +1,12 @@
 private ["_side", "_u"];
-
 _side = _this;
-
 missionNamespace setVariable [format["CTI_%1_Commander", _side], "B_officer_F"];
 missionNamespace setVariable [format["CTI_%1_Worker", _side], "B_Soldier_lite_F"];
-
 missionNamespace setVariable [format["CTI_%1_Diver", _side], "B_diver_f"];
 missionNamespace setVariable [format["CTI_%1_Soldier", _side], "B_Soldier_F"];
 missionNamespace setVariable [format["CTI_%1_Crew", _side], "B_crew_F"];
 missionNamespace setVariable [format["CTI_%1_Pilot", _side], "B_Helipilot_F"];
+missionNamespace setVariable [format["CTI_%1_Static", _side], "B_officer_F"];
 
 if (CTI_CUP_ADDON > 0) then { 
 missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
@@ -143,15 +141,18 @@ if (CTI_APEX_ADDON > 0) then {
 if (CTI_CUP_ADDON > 0) then { 
 	_u pushBack 'CUP_B_US_Soldier';
 	_u pushBack 'CUP_B_US_Soldier_AA';
-	_u pushBack 'CUP_B_US_Soldier_AR';
+	_u pushBack 'CUP_B_USMC_Soldier_MG';
 	_u pushBack 'CUP_B_US_Crew';
 	_u pushBack 'CUP_B_US_Soldier_AT';
 	_u pushBack 'CUP_B_US_Soldier_HAT';
-	_u pushBack 'CUP_B_US_Soldier_Engineer_EOD';
+	_u pushBack 'CUP_B_USMC_Engineer';
 	_u pushBack 'CUP_B_US_Soldier_GL';
 	_u pushBack 'CUP_B_US_Medic';
 	_u pushBack 'CUP_B_US_Pilot';
 	_u pushBack 'CUP_B_US_Sniper_M107';
+        _u pushBack 'CUP_B_USMC_Spotter';
+        _u pushBack 'CUP_B_USMC_Spotter';
+
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u];
 _u = [];

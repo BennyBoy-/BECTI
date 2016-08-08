@@ -46,7 +46,7 @@ _d pushBack 0;
 
 _c pushBack 'globemaster_c17_NATO';
 _p pushBack '';
-_n pushBack 'Transport Plane';
+_n pushBack 'C17 Transport';
 _o pushBack 15000;
 _t pushBack 50;
 _u pushBack 2;
@@ -68,7 +68,7 @@ _d pushBack 50;
 
 _c pushBack 'usaf_b1b';
 _p pushBack '';
-_n pushBack 'Strategic Bomber LGB';
+_n pushBack 'B-1B Strategic Bomber MK82';
 _o pushBack 120000;
 _t pushBack 50;
 _u pushBack 5;
@@ -78,7 +78,7 @@ _d pushBack 50;
 
 _c pushBack 'bwi_a3_at6b';
 _p pushBack '';
-_n pushBack 'Scout AGM, LGB';
+_n pushBack 'Texan AGM, LGB';
 _o pushBack 15000;
 _t pushBack 50;
 _u pushBack 1;
@@ -118,7 +118,7 @@ _d pushBack 0;
 
 _c pushBack 'B_UCSV_02';
 _p pushBack '';
-_n pushBack 'Transport UAV';
+_n pushBack 'UCSV Transport';
 _o pushBack 8000;
 _t pushBack 20;
 _u pushBack 1;
@@ -158,8 +158,8 @@ _d pushBack 0;
 
 _c pushBack 'sab_alphajet5';
 _p pushBack '';
-_n pushBack 'Alpha Jet Rockets, Bombs';
-_o pushBack 20000;
+_n pushBack 'Alpha Jet Rockets, GBU';
+_o pushBack 17000;
 _t pushBack 50;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_AIR;
@@ -169,7 +169,7 @@ _d pushBack 20;
 
 _c pushBack 'pook_tu953M80_CDF';
 _p pushBack '';
-_n pushBack 'TU95 Anti Ship';
+_n pushBack 'TU-95 Anti Ship';
 _o pushBack 30000;
 _t pushBack 20;
 _u pushBack 1;
@@ -240,7 +240,7 @@ _d pushBack 5;
 
 _c pushBack 'sfp_rbb_norrkoping';
 _p pushBack '';
-_n pushBack 'Aegis Cruiser';
+_n pushBack 'Norrkoping - Aegis Cruiser';
 _o pushBack 50000;
 _t pushBack 25;
 _u pushBack 2;
@@ -250,7 +250,7 @@ _d pushBack 50;
 
 _c pushBack 'OFPS_Frigate_Blu';
 _p pushBack '';
-_n pushBack 'Attack Cruiser';
+_n pushBack 'NAZAC - Frigate';
 _o pushBack 130000;
 _t pushBack 25;
 _u pushBack 3;

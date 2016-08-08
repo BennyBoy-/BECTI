@@ -473,7 +473,7 @@ _d pushBack 0;
 
 _c pushBack 'B_Truck_01_Repair_F';
 _p pushBack '';
-_n pushBack '';
+_n pushBack 'HEMTT Repair';
 _o pushBack 10000;
 _t pushBack 25;
 _u pushBack 0;
@@ -503,7 +503,7 @@ _d pushBack 0;
 
 _c pushBack 'CTI_Salvager_West';
 _p pushBack '';
-_n pushBack 'Salvage Truck';
+_n pushBack 'HEMTT Salvager';
 _o pushBack CTI_VEHICLES_SALVAGER_PRICE;
 _t pushBack 1000;
 _u pushBack 0;
@@ -513,7 +513,7 @@ _d pushBack 0;
 
 _c pushBack 'CTI_Salvager_Independent_West';
 _p pushBack '';
-_n pushBack 'Salvager';
+_n pushBack 'HEMTT Salvager';
 _o pushBack CTI_VEHICLES_SALVAGER_PRICE;
 _t pushBack 1000;
 _u pushBack 0;
@@ -523,7 +523,7 @@ _d pushBack 0;
 
 //_c pushBack 'B_Truck_01_fuel_F';
 //_p pushBack '';
-//_n pushBack '';
+//_n pushBack 'HEMTT Fuel';
 //_o pushBack 500;
 //_t pushBack 25;
 //_u pushBack 0;
@@ -535,7 +535,7 @@ _d pushBack 0;
 
 _c pushBack 'B_Truck_01_ammo_F';
 _p pushBack '';
-_n pushBack '';
+_n pushBack 'HEMTT Ammo';
 _o pushBack 10000;
 _t pushBack 25;
 _u pushBack 0;
@@ -637,15 +637,15 @@ _d pushBack 0;
 //_s pushBack "";
 //_d pushBack 0;
 
-//_c pushBack 'B_Heli_Attack_01_F';
-//_p pushBack '';
-//_n pushBack '';
-//_o pushBack 60000;
-//_t pushBack 50;
-//_u pushBack 3;
-//_f pushBack CTI_FACTORY_AIR;
-//_s pushBack "";
-//_d pushBack 0;
+_c pushBack 'B_Heli_Attack_01_F';
+_p pushBack '';
+_n pushBack 'AH-99 Blackfoot';
+_o pushBack 55000;
+_t pushBack 50;
+_u pushBack 5;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
 
 //_c pushBack 'B_Plane_CAS_01_F';
 //_p pushBack '';

@@ -111,6 +111,10 @@ _u pushBack 0;
 _p pushBack 30; 
 */
 
+_i pushBack "10Rnd_338_Mag";
+_u pushBack 4;
+_p pushBack 150;
+
 _i pushBack "30Rnd_65x39_caseless_mag";
 _u pushBack 2;
 _p pushBack 50;
@@ -549,6 +553,10 @@ _i pushBack ["SMG_02_ARCO_pointg_F"];
 _u pushBack 0;
 _p pushBack 200; 
 */
+
+_i pushBack " srifle_DMR_02_F  ";
+_u pushBack 4;
+_p pushBack 1000;
 
 _i pushBack "srifle_EBR_F";
 _u pushBack 3;

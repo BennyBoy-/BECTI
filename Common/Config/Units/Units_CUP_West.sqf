@@ -15,7 +15,7 @@ _d = []; //--- Extra Distance (From Factory)
 
 _c pushBack 'CUP_B_US_Soldier';
 _p pushBack '';
-_n pushBack 'Rifle'; 
+_n pushBack 'Soldier'; 
 _o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;
@@ -25,20 +25,20 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_AA';
 _p pushBack '';
-_n pushBack 'AA'; 
-_o pushBack 900;
+_n pushBack 'Soldier Stinger'; 
+_o pushBack 500;
 _t pushBack 5;
-_u pushBack 1;
+_u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_B_US_Soldier_AR';
+_c pushBack 'CUP_B_USMC_Soldier_MG';
 _p pushBack '';
-_n pushBack 'AR'; 
+_n pushBack 'Soldier MG'; 
 _o pushBack 150;
 _t pushBack 5;
-_u pushBack 1;
+_u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
@@ -55,8 +55,8 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_AT';
 _p pushBack '';
-_n pushBack 'AT'; 
-_o pushBack 350;
+_n pushBack 'Soldier SMAW'; 
+_o pushBack 250;
 _t pushBack 5;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
@@ -65,17 +65,17 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_HAT';
 _p pushBack '';
-_n pushBack 'HAT'; 
-_o pushBack 800;
+_n pushBack 'Soldier Javeline'; 
+_o pushBack 500;
 _t pushBack 5;
-_u pushBack 2;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_B_US_Soldier_Engineer_EOD';
+_c pushBack 'CUP_B_USMC_Engineer';
 _p pushBack '';
-_n pushBack 'Engineer'; 
+_n pushBack 'Soldier Repair Specialist'; 
 _o pushBack 600;
 _t pushBack 5;
 _u pushBack 1;
@@ -85,8 +85,18 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_GL';
 _p pushBack '';
-_n pushBack 'Rifle UGL'; 
+_n pushBack 'Soldier Grenadier'; 
 _o pushBack 250;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_USMC_Spotter';
+_p pushBack '';
+_n pushBack 'Soldier Spotter'; 
+_o pushBack 150;
 _t pushBack 5;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
@@ -95,7 +105,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Medic';
 _p pushBack '';
-_n pushBack 'Medic'; 
+_n pushBack 'Soldier Corpsman'; 
 _o pushBack 400;
 _t pushBack 5;
 _u pushBack 0;
@@ -115,10 +125,10 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Sniper_M107';
 _p pushBack '';
-_n pushBack 'M107'; 
+_n pushBack 'Soldier M107'; 
 _o pushBack 200;
 _t pushBack 5;
-_u pushBack 2;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
@@ -257,7 +267,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_HMMWV_Unarmed_USMC';
 _p pushBack '';
-_n pushBack 'HMMV Transport Small';
+_n pushBack 'HMMV Unarmed';
 _o pushBack 300;
 _t pushBack 10;
 _u pushBack 0;
@@ -267,7 +277,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_HMMWV_Transport_USA';
 _p pushBack '';
-_n pushBack 'HMMV Transport Big';
+_n pushBack 'HMMV Transport';
 _o pushBack 300;
 _t pushBack 10;
 _u pushBack 0;
@@ -347,7 +357,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_HMMWV_Crows_M2_USA';
 _p pushBack '';
-_n pushBack 'HMMV FLIR HMG';
+_n pushBack 'HMMV FLIR, HMG';
 _o pushBack 1300;
 _t pushBack 10;
 _u pushBack 3;
@@ -357,7 +367,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_HMMWV_Crows_MK19_USA';
 _p pushBack '';
-_n pushBack 'HMMV FLIR GMG';
+_n pushBack 'HMMV FLIR, GMG';
 _o pushBack 1800;
 _t pushBack 10;
 _u pushBack 3;
@@ -477,7 +487,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_Jackal2_GMG_GB_D';
 _p pushBack '';
-_n pushBack 'SOP Vehicle GMG, MG';
+_n pushBack 'Jackal SOP GMG, MG';
 _o pushBack 1300;
 _t pushBack 10;
 _u pushBack 1;
@@ -517,7 +527,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_LAV25M240_USMC';
 _p pushBack '';
-_n pushBack 'APC, FLIR, Autocannon, MG';
+_n pushBack 'LAV FLIR, Autocannon, MG';
 _o pushBack 7000;
 _t pushBack 10;
 _u pushBack 0;
@@ -547,7 +557,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_M1128_MGS_Woodland';
 _p pushBack '';
-_n pushBack 'Stryker AT Cannon';
+_n pushBack 'Stryker Cannon';
 _o pushBack 14000;
 _t pushBack 20;
 _u pushBack 2;
@@ -767,7 +777,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_MTVR_USA';
 _p pushBack '';
-_n pushBack 'Transport Truck';
+_n pushBack 'MTVR Transport';
 _o pushBack 400;
 _t pushBack 10;
 _u pushBack 1;
@@ -777,7 +787,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_LR_Special_CZ_W';
 _p pushBack '';
-_n pushBack 'SOP Vehicle GMG, MG';
+_n pushBack 'Land Rover SOP GMG, MG';
 _o pushBack 1200;
 _t pushBack 10;
 _u pushBack 0;
@@ -787,7 +797,7 @@ _d pushBack 0;
 
 _c pushBack 'B_MRAP_01_gmg_F';
 _p pushBack '';
-_n pushBack 'MRAP FLIR GMG';
+_n pushBack 'Hunter FLIR, GMG';
 _o pushBack 2000;
 _t pushBack 10;
 _u pushBack 3;
@@ -797,7 +807,7 @@ _d pushBack 0;
 
 _c pushBack 'B_MRAP_01_hmg_F';
 _p pushBack '';
-_n pushBack 'MRAP FLIR HMG';
+_n pushBack 'Hunter FLIR, HMG';
 _o pushBack 1500;
 _t pushBack 10;
 _u pushBack 3;
@@ -814,16 +824,6 @@ _u pushBack 5;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
-
-
-
-
-
-
-
-
-
-
 
 //--- Heavy Vehicles
 
@@ -860,7 +860,7 @@ _d pushBack 0;
 _c pushBack 'CUP_B_M163_USA';
 _p pushBack '';
 _n pushBack 'M113 Vulcan AA';
-_o pushBack 8000;
+_o pushBack 14000;
 _t pushBack 20;
 _u pushBack 3;
 _f pushBack CTI_FACTORY_HEAVY;
@@ -880,7 +880,7 @@ _d pushBack 0;
 _c pushBack 'CUP_B_M1A2_TUSK_MG_US_Army';
 _p pushBack '';
 _n pushBack 'MBT M1A3 Abrams';
-_o pushBack 38000;
+_o pushBack 30000;
 _t pushBack 20;
 _u pushBack 3;
 _f pushBack CTI_FACTORY_HEAVY;
@@ -899,8 +899,8 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_M270_DPICM_USMC';
 _p pushBack '';
-_n pushBack 'MLRS Artillery Tank (DPICM)';
-_o pushBack 100000;
+_n pushBack 'M270 MLRS (DPICM)';
+_o pushBack 200000;
 _t pushBack 20;
 _u pushBack 4;
 _f pushBack CTI_FACTORY_HEAVY;
@@ -979,8 +979,8 @@ _d pushBack 0;
 
 _c pushBack 'B_APC_Tracked_01_AA_F';
 _p pushBack '';
-_n pushBack 'AA APC';
-_o pushBack 12000;
+_n pushBack 'Cheetah';
+_o pushBack 11000;
 _t pushBack 20;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_HEAVY;
@@ -989,8 +989,8 @@ _d pushBack 0;
 
 _c pushBack 'B_MBT_01_arty_F';
 _p pushBack '';
-_n pushBack 'Artillery Tank';
-_o pushBack 80000;
+_n pushBack 'M4 Scorcher Artillery';
+_o pushBack 150000;
 _t pushBack 20;
 _u pushBack 4;
 _f pushBack CTI_FACTORY_HEAVY;
@@ -1001,7 +1001,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_MTVR_Refuel_USA';
 _p pushBack '';
-_n pushBack '';
+_n pushBack 'MTVR Fuel';
 _o pushBack 5000;
 _t pushBack 10;
 _u pushBack 1;
@@ -1137,9 +1137,9 @@ _d pushBack 0;
 _c pushBack 'CUP_B_CH53E_GER';
 _p pushBack '';
 _n pushBack 'CH53 Transport';
-_o pushBack 9000;
+_o pushBack 6000;
 _t pushBack 20;
-_u pushBack 1;
+_u pushBack 2;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
@@ -1256,7 +1256,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_F35B_AA_BAF';
 _p pushBack '';
-_n pushBack 'F35 AA';
+_n pushBack 'F35 CAP';
 _o pushBack 35000;
 _t pushBack 20;
 _u pushBack 2;
@@ -1286,7 +1286,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_MV22_USMC_RAMPGUN';
 _p pushBack '';
-_n pushBack 'VTOL Transport MG';
+_n pushBack 'Osprey Transport MG';
 _o pushBack 5000;
 _t pushBack 20;
 _u pushBack 0;
@@ -1306,7 +1306,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_AC47_Spooky_USA';
 _p pushBack '';
-_n pushBack 'Spooky (old)';
+_n pushBack 'AC47 Spooky';
 _o pushBack 10000;
 _t pushBack 20;
 _u pushBack 0;
@@ -1316,7 +1316,7 @@ _d pushBack 0;
 
 _c pushBack 'USAF_AC130U';
 _p pushBack '';
-_n pushBack 'Spooky (new)';
+_n pushBack 'AC130 Spooky';
 _o pushBack 40000;
 _t pushBack 20;
 _u pushBack 4;
@@ -1346,7 +1346,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_MH6J_USA';
 _p pushBack '';
-_n pushBack 'Small Transport';
+_n pushBack 'AH6 Unarmed';
 _o pushBack 2000;
 _t pushBack 20;
 _u pushBack 0;
@@ -1396,7 +1396,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_AH6J_MP_USA';
 _p pushBack '';
-_n pushBack 'AH6 GAU, Rockets, AT';
+_n pushBack 'AH6 Multirole';
 _o pushBack 17500;
 _t pushBack 20;
 _u pushBack 2;
@@ -1456,7 +1456,7 @@ _d pushBack 0;
 
 _c pushBack 'B_Heli_Light_01_armed_F';
 _p pushBack '';
-_n pushBack '';
+_n pushBack 'AH6 Pawnee';
 _o pushBack 12000;
 _t pushBack 20;
 _u pushBack 1;
@@ -1476,8 +1476,8 @@ _d pushBack 0;
 
 _c pushBack 'B_Heli_Attack_01_F';
 _p pushBack '';
-_n pushBack '';
-_o pushBack 50000;
+_n pushBack 'AH-99 Blackfoot';
+_o pushBack 55000;
 _t pushBack 20;
 _u pushBack 5;
 _f pushBack CTI_FACTORY_AIR;

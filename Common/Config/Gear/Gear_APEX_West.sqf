@@ -271,6 +271,10 @@ _u pushBack 0;
 _p pushBack 20; 
 */
 
+_i pushBack "30Rnd_9x21_Mag_SMG_02";
+_u pushBack 0;
+_p pushBack 20;
+
 //(SPAR-16S)
 _i pushBack "150Rnd_556x45_Drum_Mag_F";
 _u pushBack 1;

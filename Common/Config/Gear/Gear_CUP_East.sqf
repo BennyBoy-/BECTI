@@ -355,7 +355,7 @@ _p pushBack 2000;
 
 _i pushBack "CUP_launch_Metis";
 _u pushBack 2;
-_p pushBack 1200;
+_p pushBack 2000;
 
 
 
@@ -944,19 +944,19 @@ _p pushBack 300;
 
 _i pushBack "CUP_Strela_2_M";
 _u pushBack 2;
-_p pushBack 1000;
+_p pushBack 700;
 
 _i pushBack "CUP_Igla_M";
 _u pushBack 2;
-_p pushBack 1000;
+_p pushBack 700;
 
 _i pushBack "CUP_Dragon_EP1_M"; //M47 Dragon
 _u pushBack 2;
-_p pushBack 1500;
+_p pushBack 800;
 
 _i pushBack "CUP_AT13_M";  //metis missiles
 _u pushBack 2;
-_p pushBack 750;
+_p pushBack 600;
 
 _i pushBack "CUP_RPG18_M";
 _u pushBack 0;
