@@ -627,7 +627,7 @@ _d pushBack 0;
 
 _c pushBack 'O_T_VTOL_02_vehicle_F';
 _p pushBack '';
-_n pushBack 'Y-32';
+_n pushBack 'Y-32 Xian Armed';
 _o pushBack 50000;
 _t pushBack 50;
 _u pushBack 4;

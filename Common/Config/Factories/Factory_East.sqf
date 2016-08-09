@@ -442,7 +442,8 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'O_Heli_Transport_04_medevac_F';	
 	_u pushBack 'O_Heli_Light_02_unarmed_F';
 	_u pushBack 'O_Plane_CAS_02_F';		
-	_u pushBack 'sfp_j12_rb15';		
+	_u pushBack 'sfp_j12_rb15';
+	_u pushBack 'sfp_j12_cap';
 	_u pushBack 'pook_tu95ms';		
 	_u pushBack 'O_T_VTOL_02_vehicle_F';		
 //	_u pushBack 'C_Plane_Civil_01_F';		

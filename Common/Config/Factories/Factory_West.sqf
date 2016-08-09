@@ -370,7 +370,9 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'B_T_UAV_03_F';		
 	_u pushBack 'B_UCSV_02';		
 	_u pushBack 'B_Heli_Attack_01_F';	
-	_u pushBack 'B_Heli_Light_01_armed_F';	
+	_u pushBack 'B_Heli_Light_01_armed_F';
+    _u pushBack 'bwi_a3_at6b_3';
+	
 /*
 	_u pushBack 'CUP_B_MH6J_USA';
 	_u pushBack 'CUP_B_AH6X_USA';

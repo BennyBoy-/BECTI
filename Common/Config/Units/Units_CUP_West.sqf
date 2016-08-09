@@ -909,7 +909,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_M7Bradley_USA_D';
 _p pushBack '';
-_n pushBack 'M2A3 FLIR, Autocannon, MG';
+_n pushBack 'M7 Bradley FLIR, Autocannon, MG';
 _o pushBack 8000;
 _t pushBack 20;
 _u pushBack 0;
@@ -919,7 +919,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_M2A3Bradley_USA_W';
 _p pushBack '';
-_n pushBack 'M2A3 FLIR, Autocannon, ATGM, MG';
+_n pushBack 'M2A3 Bradley FLIR, Autocannon, ATGM, MG';
 _o pushBack 12000;
 _t pushBack 20;
 _u pushBack 1;
@@ -929,7 +929,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_M6LineBacker_USA_W';
 _p pushBack '';
-_n pushBack 'M2A3 FLIR, Autocannon, AA, MG';
+_n pushBack 'M6 Linebacker FLIR, Autocannon, AA, MG';
 _o pushBack 15000;
 _t pushBack 20;
 _u pushBack 2;
