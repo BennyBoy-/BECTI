@@ -86,15 +86,15 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-//_c pushBack 'bwi_a3_at6b_3';
-//_p pushBack '';
-//_n pushBack '';
-//_o pushBack 18000;
-//_t pushBack 50;
-//_u pushBack 2;
-//_f pushBack CTI_FACTORY_AIR;
-//_s pushBack "";
-//_d pushBack 0;
+_c pushBack 'bwi_a3_at6b_3';
+_p pushBack '';
+_n pushBack 'Texan - CAP';
+_o pushBack 25000;
+_t pushBack 50;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
 
 //_c pushBack 'bwi_a3_t6c';
 //_p pushBack '';

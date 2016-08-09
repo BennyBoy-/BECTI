@@ -364,7 +364,7 @@ _p pushBack 1000;
 //AA-12 Family
 
 _i pushBack "CUP_sgun_AA12";
-_u pushBack 2;
+_u pushBack 1;
 _p pushBack 200;
 
 
@@ -938,7 +938,7 @@ _u pushBack 0;
 _p pushBack 50;
 
 _i pushBack "CUP_20Rnd_B_AA12_HE";
-_u pushBack 1;
+_u pushBack 2;
 _p pushBack 150;
 
 //--- Caliber 40mm Grenades
