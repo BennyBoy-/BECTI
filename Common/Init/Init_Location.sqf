@@ -57,4 +57,5 @@ if (CTI_IsClient) then {
 	_marker setMarkerColorLocal _coloration;
 	_marker setMarkerSizeLocal [0.5, 0.5]; 
 	// _marker setMarkerAlphaLocal CTI_MARKERS_OPACITY;
+
 };

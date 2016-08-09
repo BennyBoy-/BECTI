@@ -12,6 +12,7 @@
 #include "Rsc\Debriefing.hpp"
 #include "Rsc\Parameters.hpp"
 #include "Rsc\Rapelactions.hpp"
+#include "Client\Functions\Externals\ATM_airdrop\ATM_airdrop.hpp"
 
 // ^HS^ for Headless Client
 joinUnassigned = 0;

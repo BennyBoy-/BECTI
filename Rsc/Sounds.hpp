@@ -1,5 +1,5 @@
 class CfgSounds {
-	sounds[] = {prison,nuke,nuclear_boom,nuclear_heartbeat,nuclear_geiger,geiger_1,geiger_2,geiger_3,akbar,choppa,AR_Rappel_Loop,AR_Rappel_Start,AR_Rappel_End,AUR_Rappel_Loop,AUR_Rappel_Start,AUR_Rappel_End};
+	sounds[] = {prison,nuke,nuclear_boom,nuclear_heartbeat,nuclear_geiger,geiger_1,geiger_2,geiger_3,akbar,choppa,AR_Rappel_Loop,AR_Rappel_Start,AR_Rappel_End,AUR_Rappel_Loop,AUR_Rappel_Start,AUR_Rappel_End,Vent,Vent2,Para};
 	class prison {
 		name = "prison";
 		sound[] = {"Rsc\Sounds\prison.ogg", 1, 1.0};
@@ -95,4 +95,9 @@ class CfgSounds {
 		sound[] = {"Client\Functions\Externals\AdvancedUrbanRapel\sounds\AUR_Rappel_End.ogg",3.1622777,1};
 		titles[] = {0,""};
 	};
+	//HALO
+	class Vent {name="Vent";sound[]={Client\Functions\Externals\ATM_airdrop\data\Vent.ogg,db-11,1.0};titles[] = {};};
+	class Vent2 {name="Vent2";sound[]={Client\Functions\Externals\ATM_airdrop\data\Vent2.ogg,db-11,1.0};titles[] = {};};
+	class Para {name="Para";sound[]={Client\Functions\Externals\ATM_airdrop\data\parachute.ogg,db-11,1.0};titles[] = {};};
+
 };
