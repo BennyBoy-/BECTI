@@ -601,6 +601,12 @@ CTI_GC_DELAY_BUILDING = 30;
 CTI_GC_GROUND_CLEANUP_KIND = ["WeaponHolder", "GroundWeaponHolder", "WeaponHolderSimulated", "CraterLong_small", "CraterLong"];
 CTI_GC_GROUND_CLEANUP_DISTANCE_UNIT = 30;
 
+CTI_HALO_COOLDOWN = 60;
+CTI_HALO_LASTTIME = CTI_HALO_COOLDOWN;
+CTI_HALO_ALTITUDE = 1200;
+CTI_HALO_RATIO = 1;
+CTI_HALO_COST = 1000;
+
 CTI_VOTE_TIME = 60; //--- Commander Vote time
 
 //--- SHK Specific

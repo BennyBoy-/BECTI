@@ -36,8 +36,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500], //--- Air AT
 	[1500], //--- Air AA
 	[1500], //--- Air CM
-	[10000, 20000, 40000], //--- Towns Depots
-	[1500, 1500], //--- Halo
+	[5000, 10000, 15000], //--- Towns Depots
+	[2000, 4000], //--- Halo
 	[1500], //--- Air Radar
 	[1500], //--- Art Radar
 	[1500,2500,3500], //--- Respawn Range
@@ -201,7 +201,7 @@ if (CTI_IsClient) then {
 		["Aircraft AA", "Unlocks the Anti Air Missiles for Aircrafts"], //--- Air AA
 		["Aircraft Countermeasures", "Allows Aircraft to deploy countermeasures"], //--- Air CM
 		["Towns Depot", "Improves Vehicles available at Depots"], //--- Towns Depot
-		["(DISABLED) Halo", "Enable HALO Jumping from the Air factory"], //--- Halo
+		["Halo", "Enable HALO Jumping from the Air factory and Depots"], //--- Halo
 		["(DISABLED) Air Radar", "Enable Air Radars"], //--- Air Radar
 		["(DISABLED) Artillery Radar", "Enable Artillery radar on Air Radars"], //--- Art Radar
 		["Respawn Range", "Increase the max range of the respawn trucks, town camps and FOBS."], //--- Respawn Range
