@@ -138,6 +138,13 @@ while {alive _structure} do {
 						_ai setSkill ["commanding", 1]; // Communication skills
 						_ai setSkill ["general", 1]; //Sets all above
 
+						//--- Set to Combat
+						_ai setBehaviour "AWARE";
+						_ai setCombatMode "RED";
+						_ai setSpeedMode "FULL";
+						_ai enableAttack true;
+		
+
 					} else {
 						//--- At least one HC is available
 						[_x, _defense_team, _side, _ai_args] Call CTI_SE_FNC_AttemptDefenseDelegation;
