@@ -13,6 +13,7 @@
 #include "Rsc\Parameters.hpp"
 #include "Rsc\Rapelactions.hpp"
 #include "Client\Functions\Externals\ATM_airdrop\ATM_airdrop.hpp"
+#include "Client\Functions\Externals\zam_shownames\zam_shownames.cpp"
 
 // ^HS^ for Headless Client
 joinUnassigned = 0;
