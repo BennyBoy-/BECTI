@@ -223,4 +223,13 @@ with missionNamespace do {
 			};
 		} forEach _hitPoints;
 	};
+	
+	//--- The client requests a vehicle rearm
+	CTI_PVF_CLT_RequestVehicleRearm = {
+		private ["_amount", "_vehicle"];
+		_vehicle = _this select 0;
+		_amount = _this select 1;
+		
+		_vehicle setVehicleAmmoDef _amount;
+	};
 };

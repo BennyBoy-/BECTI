@@ -91,6 +91,11 @@ while {true} do {
 		_men = _return select 0;
 		_vehicles = _return select 1;
 		
+		//--- Set AI group properties
+		_group setBehaviour "AWARE";
+		_group setCombatMode "RED";
+		_group setSpeedMode "FULL";
+		_group enableAttack true;
 		_group allowFleeing 0;
 		
 		//--- Patrol the town
