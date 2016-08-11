@@ -59,19 +59,6 @@ _AISkill = missionNamespace getVariable "CTI_AI_SKILL";
 _AISkill= _AISkill  ;
 _skill = [_AISkill] call CTI_CO_FNC_GetRandomSkill;
 
-
-//--- AiRAndomSkill Set the skills
-_unit setSkill ["aimingAccuracy",_skill select 0];
-_unit setSkill ["aimingShake",_skill select 1];
-_unit setSkill ["aimingSpeed",_skill select 2];
-_unit setSkill ["spotDistance",_skill select 3];
-_unit setSkill ["spotTime",_skill select 4];
-_unit setSkill ["courage",_skill select 5];
-_unit setSkill ["commanding",_skill select 6];
-_unit setSkill ["general",_skill select 7];
-_unit setSkill ["endurance",_skill select 8];
-_unit setSkill ["reloadspeed",_skill select 9];
-
 if (_net) then {_unit setVariable ["cti_net", _sideID, true]};
 
 //--- Add a Killed EH.
