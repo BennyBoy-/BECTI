@@ -69,9 +69,14 @@ while {alive _structure} do {
 				
 				if (count _ammo_trucks > 0 || !isNull _nearest) then {
 					if (CTI_Log_Level >= CTI_Log_Information) then {
-						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4)", _x, typeOf _x, _nearest, typeOf _nearest]] call CTI_CO_FNC_Log;
+						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4), local [%5]?", _x, typeOf _x, _nearest, typeOf _nearest, local _x]] call CTI_CO_FNC_Log;
 					};
-					_x setVehicleAmmoDef 1;
+					
+					if (local _x) then {
+						_x setVehicleAmmoDef 1;
+					} else {
+						[_x, 1] remoteExec ["CTI_PVF_CLT_RequestVehicleRearm", owner _x];
+					}
 				};
 			};
 			
@@ -143,7 +148,6 @@ while {alive _structure} do {
 						_ai setCombatMode "RED";
 						_ai setSpeedMode "FULL";
 						_ai enableAttack true;
-		
 
 					} else {
 						//--- At least one HC is available

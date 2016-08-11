@@ -34,7 +34,7 @@ _camp = _this select 1;
 _newSide = _this select 2;
 
 _newSideID = (_newSide) call CTI_CO_FNC_GetSideID;
-_currentSideID = _town getVariable "cti_town_sideID";
+_currentSideID = _camp getVariable "cti_camp_sideID";
 
 _camp setVariable ["cti_camp_sideID", _newSideID, true];
 _camp setVariable ["cti_camp_lastSideID", _currentSideID, true];
