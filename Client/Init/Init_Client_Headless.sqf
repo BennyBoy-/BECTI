@@ -79,21 +79,37 @@ with missionNamespace do {
 		[_ai] orderGetIn true;
 		_ai moveInGunner _static;
 
-		//--- Change Skill
-		_ai setSkill ["aimingAccuracy", 1]; // Set accuracy
-		_ai setSkill ["aimingShake", 1]; // Set weapon sway handling
-		_ai setSkill ["aimingSpeed", 1]; // Set aiming speed
-		_ai setSkill ["reloadSpeed", 1]; // Max out reload speed
-		_ai setSkill ["spotDistance", 1]; // Set detection distance
-		_ai setSkill ["spotTime", 1]; // Set detection time
-		_ai setSkill ["courage", 1]; // Never retreat
-		_ai setSkill ["commanding", 1]; // Communication skills
-		_ai setSkill ["general", 1]; //Sets all above
+		// TODO: deduplicate code (Server_HandleStaticDefenses.sqf)
+		// TODO: proper/extensible vehicle switch
+		
+		//--- Configure the weapon / gunner
+		if (typeOf(_x) find "POOK_ANMPQ53" == 0) then {
+			[_x, _side] spawn CTI_SE_FNC_HandleStaticDefenseSAMSite;
+		} else {
+			if (typeOf(_x) find "pook_MIM104_PAC2" == 0) then {
+				_ai setSkill 1;
+				_ai disableAI "AUTOTARGET";
+				_ai disableAI "TARGET";
+				_ai setCombatMode "BLUE"
+			} else {
+				//--- Change Skill
+				_ai setSkill ["aimingAccuracy", 1]; // Set accuracy
+				_ai setSkill ["aimingShake", 1]; // Set weapon sway handling
+				_ai setSkill ["aimingSpeed", 1]; // Set aiming speed
+				_ai setSkill ["reloadSpeed", 1]; // Max out reload speed
+				_ai setSkill ["spotDistance", 1]; // Set detection distance
+				_ai setSkill ["spotTime", 1]; // Set detection time
+				_ai setSkill ["courage", 1]; // Never retreat
+				_ai setSkill ["commanding", 1]; // Communication skills
+				_ai setSkill ["general", 1]; //Sets all above
 
-		//--- Update the gunner's properties
-		_ai setBehaviour "AWARE";
-		_ai setCombatMode "RED";
-		_ai enableAttack true;
+				//--- Set to Combat
+				_ai setBehaviour "AWARE";
+				_ai setCombatMode "RED";
+				_ai setSpeedMode "FULL";
+				_ai enableAttack true;
+			};
+		};
 		
 		// diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 	};
