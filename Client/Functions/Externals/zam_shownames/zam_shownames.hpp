@@ -27,3 +27,6 @@ ZAM_showNames_voice = true; 	// Support for TFAR and ACRE
 
 ZAM_showNames_var_pressLoop_delay = 0.005;	// For adjusting the performance of shownames (smaller is better)
 ZAM_showNames_var_acre_eh_delay = 0.1;	// For adjusting frequency at which player acre activity is monitored (for Voice feature)
+
+//Enable by default
+ZAM_showNames_on = true;
