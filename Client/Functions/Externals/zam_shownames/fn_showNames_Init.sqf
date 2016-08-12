@@ -176,6 +176,8 @@ if !(hasInterface) exitWith {/*diag_log "showNames_init.sqf - Finished (!hasInte
 	zam_shownames_var_smallFont = "PuristaMedium";
 	zam_shownames_var_bigFont = "PuristaBold";
 
+	//Enable by default
+	ZAM_showNames_on = true;
 
 	//// Key Handlers are added using CBA
 
