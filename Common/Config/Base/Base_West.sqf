@@ -460,7 +460,13 @@ _classes pushBack 		"CUP_B_ZU23_CDF";
 _prices pushBack 		2000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
-
+/*
+_headers pushBack 		"RAM Launcher";
+_classes pushBack 		"CUP_WV_B_RAM_Launcher";
+_prices pushBack 		60000;
+_placements pushBack 	[180, 15];
+_categories pushBack 	"Defense";
+*/
 };
 
 if (CTI_CUP_CORE_ADDON > 0) then { 
@@ -529,13 +535,25 @@ _categories pushBack 	"Fortification";
 if (CTI_OFPS_ADDON > 0) then {
 _headers pushBack 		"C-RAM Phalanx";
 _classes pushBack 		"C_at_phalanx_35AI";
-_prices pushBack 		70000;
+_prices pushBack 		35000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 
 _headers pushBack 		"C-RAM Phalanx Missle";
 _classes pushBack 		"C_at_phalanx_missile_35AI";
-_prices pushBack 		80000;
+_prices pushBack 		40000;
+_placements pushBack 	[180, 15];
+_categories pushBack 	"Defense";
+
+_headers pushBack 		"AN/MPQ-53 Radar";
+_classes pushBack 		"POOK_ANMPQ53_CDF";
+_prices pushBack 		10000;
+_placements pushBack 	[180, 15];
+_categories pushBack 	"Defense";
+
+_headers pushBack 		"MIM-104 PAC-2 AA Battery";
+_classes pushBack 		"pook_MIM104_PAC2Battery_CDF";
+_prices pushBack 		60000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 };
