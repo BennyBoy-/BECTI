@@ -83,10 +83,10 @@ with missionNamespace do {
 		// TODO: proper/extensible vehicle switch
 		
 		//--- Configure the weapon / gunner
-		if (typeOf(_x) find "POOK_ANMPQ53" == 0) then {
-			[_x, _side] spawn CTI_SE_FNC_HandleStaticDefenseSAMSite;
+		if (typeOf(_static) find "POOK_ANMPQ53" == 0) then {
+			[_static, side _ai] spawn CTI_SE_FNC_HandleStaticDefenseSAMSite;
 		} else {
-			if (typeOf(_x) find "pook_MIM104_PAC2" == 0) then {
+			if (typeOf(_static) find "pook_MIM104_PAC2" == 0) then {
 				_ai setSkill 1;
 				_ai disableAI "AUTOTARGET";
 				_ai disableAI "TARGET";
