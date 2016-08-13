@@ -65,11 +65,11 @@ while {alive _structure} do {
 			if !(someAmmo _x) then {
 				//--- Check if we have a nearby ammo source
 				_ammo_trucks = [_x, CTI_SPECIAL_AMMOTRUCK, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
-				_nearest = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
+				_nearestAmmoDepot = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
 				
-				if (count _ammo_trucks > 0 || !isNull _nearest) then {
+				if (count _ammo_trucks > 0 || !isNull _nearestAmmoDepot) then {
 					if (CTI_Log_Level >= CTI_Log_Information) then {
-						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4), local [%5]?", _x, typeOf _x, _nearest, typeOf _nearest, local _x]] call CTI_CO_FNC_Log;
+						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Source [%3] (%4), local [%5]?", _x, typeOf _x, _nearestAmmoDepot, typeOf _nearestAmmoDepot, local _x]] call CTI_CO_FNC_Log;
 					};
 					
 					if (local _x) then {
