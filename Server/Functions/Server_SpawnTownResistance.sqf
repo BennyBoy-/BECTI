@@ -142,7 +142,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["GUER_TOWNS_SQUAD_APC3_MIXED", 3, 70]
 						],
 						[
-							["GUER_TOWNS_SQUAD_ARMORED1_MIXED", 1, 50]
+							["GUER_TOWNS_SQUAD_ARMORED1_MIXED", 1, 40]
 						],
 						[
 							["GUER_TOWNS_SQUAD_LIGHT4", 1, 10],
@@ -154,8 +154,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["GUER_TOWNS_SQUAD_APC3", 2, 50]
 						],
 						[
-							["GUER_TOWNS_SQUAD_ARMORED1", 1, 5],
-							["GUER_TOWNS_SQUAD_ARMORED2", 1, 30]
+							["GUER_TOWNS_SQUAD_ARMORED1", 1, 20]
 						],
 						[
 							["GUER_TOWNS_SQUAD_VEHICLE_AA1", 2, 50],
@@ -181,8 +180,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["GUER_TOWNS_SQUAD_APC3_MIXED", 4, 80]
 						],
 						[
-							["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 2, 70],
-							["GUER_TOWNS_SQUAD_ARMORED3_MIXED", 1, 50]
+							["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 1, 60],
+							["GUER_TOWNS_SQUAD_ARMORED3_MIXED", 1, 40]
 						],
 						[
 							["GUER_TOWNS_SQUAD_LIGHT5", 2, 50],
@@ -195,7 +194,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 						],
 						[
 							["GUER_TOWNS_SQUAD_ARMORED2", 1, 10],
-							["GUER_TOWNS_SQUAD_ARMORED3", 1, 30]
+							["GUER_TOWNS_SQUAD_ARMORED3", 1, 20]
 						],
 						[
 							["GUER_TOWNS_SQUAD_VEHICLE_AA2", 1, 20],
@@ -220,8 +219,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["GUER_TOWNS_SQUAD_APC3_MIXED", 4, 70]
 						],
 						[
-							["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 2, 30],
-							["GUER_TOWNS_SQUAD_ARMORED3_MIXED", 3, 60]
+							["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 1, 20],
+							["GUER_TOWNS_SQUAD_ARMORED3_MIXED", 1, 50]
 						],
 						[
 							["GUER_TOWNS_SQUAD_LIGHT6", 1, 30],
@@ -232,8 +231,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["GUER_TOWNS_SQUAD_APC3", 3, 70]
 						],
 						[
-							["GUER_TOWNS_SQUAD_ARMORED2", 1, 30],
-							["GUER_TOWNS_SQUAD_ARMORED3", 1, 60]
+							["GUER_TOWNS_SQUAD_ARMORED2", 1, 20],
+							["GUER_TOWNS_SQUAD_ARMORED3", 1, 50]
 						],
 						[
 							["GUER_TOWNS_SQUAD_VEHICLE_AA2", 1, 20],
