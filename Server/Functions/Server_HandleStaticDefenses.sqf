@@ -72,11 +72,10 @@ while {alive _structure} do {
 						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4), local [%5]?", _x, typeOf _x, _nearest, typeOf _nearest, local _x]] call CTI_CO_FNC_Log;
 					};
 					
-					if (local _x) then {
-						_x setVehicleAmmoDef 1;
-					} else {
-						[_x, 1] remoteExec ["CTI_PVF_CLT_RequestVehicleRearm", owner _x];
-					}
+					// TODO: HACKFIX: Somehow rearm wasnt executed on the right instance, so for now we just execute it everywhere.
+					// maybe local/owner check wrong??
+					// Also, for statics (tested for titanAA), setVehicleAmmoDef makes the static unusable for server's AI, so we use setVehicleAmmo
+					[_x, 1] remoteExec ["setVehicleAmmo"];
 				};
 			};
 			
