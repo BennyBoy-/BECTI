@@ -381,7 +381,7 @@ CTI_TOWNS_SPAWN_SV_MIN = 50; //--- Determine the min SV used for a town as a ref
 
 //--- Towns: Supply
 CTI_TOWNS_SUPPLY_MODE = 1; //--- Supply Mode: (0: Default, 1: Timed)
-CTI_TOWNS_SUPPLY_TIME_INTERVAL = 80; //--- Determine the interval between each town SV increment with time
+CTI_TOWNS_SUPPLY_TIME_INTERVAL = 100; //--- Determine the interval between each town SV increment with time
 CTI_TOWNS_SUPPLY_TIME_INCREASE = 1; //--- Determine the town SV increment when the interval's reached (Potential upgrade?)
 
 //--- Towns: Territorial
@@ -534,8 +534,8 @@ with missionNamespace do {
 CTI_ARTILLERY_FILTER = 1; //--- Toggle artillery magazines like mines and AT mines (0: Disabled, 1: Enabled)
 CTI_ARTILLERY_TIMEOUT = 380; //--- Delay between each fire mission
 
-CTI_BOUNTY_COEF = 0.25; //--- Bounty coefficient multiplicator based on the unit original cost
-CTI_BOUNTY_COEF_PVP = 1; //--- Bounty coefficient multiplicator based on the killed unit score
+CTI_BOUNTY_COEF = 0.35; //--- Bounty coefficient multiplicator based on the unit original cost
+CTI_BOUNTY_COEF_PVP = 1.5; //--- Bounty coefficient multiplicator based on the killed unit score
 
 CTI_COIN_AREA_DEFAULT = [30, 10];
 CTI_COIN_AREA_HQ_DEPLOYED = [CTI_BASE_AREA_RANGE, 25];
