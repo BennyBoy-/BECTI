@@ -143,7 +143,6 @@ while {alive _structure} do {
 								_ai setSkill 1;
 								_ai disableAI "AUTOTARGET";
 								_ai disableAI "TARGET";
-								_ai setCombatMode "BLUE"
 							} else {
 								//--- Change Skill
 								_ai setSkill ["aimingAccuracy", 1]; // Set accuracy

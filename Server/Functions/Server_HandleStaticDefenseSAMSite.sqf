@@ -52,7 +52,7 @@ while {alive _radarVehicle} do {
 	{
 		_g = gunner _x;
 		if !(isNil "_g") then { _availableLaunchers pushBack _x};
-	} forEach (_radarVehiclePos nearEntities [["pook_MIM104_PAC2Battery"], _maxLauncherDistance]);
+	} forEach (_radarVehiclePos nearEntities [["pook_MIM104_PAC2Battery","pook_SA20_static_INS"], _maxLauncherDistance]);
 	
 	// Select all targets in range
 	// TODO: nearestObjects only regards 2d distance
@@ -97,7 +97,7 @@ while {alive _radarVehicle} do {
 			// Give SAM vehicle time to point at the target
 			waitUntil {sleep 0.1; _useLauncher aimedAtTarget [_LauncherTarget] > 0};
 			// Time for missile lock
-			sleep 2;  
+			sleep 3;  
 
 			// Only engage if LOS is clear
 			_terrainIntersect = terrainIntersect [getPosATL _radarVehicle, getPosATL _LauncherTarget];
@@ -112,15 +112,9 @@ while {alive _radarVehicle} do {
 			[format ["Launcher %1 command fire", _useLauncherIndx]] call _logFctn;
 			
 			// Command fire
-			_useLauncher fireAtTarget [_LauncherTarget,"pook_MIMPAC2"];
+			_useLauncher fireAtTarget [_LauncherTarget];
 			
 			// Prevent AI from shooting again on its own
-			_SAMGunner = gunner _useLauncher;
-			_SAMGunner disableAI "AUTOTARGET";
-			_SAMGunner disableAI "TARGET";
-			_SAMGunner setCombatMode "BLUE";
-			
-			// Reset orientation (esthetics)
 			_SAMGunner doWatch objNull;
 		};
 
