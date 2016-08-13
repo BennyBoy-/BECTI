@@ -53,6 +53,9 @@ call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_Repai
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_UpdateAI.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_UpdateCommander.sqf";
 
+//--- Pook Sam Site
+CTI_SE_FNC_HandleStaticDefenseSAMSite = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\SamSites\Server_HandleStaticDefenseSAMSite.sqf";
+
 execVM "Server\Init\Init_Prison.sqf";
 
 //--- Get the starting locations.

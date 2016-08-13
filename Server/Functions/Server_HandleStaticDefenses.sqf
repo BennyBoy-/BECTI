@@ -65,11 +65,11 @@ while {alive _structure} do {
 			if !(someAmmo _x) then {
 				//--- Check if we have a nearby ammo source
 				_ammo_trucks = [_x, CTI_SPECIAL_AMMOTRUCK, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
-				_nearestAmmoDepot = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
+				_nearest = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
 				
-				if (count _ammo_trucks > 0 || !isNull _nearestAmmoDepot) then {
+				if (count _ammo_trucks > 0 || !isNull _nearest) then {
 					if (CTI_Log_Level >= CTI_Log_Information) then {
-						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Source [%3] (%4), local [%5]?", _x, typeOf _x, _nearestAmmoDepot, typeOf _nearestAmmoDepot, local _x]] call CTI_CO_FNC_Log;
+						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4), local [%5]?", _x, typeOf _x, _nearest, typeOf _nearest, local _x]] call CTI_CO_FNC_Log;
 					};
 					
 					if (local _x) then {
@@ -132,23 +132,36 @@ while {alive _structure} do {
 						[_ai] orderGetIn true;
 						_ai moveInGunner _x;
 						
-						//--- Change Skill
-						_ai setSkill ["aimingAccuracy", 1]; // Set accuracy
-						_ai setSkill ["aimingShake", 1]; // Set weapon sway handling
-						_ai setSkill ["aimingSpeed", 1]; // Set aiming speed
-						_ai setSkill ["reloadSpeed", 1]; // Max out reload speed
-						_ai setSkill ["spotDistance", 1]; // Set detection distance
-						_ai setSkill ["spotTime", 1]; // Set detection time
-						_ai setSkill ["courage", 1]; // Never retreat
-						_ai setSkill ["commanding", 1]; // Communication skills
-						_ai setSkill ["general", 1]; //Sets all above
+						// TODO: deduplicate code (Init_Client_Headless.sqf)
+						// TODO: proper/extensible vehicle switch
+						
+						//--- Configure the weapon / gunner
+						if (typeOf(_x) find "POOK_ANMPQ53" == 0 || typeOf(_x) find "pook_SNR75_radar" == 0) then {
+							[_x, _side] spawn CTI_SE_FNC_HandleStaticDefenseSAMSite;
+						} else {
+							if (typeOf(_x) find "pook_MIM104_PAC2" == 0 || typeOf(_x) find "pook_MIM104_PAC2Battery" == 0 ) then {
+								_ai setSkill 1;
+								_ai disableAI "AUTOTARGET";
+								_ai disableAI "TARGET";
+							} else {
+								//--- Change Skill
+								_ai setSkill ["aimingAccuracy", 1]; // Set accuracy
+								_ai setSkill ["aimingShake", 1]; // Set weapon sway handling
+								_ai setSkill ["aimingSpeed", 1]; // Set aiming speed
+								_ai setSkill ["reloadSpeed", 1]; // Max out reload speed
+								_ai setSkill ["spotDistance", 1]; // Set detection distance
+								_ai setSkill ["spotTime", 1]; // Set detection time
+								_ai setSkill ["courage", 1]; // Never retreat
+								_ai setSkill ["commanding", 1]; // Communication skills
+								_ai setSkill ["general", 1]; //Sets all above
 
-						//--- Set to Combat
-						_ai setBehaviour "AWARE";
-						_ai setCombatMode "RED";
-						_ai setSpeedMode "FULL";
-						_ai enableAttack true;
-
+								//--- Set to Combat
+								_ai setBehaviour "AWARE";
+								_ai setCombatMode "RED";
+								_ai setSpeedMode "FULL";
+								_ai enableAttack true;
+							};
+						};
 					} else {
 						//--- At least one HC is available
 						[_x, _defense_team, _side, _ai_args] Call CTI_SE_FNC_AttemptDefenseDelegation;
