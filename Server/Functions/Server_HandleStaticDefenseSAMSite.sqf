@@ -16,13 +16,18 @@
 	[VEHICLE, SIDE] spawn CTI_SE_FNC_HandleStaticDefenseSAMSite
 */
 
-
-private ["_radarVehicle","_radarVehiclePos","_maxLauncherDistance","_detectionMinAlt","_side","_DetectedPossibleTargets","_availableLaunchers","_DetectedAirVehicles","_LauncherTarget","_useLauncherIndx"];
+private ["_logFctn", "_radarVehicle","_radarVehiclePos","_maxLauncherDistance","_detectionMinAlt","_side","_DetectedPossibleTargets","_availableLaunchers","_DetectedAirVehicles","_LauncherTarget","_useLauncherIndx"];
 
 _radarVehicle = _this select 0;
 _side = _this select 1;
 _radarVehiclePos = position _radarVehicle;
 
+
+_logFctn = {
+	_talker = leader _radarVehicle; 
+	_t = _this select 0;
+	[_talker,_t] remoteExec ["sideChat",-2];
+};
 
 // Configuration
 _maxLauncherDistance = 400;
@@ -36,9 +41,9 @@ _radarVehicle setskill ["spotDistance",1];
 _radarVehicle setskill ["spotTime",1];
 _radarVehicle setskill ["aimingAccuracy",1];
 	
-sleep 3;
+sleep 1;	//??
 
-leader _radarVehicle sideChat format ["SAM Radar at grid %1 ready", mapGridPosition leader _radarVehicle];
+[format ["SAM Radar at grid %1 ready", mapGridPosition leader _radarVehicle]] call _logFctn;
 
 while {alive _radarVehicle} do {
 
@@ -61,7 +66,7 @@ while {alive _radarVehicle} do {
 		};
 	} forEach _DetectedAirVehicles;
 
-	leader _radarVehicle sideChat format ["Radar Cycle - Launchers: %1, Target Candidates: %2", count _availableLaunchers, count _DetectedPossibleTargets];
+	[format ["Radar Cycle - Launchers: %1, Targets: %2", count _availableLaunchers, count _DetectedPossibleTargets]] call _logFctn;
 	
 	{  // Select and shoot
 	
@@ -73,19 +78,19 @@ while {alive _radarVehicle} do {
 		_useLauncherIndx = (_useLauncherIndx + 1) % (count _availableLaunchers);
 		_useLauncher = _availableLaunchers select _useLauncherIndx;
 
-		leader _radarVehicle sideChat format ["Target selected: %1 (%2 m), Launcher %3, ", typeOf _LauncherTarget, _LauncherTarget distance _radarVehicle, _useLauncherIndx];
+		[format ["Target selected: %1 (%2 m), Launcher %3", typeOf _LauncherTarget, _LauncherTarget distance _radarVehicle, _useLauncherIndx]] call _logFctn;
 		
 		// Radar target for radar warning
 		_radarVehicle doTarget _LauncherTarget;
-		//leader _radarVehicle sideChat format ["Launcher %1 targets", _useLauncherIndx];
 		
 		// Aim and fire. This can take a few seconds and runs detached
-		_sh = [_useLauncher,_LauncherTarget,_radarVehicle,_useLauncherIndx] spawn {
-			private ["_useLauncher","_LauncherTarget","_radarVehicle"];
+		_sh = [_useLauncher,_LauncherTarget,_radarVehicle,_useLauncherIndx,_logFctn] spawn {
+			private ["_useLauncher","_LauncherTarget","_radarVehicle","_useLauncherIndx","_logFctn"];
 			_useLauncher = _this select 0;
 			_LauncherTarget = _this select 1;
 			_radarVehicle = _this select 2;
 			_useLauncherIndx = _this select 3;
+			_logFctn = _this select 4;
 			
 			_useLauncher doTarget _LauncherTarget;
 			
@@ -96,7 +101,7 @@ while {alive _radarVehicle} do {
 
 			// Only engage if LOS is clear
 			_terrainIntersect = terrainIntersect [getPosATL _radarVehicle, getPosATL _LauncherTarget];
-			if (_terrainIntersect) exitWith {leader _radarVehicle sideChat format ["Abort, terrain intersect!: " + str _terrainIntersect];};
+			if (_terrainIntersect) exitWith {[format ["Abort, terrain intersect!: " + str _terrainIntersect]] call _logFctn;};
 
 			// TOOD: should be fixed in upcoming pook version (info as of 2016-08-12)
 			// Attach "proximity target" for proximity fuse simulation
@@ -104,7 +109,7 @@ while {alive _radarVehicle} do {
 			//_targetSphere = "SAM_targetMIM" createVehicle [0,0,0];
 			//_targetSphere attachTo [_LauncherTarget, [0,0,0]];
 
-			leader _radarVehicle sideChat format ["Launcher %1 command fire", _useLauncherIndx];
+			[format ["Launcher %1 command fire", _useLauncherIndx]] call _logFctn;
 			
 			// Command fire
 			_useLauncher fireAtTarget [_LauncherTarget,"pook_MIMPAC2"];
