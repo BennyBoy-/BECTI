@@ -335,36 +335,43 @@ _classes pushBack 		"Land_HBarrier_1_F";
 _prices pushBack 		10;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
+
 _headers pushBack 		["H-Barrier (Small) (5 Block)",[["CanAutoAlign", 6, 0]]];
 _classes pushBack 		"Land_HBarrier_5_F";
 _prices pushBack 		50;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
+
 _headers pushBack 		["High Wall (Concrete)",[["CanAutoAlign", 4.6, 0]]];
 _classes pushBack 		"Land_CncWall4_F";
 _prices pushBack 		20;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
+
 _headers pushBack 		"H-Barrier (Medium)";
 _classes pushBack 		"Land_HBarrier_5_F";
 _prices pushBack 		20;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
+
 _headers pushBack 		["H-Barrier (Big)",[["CanAutoAlign", 6, 0]]];
 _classes pushBack 		"Land_HBarrierBig_F";
 _prices pushBack 		20;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Fortification";
+
 _headers pushBack 		"H-Barrier Wall (6)";
 _classes pushBack 		"Land_HBarrierWall6_F";
 _prices pushBack 		40;
 _placements pushBack 	[180, 7];
 _categories pushBack 	"Fortification";
+
 _headers pushBack 		"H-Barrier Coridor";
 _classes pushBack 		"Land_HBarrierWall_corridor_F";
 _prices pushBack 		20;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
+
 _headers pushBack 		"H-Barrier Tower";
 _classes pushBack 		"Land_HBarrierTower_F";
 _prices pushBack 		40;
@@ -558,14 +565,14 @@ _prices pushBack 		40000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 
-_headers pushBack 		"SNR-75 - AA Radar (Max. 1 per Base)";
-_classes pushBack 		"pook_SNR75_radar";
+_headers pushBack 		"AN/MPQ-53 Radar";
+_classes pushBack 		"POOK_ANMPQ53_CDF_IND";
 _prices pushBack 		10000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 
-_headers pushBack 		"S-300 PMU - AA Launcher";
-_classes pushBack 		"pook_SA20_static_INS";
+_headers pushBack 		"MIM-104 PAC-2 AA Battery";
+_classes pushBack 		"pook_MIM104_PAC2Battery_CDF_IND";
 _prices pushBack 		60000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
