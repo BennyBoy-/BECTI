@@ -1,7 +1,5 @@
 /*
   # HEADER #
-	Script: 		Server\Functions\Server_HandleStaticDefenseSAMSite.sqf
-	Alias:			CTI_SE_FNC_HandleStaticDefenseSAMSite
 	Description:	Fire control of a base defense SAM site consisting of one(!) radar and one or more launchers. All targets within a configurable envelope will be engaged.
 					The launchers are exclusively controlled by this script and will also not operate without the radar object.
 
@@ -13,7 +11,7 @@
 	None
 	
   # SYNTAX #
-	[VEHICLE, SIDE] spawn CTI_SE_FNC_HandleStaticDefenseSAMSite
+	[VEHICLE, SIDE] spawn HandleSAMSite
 */
 
 private ["_logFctn", "_radarVehicle","_radarVehiclePos","_maxLauncherDistance","_detectionMinAlt","_side","_DetectedPossibleTargets","_availableLaunchers","_DetectedAirVehicles","_LauncherTarget","_useLauncherIndx"];

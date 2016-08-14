@@ -137,7 +137,7 @@ while {alive _structure} do {
 						
 						//--- Configure the weapon / gunner
 						if (typeOf(_x) find "POOK_ANMPQ53" == 0 || typeOf(_x) find "pook_SNR75_radar" == 0) then {
-							[_x, _side] spawn CTI_SE_FNC_HandleStaticDefenseSAMSite;
+							[_x, _side] spawn FNC_HandleSAMSite;
 						} else {
 							if (typeOf(_x) find "pook_MIM104_PAC2" == 0 || typeOf(_x) find "pook_MIM104_PAC2Battery" == 0 ) then {
 								_ai setSkill 1;
