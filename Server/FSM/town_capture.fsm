@@ -1,15 +1,15 @@
-/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, town_capture.fsm">*/
+/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, town_capture.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Cycle"};
-item2[] = {"Units_near_Cente",2,4346,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Units near" \n "Center"};
+item2[] = {"Units_near_Cente",2,250,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Units near" \n "Center"};
 item3[] = {"End_FSM",1,250,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Empty",4,218,50.000000,-300.000000,150.000000,-250.000000,2.000000,"Empty"};
 item5[] = {"Gameover",8,218,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Gameover"};
 item6[] = {"Not_Empty",4,218,-250.000000,-300.000000,-150.000000,-250.000000,1.000000,"Not Empty"};
 item7[] = {"Blank",2,250,50.000000,-400.000000,150.000000,-350.000000,0.000000,"Blank"};
-item8[] = {"Check_Capture",2,250,-250.000000,0.000000,-150.000000,50.000000,0.000000,"Check" \n "Capture"};
+item8[] = {"Check_Capture",2,4346,-250.000000,0.000000,-150.000000,50.000000,0.000000,"Check" \n "Capture"};
 item9[] = {"Capture",8,218,-500.000000,0.000000,-400.000000,50.000000,0.000000,"Capture"};
 item10[] = {"No_Capture",4,218,-250.000000,100.000000,-150.000000,150.000000,1.000000,"No Capture"};
 item11[] = {"",7,210,246.000046,121.000023,253.999969,128.999985,0.000000,""};
@@ -38,10 +38,8 @@ link16[] = {13,15};
 link17[] = {14,16};
 link18[] = {15,7};
 link19[] = {16,15};
-
 globals[] = {25.000000,1,0,0,0,640,480,1,176,6316128,1,-517.422180,607.565002,193.045731,-592.868408,856,881,1};
-window[] = {2,-1,-1,-1,-1,831,50,1305,50,3,874};
-
+window[] = {2,-1,-1,-1,-1,906,125,1380,125,3,874};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -207,7 +205,9 @@ class FSM
        "			_camps_force = if (_camps_count < 1) then {1} else {count([_town, _force] Call CTI_CO_FNC_GetTownCampsOnSide) / _camps_count};" \n
        "			_rate = CTI_TOWNS_CAPTURE_RATE * _camps_force * CTI_TOWNS_CAPTURE_RATE_CAMPS;" \n
        "			if (_rate < 1) then {_rate = 1};" \n
-       "			_supply = _supply - round(_forceCount * _rate);" \n
+       "			_rate = round(_forceCount * _rate);" \n
+       "			if (_rate > CTI_TOWNS_CAPTURE_FORCE_MAX) then {_rate = CTI_TOWNS_CAPTURE_FORCE_MAX};" \n
+       "			_supply = _supply - _rate;" \n
        "			if (_supply <= 0) then { _captured = true; _supply = _town getVariable ""cti_town_sv_default"" };" \n
        "		};" \n
        "	};" \n

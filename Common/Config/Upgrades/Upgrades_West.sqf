@@ -25,19 +25,19 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], [
 ]];
 
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
-	[1500,3000,4500,6000], //--- Gear
-	[1500,3000,4500], //--- Barracks
-	[2000,4000,6000,8000,10000], //--- Light
-	[2500,5000,10000,15000], //--- Heavy
-	[2000,4000,8000], //--- Naval
-	[3000,6000,12000,18000,24000], //--- Air
+        [1000,2000,3500,5000], //--- Gear
+	[500,1000,1500], //--- Barracks
+	[1500,3500,4500,4000,6000], //--- Light
+	[2000,4000,6000,8000], //--- Heavy
+	[1500,2000,4000], //--- Naval
+	[2500,5000,7500,10000,12500], //--- Air
 	[1500], //--- Air FFAR
 	[1500], //--- Air DAR
 	[1500], //--- Air AT
 	[1500], //--- Air AA
 	[1500], //--- Air CM
-	[5000, 10000, 15000], //--- Towns Depots
-	[2000, 4000], //--- Halo
+	[10000, 15000, 30000], //--- Towns Depots
+	[1000, 2000], //--- Halo
 	[1500], //--- Air Radar
 	[1500], //--- Art Radar
 	[1500,2500,3500], //--- Respawn Range
@@ -138,12 +138,12 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 ]];
 }else {
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
-		[60,120,180,240], //--- Gear
+		[60,120,360,480], //--- Gear
 		[60,120,180], //--- Barracks
-		[60,120,180,240], //--- Light
-		[60,120,180], //--- Heavy
-		[60,120,180], //--- Naval
-		[60,120,180,240,300], //--- Air
+		[120,360,480,600,720], //--- Light
+		[240,480,600,720], //--- Heavy
+		[60,120,320], //--- Naval
+		[120,360,480,560,720], //--- Air
 		[60], //--- Air FFAR
 		[60], //--- Air DAR
 		[60], //--- Air AT

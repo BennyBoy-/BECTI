@@ -148,7 +148,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["TOWNS_SQUAD_APC3_MIXED", 3, 70]
 						],
 						[
-							["TOWNS_SQUAD_ARMORED1_MIXED", 1, 50]
+							["TOWNS_SQUAD_ARMORED1_MIXED", 1, 40]
 						],
 						[
 							["TOWNS_SQUAD_LIGHT4", 1, 10],
@@ -160,8 +160,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["TOWNS_SQUAD_APC3", 2, 50]
 						],
 						[
-							["TOWNS_SQUAD_ARMORED1", 1, 5],
-							["TOWNS_SQUAD_ARMORED2", 1, 30]
+							["TOWNS_SQUAD_ARMORED1", 1, 20]
 						],
 						[
 							["TOWNS_SQUAD_VEHICLE_AA1", 2, 50],
@@ -187,8 +186,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["TOWNS_SQUAD_APC3_MIXED", 4, 80]
 						],
 						[
-							["TOWNS_SQUAD_ARMORED2_MIXED", 2, 70],
-							["TOWNS_SQUAD_ARMORED3_MIXED", 1, 50]
+							["TOWNS_SQUAD_ARMORED2_MIXED", 1, 60],
+							["TOWNS_SQUAD_ARMORED3_MIXED", 1, 40]
 						],
 						[
 							["TOWNS_SQUAD_LIGHT5", 2, 50],
@@ -201,7 +200,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 						],
 						[
 							["TOWNS_SQUAD_ARMORED2", 1, 10],
-							["TOWNS_SQUAD_ARMORED3", 1, 30]
+							["TOWNS_SQUAD_ARMORED3", 1, 20]
 						],
 						[
 							["TOWNS_SQUAD_VEHICLE_AA2", 1, 20],
@@ -226,8 +225,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["TOWNS_SQUAD_APC3_MIXED", 4, 70]
 						],
 						[
-							["TOWNS_SQUAD_ARMORED2_MIXED", 2, 30],
-							["TOWNS_SQUAD_ARMORED3_MIXED", 3, 60]
+							["TOWNS_SQUAD_ARMORED2_MIXED", 1, 20],
+							["TOWNS_SQUAD_ARMORED3_MIXED", 1, 50]
 						],
 						[
 							["TOWNS_SQUAD_LIGHT6", 1, 30],
@@ -238,8 +237,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["TOWNS_SQUAD_APC3", 3, 70]
 						],
 						[
-							["TOWNS_SQUAD_ARMORED2", 1, 30],
-							["TOWNS_SQUAD_ARMORED3", 1, 60]
+							["TOWNS_SQUAD_ARMORED2", 1, 20],
+							["TOWNS_SQUAD_ARMORED3", 1, 50]
 						],
 						[
 							["TOWNS_SQUAD_VEHICLE_AA2", 1, 20],

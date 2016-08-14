@@ -147,6 +147,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_RU_Pilot';
 	_u pushBack 'CUP_O_RU_Sniper_KSVK';
         _u pushBack 'CUP_O_RU_Spotter';
+        _u pushBack 'O_diver_TL_F';
 
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u];
@@ -155,10 +156,10 @@ _u = [];
 //      _u pushBack 'I_C_Offroad_02_unarmed_F';
 //	_u pushBack 'B_T_LSV_01_armed_F';		
 	_u pushBack 'B_T_LSV_02_armed_F';		
-//	_u pushBack 'O_Quadbike_01_F';			
-	_u pushBack 'O_MRAP_02_gmg_F';			
+	_u pushBack 'O_G_Offroad_01_F';			
+//	_u pushBack 'O_MRAP_02_gmg_F';	
 	_u pushBack 'O_MRAP_02_hmg_F';			
-	_u pushBack 'O_Truck_03_device_F';
+//	_u pushBack 'O_Truck_03_device_F';
 /*
 _u pushBack 'O_Quadbike_01_F';
 _u pushBack "O_G_Offroad_01_F";
@@ -179,14 +180,14 @@ _u pushBack 'O_Truck_03_device_F';
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then {
 
-	_u pushBack 'C_SUV_01_F';
+//	_u pushBack 'C_SUV_01_F';
 //      _u pushBack 'I_C_Offroad_02_unarmed_F';
 	_u pushBack 'B_T_LSV_01_armed_F';		
 	_u pushBack 'B_T_LSV_02_armed_F';		
 //	_u pushBack 'O_Quadbike_01_F';			
 //	_u pushBack 'O_MRAP_02_gmg_F';			
 //	_u pushBack 'O_MRAP_02_hmg_F';			
-	_u pushBack 'O_Truck_03_device_F';	
+//	_u pushBack 'O_Truck_03_device_F';	
 /* 
 	_u pushback 'I_C_Offroad_02_unarmed_F';
 	_u pushBack 'O_T_LSV_02_unarmed_F';
@@ -280,12 +281,6 @@ if (CTI_OFPS_ADDON > 0) then {
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _u];
 _u = [];
-//      _u pushBack 'OFPS_BMP2_ZSU';		
-//	_u pushBack 'sfp_ikv91';		
-//	_u pushBack 'O_APC_Tracked_02_AA_F';
-	_u pushBack 'O_APC_Tracked_02_cannon_F';
-//	_u pushBack 'O_MBT_02_cannon_F';
-//	_u pushBack 'O_MBT_02_arty_F';	
 /*
 _u pushBack "O_APC_Wheeled_02_rcws_F";
 _u pushBack "O_APC_Tracked_02_cannon_F";
@@ -315,9 +310,9 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_ZSU23_SLA';		
 	_u pushBack 'CUP_O_2S6M_RU';		
 	_u pushBack 'CUP_B_T72_CZ';		
-//      _u pushBack 'OFPS_BMP2_ZSU';		
-//	_u pushBack 'sfp_ikv91';		
-//	_u pushBack 'O_APC_Tracked_02_AA_F';
+        _u pushBack 'OFPS_BMP2_ZSU';		
+	_u pushBack 'sfp_ikv91';		
+	_u pushBack 'O_APC_Tracked_02_AA_F';
 	_u pushBack 'O_APC_Tracked_02_cannon_F';
 	_u pushBack 'O_MBT_02_cannon_F';
 	_u pushBack 'O_MBT_02_arty_F';	
@@ -339,21 +334,9 @@ if (CTI_CUP_ADDON > 0) then {
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then {
-        _u pushBack 'OFPS_BMP2_ZSU';		
-	_u pushBack 'O_APC_Tracked_02_AA_F';
-	_u pushBack 'O_APC_Tracked_02_cannon_F';
-//	_u pushBack 'O_MBT_02_cannon_F';
-//	_u pushBack 'O_MBT_02_arty_F';	
-	_u pushBack 'sfp_ikv91';
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
 _u = [];
-//	_u pushBack 'sfp_bo105_unarmed';		
-//	_u pushBack 'O_Heli_Light_02_F';		
-//	_u pushBack 'O_Heli_Transport_04_F';		
-//	_u pushBack 'sfp_bo105';			
-//	_u pushBack 'B_UCSV_01';			
-
 /*
 _u pushBack 'O_Heli_Transport_04_F'; 
 _u pushBack 'O_Heli_Light_02_unarmed_F';
@@ -370,10 +353,8 @@ _u pushBack 'O_UAV_02_F';
 _u pushBack 'O_Plane_CAS_02_F';
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
-//	_u pushBack "C_Plane_Civil_01_F";
 	_u pushBack "O_T_UAV_04_CAS_F";
 	_u pushBack "O_T_VTOL_02_infantry_F";
-	_u pushBack "O_T_VTOL_02_vehicle_F";
 };
 */
 //--- CUP UNITS
@@ -382,7 +363,9 @@ if (CTI_CUP_ADDON > 0) then {
 //	_u pushBack 'CUP_B_AW159_Cannon_RN_Grey';	
         _u pushBack 'CUP_O_Ka52_GreyCamo_RU';		
 	_u pushBack 'CUP_B_Mi171Sh_ACR';
+	_u pushBack 'CUP_O_Mi8_SLA_1';
         _u pushBack 'O_Heli_Attack_02_black_F';	
+        _u pushBack 'CUP_O_MI6T_TKA';	
         _u pushBack 'CUP_O_Mi24_V_RU';			
 	_u pushBack 'CUP_O_Mi24_P_RU';			
 	_u pushBack 'CUP_I_Mi24_Mk3_FAB_AAF';		
@@ -408,6 +391,10 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'O_T_UAV_04_CAS_F';			
 	_u pushBack 'OFPS_BUZAA_O';
 	_u pushBack 'usaf_b1b';
+	_u pushBack 'sfp_j12_cap';
+       _u pushBack 'O_T_UAV_04_CAS_F';
+
+        _u pushBack 'O_UAV_02_F';
 /*
 	_u pushBack 'CUP_RU_Pchela1T';
 	_u pushBack 'CUP_O_UH1H_TKA';
@@ -429,26 +416,12 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_C130J_Cargo_TKA';
 	_u pushBack 'OFPS_SU25';
 	_u pushBack 'CUP_O_SU34_LGB_CSAT';
-	_u pushBack 'CUP_O_SU34_AGM_CSAT';
+	_u pushBack 'CUP_B_SU34_AGM_CSAT';
 */
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then {
-//	_u pushBack 'sfp_bo105_unarmed';		
-//	_u pushBack 'O_Heli_Light_02_F';		
-	_u pushBack 'O_Heli_Transport_04_F';		
-	_u pushBack 'sfp_bo105';			
-	_u pushBack 'B_UCSV_01';			
-	_u pushBack 'O_Heli_Transport_04_medevac_F';	
-	_u pushBack 'O_Heli_Light_02_unarmed_F';
-	_u pushBack 'O_Plane_CAS_02_F';		
-	_u pushBack 'sfp_j12_rb15';
-	_u pushBack 'sfp_j12_cap';
-	_u pushBack 'pook_tu95ms';		
-	_u pushBack 'O_T_VTOL_02_vehicle_F';		
-//	_u pushBack 'C_Plane_Civil_01_F';		
 	_u pushBack 'O_T_UAV_04_CAS_F';			
-	_u pushBack 'OFPS_BUZAA_O';
         _u pushBack 'O_UCSV_01';
 /* 
 	_u pushBack 'sfp_bo105_unarmed';
@@ -474,7 +447,7 @@ if (CTI_OFPS_ADDON > 0) then {
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _u];
 _u = [];
 _u pushBack "O_Truck_02_box_F";
-_u pushBack "O_Truck_03_repair_F";
+//_u pushBack "O_Truck_03_repair_F";
 _u pushBack "CTI_Salvager_East";
 _u pushBack "O_Truck_02_fuel_F";
 _u pushBack "O_Truck_03_fuel_F";
@@ -496,7 +469,7 @@ if (CTI_OFPS_ADDON > 0) then {
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_REPAIR], _u];
 _u = [];
-_u pushBack "O_Truck_02_Ammo_F";
+//_u pushBack "O_Truck_02_Ammo_F";
 _u pushBack "O_Truck_03_Ammo_F";
 _u pushBack "Box_East_Wps_F";
 _u pushBack "O_supplyCrate_F";
@@ -545,15 +518,15 @@ if (CTI_OFPS_ADDON > 0) then {
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
 _u = [];
-_u pushBack 'O_Quadbike_01_F';
+// _u pushBack 'O_Quadbike_01_F';
 _u pushBack "O_G_Offroad_01_F";
 _u pushBack "O_G_Offroad_01_armed_F";
 _u pushBack 'C_Van_01_transport_F';
 _u pushBack 'O_Truck_02_transport_F';
 _u pushBack 'O_Truck_03_transport_F';
 _u pushBack 'O_MRAP_02_F';
-_u pushBack 'O_MRAP_02_hmg_F';
-_u pushBack 'O_MRAP_02_gmg_F';
+// _u pushBack 'O_MRAP_02_hmg_F';
+// _u pushBack 'O_MRAP_02_gmg_F';
 _u pushBack 'O_UGV_01_F';
 _u pushBack 'O_UGV_01_rcws_F';
 _u pushBack 'O_Truck_02_medical_F';

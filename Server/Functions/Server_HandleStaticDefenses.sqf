@@ -65,13 +65,17 @@ while {alive _structure} do {
 			if !(someAmmo _x) then {
 				//--- Check if we have a nearby ammo source
 				_ammo_trucks = [_x, CTI_SPECIAL_AMMOTRUCK, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
-				_nearest = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
+				_nearestAmmoDepot = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
 				
-				if (count _ammo_trucks > 0 || !isNull _nearest) then {
+				if (count _ammo_trucks > 0 || !isNull _nearestAmmoDepot) then {
 					if (CTI_Log_Level >= CTI_Log_Information) then {
-						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4)", _x, typeOf _x, _nearest, typeOf _nearest]] call CTI_CO_FNC_Log;
+						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Source [%3] (%4), local [%5]?", _x, typeOf _x, _nearestAmmoDepot, typeOf _nearestAmmoDepot, local _x]] call CTI_CO_FNC_Log;
 					};
-					_x setVehicleAmmoDef 1;
+					
+					// TODO: HACKFIX: Somehow rearm wasnt executed on the right instance, so for now we just execute it everywhere.
+					// maybe local/owner check wrong??
+					// Also, for statics (tested for titanAA), setVehicleAmmoDef makes the static unusable for server's AI, so we use setVehicleAmmo
+					[_x, 1] remoteExec ["setVehicleAmmo"];
 				};
 			};
 			
@@ -137,6 +141,12 @@ while {alive _structure} do {
 						_ai setSkill ["courage", 1]; // Never retreat
 						_ai setSkill ["commanding", 1]; // Communication skills
 						_ai setSkill ["general", 1]; //Sets all above
+
+						//--- Set to Combat
+						_ai setBehaviour "AWARE";
+						_ai setCombatMode "RED";
+						_ai setSpeedMode "FULL";
+						_ai enableAttack true;
 
 					} else {
 						//--- At least one HC is available

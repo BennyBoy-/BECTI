@@ -151,17 +151,17 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_US_Pilot';
 	_u pushBack 'CUP_B_US_Sniper_M107';
         _u pushBack 'CUP_B_USMC_Spotter';
-        _u pushBack 'CUP_B_USMC_Spotter';
+        _u pushBack 'B_diver_TL_F';
 
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u];
 _u = [];
-//	_u pushBack 'O_T_LSV_02_armed_F';		
+	_u pushBack 'B_G_Offroad_01_F';		
 //	_u pushBack 'C_Quadbike_01_F';			
-	_u pushBack 'B_MRAP_01_gmg_F';			
+//	_u pushBack 'B_MRAP_01_gmg_F';			
 	_u pushBack 'B_MRAP_01_hmg_F';			
-	_u pushBack 'O_T_Truck_03_device_ghex_F';
-//        _u pushBack "B_Quadbike_01_F";
+//	_u pushBack 'O_T_Truck_03_device_ghex_F';
+        _u pushBack 'B_Slingload_01_Medevac_F';
 /*
 _u pushBack "B_Quadbike_01_F";
 _u pushBack "B_G_Offroad_01_F";
@@ -191,14 +191,13 @@ if (CTI_APEX_ADDON > 0) then {
 if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_C_SUV_CIV';			
 	_u pushBack 'CUP_B_HMMWV_Unarmed_USMC';		
-	_u pushBack 'CUP_B_HMMWV_Transport_USA';	
 	_u pushBack 'CUP_B_HMMWV_M2_USMC';		
 	_u pushBack 'CUP_B_HMMWV_DSHKM_GPK_ACR';	
 	_u pushBack 'CUP_B_HMMWV_MK19_USMC';		
 	_u pushBack 'CUP_I_SUV_Armored_ION';	
 	_u pushBack 'CUP_B_HMMWV_Ambulance_USMC';	
 	_u pushBack 'CUP_B_MTVR_Refuel_USA';		
-	_u pushBack 'CUP_B_Jackal2_GMG_GB_D';
+	_u pushBack 'CUP_B_Jackal2_GMG_GB_W';
 	_u pushBack 'CUP_B_HMMWV_Crows_M2_USA';		
 	_u pushBack 'CUP_B_HMMWV_Crows_MK19_USA';	
 	_u pushBack 'CUP_B_MTVR_USA';			
@@ -212,7 +211,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'C_Quadbike_01_F';			
 	_u pushBack 'B_MRAP_01_gmg_F';			
 	_u pushBack 'B_MRAP_01_hmg_F';			
-	_u pushBack 'O_T_Truck_03_device_ghex_F';
+	_u pushBack 'O_Truck_03_device_F';
 /* 
 	_u pushBack 'CUP_B_M1030';
 	_u pushBack 'CUP_B_TowingTractor_USMC';
@@ -268,9 +267,6 @@ if (CTI_OFPS_ADDON > 0) then {
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _u];
 _u = [];
-//        _u pushBack 'B_APC_Tracked_01_AA_F';	
-//	_u pushBack 'B_MBT_01_TUSK_F';		
-//	_u pushBack 'B_MBT_01_arty_F';	
 /*
 _u pushBack "B_APC_Wheeled_01_cannon_F";
 _u pushBack "B_APC_Tracked_01_rcws_F";
@@ -294,7 +290,7 @@ if (CTI_CUP_ADDON > 0) then {
         _u pushBack 'B_APC_Tracked_01_AA_F';	
 	_u pushBack 'B_MBT_01_TUSK_F';		
 	_u pushBack 'B_MBT_01_arty_F';	
-        _u pushBack 'CUP_B_M7Bradley_USA_D';	
+        _u pushBack 'CUP_B_FV510_GB_W';	
 /*
 	_u pushBack 'CUP_B_AAV_USMC';
 	_u pushBack 'CUP_B_M113_USA';
@@ -328,12 +324,9 @@ _u pushBack "B_UAV_02_F";
 _u pushBack "B_Plane_CAS_01_F";
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
-//	_u pushBack 'C_Plane_Civil_01_racing_F';
-	_u pushBack 'B_T_UAV_03_F';
         _u pushBack "B_UAV_02_F";
 	_u pushBack 'B_T_VTOL_01_infantry_F';
 	_u pushBack 'B_T_VTOL_01_vehicle_F';
-//	_u pushBack 'B_T_VTOL_01_armed_F';
 };
 */
 //--- CUP UNITS
@@ -346,7 +339,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_CH47F_USA';		
 	_u pushBack 'CUP_B_UH60M_FFV_US';	
 	_u pushBack 'CUP_B_UH1D_GER_KSK';	
-	_u pushBack 'CUP_B_AH64D_MR_USA';	
+	_u pushBack 'CUP_B_AH1Z_NOAA_USMC';	
 	_u pushBack 'CUP_B_AH1Z_Escort_USMC';	
 	_u pushBack 'CUP_B_CH53E_GER';		
 	_u pushBack 'CUP_B_AH1_AT_BAF';		
@@ -371,7 +364,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'B_UCSV_02';		
 	_u pushBack 'B_Heli_Attack_01_F';	
 	_u pushBack 'B_Heli_Light_01_armed_F';
-    _u pushBack 'bwi_a3_at6b_3';
+        _u pushBack 'sab_alphajet3';
 	
 /*
 	_u pushBack 'CUP_B_MH6J_USA';
@@ -416,18 +409,8 @@ if (CTI_CUP_ADDON > 0) then {
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
-        _u pushBack 'globemaster_c17_NATO';	
 	_u pushBack 'O_UAV_02_F';
-//	_u pushBack 'C_Plane_Civil_01_racing_F'; 
-	_u pushBack 'B_T_VTOL_01_armed_F';	
 	_u pushBack 'usaf_b1b';			
-//	_u pushBack 'sab_alphajet5';		
-//	_u pushBack 'bwi_a3_at6b';		
-	_u pushBack 'USAF_AC130U';				
-	_u pushBack 'B_T_UAV_03_F';		
-//	_u pushBack 'B_UCSV_02';		
-	_u pushBack 'B_Heli_Attack_01_F';	
-//	_u pushBack 'B_Heli_Light_01_armed_F';
 /*
 	_u pushBack 'B_UCSV_01';
 	_u pushBack 'B_UCSV_02';
@@ -488,6 +471,7 @@ if (CTI_APEX_ADDON > 0) then {
 if (CTI_CUP_ADDON > 0) then { 
 	_u pushBack "CUP_B_RHIB_USMC";
 	_u pushBack "CUP_B_RHIB2Turret_USMC";
+	_u pushBack "CUP_B_Zodiac_USMC";
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
@@ -500,13 +484,13 @@ if (CTI_OFPS_ADDON > 0) then {
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
 _u = [];
 _u pushBack "B_Quadbike_01_F";
-_u pushBack "B_G_Offroad_01_F";
+//_u pushBack "B_G_Offroad_01_F";
 _u pushBack "B_G_Offroad_01_armed_F";
 _u pushBack "C_Van_01_transport_F";
 _u pushBack "B_Truck_01_transport_F";
 _u pushBack "B_MRAP_01_F";
-_u pushBack "B_MRAP_01_hmg_F";
-_u pushBack "B_MRAP_01_gmg_F";
+// _u pushBack "B_MRAP_01_hmg_F";
+// _u pushBack "B_MRAP_01_gmg_F";
 _u pushBack "B_UGV_01_F";
 _u pushBack "B_UGV_01_rcws_F";
 _u pushBack "B_Truck_01_medical_F";

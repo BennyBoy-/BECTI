@@ -238,17 +238,18 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 	};
 
 	waitUntil {time > 0};
-
+			
 			MissionIntro = [] spawn {
-			playMusic "EventTrack02a_F_EPB";
-			cutText ["Welcome", "BLACK IN", 3];
-					[[["OFPS CTI WARFARE","<t align = 'center' shadow = '1' size = '1.4' font='PuristaBold'>%1</t><br/>"],["CAPTURE THE ISLAND","<t align = 'center' shadow = '1' size = '1.2' font='PuristaBold'>%1</t><br/>"]
-					],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"] spawn BIS_fnc_typeText;
-				if (!isNil "_camera_run") exitWith {};
-				_camera_run = true;
-				_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
-				_firstshot = [_hq, _hq, _hq, 12, 0.5, 0.4, false, 0, 0, 1] execVM "Client\Events\Events_UI_IntroCamera.sqf";
-				waitUntil {scriptdone _firstshot};
+				playMusic "EventTrack02a_F_EPB";
+				cutText ["Welcome", "BLACK IN", 3];
+				[[["OFPS CTI WARFARE","<t align = 'center' shadow = '1' size = '1.4' font='PuristaBold'>%1</t><br/>"],["CAPTURE THE ISLAND","<t align = 'center' shadow = '1' size = '1.2' font='PuristaBold'>%1</t><br/>"]],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"] spawn BIS_fnc_typeText;
+				if (CTI_DEV_MODE == 0) then {
+					if (!isNil "_camera_run") exitWith {};
+					_camera_run = true;
+					_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
+					_firstshot = [_hq, _hq, _hq, 12, 0.5, 0.4, false, 0, 0, 1] execVM "Client\Events\Events_UI_IntroCamera.sqf";
+					waitUntil {scriptdone _firstshot};
+				};
 				cutText ["", "BLACK", 2];
 				cutText ["", "BLACK IN", 2];
 				"dynamicBlur" ppEffectEnable true;   
@@ -256,9 +257,9 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 				"dynamicBlur" ppEffectCommit 0;     
 				"dynamicBlur" ppEffectAdjust [0.0];  
 				"dynamicBlur" ppEffectCommit 4; 
-
 			};
 			waitUntil {scriptDone MissionIntro};
+			
 	
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_votetime"}};
 	

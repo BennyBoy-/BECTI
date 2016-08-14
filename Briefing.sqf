@@ -35,8 +35,9 @@ player createDiaryRecord ["menu2",
 - Tablet | Windows Left<br/>
 - EarPlugs | Insert
 <br/>
+You can set custom keybinding under Configure --> Controls --> Configure Addons --> Select OFPS
 <br/>
-We are looking into user remapping
+<br/>
 "]];
 
 player createDiarySubject ["menu6", "Admins"];

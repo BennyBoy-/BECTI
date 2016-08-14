@@ -10,7 +10,7 @@ CTI_FACTORY_DEPOT = 7;
 CTI_FACTORY_RADAR = 8;
 
 CTI_PV_SERVER = 2;
-CTI_PV_CLIENTS = -2;
+CTI_PV_CLIENTS = if (!isMultiplayer || CTI_IsHostedServer) then {0} else {-2};
 
 CTI_BARRACKS = "Barracks";
 CTI_LIGHT = "Light";
@@ -325,9 +325,11 @@ CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE = 1; //--- The iterated value, (try to mat
 //--- Towns: Capture
 CTI_TOWNS_CAPTURE_BOUNTY_COEF = 100; //--- Bounty coefficient upon capture, (max sv * coefficient)
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 600; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
+CTI_TOWNS_CAPTURE_FORCE_MAX = 0.5; //--- The force determine how many units may try to capture a town (caoture rate = SV - round((units force + camp rate) * town rate))
 CTI_TOWNS_CAPTURE_RANGE = 40; //--- The range which a unit/vehicle has to be from a town center to capture it
 CTI_TOWNS_CAPTURE_RATE = 0.1; //--- Determine how fast a town may be captured/protected
 CTI_TOWNS_CAPTURE_RATE_CAMPS = 0.2; //--- Determine how fast a town may be captured while holding it's camps
+
 CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
 
@@ -379,7 +381,7 @@ CTI_TOWNS_SPAWN_SV_MIN = 50; //--- Determine the min SV used for a town as a ref
 
 //--- Towns: Supply
 CTI_TOWNS_SUPPLY_MODE = 1; //--- Supply Mode: (0: Default, 1: Timed)
-CTI_TOWNS_SUPPLY_TIME_INTERVAL = 80; //--- Determine the interval between each town SV increment with time
+CTI_TOWNS_SUPPLY_TIME_INTERVAL = 100; //--- Determine the interval between each town SV increment with time
 CTI_TOWNS_SUPPLY_TIME_INCREASE = 1; //--- Determine the town SV increment when the interval's reached (Potential upgrade?)
 
 //--- Towns: Territorial
@@ -532,8 +534,8 @@ with missionNamespace do {
 CTI_ARTILLERY_FILTER = 1; //--- Toggle artillery magazines like mines and AT mines (0: Disabled, 1: Enabled)
 CTI_ARTILLERY_TIMEOUT = 380; //--- Delay between each fire mission
 
-CTI_BOUNTY_COEF = 0.25; //--- Bounty coefficient multiplicator based on the unit original cost
-CTI_BOUNTY_COEF_PVP = 1; //--- Bounty coefficient multiplicator based on the killed unit score
+CTI_BOUNTY_COEF = 0.35; //--- Bounty coefficient multiplicator based on the unit original cost
+CTI_BOUNTY_COEF_PVP = 1.5; //--- Bounty coefficient multiplicator based on the killed unit score
 
 CTI_COIN_AREA_DEFAULT = [30, 10];
 CTI_COIN_AREA_HQ_DEPLOYED = [CTI_BASE_AREA_RANGE, 25];
