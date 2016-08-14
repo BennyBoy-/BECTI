@@ -339,7 +339,7 @@ class Params {
 		title = "VISUAL: Terrain Grid";
 		values[] = {10,20,30,40,50};
 		texts[] = {"Far","Medium","Short","Shorter","Free"};
-		default = 40;
+		default = 50;
 	};
 	class CTI_GRAPHICS_VD_MAX {
 		title = "VISUAL: View Distance";
