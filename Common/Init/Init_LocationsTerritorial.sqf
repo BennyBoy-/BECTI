@@ -278,3 +278,34 @@ switch (toLower(worldName)) do {
 		Karachinar setVariable ["cti_town_neighbors", [Zavarak,Ravanay]];
 	};
 };
+
+switch (toLower(worldName)) do {
+	case "beketov": {
+		Sentsy setVariable ["cti_town_neighbors",[OutpostJordan,KrasnyeSeltsy]];
+		KrasnyeSeltsy setVariable ["cti_town_neighbors",[Shalaevo,Sentsy,Polshishkino]];
+		Polivanovo setVariable ["cti_town_neighbors",[Shalaevo,Zhukovo,Polshishkino]];
+		Polshishkino setVariable ["cti_town_neighbors",[Shalaevo,KrasnyeSeltsy,Zhukovo,Polshishkino,Mikhalevo]];
+		Zhukovo setVariable ["cti_town_neighbors",[Polivanovo,Polshishkino,Kuzhadon]];
+		Kuzhadon setVariable ["cti_town_neighbors",[Zhukovo,Armanikha,Shpagino]];
+		Shpagino setVariable ["cti_town_neighbors",[Kuzhadon,NorthWestBeketov]];
+		Armanikha setVariable ["cti_town_neighbors",[Kuzhadon,NorthWestBeketov]];
+		NorthWestBeketov setVariable ["cti_town_neighbors",[SouthBeketov,EastBeketov,Armanikha,Shpagino]];
+		SouthBeketov setVariable ["cti_town_neighbors",[NorthWestBeketov,EastBeketov]];
+		EastBeketov setVariable ["cti_town_neighbors",[NorthWestBeketov,SouthBeketov]];
+		Gavrikolvka setVariable ["cti_town_neighbors",[EastBeketov,Sevastianovo,Dorogino]];
+		Sevastianovo setVariable ["cti_town_neighbors",[Gavrikolvka,Siukha,Mikhalevo]];
+		Mikhalevo setVariable ["cti_town_neighbors",[Polshishkino,Siukha,Sevastianovo]];
+		Siukha setVariable ["cti_town_neighbors",[Mikhalevo,LakeEusovo,Sevastianovo,Vorontsovo]];
+		Dorogino setVariable ["cti_town_neighbors",[Gavrikolvka,LakeEusovo,Imeni,Naleskino]];
+		Imeni setVariable ["cti_town_neighbors",[Dorogino,LakeEusovo,Naleskino]];
+		Naleskino setVariable ["cti_town_neighbors",[Dorogino,Imeni,Vizovino]];
+		Vizovino setVariable ["cti_town_neighbors",[Dorogino,Vizovino]];	
+		LakeEusovo setVariable ["cti_town_neighbors",[Dorogino,Imeni,Siukha,Studenets]];
+		Vorontsovo setVariable ["cti_town_neighbors",[Studenets,Siukha,Arshavino]];
+		Studenets  setVariable ["cti_town_neighbors",[Vorontsovo,LakeEusovo,Arshavino]];
+		Arshavino setVariable ["cti_town_neighbors",[Vorontsovo,Studenets,Dubionki]];
+		Dubionki setVariable ["cti_town_neighbors",[Arshavino,OutpostJordan]];
+		OutpostJordan setVariable ["cti_town_neighbors",[Dubionki,Sentsy]];
+		Shalaevo setVariable ["cti_town_neighbors",[Polivanovo,Polshishkino,KrasnyeSeltsy]];
+	};
+};
