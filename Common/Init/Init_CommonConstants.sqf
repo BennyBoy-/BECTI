@@ -352,28 +352,34 @@ CTI_TOWNS_PATROL_HOPS = 10; //--- Towns patrol hops (non-waypoint)
 CTI_TOWNS_PATROL_RANGE = 200; //--- Patrol range in a town
 
 //--- Towns: Occupation
-CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
-CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
-CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE = 150; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
+
 //CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
+CTI_TOWNS_OCCUPATION_DETECTION_MODE = 1; //--- Determine the occupation towns detection mode (0: All, 1: Players, 2: Playable units)
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 40; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 120; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_OCCUPATION_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
+
 CTI_TOWNS_OCCUPATION_SPAWN_AI_MAX = 24;  //--- Determine the max occupation AI count to present in a town (if the count is below the given limit, a new wave will spawn)
 CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN = 15; //--- Determine the min occupation AI count to present in a town
+CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
+CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE = 150; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
 
 //--- Towns: Resistance
-CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
-CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
-CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE = 100; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
+
 //CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
+CTI_TOWNS_RESISTANCE_DETECTION_MODE = 1; //--- Determine the resistance towns detection mode (0: All, 1: Players, 2: Playable units)
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 40; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 120; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
+
 CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX = 24; //--- Determine the max resistance AI count to present in a town (if the count is below the given limit, a new wave will spawn)
 CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN = 15; //--- Determine the min resistance AI count to present in a town
+CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
+CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE = 150; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
 
 //--- Towns: Spawn System
 CTI_TOWNS_SPAWN_SV_MAX = 120; //--- Determine the max SV used for a town as a reference for AI units spawning (min max scaling)
