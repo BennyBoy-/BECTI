@@ -268,9 +268,10 @@ with missionNamespace do {
 		_amount = _this select 1;
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FUNCTION: CTI_PVF_CLT_RequestVehicleRearm", format["Performing a rearm def operation on [%1] (%2) with a rearm value of [%3]", _vehicle, typeOf _vehicle, _amount]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FUNCTION: CTI_PVF_CLT_RequestVehicleRearm", format["Performing a rearm operation on [%1] (%2) with a rearm value of [%3]", _vehicle, typeOf _vehicle, _amount]] call CTI_CO_FNC_Log;
 		};
 		
-		_vehicle setVehicleAmmoDef _amount;
+		// _vehicle setVehicleAmmoDef _amount;
+		_vehicle setVehicleAmmo _amount;
 	};
 };

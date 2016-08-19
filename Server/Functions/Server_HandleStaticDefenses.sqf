@@ -69,14 +69,15 @@ while {alive _structure} do {
 				
 				if (count _ammo_trucks > 0 || !isNull _nearest) then {
 					if (CTI_Log_Level >= CTI_Log_Information) then {
-						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4), local [%5]?", _x, typeOf _x, _nearest, typeOf _nearest, local _x]] call CTI_CO_FNC_Log;
+						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4), defense is local [%5]? gunner is local [%6]?", _x, typeOf _x, _nearest, typeOf _nearest, local _x, local gunner _x]] call CTI_CO_FNC_Log;
 					};
 					
-					if (local _x) then {
-						_x setVehicleAmmoDef 1;
+					if (local gunner _x) then {
+						// _x setVehicleAmmoDef 1;
+						_x setVehicleAmmo 1;
 					} else {
-						[_x, 1] remoteExec ["CTI_PVF_CLT_RequestVehicleRearm", owner _x];
-					}
+						[_x, 1] remoteExec ["CTI_PVF_CLT_RequestVehicleRearm", owner gunner _x];
+					};
 				};
 			};
 			

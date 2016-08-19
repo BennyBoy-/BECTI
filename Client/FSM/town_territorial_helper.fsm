@@ -1,9 +1,9 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_territorial_helper.fsm">*/
+/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, town_territorial_helper.fsm">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
+item0[] = {"Start_FSM",0,4346,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"Cycle"};
-item2[] = {"Update_Markers",2,4346,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Update" \n "Markers"};
+item2[] = {"Update_Markers",2,250,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Update" \n "Markers"};
 item3[] = {"End_FSM",1,250,50.000000,-325.000000,150.000000,-275.000000,0.000000,"End FSM"};
 item4[] = {"Terminate",4,218,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Terminate"};
 link0[] = {0,1};
@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-456.160217,360.531433,242.139771,-456.939575,743,636,1};
-window[] = {0,-1,-1,-1,-1,863,1773,3028,82,1,761};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-456.160217,360.531433,242.139771,-456.939575,1018,881,1};
+window[] = {2,-1,-1,-1,-1,856,75,1330,75,3,1036};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -27,6 +27,7 @@ class FSM
        "" \n
        "//--- Initialize the markers for each towns as invisible" \n
        "{" \n
+       "	//--- Territorial Marker" \n
        "	_marker = format[""cti_town_territorial_%1"", _x];" \n
        "	createMarkerLocal [_marker, getPos _x];" \n
        "	_marker setMarkerAlphaLocal 0;" \n
@@ -35,7 +36,14 @@ class FSM
        "	_marker setMarkerBrushLocal ""SolidBorder"";" \n
        "	_marker setMarkerSizeLocal CTI_TOWNS_TERRITORIAL_MARKER_SIZE;" \n
        "	" \n
-       "	_x setVariable [""cti_town_territorial_marker"", _marker];" \n
+       "	//--- Capture marker" \n
+       "	_marker = format[""cti_town_territorial_%1_capture"", _x];" \n
+       "	createMarkerLocal [_marker, getPos _x];" \n
+       "	_marker setMarkerAlphaLocal 0;" \n
+       "	_marker setMarkerColorLocal ""ColorBlack"";" \n
+       "	_marker setMarkerShapeLocal ""ELLIPSE"";" \n
+       "	_marker setMarkerBrushLocal ""SolidBorder"";" \n
+       "	_marker setMarkerSizeLocal [CTI_TOWNS_CAPTURE_RANGE, CTI_TOWNS_CAPTURE_RANGE]; " \n
        "} forEach CTI_Towns;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -67,7 +75,8 @@ class FSM
        "" \n
        "//--- Generic, towns" \n
        "{" \n
-       "	_marker = _x getVariable ""cti_town_territorial_marker"";" \n
+       "	_marker = format[""cti_town_territorial_%1"", _x];" \n
+       "	_marker_cap = format[""cti_town_territorial_%1_capture"", _x];" \n
        "	" \n
        "	//--- Town is held by the player side" \n
        "	if ((_x getVariable ""cti_town_sideID"") == CTI_P_SideID) then {" \n
@@ -80,6 +89,7 @@ class FSM
        "		//--- Safe, it cannot be captured" \n
        "		if (_safe) then {" \n
        "			_marker setMarkerAlphaLocal 0;" \n
+       "			_marker_cap setMarkerAlphaLocal 0;" \n
        "		} else {" \n
        "			//--- Unsafe, our friendly town may be captured" \n
        "			if (missionNamespace getVariable ""CTI_TOWNS_PEACE"" > 0) then { //--- Peace mode" \n
@@ -92,6 +102,7 @@ class FSM
        "				_marker setMarkerColorLocal (markerColor format[""cti_town_marker_%1"", _x]);" \n
        "			};" \n
        "			_marker setMarkerAlphaLocal 0.5;" \n
+       "			_marker_cap setMarkerAlphaLocal 0.2;" \n
        "		};" \n
        "	} else {" \n
        "		//--- Hostile held, can we capture it?" \n
@@ -108,10 +119,12 @@ class FSM
        "		//--- Safe, it cannot be captured" \n
        "		if (_safe) then {" \n
        "			_marker setMarkerAlphaLocal 0;" \n
+       "			_marker_cap setMarkerAlphaLocal 0;" \n
        "		} else {" \n
        "			//--- Unsafe, this enemy town may be captured" \n
        "			_marker setMarkerColorLocal (markerColor format[""cti_town_marker_%1"", _x]);" \n
        "			_marker setMarkerAlphaLocal 0.5;" \n
+       "			_marker_cap setMarkerAlphaLocal 0.2;" \n
        "		};" \n
        "	};" \n
        "} forEach CTI_Towns;" \n
