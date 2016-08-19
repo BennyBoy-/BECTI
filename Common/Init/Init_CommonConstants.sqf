@@ -610,6 +610,9 @@ CTI_HALO_RATIO = 1;
 CTI_HALO_COST = 1000;
 
 CTI_VOTE_TIME = 60; //--- Commander Vote time
+if (CTI_DEV_MODE > 0) then {
+	CTI_VOTE_TIME = 15;
+};
 
 //--- SHK Specific
 CTI_SHK_BUILDING_ENABLED = true;

@@ -14,7 +14,7 @@
 if !(hasInterface) exitWith {/*diag_log "showNames_init.sqf - Finished (!hasInterface)"*/};
 	
 // Load in keys and settings from userconfig
-#include "Client\Functions\Externals\zam_shownames\zam_shownames.hpp"
+#include "zam_shownames.hpp"
 
 [] spawn {
 
