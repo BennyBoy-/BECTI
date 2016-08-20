@@ -61,7 +61,7 @@ link29[] = {24,23};
 link30[] = {25,1};
 link31[] = {26,25};
 globals[] = {25.000000,1,0,0,0,640,480,1,164,6316128,1,-438.058258,721.755859,329.359497,-644.732910,918,881,1};
-window[] = {2,-1,-1,-1,-1,856,75,1330,75,3,936};
+window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,936};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -163,7 +163,7 @@ class FSM
        "" \n
        "if !(_peace_mode) then {" \n
        "	_objects = [];" \n
-       "	switch (CTI_TOWNS_RESISTANCE_DETECTION_MODE) do {" \n
+       "	switch (CTI_TOWNS_CAPTURE_DETECTION_MODE) do {" \n
        "		case 1: {{if (_x distance _town <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE && (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR)) then {_objects pushBack _x}} forEach allPlayers};" \n
        "		case 2: {{if (_x distance _town <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE && (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR)) then {_objects pushBack _x}} forEach (playableUnits + switchableUnits)};" \n
        "		default {{if (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR) then {_objects pushBack _x}} forEach (_town nearEntities [""AllVehicles"", CTI_TOWNS_RESISTANCE_DETECTION_RANGE])};" \n
