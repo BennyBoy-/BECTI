@@ -1,4 +1,22 @@
 class Params {
+	class CTI_FACTION_WEST {
+		title = "FACTION: West Forces";
+		values[] = {0,1,2};
+		texts[] = {"NATO Arid","NATO Tropic","NATO Winter"};
+		default = 0;
+	};
+	class CTI_FACTION_EAST {
+		title = "FACTION: East Forces";
+		values[] = {0,1,2};
+		texts[] = {"CSAT Arid","CSAT Tropic","CSAT Winter"};
+		default = 0;
+	};
+	class SEPARATOR1 {
+		title = "========================== INCOME ============================";
+		values[] = {1};
+		texts[] = {""};
+		default = 1;
+	};
 	class CTI_BASE_AREA_MAX {
 		title = "BASE: Areas";
 		values[] = {1,2,3,4,5};

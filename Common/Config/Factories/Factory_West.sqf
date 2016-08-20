@@ -71,7 +71,8 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 };
 //--- Units - Barracks
 _u = [];
-/*
+
+//Universal Vanilla
 _u pushBack "B_soldier_AR_F";
 _u pushBack "B_HeavyGunner_F";
 _u pushBack "B_Soldier_A_F";
@@ -93,52 +94,79 @@ _u pushBack "B_Helipilot_F";
 _u pushBack "B_crew_F";
 _u pushBack "B_Soldier_TL_F";
 _u pushBack "B_Soldier_SL_F";
+
+if (CTI_FACTION_WEST > 0) then {
+	//NATO Arid Vanilla
+	//_u pushBack 'O_Soldier_F';
+};
+if (CTI_FACTION_WEST > 1) then {
+	//NATO Tropic Vanilla
+	//_u pushBack 'O_Soldier_F';
+};
+if (CTI_FACTION_WEST > 2) then {
+	//NATO Winter Vanilla
+	//_u pushBack 'O_Soldier_F';
+};
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
-	//NATO Pacific
-	_u pushBack 'B_T_soldier_AR_F';
-	_u pushBack 'B_T_Soldier_A_F';
-	_u pushBack 'B_T_Soldier_exp_F';
-	_u pushBack 'B_T_Soldier_GL_F';
-	_u pushBack 'B_T_Soldier_M_F';
-	_u pushBack 'B_T_Medic_F';
-	_u pushBack 'B_T_Soldier_F';
-	_u pushBack 'B_T_Soldier_PG_F';
-	_u pushBack 'B_T_Engineer_F';
-	_u pushBack 'B_T_Soldier_repair_F';
-	_u pushBack 'B_T_Soldier_LAT_F';
-	_u pushBack 'B_T_Soldier_AA_F';
-	_u pushBack 'B_T_Soldier_AT_F';
-	_u pushBack 'B_T_Soldier_UAV_F';
-	_u pushBack 'B_T_Helipilot_F';
-	_u pushBack 'B_T_Crew_F';
-	_u pushBack 'B_T_Soldier_TL_F';
-	_u pushBack 'B_T_Soldier_SL_F';
-	//Special Forces
-	_u pushBack 'B_T_Diver_F';
-	_u pushBack 'B_T_Diver_TL_F';
-	_u pushBack 'B_T_Recon_Exp_F';
-	_u pushBack 'B_T_Recon_JTAC_F';
-	_u pushBack 'B_T_Recon_Medic_F';
-	_u pushBack 'B_T_Recon_F';
-	_u pushBack 'B_T_Recon_LAT_F';
-	_u pushBack 'B_T_Recon_TL_F';
-	_u pushBack 'B_T_Sniper_F';
-	_u pushBack 'B_T_ghillie_tna_F';
-	_u pushBack 'B_T_Spotter_F';
-	//--- Infantry CTRG Special
-	_u pushBack 'B_CTRG_Soldier_AR_tna_F';
-	_u pushBack 'B_CTRG_Soldier_Exp_tna_F';
-	_u pushBack 'B_CTRG_Soldier_JTAC_tna_F';
-	_u pushBack 'B_CTRG_Soldier_M_tna_F';
-	_u pushBack 'B_CTRG_Soldier_Medic_tna_F';
-	_u pushBack 'B_CTRG_Soldier_tna_F';
-	_u pushBack 'B_CTRG_Soldier_LAT_tna_F';
-	_u pushBack 'B_CTRG_Soldier_TL_tna_F';
+	//Universal APEX
+	//_u pushBack 'O_Soldier_F';
+
+	if (CTI_FACTION_WEST > 0) then {
+		//NATO Arid APEX
+		//_u pushBack 'O_Soldier_F';
+	};
+	if (CTI_FACTION_WEST > 1) then {
+		//NATO Tropic APEX
+		//NATO Pacific
+		_u pushBack 'B_T_soldier_AR_F';
+		_u pushBack 'B_T_Soldier_A_F';
+		_u pushBack 'B_T_Soldier_exp_F';
+		_u pushBack 'B_T_Soldier_GL_F';
+		_u pushBack 'B_T_Soldier_M_F';
+		_u pushBack 'B_T_Medic_F';
+		_u pushBack 'B_T_Soldier_F';
+		_u pushBack 'B_T_Soldier_PG_F';
+		_u pushBack 'B_T_Engineer_F';
+		_u pushBack 'B_T_Soldier_repair_F';
+		_u pushBack 'B_T_Soldier_LAT_F';
+		_u pushBack 'B_T_Soldier_AA_F';
+		_u pushBack 'B_T_Soldier_AT_F';
+		_u pushBack 'B_T_Soldier_UAV_F';
+		_u pushBack 'B_T_Helipilot_F';
+		_u pushBack 'B_T_Crew_F';
+		_u pushBack 'B_T_Soldier_TL_F';
+		_u pushBack 'B_T_Soldier_SL_F';
+		//Special Forces
+		_u pushBack 'B_T_Diver_F';
+		_u pushBack 'B_T_Diver_TL_F';
+		_u pushBack 'B_T_Recon_Exp_F';
+		_u pushBack 'B_T_Recon_JTAC_F';
+		_u pushBack 'B_T_Recon_Medic_F';
+		_u pushBack 'B_T_Recon_F';
+		_u pushBack 'B_T_Recon_LAT_F';
+		_u pushBack 'B_T_Recon_TL_F';
+		_u pushBack 'B_T_Sniper_F';
+		_u pushBack 'B_T_ghillie_tna_F';
+		_u pushBack 'B_T_Spotter_F';
+		//--- Infantry CTRG Special
+		_u pushBack 'B_CTRG_Soldier_AR_tna_F';
+		_u pushBack 'B_CTRG_Soldier_Exp_tna_F';
+		_u pushBack 'B_CTRG_Soldier_JTAC_tna_F';
+		_u pushBack 'B_CTRG_Soldier_M_tna_F';
+		_u pushBack 'B_CTRG_Soldier_Medic_tna_F';
+		_u pushBack 'B_CTRG_Soldier_tna_F';
+		_u pushBack 'B_CTRG_Soldier_LAT_tna_F';
+		_u pushBack 'B_CTRG_Soldier_TL_tna_F';
+	};
+	if (CTI_FACTION_WEST > 2) then {
+		//NATO Winter APEX
+		//_u pushBack 'O_Soldier_F';
+	};
 };
-*/
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
+	//Universal CUP
 	_u pushBack 'CUP_B_US_Soldier';
 	_u pushBack 'CUP_B_US_Soldier_AA';
 	_u pushBack 'CUP_B_USMC_Soldier_MG';
@@ -150,10 +178,41 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_US_Medic';
 	_u pushBack 'CUP_B_US_Pilot';
 	_u pushBack 'CUP_B_US_Sniper_M107';
-        _u pushBack 'CUP_B_USMC_Spotter';
-        _u pushBack 'B_diver_TL_F';
+    _u pushBack 'CUP_B_USMC_Spotter';
+    _u pushBack 'B_diver_TL_F';
 
+	if (CTI_FACTION_WEST > 0) then {
+		//NATO Arid CUP
+		//_u pushBack 'O_Soldier_F';
+	};
+	if (CTI_FACTION_WEST > 1) then {
+		//NATO Tropic CUP
+		//_u pushBack 'O_Soldier_F';
+	};
+	if (CTI_FACTION_WEST > 2) then {
+		//NATO Winter CUP
+		//_u pushBack 'O_Soldier_F';
+	};
 };
+//--- OFPS UNITS
+if (CTI_OFPS_ADDON > 0) then { 
+	//Universal OFPS
+	//_u pushBack 'O_Soldier_F';
+
+	if (CTI_FACTION_WEST > 0) then {
+		//NATO Arid OFPS
+		//_u pushBack 'O_Soldier_F';
+	};
+	if (CTI_FACTION_WEST > 1) then {
+		//NATO Tropic OFPS
+		//_u pushBack 'O_Soldier_F';
+	};
+	if (CTI_FACTION_WEST > 2) then {
+		//NATO Winter OFPS
+		//_u pushBack 'O_Soldier_F';
+	};
+};
+
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u];
 _u = [];
 	_u pushBack 'B_G_Offroad_01_F';		

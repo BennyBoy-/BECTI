@@ -67,7 +67,8 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 };
 //--- Units - Barracks
 _u = [];
-/*
+
+//Universal Vanilla
 _u pushBack 'O_soldier_AR_F';
 _u pushBack 'O_Soldier_A_F';
 _u pushBack 'O_soldier_exp_F';
@@ -88,11 +89,14 @@ _u pushBack 'O_Helipilot_F';
 _u pushBack 'O_crew_F';
 _u pushBack 'O_Soldier_TL_F';
 _u pushBack 'O_Soldier_SL_F';
-*/
-//--- APEX UNITS
-if (CTI_APEX_ADDON > 0) then { 
-	//CAST Pacfic
-/*
+
+if (CTI_FACTION_EAST > 0) then {
+	//CSAT Arid Vanilla
+	//_u pushBack 'O_Soldier_F';
+};
+if (CTI_FACTION_EAST > 1) then {
+	//CSAT Tropic Vanilla
+	//Pacfic
 	_u pushBack 'O_T_soldier_AR_F';
 	_u pushBack 'O_T_Soldier_A_F';
 	_u pushBack 'O_T_Soldier_exp_F';
@@ -131,10 +135,32 @@ if (CTI_APEX_ADDON > 0) then {
 	_u pushBack 'O_V_Soldier_Medic_ghex_F';
 	_u pushBack 'O_V_Soldier_LAT_ghex_F';
 	_u pushBack 'O_V_Soldier_TL_ghex_F';
-*/
+};
+if (CTI_FACTION_EAST > 2) then {
+	//CSAT Winter Vanilla
+	//_u pushBack 'O_Soldier_F';
+};
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+	//Universal APEX
+	//_u pushBack 'O_Soldier_F';
+
+	if (CTI_FACTION_EAST > 0) then {
+		//CSAT Arid APEX
+		//_u pushBack 'O_Soldier_F';
+	};
+	if (CTI_FACTION_EAST > 1) then {
+		//CSAT Tropic APEX
+		//_u pushBack 'O_Soldier_F';
+	};
+	if (CTI_FACTION_EAST > 2) then {
+		//CSAT Winter APEX
+		//_u pushBack 'O_Soldier_F';
+	};
 };
 //--- CUP UNITS
-if (CTI_CUP_ADDON > 0) then {
+if (CTI_CUP_ADDON > 0) then { 
+	//Universal CUP
 	_u pushBack 'CUP_O_RU_Soldier';
 	_u pushBack 'CUP_O_RU_Soldier_AA';
 	_u pushBack 'CUP_O_RU_Soldier_MG';
@@ -146,10 +172,40 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_RU_Medic';
 	_u pushBack 'CUP_O_RU_Pilot';
 	_u pushBack 'CUP_O_RU_Sniper_KSVK';
-        _u pushBack 'CUP_O_RU_Spotter';
-        _u pushBack 'O_diver_TL_F';
+    _u pushBack 'CUP_O_RU_Spotter';
 
+	if (CTI_FACTION_EAST > 0) then {
+		//CSAT Arid CUP
+		//_u pushBack 'O_Soldier_F';
+	};
+	if (CTI_FACTION_EAST > 1) then {
+		//CSAT Tropic CUP
+		//_u pushBack 'O_Soldier_F';
+	};
+	if (CTI_FACTION_EAST > 2) then {
+		//CSAT Winter CUP
+		//_u pushBack 'O_Soldier_F';
+	};
 };
+//--- OFPS UNITS
+if (CTI_OFPS_ADDON > 0) then { 
+	//Universal OFPS
+	//_u pushBack 'O_Soldier_F';
+
+	if (CTI_FACTION_EAST > 0) then {
+		//CSAT Arid OFPS
+		//_u pushBack 'O_Soldier_F';
+	};
+	if (CTI_FACTION_EAST > 1) then {
+		//CSAT Tropic OFPS
+		//_u pushBack 'O_Soldier_F';
+	};
+	if (CTI_FACTION_EAST > 2) then {
+		//CSAT Winter OFPS
+		//_u pushBack 'O_Soldier_F';
+	};
+};
+
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u];
 _u = [];
 //	_u pushBack 'C_SUV_01_F';

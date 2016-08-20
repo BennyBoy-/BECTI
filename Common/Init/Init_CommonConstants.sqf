@@ -626,6 +626,9 @@ CTI_SHK_BUILDING_SCAN_RANGE = 150; //--- The range used to search for building f
 CTI_SHK_BUILDING_SCAN_RANGE_RAN = 50; //--- Add a random range, works as min max -> RANGE + (random value - random value)
 
 with missionNamespace do {
+	if (isNil 'CTI_FACTION_WEST') then {CTI_FACTION_WEST = 0};
+	if (isNil 'CTI_FACTION_EAST') then {CTI_FACTION_EAST = 0};
+
 	if (isNil 'CTI_ARTILLERY_SETUP') then {CTI_ARTILLERY_SETUP = 0}; //--- Artillery status (-2: Disabled, -1: Artillery Computer, 0: Short, 1: Medium, 2: Long, 3: Far)
 
 	if (isNil 'CTI_ECONOMY_INCOME_CYCLE') then {CTI_ECONOMY_INCOME_CYCLE = 60};
