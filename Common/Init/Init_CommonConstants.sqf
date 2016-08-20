@@ -344,7 +344,7 @@ CTI_TOWNS_INCOME_RATIO = 10.0; //--- A value above 1 will increase the resources
 CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = 1.00; //--- Determine how much value an unoccupied town bring to the side.
 
 //--- Towns: Markers
-CTI_TOWNS_MARKERS_MAP_RANGE = 600; //--- Distance required to show the town SV on the map (from a player/player's unit)
+CTI_TOWNS_MARKERS_MAP_RANGE = 750; //--- Distance required to show the town SV on the map (from a player/player's unit)
 CTI_TOWNS_MARKERS_PEACE_COLOR = "ColorYellow"; //--- The color used for peace-mode towns
 
 //--- Towns: Patrol
@@ -362,9 +362,9 @@ CTI_TOWNS_OCCUPATION_MIN_ACTIVE = 5; //--- When the town is not held by the side
 
 CTI_TOWNS_OCCUPATION_SPAWN_AI_MAX = 24;  //--- Determine the max occupation AI count to present in a town (if the count is below the given limit, a new wave will spawn)
 CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN = 15; //--- Determine the min occupation AI count to present in a town
-CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 250; //--- Determine how far the units may spawn from the town center
 CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
-CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE = 150; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
+CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE = 190; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
 
 //--- Towns: Resistance
 
@@ -377,9 +377,9 @@ CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 5; //--- When the town is not held by the side
 
 CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX = 24; //--- Determine the max resistance AI count to present in a town (if the count is below the given limit, a new wave will spawn)
 CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN = 15; //--- Determine the min resistance AI count to present in a town
-CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 250; //--- Determine how far the units may spawn from the town center
 CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units may spawn from a town's camp when selected
-CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE = 150; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
+CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE = 190; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
 
 //--- Towns: Spawn System
 CTI_TOWNS_SPAWN_SV_MAX = 120; //--- Determine the max SV used for a town as a reference for AI units spawning (min max scaling)
@@ -391,7 +391,7 @@ CTI_TOWNS_SUPPLY_TIME_INTERVAL = 100; //--- Determine the interval between each 
 CTI_TOWNS_SUPPLY_TIME_INCREASE = 1; //--- Determine the town SV increment when the interval's reached (Potential upgrade?)
 
 //--- Towns: Territorial
-CTI_TOWNS_TERRITORIAL_MARKER_SIZE = [350, 350]; //--- Size of the helper marker
+CTI_TOWNS_TERRITORIAL_MARKER_SIZE = [320, 320]; //--- Size of the helper marker
 
 CTI_TOWNS_FLAG_TEXTURE_PEACE = "\A3\Data_F\Flags\Flag_white_CO.paa"; //--- Determines the texture used by a town's flag in peace mode
 
@@ -434,7 +434,7 @@ with missionNamespace do {
  */
 
 //--- Base: Area
-CTI_BASE_AREA_RANGE = 200;
+CTI_BASE_AREA_RANGE = 250;
 
 //--- Base: Construction
 CTI_BASE_CONSTRUCTION_BOUNTY = 3; //--- The bounty awarded upon a hostile structure destruction
@@ -550,8 +550,8 @@ CTI_COIN_AREA_REPAIR = [45, 10];
 
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 30; //--- Keep values of 10
 
-CTI_MARKERS_OPACITY = 0.5;
-CTI_MARKERS_TOWN_AREA_RANGE = 250;
+CTI_MARKERS_OPACITY = 0.4;
+CTI_MARKERS_TOWN_AREA_RANGE = 320;
 CTI_MARKERS_UNITS_DEAD_DELAY = 50;
 CTI_MARKERS_VEHICLES_DEAD_DELAY = 125;
 
