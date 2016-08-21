@@ -4,6 +4,7 @@ _last_townheld = -1;
 _last_award_pool = -1;
 _last_resources_pool = -1;
 _last_income = -1;
+_last_score = -1;
 
 _town_count = count CTI_Towns;
 _last_infocheck = -100;
@@ -25,6 +26,16 @@ while { true } do {
 		_resources_pool = CTI_P_SideLogic getVariable "cti_pool_resources";
 		_income = call CTI_CL_FNC_GetPlayerIncome;
 		
+		//get rank and score
+		_score = [player] call CTI_CO_FNC_GetUnitsScore;
+		_rank = (player) call CTI_CO_FNC_GetUnitsRank;
+		
+		if (_score != _last_score) then {
+			((uiNamespace getVariable "cti_dialog_ui_tabletmenu") displayCtrl 777003) ctrlSetStructuredText (parseText format["<t><t>%1 : %2</t></t>", _rank, _score]);
+			((uiNamespace getVariable "cti_dialog_ui_tabletmenu") displayCtrl 779003) ctrlSetStructuredText (parseText format["<t><t>%1 : %2</t></t>", _rank, _score]);
+			((uiNamespace getVariable "cti_dialog_ui_tabletmenu") displayCtrl 780003) ctrlSetStructuredText (parseText format["<t><t>%1 : %2</t></t>", _rank, _score]);
+			_last_score = _score;
+		};
 		if (_funds != _last_funds) then {
 			((uiNamespace getVariable "cti_dialog_ui_tabletmenu") displayCtrl 777009) ctrlSetStructuredText (parseText format["<t>RESOURCES: <t color='%1'>$%2</t></t>", CTI_P_Coloration_Money, _funds]);
 			((uiNamespace getVariable "cti_dialog_ui_tabletmenu") displayCtrl 779009) ctrlSetStructuredText (parseText format["<t>RESOURCES: <t color='%1'>$%2</t></t>", CTI_P_Coloration_Money, _funds]);

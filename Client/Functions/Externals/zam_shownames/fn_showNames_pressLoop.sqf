@@ -188,33 +188,7 @@ for "" from 0 to 1 step 0 do {
 				call {
 					if (ZAM_showNames_ranks && {_same_side && _isKnown}) exitWith {
 						//set rank according to current score
-						_score = score _x;
-						switch (true) do {
-							case (_score < 200) : { 
-								_x setRank "PRIVATE";
-							};
-							case (_score >= 200 && _score < 350) : { 
-								_x setRank "CORPORAL";
-							};
-							case (_score >= 500 && _score < 600) : { 
-								_x setRank "SERGEANT";
-							};
-							case (_score >= 600 && _score < 700) : { 
-								_x setRank "LIEUTENANT";
-							};
-							case (_score >= 700 && _score < 800) : { 
-								_x setRank "CAPTAIN";
-							};
-							case (_score >= 800 && _score < 900) : { 
-								_x setRank "MAJOR";
-							};
-							case (_score >= 900 && _score < 1000) : { 
-								_x setRank "COLONEL";
-							};
-							case (_score >= 1000) : { 
-								_x setRank "GENERAL";
-							};
-						};
+						_rank = (_x) call CTI_CO_FNC_GetUnitsRank;
 					
 						_rank_path = [rank _x] call ZAM_fnc_showNames_getRankIcon;
 						_icon_size = ((_icon_size_base / (_distance max 0.01)) * _magn) min 1.8;	// Cap icon size (was 7 and 2)

@@ -11,7 +11,7 @@ class Params {
 		texts[] = {"CSAT Arid","CSAT Tropic","CSAT Winter"};
 		default = 0;
 	};
-	class SEPARATOR1 {
+	class SEPARATOR0 {
 		title = "========================== INCOME ============================";
 		values[] = {1};
 		texts[] = {""};
