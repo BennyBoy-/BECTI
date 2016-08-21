@@ -80,7 +80,10 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 _u = [];
 
 //Universal Vanilla
-_u pushBack "B_soldier_AR_F";
+
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
+	_u pushBack "B_soldier_AR_F";
 _u pushBack "B_HeavyGunner_F";
 _u pushBack "B_Soldier_A_F";
 _u pushBack "B_soldier_exp_F";
@@ -110,8 +113,6 @@ _u pushBack 'B_Recon_F';
 _u pushBack 'B_Recon_LAT_F';
 _u pushBack 'B_Recon_TL_F';
 
-if (CTI_FACTION_WEST == 0) then {
-	//NATO Arid Vanilla
 	
 };
 if (CTI_FACTION_WEST == 1) then {
@@ -194,7 +195,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_US_Pilot';
 	_u pushBack 'CUP_B_US_Sniper_M107';
     _u pushBack 'CUP_B_USMC_Spotter';
-    _u pushBack 'B_diver_TL_F';
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid CUP
@@ -232,13 +232,12 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u
 _u = [];
 
 //Universal Vanilla
-	_u pushBack 'B_G_Offroad_01_F';		
-//	_u pushBack 'C_Quadbike_01_F';			
-//	_u pushBack 'B_MRAP_01_gmg_F';			
-	_u pushBack 'B_MRAP_01_hmg_F';			
-//	_u pushBack 'O_T_Truck_03_device_ghex_F';
-    _u pushBack 'B_Slingload_01_Medevac_F';
-/*
+
+
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
+		_u pushBack 'B_G_Offroad_01_F';		
+	_u pushBack 'C_Quadbike_01_F';			
 _u pushBack "B_Quadbike_01_F";
 _u pushBack "B_G_Offroad_01_F";
 _u pushBack "B_G_Offroad_01_armed_F";
@@ -252,10 +251,6 @@ _u pushBack "B_UGV_01_rcws_F";
 _u pushBack "B_Truck_01_medical_F";
 _u pushBack 'B_Slingload_01_Medevac_F';
 _u pushBack 'O_Truck_03_device_F';
-*/
-
-if (CTI_FACTION_WEST == 0) then {
-	//NATO Arid Vanilla
 	
 };
 if (CTI_FACTION_WEST == 1) then {
@@ -269,12 +264,8 @@ if (CTI_FACTION_WEST == 2) then {
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
 	//Universal APEX
-//	_u pushBack 'O_T_LSV_02_armed_F';
-/*
-	_u pushback 'I_C_Offroad_02_unarmed_F';
-	_u pushBack 'B_T_LSV_01_unarmed_F';
-	_u pushBack 'B_T_LSV_01_armed_F';
-*/
+
+
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid APEX
@@ -282,6 +273,24 @@ if (CTI_APEX_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic APEX
+				_u pushBack 'B_G_Offroad_01_F';		
+	_u pushBack 'C_Quadbike_01_F';			
+_u pushBack "B_Quadbike_01_F";
+_u pushBack "B_G_Offroad_01_F";
+_u pushBack "B_G_Offroad_01_armed_F";
+_u pushBack "C_Van_01_transport_F";
+_u pushBack "B_Truck_01_transport_F";
+_u pushBack "OFPS_HUNTER";
+_u pushBack "OFPS_HUNTER_HMG";
+_u pushBack "OFPS_HUNTER_GMG";
+_u pushBack "B_UGV_01_F";
+_u pushBack "B_UGV_01_rcws_F";
+_u pushBack "B_Truck_01_medical_F";
+_u pushBack 'B_Slingload_01_Medevac_F';
+_u pushBack 'O_Truck_03_device_F';
+	_u pushback 'I_C_Offroad_02_unarmed_F';
+	_u pushBack 'B_T_LSV_01_unarmed_F';
+	_u pushBack 'B_T_LSV_01_armed_F';
 		
 	};
 	if (CTI_FACTION_WEST == 2) then {
@@ -309,12 +318,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_HMMWV_TOW_USMC';		
 	_u pushBack 'CUP_B_LAV25M240_USMC';		
 	_u pushBack 'CUP_B_HMMWV_Avenger_USMC';		
-	_u pushBack 'CUP_B_M1129_MC_MK19_Desert';
-	_u pushBack 'O_T_LSV_02_armed_F';		
-	_u pushBack 'C_Quadbike_01_F';			
-	_u pushBack 'B_MRAP_01_gmg_F';			
-	_u pushBack 'B_MRAP_01_hmg_F';			
-	_u pushBack 'O_Truck_03_device_F';
+	_u pushBack 'CUP_B_M1129_MC_MK19_Desert';				
 /* 
 	_u pushBack 'CUP_B_M1030';
 	_u pushBack 'CUP_B_TowingTractor_USMC';
@@ -413,17 +417,18 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _u];
 _u = [];
 
 //Universal Vanilla
-/*
+
+
+
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
 _u pushBack "B_APC_Wheeled_01_cannon_F";
 _u pushBack "B_APC_Tracked_01_rcws_F";
 _u pushBack "B_APC_Tracked_01_AA_F";
 _u pushBack "B_MBT_01_cannon_F";
 _u pushBack "B_MBT_01_arty_F";
 _u pushBack "B_MBT_01_mlrs_F";
-*/
 
-if (CTI_FACTION_WEST == 0) then {
-	//NATO Arid Vanilla
 	
 };
 if (CTI_FACTION_WEST == 1) then {
@@ -445,6 +450,13 @@ if (CTI_APEX_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic APEX
+_u pushBack "OFPS_MARSHALL";
+_u pushBack "OFPS_PANTHER";
+_u pushBack "OFPS_CHEETAH";
+_u pushBack "OFPS_SLAMMER";
+_u pushBack "OFPS_SCORCHER";
+_u pushBack "OFPS_SANDSTORM";
+_u pushBack "OFPS_BOBCAT";
 		
 	};
 	if (CTI_FACTION_WEST == 2) then {
@@ -464,9 +476,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_M6LineBacker_USA_W'; 
 	_u pushBack 'CUP_B_M1A2_TUSK_MG_US_Army';  
 	_u pushBack 'CUP_B_M270_DPICM_USMC';
-        _u pushBack 'B_APC_Tracked_01_AA_F';	
-	_u pushBack 'B_MBT_01_TUSK_F';		
-	_u pushBack 'B_MBT_01_arty_F';	
         _u pushBack 'CUP_B_FV510_GB_W';	
 /*
 	_u pushBack 'CUP_B_AAV_USMC';
@@ -521,7 +530,11 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
 _u = [];
 
 //Universal Vanilla
-_u pushBack "B_Heli_Light_01_F";
+
+
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
+	_u pushBack "B_Heli_Light_01_F";
 _u pushBack "B_Heli_Transport_01_F";
 _u pushBack "B_Heli_Transport_03_F";
 _u pushBack "B_Heli_Light_01_armed_F";
@@ -529,9 +542,6 @@ _u pushBack "B_Heli_Attack_01_F";
 _u pushBack "B_UAV_02_CAS_F";
 _u pushBack "B_UAV_02_F";
 _u pushBack "B_Plane_CAS_01_F";
-
-if (CTI_FACTION_WEST == 0) then {
-	//NATO Arid Vanilla
 	
 };
 if (CTI_FACTION_WEST == 1) then {
@@ -545,10 +555,6 @@ if (CTI_FACTION_WEST == 2) then {
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
 	//Universal APEX
-    _u pushBack "B_UAV_02_F";
-	_u pushBack 'B_T_VTOL_01_infantry_F';
-	_u pushBack 'B_T_VTOL_01_vehicle_F';
-	_u pushBack 'B_T_VTOL_01_armed_F';
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid APEX
@@ -556,6 +562,18 @@ if (CTI_APEX_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic APEX
+		_u pushBack "B_Heli_Light_01_F";
+_u pushBack "B_Heli_Transport_01_F";
+_u pushBack "B_Heli_Transport_03_F";
+_u pushBack "B_Heli_Light_01_armed_F";
+_u pushBack "B_Heli_Attack_01_F";
+_u pushBack "B_UAV_02_CAS_F";
+_u pushBack "B_UAV_02_F";
+_u pushBack "B_Plane_CAS_01_F";
+    _u pushBack "B_UAV_02_F";
+	_u pushBack 'B_T_VTOL_01_infantry_F';
+	_u pushBack 'B_T_VTOL_01_vehicle_F';
+	_u pushBack 'B_T_VTOL_01_armed_F';
 		
 	};
 	if (CTI_FACTION_WEST == 2) then {
@@ -588,18 +606,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_AC47_Spooky_USA';	
 	_u pushBack 'CUP_C_DC3_TanoAir_CIV';
         _u pushBack 'CUP_B_AW159_Cannon_RN_Grey';
-	_u pushBack 'globemaster_c17_NATO';	
-	_u pushBack 'O_UAV_02_F';
-	_u pushBack 'C_Plane_Civil_01_racing_F'; 
-	_u pushBack 'usaf_b1b';			
-	_u pushBack 'sab_alphajet5';		
-	_u pushBack 'bwi_a3_at6b';		
-	_u pushBack 'USAF_AC130U';				
-	_u pushBack 'B_T_UAV_03_F';		
-	_u pushBack 'B_UCSV_02';		
-	_u pushBack 'B_Heli_Attack_01_F';	
-	_u pushBack 'B_Heli_Light_01_armed_F';
-        _u pushBack 'sab_alphajet3';
 			_u pushBack 'CUP_B_F35B_LGB_USMC';
 	
 /*
@@ -658,7 +664,6 @@ if (CTI_OFPS_ADDON > 0) then {
 	//Universal OFPS
 	_u pushBack 'O_UAV_02_F';
 	_u pushBack 'usaf_b1b';			
-/*
 	_u pushBack 'B_UCSV_01';
 	_u pushBack 'B_UCSV_02';
 	_u pushBack 'globemaster_c17_NATO';
@@ -675,7 +680,7 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'pook_tu95ms_CDF';
 	_u pushBack 'pook_tu95ms16_CDF';
 	_u pushBack 'pook_tu95MSM_CDF';
-*/
+
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid OFPS
@@ -703,6 +708,7 @@ _u pushBack 'B_Slingload_01_Fuel_F';
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
+
 	
 };
 if (CTI_FACTION_WEST == 1) then {
@@ -779,10 +785,12 @@ _u pushBack "B_supplyCrate_F";
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
+
 	
 };
 if (CTI_FACTION_WEST == 1) then {
 	//NATO Tropic Vanilla
+
 	
 };
 if (CTI_FACTION_WEST == 2) then {
@@ -856,10 +864,12 @@ _u pushBack "B_SDV_01_F";
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
+
 	
 };
 if (CTI_FACTION_WEST == 1) then {
 	//NATO Tropic Vanilla
+
 	
 };
 if (CTI_FACTION_WEST == 2) then {
@@ -932,7 +942,12 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
 _u = [];
 
 //Universal Vanilla
-_u pushBack "B_Quadbike_01_F";
+
+
+
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
+	_u pushBack "B_Quadbike_01_F";
 //_u pushBack "B_G_Offroad_01_F";
 _u pushBack "B_G_Offroad_01_armed_F";
 _u pushBack "C_Van_01_transport_F";
@@ -942,15 +957,12 @@ _u pushBack "B_MRAP_01_F";
 // _u pushBack "B_MRAP_01_gmg_F";
 _u pushBack "B_UGV_01_F";
 _u pushBack "B_UGV_01_rcws_F";
-_u pushBack "B_Truck_01_medical_F";
 
-if (CTI_FACTION_WEST == 0) then {
-	//NATO Arid Vanilla
 	
 };
 if (CTI_FACTION_WEST == 1) then {
 	//NATO Tropic Vanilla
-	
+
 };
 if (CTI_FACTION_WEST == 2) then {
 	//NATO Winter Vanilla
@@ -966,6 +978,16 @@ if (CTI_APEX_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic APEX
+		_u pushBack "B_Quadbike_01_F";
+//_u pushBack "B_G_Offroad_01_F";
+_u pushBack "B_G_Offroad_01_armed_F";
+_u pushBack "C_Van_01_transport_F";
+_u pushBack "B_Truck_01_transport_F";
+_u pushBack "OFPS_HUNTER";
+// _u pushBack "B_MRAP_01_hmg_F";
+// _u pushBack "B_MRAP_01_gmg_F";
+_u pushBack "B_UGV_01_F";
+_u pushBack "B_UGV_01_rcws_F";
 		
 	};
 	if (CTI_FACTION_WEST == 2) then {
