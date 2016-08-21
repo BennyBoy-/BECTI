@@ -371,6 +371,18 @@ class Params {
 		texts[] = {"Random","Clear","Light","Medium","High","Max"};
 		default = 0;
 	};
+	class CTI_WEATHER_SNOW {
+		title = "WEATHER: Snow Storms";
+		values[] = {0,1,2,3,4};
+		texts[] = {"Clear","Light","Medium","High","Max"};
+		default = 0;
+	};
+	class CTI_WEATHER_SAND {
+		title = "WEATHER: Sand Storms";
+		values[] = {0,1,2,3,4};
+		texts[] = {"Clear","Light","Medium","High","Max"};
+		default = 0;
+	};
 	class CTI_WEATHER_OVERCAST {
 		title = "WEATHER: Overcast";
 		values[] = {-1,0,30,50,75,100};

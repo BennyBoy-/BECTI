@@ -685,6 +685,8 @@ with missionNamespace do {
 	if (isNil 'CTI_WEATHER_FAST_NIGHT') then {CTI_WEATHER_FAST_NIGHT = 1};
 	if (isNil 'CTI_WEATHER_INITIAL') then {CTI_WEATHER_INITIAL = 10};
 	if (isNil 'CTI_WEATHER_RAIN') then {CTI_WEATHER_RAIN = -1};
+	if (isNil 'CTI_WEATHER_SNOW') then {CTI_WEATHER_SNOW = 0};
+	if (isNil 'CTI_WEATHER_SAND') then {CTI_WEATHER_SAND = 0};
 	if (isNil 'CTI_WEATHER_OVERCAST') then {CTI_WEATHER_OVERCAST = -1};
 	if (isNil 'CTI_WEATHER_FOG') then {CTI_WEATHER_FOG = -1};
 	if (isNil 'CTI_WEATHER_WIND') then {CTI_WEATHER_WIND = -1};
