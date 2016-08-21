@@ -703,6 +703,8 @@ _u = [];
 _u pushBack "B_Truck_01_Repair_F";
 _u pushBack "CTI_Salvager_West";
 _u pushBack 'B_Slingload_01_Repair_F';
+_u pushBack "B_Truck_01_fuel_F";
+_u pushBack 'B_Slingload_01_Fuel_F';
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
@@ -783,8 +785,6 @@ _u pushBack "B_Truck_01_ammo_F";
 _u pushBack 'B_Slingload_01_Ammo_F';
 _u pushBack "Box_NATO_Wps_F";
 _u pushBack "B_supplyCrate_F";
-_u pushBack "B_Truck_01_fuel_F";
-_u pushBack 'B_Slingload_01_Fuel_F';
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
