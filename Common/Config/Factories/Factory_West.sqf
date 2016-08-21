@@ -75,6 +75,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["NLAW_F", 20]]]
 ]];
 };
+
 //--- Units - Barracks
 _u = [];
 
@@ -111,24 +112,24 @@ _u pushBack 'B_Recon_TL_F';
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
-	//_u pushBack 'O_Soldier_F';
+	
 };
 if (CTI_FACTION_WEST == 1) then {
 	//NATO Tropic Vanilla
-	//_u pushBack 'O_Soldier_F';
+	
 };
 if (CTI_FACTION_WEST == 2) then {
 	//NATO Winter Vanilla
-	//_u pushBack 'O_Soldier_F';
+	
 };
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
 	//Universal APEX
-	//_u pushBack 'O_Soldier_F';
+	
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid APEX
-		//_u pushBack 'O_Soldier_F';
+		
 	};
 	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic APEX
@@ -175,7 +176,7 @@ if (CTI_APEX_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter APEX
-		//_u pushBack 'O_Soldier_F';
+		
 	};
 };
 //--- CUP UNITS
@@ -197,44 +198,46 @@ if (CTI_CUP_ADDON > 0) then {
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid CUP
-		//_u pushBack 'O_Soldier_F';
+		
 	};
 	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic CUP
-		//_u pushBack 'O_Soldier_F';
+		
 	};
 	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter CUP
-		//_u pushBack 'O_Soldier_F';
+		
 	};
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
 	//Universal OFPS
-	//_u pushBack 'O_Soldier_F';
+	
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid OFPS
-		//_u pushBack 'O_Soldier_F';
+		
 	};
 	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic OFPS
-		//_u pushBack 'O_Soldier_F';
+		
 	};
 	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter OFPS
-		//_u pushBack 'O_Soldier_F';
+		
 	};
 };
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u];
 _u = [];
+
+//Universal Vanilla
 	_u pushBack 'B_G_Offroad_01_F';		
 //	_u pushBack 'C_Quadbike_01_F';			
 //	_u pushBack 'B_MRAP_01_gmg_F';			
 	_u pushBack 'B_MRAP_01_hmg_F';			
 //	_u pushBack 'O_T_Truck_03_device_ghex_F';
-        _u pushBack 'B_Slingload_01_Medevac_F';
+    _u pushBack 'B_Slingload_01_Medevac_F';
 /*
 _u pushBack "B_Quadbike_01_F";
 _u pushBack "B_G_Offroad_01_F";
@@ -250,18 +253,45 @@ _u pushBack "B_Truck_01_medical_F";
 _u pushBack 'B_Slingload_01_Medevac_F';
 _u pushBack 'O_Truck_03_device_F';
 */
+
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
+	
+};
+if (CTI_FACTION_WEST == 1) then {
+	//NATO Tropic Vanilla
+	
+};
+if (CTI_FACTION_WEST == 2) then {
+	//NATO Winter Vanilla
+	
+};
 //--- APEX UNITS
-if (CTI_APEX_ADDON > 0) then {
+if (CTI_APEX_ADDON > 0) then { 
+	//Universal APEX
 //	_u pushBack 'O_T_LSV_02_armed_F';
 /*
 	_u pushback 'I_C_Offroad_02_unarmed_F';
 	_u pushBack 'B_T_LSV_01_unarmed_F';
 	_u pushBack 'B_T_LSV_01_armed_F';
 */
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid APEX
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic APEX
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter APEX
+		
+	};
 };
 //--- CUP UNITS
-// Schmeisser Vehicle List LIGHT FACTORY - ALL -
-if (CTI_CUP_ADDON > 0) then {
+if (CTI_CUP_ADDON > 0) then { 
+	//Universal CUP
 	_u pushBack 'CUP_C_SUV_CIV';			
 	_u pushBack 'CUP_B_HMMWV_Unarmed_USMC';		
 	_u pushBack 'CUP_B_HMMWV_M2_USMC';		
@@ -332,6 +362,47 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_Wolfhound_GMG_GB_W';
 	_u pushBack 'CUP_B_Wolfhound_HMG_GB_W';
 */
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid CUP
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic CUP
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter CUP
+		
+	};
+};
+//--- OFPS UNITS
+if (CTI_OFPS_ADDON > 0) then { 
+	//Universal OFPS
+	
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter OFPS
+		
+	};
+};
+
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then {
+
+};
+//--- CUP UNITS
+// Schmeisser Vehicle List LIGHT FACTORY - ALL -
+if (CTI_CUP_ADDON > 0) then {
+
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then {
@@ -340,6 +411,8 @@ if (CTI_OFPS_ADDON > 0) then {
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _u];
 _u = [];
+
+//Universal Vanilla
 /*
 _u pushBack "B_APC_Wheeled_01_cannon_F";
 _u pushBack "B_APC_Tracked_01_rcws_F";
@@ -348,9 +421,40 @@ _u pushBack "B_MBT_01_cannon_F";
 _u pushBack "B_MBT_01_arty_F";
 _u pushBack "B_MBT_01_mlrs_F";
 */
+
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
+	
+};
+if (CTI_FACTION_WEST == 1) then {
+	//NATO Tropic Vanilla
+	
+};
+if (CTI_FACTION_WEST == 2) then {
+	//NATO Winter Vanilla
+	
+};
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+	//Universal APEX
+	
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid APEX
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic APEX
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter APEX
+		
+	};
+};
 //--- CUP UNITS
-// Schmeisser Vehicle List HEAVY FACTORY - ALL - 
-if (CTI_CUP_ADDON > 0) then {
+if (CTI_CUP_ADDON > 0) then { 
+	//Universal CUP
 	_u pushBack 'CUP_B_AAV_USMC';		
 	_u pushBack 'CUP_B_MCV80_GB_W_SLAT';	
 	_u pushBack 'CUP_B_M113_Med_USA';	
@@ -380,13 +484,43 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_FV510_GB_D_SLAT';
 	_u pushBack 'CUP_B_MCV80_GB_D_SLAT';
 */
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid CUP
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic CUP
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter CUP
+		
+	};
 };
 //--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then {
+if (CTI_OFPS_ADDON > 0) then { 
+	//Universal OFPS
+	
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter OFPS
+		
+	};
 };
+
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
 _u = [];
 
+//Universal Vanilla
 _u pushBack "B_Heli_Light_01_F";
 _u pushBack "B_Heli_Transport_01_F";
 _u pushBack "B_Heli_Transport_03_F";
@@ -395,17 +529,43 @@ _u pushBack "B_Heli_Attack_01_F";
 _u pushBack "B_UAV_02_CAS_F";
 _u pushBack "B_UAV_02_F";
 _u pushBack "B_Plane_CAS_01_F";
+
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
+	
+};
+if (CTI_FACTION_WEST == 1) then {
+	//NATO Tropic Vanilla
+	
+};
+if (CTI_FACTION_WEST == 2) then {
+	//NATO Winter Vanilla
+	
+};
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
-        _u pushBack "B_UAV_02_F";
+	//Universal APEX
+    _u pushBack "B_UAV_02_F";
 	_u pushBack 'B_T_VTOL_01_infantry_F';
 	_u pushBack 'B_T_VTOL_01_vehicle_F';
-	_u pushBack 'B_T_VTOL_01_armed_F';	
-};
+	_u pushBack 'B_T_VTOL_01_armed_F';
 
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid APEX
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic APEX
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter APEX
+		
+	};
+};
 //--- CUP UNITS
-// Schmeisser Vehicle List AIR FACTORY - ALL - 
 if (CTI_CUP_ADDON > 0) then { 
+	//Universal CUP
 	_u pushBack 'CUP_B_MH6J_USA';		
 	_u pushBack 'CUP_B_UH1Y_GUNSHIP_USMC';	
 	_u pushBack 'CUP_B_AH6J_AT_USA';	
@@ -479,9 +639,23 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_F35B_AA_USMC';
 	_u pushBack 'CUP_B_AC47_Spooky_USA';
 */
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid CUP
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic CUP
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter CUP
+		
+	};
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
+	//Universal OFPS
 	_u pushBack 'O_UAV_02_F';
 	_u pushBack 'usaf_b1b';			
 /*
@@ -502,60 +676,262 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'pook_tu95ms16_CDF';
 	_u pushBack 'pook_tu95MSM_CDF';
 */
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter OFPS
+		
+	};
 };
+
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _u];
 _u = [];
+
+//Universal Vanilla
 _u pushBack "B_Truck_01_Repair_F";
 _u pushBack "CTI_Salvager_West";
 _u pushBack "B_Truck_01_fuel_F";
 _u pushBack 'B_Slingload_01_Repair_F';
 _u pushBack 'B_Slingload_01_Fuel_F';
+
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
+	
+};
+if (CTI_FACTION_WEST == 1) then {
+	//NATO Tropic Vanilla
+	
+};
+if (CTI_FACTION_WEST == 2) then {
+	//NATO Winter Vanilla
+	
+};
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+	//Universal APEX
+	
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid APEX
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic APEX
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter APEX
+		
+	};
+};
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
+	//Universal CUP
+	
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid CUP
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic CUP
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter CUP
+		
+	};
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
+	//Universal OFPS
+	
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter OFPS
+		
+	};
 };
+
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_REPAIR], _u];
 _u = [];
+
+//Universal Vanilla
 _u pushBack "B_Truck_01_ammo_F";
 _u pushBack 'B_Slingload_01_Ammo_F';
 _u pushBack "Box_NATO_Wps_F";
 _u pushBack "B_supplyCrate_F";
+
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
+	
+};
+if (CTI_FACTION_WEST == 1) then {
+	//NATO Tropic Vanilla
+	
+};
+if (CTI_FACTION_WEST == 2) then {
+	//NATO Winter Vanilla
+	
+};
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+	//Universal APEX
+	
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid APEX
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic APEX
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter APEX
+		
+	};
+};
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
+	//Universal CUP
+	
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid CUP
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic CUP
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter CUP
+		
+	};
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
+	//Universal OFPS
+	
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter OFPS
+		
+	};
 };
+
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _u];
 _u = [];
+
+//Universal Vanilla
 _u pushBack "C_Boat_Civil_01_F";
 _u pushBack "B_Boat_Transport_01_F";
 _u pushBack "B_Boat_Armed_01_minigun_F";
 _u pushBack 'C_Boat_Civil_01_police_F';
 _u pushBack "B_SDV_01_F";
+
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
+	
+};
+if (CTI_FACTION_WEST == 1) then {
+	//NATO Tropic Vanilla
+	
+};
+if (CTI_FACTION_WEST == 2) then {
+	//NATO Winter Vanilla
+	
+};
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
+	//Universal APEX
 	_u pushBack "C_Scooter_Transport_01_F";
 	_u pushBack "I_C_Boat_Transport_02_F";
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid APEX
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic APEX
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter APEX
+		
+	};
 };
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
+	//Universal CUP
 	_u pushBack "CUP_B_RHIB_USMC";
 	_u pushBack "CUP_B_RHIB2Turret_USMC";
 	_u pushBack "CUP_B_Zodiac_USMC";
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid CUP
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic CUP
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter CUP
+		
+	};
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
+	//Universal OFPS
 	_u pushBack "Burnes_LCAC_1";
 	_u pushBack "sfp_gruppbat";
 	_u pushBack "rhsusf_mkvsoc";
 	_u pushBack "sfp_rbb_norrkoping";
 	_u pushBack "OFPS_Frigate_Blu";
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter OFPS
+		
+	};
 };
+
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
 _u = [];
+
+//Universal Vanilla
 _u pushBack "B_Quadbike_01_F";
 //_u pushBack "B_G_Offroad_01_F";
 _u pushBack "B_G_Offroad_01_armed_F";
@@ -567,9 +943,143 @@ _u pushBack "B_MRAP_01_F";
 _u pushBack "B_UGV_01_F";
 _u pushBack "B_UGV_01_rcws_F";
 _u pushBack "B_Truck_01_medical_F";
-_u pushBack 'B_Slingload_01_Medevac_F';
+
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
+	
+};
+if (CTI_FACTION_WEST == 1) then {
+	//NATO Tropic Vanilla
+	
+};
+if (CTI_FACTION_WEST == 2) then {
+	//NATO Winter Vanilla
+	
+};
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+	//Universal APEX
+	
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid APEX
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic APEX
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter APEX
+		
+	};
+};
+//--- CUP UNITS
+if (CTI_CUP_ADDON > 0) then { 
+	//Universal CUP
+	
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid CUP
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic CUP
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter CUP
+		
+	};
+};
+//--- OFPS UNITS
+if (CTI_OFPS_ADDON > 0) then { 
+	//Universal OFPS
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter OFPS
+		
+	};
+};
+
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_DEPOT], _u];
 _u = [];
+
+//Universal Vanilla
 _u pushBack "C_Boat_Civil_01_F";
 _u pushBack "B_Boat_Transport_01_F";
+
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
+	
+};
+if (CTI_FACTION_WEST == 1) then {
+	//NATO Tropic Vanilla
+	
+};
+if (CTI_FACTION_WEST == 2) then {
+	//NATO Winter Vanilla
+	
+};
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+	//Universal APEX
+	
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid APEX
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic APEX
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter APEX
+		
+	};
+};
+//--- CUP UNITS
+if (CTI_CUP_ADDON > 0) then { 
+	//Universal CUP
+	
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid CUP
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic CUP
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter CUP
+		
+	};
+};
+//--- OFPS UNITS
+if (CTI_OFPS_ADDON > 0) then { 
+	//Universal OFPS
+	
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 1) then {
+		//NATO Tropic OFPS
+		
+	};
+	if (CTI_FACTION_WEST == 2) then {
+		//NATO Winter OFPS
+		
+	};
+};
+
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_DEPOT_NAVAL], _u];
