@@ -534,10 +534,10 @@ _d pushBack 0;
 _c pushBack 'OFPS_BOBCAT';
 _p pushBack '';
 _n pushBack '%1 (Pacific)';
-_o pushBack 15000;
+_o pushBack 25000;
 _t pushBack 10;
-_u pushBack 0;
-_f pushBack CTI_FACTORY_REPAIR;
+_u pushBack 4;
+_f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "service-repairtruck";
 _d pushBack 0;
 */
