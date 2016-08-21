@@ -89,6 +89,55 @@ _u pushBack 'O_Helipilot_F';
 _u pushBack 'O_crew_F';
 _u pushBack 'O_Soldier_TL_F';
 _u pushBack 'O_Soldier_SL_F';
+_u pushBack 'O_Diver_F';
+_u pushBack 'O_Diver_TL_F';
+_u pushBack 'O_Recon_Exp_F';
+_u pushBack 'O_Recon_JTAC_F';
+_u pushBack 'O_Recon_Medic_F';
+_u pushBack 'O_Recon_F';
+_u pushBack 'O_Recon_LAT_F';
+_u pushBack 'O_Recon_TL_F';
+_u pushBack 'O_Sniper_F';
+_u pushBack 'O_ghillie_tna_F';
+_u pushBack 'O_Spotter_F';
+_u pushBack 'O_T_soldier_AR_F';
+_u pushBack 'O_T_Soldier_A_F';
+_u pushBack 'O_T_Soldier_exp_F';
+_u pushBack 'O_T_Soldier_GL_F';
+_u pushBack 'O_T_Soldier_M_F';
+_u pushBack 'O_T_Medic_F';
+_u pushBack 'O_T_Soldier_F';
+_u pushBack 'O_T_Soldier_PG_F';
+_u pushBack 'O_T_Engineer_F';
+_u pushBack 'O_T_Soldier_repair_F';
+_u pushBack 'O_T_Soldier_LAT_F';
+_u pushBack 'O_T_Soldier_AA_F';
+_u pushBack 'O_T_Soldier_AT_F';
+_u pushBack 'O_T_Soldier_UAV_F';
+_u pushBack 'O_T_Helipilot_F';
+_u pushBack 'O_T_Crew_F';
+_u pushBack 'O_T_Soldier_TL_F';
+_u pushBack 'O_T_Soldier_SL_F';
+//Special Forces
+_u pushBack 'O_T_Diver_F';
+_u pushBack 'O_T_Diver_TL_F';
+_u pushBack 'O_T_Recon_Exp_F';
+_u pushBack 'O_T_Recon_JTAC_F';
+_u pushBack 'O_T_Recon_Medic_F';
+_u pushBack 'O_T_Recon_F';
+_u pushBack 'O_T_Recon_LAT_F';
+_u pushBack 'O_T_Recon_TL_F';
+_u pushBack 'O_T_Sniper_F';
+_u pushBack 'O_T_ghillie_tna_F';
+_u pushBack 'O_T_Spotter_F';
+//PACIFIC Viper
+_u pushBack 'O_V_Soldier_Exp_ghex_F';
+_u pushBack 'O_V_Soldier_JTAC_ghex_F';
+_u pushBack 'O_V_Soldier_M_ghex_F';
+_u pushBack 'O_V_Soldier_ghex_F';
+_u pushBack 'O_V_Soldier_Medic_ghex_F';
+_u pushBack 'O_V_Soldier_LAT_ghex_F';
+_u pushBack 'O_V_Soldier_TL_ghex_F';
 
 if (CTI_FACTION_EAST > 0) then {
 	//CSAT Arid Vanilla
@@ -333,6 +382,15 @@ if (CTI_CUP_ADDON > 0) then {
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
 	_u pushBack 'dbo_CIV_new_bike';
+	_u pushBack 'OFPS_BRDM2';
+	_u pushBack 'OFPS_BRDM2ATGM';
+	_u pushBack 'OFPS_BRDM2HQ';
+	_u pushBack 'OFPS_BTR60';
+	_u pushBack 'OFPS_UAZ_AGS30';
+	_u pushBack 'OFPS_UAZ_MG';
+	_u pushBack 'OFPS_UAZ_METIS';
+	_u pushBack 'OFPS_UAZ';
+	_u pushBack 'OFPS_UAZ_SPG9';
 //	_u pushBack 'dbo_CIV_ol_bike';
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _u];
@@ -390,6 +448,15 @@ if (CTI_CUP_ADDON > 0) then {
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then {
+	_u pushBack 'OFPS_BMP1P';		
+	_u pushBack 'OFPS_BMP2';			
+	_u pushBack 'CUP_O_BMP3_RU';		
+	_u pushBack 'OFPS_T55';		
+	_u pushBack 'OFPS_BMP2_M';			
+	_u pushBack 'CUP_O_2S6M_RU';		
+	_u pushBack 'OFPS_T72A';		
+    _u pushBack 'OFPS_BMP2_ZSU';
+	_u pushBack 'OFPS_BMP3';
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
 _u = [];
