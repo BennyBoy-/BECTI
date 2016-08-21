@@ -94,6 +94,54 @@ _u pushBack "B_Helipilot_F";
 _u pushBack "B_crew_F";
 _u pushBack "B_Soldier_TL_F";
 _u pushBack "B_Soldier_SL_F";
+_u pushBack 'B_Diver_F';
+_u pushBack 'B_Diver_TL_F';
+_u pushBack 'B_Recon_Exp_F';
+_u pushBack 'B_Recon_JTAC_F';
+_u pushBack 'B_Recon_Medic_F';
+_u pushBack 'B_Recon_F';
+_u pushBack 'B_Recon_LAT_F';
+_u pushBack 'B_Recon_TL_F';
+	//NATO Tropic Vanilla
+	_u pushBack 'B_T_soldier_AR_F';
+	_u pushBack 'B_T_Soldier_A_F';
+	_u pushBack 'B_T_Soldier_exp_F';
+	_u pushBack 'B_T_Soldier_GL_F';
+	_u pushBack 'B_T_Soldier_M_F';
+	_u pushBack 'B_T_Medic_F';
+	_u pushBack 'B_T_Soldier_F';
+	_u pushBack 'B_T_Soldier_PG_F';
+	_u pushBack 'B_T_Engineer_F';
+	_u pushBack 'B_T_Soldier_repair_F';
+	_u pushBack 'B_T_Soldier_LAT_F';
+	_u pushBack 'B_T_Soldier_AA_F';
+	_u pushBack 'B_T_Soldier_AT_F';
+	_u pushBack 'B_T_Soldier_UAV_F';
+	_u pushBack 'B_T_Helipilot_F';
+	_u pushBack 'B_T_Crew_F';
+	_u pushBack 'B_T_Soldier_TL_F';
+	_u pushBack 'B_T_Soldier_SL_F';
+	//Special Forces
+	_u pushBack 'B_T_Diver_F';
+	_u pushBack 'B_T_Diver_TL_F';
+	_u pushBack 'B_T_Recon_Exp_F';
+	_u pushBack 'B_T_Recon_JTAC_F';
+	_u pushBack 'B_T_Recon_Medic_F';
+	_u pushBack 'B_T_Recon_F';
+	_u pushBack 'B_T_Recon_LAT_F';
+	_u pushBack 'B_T_Recon_TL_F';
+	_u pushBack 'B_T_Sniper_F';
+	_u pushBack 'B_T_ghillie_tna_F';
+	_u pushBack 'B_T_Spotter_F';
+	//--- Infantry CTRG Special
+	_u pushBack 'B_CTRG_Soldier_AR_tna_F';
+	_u pushBack 'B_CTRG_Soldier_Exp_tna_F';
+	_u pushBack 'B_CTRG_Soldier_JTAC_tna_F';
+	_u pushBack 'B_CTRG_Soldier_M_tna_F';
+	_u pushBack 'B_CTRG_Soldier_Medic_tna_F';
+	_u pushBack 'B_CTRG_Soldier_tna_F';
+	_u pushBack 'B_CTRG_Soldier_LAT_tna_F';
+	_u pushBack 'B_CTRG_Soldier_TL_tna_F';
 
 if (CTI_FACTION_WEST > 0) then {
 	//NATO Arid Vanilla
@@ -372,7 +420,7 @@ if (CTI_OFPS_ADDON > 0) then {
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
 _u = [];
-/*
+
 _u pushBack "B_Heli_Light_01_F";
 _u pushBack "B_Heli_Transport_01_F";
 _u pushBack "B_Heli_Transport_03_F";
@@ -386,8 +434,9 @@ if (CTI_APEX_ADDON > 0) then {
         _u pushBack "B_UAV_02_F";
 	_u pushBack 'B_T_VTOL_01_infantry_F';
 	_u pushBack 'B_T_VTOL_01_vehicle_F';
+	_u pushBack 'B_T_VTOL_01_armed_F';	
 };
-*/
+
 //--- CUP UNITS
 // Schmeisser Vehicle List AIR FACTORY - ALL - 
 if (CTI_CUP_ADDON > 0) then { 
@@ -406,7 +455,9 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_A10_CAS_USA';	
 	_u pushBack 'CUP_B_A10_AT_USA';		
 	_u pushBack 'CUP_B_F35B_AA_BAF';	
-	_u pushBack 'CUP_B_AV8B_GBU12_USMC';	
+	_u pushBack 'CUP_B_AV8B_GBU12_USMC';
+	_u pushBack 'CUP_B_AV8B_CAP_USMC';
+	_u pushBack 'CUP_B_AV8B_MK82_USMC';	
 	_u pushBack 'CUP_B_MV22_USMC_RAMPGUN';  
 	_u pushBack 'CUP_B_AC47_Spooky_USA';	
 	_u pushBack 'CUP_C_DC3_TanoAir_CIV';
@@ -414,7 +465,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'globemaster_c17_NATO';	
 	_u pushBack 'O_UAV_02_F';
 	_u pushBack 'C_Plane_Civil_01_racing_F'; 
-	_u pushBack 'B_T_VTOL_01_armed_F';	
 	_u pushBack 'usaf_b1b';			
 	_u pushBack 'sab_alphajet5';		
 	_u pushBack 'bwi_a3_at6b';		
@@ -424,6 +474,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'B_Heli_Attack_01_F';	
 	_u pushBack 'B_Heli_Light_01_armed_F';
         _u pushBack 'sab_alphajet3';
+			_u pushBack 'CUP_B_F35B_LGB_USMC';
 	
 /*
 	_u pushBack 'CUP_B_MH6J_USA';
@@ -458,11 +509,8 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_MV22_USMC_RAMPGUN';
 	_u pushBack 'CUP_USMC_MQ9';
 	_u pushBack 'CUP_B_A10_CAS_USA';
-	_u pushBack 'CUP_B_AV8B_CAP_USMC';
-	_u pushBack 'CUP_B_AV8B_MK82_USMC';
 	_u pushBack 'CUP_B_AV8B_GBU12_USMC';
 	_u pushBack 'CUP_B_F35B_AA_USMC';
-	_u pushBack 'CUP_B_F35B_LGB_USMC';
 	_u pushBack 'CUP_B_AC47_Spooky_USA';
 */
 };
