@@ -14,6 +14,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["CUP_launch_RPG18", 5], 
 		["CUP_RPG18_M", 20],
 		["Toolkit", 1],
+		["acc_flashlight", 10],
 		["CUP_sgun_Saiga12K", 10],
 		["CUP_8Rnd_B_Saiga12_74Slug_M", 20],
 		["30Rnd_9x21_Mag", 20]
@@ -22,6 +23,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["CUP_launch_RPG18", 5], 
 		["CUP_RPG18_M", 20],
 		["Toolkit", 1],
+		["acc_flashlight", 10],
 		["CUP_sgun_Saiga12K", 10],
 		["CUP_8Rnd_B_Saiga12_74Slug_M", 10],
 		["30Rnd_9x21_Mag", 20]
@@ -30,6 +32,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["CUP_launch_RPG18", 5], 
 		["CUP_RPG18_M", 20],
 		["Toolkit", 1],
+		["acc_flashlight", 10],
 		["CUP_sgun_Saiga12K", 10],
 		["CUP_8Rnd_B_Saiga12_74Slug_M", 20],
 		["30Rnd_9x21_Mag", 20]
@@ -38,6 +41,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["CUP_launch_RPG18", 5], 
 		["CUP_RPG18_M", 20],
 		["Toolkit", 1],
+		["acc_flashlight", 10],
 		["CUP_sgun_Saiga12K", 10],
 		["CUP_8Rnd_B_Saiga12_74Slug_M", 20],
 		["30Rnd_9x21_Mag", 20]
@@ -57,7 +61,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["acc_flashlight", 10],
 		["optic_ACO_grn", 3],
 		["Toolkit", 1]	]],
-	["O_MRAP_02_F", [	
+	    ["O_MRAP_02_F", [	
 		["Toolkit", 1],
 		["firstaidkit", 10],
 		["30Rnd_556x45_Stanag", 15],
@@ -100,50 +104,12 @@ _u pushBack 'O_Recon_TL_F';
 _u pushBack 'O_Sniper_F';
 _u pushBack 'O_ghillie_tna_F';
 _u pushBack 'O_Spotter_F';
-_u pushBack 'O_T_soldier_AR_F';
-_u pushBack 'O_T_Soldier_A_F';
-_u pushBack 'O_T_Soldier_exp_F';
-_u pushBack 'O_T_Soldier_GL_F';
-_u pushBack 'O_T_Soldier_M_F';
-_u pushBack 'O_T_Medic_F';
-_u pushBack 'O_T_Soldier_F';
-_u pushBack 'O_T_Soldier_PG_F';
-_u pushBack 'O_T_Engineer_F';
-_u pushBack 'O_T_Soldier_repair_F';
-_u pushBack 'O_T_Soldier_LAT_F';
-_u pushBack 'O_T_Soldier_AA_F';
-_u pushBack 'O_T_Soldier_AT_F';
-_u pushBack 'O_T_Soldier_UAV_F';
-_u pushBack 'O_T_Helipilot_F';
-_u pushBack 'O_T_Crew_F';
-_u pushBack 'O_T_Soldier_TL_F';
-_u pushBack 'O_T_Soldier_SL_F';
-//Special Forces
-_u pushBack 'O_T_Diver_F';
-_u pushBack 'O_T_Diver_TL_F';
-_u pushBack 'O_T_Recon_Exp_F';
-_u pushBack 'O_T_Recon_JTAC_F';
-_u pushBack 'O_T_Recon_Medic_F';
-_u pushBack 'O_T_Recon_F';
-_u pushBack 'O_T_Recon_LAT_F';
-_u pushBack 'O_T_Recon_TL_F';
-_u pushBack 'O_T_Sniper_F';
-_u pushBack 'O_T_ghillie_tna_F';
-_u pushBack 'O_T_Spotter_F';
-//PACIFIC Viper
-_u pushBack 'O_V_Soldier_Exp_ghex_F';
-_u pushBack 'O_V_Soldier_JTAC_ghex_F';
-_u pushBack 'O_V_Soldier_M_ghex_F';
-_u pushBack 'O_V_Soldier_ghex_F';
-_u pushBack 'O_V_Soldier_Medic_ghex_F';
-_u pushBack 'O_V_Soldier_LAT_ghex_F';
-_u pushBack 'O_V_Soldier_TL_ghex_F';
 
-if (CTI_FACTION_EAST > 0) then {
+if (CTI_FACTION_EAST == 0) then {
 	//CSAT Arid Vanilla
 	//_u pushBack 'O_Soldier_F';
 };
-if (CTI_FACTION_EAST > 1) then {
+if (CTI_FACTION_EAST == 1) then {
 	//CSAT Tropic Vanilla
 	//Pacfic
 	_u pushBack 'O_T_soldier_AR_F';
@@ -185,7 +151,7 @@ if (CTI_FACTION_EAST > 1) then {
 	_u pushBack 'O_V_Soldier_LAT_ghex_F';
 	_u pushBack 'O_V_Soldier_TL_ghex_F';
 };
-if (CTI_FACTION_EAST > 2) then {
+if (CTI_FACTION_EAST == 2) then {
 	//CSAT Winter Vanilla
 	//_u pushBack 'O_Soldier_F';
 };
@@ -194,15 +160,15 @@ if (CTI_APEX_ADDON > 0) then {
 	//Universal APEX
 	//_u pushBack 'O_Soldier_F';
 
-	if (CTI_FACTION_EAST > 0) then {
+	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid APEX
 		//_u pushBack 'O_Soldier_F';
 	};
-	if (CTI_FACTION_EAST > 1) then {
+	if (CTI_FACTION_EAST == 1) then {
 		//CSAT Tropic APEX
 		//_u pushBack 'O_Soldier_F';
 	};
-	if (CTI_FACTION_EAST > 2) then {
+	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter APEX
 		//_u pushBack 'O_Soldier_F';
 	};
@@ -223,15 +189,15 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_RU_Sniper_KSVK';
     _u pushBack 'CUP_O_RU_Spotter';
 
-	if (CTI_FACTION_EAST > 0) then {
+	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid CUP
 		//_u pushBack 'O_Soldier_F';
 	};
-	if (CTI_FACTION_EAST > 1) then {
+	if (CTI_FACTION_EAST == 1) then {
 		//CSAT Tropic CUP
 		//_u pushBack 'O_Soldier_F';
 	};
-	if (CTI_FACTION_EAST > 2) then {
+	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter CUP
 		//_u pushBack 'O_Soldier_F';
 	};
@@ -241,15 +207,15 @@ if (CTI_OFPS_ADDON > 0) then {
 	//Universal OFPS
 	//_u pushBack 'O_Soldier_F';
 
-	if (CTI_FACTION_EAST > 0) then {
+	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid OFPS
 		//_u pushBack 'O_Soldier_F';
 	};
-	if (CTI_FACTION_EAST > 1) then {
+	if (CTI_FACTION_EAST == 1) then {
 		//CSAT Tropic OFPS
 		//_u pushBack 'O_Soldier_F';
 	};
-	if (CTI_FACTION_EAST > 2) then {
+	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter OFPS
 		//_u pushBack 'O_Soldier_F';
 	};

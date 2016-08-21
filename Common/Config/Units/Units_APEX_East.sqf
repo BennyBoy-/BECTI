@@ -11,7 +11,7 @@ _f = []; //--- Built from Factory.
 _s = []; //--- Script
 _d = []; //--- Extra Distance (From Factory)
 
---- Infantry Pacific
+//--- Infantry Pacific
 
 _c pushBack 'O_T_Soldier_A_F';
 _p pushBack '';

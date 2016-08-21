@@ -17,6 +17,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["CUP_8Rnd_B_Beneli_74Pellets", 20],
 		["CUP_sgun_M1014", 10],
 		["CUP_30Rnd_9x19_MP5", 20],
+		["acc_flashlight", 10],
 		["Toolkit", 1]
 	]],
 	["CUP_B_M113_USA", [
@@ -26,6 +27,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["CUP_8Rnd_B_Beneli_74Pellets", 20],
 		["CUP_sgun_M1014", 10],
 		["CUP_30Rnd_9x19_MP5", 20],
+		["acc_flashlight", 10],
 		["Toolkit", 1]
 	]],
 	["CUP_B_LR_Special_GMG_GB_W", [
@@ -35,6 +37,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["CUP_8Rnd_B_Beneli_74Pellets", 20],
 		["CUP_sgun_M1014", 10],
 		["CUP_30Rnd_9x19_MP5", 20],
+		["acc_flashlight", 10],
 		["Toolkit", 1]
 	]],
 	["CUP_B_HMMWV_M1114_USMC", [
@@ -44,6 +47,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["CUP_8Rnd_B_Beneli_74Pellets", 20],
 		["CUP_sgun_M1014", 10],
 		["CUP_30Rnd_9x19_MP5", 20],
+		["acc_flashlight", 10],
 		["Toolkit", 1]
 	]]
 	//,	["B_Heli_Transport_01_F", []]
@@ -60,12 +64,14 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["3rnd_he_grenade_shell", 8],
 		["firstaidkit", 20],
 		["optic_ACO_grn", 3],
+		["acc_flashlight", 10],
 		["Toolkit", 1]
 	]],
 	["B_MRAP_01_F", [
 		["Toolkit", 1],["firstaidkit", 10],
 		["30Rnd_556x45_Stanag", 15],
 		["launch_NLAW_F", 5], 
+		["acc_flashlight", 10],
 		["NLAW_F", 20]]]
 ]];
 };
@@ -102,56 +108,16 @@ _u pushBack 'B_Recon_Medic_F';
 _u pushBack 'B_Recon_F';
 _u pushBack 'B_Recon_LAT_F';
 _u pushBack 'B_Recon_TL_F';
-	//NATO Tropic Vanilla
-	_u pushBack 'B_T_soldier_AR_F';
-	_u pushBack 'B_T_Soldier_A_F';
-	_u pushBack 'B_T_Soldier_exp_F';
-	_u pushBack 'B_T_Soldier_GL_F';
-	_u pushBack 'B_T_Soldier_M_F';
-	_u pushBack 'B_T_Medic_F';
-	_u pushBack 'B_T_Soldier_F';
-	_u pushBack 'B_T_Soldier_PG_F';
-	_u pushBack 'B_T_Engineer_F';
-	_u pushBack 'B_T_Soldier_repair_F';
-	_u pushBack 'B_T_Soldier_LAT_F';
-	_u pushBack 'B_T_Soldier_AA_F';
-	_u pushBack 'B_T_Soldier_AT_F';
-	_u pushBack 'B_T_Soldier_UAV_F';
-	_u pushBack 'B_T_Helipilot_F';
-	_u pushBack 'B_T_Crew_F';
-	_u pushBack 'B_T_Soldier_TL_F';
-	_u pushBack 'B_T_Soldier_SL_F';
-	//Special Forces
-	_u pushBack 'B_T_Diver_F';
-	_u pushBack 'B_T_Diver_TL_F';
-	_u pushBack 'B_T_Recon_Exp_F';
-	_u pushBack 'B_T_Recon_JTAC_F';
-	_u pushBack 'B_T_Recon_Medic_F';
-	_u pushBack 'B_T_Recon_F';
-	_u pushBack 'B_T_Recon_LAT_F';
-	_u pushBack 'B_T_Recon_TL_F';
-	_u pushBack 'B_T_Sniper_F';
-	_u pushBack 'B_T_ghillie_tna_F';
-	_u pushBack 'B_T_Spotter_F';
-	//--- Infantry CTRG Special
-	_u pushBack 'B_CTRG_Soldier_AR_tna_F';
-	_u pushBack 'B_CTRG_Soldier_Exp_tna_F';
-	_u pushBack 'B_CTRG_Soldier_JTAC_tna_F';
-	_u pushBack 'B_CTRG_Soldier_M_tna_F';
-	_u pushBack 'B_CTRG_Soldier_Medic_tna_F';
-	_u pushBack 'B_CTRG_Soldier_tna_F';
-	_u pushBack 'B_CTRG_Soldier_LAT_tna_F';
-	_u pushBack 'B_CTRG_Soldier_TL_tna_F';
 
-if (CTI_FACTION_WEST > 0) then {
+if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
 	//_u pushBack 'O_Soldier_F';
 };
-if (CTI_FACTION_WEST > 1) then {
+if (CTI_FACTION_WEST == 1) then {
 	//NATO Tropic Vanilla
 	//_u pushBack 'O_Soldier_F';
 };
-if (CTI_FACTION_WEST > 2) then {
+if (CTI_FACTION_WEST == 2) then {
 	//NATO Winter Vanilla
 	//_u pushBack 'O_Soldier_F';
 };
@@ -160,11 +126,11 @@ if (CTI_APEX_ADDON > 0) then {
 	//Universal APEX
 	//_u pushBack 'O_Soldier_F';
 
-	if (CTI_FACTION_WEST > 0) then {
+	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid APEX
 		//_u pushBack 'O_Soldier_F';
 	};
-	if (CTI_FACTION_WEST > 1) then {
+	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic APEX
 		//NATO Pacific
 		_u pushBack 'B_T_soldier_AR_F';
@@ -207,7 +173,7 @@ if (CTI_APEX_ADDON > 0) then {
 		_u pushBack 'B_CTRG_Soldier_LAT_tna_F';
 		_u pushBack 'B_CTRG_Soldier_TL_tna_F';
 	};
-	if (CTI_FACTION_WEST > 2) then {
+	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter APEX
 		//_u pushBack 'O_Soldier_F';
 	};
@@ -229,15 +195,15 @@ if (CTI_CUP_ADDON > 0) then {
     _u pushBack 'CUP_B_USMC_Spotter';
     _u pushBack 'B_diver_TL_F';
 
-	if (CTI_FACTION_WEST > 0) then {
+	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid CUP
 		//_u pushBack 'O_Soldier_F';
 	};
-	if (CTI_FACTION_WEST > 1) then {
+	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic CUP
 		//_u pushBack 'O_Soldier_F';
 	};
-	if (CTI_FACTION_WEST > 2) then {
+	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter CUP
 		//_u pushBack 'O_Soldier_F';
 	};
@@ -247,15 +213,15 @@ if (CTI_OFPS_ADDON > 0) then {
 	//Universal OFPS
 	//_u pushBack 'O_Soldier_F';
 
-	if (CTI_FACTION_WEST > 0) then {
+	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid OFPS
 		//_u pushBack 'O_Soldier_F';
 	};
-	if (CTI_FACTION_WEST > 1) then {
+	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic OFPS
 		//_u pushBack 'O_Soldier_F';
 	};
-	if (CTI_FACTION_WEST > 2) then {
+	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter OFPS
 		//_u pushBack 'O_Soldier_F';
 	};
