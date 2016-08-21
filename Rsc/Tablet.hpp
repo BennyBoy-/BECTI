@@ -149,7 +149,7 @@ class RscTabletTextos
 		color = "#ffffff";
 		align = "center";
 		shadow = 0;
-		size = 0.6;
+		size = 0.8;
 	};
    
 };
