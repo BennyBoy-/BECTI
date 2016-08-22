@@ -44,6 +44,16 @@ _d pushBack 0;*/
 //--- Air Vehicles
 
 
+_c pushBack 'JS_JC_FA18F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 68000;
+_t pushBack 50;
+_u pushBack 4;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 50;
+
 _c pushBack 'globemaster_c17_NATO';
 _p pushBack '';
 _n pushBack 'C17 Transport';
@@ -247,6 +257,16 @@ _u pushBack 3;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "service-medic";
 _d pushBack 130;
+
+_c pushBack 'sab_l19_sea_2';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 12000;
+_t pushBack 25;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_NAVAL;
+_s pushBack "";
+_d pushBack 13;
 
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s, _d] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";
