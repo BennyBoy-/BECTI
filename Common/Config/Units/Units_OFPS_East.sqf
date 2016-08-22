@@ -322,8 +322,8 @@ _o pushBack 12000;
 _t pushBack 25;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_NAVAL;
-_s pushBack "service-medic";
-_d pushBack 130;
+_s pushBack "";
+_d pushBack 13;
 
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s, _d] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";
