@@ -426,7 +426,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
-/*
+
 _c pushBack 'OFPS_HUNTER';
 _p pushBack '';
 _n pushBack 'Hunter (Pacific)';
@@ -456,9 +456,9 @@ _u pushBack 3;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
-*/
+
 //--- Heavy Vehicles
-/*
+
 _c pushBack 'OFPS_MARSHALL';
 _p pushBack '';
 _n pushBack '%1 (Pacific)';
@@ -528,9 +528,7 @@ _u pushBack 4;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
-*/
-//--- Repair Vehicles
-/*
+
 _c pushBack 'OFPS_BOBCAT';
 _p pushBack '';
 _n pushBack '%1 (Pacific)';
@@ -540,7 +538,8 @@ _u pushBack 4;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "service-repairtruck";
 _d pushBack 0;
-*/
+
+//--- Repair Vehicles
 
 //--- Ammo Vehicles
 
