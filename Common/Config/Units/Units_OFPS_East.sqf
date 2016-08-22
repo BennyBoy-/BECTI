@@ -63,6 +63,16 @@ _d pushBack 0;
 
 //--- Air Vehicles
 
+_c pushBack 'JS_JC_SU35';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 68000;
+_t pushBack 50;
+_u pushBack 4;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'OFPS_BUZAA_O';
 _p pushBack '';
 _n pushBack 'A143 Buzzard CAP';
@@ -301,6 +311,16 @@ _n pushBack 'NAZAC - Frigate';
 _o pushBack 120000;
 _t pushBack 25;
 _u pushBack 3;
+_f pushBack CTI_FACTORY_NAVAL;
+_s pushBack "service-medic";
+_d pushBack 130;
+
+_c pushBack 'sab_l19_sea_1';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 12000;
+_t pushBack 25;
+_u pushBack 2;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "service-medic";
 _d pushBack 130;
