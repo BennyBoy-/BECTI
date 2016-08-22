@@ -318,11 +318,11 @@ _d pushBack 130;
 _c pushBack 'sab_l19_sea_1';
 _p pushBack '';
 _n pushBack '';
-_o pushBack 12000;
+_o pushBack 15000;
 _t pushBack 25;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_NAVAL;
-_s pushBack "";
+_s pushBack "service-medic";
 _d pushBack 13;
 
 
