@@ -1642,6 +1642,301 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
+//-------------- Swedish Winter
+//--- Infantry
+_c pushBack 'sfp_m90s_rifleman_ak5';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 75;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_aa_specialist_rbs69';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_automaticrifleman_ksp90';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_at_specialist_pskott86';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 200;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_crew';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 75;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_at_specialist_grg86';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 550;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_engineer';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_explosive_specialist';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_gr';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 100;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_medic';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 100;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_machinegunner_ksp58';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_pilot';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 75;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_rifleman_ag90';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 150;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_teamleader';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_squadleader';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90t_combat_diver';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90t_combat_diver_tl';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+//--- Light
+_c pushBack 'sfp_bv206';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 200;
+_t pushBack 30;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_tgb1111_sog_ksp58';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 350;
+_t pushBack 30;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_tgb13_ksp58';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 350;
+_t pushBack 30;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_tgb1111';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 400;
+_t pushBack 30;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_tgb1111_sog_rbs56';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 550;
+_t pushBack 30;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_tgb16_rws';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 800;
+_t pushBack 30;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+//--- APCs
+_c pushBack 'sfp_patgb203';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 800;
+_t pushBack 30;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_strf90c_snow';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 1500;
+_t pushBack 30;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_lvkv90c_snow';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 1500;
+_t pushBack 30;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+//--- Tanks
+_c pushBack 'sfp_ikv91';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 600;
+_t pushBack 30;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+	
+_c pushBack 'sfp_strv102';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 1500;
+_t pushBack 30;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_strv122_snow';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 4000;
+_t pushBack 30;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
 //--- Zombies
 _c pushBack 'RyanZombieboss15';
 _p pushBack '';
