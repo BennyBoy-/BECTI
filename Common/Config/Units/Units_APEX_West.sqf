@@ -461,7 +461,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_MARSHALL';
 _p pushBack '';
-_n pushBack '%1 (Pacific)';
+_n pushBack 'AMV-7 Marshall (Pacific)';
 _o pushBack 7000;
 _t pushBack 10;
 _u pushBack 2;
@@ -471,7 +471,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_PANTHER';
 _p pushBack '';
-_n pushBack '%1 (Pacific)';
+_n pushBack 'IFV-6c Panther (Pacific)';
 _o pushBack 5000;
 _t pushBack 10;
 _u pushBack 2;
@@ -481,7 +481,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_CHEETAH';
 _p pushBack '';
-_n pushBack '%1 (Pacific)';
+_n pushBack 'IFV-6a Cheetah (Pacific)';
 _o pushBack 15600;
 _t pushBack 10;
 _u pushBack 2;
@@ -491,7 +491,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_SLAMMER';
 _p pushBack '';
-_n pushBack '%1 (Pacific)';
+_n pushBack 'M2A1 Slammer (Pacific)';
 _o pushBack 24000;
 _t pushBack 10;
 _u pushBack 3;
@@ -501,7 +501,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_SLAMMER_TUSK';
 _p pushBack '';
-_n pushBack '%1 (Pacific)';
+_n pushBack 'M2A4 Slammer UP (Pacific)';
 _o pushBack 26000;
 _t pushBack 10;
 _u pushBack 3;
@@ -511,7 +511,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_SCORCHER';
 _p pushBack '';
-_n pushBack '%1 (Pacific)';
+_n pushBack 'M4 Scorcher (Pacific)';
 _o pushBack 85400;
 _t pushBack 10;
 _u pushBack 4;
@@ -521,7 +521,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_SANDSTORM';
 _p pushBack '';
-_n pushBack '%1 (Pacific)';
+_n pushBack 'M5 Sandstorm MLRS (Pacific)';
 _o pushBack 100000;
 _t pushBack 10;
 _u pushBack 4;
@@ -531,7 +531,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_BOBCAT';
 _p pushBack '';
-_n pushBack '%1 (Pacific)';
+_n pushBack 'CRV-6e Bobcat (Pacific)';
 _o pushBack 25000;
 _t pushBack 10;
 _u pushBack 4;
