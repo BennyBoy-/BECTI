@@ -345,6 +345,16 @@ _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'OFPS_HMMWV_AA';
+_p pushBack '';
+_n pushBack 'HMMV Avenger (Pacific)';
+_o pushBack 8600;
+_t pushBack 10;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'CUP_B_HMMWV_Crows_M2_USA';
 _p pushBack '';
 _n pushBack 'HMMV Crows M2';
@@ -378,6 +388,16 @@ _d pushBack 0;*/
 _c pushBack 'CUP_B_HMMWV_DSHKM_GPK_ACR';
 _p pushBack '';
 _n pushBack 'HMMV DSHKM';
+_o pushBack 1350;
+_t pushBack 10;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_HMMWV_GPK';
+_p pushBack '';
+_n pushBack 'HMMV GPK (Pacific)';
 _o pushBack 1350;
 _t pushBack 10;
 _u pushBack 0;
@@ -425,19 +445,39 @@ _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'CUP_B_HMMWV_SOV_USA';
+_c pushBack 'CUP_B_HMMWV_SOV_USA';
 _p pushBack '';
 _n pushBack '';
-_o pushBack 600;
+_o pushBack 2150;
 _t pushBack 10;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
-*/
+
+_c pushBack 'OFPS_HMMWV_SOV';
+_p pushBack '';
+_n pushBack 'HMMWV SOV Mk19 (Pacific)';
+_o pushBack 2150;
+_t pushBack 10;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'CUP_B_HMMWV_TOW_USMC';
 _p pushBack '';
 _n pushBack 'HMMV TOW';
+_o pushBack 5550;
+_t pushBack 10;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_HMMWV_TOW';
+_p pushBack '';
+_n pushBack 'HMMV TOW (Pacific)';
 _o pushBack 5550;
 _t pushBack 10;
 _u pushBack 2;
@@ -848,6 +888,16 @@ _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'OFPS_M1A1';
+_p pushBack '';
+_n pushBack 'M1A1 MBT (Pacific)';
+_o pushBack 26500;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'CUP_B_M1A2_TUSK_MG_US_Army';
 _p pushBack '';
 _n pushBack 'M1A2 Abrams';
@@ -892,6 +942,16 @@ _c pushBack 'CUP_B_M2A3Bradley_USA_W';
 _p pushBack '';
 _n pushBack 'M2A3 Bradley';
 _o pushBack 10300;
+_t pushBack 20;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_M2A3Bradley_USA_W';
+_p pushBack '';
+_n pushBack 'M2 Bradley (Pacific)';
+_o pushBack 8300;
 _t pushBack 20;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_HEAVY;
