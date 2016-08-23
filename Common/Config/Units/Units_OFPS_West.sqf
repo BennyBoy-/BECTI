@@ -236,7 +236,7 @@ _t pushBack 25;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "service-medic";
-_d pushBack 50;
+_d pushBack 10;
 
 _c pushBack 'sfp_svavare2000_transport';
 _p pushBack '';
@@ -246,7 +246,7 @@ _t pushBack 25;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "service-medic";
-_d pushBack 50;
+_d pushBack 10;
 
 /*_c pushBack 'sfp_gruppbat';
 _p pushBack '';
