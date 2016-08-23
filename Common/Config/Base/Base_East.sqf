@@ -553,6 +553,12 @@ _categories pushBack 	"Fortification";
 };
 
 if (CTI_OFPS_ADDON > 0) then {
+_headers pushBack 		"RBS 70 aa";
+_classes pushBack 		"sfp_rbs70";
+_prices pushBack 		8000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+
 _headers pushBack 		"C-RAM Phalanx";
 _classes pushBack 		"C_at_phalanx_35AI";
 _prices pushBack 		35000;
