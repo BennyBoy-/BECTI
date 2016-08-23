@@ -344,6 +344,9 @@ if (CTI_CUP_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 1) then {
 		//CSAT Tropic CUP
+	_u pushBack 'OFPS_BRDM2_T';
+	_u pushBack 'OFPS_BRDM2HQ_T';
+	_u pushBack 'OFPS_BRDM2ATGM_T';
 		
 	};
 	if (CTI_FACTION_EAST == 2) then {
@@ -460,6 +463,14 @@ if (CTI_CUP_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 1) then {
 		//CSAT Tropic CUP
+	_u pushBack 'OFPS_T55_T';		
+	_u pushBack 'OFPS_T72_T';
+	_u pushBack 'OFPS_BMP1_T';
+	_u pushBack 'OFPS_BMP1P_T';
+	_u pushBack 'OFPS_BMP2_T';
+	_u pushBack 'OFPS_BMP2_HQ_T';
+	_u pushBack 'OFPS_BMP2_M_T';
+	_u pushBack 'OFPS_BMP2_ZSU_T';
 		
 	};
 	if (CTI_FACTION_EAST == 2) then {
