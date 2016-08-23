@@ -751,7 +751,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_BMP2_M_T';
 _p pushBack '';
-_n pushBack (format ["Mobile Respawn - Range %1 m (Pacific)",CTI_RESPAWN_MOBILE_RANGE]);
+_n pushBack (format ["Mobile Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
 _o pushBack 6400;
 _t pushBack 20;
 _u pushBack 1;
