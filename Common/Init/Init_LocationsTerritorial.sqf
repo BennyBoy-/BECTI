@@ -332,10 +332,10 @@ switch (toLower(worldName)) do {
 
 switch (toLower(worldName)) do {
 	case "beketov": {
-		Sentsy setVariable ["cti_town_neighbors",[OutpostJordan,KrasnyeSeltsy]];
-		KrasnyeSeltsy setVariable ["cti_town_neighbors",[Shalaevo,Sentsy,Polshishkino]];
+		Sentsy setVariable ["cti_town_neighbors",[OutpostJordan,KrasyneSeltsy]];
+		KrasyneSeltsy setVariable ["cti_town_neighbors",[Shalaevo,Sentsy,Polshishkino]];
 		Polivanovo setVariable ["cti_town_neighbors",[Shalaevo,Zhukovo,Polshishkino]];
-		Polshishkino setVariable ["cti_town_neighbors",[Shalaevo,KrasnyeSeltsy,Zhukovo,Polshishkino,Mikhalevo]];
+		Polshishkino setVariable ["cti_town_neighbors",[Shalaevo,KrasyneSeltsy,Zhukovo,Polshishkino,Mikhalevo]];
 		Zhukovo setVariable ["cti_town_neighbors",[Polivanovo,Polshishkino,Kuzhadon]];
 		Kuzhadon setVariable ["cti_town_neighbors",[Zhukovo,Armanikha,Shpagino]];
 		Shpagino setVariable ["cti_town_neighbors",[Kuzhadon,NorthWestBeketov]];
@@ -357,6 +357,6 @@ switch (toLower(worldName)) do {
 		Arshavino setVariable ["cti_town_neighbors",[Vorontsovo,Studenets,Dubionki]];
 		Dubionki setVariable ["cti_town_neighbors",[Arshavino,OutpostJordan]];
 		OutpostJordan setVariable ["cti_town_neighbors",[Dubionki,Sentsy]];
-		Shalaevo setVariable ["cti_town_neighbors",[Polivanovo,Polshishkino,KrasnyeSeltsy]];
+		Shalaevo setVariable ["cti_town_neighbors",[Polivanovo,Polshishkino,KrasyneSeltsy]];
 	};
 };
