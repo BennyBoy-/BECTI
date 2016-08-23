@@ -328,7 +328,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_BRDM2_T';
 _p pushBack '';
-_n pushBack '';
+_n pushBack 'BRDM2 (Pacific)';
 _o pushBack 1200;
 _t pushBack 10;
 _u pushBack 0;
@@ -348,7 +348,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_BRDM2ATGM_T';
 _p pushBack '';
-_n pushBack 'BRDM ATGM';
+_n pushBack 'BRDM ATGM (Pacific)';
 _o pushBack 4700;
 _t pushBack 30;
 _u pushBack 0;
@@ -378,7 +378,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_BRDM2HQ_T';
 _p pushBack '';
-_n pushBack '';
+_n pushBack 'BRDM2 HQ (Pacific)';
 _o pushBack 1000;
 _t pushBack 10;
 _u pushBack 0;
@@ -711,7 +711,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_BMP1_T';
 _p pushBack '';
-_n pushBack 'BMP1-P';
+_n pushBack 'BMP1-P (Pacific)';
 _o pushBack 5500;
 _t pushBack 20;
 _u pushBack 0;
@@ -731,7 +731,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_BMP2_T';
 _p pushBack '';
-_n pushBack 'BMP2';
+_n pushBack 'BMP2 (Pacific)';
 _o pushBack 6800;
 _t pushBack 20;
 _u pushBack 0;
@@ -751,7 +751,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_BMP2_M_T';
 _p pushBack '';
-_n pushBack (format ["Mobile Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
+_n pushBack (format ["Mobile Respawn - Range %1 m (Pacific)",CTI_RESPAWN_MOBILE_RANGE]);
 _o pushBack 6400;
 _t pushBack 20;
 _u pushBack 1;
@@ -759,7 +759,7 @@ _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "service-medic";
 _d pushBack 0;
 
-/*_c pushBack 'CUP_O_BMP2_AMB_CSAT';
+_c pushBack 'CUP_O_BMP2_AMB_CSAT';
 _p pushBack '';
 _n pushBack (format ["Mobile Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
 _o pushBack 5000;
@@ -767,7 +767,7 @@ _t pushBack 20;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "service-medic";
-_d pushBack 0;*/
+_d pushBack 0;
 
 _c pushBack 'OFPS_BMP2_ZSU';
 _p pushBack '';
@@ -781,7 +781,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_BMP2_ZSU_T';
 _p pushBack '';
-_n pushBack '';
+_n pushBack 'BMP2 ZSU AA (Pacific)';
 _o pushBack 3000;
 _t pushBack 20;
 _u pushBack 0;
@@ -791,7 +791,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_T55';
 _p pushBack '';
-_n pushBack 'T55';
+_n pushBack 'T-55';
 _o pushBack 9200;
 _t pushBack 20;
 _u pushBack 0;
@@ -801,7 +801,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_T55_T';
 _p pushBack '';
-_n pushBack 'T55';
+_n pushBack 'T-55 (Pacific)';
 _o pushBack 9200;
 _t pushBack 20;
 _u pushBack 0;
@@ -811,7 +811,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_T72A';
 _p pushBack '';
-_n pushBack '';
+_n pushBack 'T-72';
 _o pushBack 18000;
 _t pushBack 20;
 _u pushBack 1;
@@ -821,7 +821,7 @@ _d pushBack 0;
 
 _c pushBack 'OFPS_T72_T';
 _p pushBack '';
-_n pushBack '';
+_n pushBack 'T-72 (Pacific)';
 _o pushBack 18000;
 _t pushBack 20;
 _u pushBack 1;
