@@ -377,7 +377,8 @@ if (CTI_CUP_ADDON > 0) then {
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
 	//Universal OFPS
-	
+		_u pushBack 'dbo_CIV_new_bike';
+	//	_u pushBack 'dbo_CIV_ol_bike';
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid OFPS
@@ -389,24 +390,10 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter OFPS
-		
+		_u pushBack 'sfp_bv206_winter';
 	};
 };
 
-//--- APEX UNITS
-if (CTI_APEX_ADDON > 0) then {
-
-};
-//--- CUP UNITS
-// Schmeisser Vehicle List LIGHT FACTORY - ALL -
-if (CTI_CUP_ADDON > 0) then {
-
-};
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then {
-	_u pushBack 'dbo_CIV_new_bike';
-//	_u pushBack 'dbo_CIV_ol_bike';
-};
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _u];
 _u = [];
 
@@ -416,12 +403,12 @@ _u = [];
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
-_u pushBack "B_APC_Wheeled_01_cannon_F";
-_u pushBack "B_APC_Tracked_01_rcws_F";
-_u pushBack "B_APC_Tracked_01_AA_F";
-_u pushBack "B_MBT_01_cannon_F";
-_u pushBack "B_MBT_01_arty_F";
-_u pushBack "B_MBT_01_mlrs_F";
+	_u pushBack "B_APC_Wheeled_01_cannon_F";
+	_u pushBack "B_APC_Tracked_01_rcws_F";
+	_u pushBack "B_APC_Tracked_01_AA_F";
+	_u pushBack "B_MBT_01_cannon_F";
+	_u pushBack "B_MBT_01_arty_F";
+	_u pushBack "B_MBT_01_mlrs_F";
 
 	
 };
@@ -444,13 +431,13 @@ if (CTI_APEX_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic APEX
-_u pushBack "OFPS_MARSHALL";
-_u pushBack "OFPS_PANTHER";
-_u pushBack "OFPS_CHEETAH";
-_u pushBack "OFPS_SLAMMER";
-_u pushBack "OFPS_SCORCHER";
-_u pushBack "OFPS_SANDSTORM";
-_u pushBack "OFPS_BOBCAT";
+		_u pushBack "OFPS_MARSHALL";
+		_u pushBack "OFPS_PANTHER";
+		_u pushBack "OFPS_CHEETAH";
+		_u pushBack "OFPS_SLAMMER";
+		_u pushBack "OFPS_SCORCHER";
+		_u pushBack "OFPS_SANDSTORM";
+		_u pushBack "OFPS_BOBCAT";
 		
 	};
 	if (CTI_FACTION_WEST == 2) then {
@@ -526,7 +513,7 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
 _u = [];
 
 //Universal Vanilla
-	_u pushBack "B_Heli_Light_01_F";
+_u pushBack "B_Heli_Light_01_F";
 _u pushBack "B_Heli_Transport_01_F";
 _u pushBack "B_Heli_Transport_03_F";
 _u pushBack "B_Heli_Light_01_armed_F";
@@ -910,6 +897,8 @@ if (CTI_CUP_ADDON > 0) then {
 if (CTI_OFPS_ADDON > 0) then { 
 	//Universal OFPS
 	_u pushBack "Burnes_LCAC_1";
+	_u pushBack "sfp_svavare2000";
+	_u pushBack "sfp_svavare2000_transport";
 	_u pushBack "sfp_gruppbat";
 	_u pushBack "rhsusf_mkvsoc";
 	_u pushBack "sfp_rbb_norrkoping";
@@ -1006,7 +995,7 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter OFPS
-		
+		_u pushBack 'sfp_bv206_winter';
 	};
 };
 

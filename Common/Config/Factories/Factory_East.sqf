@@ -379,7 +379,7 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter OFPS
-		
+		_u pushBack 'sfp_bv206_winter';
 	};
 };
 
@@ -890,6 +890,8 @@ if (CTI_CUP_ADDON > 0) then {
 if (CTI_OFPS_ADDON > 0) then { 
 	//Universal OFPS
 	_u pushBack "Burnes_LCAC_1";
+	_u pushBack "sfp_svavare2000";
+	_u pushBack "sfp_svavare2000_transport";
 	_u pushBack "sfp_gruppbat";
 	_u pushBack "rhsusf_mkvsoc";
 	_u pushBack "sfp_rbb_norrkoping";
@@ -993,7 +995,7 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter OFPS
-		
+		_u pushBack 'sfp_bv206_winter';
 	};
 };
 

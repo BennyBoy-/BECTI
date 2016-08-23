@@ -34,6 +34,16 @@ _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;*/
 
+//Snow truck
+_c pushBack 'sfp_bv206_winter';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 200;
+_t pushBack 10;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
 
 //--- Heavy Vehicles
 
@@ -208,7 +218,7 @@ _d pushBack 20;*/
 
 //--- Naval Vehicles
 
-/*_c pushBack 'Burnes_LCAC_1';
+_c pushBack 'Burnes_LCAC_1';
 _p pushBack '';
 _n pushBack (format ["Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
 _o pushBack 3000;
@@ -218,7 +228,27 @@ _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "service-medic";
 _d pushBack 50;
 
-_c pushBack 'sfp_gruppbat';
+_c pushBack 'sfp_svavare2000';
+_p pushBack '';
+_n pushBack (format ["Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
+_o pushBack 3000;
+_t pushBack 25;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_NAVAL;
+_s pushBack "service-medic";
+_d pushBack 50;
+
+_c pushBack 'sfp_svavare2000_transport';
+_p pushBack '';
+_n pushBack (format ["Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
+_o pushBack 3000;
+_t pushBack 25;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_NAVAL;
+_s pushBack "service-medic";
+_d pushBack 50;
+
+/*_c pushBack 'sfp_gruppbat';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 300;
