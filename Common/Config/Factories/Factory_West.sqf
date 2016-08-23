@@ -363,6 +363,10 @@ if (CTI_CUP_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic CUP
+	_u pushBack 'OFPS_HMMWV_GPK';		
+	_u pushBack 'OFPS_HMMWV_AA';		
+	_u pushBack 'OFPS_HMMWV_TOW';	
+	_u pushBack 'OFPS_HMMWV_SOV';
 		
 	};
 	if (CTI_FACTION_WEST == 2) then {
@@ -490,6 +494,8 @@ if (CTI_CUP_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic CUP
+	_u pushBack 'OFPS_M1A1';
+        _u pushBack 'OFPS_M2';	
 		
 	};
 	if (CTI_FACTION_WEST == 2) then {
