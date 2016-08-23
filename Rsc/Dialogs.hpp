@@ -4902,7 +4902,7 @@ class CTI_RscTabletDialog
 		{
 			idc = 777003;
 
-			text = "OFPS OS"; //--- ToDo: Localize;
+			//text = "OFPS OS"; //--- ToDo: Localize;
 			x = 0.431261 * safezoneW + safezoneX;
 			y = 0.236 * safezoneH + safezoneY;
 			w = 0.137479 * safezoneW;
@@ -5173,7 +5173,7 @@ class CTI_RscTabletDialogWelcome
 		{
 			idc = 778003;
 
-			text = "OFPS OS"; //--- ToDo: Localize;
+			//text = "OFPS OS"; //--- ToDo: Localize;
 			x = 0.431261 * safezoneW + safezoneX;
 			y = 0.236 * safezoneH + safezoneY;
 			w = 0.137479 * safezoneW;
@@ -5320,7 +5320,7 @@ class CTI_RscTabletDialogOptions
 		{
 			idc = 779003;
 
-			text = "OFPS OS"; //--- ToDo: Localize;
+			//text = "OFPS OS"; //--- ToDo: Localize;
 			x = 0.431261 * safezoneW + safezoneX;
 			y = 0.236 * safezoneH + safezoneY;
 			w = 0.137479 * safezoneW;
@@ -5646,7 +5646,7 @@ class CTI_RscTabletCommandMenu
 		{
 			idc = 780003;
 
-			text = "OFPS OS"; //--- ToDo: Localize;
+			//text = "OFPS OS"; //--- ToDo: Localize;
 			x = 0.431261 * safezoneW + safezoneX;
 			y = 0.236 * safezoneH + safezoneY;
 			w = 0.137479 * safezoneW;

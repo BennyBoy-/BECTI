@@ -147,3 +147,79 @@ if (local player) then {
 
 //Briefing Entries
 0 execVM "Briefing.sqf";
+
+///Snow and Sand Weather
+if (CTI_WEATHER_SNOW > 0) then { 		
+    MKY_arSnowEFX = [];
+	// snow - [[fog data],int Overcast,ppEfx,allow rain, vary fog, use audio]
+	if (CTI_WEATHER_SNOW == 1) then { 
+		MKY_arSnowEFX = [[0.23,0.021,100],1,true,false,true,true];
+	};
+	if (CTI_WEATHER_SNOW == 2) then { 
+		MKY_arSnowEFX = [[0.23,0.021,100],1,true,false,true,true];
+	};
+	if (CTI_WEATHER_SNOW == 3) then { 
+		MKY_arSnowEFX = [[0.23,0.021,100],1,true,false,true,true];
+	};
+	if (CTI_WEATHER_SNOW == 4) then { 
+		MKY_arSnowEFX = [[0.23,0.021,100],1,true,false,true,true];
+	};
+	
+	// suggested to disable environment so butterflies and snakes aren't seen during snow lol
+	[] spawn {enableEnvironment false;};
+	// handle JIP with this
+	if (!isServer && isNull player) then {
+		waitUntil {sleep 1;!(isNull player)};
+		JIP_varSnowData = [player];
+		publicVariableServer "JIP_varSnowData";
+	};
+	// wait for snow data to exist before starting snow
+	if (hasInterface) then {
+		0 = [] spawn {
+			// wait for variable to exist
+			waitUntil {sleep 5;!(isNil "varEnableSnow")};
+			0 = MKY_arSnowEFX execVM "Client\Functions\Externals\MKY_Snow_Client.sqf";
+		};
+	};
+	// when the rest of mission is ready, start the snow server script
+	if (isServer) then {
+		nul = [] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+	};
+};
+if (CTI_WEATHER_SAND > 0) then { 
+	MKY_arSandEFX = [];				
+	//sand - [fog,overcast,use ppEfx,allow rain,force wind,vary fog,use wind audio,EFX strength]
+	if (CTI_WEATHER_SAND == 1) then { 
+		MKY_arSandEFX = [[0.23,0.021,100],"",true,false,true,true,true,1];
+	};
+	if (CTI_WEATHER_SAND == 2) then { 
+		MKY_arSandEFX = [[0.23,0.021,100],"",true,false,true,true,true,2];
+	};
+	if (CTI_WEATHER_SAND == 3) then { 
+		MKY_arSandEFX = [[0.23,0.021,100],"",true,false,true,true,true,3];
+	};
+	if (CTI_WEATHER_SAND == 4) then { 
+		MKY_arSandEFX = [[0.23,0.021,100],"",true,false,true,true,true,3];
+	};
+	
+	// suggested to disable environment so butterflies and snakes aren't seen during snow lol
+	[] spawn {enableEnvironment false;};
+	// handle JIP with this
+	if (!isServer && isNull player) then {
+		waitUntil {sleep 1;!(isNull player)};
+		JIP_varSandData = [player];
+		publicVariableServer "JIP_varSandData";
+	};
+	// wait for snow data to exist before starting snow
+	if (hasInterface) then {
+		0 = [] spawn {
+			// wait for variable to exist
+			waitUntil {sleep 5;!(isNil "varEnableSand")};
+			0 = MKY_arSandEFX execVM "Client\Functions\Externals\MKY_Sand_Client.sqf";
+		};
+	};
+	// when the rest of mission is ready, start the snow server script
+	if (isServer) then {
+		nul = [] execVM "Server\Functions\Externals\MKY_Sand_Server.sqf";
+	};
+};

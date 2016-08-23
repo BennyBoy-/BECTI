@@ -208,6 +208,10 @@ with missionNamespace do {
 		_fuel = _this select 1;
 		
 		if (local _vehicle) then {
+			if (CTI_Log_Level >= CTI_Log_Information) then {
+				["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestVehicleRefuel", format["Performing a refuel operation on [%1] (%2) with a fuel value of [%3]", _vehicle, typeOf _vehicle, _fuel]] call CTI_CO_FNC_Log;
+			};
+		
 			_vehicle setFuel _fuel;
 		} else {
 			[_vehicle, _fuel] remoteExec ["CTI_PVF_CLT_RequestVehicleRefuel", owner _vehicle];
@@ -221,6 +225,10 @@ with missionNamespace do {
 		_locked = _this select 1;
 		
 		if (local _vehicle) then {
+			if (CTI_Log_Level >= CTI_Log_Information) then {
+				["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestVehicleLock", format["Performing a lock operation on [%1] (%2) with a lock value of [%3]", _vehicle, typeOf _vehicle, _locked]] call CTI_CO_FNC_Log;
+			};
+		
 			_vehicle lock _locked;
 		} else {
 			[_vehicle, _locked] remoteExec ["CTI_PVF_CLT_RequestVehicleLock", owner _vehicle];
@@ -235,6 +243,10 @@ with missionNamespace do {
 		_repair = _this select 2;
 		
 		if (local _vehicle) then {
+			if (CTI_Log_Level >= CTI_Log_Information) then {
+				["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestVehicleHitPointsRepair", format["Performing a part repair operation on [%1] (%2) with a repair value of [%3]", _vehicle, typeOf _vehicle, _repair]] call CTI_CO_FNC_Log;
+			};
+		
 			{
 				_damages = _vehicle getHit _x;
 				

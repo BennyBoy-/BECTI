@@ -1,4 +1,22 @@
 class Params {
+	class CTI_FACTION_WEST {
+		title = "FACTION: West Forces";
+		values[] = {0,1,2};
+		texts[] = {"NATO Arid","NATO Tropic","NATO Winter"};
+		default = 0;
+	};
+	class CTI_FACTION_EAST {
+		title = "FACTION: East Forces";
+		values[] = {0,1,2};
+		texts[] = {"CSAT Arid","CSAT Tropic","CSAT Winter"};
+		default = 0;
+	};
+	class SEPARATOR0 {
+		title = "========================== INCOME ============================";
+		values[] = {1};
+		texts[] = {""};
+		default = 1;
+	};
 	class CTI_BASE_AREA_MAX {
 		title = "BASE: Areas";
 		values[] = {1,2,3,4,5};
@@ -103,21 +121,21 @@ class Params {
 	};
 	class CTI_TOWNS_OCCUPATION_RESISTANCE {
 		title = "TOWNS: Resistance Occupation Forces";
-		values[] = {0,1,2,3,4,5,6,7};
-		texts[] = {"Vanilla - AAF","Vanilla - FIA","CUP - ION PMC","CUP - NAPA Chernarus","CUP - Royal Army Corp Of Sahrani","CUP - Takistani Locals","Mixed","Syndikat Paramilitary"};
-		default = 7;
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"Vanilla - AAF","Vanilla - FIA","CUP - ION PMC","CUP - NAPA Chernarus","CUP - Royal Army Corp Of Sahrani","CUP - Takistani Military","Mixed","Syndikat Paramilitary","Swedish Winter"};
+		default = 6;
 	};
 	class CTI_TOWNS_OCCUPATION_WEST {
 		title = "TOWNS: Blufor Occupation Forces";
 		values[] = {0,1,2,3};
 		texts[] = {"Vanilla","CUP - US Army","Mixed","Pacific Special Forces"};
-		default = 3;
+		default = 2;
 	};
 	class CTI_TOWNS_OCCUPATION_EAST {
 		title = "TOWNS: Opfor Occupation Forces";
 		values[] = {0,1,2,3};
 		texts[] = {"Vanilla","CUP - Russians","Mixed","Pacific Special Forces"};
-		default = 3;
+		default = 2;
 	};
 	class CTI_TOWNS_PEACE {
 		title = "TOWNS: Peace";
@@ -214,12 +232,6 @@ class Params {
 		values[] = {0,1,2,3,4,5,8,10,12,14,16};
 		texts[] = {"AutoAdaptative","1","2","3","4","5","8","10","12","14","16"};
 		default = 5;
-	};
-		class CTI_AI_SKILL {
-		title = "AI: AI Skill Level";
-		values[] = {1,2,3,4,5};
-		texts[] = {"Amateur","Average","Skilled","Specialist","Chuck Norris"};
-		default = 3;
 	};
 	class SEPARATOR5 {
 		title = "=========================== UNITS ============================";
@@ -357,6 +369,18 @@ class Params {
 		title = "WEATHER: Rain (Rain Requires Overcast Greater High)";
 		values[] = {-1,0,30,50,75,100};
 		texts[] = {"Random","Clear","Light","Medium","High","Max"};
+		default = 0;
+	};
+	class CTI_WEATHER_SNOW {
+		title = "WEATHER: Snow Storms";
+		values[] = {0,1,2,3,4};
+		texts[] = {"Clear","Light","Medium","High","Max"};
+		default = 0;
+	};
+	class CTI_WEATHER_SAND {
+		title = "WEATHER: Sand Storms";
+		values[] = {0,1,2,3,4};
+		texts[] = {"Clear","Light","Medium","High","Max"};
 		default = 0;
 	};
 	class CTI_WEATHER_OVERCAST {

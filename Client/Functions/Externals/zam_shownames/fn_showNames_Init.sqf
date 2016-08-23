@@ -28,6 +28,11 @@ if !(hasInterface) exitWith {/*diag_log "showNames_init.sqf - Finished (!hasInte
 		zam_showNames_enabled = 			if !(isNil "zam_showNames_enabled") then {zam_showNames_enabled} else {true}
 	};
 
+	// Enable Show by default
+	if (isNil "ZAM_showNames_on"            ) then {
+		ZAM_showNames_on = 			if !(isNil "ZAM_showNames_on") then {ZAM_showNames_on} else {true}
+	};
+	
 	// Use key as toggle
 	if (isNil "zam_showNames_toggle"             ) then {
 		zam_showNames_toggle = 				if !(isNil "zam_showNames_toggle") then {zam_showNames_toggle} else {false}

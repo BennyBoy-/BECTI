@@ -405,7 +405,7 @@ _categories pushBack 	"Defense";
 
 _headers pushBack 		"AA Defense";
 _classes pushBack 		"O_static_AA_F";
-_prices pushBack 		4000;
+_prices pushBack 		8000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
@@ -454,7 +454,7 @@ _categories pushBack 	"Defense";
 
 _headers pushBack 		"Metis AT-13";
 _classes pushBack 		"CUP_O_Metis_RU";
-_prices pushBack 		4000;
+_prices pushBack 		6000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
@@ -466,7 +466,7 @@ _categories pushBack 	"Defense";
 
 _headers pushBack 		"Podnos 2B14";
 _classes pushBack 		"CUP_B_2b14_82mm_CDF";
-_prices pushBack 		15000;
+_prices pushBack 		10000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
@@ -553,6 +553,12 @@ _categories pushBack 	"Fortification";
 };
 
 if (CTI_OFPS_ADDON > 0) then {
+_headers pushBack 		"RBS 70 aa";
+_classes pushBack 		"sfp_rbs70";
+_prices pushBack 		8000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+
 _headers pushBack 		"C-RAM Phalanx";
 _classes pushBack 		"C_at_phalanx_35AI";
 _prices pushBack 		35000;
@@ -573,7 +579,7 @@ _categories pushBack 	"Defense";
 
 _headers pushBack 		"MIM-104 PAC-2 AA Battery";
 _classes pushBack 		"pook_MIM104_PAC2Battery_CDF_IND";
-_prices pushBack 		60000;
+_prices pushBack 		120000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 };

@@ -65,17 +65,19 @@ while {alive _structure} do {
 			if !(someAmmo _x) then {
 				//--- Check if we have a nearby ammo source
 				_ammo_trucks = [_x, CTI_SPECIAL_AMMOTRUCK, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
-				_nearestAmmoDepot = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
+				_nearest = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
 				
-				if (count _ammo_trucks > 0 || !isNull _nearestAmmoDepot) then {
+				if (count _ammo_trucks > 0 || !isNull _nearest) then {
 					if (CTI_Log_Level >= CTI_Log_Information) then {
-						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Source [%3] (%4), local [%5]?", _x, typeOf _x, _nearestAmmoDepot, typeOf _nearestAmmoDepot, local _x]] call CTI_CO_FNC_Log;
+						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4), defense is local [%5]? gunner is local [%6]?", _x, typeOf _x, _nearest, typeOf _nearest, local _x, local gunner _x]] call CTI_CO_FNC_Log;
 					};
 					
-					// TODO: HACKFIX: Somehow rearm wasnt executed on the right instance, so for now we just execute it everywhere.
-					// maybe local/owner check wrong??
-					// Also, for statics (tested for titanAA), setVehicleAmmoDef makes the static unusable for server's AI, so we use setVehicleAmmo
-					[_x, 1] remoteExec ["setVehicleAmmo"];
+					if (local gunner _x) then {
+						// _x setVehicleAmmoDef 1;
+						_x setVehicleAmmo 1;
+					} else {
+						[_x, 1] remoteExec ["CTI_PVF_CLT_RequestVehicleRearm", owner gunner _x];
+					};
 				};
 			};
 			

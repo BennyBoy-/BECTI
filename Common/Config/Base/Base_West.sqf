@@ -414,7 +414,7 @@ _categories pushBack 	"Defense";
 
 _headers pushBack 		"AA Defense";
 _classes pushBack 		"B_static_AA_F";
-_prices pushBack 		4000;
+_prices pushBack 		8000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
@@ -439,7 +439,7 @@ _categories pushBack 	"Defense";
 
 _headers pushBack 		"TOW Tripod";
 _classes pushBack 		"CUP_B_TOW_TriPod_USMC";
-_prices pushBack 		4000;
+_prices pushBack 		8000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
@@ -451,13 +451,13 @@ _categories pushBack 	"Defense";
 
 _headers pushBack 		"M252 81mm mortar";
 _classes pushBack 		"CUP_B_M252_USMC";
-_prices pushBack 		15000;
+_prices pushBack 		10000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 
 _headers pushBack 		"ZU-23";
 _classes pushBack 		"CUP_B_ZU23_CDF";
-_prices pushBack 		2000;
+_prices pushBack 		8000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 /*
@@ -533,6 +533,12 @@ _categories pushBack 	"Fortification";
 
 
 if (CTI_OFPS_ADDON > 0) then {
+_headers pushBack 		"RBS 70 aa";
+_classes pushBack 		"sfp_rbs70";
+_prices pushBack 		8000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+
 _headers pushBack 		"C-RAM Phalanx";
 _classes pushBack 		"C_at_phalanx_35AI";
 _prices pushBack 		35000;
@@ -553,7 +559,7 @@ _categories pushBack 	"Defense";
 
 _headers pushBack 		"MIM-104 PAC-2 AA Battery";
 _classes pushBack 		"pook_MIM104_PAC2Battery_CDF";
-_prices pushBack 		60000;
+_prices pushBack 		120000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 };

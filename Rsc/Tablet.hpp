@@ -132,23 +132,25 @@ class RscTabletStructuredText {
 };
 class RscTabletTextos
 {
-    access = 0;
-    idc = -1;
-    type = CT_STATIC;
-    style = 2;
-    linespacing = 1;
-    colorBackground[] = {0,0,0,0};
-    colorText[] = {1,1,1,1};
-    text = "";
-    shadow = 0;
-    font = "PuristaSemiBold";
-    SizeEx = 0.02000;
-    fixedWidth = 0;
-	borderSize = 0;
-    x = 0;
-    y = 0;
-    h = 0;
-    w = 0;
+	type = CT_STRUCTURED_TEXT;
+	x = 0;
+	y = 0;
+	h = 0.035;
+	w = 0.1;
+	style = ST_LEFT;
+	text = "";
+	size = "(			(			(			((safezoneW / safezoneH) min 1.1) / 1.1) / 25) * 1)";
+	SizeEx = 0.01800;
+	font = "PuristaBold";
+	colorText[] = {1,1,1,1.0};
+	shadow = 1;
+	class Attributes {
+		font = "PuristaBold";
+		color = "#ffffff";
+		align = "center";
+		shadow = 0;
+		size = 0.8;
+	};
    
 };
 class RscTabletTextlink
