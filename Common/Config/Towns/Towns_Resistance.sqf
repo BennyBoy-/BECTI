@@ -448,7 +448,7 @@ if (CTI_TOWNS_OCCUPATION_RESISTANCE == 8) then {
 	GUER_SOLDIER_NAVAL_INFANTRY = "sfp_m90t_combat_diver";
 	GUER_SOLDIER_NAVAL_SQUADLEADER = "sfp_m90t_combat_diver_tl";
 	//--- Light Vehicles
-	GUER_VEHICLE_LIGHT1 = ["sfp_bv206"];
+	GUER_VEHICLE_LIGHT1 = ["sfp_bv206_winter"];
 	GUER_VEHICLE_LIGHT2 = ["sfp_tgb1111_sog_ksp58"];
 	GUER_VEHICLE_LIGHT3 = ["sfp_tgb13_ksp58"];
 	GUER_VEHICLE_LIGHT4 = ["sfp_tgb1111"];

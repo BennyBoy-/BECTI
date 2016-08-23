@@ -1815,7 +1815,7 @@ _s pushBack "";
 _d pushBack 0;
 
 //--- Light
-_c pushBack 'sfp_bv206';
+_c pushBack 'sfp_bv206_winter';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 200;
