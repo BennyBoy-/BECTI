@@ -326,7 +326,27 @@ _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'OFPS_BRDM2_T';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 1200;
+_t pushBack 10;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'OFPS_BRDM2ATGM';
+_p pushBack '';
+_n pushBack 'BRDM ATGM';
+_o pushBack 4700;
+_t pushBack 30;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_BRDM2ATGM_T';
 _p pushBack '';
 _n pushBack 'BRDM ATGM';
 _o pushBack 4700;
@@ -347,6 +367,16 @@ _s pushBack "";
 _d pushBack 0;
 
 _c pushBack 'OFPS_BRDM2HQ';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 1000;
+_t pushBack 10;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_BRDM2HQ_T';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 1000;
@@ -679,6 +709,16 @@ _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'OFPS_BMP1_T';
+_p pushBack '';
+_n pushBack 'BMP1-P';
+_o pushBack 5500;
+_t pushBack 20;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'OFPS_BMP2';
 _p pushBack '';
 _n pushBack 'BMP2';
@@ -689,7 +729,27 @@ _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'OFPS_BMP2_T';
+_p pushBack '';
+_n pushBack 'BMP2';
+_o pushBack 6800;
+_t pushBack 20;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'OFPS_BMP2_M';
+_p pushBack '';
+_n pushBack (format ["Mobile Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
+_o pushBack 6400;
+_t pushBack 20;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "service-medic";
+_d pushBack 0;
+
+_c pushBack 'OFPS_BMP2_M_T';
 _p pushBack '';
 _n pushBack (format ["Mobile Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
 _o pushBack 6400;
@@ -719,7 +779,27 @@ _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'OFPS_BMP2_ZSU_T';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 3000;
+_t pushBack 20;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'OFPS_T55';
+_p pushBack '';
+_n pushBack 'T55';
+_o pushBack 9200;
+_t pushBack 20;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_T55_T';
 _p pushBack '';
 _n pushBack 'T55';
 _o pushBack 9200;
@@ -739,7 +819,27 @@ _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'OFPS_T72_T';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 18000;
+_t pushBack 20;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'OFPS_ZSU23';
+_p pushBack '';
+_n pushBack 'ZSU23 Shilka';
+_o pushBack 4350;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_ZSU23_T';
 _p pushBack '';
 _n pushBack 'ZSU23 Shilka';
 _o pushBack 4350;
@@ -770,6 +870,16 @@ _s pushBack "";
 _d pushBack 0;
 
 _c pushBack 'OFPS_BMP3';
+_p pushBack '';
+_n pushBack 'BMP3';
+_o pushBack 12200;
+_t pushBack 20;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_BMP3_T';
 _p pushBack '';
 _n pushBack 'BMP3';
 _o pushBack 12200;
