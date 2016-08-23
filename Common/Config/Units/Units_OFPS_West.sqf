@@ -62,7 +62,7 @@ _t pushBack 50;
 _u pushBack 4;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
-_d pushBack 50;
+_d pushBack 0;
 
 _c pushBack 'globemaster_c17_NATO';
 _p pushBack '';
