@@ -227,17 +227,16 @@ _u pushBack 'C_Van_01_transport_F';
 
 if (CTI_FACTION_EAST == 0) then {
 	//CSAT Arid Vanilla
-_u pushBack 'O_MRAP_02_gmg_F';	
-_u pushBack 'O_MRAP_02_hmg_F';			
-_u pushBack 'O_Truck_02_transport_F';
-_u pushBack 'O_Truck_03_transport_F';
-_u pushBack 'O_MRAP_02_F';
-_u pushBack 'O_MRAP_02_hmg_F';
-_u pushBack 'O_MRAP_02_gmg_F';
-_u pushBack 'O_UGV_01_F';
-_u pushBack 'O_UGV_01_rcws_F';
+	_u pushBack 'O_MRAP_02_gmg_F';	
+	_u pushBack 'O_MRAP_02_hmg_F';			
+	_u pushBack 'O_Truck_02_transport_F';
+	_u pushBack 'O_Truck_03_transport_F';
+	_u pushBack 'O_MRAP_02_F';
+	_u pushBack 'O_MRAP_02_hmg_F';
+	_u pushBack 'O_MRAP_02_gmg_F';
+	_u pushBack 'O_UGV_01_F';
+	_u pushBack 'O_UGV_01_rcws_F';
 
-	
 };
 if (CTI_FACTION_EAST == 1) then {
 	//CSAT Tropic Vanilla
@@ -391,12 +390,11 @@ _u = [];
 
 if (CTI_FACTION_EAST == 0) then {
 	//CSAT Arid Vanilla
-	
-_u pushBack "O_APC_Wheeled_02_rcws_F";
-_u pushBack "O_APC_Tracked_02_cannon_F";
-_u pushBack "O_MBT_02_cannon_F";
-_u pushBack "O_APC_Tracked_02_AA_F";
-_u pushBack "O_MBT_02_arty_F";
+	_u pushBack "O_APC_Wheeled_02_rcws_F";
+	_u pushBack "O_APC_Tracked_02_cannon_F";
+	_u pushBack "O_MBT_02_cannon_F";
+	_u pushBack "O_APC_Tracked_02_AA_F";
+	_u pushBack "O_MBT_02_arty_F";
 
 };
 if (CTI_FACTION_EAST == 1) then {
@@ -620,8 +618,7 @@ if (CTI_CUP_ADDON > 0) then {
 if (CTI_OFPS_ADDON > 0) then { 
 	//Universal OFPS
 	_u pushBack 'O_T_UAV_04_CAS_F';			
-        _u pushBack 'O_UCSV_01';
- 
+    _u pushBack 'O_UCSV_01';
 	_u pushBack 'sfp_bo105_unarmed';
 	_u pushBack 'sfp_bo105';
 	_u pushBack 'O_UCSV_01';
@@ -668,9 +665,9 @@ _u pushBack "O_Truck_03_fuel_F";
 if (CTI_FACTION_EAST == 0) then {
 	//CSAT Arid Vanilla
 	_u pushBack "O_Truck_02_box_F";
-//_u pushBack "O_Truck_03_repair_F";
-_u pushBack "CTI_Salvager_East";
-_u pushBack "O_Truck_02_fuel_F";
+	//_u pushBack "O_Truck_03_repair_F";
+	_u pushBack "CTI_Salvager_East";
+	_u pushBack "O_Truck_02_fuel_F";
 
 	
 };
@@ -916,17 +913,17 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
 _u = [];
 
 //Universal Vanilla
-	_u pushBack "O_G_Offroad_01_F";
+_u pushBack "O_G_Offroad_01_F";
 _u pushBack "O_G_Offroad_01_armed_F";
 _u pushBack 'C_Van_01_transport_F';
 
 if (CTI_FACTION_EAST == 0) then {
 	//CSAT Arid Vanilla
-_u pushBack 'O_Truck_02_transport_F';
-_u pushBack 'O_Truck_03_transport_F';
-_u pushBack 'O_MRAP_02_F';
-_u pushBack 'O_UGV_01_F';
-_u pushBack 'O_UGV_01_rcws_F';
+	_u pushBack 'O_Truck_02_transport_F';
+	_u pushBack 'O_Truck_03_transport_F';
+	_u pushBack 'O_MRAP_02_F';
+	_u pushBack 'O_UGV_01_F';
+	_u pushBack 'O_UGV_01_rcws_F';
 
 	
 };
@@ -950,10 +947,10 @@ if (CTI_APEX_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 1) then {
 		//CSAT Tropic APEX
-_u pushBack 'O_T_Truck_03_transport_ghex_F';
-_u pushBack 'O_T_MRAP_02_hmg_ghex_F';
-_u pushBack 'O_UGV_01_F';
-_u pushBack 'O_UGV_01_rcws_F';
+		_u pushBack 'O_T_Truck_03_transport_ghex_F';
+		_u pushBack 'O_T_MRAP_02_hmg_ghex_F';
+		_u pushBack 'O_UGV_01_F';
+		_u pushBack 'O_UGV_01_rcws_F';
 	
 		
 	};
