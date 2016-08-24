@@ -173,6 +173,9 @@ if (CTI_APEX_ADDON > 0) then {
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
 	//Universal CUP
+
+	if (CTI_FACTION_EAST == 0) then {
+		//CSAT Arid CUP
 	_u pushBack 'CUP_O_RU_Soldier';
 	_u pushBack 'CUP_O_RU_Soldier_AA';
 	_u pushBack 'CUP_O_RU_Soldier_MG';
@@ -185,9 +188,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_RU_Pilot';
 	_u pushBack 'CUP_O_RU_Sniper_KSVK';
     _u pushBack 'CUP_O_RU_Spotter';
-
-	if (CTI_FACTION_EAST == 0) then {
-		//CSAT Arid CUP
 	};
 	if (CTI_FACTION_EAST == 1) then {
 		//CSAT Tropic CUP
