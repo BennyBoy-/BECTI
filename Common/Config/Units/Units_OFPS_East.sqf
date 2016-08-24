@@ -15,7 +15,7 @@ _d = []; //--- Extra Distance (From Factory)
 
 _c pushBack 'IP_O_Officer_hex_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Officer (Snow)"]; 
 _o pushBack 575;
 _t pushBack 5;
 _u pushBack 1;
@@ -25,7 +25,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_Soldier_AA_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["AA Specialist (Snow)"]; 
 _o pushBack 1500;
 _t pushBack 5;
 _u pushBack 2;
@@ -35,7 +35,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_Soldier_AT_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["AT Specialist (Snow)"]; 
 _o pushBack 1450;
 _t pushBack 5;
 _u pushBack 2;
@@ -45,7 +45,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_HeavyGunner_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Autorifleman (Snow)"]; 
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 1;
@@ -55,7 +55,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_crew_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Crew (Snow)"]; 
 _o pushBack 175;
 _t pushBack 5;
 _u pushBack 1;
@@ -65,7 +65,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_Engineer_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Combat Engineer (Snow)"]; 
 _o pushBack 520;
 _t pushBack 5;
 _u pushBack 1;
@@ -75,7 +75,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_Soldier_exp_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Explosive Specialist (Snow)"]; 
 _o pushBack 510;
 _t pushBack 5;
 _u pushBack 1;
@@ -85,7 +85,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_Soldier_GL_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Rifleman GL (Snow)"]; 
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 1;
@@ -95,7 +95,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_HeliCrew_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Pilot (Snow)"]; 
 _o pushBack 175;
 _t pushBack 5;
 _u pushBack 1;
@@ -105,7 +105,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_Sharpshooter_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Marksman (Snow)"]; 
 _o pushBack 525;
 _t pushBack 5;
 _u pushBack 1;
@@ -115,7 +115,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_Medic_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Medic (Snow)"]; 
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 1;
@@ -125,17 +125,17 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_Soldier_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Rifleman (Snow)"]; 
 _o pushBack 375;
 _t pushBack 5;
-_u pushBack 1;
+_u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
 _c pushBack 'IP_O_Soldier_repair_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Repair Specialist (Snow)"]; 
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 1;
@@ -145,7 +145,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_Soldier_LAT_FST';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Rifleman AT (Snow)"]; 
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 1;
@@ -157,7 +157,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_recon_exp_FST';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon Explosive Specialist (Arctic Special Forces)"]; 
 _o pushBack 550;
 _t pushBack 5;
 _u pushBack 3;
@@ -167,7 +167,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_recon_JTAC_FST';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon JTAC (Arctic Special Forces)"]; 
 _o pushBack 750;
 _t pushBack 5;
 _u pushBack 2;
@@ -177,7 +177,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_recon_medic_FST';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon Medic (Arctic Special Forces)"]; 
 _o pushBack 750;
 _t pushBack 5;
 _u pushBack 2;
@@ -187,8 +187,8 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_recon_FST';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
-_o pushBack 750;
+_n pushBack ["Recon Rifleman (Arctic Special Forces)"]; 
+_o pushBack 650;
 _t pushBack 5;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_BARRACKS;
@@ -197,8 +197,8 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_recon_LAT_FST';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
-_o pushBack 750;
+_n pushBack ["Recon Rifleman AT (Arctic Special Forces)"]; 
+_o pushBack 1550;
 _t pushBack 5;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_BARRACKS;
@@ -207,7 +207,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_recon_TL_FST';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon Team Leader (Arctic Special Forces)"]; 
 _o pushBack 250;
 _t pushBack 5;
 _u pushBack 2;
@@ -217,7 +217,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_recon_M_FST';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon Marksman (Arctic Special Forces)"]; 
 _o pushBack 1000;
 _t pushBack 5;
 _u pushBack 2;
@@ -227,7 +227,7 @@ _d pushBack 0;
 
 _c pushBack 'IP_O_pathfinder_FST';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon Pathfinder (Arctic Special Forces)"]; 
 _o pushBack 1250;
 _t pushBack 5;
 _u pushBack 3;
