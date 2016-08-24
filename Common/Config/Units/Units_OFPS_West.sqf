@@ -15,7 +15,7 @@ _d = []; //--- Extra Distance (From Factory)
 
 _c pushBack 'sfp_m90s_pilot';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Pilot (Snow)"]; 
 _o pushBack 175;
 _t pushBack 5;
 _u pushBack 1;
@@ -25,7 +25,7 @@ _d pushBack 0;
 
 _c pushBack 'sfp_m90s_aa_specialist_rbs69';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["AA Specialist (Snow)"]; 
 _o pushBack 1500;
 _t pushBack 5;
 _u pushBack 2;
@@ -35,7 +35,7 @@ _d pushBack 0;
 
 _c pushBack 'sfp_m90s_at_specialist_grg86';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["AT Specialist (Snow)"]; 
 _o pushBack 1450;
 _t pushBack 5;
 _u pushBack 2;
@@ -45,7 +45,7 @@ _d pushBack 0;
 
 _c pushBack 'sfp_m90s_automaticrifleman_ksp90';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Autorifleman (Snow)"]; 
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 1;
@@ -55,7 +55,7 @@ _d pushBack 0;
 
 _c pushBack 'sfp_m90s_crew';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Crew (Snow)"]; 
 _o pushBack 175;
 _t pushBack 5;
 _u pushBack 1;
@@ -65,7 +65,7 @@ _d pushBack 0;
 
 _c pushBack 'sfp_m90s_engineer';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Engineer (Snow)"]; 
 _o pushBack 520;
 _t pushBack 5;
 _u pushBack 1;
@@ -75,7 +75,7 @@ _d pushBack 0;
 
 _c pushBack 'sfp_m90s_explosive_specialist';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Explosive Specialist (Snow)"]; 
 _o pushBack 510;
 _t pushBack 5;
 _u pushBack 1;
@@ -85,7 +85,7 @@ _d pushBack 0;
 
 _c pushBack 'sfp_m90s_gr';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Rifleman GL (Snow)"]; 
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 1;
@@ -95,7 +95,7 @@ _d pushBack 0;
 
 _c pushBack 'sfp_1990_m90s_marksman';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Marksman (Snow)"]; 
 _o pushBack 525;
 _t pushBack 5;
 _u pushBack 1;
@@ -105,7 +105,7 @@ _d pushBack 0;
 
 _c pushBack 'sfp_m90s_medic';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Combat Medic (Snow)"]; 
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 1;
@@ -115,20 +115,10 @@ _d pushBack 0;
 
 _c pushBack 'sfp_m90s_rifleman_ak5';
 _p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
+_n pushBack ["Rifleman (Snow)"]; 
 _o pushBack 375;
 _t pushBack 5;
-_u pushBack 1;
-_f pushBack CTI_FACTORY_BARRACKS;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'IP_O_Soldier_repair_FST';
-_p pushBack '';
-_n pushBack ["%1 (Snow)"]; 
-_o pushBack 500;
-_t pushBack 5;
-_u pushBack 1;
+_u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
@@ -137,7 +127,7 @@ _d pushBack 0;
 
 _c pushBack 'Meaty_SoldierMK_B_Sn';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon Marksman (Arctic Special Forces)"]; 
 _o pushBack 750;
 _t pushBack 5;
 _u pushBack 3;
@@ -147,7 +137,7 @@ _d pushBack 0;
 
 _c pushBack 'Meaty_AR_B_Sn';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon Autorifleman (Arctic Special Forces)"]; 
 _o pushBack 750;
 _t pushBack 5;
 _u pushBack 2;
@@ -157,7 +147,7 @@ _d pushBack 0;
 
 _c pushBack 'Meaty_Medic_B_Sn';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon Combat Medic (Arctic Special Forces)"]; 
 _o pushBack 750;
 _t pushBack 5;
 _u pushBack 2;
@@ -167,7 +157,7 @@ _d pushBack 0;
 
 _c pushBack 'Meaty_Soldier_B_Sn';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon Rifleman (Arctic Special Forces)"]; 
 _o pushBack 750;
 _t pushBack 5;
 _u pushBack 2;
@@ -177,7 +167,7 @@ _d pushBack 0;
 
 _c pushBack 'Meaty_AT_NLAW_B_Sn';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon Rifleman AT (Arctic Special Forces)"]; 
 _o pushBack 1550;
 _t pushBack 5;
 _u pushBack 2;
@@ -187,7 +177,7 @@ _d pushBack 0;
 
 _c pushBack 'Meaty_teamlead_B_Sn';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon Team Leader (Arctic Special Forces)"]; 
 _o pushBack 750;
 _t pushBack 5;
 _u pushBack 2;
@@ -197,7 +187,7 @@ _d pushBack 0;
 
 _c pushBack 'Meaty_SoldierAA_B_Sn';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon AA Specialist (Arctic Special Forces)"]; 
 _o pushBack 1750;
 _t pushBack 5;
 _u pushBack 3;
@@ -207,7 +197,7 @@ _d pushBack 0;
 
 _c pushBack 'Meaty_SoldierGL_B_Sn';
 _p pushBack '';
-_n pushBack ["%1 (Arctic Special Forces)"]; 
+_n pushBack ["Recon Rifleman GL (Arctic Special Forces)"]; 
 _o pushBack 750;
 _t pushBack 5;
 _u pushBack 2;
