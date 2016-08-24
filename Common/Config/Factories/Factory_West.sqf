@@ -604,7 +604,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_UH1Y_MEV_USMC';	
 	_u pushBack 'CUP_B_A10_CAS_USA';	
 	_u pushBack 'CUP_B_A10_AT_USA';		
-	_u pushBack 'CUP_B_F35B_AA_BAF';	
+	_u pushBack 'CUP_B_F35B_AA_USMC';	
 	_u pushBack 'CUP_B_AV8B_GBU12_USMC';
 	_u pushBack 'CUP_B_AV8B_CAP_USMC';
 	_u pushBack 'CUP_B_AV8B_MK82_USMC';	
@@ -647,8 +647,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_MV22_USMC_RAMPGUN';
 	_u pushBack 'CUP_USMC_MQ9';
 	_u pushBack 'CUP_B_A10_CAS_USA';
-	_u pushBack 'CUP_B_AV8B_GBU12_USMC';
-	_u pushBack 'CUP_B_F35B_AA_USMC';
 	_u pushBack 'CUP_B_AC47_Spooky_USA';
 */
 
@@ -681,7 +679,6 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'sab_alphajet';
 	_u pushBack 'sab_alphajet2';
 	_u pushBack 'OFPS_BUZZA_B';
-	_u pushBack 'usaf_b1b';
 	_u pushBack 'pook_tu953M80_CDF';
 	_u pushBack 'pook_tu95ms_CDF';
 	_u pushBack 'pook_tu95ms16_CDF';
