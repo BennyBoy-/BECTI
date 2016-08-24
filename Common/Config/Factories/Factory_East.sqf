@@ -208,6 +208,29 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter OFPS
+	_u pushBack 'IP_O_Soldier_FST';
+	_u pushBack 'IP_O_Soldier_LAT_FST';
+	_u pushBack 'IP_O_HeavyGunner_FST';
+	_u pushBack 'IP_O_Sharpshooter_FST';
+	_u pushBack 'IP_O_Medic_FST';
+	_u pushBack 'IP_O_Soldier_GL_FST';
+	_u pushBack 'IP_O_Soldier_AA_FST';
+	_u pushBack 'IP_O_Soldier_AT_FST';
+	_u pushBack 'IP_O_Soldier_repair_FST';
+	_u pushBack 'IP_O_Soldier_exp_FST';
+	_u pushBack 'IP_O_Engineer_FST';
+	_u pushBack 'IP_O_crew_FST';
+	_u pushBack 'IP_O_HeliCrew_FST';
+	_u pushBack 'IP_O_Officer_hex_FST';
+	//Special Forces
+	_u pushBack 'IP_O_recon_exp_FST';
+	_u pushBack 'IP_O_recon_JTAC_FST';
+	_u pushBack 'IP_O_recon_M_FST';
+	_u pushBack 'IP_O_recon_medic_FST';
+	_u pushBack 'IP_O_pathfinder_FST';
+	_u pushBack 'IP_O_recon_FST';
+	_u pushBack 'IP_O_recon_LAT_FST';
+	_u pushBack 'IP_O_recon_TL_FST';
 	};
 };
 
@@ -379,6 +402,11 @@ if (CTI_OFPS_ADDON > 0) then {
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter OFPS
 		_u pushBack 'sfp_bv206_winter';
+		_u pushBack 'AAF_D_Truck_02_covered_F';
+		_u pushBack 'AAF_D_MRAP_03_F';
+		_u pushBack 'AAF_D_MRAP_03_hmg_F';
+		_u pushBack 'AAF_D_MRAP_03_gmg_F';
+		_u pushBack 'AAF_D_Truck_02_medical_F';
 	};
 };
 
@@ -499,6 +527,9 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter OFPS
+	_u pushBack "AAF_D_APC_tracked_03_cannon_F";
+	_u pushBack "AAF_D_MBT_03_cannon_F";
+	_u pushBack "AAF_D_APC_Wheeled_03_cannon_F";
 		
 	};
 };
@@ -650,6 +681,10 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter OFPS
+	_u pushBack "IP_O_Plane_CAS_02_FSnowHex";
+	_u pushBack 'IP_O_Heli_Attack_02_SnowHex_FST';
+	_u pushBack 'IP_O_Heli_Light_02_FST';
+	_u pushBack 'IP_O_Heli_Light_02_unarmed_FST';
 		
 	};
 };
@@ -734,6 +769,7 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter OFPS
+			_u pushBack 'AAF_D_Truck_02_box_F';
 		
 	};
 };
@@ -814,6 +850,7 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter OFPS
+					_u pushBack 'AAF_D_Truck_02_box_F';
 		
 	};
 };
