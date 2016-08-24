@@ -15,12 +15,14 @@ sleep 3;
 waitUntil {animationState player != "Acts_carFixingWheel" || !alive player || vehicle player != player || !alive _vehicle || _vehicle distance player > 5};
 
 if (alive player && vehicle player == player && alive _vehicle && _vehicle distance player <= 5) then {
-	//--- Overall repairs (Global Arg)
-	_dammages = _dammages - .15;
-	if (_dammages < 0) then {_dammages = 0};
-	_vehicle setDammage _dammages;
-
 	
+	//--- Overall repairs (Global Arg)
+/*	if (_dammages > 0) then {
+		_dammages = _dammages - .15;
+		if (_dammages < 0) then {_dammages = 0};
+		_vehicle setDammage _dammages;
+	};*/
+
 	//--- Parts repairs (Local Arg)
 	if (local _vehicle) then {
 		[_vehicle, _hitPoints, .10] call CTI_PVF_CLT_RequestVehicleHitPointsRepair;
