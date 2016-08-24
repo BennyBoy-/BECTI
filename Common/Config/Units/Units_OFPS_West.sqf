@@ -402,7 +402,7 @@ _d pushBack 50;
 
 _c pushBack 'usaf_b1b';
 _p pushBack '';
-_n pushBack 'B-1B Blackjack';
+_n pushBack 'B-1B Lancer';
 _o pushBack 109350;
 _t pushBack 50;
 _u pushBack 5;
