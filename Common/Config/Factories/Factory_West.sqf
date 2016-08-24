@@ -224,7 +224,28 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter OFPS
-		
+			_u pushBack 'sfp_m90s_rifleman_ak5';
+		_u pushBack 'sfp_m90s_automaticrifleman_ksp90';
+		_u pushBack 'sfp_m90s_gr';
+		_u pushBack 'sfp_m90s_explosive_specialist';
+		_u pushBack 'sfp_m90s_engineer';
+		_u pushBack 'sfp_1990_m90s_marksman';
+		_u pushBack 'sfp_m90s_aa_specialist_rbs69';
+		_u pushBack 'sfp_m90s_at_specialist_grg86';
+		_u pushBack 'sfp_m90s_crew';
+		_u pushBack 'sfp_m90s_pilot';
+		_u pushBack 'sfp_m90s_medic';
+
+		//Special Forces
+		_u pushBack 'Meaty_Soldier_B_Sn';
+		_u pushBack 'Meaty_teamlead_B_Sn';
+		_u pushBack 'Meaty_SoldierGL_B_Sn';
+		_u pushBack 'Meaty_SoldierAA_B_Sn';
+		_u pushBack 'Meaty_AT_NLAW_B_Sn';
+		_u pushBack 'Meaty_Medic_B_Sn';
+		_u pushBack 'Meaty_SoldierMK_B_Sn';
+		_u pushBack 'Meaty_AR_B_Sn';
+
 	};
 };
 
@@ -391,6 +412,9 @@ if (CTI_OFPS_ADDON > 0) then {
 	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter OFPS
 		_u pushBack 'sfp_bv206_winter';
+		_u pushBack 'Meaty_Hunter_Sn';		
+		_u pushBack 'Meaty_HunterHMG_Sn';	
+		_u pushBack 'Meaty_HunterGMG_Sn';
 	};
 };
 
@@ -505,6 +529,13 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter OFPS
+	_u pushBack 'Meaty_Marshall_Sn';		
+	_u pushBack 'Meaty_cheetah_Sn';	
+	_u pushBack 'Meaty_Bobcat_Sn';	
+	_u pushBack 'Meaty_Panther_Sn';  
+	_u pushBack 'Meaty_slammer_Sn'; 
+	_u pushBack 'Meaty_Scorcher_Sn';   	
+	_u pushBack 'Meaty_Sandstorm_Sn';  
 		
 	};
 };
@@ -667,6 +698,9 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter OFPS
+_u pushBack "AAF_D_Heli_Transport_02_F";
+_u pushBack "AAF_D_Heli_light_03_F";
+_u pushBack "AAF_D_Heli_light_03_unarmed_F";
 		
 	};
 };
