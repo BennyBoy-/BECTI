@@ -183,6 +183,10 @@ if (CTI_APEX_ADDON > 0) then {
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
 	//Universal CUP
+
+
+	if (CTI_FACTION_WEST == 0) then {
+		//NATO Arid CUP
 	_u pushBack 'CUP_B_US_Soldier';
 	_u pushBack 'CUP_B_US_Soldier_AA';
 	_u pushBack 'CUP_B_USMC_Soldier_MG';
@@ -195,9 +199,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_US_Pilot';
 	_u pushBack 'CUP_B_US_Sniper_M107';
     _u pushBack 'CUP_B_USMC_Spotter';
-
-	if (CTI_FACTION_WEST == 0) then {
-		//NATO Arid CUP
 		
 	};
 	if (CTI_FACTION_WEST == 1) then {
