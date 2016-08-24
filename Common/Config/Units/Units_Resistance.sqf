@@ -1643,7 +1643,7 @@ _s pushBack "";
 _d pushBack 0;
 
 //-------------- Swedish Winter
-//--- Infantry
+/*//--- Infantry
 _c pushBack 'sfp_m90s_rifleman_ak5';
 _p pushBack '';
 _n pushBack '';
@@ -1813,7 +1813,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
-
+*/
 //--- Light
 _c pushBack 'sfp_bv206_winter';
 _p pushBack '';
