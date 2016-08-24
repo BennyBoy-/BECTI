@@ -13,6 +13,210 @@ _d = []; //--- Extra Distance (From Factory)
 
 //--- Infantry
 
+_c pushBack 'sfp_m90s_pilot';
+_p pushBack '';
+_n pushBack ["%1 (Snow)"]; 
+_o pushBack 175;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_aa_specialist_rbs69';
+_p pushBack '';
+_n pushBack ["%1 (Snow)"]; 
+_o pushBack 1500;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_at_specialist_grg86';
+_p pushBack '';
+_n pushBack ["%1 (Snow)"]; 
+_o pushBack 1450;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_automaticrifleman_ksp90';
+_p pushBack '';
+_n pushBack ["%1 (Snow)"]; 
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_crew';
+_p pushBack '';
+_n pushBack ["%1 (Snow)"]; 
+_o pushBack 175;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_engineer';
+_p pushBack '';
+_n pushBack ["%1 (Snow)"]; 
+_o pushBack 520;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_explosive_specialist';
+_p pushBack '';
+_n pushBack ["%1 (Snow)"]; 
+_o pushBack 510;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_gr';
+_p pushBack '';
+_n pushBack ["%1 (Snow)"]; 
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_1990_m90s_marksman';
+_p pushBack '';
+_n pushBack ["%1 (Snow)"]; 
+_o pushBack 525;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_medic';
+_p pushBack '';
+_n pushBack ["%1 (Snow)"]; 
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_m90s_rifleman_ak5';
+_p pushBack '';
+_n pushBack ["%1 (Snow)"]; 
+_o pushBack 375;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Soldier_repair_FST';
+_p pushBack '';
+_n pushBack ["%1 (Snow)"]; 
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+//--- Infantry Arctic Special Forces
+
+_c pushBack 'Meaty_SoldierMK_B_Sn';
+_p pushBack '';
+_n pushBack ["%1 (Arctic Special Forces)"]; 
+_o pushBack 750;
+_t pushBack 5;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_AR_B_Sn';
+_p pushBack '';
+_n pushBack ["%1 (Arctic Special Forces)"]; 
+_o pushBack 750;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_Medic_B_Sn';
+_p pushBack '';
+_n pushBack ["%1 (Arctic Special Forces)"]; 
+_o pushBack 750;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_Soldier_B_Sn';
+_p pushBack '';
+_n pushBack ["%1 (Arctic Special Forces)"]; 
+_o pushBack 750;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_AT_NLAW_B_Sn';
+_p pushBack '';
+_n pushBack ["%1 (Arctic Special Forces)"]; 
+_o pushBack 1550;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_teamlead_B_Sn';
+_p pushBack '';
+_n pushBack ["%1 (Arctic Special Forces)"]; 
+_o pushBack 750;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_SoldierAA_B_Sn';
+_p pushBack '';
+_n pushBack ["%1 (Arctic Special Forces)"]; 
+_o pushBack 1750;
+_t pushBack 5;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_SoldierGL_B_Sn';
+_p pushBack '';
+_n pushBack ["%1 (Arctic Special Forces)"]; 
+_o pushBack 750;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+
+
 //--- Light Vehicles
 _c pushBack 'dbo_CIV_new_bike';
 _p pushBack '';
@@ -21,6 +225,36 @@ _o pushBack 100;
 _t pushBack 10;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_Hunter_Sn';
+_p pushBack '';
+_n pushBack ["Hunter (Snow)"]; 
+_o pushBack 325;
+_t pushBack 15;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_HunterHMG_Sn';
+_p pushBack '';
+_n pushBack ["Hunter HMG (Snow)"]; 
+_o pushBack 2350;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_HunterGMG_Sn';
+_p pushBack '';
+_n pushBack ["Hunter GMG (Snow)"]; 
+_o pushBack 3050;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
@@ -47,12 +281,102 @@ _d pushBack 0;
 
 //--- Heavy Vehicles
 
+_c pushBack 'Meaty_Marshall_Sn';
+_p pushBack '';
+_n pushBack 'AMV-7 Marshall (Snow)';
+_o pushBack 7000;
+_t pushBack 30;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_Panther_Sn';
+_p pushBack '';
+_n pushBack 'IFV-6c Panther (Snow)';
+_o pushBack 5000;
+_t pushBack 30;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_Bobcat_Sn';
+_p pushBack '';
+_n pushBack 'CRV-6e Bobcat (Snow)';
+_o pushBack 25000;
+_t pushBack 30;
+_u pushBack 4;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "service-repairtruck";
+_d pushBack 0;
+
+_c pushBack 'Meaty_cheetah_Sn';
+_p pushBack '';
+_n pushBack 'IFV-6a Cheetah (Snow)';
+_o pushBack 6000;
+_t pushBack 30;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_Scorcher_Sn';
+_p pushBack '';
+_n pushBack 'M4 Scorcher (Snow)';
+_o pushBack 85400;
+_t pushBack 30;
+_u pushBack 4;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'Meaty_Sandstorm_Sn';
+_p pushBack '';
+_n pushBack 'M5 Sandstorm MLRS (Snow)';
+_o pushBack 100000;
+_t pushBack 30;
+_u pushBack 4;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
 //--- Repair Vehicles
 
 //--- Ammo Vehicles
 
 //--- Air Vehicles
 
+
+_c pushBack 'AAF_D_Heli_Transport_02_F';
+_p pushBack '';
+_n pushBack 'CH-49 Mohawk (Snow)';
+_o pushBack 6000;
+_t pushBack 40;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Heli_light_03_F';
+_p pushBack '';
+_n pushBack 'WY-55 Hellcat Armed (Snow)';
+_o pushBack 12000;
+_t pushBack 50;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Heli_light_03_unarmed_F';
+_p pushBack '';
+_n pushBack 'WY-55 Hellcat Unarmed (Snow)';
+_o pushBack 2000;
+_t pushBack 35;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
 
 _c pushBack 'JS_JC_FA18F';
 _p pushBack '';
