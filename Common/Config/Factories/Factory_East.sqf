@@ -669,6 +669,7 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'pook_tu95ms16';
 	_u pushBack 'pook_tu95MSM';
 	_u pushBack 'JS_JC_SU35';
+	_u pushBack "sab_l19_sea_1";
 
 
 	if (CTI_FACTION_EAST == 0) then {
@@ -930,7 +931,6 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack "rhsusf_mkvsoc";
 	_u pushBack "sfp_rbb_norrkoping";
 	_u pushBack "OFPS_Frigate_CSAT";
-	_u pushBack "sab_l19_sea_1";
 
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid OFPS

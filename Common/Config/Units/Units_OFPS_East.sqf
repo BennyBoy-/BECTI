@@ -621,6 +621,16 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 20;
 
+_c pushBack 'sab_l19_sea_1';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 15000;
+_t pushBack 25;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "service-medic";
+_d pushBack 10;
+
 /*_c pushBack 'pook_tu95ms16';
 _p pushBack '';
 _n pushBack '';
@@ -712,16 +722,5 @@ _u pushBack 3;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "service-medic";
 _d pushBack 130;
-
-_c pushBack 'sab_l19_sea_1';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 15000;
-_t pushBack 25;
-_u pushBack 2;
-_f pushBack CTI_FACTORY_NAVAL;
-_s pushBack "service-medic";
-_d pushBack 13;
-
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s, _d] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";

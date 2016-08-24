@@ -684,6 +684,7 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'pook_tu95ms16_CDF';
 	_u pushBack 'pook_tu95MSM_CDF';
 	_u pushBack 'JS_JC_FA18F';
+	_u pushBack "sab_l19_sea_2";
 
 
 	if (CTI_FACTION_WEST == 0) then {
@@ -935,7 +936,6 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack "rhsusf_mkvsoc";
 	_u pushBack "sfp_rbb_norrkoping";
 	_u pushBack "OFPS_Frigate_Blu";
-	_u pushBack "sab_l19_sea_2";
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid OFPS
