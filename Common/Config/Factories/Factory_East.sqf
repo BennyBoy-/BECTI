@@ -74,7 +74,7 @@ if (CTI_CUP_ADDON > 0) then {
 				//,	["O_Heli_Light_02_unarmed_F", []]
 			]];
 		};
-		if (CTI_FACTION_WEST == 2) then {
+		if (CTI_FACTION_WEST == 1) then {
 			//JUNGLE SET
 			missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 				["O_T_Truck_03_medical_ghex_F", [
@@ -106,7 +106,7 @@ if (CTI_CUP_ADDON > 0) then {
 				]]
 			]];
 		};
-		if (CTI_FACTION_WEST == 3) then {
+		if (CTI_FACTION_WEST == 2) then {
 			//WINTER SET
 			missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 				["AAF_D_Truck_02_medical_F", [
