@@ -217,6 +217,60 @@ if (CTI_TOWNS_OCCUPATION_WEST == 3) then {
 	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = [""];
 	WEST_NAVAL_LARGE_ASSAULT_BOAT = [""];
 };
+if (CTI_TOWNS_OCCUPATION_WEST == 4) then { 
+//--- WINTER/SFP TOWN OCCUPATION
+//--- Infantry
+	WEST_SOLDIER = "sfp_m90s_rifleman_ak5";
+	WEST_SOLDIER_AA = "sfp_m90s_aa_specialist_rbs69";
+	WEST_SOLDIER_AR = "sfp_m90s_automaticrifleman_ksp90";
+	WEST_SOLDIER_AT = "sfp_m90s_at_specialist_pskott86";
+	WEST_SOLDIER_CREW = "sfp_m90s_crew";
+	WEST_SOLDIER_LAT = "sfp_m90s_at_specialist_pskott86";
+	WEST_SOLDIER_HAT = "sfp_m90s_at_specialist_grg86";
+	WEST_SOLDIER_ENGINEER = "sfp_m90s_engineer";
+	WEST_SOLDIER_EXP = "sfp_m90s_explosive_specialist";
+	WEST_SOLDIER_GL = "sfp_m90s_gr";
+	WEST_SOLDIER_MEDIC = "sfp_m90s_medic";
+	WEST_SOLDIER_MG = "sfp_m90s_machinegunner_ksp58";
+	WEST_SOLDIER_PILOT = "sfp_m90s_pilot";
+	WEST_SOLDIER_SNIPER = "sfp_m90s_rifleman_ag90";
+	WEST_SOLDIER_TEAMLEADER = "sfp_m90s_teamleader";
+	WEST_SOLDIER_SQUADLEADER = "sfp_m90s_squadleader";
+	//--- Naval Infantry
+	WEST_SOLDIER_NAVAL_INFANTRY = "sfp_m90t_combat_diver";
+	WEST_SOLDIER_NAVAL_SQUADLEADER = "sfp_m90t_combat_diver_tl";
+	//--- Light Vehicles
+	WEST_VEHICLE_LIGHT1 = ["sfp_bv206_winter"];
+	WEST_VEHICLE_LIGHT2 = ["Meaty_HunterHMG_Sn"];
+	WEST_VEHICLE_LIGHT3 = ["Meaty_HunterHMG_Sn"];
+	WEST_VEHICLE_LIGHT4 = ["Meaty_HunterHMG_Sn"];
+	WEST_VEHICLE_LIGHT5 = ["Meaty_HunterGMG_Sn"];
+	WEST_VEHICLE_LIGHT6 = ["Meaty_HunterGMG_Sn"];
+	WEST_VEHICLE_LIGHT7 = ["Meaty_HunterGMG_Sn"];
+	//--- APCs
+	WEST_VEHICLE_APC1 = ["Meaty_Panther_Sn"];
+	WEST_VEHICLE_APC2 = ["Meaty_Marshall_Sn"];
+	WEST_VEHICLE_APC3 = ["Meaty_Marshall_Sn"];
+	//--- Tanks
+	WEST_VEHICLE_ARMORED1 = ["sfp_strf90c_snow"];	
+	WEST_VEHICLE_ARMORED2 = ["sfp_lvkv90c_snow"];
+	WEST_VEHICLE_ARMORED3 = ["sfp_strv122_snow"];
+	//--- AA Vehicles
+	WEST_VEHICLE_AA1 = ["Meaty_cheetah_Sn"];
+	WEST_VEHICLE_AA2 = ["Meaty_cheetah_Sn"];
+	WEST_VEHICLE_AA3 = ["Meaty_cheetah_Sn"];
+	//--- Air
+	WEST_AIR_HELI1 = [""]; //pawnee
+	WEST_AIR_HELI2 = [""]; //ghosthawk
+	WEST_AIR_HELI_ATTACK = [""];
+	WEST_AIR_AA = [""];
+	WEST_AIR_CAS = [""];
+	//--- Boats
+	WEST_NAVAL_ASSAULT_BOAT1 = ["B_Boat_Armed_01_minigun_F"];
+	WEST_NAVAL_ASSAULT_BOAT2 = ["B_Boat_Armed_01_minigun_F"];
+	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = [""];
+	WEST_NAVAL_LARGE_ASSAULT_BOAT = [""];
+};
 //--- Town Teams Templates
 //--- Infantry Squads
 WEST_TOWNS_SQUAD_RIFLEMEN1 = [WEST_SOLDIER_SQUADLEADER, WEST_SOLDIER_AR, WEST_SOLDIER, WEST_SOLDIER, WEST_SOLDIER_MEDIC];
