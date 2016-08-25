@@ -1,57 +1,198 @@
 private ["_side", "_u"];
 _side = _this;
-missionNamespace setVariable [format["CTI_%1_Commander", _side], "B_officer_F"];
-missionNamespace setVariable [format["CTI_%1_Worker", _side], "B_Soldier_lite_F"];
-missionNamespace setVariable [format["CTI_%1_Diver", _side], "B_diver_f"];
-missionNamespace setVariable [format["CTI_%1_Soldier", _side], "B_Soldier_F"];
-missionNamespace setVariable [format["CTI_%1_Crew", _side], "B_crew_F"];
-missionNamespace setVariable [format["CTI_%1_Pilot", _side], "B_Helipilot_F"];
-missionNamespace setVariable [format["CTI_%1_Static", _side], "B_spotter_F"];
-
-if (CTI_CUP_ADDON > 0) then { 
-missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
-	["CUP_B_HMMWV_Ambulance_USMC", [
-		["CUP_launch_M136", 5], 
-		["CUP_M136_M", 20],
-		["CUP_8Rnd_B_Beneli_74Slug", 20],
-		["CUP_8Rnd_B_Beneli_74Pellets", 20],
-		["CUP_sgun_M1014", 10],
-		["CUP_30Rnd_9x19_MP5", 20],
-		["acc_flashlight", 10],
-		["Toolkit", 1]
-	]],
-	["CUP_B_M113_USA", [
-		["CUP_launch_M136", 5], 
-		["CUP_M136_M", 20],
-		["CUP_8Rnd_B_Beneli_74Slug", 20],
-		["CUP_8Rnd_B_Beneli_74Pellets", 20],
-		["CUP_sgun_M1014", 10],
-		["CUP_30Rnd_9x19_MP5", 20],
-		["acc_flashlight", 10],
-		["Toolkit", 1]
-	]],
-	["CUP_B_LR_Special_GMG_GB_W", [
-		["CUP_launch_M136", 5], 
-		["CUP_M136_M", 20],
-		["CUP_8Rnd_B_Beneli_74Slug", 20],
-		["CUP_8Rnd_B_Beneli_74Pellets", 20],
-		["CUP_sgun_M1014", 10],
-		["CUP_30Rnd_9x19_MP5", 20],
-		["acc_flashlight", 10],
-		["Toolkit", 1]
-	]],
-	["CUP_B_HMMWV_M1114_USMC", [
-		["CUP_launch_M136", 5], 
-		["CUP_M136_M", 20],
-		["CUP_8Rnd_B_Beneli_74Slug", 20],
-		["CUP_8Rnd_B_Beneli_74Pellets", 20],
-		["CUP_sgun_M1014", 10],
-		["CUP_30Rnd_9x19_MP5", 20],
-		["acc_flashlight", 10],
-		["Toolkit", 1]
-	]]
-	//,	["B_Heli_Transport_01_F", []]
-]];
+if (CTI_FACTION_WEST == 0) then {
+	//NATO Arid Vanilla
+	missionNamespace setVariable [format["CTI_%1_Commander", _side], "B_officer_F"];
+	missionNamespace setVariable [format["CTI_%1_Worker", _side], "B_Soldier_lite_F"];
+	missionNamespace setVariable [format["CTI_%1_Diver", _side], "B_diver_f"];
+	missionNamespace setVariable [format["CTI_%1_Soldier", _side], "B_Soldier_F"];
+	missionNamespace setVariable [format["CTI_%1_Crew", _side], "B_crew_F"];
+	missionNamespace setVariable [format["CTI_%1_Pilot", _side], "B_Helipilot_F"];
+	missionNamespace setVariable [format["CTI_%1_Static", _side], "B_spotter_F"];
+};
+if (CTI_FACTION_WEST == 1) then {
+	//NATO Tropic Vanilla
+	missionNamespace setVariable [format["CTI_%1_Commander", _side], "B_T_officer_F"];
+	missionNamespace setVariable [format["CTI_%1_Worker", _side], "B_T_Soldier_lite_F"];
+	missionNamespace setVariable [format["CTI_%1_Diver", _side], "B_T_diver_f"];
+	missionNamespace setVariable [format["CTI_%1_Soldier", _side], "B_T_Soldier_F"];
+	missionNamespace setVariable [format["CTI_%1_Crew", _side], "B_T_crew_F"];
+	missionNamespace setVariable [format["CTI_%1_Pilot", _side], "B_T_Helipilot_F"];
+	missionNamespace setVariable [format["CTI_%1_Static", _side], "B_T_spotter_F"];
+};
+if (CTI_FACTION_WEST == 2) then {
+	//NATO Winter Vanilla
+	missionNamespace setVariable [format["CTI_%1_Commander", _side], "sfp_m90s_squadleader"];
+	missionNamespace setVariable [format["CTI_%1_Worker", _side], "sfp_m90s_rifleman_ak5"];
+	missionNamespace setVariable [format["CTI_%1_Diver", _side], "B_diver_f"];
+	missionNamespace setVariable [format["CTI_%1_Soldier", _side], "sfp_m90s_rifleman_ak5"];
+	missionNamespace setVariable [format["CTI_%1_Crew", _side], "sfp_m90s_crew"];
+	missionNamespace setVariable [format["CTI_%1_Pilot", _side], "sfp_m90s_pilot"];
+	missionNamespace setVariable [format["CTI_%1_Static", _side], "sfp_m90s_rifleman_ag90"];
+};
+if (CTI_CUP_ADDON > 0) then {
+	if (CTI_OFPS_ADDON > 0) then {
+		if (CTI_FACTION_WEST == 0) then {
+			//ARID SET
+			missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
+				["CUP_B_HMMWV_Ambulance_USMC", [
+					["CUP_launch_M136", 5], 
+					["CUP_M136_M", 20],
+					["CUP_8Rnd_B_Beneli_74Slug", 20],
+					["CUP_8Rnd_B_Beneli_74Pellets", 20],
+					["CUP_sgun_M1014", 10],
+					["CUP_30Rnd_9x19_MP5", 20],
+					["acc_flashlight", 10],
+					["Toolkit", 1]
+				]],
+				["CUP_B_M113_USA", [
+					["CUP_launch_M136", 5], 
+					["CUP_M136_M", 20],
+					["CUP_8Rnd_B_Beneli_74Slug", 20],
+					["CUP_8Rnd_B_Beneli_74Pellets", 20],
+					["CUP_sgun_M1014", 10],
+					["CUP_30Rnd_9x19_MP5", 20],
+					["acc_flashlight", 10],
+					["Toolkit", 1]
+				]],
+				["CUP_B_LR_Special_GMG_GB_W", [
+					["CUP_launch_M136", 5], 
+					["CUP_M136_M", 20],
+					["CUP_8Rnd_B_Beneli_74Slug", 20],
+					["CUP_8Rnd_B_Beneli_74Pellets", 20],
+					["CUP_sgun_M1014", 10],
+					["CUP_30Rnd_9x19_MP5", 20],
+					["acc_flashlight", 10],
+					["Toolkit", 1]
+				]],
+				["CUP_B_HMMWV_M1114_USMC", [
+					["CUP_launch_M136", 5], 
+					["CUP_M136_M", 20],
+					["CUP_8Rnd_B_Beneli_74Slug", 20],
+					["CUP_8Rnd_B_Beneli_74Pellets", 20],
+					["CUP_sgun_M1014", 10],
+					["CUP_30Rnd_9x19_MP5", 20],
+					["acc_flashlight", 10],
+					["Toolkit", 1]
+				]]
+			]];
+		};
+		if (CTI_FACTION_WEST == 1) then {
+			//JUNGLE SET
+			missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
+				["AAF_D_Truck_02_medical_F", [
+					["CUP_launch_M136", 5], 
+					["CUP_M136_M", 20],
+					["CUP_8Rnd_B_Beneli_74Slug", 20],
+					["CUP_8Rnd_B_Beneli_74Pellets", 20],
+					["CUP_sgun_M1014", 10],
+					["CUP_30Rnd_9x19_MP5", 20],
+					["acc_flashlight", 10],
+					["Toolkit", 1]
+				]],
+				["OFPS_HUNTER_HMG", [
+					["CUP_launch_M136", 5], 
+					["CUP_M136_M", 20],
+					["CUP_8Rnd_B_Beneli_74Slug", 20],
+					["CUP_8Rnd_B_Beneli_74Pellets", 20],
+					["CUP_sgun_M1014", 10],
+					["CUP_30Rnd_9x19_MP5", 20],
+					["acc_flashlight", 10],
+					["Toolkit", 1]
+				]],
+				["OFPS_HUNTER_GMG", [
+					["CUP_launch_M136", 5], 
+					["CUP_M136_M", 20],
+					["CUP_8Rnd_B_Beneli_74Slug", 20],
+					["CUP_8Rnd_B_Beneli_74Pellets", 20],
+					["CUP_sgun_M1014", 10],
+					["CUP_30Rnd_9x19_MP5", 20],
+					["acc_flashlight", 10],
+					["Toolkit", 1]
+				]]
+			]];
+		};
+		if (CTI_FACTION_WEST == 2) then {
+			//WINTER SET
+			missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
+				["AAF_D_Truck_02_medical_F", [
+					["CUP_launch_M136", 5], 
+					["CUP_M136_M", 20],
+					["CUP_8Rnd_B_Beneli_74Slug", 20],
+					["CUP_8Rnd_B_Beneli_74Pellets", 20],
+					["CUP_sgun_M1014", 10],
+					["CUP_30Rnd_9x19_MP5", 20],
+					["acc_flashlight", 10],
+					["Toolkit", 1]
+				]],
+				["AAF_D_MRAP_03_hmg_F", [
+					["CUP_launch_M136", 5], 
+					["CUP_M136_M", 20],
+					["CUP_8Rnd_B_Beneli_74Slug", 20],
+					["CUP_8Rnd_B_Beneli_74Pellets", 20],
+					["CUP_sgun_M1014", 10],
+					["CUP_30Rnd_9x19_MP5", 20],
+					["acc_flashlight", 10],
+					["Toolkit", 1]
+				]],
+				["AAF_D_MRAP_03_gmg_F", [
+					["CUP_launch_M136", 5], 
+					["CUP_M136_M", 20],
+					["CUP_8Rnd_B_Beneli_74Slug", 20],
+					["CUP_8Rnd_B_Beneli_74Pellets", 20],
+					["CUP_sgun_M1014", 10],
+					["CUP_30Rnd_9x19_MP5", 20],
+					["acc_flashlight", 10],
+					["Toolkit", 1]
+				]]
+			]];
+		};
+	} else {
+		//DEFUALT CUP SET
+		missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
+			["CUP_B_HMMWV_Ambulance_USMC", [
+				["CUP_launch_M136", 5], 
+				["CUP_M136_M", 20],
+				["CUP_8Rnd_B_Beneli_74Slug", 20],
+				["CUP_8Rnd_B_Beneli_74Pellets", 20],
+				["CUP_sgun_M1014", 10],
+				["CUP_30Rnd_9x19_MP5", 20],
+				["acc_flashlight", 10],
+				["Toolkit", 1]
+			]],
+			["CUP_B_M113_USA", [
+				["CUP_launch_M136", 5], 
+				["CUP_M136_M", 20],
+				["CUP_8Rnd_B_Beneli_74Slug", 20],
+				["CUP_8Rnd_B_Beneli_74Pellets", 20],
+				["CUP_sgun_M1014", 10],
+				["CUP_30Rnd_9x19_MP5", 20],
+				["acc_flashlight", 10],
+				["Toolkit", 1]
+			]],
+			["CUP_B_LR_Special_GMG_GB_W", [
+				["CUP_launch_M136", 5], 
+				["CUP_M136_M", 20],
+				["CUP_8Rnd_B_Beneli_74Slug", 20],
+				["CUP_8Rnd_B_Beneli_74Pellets", 20],
+				["CUP_sgun_M1014", 10],
+				["CUP_30Rnd_9x19_MP5", 20],
+				["acc_flashlight", 10],
+				["Toolkit", 1]
+			]],
+			["CUP_B_HMMWV_M1114_USMC", [
+				["CUP_launch_M136", 5], 
+				["CUP_M136_M", 20],
+				["CUP_8Rnd_B_Beneli_74Slug", 20],
+				["CUP_8Rnd_B_Beneli_74Pellets", 20],
+				["CUP_sgun_M1014", 10],
+				["CUP_30Rnd_9x19_MP5", 20],
+				["acc_flashlight", 10],
+				["Toolkit", 1]
+			]]
+			//,	["B_Heli_Transport_01_F", []]
+		]];
+	};
 } else {
 missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
 	["B_Truck_01_medical_F", [
@@ -67,7 +208,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["acc_flashlight", 10],
 		["Toolkit", 1]
 	]],
-	["B_MRAP_01_F", [
+	["B_MRAP_01_hmg_F", [
 		["Toolkit", 1],["firstaidkit", 10],
 		["30Rnd_556x45_Stanag", 15],
 		["launch_NLAW_F", 5], 
@@ -84,35 +225,34 @@ _u = [];
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
 	_u pushBack "B_soldier_AR_F";
-_u pushBack "B_HeavyGunner_F";
-_u pushBack "B_Soldier_A_F";
-_u pushBack "B_soldier_exp_F";
-_u pushBack "B_Soldier_GL_F";
-_u pushBack "B_soldier_M_F";
-_u pushBack "B_medic_F";
-_u pushBack "B_Soldier_F";
-_u pushBack "B_soldier_PG_F";
-_u pushBack "B_engineer_F";
-_u pushBack "B_sniper_F";
-_u pushBack "B_soldier_repair_F";
-_u pushBack "B_soldier_LAT_F";
-_u pushBack "B_soldier_AA_F";
-_u pushBack "B_soldier_AT_F";
-_u pushBack "B_spotter_F";
-_u pushBack "B_soldier_UAV_F";
-_u pushBack "B_Helipilot_F";
-_u pushBack "B_crew_F";
-_u pushBack "B_Soldier_TL_F";
-_u pushBack "B_Soldier_SL_F";
-_u pushBack 'B_Diver_F';
-_u pushBack 'B_Diver_TL_F';
-_u pushBack 'B_Recon_Exp_F';
-_u pushBack 'B_Recon_JTAC_F';
-_u pushBack 'B_Recon_Medic_F';
-_u pushBack 'B_Recon_F';
-_u pushBack 'B_Recon_LAT_F';
-_u pushBack 'B_Recon_TL_F';
-
+	_u pushBack "B_HeavyGunner_F";
+	_u pushBack "B_Soldier_A_F";
+	_u pushBack "B_soldier_exp_F";
+	_u pushBack "B_Soldier_GL_F";
+	_u pushBack "B_soldier_M_F";
+	_u pushBack "B_medic_F";
+	_u pushBack "B_Soldier_F";
+	_u pushBack "B_soldier_PG_F";
+	_u pushBack "B_engineer_F";
+	_u pushBack "B_sniper_F";
+	_u pushBack "B_soldier_repair_F";
+	_u pushBack "B_soldier_LAT_F";
+	_u pushBack "B_soldier_AA_F";
+	_u pushBack "B_soldier_AT_F";
+	_u pushBack "B_spotter_F";
+	_u pushBack "B_soldier_UAV_F";
+	_u pushBack "B_Helipilot_F";
+	_u pushBack "B_crew_F";
+	_u pushBack "B_Soldier_TL_F";
+	_u pushBack "B_Soldier_SL_F";
+	_u pushBack 'B_Diver_F';
+	_u pushBack 'B_Diver_TL_F';
+	_u pushBack 'B_Recon_Exp_F';
+	_u pushBack 'B_Recon_JTAC_F';
+	_u pushBack 'B_Recon_Medic_F';
+	_u pushBack 'B_Recon_F';
+	_u pushBack 'B_Recon_LAT_F';
+	_u pushBack 'B_Recon_TL_F';
 	
 };
 if (CTI_FACTION_WEST == 1) then {

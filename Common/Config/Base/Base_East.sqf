@@ -1,6 +1,16 @@
 _side = _this;
-
-missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_APC_Wheeled_02_rcws_F"];
+if (CTI_FACTION_EAST == 0) then {
+	//CSAT Arid Vanilla
+	missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_APC_Wheeled_02_rcws_F"];
+};
+if (CTI_FACTION_EAST == 1) then {
+	//CSAT Tropic Vanilla
+	missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_T_APC_Wheeled_02_rcws_ghex_F"];
+};
+if (CTI_FACTION_EAST == 2) then {
+	//CSAT Winter Vanilla
+	missionNamespace setVariable [format["CTI_%1_HQ", _side], "AAF_D_APC_Wheeled_03_cannon_F"];
+};
 missionNamespace setVariable [format["CTI_%1_Factories", _side], ["Barracks","Light","Heavy","Air","Naval","Repair","Ammo","Radar"]];
 
 missionNamespace setVariable [format["CTI_%1_Base_Template", _side], [
