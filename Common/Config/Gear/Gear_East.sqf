@@ -32,11 +32,11 @@ _i pushBack "SatchelCharge_Remote_Mag";
 _u pushBack 3;
 _p pushBack 500;
 
-/* 
+
 _i pushBack "DemoCharge_Remote_Mag";
 _u pushBack 2;
 _p pushBack 300; 
-*/
+
 
 _i pushBack "ClaymoreDirectionalMine_Remote_Mag";
 _u pushBack 0;
@@ -65,16 +65,16 @@ _p pushBack 150;
 _i pushBack "30Rnd_45ACP_Mag_SMG_01";
 _u pushBack 0;
 _p pushBack 50;
-/* 
+ 
 _i pushBack "30Rnd_45ACP_Mag_SMG_01_tracer_green";
 _u pushBack 0;
 _p pushBack 30;
- */
+ 
 _i pushBack "30Rnd_556x45_Stanag";  //TRG
 _u pushBack 1;
 _p pushBack 50;
 
-/* 
+ 
 _i pushBack "30Rnd_556x45_Stanag_Tracer_Red"; //TRG
 _u pushBack 1;
 _p pushBack 20;
@@ -86,7 +86,7 @@ _p pushBack 20;
 _i pushBack "30Rnd_556x45_Stanag_Tracer_Yellow"; //TRG
 _u pushBack 1;
 _p pushBack 20;
- */
+ 
 _i pushBack "30Rnd_65x39_caseless_green";  //Katiba
 _u pushBack 1;
 _p pushBack 100;
@@ -98,11 +98,11 @@ _p pushBack 100;
 _i pushBack "150Rnd_762x54_Box";  //Zafir
 _u pushBack 2;
 _p pushBack 300;
-/* 
+
 _i pushBack "150Rnd_762x54_Box_Tracer";  //Zafir
 _u pushBack 1;
 _p pushBack 150;
- */
+
 _i pushBack "RPG32_F";
 _u pushBack 1;
 _p pushBack 300;
@@ -154,7 +154,7 @@ _p pushBack 20;
 _i pushBack "SmokeShellGreen";
 _u pushBack 0;
 _p pushBack 20;
-/* 
+
 _i pushBack "SmokeShellYellow";
 _u pushBack 0;
 _p pushBack 10;
@@ -198,7 +198,7 @@ _p pushBack 10;
 _i pushBack "FlareYellow_F";
 _u pushBack 0;
 _p pushBack 10;
- */
+
 _i pushBack "1Rnd_HE_Grenade_shell";
 _u pushBack 0;
 _p pushBack 50;
@@ -214,7 +214,7 @@ _p pushBack 20;
 _i pushBack "1Rnd_SmokeGreen_Grenade_shell";
 _u pushBack 0;
 _p pushBack 20;
-/* 
+
 _i pushBack "1Rnd_SmokeYellow_Grenade_shell";
 _u pushBack 0;
 _p pushBack 10;
@@ -222,15 +222,15 @@ _p pushBack 10;
 _i pushBack "1Rnd_SmokePurple_Grenade_shell";
 _u pushBack 0;
 _p pushBack 10;
- */
+ 
 _i pushBack "1Rnd_SmokeBlue_Grenade_shell";
 _u pushBack 0;
 _p pushBack 20;
-/* 
+
 _i pushBack "1Rnd_SmokeOrange_Grenade_shell";
 _u pushBack 0;
 _p pushBack 10;
- */
+ 
 _i pushBack "UGL_FlareWhite_F";
 _u pushBack 0;
 _p pushBack 20;
@@ -242,19 +242,19 @@ _p pushBack 20;
 _i pushBack "UGL_FlareRed_F";
 _u pushBack 0;
 _p pushBack 20;
-/* 
+
 _i pushBack "UGL_FlareYellow_F";
 _u pushBack 0;
 _p pushBack 10;
- */
+ 
 _i pushBack "UGL_FlareCIR_F";
 _u pushBack 0;
 _p pushBack 20;
-
+/* 
 _i pushBack "3Rnd_HE_Grenade_shell";
 _u pushBack 2;
 _p pushBack 150;
-/* 
+
 _i pushBack "3Rnd_SmokeYellow_Grenade_shell";
 _u pushBack 1;
 _p pushBack 15;
@@ -262,7 +262,7 @@ _p pushBack 15;
 _i pushBack "3Rnd_SmokePurple_Grenade_shell";
 _u pushBack 1;
 _p pushBack 15;
- */
+
 _i pushBack "3Rnd_Smoke_Grenade_shell";
 _u pushBack 2;
 _p pushBack 120;
@@ -302,7 +302,7 @@ _p pushBack 15;
 _i pushBack "3Rnd_UGL_FlareCIR_F";
 _u pushBack 2;
 _p pushBack 120;
-
+ */
 //--- Weapons (Nested array elements are defined but skiped in the gear menu)
 _i pushBack "hgun_PDW2000_F";
 _u pushBack 0;
@@ -351,6 +351,38 @@ _p pushBack 600;
 _i pushBack "srifle_DMR_01_F";  //Rahim 7.62
 _u pushBack 3;
 _p pushBack 500;
+
+_i pushBack "srifle_DMR_04_F	";  //ASP-1 Kir 12.7 mm
+_u pushBack 4;
+_p pushBack 1000;
+
+_i pushBack "srifle_DMR_04_Tan_F	";  
+_u pushBack 4;
+_p pushBack 1000;
+
+_i pushBack "srifle_DMR_04_F	";  //Cyrus 9.3 mm
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "srifle_DMR_05_hex_F	";  
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "srifle_DMR_05_tan_f	";  
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "MMG_01_hex_F	";  //Navid 9.3 mm
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "MMG_01_tan_F	"; 
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "srifle_DMR_04_F	";  
+_u pushBack 3;
+_p pushBack 800;
 
 _i pushBack "srifle_GM6_F";
 _u pushBack 4;
@@ -427,32 +459,32 @@ _i pushBack "U_O_Wetsuit";
 _u pushBack 0;
 _p pushBack 400;
 
-/*
+
 _i pushBack "U_OG_Guerilla1_1";
 _u pushBack 1;
-_p pushBack 150;
+_p pushBack 500;
 _i pushBack "U_OG_Guerilla2_1";
 _u pushBack 1;
-_p pushBack 150;
+_p pushBack 500;
 _i pushBack "U_OG_Guerilla2_2";
 _u pushBack 1;
-_p pushBack 150;
+_p pushBack 500;
 _i pushBack "U_OG_Guerilla2_3";
 _u pushBack 1;
-_p pushBack 150;
+_p pushBack 500;
 _i pushBack "U_OG_Guerilla3_1";
 _u pushBack 1;
-_p pushBack 150;
+_p pushBack 500;
 _i pushBack "U_OG_Guerilla3_2";
 _u pushBack 1;
-_p pushBack 150;
+_p pushBack 500;
 _i pushBack "U_OG_Guerrilla_6_1";
 _u pushBack 1;
-_p pushBack 50;
-*/
+_p pushBack 500;
+
 
 //--- Vests
-/* 
+
 _i pushBack "V_BandollierB_khk";
 _u pushBack 0;
 _p pushBack 100;
@@ -460,7 +492,7 @@ _p pushBack 100;
 _i pushBack "V_BandollierB_cbr";
 _u pushBack 0;
 _p pushBack 200; 
-*/
+
 
 _i pushBack "V_Chestrig_khk";
 _u pushBack 0;
@@ -600,15 +632,11 @@ _i pushBack "O_GMG_01_support_F";
 _u pushBack 2;
 _p pushBack 100;
 
-/* 
-OPFOR gets the PODNOS for mortars
 _i pushBack "O_Mortar_01_support_F";
 _u pushBack 3;
 _p pushBack 120000;
 _i pushBack "O_Mortar_01_weapon_F";
 _u pushBack 3;
-_p pushBack 7500;
-*/
 
 
 //--- Glasses
@@ -639,15 +667,15 @@ _p pushBack 5;
 _i pushBack "G_Aviator";
 _u pushBack 0;
 _p pushBack 10;
-/* 
+
 _i pushBack "G_Spectacles";
 _u pushBack 0;
 _p pushBack 10;
- */
+
 _i pushBack "G_Balaclava_blk";
 _u pushBack 0;
 _p pushBack 5;
-/* 
+
 _i pushBack "G_Balaclava_oli";
 _u pushBack 0;
 _p pushBack 5;
@@ -675,7 +703,7 @@ _p pushBack 5;
 _i pushBack "G_Bandanna_sport";
 _u pushBack 0;
 _p pushBack 5;
- */
+
 _i pushBack "G_Balaclava_combat";
 _u pushBack 0;
 _p pushBack 5;
@@ -798,7 +826,7 @@ _p pushBack 5;
 _i pushBack "H_Bandanna_sand";
 _u pushBack 1;
 _p pushBack 5;
-/* 
+
 _i pushBack "H_Bandanna_surfer";
 _u pushBack 1;
 _p pushBack 5;
@@ -814,11 +842,11 @@ _p pushBack 5;
 _i pushBack "H_Bandanna_camo";
 _u pushBack 0;
 _p pushBack 5;
- */
+
 _i pushBack "H_Watchcap_blk";
 _u pushBack 0;
 _p pushBack 5;
-/* 
+
 _i pushBack "H_Cap_police";
 _u pushBack 0;
 _p pushBack 5;
@@ -838,7 +866,7 @@ _p pushBack 5;
 _i pushBack "H_Cap_tan";
 _u pushBack 0;
 _p pushBack 5;
- */
+
 _i pushBack "H_Watchcap_cbr";
 _u pushBack 0;
 _p pushBack 5;
