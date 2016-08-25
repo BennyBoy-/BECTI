@@ -13,7 +13,232 @@ _d = []; //--- Extra Distance (From Factory)
 
 //--- Infantry
 
+_c pushBack 'IP_O_Officer_hex_FST';
+_p pushBack '';
+_n pushBack ["Officer (Snow)"]; 
+_o pushBack 575;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Soldier_AA_FST';
+_p pushBack '';
+_n pushBack ["AA Specialist (Snow)"]; 
+_o pushBack 1500;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Soldier_AT_FST';
+_p pushBack '';
+_n pushBack ["AT Specialist (Snow)"]; 
+_o pushBack 1450;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_HeavyGunner_FST';
+_p pushBack '';
+_n pushBack ["Autorifleman (Snow)"]; 
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_crew_FST';
+_p pushBack '';
+_n pushBack ["Crew (Snow)"]; 
+_o pushBack 175;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Engineer_FST';
+_p pushBack '';
+_n pushBack ["Combat Engineer (Snow)"]; 
+_o pushBack 520;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Soldier_exp_FST';
+_p pushBack '';
+_n pushBack ["Explosive Specialist (Snow)"]; 
+_o pushBack 510;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Soldier_GL_FST';
+_p pushBack '';
+_n pushBack ["Rifleman GL (Snow)"]; 
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_HeliCrew_FST';
+_p pushBack '';
+_n pushBack ["Pilot (Snow)"]; 
+_o pushBack 175;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Sharpshooter_FST';
+_p pushBack '';
+_n pushBack ["Marksman (Snow)"]; 
+_o pushBack 525;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Medic_FST';
+_p pushBack '';
+_n pushBack ["Medic (Snow)"]; 
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Soldier_FST';
+_p pushBack '';
+_n pushBack ["Rifleman (Snow)"]; 
+_o pushBack 375;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Soldier_repair_FST';
+_p pushBack '';
+_n pushBack ["Repair Specialist (Snow)"]; 
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Soldier_LAT_FST';
+_p pushBack '';
+_n pushBack ["Rifleman AT (Snow)"]; 
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+//--- Infantry Arctic Special Forces
+
+_c pushBack 'IP_O_recon_exp_FST';
+_p pushBack '';
+_n pushBack ["Recon Explosive Specialist (Arctic Special Forces)"]; 
+_o pushBack 550;
+_t pushBack 5;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_recon_JTAC_FST';
+_p pushBack '';
+_n pushBack ["Recon JTAC (Arctic Special Forces)"]; 
+_o pushBack 750;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_recon_medic_FST';
+_p pushBack '';
+_n pushBack ["Recon Medic (Arctic Special Forces)"]; 
+_o pushBack 750;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_recon_FST';
+_p pushBack '';
+_n pushBack ["Recon Rifleman (Arctic Special Forces)"]; 
+_o pushBack 650;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_recon_LAT_FST';
+_p pushBack '';
+_n pushBack ["Recon Rifleman AT (Arctic Special Forces)"]; 
+_o pushBack 1550;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_recon_TL_FST';
+_p pushBack '';
+_n pushBack ["Recon Team Leader (Arctic Special Forces)"]; 
+_o pushBack 250;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_recon_M_FST';
+_p pushBack '';
+_n pushBack ["Recon Marksman (Arctic Special Forces)"]; 
+_o pushBack 1000;
+_t pushBack 5;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_pathfinder_FST';
+_p pushBack '';
+_n pushBack ["Recon Pathfinder (Arctic Special Forces)"]; 
+_o pushBack 1250;
+_t pushBack 5;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+
 //--- Light Vehicles
+
+
 _c pushBack 'dbo_CIV_new_bike';
 _p pushBack '';
 _n pushBack 'Bike';
@@ -21,6 +246,56 @@ _o pushBack 100;
 _t pushBack 20;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_MRAP_03_F';
+_p pushBack '';
+_n pushBack ["Strider (Snow)"]; 
+_o pushBack 325;
+_t pushBack 15;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_MRAP_03_hmg_F';
+_p pushBack '';
+_n pushBack ["Strider HMG (Snow)"]; 
+_o pushBack 2350;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_MRAP_03_gmg_F';
+_p pushBack '';
+_n pushBack ["Strider GMG (Snow)"]; 
+_o pushBack 3050;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Truck_02_medical_F';
+_p pushBack '';
+_n pushBack (format ["Zamak Respawn - Range %1 m (Snow)",CTI_RESPAWN_MOBILE_RANGE]);
+_o pushBack 4500;
+_t pushBack 20;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "service-medic";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Truck_02_covered_F';
+_p pushBack '';
+_n pushBack ["Zamak Transport (Snow)"]; 
+_o pushBack 300;
+_t pushBack 15;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
@@ -35,7 +310,7 @@ _s pushBack "";
 _d pushBack 0;*/
 
 //Snow truck
-_c pushBack 'sfp_bv206_winter';
+_c pushBack 'sfp_bv206_Snow';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 200;
@@ -68,9 +343,60 @@ _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'AAF_D_APC_tracked_03_cannon_F';
+_p pushBack '';
+_n pushBack ["FV-720 Mora (Snow)"]; 
+_o pushBack 14000;
+_t pushBack 30;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_MBT_03_cannon_F';
+_p pushBack '';
+_n pushBack ["MBT-52 Kuma (Snow)"]; 
+_o pushBack 30400;
+_t pushBack 30;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_APC_Wheeled_03_cannon_F';
+_p pushBack '';
+_n pushBack ["AFV-4 Gorgon (Snow)"]; 
+_o pushBack 9600;
+_t pushBack 30;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
 //--- Repair Vehicles
 
+_c pushBack 'AAF_D_Truck_02_box_F';
+_p pushBack '';
+_n pushBack 'Repair Truck (Snow)';
+_o pushBack 10000;
+_t pushBack 25;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_REPAIR;
+_s pushBack "service-repairtruck";
+_d pushBack 0;
+
 //--- Ammo Vehicles
+
+_c pushBack 'AAF_D_Truck_02_ammo_F';
+_p pushBack '';
+_n pushBack 'Ammo Truck (Snow)';
+_o pushBack 10000;
+_t pushBack 25;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_AMMO;
+_s pushBack "service-ammotruck";
+_d pushBack 0;
+
 
 //--- Air Vehicles
 
@@ -93,6 +419,47 @@ _u pushBack 2;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
+
+_c pushBack 'IP_O_Plane_CAS_02_FSnowHex';
+_p pushBack '';
+_n pushBack 'TO-99 Neophron (Snow)';
+_o pushBack 70000;
+_t pushBack 50;
+_u pushBack 5;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Heli_Attack_02_SnowHex_FST';
+_p pushBack '';
+_n pushBack 'Kajman (Snow)';
+_o pushBack 45000;
+_t pushBack 50;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Heli_Light_02_unarmed_FST';
+_p pushBack '';
+_n pushBack 'Orca Unarmed (Snow)';
+_o pushBack 3300;
+_t pushBack 35;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'IP_O_Heli_Light_02_FST';
+_p pushBack '';
+_n pushBack 'Orca Armed (Snow)';
+_o pushBack 11000;
+_t pushBack 20;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
 
 /*_c pushBack 'globemaster_c17_Qatar';
 _p pushBack '';
@@ -254,6 +621,16 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 20;
 
+_c pushBack 'sab_l19_sea_1';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 15000;
+_t pushBack 25;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "service-medic";
+_d pushBack 10;
+
 /*_c pushBack 'pook_tu95ms16';
 _p pushBack '';
 _n pushBack '';
@@ -345,16 +722,5 @@ _u pushBack 3;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "service-medic";
 _d pushBack 130;
-
-_c pushBack 'sab_l19_sea_1';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 15000;
-_t pushBack 25;
-_u pushBack 2;
-_f pushBack CTI_FACTORY_NAVAL;
-_s pushBack "service-medic";
-_d pushBack 13;
-
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s, _d] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";

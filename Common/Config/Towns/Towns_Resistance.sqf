@@ -426,8 +426,61 @@ if (CTI_TOWNS_OCCUPATION_RESISTANCE == 7) then {
 	GUER_NAVAL_LARGE_ASSAULT_BOAT = ["I_Boat_Armed_01_minigun_F"];
 };
 if (CTI_TOWNS_OCCUPATION_RESISTANCE == 8) then { 
-//--- Swedish Forces TOWN OCCUPATION - WINTER
+//--- AAF / SFP WINTER TOWN OCCUPATION - WINTER
 	//--- Infantry
+	GUER_SOLDIER = "AAF_D_Soldier_F";
+	GUER_SOLDIER_AA = "AAF_D_Special_AA_F";
+	GUER_SOLDIER_AR = "AAF_D_Special_AR_F";
+	GUER_SOLDIER_AT = "AAF_D_Special_AT_F";
+	GUER_SOLDIER_CREW = "AAF_D_Soldier_crew_F";
+	GUER_SOLDIER_LAT = "AAF_D_Soldier_LAT_F";
+	GUER_SOLDIER_HAT = "AAF_D_Special_AT_F";
+	GUER_SOLDIER_ENGINEER = "AAF_D_Soldier_engineer_F";
+	GUER_SOLDIER_EXP = "AAF_D_Special_exp_F";
+	GUER_SOLDIER_GL = "AAF_D_Special_GL_F";
+	GUER_SOLDIER_MEDIC = "AAF_D_Special_Medic_F";
+	GUER_SOLDIER_MG = "AAF_D_Soldier_AR_F";
+	GUER_SOLDIER_PILOT = "AAF_D_Soldier_pilot_F";
+	GUER_SOLDIER_SNIPER = "AAF_D_Sniper_F";
+	GUER_SOLDIER_TEAMLEADER = "AAF_D_Special_TL_F";
+	GUER_SOLDIER_SQUADLEADER = "AAF_D_Special_SL_F";
+	//--- Naval Infantry
+	GUER_SOLDIER_NAVAL_INFANTRY = "I_diver_F";
+	GUER_SOLDIER_NAVAL_SQUADLEADER = "I_diver_TL_F";
+	//--- Light Vehicles
+	GUER_VEHICLE_LIGHT1 = ["sfp_bv206_winter"];
+	GUER_VEHICLE_LIGHT2 = ["sfp_tgb1111_sog_ksp58"];
+	GUER_VEHICLE_LIGHT3 = ["sfp_tgb13_ksp58"];
+	GUER_VEHICLE_LIGHT4 = ["sfp_tgb1111"];
+	GUER_VEHICLE_LIGHT5 = ["sfp_tgb1111_sog_rbs56"];
+	GUER_VEHICLE_LIGHT6 = ["sfp_tgb16_rws"];
+	GUER_VEHICLE_LIGHT7 = ["sfp_tgb16_rws"];
+	//--- APCs
+	GUER_VEHICLE_APC1 = ["sfp_patgb203"];
+	GUER_VEHICLE_APC2 = ["sfp_strf90c_snow"];
+	GUER_VEHICLE_APC3 = ["sfp_lvkv90c_snow"];
+	//--- Tanks
+	GUER_VEHICLE_ARMORED1 = ["sfp_ikv91"];	
+	GUER_VEHICLE_ARMORED2 = ["sfp_strv102"];
+	GUER_VEHICLE_ARMORED3 = ["sfp_strv122_snow"];
+	//--- AA Vehicles
+	GUER_VEHICLE_AA1 = [""];
+	GUER_VEHICLE_AA2 = [""];
+	GUER_VEHICLE_AA3 = [""];
+	//--- Air
+	GUER_AIR_HELI1 = [""];
+	GUER_AIR_HELI2 = [""];
+	GUER_AIR_AA = [""];
+	GUER_AIR_CAS = [""];
+	//--- Boats
+	GUER_NAVAL_ASSAULT_BOAT1 = ["sfp_strb90"];
+	GUER_NAVAL_ASSAULT_BOAT2 = ["sfp_strb90_rws"];
+	GUER_NAVAL_MEDIUM_ASSAULT_BOAT = ["sfp_strb90_rws"];
+	GUER_NAVAL_LARGE_ASSAULT_BOAT = ["sfp_strb90_rws"];
+};
+if (CTI_TOWNS_OCCUPATION_RESISTANCE == 9) then { 
+//--- Swedish Forces TOWN OCCUPATION - WINTER - SAVING FOR USE LATER
+/*	//--- Infantry
 	GUER_SOLDIER = "sfp_m90s_rifleman_ak5";
 	GUER_SOLDIER_AA = "sfp_m90s_aa_specialist_rbs69";
 	GUER_SOLDIER_AR = "sfp_m90s_automaticrifleman_ksp90";
@@ -477,6 +530,7 @@ if (CTI_TOWNS_OCCUPATION_RESISTANCE == 8) then {
 	GUER_NAVAL_ASSAULT_BOAT2 = ["sfp_strb90_rws"];
 	GUER_NAVAL_MEDIUM_ASSAULT_BOAT = ["sfp_strb90_rws"];
 	GUER_NAVAL_LARGE_ASSAULT_BOAT = ["sfp_strb90_rws"];
+	*/
 };
 //--- Town Teams Templates
 //--- Infantry Squads

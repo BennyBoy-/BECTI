@@ -1084,7 +1084,7 @@ _u pushBack 4;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
-
+/*
 _c pushBack 'CUP_B_AH1_AT_BAF';
 _p pushBack '';
 _n pushBack 'AH64D AT BAF';
@@ -1094,8 +1094,8 @@ _u pushBack 5;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
-
-/*_c pushBack 'CUP_B_Merlin_HC3A_GB';
+*/
+_c pushBack 'CUP_B_Merlin_HC3A_GB';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 10000;
@@ -1133,7 +1133,7 @@ _t pushBack 20;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
-_d pushBack 0;*/
+_d pushBack 0;
 
 _c pushBack 'CUP_B_CH47F_USA';
 _p pushBack '';
@@ -1144,7 +1144,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
-
+/*
 _c pushBack 'CUP_B_CH53E_GER';
 _p pushBack '';
 _n pushBack 'CH53E';
@@ -1155,7 +1155,7 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'CUP_B_MH60S_USMC';
+_c pushBack 'CUP_B_MH60S_USMC';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 7000;
@@ -1251,16 +1251,6 @@ _n pushBack 'A10 AGM';
 _o pushBack 53350;
 _t pushBack 20;
 _u pushBack 5;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'CUP_B_AV8B_CAP_USMC';
-_p pushBack '';
-_n pushBack 'Harrier GBU';
-_o pushBack 35000;
-_t pushBack 20;
-_u pushBack 2;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
@@ -1425,7 +1415,7 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'CUP_B_AH64D_ES_USA';
+_c pushBack 'CUP_B_AH64D_ES_USA';
 _p pushBack '';
 _n pushBack 'AH-64 Apache (Rocket Pods)';
 _o pushBack 30000;
@@ -1433,7 +1423,7 @@ _t pushBack 50;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
-_d pushBack 0;*/
+_d pushBack 0;
 
 _c pushBack 'CUP_B_AV8B_GBU12_USMC';
 _p pushBack '';
