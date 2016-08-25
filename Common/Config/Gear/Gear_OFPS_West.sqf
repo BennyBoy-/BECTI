@@ -112,7 +112,7 @@ _p pushBack 300;
 
 
 //assault 
-_i pushBack "bear_MX_GL_white_F";.
+_i pushBack "bear_MX_GL_white_F";
 _u pushBack 0;
 _p pushBack 300;
 
