@@ -179,7 +179,7 @@ _i pushBack "sfp_ak5";
 _u pushBack 0;
 _p pushBack 300;
 
-_i pushBack "sfp_ak5c";.
+_i pushBack "sfp_ak5c";
 _u pushBack 0;
 _p pushBack 300;
 
