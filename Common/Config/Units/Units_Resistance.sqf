@@ -1642,6 +1642,160 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
+//-------------- OFPS AAF Winter
+//--- Infantry
+_c pushBack 'AAF_D_Soldier_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 75;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Special_AA_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 500;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Special_AR_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Special_AT_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 200;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Soldier_crew_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 75;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Soldier_LAT_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 550;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Soldier_engineer_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Special_exp_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Special_GL_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 100;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Special_Medic_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 100;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Soldier_AR_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Soldier_pilot_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 75;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Sniper_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 150;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Special_TL_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'AAF_D_Special_SL_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 120;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+
+
 //-------------- Swedish Winter
 /*//--- Infantry
 _c pushBack 'sfp_m90s_rifleman_ak5';
