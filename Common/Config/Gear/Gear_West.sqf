@@ -65,17 +65,17 @@ _i pushBack "30Rnd_45ACP_Mag_SMG_01";
 _u pushBack 0;
 _p pushBack 50;
 
-/* 
+ 
 _i pushBack "30Rnd_45ACP_Mag_SMG_01_tracer_green";
 _u pushBack 0;
 _p pushBack 30; 
-*/
+
 
 _i pushBack "30Rnd_556x45_Stanag";
 _u pushBack 1;
 _p pushBack 50;
 
-/* 
+ 
 _i pushBack "30Rnd_556x45_Stanag_Tracer_Red";
 _u pushBack 0;
 _p pushBack 20;
@@ -87,7 +87,7 @@ _p pushBack 20;
 _i pushBack "30Rnd_556x45_Stanag_Tracer_Yellow";
 _u pushBack 0;
 _p pushBack 20; 
-*/
+
 
 _i pushBack "100Rnd_65x39_caseless_mag";
 _u pushBack 2;
@@ -101,7 +101,7 @@ _i pushBack "200Rnd_65x39_cased_Box";
 _u pushBack 2;
 _p pushBack 300;
 
-/* 
+
 _i pushBack "200Rnd_65x39_cased_Box_Tracer";
 _u pushBack 0;
 _p pushBack 200;
@@ -109,7 +109,7 @@ _p pushBack 200;
 _i pushBack "30Rnd_65x39_caseless_green";
 _u pushBack 0;
 _p pushBack 30; 
-*/
+
 
 _i pushBack "10Rnd_338_Mag";
 _u pushBack 4;
@@ -119,7 +119,7 @@ _i pushBack "30Rnd_65x39_caseless_mag";
 _u pushBack 2;
 _p pushBack 50;
 
-/* 
+
 _i pushBack "30Rnd_65x39_caseless_green_mag_Tracer";
 _u pushBack 0;
 _p pushBack 30;
@@ -127,7 +127,19 @@ _p pushBack 30;
 _i pushBack "30Rnd_65x39_caseless_mag_Tracer";
 _u pushBack 0;
 _p pushBack 30; 
-*/
+
+_i pushBack "10Rnd_338_Mag";
+_u pushBack 3;
+_p pushBack 130; 
+
+_i pushBack "20Rnd_762x51_Mag";
+_u pushBack 2;
+_p pushBack 100; 
+
+_i pushBack "130Rnd_338_Mag";
+_u pushBack 3;
+_p pushBack 230; 
+
 
 _i pushBack "16rnd_9x21_mag";
 _u pushBack 0;
@@ -179,7 +191,7 @@ _i pushBack "SmokeShellGreen";
 _u pushBack 0;
 _p pushBack 20;
 
-/* 
+
 _i pushBack "SmokeShellYellow";
 _u pushBack 0;
 _p pushBack 10;
@@ -187,13 +199,13 @@ _p pushBack 10;
 _i pushBack "SmokeShellPurple";
 _u pushBack 0;
 _p pushBack 10; 
-*/
+
 
 _i pushBack "SmokeShellBlue";
 _u pushBack 0;
 _p pushBack 20;
 
-/* 
+
 _i pushBack "SmokeShellOrange";
 _u pushBack 0;
 _p pushBack 10;
@@ -229,7 +241,7 @@ _p pushBack 2;
 _i pushBack "FlareYellow_F";
 _u pushBack 0;
 _p pushBack 2; 
-*/
+
 
 _i pushBack "1Rnd_HE_Grenade_shell";
 _u pushBack 0;
@@ -239,7 +251,7 @@ _i pushBack "1Rnd_SmokeRed_Grenade_shell";
 _u pushBack 0;
 _p pushBack 20;
 
-/* 
+
 _i pushBack "1Rnd_SmokeGreen_Grenade_shell";
 _u pushBack 0;
 _p pushBack 2;
@@ -259,7 +271,7 @@ _p pushBack 2;
 _i pushBack "1Rnd_SmokeOrange_Grenade_shell";
 _u pushBack 0;
 _p pushBack 2; 
-*/
+
 
 _i pushBack "UGL_FlareWhite_F";
 _u pushBack 0;
@@ -273,11 +285,11 @@ _i pushBack "UGL_FlareRed_F";
 _u pushBack 0;
 _p pushBack 20;
 
-/* 
+
 _i pushBack "UGL_FlareYellow_F";
 _u pushBack 0;
 _p pushBack 2; 
-*/
+
 
 _i pushBack "UGL_FlareCIR_F";
 _u pushBack 0;
@@ -291,7 +303,7 @@ _i pushBack "3Rnd_Smoke_Grenade_shell";
 _u pushBack 2;
 _p pushBack 100;
 
-/* 
+
 _i pushBack "3Rnd_SmokeYellow_Grenade_shell";
 _u pushBack 0;
 _p pushBack 6;
@@ -299,7 +311,7 @@ _p pushBack 6;
 _i pushBack "3Rnd_SmokePurple_Grenade_shell";
 _u pushBack 0;
 _p pushBack 6; 
-*/
+
 
 _i pushBack "3Rnd_SmokeRed_Grenade_shell";
 _u pushBack 2;
@@ -313,31 +325,31 @@ _i pushBack "3Rnd_SmokeBlue_Grenade_shell";
 _u pushBack 2;
 _p pushBack 100;
 
-/* 
+
 _i pushBack "3Rnd_SmokeOrange_Grenade_shell";
 _u pushBack 0;
 _p pushBack 6; 
-*/
+
 
 _i pushBack "3Rnd_UGL_FlareWhite_F";
 _u pushBack 2;
 _p pushBack 100;
 
-/* 
+
 _i pushBack "3Rnd_UGL_FlareGreen_F";
 _u pushBack 0;
 _p pushBack 6; 
-*/
+
 
 _i pushBack "3Rnd_UGL_FlareRed_F";
 _u pushBack 2;
 _p pushBack 100;
 
-/* 
+
 _i pushBack "3Rnd_UGL_FlareYellow_F";
 _u pushBack 0;
 _p pushBack 6; 
-*/
+
 
 _i pushBack "3Rnd_UGL_FlareCIR_F";
 _u pushBack 2;
@@ -607,16 +619,88 @@ _i pushBack "hgun_Pistol_heavy_01_F";
 _u pushBack 0;
 _p pushBack 100;
 
+_i pushBack "srifle_DMR_02_F";
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "srifle_DMR_02_camo_F";
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "srifle_DMR_02_sniper_F";
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "srifle_DMR_03_F";
+_u pushBack 2;
+_p pushBack 600;
+
+_i pushBack "srifle_DMR_03_khaki_F";
+_u pushBack 2;
+_p pushBack 600;
+
+_i pushBack "srifle_DMR_03_tan_F";
+_u pushBack 2;
+_p pushBack 600;
+
+_i pushBack "srifle_DMR_03_woodland_F";
+_u pushBack 2;
+_p pushBack 600;
+
+_i pushBack "srifle_DMR_03_multicam_F";
+_u pushBack 2;
+_p pushBack 600;
+
+_i pushBack "MMG_02_camo_F";
+_u pushBack 3;
+_p pushBack 900;
+
+_i pushBack "MMG_02_black_F";
+_u pushBack 3;
+_p pushBack 900;
+
+_i pushBack "MMG_02_sand_F";
+_u pushBack 3;
+_p pushBack 900;
+
 //--- Uniforms
 _i pushBack "U_B_CombatUniform_mcam";
 _u pushBack 0;
 _p pushBack 100;
 
-_i pushBack "U_B_CTRG_1";
+_i pushBack "U_B_CombatUniform_mcam_tshirt";
 _u pushBack 0;
 _p pushBack 100;
 
+_i pushBack "U_B_CombatUniform_mcam_vest";
+_u pushBack 0;
+_p pushBack 100;
+
+_i pushBack "U_B_CTRG_1";
+_u pushBack 1;
+_p pushBack 100;
+
+_i pushBack "U_B_CTRG_2";
+_u pushBack 1;
+_p pushBack 100;
+
+_i pushBack "U_B_CTRG_3";
+_u pushBack 1;
+_p pushBack 100;
+
 _i pushBack "U_B_GhillieSuit";
+_u pushBack 3;
+_p pushBack 600;
+
+_i pushBack "U_B_FullGhillie_lsh";
+_u pushBack 3;
+_p pushBack 600;
+
+_i pushBack "U_B_FullGhillie_sard";
+_u pushBack 3;
+_p pushBack 600;
+
+_i pushBack "U_B_FullGhillie_ard";
 _u pushBack 3;
 _p pushBack 600;
 
@@ -625,11 +709,15 @@ _u pushBack 0;
 _p pushBack 100;
 
 _i pushBack "U_B_Wetsuit";
-_u pushBack 0;
+_u pushBack 4;
 _p pushBack 400;
 
+_i pushBack "U_I_G_resistanceLeader_F";
+_u pushBack 0;
+_p pushBack 100;
+
 //--- Vests
-/* 
+
 _i pushBack "V_Rangemaster_belt";
 _u pushBack 0;
 _p pushBack 5;
@@ -641,7 +729,7 @@ _p pushBack 10;
 _i pushBack "V_PlateCarrier1_rgr";
 _u pushBack 0;
 _p pushBack 25;
- */
+ 
 _i pushBack "V_PlateCarrier2_rgr";
 _u pushBack 0;
 _p pushBack 25;
