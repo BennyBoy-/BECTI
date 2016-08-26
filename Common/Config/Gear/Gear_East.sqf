@@ -278,11 +278,11 @@ _p pushBack 120;
 _i pushBack "3Rnd_SmokeBlue_Grenade_shell";
 _u pushBack 2;
 _p pushBack 120;
-/* 
+
 _i pushBack "3Rnd_SmokeOrange_Grenade_shell";
 _u pushBack 1;
 _p pushBack 15;
- */
+ 
 _i pushBack "3Rnd_UGL_FlareWhite_F";
 _u pushBack 2;
 _p pushBack 120;
@@ -294,11 +294,11 @@ _p pushBack 120;
 _i pushBack "3Rnd_UGL_FlareRed_F";
 _u pushBack 2;
 _p pushBack 120;
-/* 
+
 _i pushBack "3Rnd_UGL_FlareYellow_F";
 _u pushBack 1;
 _p pushBack 15;
- */
+
 _i pushBack "3Rnd_UGL_FlareCIR_F";
 _u pushBack 2;
 _p pushBack 120;
@@ -450,7 +450,7 @@ _u pushBack 0;
 _p pushBack 150;
 
 _i pushBack "U_O_GhillieSuit";
-_u pushBack 4;
+_u pushBack 3;
 _p pushBack 600;
 
 _i pushBack "U_O_PilotCoveralls";
@@ -470,8 +470,20 @@ _u pushBack 2;
 _p pushBack 100;
 
 _i pushBack "U_O_Wetsuit";
-_u pushBack 0;
+_u pushBack 4;
 _p pushBack 400;
+
+_i pushBack "U_O_FullGhillie_lsh";
+_u pushBack 3;
+_p pushBack 600;
+
+_i pushBack "U_O_FullGhillie_sard";
+_u pushBack 3;
+_p pushBack 600;
+
+_i pushBack "U_O_FullGhillie_ard";
+_u pushBack 3;
+_p pushBack 600;
 
 
 _i pushBack "U_OG_Guerilla1_1";
