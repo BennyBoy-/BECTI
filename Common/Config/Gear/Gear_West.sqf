@@ -762,7 +762,7 @@ _p pushBack 400;
 _i pushBack "B_AssaultPack_mcamo";
 _u pushBack 0;
 _p pushBack 15;
-/* 
+
 _i pushBack "B_FieldPack_blk";
 _u pushBack 0;
 _p pushBack 15;
@@ -770,7 +770,7 @@ _p pushBack 15;
 _i pushBack "B_Kitbag_mcamo";
 _u pushBack 0;
 _p pushBack 20;
- */
+
 _i pushBack "B_Bergen_sgg";
 _u pushBack 0;
 _p pushBack 25;
@@ -832,12 +832,12 @@ _u pushBack 2;
 _p pushBack 800;
 
 _i pushBack "B_Mortar_01_support_F";
-_u pushBack 3;
-_p pushBack 500;
+_u pushBack 1;
+_p pushBack 30;
 
 _i pushBack "B_Mortar_01_weapon_F";
-_u pushBack 3;
-_p pushBack 7000;
+_u pushBack 1;
+_p pushBack 5000;
 
 //--- Glasses
 _i pushBack "G_Combat";
@@ -866,18 +866,46 @@ _u pushBack 0;
 _p pushBack 5;
 
 _i pushBack "H_HelmetB_paint";
-_u pushBack 0;
+_u pushBack 1;
+_p pushBack 5;
+
+_i pushBack "H_HelmetB_grass";
+_u pushBack 1;
 _p pushBack 5;
 
 _i pushBack "H_HelmetB_light";
-_u pushBack 0;
+_u pushBack 1;
+_p pushBack 5;
+
+_i pushBack "H_HelmetB_light_sand";
+_u pushBack 1;
+_p pushBack 5;
+
+_i pushBack "H_HelmetB_light_snakeskin";
+_u pushBack 1;
+_p pushBack 5;
+
+_i pushBack "H_PilotHelmetFighter_B";
+_u pushBack 1;
 _p pushBack 5;
 
 _i pushBack "H_PilotHelmetHeli_B";
-_u pushBack 0;
+_u pushBack 1;
+_p pushBack 7;
+
+_i pushBack "H_CrewHelmetHeli_B";
+_u pushBack 1;
 _p pushBack 7;
 
 _i pushBack "H_MilCap_mcamo";
+_u pushBack 0;
+_p pushBack 2;
+
+_i pushBack "H_Watchcap_camo";
+_u pushBack 0;
+_p pushBack 2;
+
+_i pushBack "H_Watchcap_blk";
 _u pushBack 0;
 _p pushBack 2;
 
