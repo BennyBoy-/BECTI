@@ -105,23 +105,23 @@ _p pushBack 150;
 
 _i pushBack "RPG32_F";
 _u pushBack 1;
-_p pushBack 300;
+_p pushBack 100;
 
 _i pushBack "RPG32_HE_F";
 _u pushBack 1;
-_p pushBack 300;
+_p pushBack 50;
 
 _i pushBack "Titan_AA";
 _u pushBack 4;
-_p pushBack 1200;
+_p pushBack 200;
 
 _i pushBack "Titan_AP";
 _u pushBack 4;
-_p pushBack 2000;
+_p pushBack 200;
 
 _i pushBack "Titan_AT";
 _u pushBack 4;
-_p pushBack 2000;
+_p pushBack 200;
 
 _i pushBack "16Rnd_9x21_Mag";  //Rook 40
 _u pushBack 0;
@@ -420,12 +420,12 @@ _p pushBack 600;
 
 
 _i pushBack "launch_O_Titan_F";
-_u pushBack 4;
-_p pushBack 5000;
+_u pushBack 2;
+_p pushBack 1500;
 
 _i pushBack "launch_O_Titan_short_F";
-_u pushBack 4;
-_p pushBack 6000;
+_u pushBack 2;
+_p pushBack 1500;
 
 
 _i pushBack "hgun_Rook40_F";
