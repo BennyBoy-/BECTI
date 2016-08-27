@@ -135,8 +135,8 @@ execVM "Client\Functions\Externals\Attach_Charge\Action_Attach_charge.sqf";
 waitUntil {!isNil "EtVInitialized"};
 
 //-- disable ambient life
-//waitUntil {time > 0};
-//enableEnvironment false;
+waitUntil {time > 0};
+enableEnvironment false;
 
 //--- No more weapon sway
 if (local player) then {
