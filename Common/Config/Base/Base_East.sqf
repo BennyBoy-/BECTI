@@ -435,28 +435,28 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 
 _headers pushBack 		"MG Defense";
 _classes pushBack 		"O_HMG_01_High_F";
-_prices pushBack 		2000;
+_prices pushBack 		1000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 
 _headers pushBack 		"GL Defense";
 _classes pushBack 		"O_GMG_01_high_F";
-_prices pushBack 		3000;
+_prices pushBack 		1500;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 
 _headers pushBack 		"AT Defense";
 _classes pushBack 		"O_static_AT_F";
-_prices pushBack 		8000;
+_prices pushBack 		3000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 
 _headers pushBack 		"AA Defense";
 _classes pushBack 		"O_static_AA_F";
-_prices pushBack 		4000;
+_prices pushBack 		2000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
@@ -471,7 +471,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 if (CTI_CUP_ADDON > 0) then {
 _headers pushBack 		"M2 Machine Gun";
 _classes pushBack 		"CUP_B_M2StaticMG_USMC";
-_prices pushBack 		2000;
+_prices pushBack 		1000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
