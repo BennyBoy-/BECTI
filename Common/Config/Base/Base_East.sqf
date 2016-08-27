@@ -456,7 +456,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 
 _headers pushBack 		"AA Defense";
 _classes pushBack 		"O_static_AA_F";
-_prices pushBack 		8000;
+_prices pushBack 		4000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
@@ -637,28 +637,28 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 
 _headers pushBack 		"C-RAM Phalanx";
 _classes pushBack 		"C_at_phalanx_35AI";
-_prices pushBack 		35000;
+_prices pushBack 		25000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 
 _headers pushBack 		"C-RAM Phalanx Missle";
 _classes pushBack 		"C_at_phalanx_missile_35AI";
-_prices pushBack 		40000;
+_prices pushBack 		30000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 
 _headers pushBack 		"AN/MPQ-53 Radar";
 _classes pushBack 		"POOK_ANMPQ53_CDF_IND";
-_prices pushBack 		10000;
+_prices pushBack 		5000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 
 _headers pushBack 		"MIM-104 PAC-2 AA Battery";
 _classes pushBack 		"pook_MIM104_PAC2Battery_CDF_IND";
-_prices pushBack 		120000;
+_prices pushBack 		80000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];

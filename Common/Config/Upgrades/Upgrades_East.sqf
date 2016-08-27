@@ -36,7 +36,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500], //--- Air AT
 	[1500], //--- Air AA
 	[1500], //--- Air CM
-	[10000, 15000, 30000], //--- Towns Depots
+	[3500, 7000, 10000], //--- Towns Depots
 	[1000, 2000], //--- Halo
 	[1500], //--- Air Radar
 	[1500], //--- Art Radar
@@ -98,7 +98,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[],[],[],[],[CTI_UPGRADE_NUKE, 1]], //--- Light
 	[[CTI_UPGRADE_LIGHT,1],[CTI_UPGRADE_LIGHT,2],[CTI_UPGRADE_LIGHT,3],[CTI_UPGRADE_LIGHT,4]], //--- Heavy
 	[[],[],[]], //--- Naval
-	[[],[],[],[],[]], //--- Air
+	[[CTI_UPGRADE_HEAVY,1],[CTI_UPGRADE_HEAVY,2],[CTI_UPGRADE_HEAVY,3],[CTI_UPGRADE_HEAVY,4],[]], //--- Air
 	[[CTI_UPGRADE_AIR, 1]], //--- Air FFAR
 	[[CTI_UPGRADE_AIR, 1]], //--- Air DAR
 	[[CTI_UPGRADE_AIR, 1]], //--- Air AT
