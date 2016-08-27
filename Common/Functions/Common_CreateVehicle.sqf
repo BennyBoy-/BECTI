@@ -13,7 +13,7 @@
   # PARAMETERS #
     0	[String]: The type of vehicle to create
     1	[Array/Object]: The 2D/3D position where the vehicle should be created at
-    2	[Integer]: The Azimuth direction (0-360°) of the vehicle
+    2	[Integer]: The Azimuth direction (0-360Â°) of the vehicle
     3	[Side/Integer]: The Side or Side ID of the vehicle
     4	{Optionnal} [Boolean]: Determine if the vehicle should be created locked or not
     5	{Optionnal} [Boolean]: Determine if the vehicle should be "public" or not
@@ -74,7 +74,9 @@ if (isNull _created) then {
 	if (_special != "FLY") then {
 		_vehicle setVelocity [0,0,1];
 	} else {
-		_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
+		//Trying to fix spawn for air vehicles
+		//_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
+		_vehicle setVelocity [0,0,1];
 	};
 };
 if (_locked) then {_vehicle lock 2};
