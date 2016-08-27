@@ -118,7 +118,7 @@ execVM "Client\Functions\Externals\AdvancedTowing\fn_advancedTowingInit.sqf";
 execVM "Client\Functions\Externals\AdvancedSlingLoad\fn_advancedSlingLoadingInit.sqf";
 
 //--Advanced Rapel
-execVM "Client\Functions\Externals\AdvnacedRappel\fn_advancedRappellingInit.sqf";
+execVM "Client\Functions\Externals\AdvancedRappel\fn_advancedRappellingInit.sqf";
 
 //--Advanced Urban Rapel
 execVM "Client\Functions\Externals\AdvancedUrbanRapel\functions\fn_advancedUrbanRappellingInit.sqf";
@@ -135,8 +135,8 @@ execVM "Client\Functions\Externals\Attach_Charge\Action_Attach_charge.sqf";
 waitUntil {!isNil "EtVInitialized"};
 
 //-- disable ambient life
-//waitUntil {time > 0};
-//enableEnvironment false;
+waitUntil {time > 0};
+enableEnvironment false;
 
 //--- No more weapon sway
 if (local player) then {
