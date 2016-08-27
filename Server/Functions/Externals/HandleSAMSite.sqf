@@ -1,122 +1,176 @@
 /*
   # HEADER #
-	Description:	Fire control of a base defense SAM site consisting of one(!) radar and one or more launchers. All targets within a configurable envelope will be engaged.
-					The launchers are exclusively controlled by this script and will also not operate without the radar object.
+	Description:	Fire control of base defense SAMs consisting of radars and launchers. All targets within a configurable envelope will be engaged.
+					The radar and launchers are exclusively controlled by this script and will also not operate without the radar object.
+					This script will automatically use all available launchers/radars.
 
   # PARAMETERS #
-    0	[Object]: Radar vehicle
-    1	[Side]: The side of that radar
-	
-  # RETURNED VALUE #
-	None
+    0	[Side]: The active side
 	
   # SYNTAX #
-	[VEHICLE, SIDE] spawn HandleSAMSite
+	[SIDE] spawn HandleSAMSite
 */
 
-private ["_logFctn", "_radarVehicle","_radarVehiclePos","_maxLauncherDistance","_detectionMinAlt","_side","_DetectedPossibleTargets","_availableLaunchers","_DetectedAirVehicles","_LauncherTarget","_useLauncherIndx"];
+private ["_detectionMinAlt", "_engagementDistanceMax", "_radarNames", "_launcherNames", "_reloadTime", "_missileLockTime", "_targetEngagementInterval", "_logFctn", "_side", "_sideNum","_detectedPossibleTargets","_availableLaunchers","_availableRadars", "_detectedAirVehicles","_engageTargets", "_launcherTarget","_useLauncherIndx","_sh", "_useLauncher","_launcherTarget","_targetSphere"];
 
-_radarVehicle = _this select 0;
-_side = _this select 1;
-_radarVehiclePos = position _radarVehicle;
+// --- Configuration ---
+_detectionMinAlt = 50;
+_engagementDistanceMax = 20000;
+_radarNames = ["pook_SNR75_radar", "POOK_ANMPQ53_CDF"];	// east, west
+_launcherNames = ["pook_SA20_static_INS", "pook_MIM104_PAC2Battery"];	// east, west
+_reloadTime = 10;	// Launcher reload time. This is the minimum interval in which a single launcher will be fired
+_missileLockTime = 3;	// Minimum missile lock time
+_targetEngagementInterval = 5;		// Minimum time between engagements of a single target
+// ---------------------
 
+sleep 1;	// TODO: needed?
 
-_logFctn = {
-	_talker = leader _radarVehicle; 
-	_t = _this select 0;
-	[_talker,_t] remoteExec ["sideChat",-2];
+_side = _this select 0;
+_sideNum = switch (_side) do {
+	case (east): { 0 };
+	case (west): { 1 };
 };
 
-// Configuration
-_maxLauncherDistance = 400;
-_detectionMinAlt = 50;
+_logFctn = {
+	//_talker = leader _radarVehicle; 
+	_talker = player; 
+	_text = "SAM Control : " + _this;
+	[_talker,_text] remoteExec ["commandChat"];
+	diag_log _text;
+};
 
+"Ready" call _logFctn;
 
-_useLauncherIndx = -1;
-_radarVehicle setskill ["courage", 1];  // prevents drive-away
-_radarVehicle setskill ["commanding",1]; // issues orders
-_radarVehicle setskill ["spotDistance",1];
-_radarVehicle setskill ["spotTime",1];
-_radarVehicle setskill ["aimingAccuracy",1];
-	
-sleep 1;	//??
+// Main cycle - prepare, scan for targets, shoot
+while {true} do {
 
-[format ["SAM Radar at grid %1 ready", mapGridPosition leader _radarVehicle]] call _logFctn;
-
-while {alive _radarVehicle} do {
-
-	// Gather manned launchers in range
+	// Gather usable launchers
 	_availableLaunchers = [];
 	{
 		_g = gunner _x;
-		if !(isNil "_g") then { _availableLaunchers pushBack _x};
-	} forEach (_radarVehiclePos nearEntities [["pook_MIM104_PAC2Battery","pook_SA20_static_INS"], _maxLauncherDistance]);
+		if (alive _g) then { _availableLaunchers pushBack _x};
+	} forEach (entities (_launcherNames select _sideNum));
 	
-	// Select all targets in range
-	// TODO: nearestObjects only regards 2d distance
-    _DetectedAirVehicles = _radarVehiclePos nearEntities [["Air"], 20000];
+	// Gather usable radars
+	_availableRadars = [];
+	{
+		_g = gunner _x;
+		if (alive _g) then { _availableRadars pushBack _x};
+	} forEach (entities (_radarNames select _sideNum));
 	
-	// Filter for targets - hostile, above minAlt, alive
-	_DetectedPossibleTargets = [];
-	{	// TODO: better way to detect hostiles?
-		if (((_side) getFriend (side _x)) < 0.6 && {(getPos _x select 2) > _detectionMinAlt} && {!terrainIntersect [getPosATL _radarVehicle, getPosATL _x]} && {alive _x}) then {
-			_DetectedPossibleTargets pushback _x;
-		};
-	} forEach _DetectedAirVehicles;
-
-	[format ["Radar Cycle - Launchers: %1, Targets: %2", count _availableLaunchers, count _DetectedPossibleTargets]] call _logFctn;
-	
-	{  // Select and shoot
-	
-		private ["_sh", "_useLauncher","_LauncherTarget","_targetSphere","_terrainCheck","_handle"];
-		_LauncherTarget = _x;
+	// Gather all targets in range of all radars
+	_detectedPossibleTargets = [];
+	{
+		_radarVehicle = _x;
 		
-		// Designate a single launcher in the site or abort cycle
-		if ((count _availableLaunchers) == 0) exitWith{};
-		_useLauncherIndx = (_useLauncherIndx + 1) % (count _availableLaunchers);
-		_useLauncher = _availableLaunchers select _useLauncherIndx;
+		// TODO: nearestObjects only regards 2d distance
+		_detectedAirVehicles = _radarVehicle nearEntities [["Air"], _engagementDistanceMax];
 
-		[format ["Target selected: %1 (%2 m), Launcher %3", typeOf _LauncherTarget, _LauncherTarget distance _radarVehicle, _useLauncherIndx]] call _logFctn;
+		// Filter for targets - hostile, above minAlt, alive
+		{	// TODO: better way to detect hostiles?
+			if (((_side) getFriend (side _x)) < 0.6 && {(getPos _x select 2) > _detectionMinAlt} && {!terrainIntersectASL [eyePos _radarVehicle, getPosASL _x]} && {alive _x} ) then {
+				_detectedPossibleTargets pushbackUnique _x;
+			};
+		} forEach _detectedAirVehicles;
+	} forEach _availableRadars;
+	format ["Radars: %1, Launchers: %2, Targets: %3", count _availableRadars, count _availableLaunchers, count _detectedPossibleTargets] call _logFctn;
+
+	// Engage only targets that haven't been engaged too recently
+	_engageTargets = [];
+	{
+		if (time - (_x getVariable ["samsite_lastEngaged", - _targetEngagementInterval]) >= _targetEngagementInterval) then {
+			_engageTargets pushback _x;
+		};
+	} forEach _detectedPossibleTargets;
+	
+	// Unassign target from radars 
+	// TODO: doesnt work good, they will automatically start to watch target until we tell them to un-watch it over and over
+	if (count _detectedPossibleTargets == 0) then {
+		{
+			(gunner _x) doTarget objNull;
+			(gunner _x) doWatch objNull;
+		} forEach _availableRadars;
+	};
+
+	// Engage a target
+	if (count _engageTargets > 0) then {
+		// TODO: target priorization
+		// Engage an arbitrary target
+		_launcherTarget = _engageTargets select 0;
+		
+		_useLauncherIndx = -1;
+		_bestDistance = -1;
+		
+		// Select the closest ready launcher
+		{
+			_launcher = _x;
+			
+			//(format ["launcher %1:%2", _forEachIndex, str (_launcher getVariable ["samsite_lastUsed", - _reloadTime])]) call _logFctn;
+			_a = someAmmo _launcher;
+			_b = time - (_launcher getVariable ["samsite_lastUsed", - _reloadTime]) >= _reloadTime;
+			_c = !(terrainIntersectASL [eyePos _launcher, getPosASL _launcherTarget]);
+			
+			//(format ["launcher %1: a %2 b %3 c %4", _forEachIndex, _a, _b, _c]) call _logFctn;
+				
+			if (_a && _b && _c) then {
+				_dist = _launcher distance _launcherTarget;
+				if (_dist < _bestDistance || _bestDistance == -1) then {
+					_bestDistance = _dist;
+					_useLauncherIndx = _forEachIndex;
+				};
+			};
+		} forEach _availableLaunchers;
+		if (_useLauncherIndx == -1) exitWith{"No launcher available" call _logFctn};
+
+		format ["Target selected: %1 (%2 m), Launcher %3", typeOf _launcherTarget, _bestDistance, _useLauncherIndx] call _logFctn;
+		
+		_useLauncher = _availableLaunchers select _useLauncherIndx;
+		_useLauncher setVariable ["samsite_lastUsed", time];
+		_launcherTarget setVariable ["samsite_lastEngaged", time + _missileLockTime];
 		
 		// Radar target for radar warning
-		_radarVehicle doTarget _LauncherTarget;
+		{
+			_x doTarget _launcherTarget;
+		} forEach _availableRadars;
 		
 		// Aim and fire. This can take a few seconds and runs detached
-		_sh = [_useLauncher,_LauncherTarget,_radarVehicle,_useLauncherIndx,_logFctn] spawn {
-			private ["_useLauncher","_LauncherTarget","_radarVehicle","_useLauncherIndx","_logFctn"];
-			_useLauncher = _this select 0;
-			_LauncherTarget = _this select 1;
-			_radarVehicle = _this select 2;
-			_useLauncherIndx = _this select 3;
-			_logFctn = _this select 4;
+		_sh = [_useLauncher,_launcherTarget,_useLauncherIndx,_logFctn, _missileLockTime] spawn {
+			private _useLauncher = _this select 0,
+			_launcherTarget = _this select 1,
+			_useLauncherIndx = _this select 2,
+			_logFctn = _this select 3,
+			_missileLockTime = _this select 4;
 			
-			_useLauncher doTarget _LauncherTarget;
+			_useLauncher doTarget _launcherTarget;
 			
 			// Give SAM vehicle time to point at the target
-			waitUntil {sleep 0.1; _useLauncher aimedAtTarget [_LauncherTarget] > 0};
+			waitUntil {sleep 0.1; _useLauncher aimedAtTarget [_launcherTarget] > 0};
+			
 			// Time for missile lock
-			sleep 3;  
+			sleep _missileLockTime;
+			
+			// Last check - LOS is clear and target alive
+			if (terrainIntersectASL [eyePos _useLauncher, getPosASL _launcherTarget] || !(alive _launcherTarget)) exitWith {
+				// Prevent AI from shooting again on its own
+				(gunner _useLauncher) doWatch objNull;
+			};
 
-			// Only engage if LOS is clear
-			_terrainIntersect = terrainIntersect [getPosATL _radarVehicle, getPosATL _LauncherTarget];
-			if (_terrainIntersect) exitWith {[format ["Abort, terrain intersect!: " + str _terrainIntersect]] call _logFctn;};
-
-			// TOOD: should be fixed in upcoming pook version (info as of 2016-08-12)
 			// Attach "proximity target" for proximity fuse simulation
-			// (Target deletes itself after SAM lifetime expires)
+			// TOOD: doesnt work, prevents any damage (2016-08-20)
 			//_targetSphere = "SAM_targetMIM" createVehicle [0,0,0];
-			//_targetSphere attachTo [_LauncherTarget, [0,0,0]];
+			//_targetSphere attachTo [_launcherTarget, [0,0,0]];
 
-			[format ["Launcher %1 command fire", _useLauncherIndx]] call _logFctn;
+			format ["Launcher %1 command fire", _useLauncherIndx] call _logFctn;
 			
 			// Command fire
-			_useLauncher fireAtTarget [_LauncherTarget];
+			_useLauncher fireAtTarget [_launcherTarget];
+			_useLauncher setVariable ["samsite_lastUsed", time];
+			_launcherTarget setVariable ["samsite_lastEngaged", time];
 			
 			// Prevent AI from shooting again on its own
-			_SAMGunner doWatch objNull;
+			(gunner _useLauncher) doWatch objNull;
 		};
-
-	} forEach _DetectedPossibleTargets;
-
-	sleep 10;
+	};
+	
+	sleep 1;
 };

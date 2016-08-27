@@ -133,34 +133,28 @@ while {alive _structure} do {
 						_ai moveInGunner _x;
 						
 						// TODO: deduplicate code (Init_Client_Headless.sqf)
-						// TODO: proper/extensible vehicle switch
 						
 						//--- Configure the weapon / gunner
-						if (typeOf(_x) find "POOK_ANMPQ53" == 0 || typeOf(_x) find "pook_SNR75_radar" == 0) then {
-							[_x, _side] spawn FNC_HandleSAMSite;
+						if (typeOf(_x) find "POOK_ANMPQ53" == 0 || typeOf(_x) find "pook_SNR75_radar" == 0 || typeOf(_x) find "pook_MIM104_PAC2" == 0 || typeOf(_x) find "pook_MIM104_PAC2Battery" == 0) then {
+							_ai disableAI "AUTOTARGET";
+							_ai disableAI "TARGET";
 						} else {
-							if (typeOf(_x) find "pook_MIM104_PAC2" == 0 || typeOf(_x) find "pook_MIM104_PAC2Battery" == 0 ) then {
-								_ai setSkill 1;
-								_ai disableAI "AUTOTARGET";
-								_ai disableAI "TARGET";
-							} else {
-								//--- Change Skill
-								_ai setSkill ["aimingAccuracy", 1]; // Set accuracy
-								_ai setSkill ["aimingShake", 1]; // Set weapon sway handling
-								_ai setSkill ["aimingSpeed", 1]; // Set aiming speed
-								_ai setSkill ["reloadSpeed", 1]; // Max out reload speed
-								_ai setSkill ["spotDistance", 1]; // Set detection distance
-								_ai setSkill ["spotTime", 1]; // Set detection time
-								_ai setSkill ["courage", 1]; // Never retreat
-								_ai setSkill ["commanding", 1]; // Communication skills
-								_ai setSkill ["general", 1]; //Sets all above
+							//--- Change Skill
+							_ai setSkill ["aimingAccuracy", 1]; // Set accuracy
+							_ai setSkill ["aimingShake", 1]; // Set weapon sway handling
+							_ai setSkill ["aimingSpeed", 1]; // Set aiming speed
+							_ai setSkill ["reloadSpeed", 1]; // Max out reload speed
+							_ai setSkill ["spotDistance", 1]; // Set detection distance
+							_ai setSkill ["spotTime", 1]; // Set detection time
+							_ai setSkill ["courage", 1]; // Never retreat
+							_ai setSkill ["commanding", 1]; // Communication skills
+							_ai setSkill ["general", 1]; //Sets all above
 
-								//--- Set to Combat
-								_ai setBehaviour "AWARE";
-								_ai setCombatMode "RED";
-								_ai setSpeedMode "FULL";
-								_ai enableAttack true;
-							};
+							//--- Set to Combat
+							_ai setBehaviour "AWARE";
+							_ai setCombatMode "RED";
+							_ai setSpeedMode "FULL";
+							_ai enableAttack true;
 						};
 					} else {
 						//--- At least one HC is available

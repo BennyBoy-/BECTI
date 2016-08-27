@@ -47,6 +47,8 @@ funcVectorSub = compileFinal preprocessFileLineNumbers "Server\Functions\Externa
 
 // -- Pook SAM Site
 FNC_HandleSAMSite = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\HandleSAMSite.sqf";
+[east] spawn FNC_HandleSAMSite;
+[west] spawn FNC_HandleSAMSite;
 
 //--- Load Naval Town Structures
 call compile preprocessFileLineNumbers "Server\Init\initTownStructures.sqf";
