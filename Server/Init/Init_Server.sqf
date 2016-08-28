@@ -217,11 +217,12 @@ if (_attempts >= 500) then {
 if (CTI_ZOMBIE_MODE == 0) then {
 	_it=0;
 	_possible_it_off=[0,0,0,0,0,0,6,6,6,12,12,12,18];
-	if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 10) then {
-		_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL")*6;
+	if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 18) then {
+		_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL");
 	} else {
 		_it= _possible_it_off select floor random (count _possible_it_off);
 	};
+	//Default Time Starts at 0600am
 	skipTime _it;
 } else {
 	// set time to dusk 6pm
