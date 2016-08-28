@@ -405,7 +405,7 @@ _p pushBack '';
 _n pushBack '';
 _o pushBack 68000;
 _t pushBack 50;
-_u pushBack 4;
+_u pushBack 5;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
