@@ -35,4 +35,3 @@ _radius = _this select 2;
 _position = [_center, _radius] call CTI_CO_FNC_GetEmptyPosition;
 
 _object setPos _position;
-_object setVelocity [0,0,-1];

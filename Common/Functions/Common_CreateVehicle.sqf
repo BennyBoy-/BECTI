@@ -61,11 +61,9 @@ if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 
 _vehicle = createVehicle [_type, _position, [], 7, _special];
 _velocity = velocity _vehicle;
-_vehicle allowDamage false;
 _vehicle setDir _direction;
+_vehicle setVectorUp surfaceNormal position _vehicle;
 
-_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1]; //--- Make the vehicle spawn above the ground level to prevent any bisteries
-_vehicle allowDamage true;
 if (isNull _created) then {
 	_vehicle setDir _direction;
 	//Unmanned Unit fix
@@ -76,6 +74,9 @@ if (isNull _created) then {
 	} else {
 		_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
 	};
+};
+if (_special == "FLY") then {
+	_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
 };
 if (_locked) then {_vehicle lock 2};
 if (_net) then {_vehicle setVariable ["cti_net", _side, true]};
