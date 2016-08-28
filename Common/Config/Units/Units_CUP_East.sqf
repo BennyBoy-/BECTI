@@ -976,29 +976,29 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'CUP_B_Mi24_D_CDF';
+_c pushBack 'CUP_I_Mi24_Mk3_Empty_ION';
 _p pushBack '';
-_n pushBack '';
-_o pushBack 23000;
+_n pushBack 'Mi-24 SuperHind Mk.III (20mm Chin Cannon)';
+_o pushBack 10000;
 _t pushBack 20;
-_u pushBack 1;
+_u pushBack 0;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
-_d pushBack 0;*/
+_d pushBack 0;
 
-_c pushBack 'CUP_O_Mi24_P_RU';
+_c pushBack 'CUP_I_Mi24_Mk3_ION';
 _p pushBack '';
-_n pushBack 'Mi-24P';
-_o pushBack 31000;
+_n pushBack 'Mi-24 SuperHind Mk.III (Rocket Pods)';
+_o pushBack 20000;
 _t pushBack 20;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_O_Mi24_V_RU';
+_c pushBack 'CUP_I_Mi24_Mk3_AT_ION';
 _p pushBack '';
-_n pushBack 'Mi-24V';
+_n pushBack 'Mi-24 SuperHind Mk.III (AT)';
 _o pushBack 28500;
 _t pushBack 20;
 _u pushBack 2;
@@ -1006,32 +1006,32 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_I_Mi24_Mk3_FAB_AAF';
+_c pushBack 'CUP_I_Mi24_Mk4_Empty_ION';
 _p pushBack '';
-_n pushBack 'Mi-24 MK3 FAB250';
-_o pushBack 15300;
+_n pushBack 'Mi-24 SuperHind Mk.IV (20mm Chin Cannon)';
+_o pushBack 11000;
 _t pushBack 20;
-_u pushBack 1;
+_u pushBack 3;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_I_Mi24_Mk4_AT_AAF';
+_c pushBack 'CUP_I_Mi24_Mk4_ION';
 _p pushBack '';
-_n pushBack 'Mi-24 MK4';
-_o pushBack 46450;
+_n pushBack 'Mi-24 SuperHind Mk.IV (Rocket Pods)';
+_o pushBack 21000;
 _t pushBack 20;
 _u pushBack 4;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_I_Mi24_Mk3_S8_GSh_AAF';
+_c pushBack 'CUP_I_Mi24_Mk4_AT_ION';
 _p pushBack '';
-_n pushBack 'Mi-24 MK3 Escort';
-_o pushBack 26800;
+_n pushBack 'Mi-24 SuperHind Mk.IV (AT)';
+_o pushBack 29500;
 _t pushBack 20;
-_u pushBack 2;
+_u pushBack 5;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
@@ -1096,10 +1096,30 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'CUP_O_Su25_RU_3';
+_p pushBack '';
+_n pushBack 'SU-25 (Unguided Bombs, Rocket Pods)';
+_o pushBack 18000;
+_t pushBack 20;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'CUP_O_Su25_RU_1';
 _p pushBack '';
-_n pushBack 'SU-25 Multi';
-_o pushBack 35000;
+_n pushBack 'SU-25 (1000lb JDAMs, Rocket Pods)';
+_o pushBack 30000;
+_t pushBack 20;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_Su25_RU_2';
+_p pushBack '';
+_n pushBack 'SU-25 (ATGMs, Rocket Pods)';
+_o pushBack 45000;
 _t pushBack 20;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_AIR;
@@ -1111,7 +1131,7 @@ _p pushBack '';
 _n pushBack 'SU-34 LGB';
 _o pushBack 46300;
 _t pushBack 20;
-_u pushBack 4;
+_u pushBack 3;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
@@ -1136,26 +1156,6 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_O_C130J_TKA';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 6000;
-_t pushBack 20;
-_u pushBack 1;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'CUP_O_C130J_Cargo_TKA';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 6000;
-_t pushBack 20;
-_u pushBack 1;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
 _c pushBack 'CUP_O_UH1H_TKA';
 _p pushBack '';
 _n pushBack '';
@@ -1165,6 +1165,26 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;*/
+
+_c pushBack 'CUP_O_C130J_TKA';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 4000;
+_t pushBack 20;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_C130J_Cargo_TKA';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 4000;
+_t pushBack 20;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
 
 _c pushBack 'CUP_O_Ka52_GreyCamo_RU';
 _p pushBack '';
@@ -1176,35 +1196,16 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'CUP_O_Ka60_GL_Hex_CSAT';
+_c pushBack 'CUP_I_Ka60_GL_Blk_ION';
 _p pushBack '';
-_n pushBack '';
-_o pushBack 6000;
+_n pushBack 'Ka-60 Black (Rocket Pods, 40mm GL Door Gun)';
+_o pushBack 12000;
 _t pushBack 20;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_O_Ka60_Hex_CSAT';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 5500;
-_t pushBack 20;
-_u pushBack 1;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'CUP_I_Mi24_Mk3_AT_ION';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 60000;
-_t pushBack 20;
-_u pushBack 3;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
 
 --- Naval Vehicles
 
@@ -1216,7 +1217,7 @@ _t pushBack 25;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "";
-_d pushBack 0;*/
+_d pushBack 0;
 
 _c pushBack 'CUP_B_RHIB2Turret_USMC';
 _p pushBack '';
