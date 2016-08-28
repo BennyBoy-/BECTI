@@ -236,7 +236,7 @@ if (missionNamespace getVariable "CTI_DEV_MODE" < 1) then {
 if !( isNil "ADMIN_ZEUS") then {
 	0 spawn {
 		while {!CTI_GameOver} do {
-			ADMIN_ZEUS addCuratorEditableObjects [playableUnits,true];
+			ADMIN_ZEUS addCuratorEditableObjects [playableUnits+switchableUnits,true];
 			sleep 5;
 		};
 	};

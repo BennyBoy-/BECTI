@@ -187,6 +187,15 @@ if (_model isKindOf "Man") then {
 	_x setVariable ["cti_ai_order_pos", [0,0]];
 } forEach _units;
 
+//--- ZEUS Curator Editable
+if !(isNil "ADMIN_ZEUS") then {
+	if (CTI_IsServer) then {
+		ADMIN_ZEUS addCuratorEditableObjects [_units, true];
+	} else {
+		[ADMIN_ZEUS, _units] remoteExec ["CTI_PVF_SRV_RequestAddCuratorEditable", CTI_PV_SERVER];
+	};
+};
+
 if (_script != "" && alive _vehicle) then {
 	[_vehicle, CTI_P_SideJoined, _script] spawn CTI_CO_FNC_InitializeCustomVehicle;
 	if (_customid > -1) then {_vehicle setVariable ["cti_customid", _customid, true]};
