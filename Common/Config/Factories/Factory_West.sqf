@@ -730,6 +730,14 @@ if (CTI_APEX_ADDON > 0) then {
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
 	//Universal CUP
+	_u pushBack 'CUP_B_AH64D_NO_USA';	
+	_u pushBack 'CUP_B_AH64D_ES_USA';	
+	_u pushBack 'CUP_B_AH64D_AT_USA';	
+	_u pushBack 'CUP_B_AH1Z_NoWeapons_USMC';	
+	_u pushBack 'CUP_B_AH1Z_Escort_USMC';	
+	_u pushBack 'CUP_B_AH1Z_AT_USMC';	
+	_u pushBack 'CUP_B_C130J_USMC';
+	_u pushBack 'CUP_B_C130J_Cargo_USMC';	
 	_u pushBack 'CUP_B_MH6J_USA';		
 	_u pushBack 'CUP_B_UH1Y_GUNSHIP_USMC';	
 	_u pushBack 'CUP_B_AH6J_AT_USA';	
@@ -737,10 +745,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_CH47F_USA';		
 	_u pushBack 'CUP_B_UH60M_FFV_US';	
 	_u pushBack 'CUP_B_UH1D_GER_KSK';	
-	_u pushBack 'CUP_B_AH1Z_NOAA_USMC';	
-	_u pushBack 'CUP_B_AH1Z_Escort_USMC';	
 	_u pushBack 'CUP_B_CH53E_GER';		
-	_u pushBack 'CUP_B_AH1_AT_BAF';		
 	_u pushBack 'CUP_B_UH1Y_MEV_USMC';	
 	_u pushBack 'CUP_B_A10_CAS_USA';	
 	_u pushBack 'CUP_B_A10_AT_USA';		
@@ -753,12 +758,11 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_C_DC3_TanoAir_CIV';
         _u pushBack 'CUP_B_AW159_Cannon_RN_Grey';
 			_u pushBack 'CUP_B_F35B_LGB_USMC';
+	_u pushBack 'CUP_B_AH6J_Escort_USA';
+	_u pushBack 'CUP_B_AH6J_Escort19_USA';
 	
 /*
 	_u pushBack 'CUP_B_MH6J_USA';
-	_u pushBack 'CUP_B_AH6X_USA';
-	_u pushBack 'CUP_B_AH6J_Escort_USA';
-	_u pushBack 'CUP_B_AH6J_Escort19_USA';
 	_u pushBack 'CUP_B_AH6J_AT_USA';
 	_u pushBack 'CUP_B_AH6J_MP_USA';
 	_u pushBack 'CUP_B_UH1D_GER_KSK';
@@ -775,14 +779,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_MH60S_USMC';
 	_u pushBack 'CUP_B_SA330_Puma_HC2_BAF';
 	_u pushBack 'CUP_B_CH47F_USA';
-	_u pushBack 'CUP_B_AH64D_MR_USA';
-	_u pushBack 'CUP_B_AH64D_AT_USA';
-	_u pushBack 'CUP_B_AH1Z';
-	_u pushBack 'CUP_B_AH1Z_Escort';
-	_u pushBack 'CUP_B_AH64D_ES_USA';
 	_u pushBack 'CUP_C_C47_CIV';
-	_u pushBack 'CUP_B_C130J_USMC';
-	_u pushBack 'CUP_B_C130J_Cargo_USMC';
 	_u pushBack 'CUP_B_MV22_USMC';
 	_u pushBack 'CUP_B_MV22_USMC_RAMPGUN';
 	_u pushBack 'CUP_USMC_MQ9';

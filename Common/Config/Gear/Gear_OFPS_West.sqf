@@ -12,7 +12,7 @@ _p = [];
 //-- Magazines
 _i pushBack "hlc_500rnd_762x51_Belt";
 _u pushBack 4;
-_p pushBack 2000;
+_p pushBack 100;
 /* 
 _i pushBack "hlc_500rnd_762x51_Cinematic";
 _u pushBack 4;
@@ -27,33 +27,9 @@ _p pushBack 10000;
 //Camo
 _i pushBack "Blue_Snow_Camo";
 _u pushBack 0;
-_p pushBack 300;
-
-_i pushBack "AAF_D_OfficerUniform";
-_u pushBack 0;
-_p pushBack 300;
-
-_i pushBack "AAF_D_CombatUniform_Shortsleeve";
-_u pushBack 0;
-_p pushBack 300;
-
-_i pushBack "AAF_D_CombatUniform";
-_u pushBack 0;
-_p pushBack 300;
-
-_i pushBack "AAF_D_GhillieSuit";
-_u pushBack 0;
-_p pushBack 300;
-
+_p pushBack 100;
 
 //vests
-_i pushBack "AAF_D_Chestrig_B";
-_u pushBack 0;
-_p pushBack 300;
-
-_i pushBack "AAF_D_PlateCarrier_IAGL";
-_u pushBack 0;
-_p pushBack 300;
 
 _i pushBack "BW_equip_b_carrier_spec_rig";
 _u pushBack 0;
@@ -78,11 +54,11 @@ _u pushBack 0;
 _p pushBack 300;
 
 _i pushBack "Meaty_Carryall_Snow_B_Base";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 300;
 
 _i pushBack "AAF_D_Carryall_B";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 300;
 
 _i pushBack "AAF_D_FieldPack_AT_B";
@@ -106,9 +82,7 @@ _p pushBack 300;
 
 
 //sub machine guns
-_i pushBack "IP_srifle_DMR_04_SnowHex_F";
-_u pushBack 0;
-_p pushBack 300;
+
 
 
 //assault 
@@ -140,12 +114,12 @@ _p pushBack 300;
 
 //support
 _i pushBack "IP_launch_O_Titan_short_snw_F";
-_u pushBack 0;
-_p pushBack 3000;
+_u pushBack 2;
+_p pushBack 1500;
 
 _i pushBack "IP_launch_O_Titan_snw_F";
-_u pushBack 0;
-_p pushBack 3000;
+_u pushBack 2;
+_p pushBack 1500;
 
 
 
@@ -172,23 +146,23 @@ _p pushBack 300;
 
 //assault 
 _i pushBack "sfp_ak4";
-_u pushBack 0;
+_u pushBack 1;
 _p pushBack 300;
 
 _i pushBack "sfp_ak5";
-_u pushBack 0;
+_u pushBack 1;
 _p pushBack 300;
 
 _i pushBack "sfp_ak5c";
-_u pushBack 0;
+_u pushBack 1;
 _p pushBack 300;
 
 _i pushBack "sfp_ak5dmk2";
-_u pushBack 0;
+_u pushBack 1;
 _p pushBack 300;
 
 _i pushBack "sfp_ak5c_blk";
-_u pushBack 0;
+_u pushBack 1;
 _p pushBack 300;
 
 _i pushBack "sfp_remington870";
@@ -208,34 +182,10 @@ _p pushBack 300;
 
 //snipers
 _i pushBack "sfp_psg90";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 300;
-
-_i pushBack "sfp_ag90";
-_u pushBack 0;
-_p pushBack 300;
-
 
 //support
-_i pushBack "sfp_rb57";
-_u pushBack 0;
-_p pushBack 300;
-
-_i pushBack "sfp_grg86";
-_u pushBack 0;
-_p pushBack 300;
-
-_i pushBack "sfp_pskott86";
-_u pushBack 0;
-_p pushBack 300;
-
-_i pushBack "sfp_pskott68";
-_u pushBack 0;
-_p pushBack 300;
-
-_i pushBack "sfp_rbs69";
-_u pushBack 0;
-_p pushBack 300;
 
 
 //ammo
@@ -287,47 +237,6 @@ _i pushBack "sfp_9Rnd_127x99_ag90";
 _u pushBack 0;
 _p pushBack 30;
 
-_i pushBack "sfp_rb57_mag";
-_u pushBack 0;
-_p pushBack 30;
-
-_i pushBack "sfp_grg_heat_mag";
-_u pushBack 0;
-_p pushBack 30;
-
-_i pushBack "sfp_grg_heat_66_mag";
-_u pushBack 0;
-_p pushBack 30;
-
-_i pushBack "sfp_grg_heat_62_mag";
-_u pushBack 0;
-_p pushBack 30;
-
-_i pushBack "sfp_grg_he_mag";
-_u pushBack 0;
-_p pushBack 30;
-
-_i pushBack "sfp_grg_smoke_mag";
-_u pushBack 0;
-_p pushBack 30;
-
-_i pushBack "sfp_grg_illum_mag";
-_u pushBack 0;
-_p pushBack 30;
-
-_i pushBack "sfp_pskott86_mag";
-_u pushBack 0;
-_p pushBack 30;
-
-_i pushBack "sfp_pskott68_mag";
-_u pushBack 0;
-_p pushBack 30;
-
-_i pushBack "sfp_rbs69_mag";
-_u pushBack 0;
-_p pushBack 30;
-
-
 //explosives
 _i pushBack "sfp_flashbang";
 _u pushBack 0;
@@ -374,11 +283,11 @@ _p pushBack 50;
 
 //backpacks
 _i pushBack "sfp_backpack_stridssack2000";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 300;
 
 _i pushBack "sfp_backpack_sjvv9";
-_u pushBack 0;
+_u pushBack 2;
 _p pushBack 300;
 
 //vests
@@ -468,29 +377,12 @@ _i pushBack "sfp_ghillie_uniform";
 _u pushBack 0;
 _p pushBack 100;
 
-_i pushBack "sfp_m59w_uniform";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "sfp_indiska_uniform";
-_u pushBack 0;
-_p pushBack 100;
-
-
 //HeadGear
 _i pushBack "sfp_m90w_helmet";
 _u pushBack 0;
 _p pushBack 100;
 
 _i pushBack "sfp_m90w_helmet_peltor";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "sfp_m90w_helmet_headset";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "sfp_m90w_helmet_nvg";
 _u pushBack 0;
 _p pushBack 100;
 
@@ -527,14 +419,6 @@ _u pushBack 0;
 _p pushBack 100;
 
 _i pushBack "sfp_m90d_helmet_peltor";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "sfp_m90d_helmet_headset";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "sfp_m90d_helmet_nvg";
 _u pushBack 0;
 _p pushBack 100;
 
@@ -582,35 +466,7 @@ _i pushBack "sfp_armor_beret";
 _u pushBack 0;
 _p pushBack 100;
 
-_i pushBack "sfp_fsj_beret";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "sfp_kj_beret";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "sfp_lgmp_beret";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "sfp_lg_beret";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "sfp_k3_beret";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "sfp_k4_beret";
-_u pushBack 0;
-_p pushBack 100;
-
 _i pushBack "sfp_m37_helmet";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "sfp_m37w_helmet_dok";
 _u pushBack 0;
 _p pushBack 100;
 
@@ -626,10 +482,6 @@ _i pushBack "sfp_m37w_helmet_cap1";
 _u pushBack 0;
 _p pushBack 100;
 
-_i pushBack "sfp_m37w_helmet_cap2";
-_u pushBack 0;
-_p pushBack 100;
-
 _i pushBack "sfp_headset";
 _u pushBack 0;
 _p pushBack 100;
@@ -641,15 +493,6 @@ _p pushBack 100;
 _i pushBack "sfp_batmossa_m48";
 _u pushBack 0;
 _p pushBack 100;
-
-_i pushBack "sfp_m1_onu_helmet";
-_u pushBack 0;
-_p pushBack 100;
-
-_i pushBack "sfp_m1_un_helmet";
-_u pushBack 0;
-_p pushBack 100;
-
 
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf"; 
