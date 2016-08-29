@@ -183,7 +183,18 @@ if (CTI_WEATHER_SNOW > 0) then {
 	};
 	// when the rest of mission is ready, start the snow server script
 	if (isServer) then {
-		nul = [] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		if (CTI_WEATHER_SNOW == 1) then { 
+			nul = [1,false] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		};
+		if (CTI_WEATHER_SNOW == 2) then { 
+			nul = [2,false] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		};
+		if (CTI_WEATHER_SNOW == 3) then { 
+			nul = [3,false] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		};
+		if (CTI_WEATHER_SNOW == 4) then { 
+			nul = [3,false] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		};
 	};
 };
 if (CTI_WEATHER_SAND > 0) then { 
