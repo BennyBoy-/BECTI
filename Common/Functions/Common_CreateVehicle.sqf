@@ -75,9 +75,6 @@ if (isNull _created) then {
 		_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
 	};
 };
-if (_special == "FLY") then {
-	_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
-};
 if (_locked) then {_vehicle lock 2};
 if (_net) then {_vehicle setVariable ["cti_net", _side, true]};
 if (_handle) then {
