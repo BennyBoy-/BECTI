@@ -29,4 +29,4 @@ ZAM_showNames_var_pressLoop_delay = 0.005;	// For adjusting the performance of s
 ZAM_showNames_var_acre_eh_delay = 0.1;	// For adjusting frequency at which player acre activity is monitored (for Voice feature)
 
 //Enable by default
-ZAM_showNames_on = true;
+ZAM_showNames_default_on = true;

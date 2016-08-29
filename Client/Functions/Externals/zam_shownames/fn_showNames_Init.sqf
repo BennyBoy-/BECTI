@@ -29,8 +29,8 @@ if !(hasInterface) exitWith {/*diag_log "showNames_init.sqf - Finished (!hasInte
 	};
 
 	// Enable Show by default
-	if (isNil "ZAM_showNames_on"            ) then {
-		ZAM_showNames_on = 			if !(isNil "ZAM_showNames_on") then {ZAM_showNames_on} else {true}
+	if (isNil "ZAM_showNames_default_on"            ) then {
+		ZAM_showNames_default_on = 			if !(isNil "ZAM_showNames_default_on") then {ZAM_showNames_default_on} else {true}
 	};
 	
 	// Use key as toggle
@@ -194,6 +194,11 @@ if !(hasInterface) exitWith {/*diag_log "showNames_init.sqf - Finished (!hasInte
 		["ZAM", "showNames", ["Show Names", "To actually show the names"], {_this call ZAM_fnc_showNames_Press}, {_this call ZAM_fnc_showNames_Release}, [0x15, [false, false, false]]] call cba_fnc_addKeybind;
 	} else {
 		["ZAM", "showNames", ["Show Names", "To actually show the names"], {_this call ZAM_fnc_showNames_Press}, "", [0x15, [false, false, false]]] call cba_fnc_addKeybind;
+	};
+	
+	//If default On Mode
+	if(ZAM_showNames_default_on) then {
+		_this call ZAM_fnc_showNames_Press;
 	};
 
 };
