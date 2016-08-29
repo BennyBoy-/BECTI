@@ -80,7 +80,7 @@ if (CTI_CUP_ADDON > 0) then {
 		if (CTI_FACTION_WEST == 1) then {
 			//JUNGLE SET
 			missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
-				["AAF_D_Truck_02_medical_F", [
+				["B_Truck_01_medical_F", [
 					["CUP_launch_M136", 5], 
 					["CUP_M136_M", 20],
 					["CUP_8Rnd_B_Beneli_74Slug", 20],
