@@ -1228,7 +1228,7 @@ _d pushBack 0;
 _c pushBack 'CUP_B_AH1Z_NoWeapons_USMC';
 _p pushBack '';
 _n pushBack 'AH-1Z Cobra (20mm Chin Cannon)';
-_o pushBack 10850;
+_o pushBack 10000;
 _t pushBack 20;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_AIR;
