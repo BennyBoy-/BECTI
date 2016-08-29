@@ -156,13 +156,13 @@ if (CTI_WEATHER_SNOW > 0) then {
 		MKY_arSnowEFX = [[0.23,0.020,100],1,true,false,true,true];
 	};
 	if (CTI_WEATHER_SNOW == 2) then { 
-		MKY_arSnowEFX = [[0.50,0.015,200],1,true,false,true,true];
+		MKY_arSnowEFX = [[0.35,0.015,200],1,true,false,true,true];
 	};
 	if (CTI_WEATHER_SNOW == 3) then { 
-		MKY_arSnowEFX = [[0.75,0.010,300],1,true,false,true,true];
+		MKY_arSnowEFX = [[0.50,0.010,300],1,true,false,true,true];
 	};
 	if (CTI_WEATHER_SNOW == 4) then { 
-		MKY_arSnowEFX = [[1,0.005,400],1,true,false,false,true];
+		MKY_arSnowEFX = [[0.75,0.005,400],1,true,false,false,true];
 	};
 	
 	// suggested to disable environment so butterflies and snakes aren't seen during snow lol
