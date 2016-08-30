@@ -17,7 +17,7 @@
 if !(isNil "ZAM_showNames_var_loopExlusion_pressLoop") exitWith {/*hint "I tried to run more than one loop at once"*/};
 ZAM_showNames_var_loopExlusion_pressLoop = 1;
 
-private ["_objects", "_dist_man", "_isGroup", "_dist_ruck", "_ambient_light", "_player", "_ambient_light", "_dist_man_id"];
+private ["_objects", "_dist_man", "_isGroup", "_dist_ruck", "_ambient_light", "_player", "_ambient_light", "_dist_man_id", "_magn", "_vd", "_temp_array", "_isGroup"];
 
 _objects = _this select 0;
 _player = _this select 1;
@@ -340,6 +340,45 @@ for "" from 0 to 1 step 0 do {
 	};
 
 	//hint format ["ZAM_showNames_fnc_pressLoop count: %1", count ZAM_showNames_var_drawJobs];
+	
+	
+	//////////////////////////////////////////////////////////////////////////////////UPDATE OBJECTS	
+	if(ZAM_showNames_default_on) then {
+		// Get Array
+		_temp_array = if (!isMultiplayer) then {allUnits} else {playableUnits};
+		// Remove player
+		_temp_array = [_temp_array, [player]] call ZAM_fnc_showNames_filterArrayByEquality;
+		// Remove if player on different side or too far away (with support for setCaptive)
+		_objects = [_temp_array, { ( (side (group _this)) != _player_side ) || { player distance _this > ( (_dist_man * _magn) min _vd ) }}] call ZAM_fnc_showNames_filterArrayByCode;
+
+		// Check if there are group members for group differentiation
+		_isGroup = if (ZAM_showNames_group) then {
+			( {if (group _x == group _player) exitWith {1}} count _objects ) != 0;
+		} else {false};
+
+		// Ruck name tags
+		if (ZAM_showNames_rucks) then {
+			// Find all gear stacks on ground
+			_temp_array = (getPosATL player) nearObjects ["GroundWeaponHolder", (_dist_ruck * _magn) min _vd];
+
+			// Remove gear stacks that don't have rucks or name tags
+			_temp_array = [_temp_array, { _ruck = firstBackpack _this; isNull (_ruck) || {_ruck getVariable ["zam_showNames_tag",""] == ""} }] call ZAM_fnc_showNames_filterArrayByCode;
+
+			// Add to names_to_show
+			{
+				_objects set [count _objects, _x]
+			} count _temp_array;
+		};
+
+		// Add Discoverable objects (if not already in the obkects list)
+		{
+			if !(_x in _objects) then {
+				_objects set [count _objects, _x]
+			};
+		} count ZAM_showNames_var_discoverable;
+	};
+	//////////////////////////////////////////////////////////////////////////////////END UPDATE	
+	
 
 	// Delay
 	sleep ZAM_showNames_var_pressLoop_delay;
