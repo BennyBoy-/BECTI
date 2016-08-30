@@ -80,7 +80,7 @@ if !(hasInterface) exitWith {/*diag_log "showNames_init.sqf - Finished (!hasInte
 
 	// Knowledge system
 	if (isNil "ZAM_showNames_knowledge"          ) then {
-		ZAM_showNames_knowledge = 			if !(isNil "zam_showNames_knowledge") then {zam_showNames_knowledge} else {true}
+		ZAM_showNames_knowledge = 			if !(isNil "zam_showNames_knowledge") then {zam_showNames_knowledge} else {false}
 	};
 
 	// Support for TFAR
