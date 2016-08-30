@@ -344,7 +344,7 @@ if (CTI_BASE_NOOBPROTECTION == 1) then {player addEventHandler ["fired", {_this 
 if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
 
 // Thermal / NV restriction
-if ( (missionNamespace getVariable 'CTI_SM_NONV')==1 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {
+if ( (missionNamespace getVariable 'CTI_SM_NONV')>0 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {
 	0 execVM "Client\Functions\Client_NvThermR.sqf";
 };
 
