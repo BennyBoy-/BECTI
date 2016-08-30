@@ -19,7 +19,7 @@ if !(hasInterface) exitWith {/*diag_log "showNames_init.sqf - Finished (!hasInte
 [] spawn {
 
 	waitUntil {player == player};
-	waitUntil {time >= 15};
+	waitUntil {time >= 5};
 
 	//// Setting config settings if not defined by mission maker to userconfig setting if it exists, else hardcoded default.
 
@@ -198,6 +198,8 @@ if !(hasInterface) exitWith {/*diag_log "showNames_init.sqf - Finished (!hasInte
 	
 	//If default On Mode
 	if(ZAM_showNames_default_on) then {
+		ZAM_showNames_on = false;
+		sleep 10;
 		_this call ZAM_fnc_showNames_Press;
 	};
 
