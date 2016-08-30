@@ -140,8 +140,7 @@ if (_attempts >= 500) then {
 		_equipment = _x select 1;
 		
 		_vehicle = [_model, _startPos, 0, _side, false, true, true] call CTI_CO_FNC_CreateVehicle;
-		//--- Increasing max radius of placement for starting vehicles to prevent colliding
-		[_vehicle, getPos _hq, 45, 120, true, false, true] call CTI_CO_FNC_PlaceNear;
+		[_vehicle, getPos _hq, 45, 60, true, false, true] call CTI_CO_FNC_PlaceNear;
 		[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
 		if (count _equipment > 0) then {[_vehicle, _equipment] call CTI_CO_FNC_EquipVehicleCargoSpace};
 		if ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7 != "") then {[_vehicle, _side, ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7)] call CTI_CO_FNC_InitializeCustomVehicle;};
@@ -219,11 +218,12 @@ if (_attempts >= 500) then {
 if (CTI_ZOMBIE_MODE == 0) then {
 	_it=0;
 	_possible_it_off=[0,0,0,0,0,0,6,6,6,12,12,12,18];
-	if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 10) then {
-		_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL")*6;
+	if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 18) then {
+		_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL");
 	} else {
 		_it= _possible_it_off select floor random (count _possible_it_off);
 	};
+	//Default Time Starts at 0600am
 	skipTime _it;
 } else {
 	// set time to dusk 6pm
@@ -253,7 +253,7 @@ if (CTI_ZOMBIE_MODE == 0) then {
 if !( isNil "ADMIN_ZEUS") then {
 	0 spawn {
 		while {!CTI_GameOver} do {
-			ADMIN_ZEUS addCuratorEditableObjects [playableUnits,true];
+			ADMIN_ZEUS addCuratorEditableObjects [playableUnits+switchableUnits,true];
 			sleep 5;
 		};
 	};

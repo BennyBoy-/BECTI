@@ -153,16 +153,16 @@ if (CTI_WEATHER_SNOW > 0) then {
     MKY_arSnowEFX = [];
 	// snow - [[fog data],int Overcast,ppEfx,allow rain, vary fog, use audio]
 	if (CTI_WEATHER_SNOW == 1) then { 
-		MKY_arSnowEFX = [[0.23,0.021,100],1,true,false,true,true];
+		MKY_arSnowEFX = [[0.23,0.020,100],1,true,false,true,true];
 	};
 	if (CTI_WEATHER_SNOW == 2) then { 
-		MKY_arSnowEFX = [[0.23,0.021,100],1,true,false,true,true];
+		MKY_arSnowEFX = [[0.35,0.015,200],1,true,false,true,true];
 	};
 	if (CTI_WEATHER_SNOW == 3) then { 
-		MKY_arSnowEFX = [[0.23,0.021,100],1,true,false,true,true];
+		MKY_arSnowEFX = [[0.50,0.010,300],1,true,false,true,true];
 	};
 	if (CTI_WEATHER_SNOW == 4) then { 
-		MKY_arSnowEFX = [[0.23,0.021,100],1,true,false,true,true];
+		MKY_arSnowEFX = [[0.75,0.005,400],1,true,false,false,true];
 	};
 	
 	// suggested to disable environment so butterflies and snakes aren't seen during snow lol
@@ -183,23 +183,34 @@ if (CTI_WEATHER_SNOW > 0) then {
 	};
 	// when the rest of mission is ready, start the snow server script
 	if (isServer) then {
-		nul = [] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		if (CTI_WEATHER_SNOW == 1) then { 
+			nul = [1,false] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		};
+		if (CTI_WEATHER_SNOW == 2) then { 
+			nul = [2,false] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		};
+		if (CTI_WEATHER_SNOW == 3) then { 
+			nul = [3,false] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		};
+		if (CTI_WEATHER_SNOW == 4) then { 
+			nul = [3,false] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		};
 	};
 };
 if (CTI_WEATHER_SAND > 0) then { 
 	MKY_arSandEFX = [];				
 	//sand - [fog,overcast,use ppEfx,allow rain,force wind,vary fog,use wind audio,EFX strength]
 	if (CTI_WEATHER_SAND == 1) then { 
-		MKY_arSandEFX = [[0.23,0.021,100],"",true,false,true,true,true,1];
+		MKY_arSandEFX = [[0.10,0.020,100],"",true,false,true,true,true,1];
 	};
 	if (CTI_WEATHER_SAND == 2) then { 
-		MKY_arSandEFX = [[0.23,0.021,100],"",true,false,true,true,true,2];
+		MKY_arSandEFX = [[0.30,0.015,200],"",true,false,true,true,true,2];
 	};
 	if (CTI_WEATHER_SAND == 3) then { 
-		MKY_arSandEFX = [[0.23,0.021,100],"",true,false,true,true,true,3];
+		MKY_arSandEFX = [[0.50,0.010,300],"",true,false,true,true,true,3];
 	};
 	if (CTI_WEATHER_SAND == 4) then { 
-		MKY_arSandEFX = [[0.23,0.021,100],"",true,false,true,true,true,3];
+		MKY_arSandEFX = [[0.75,0.005,400],"",true,false,true,true,true,3];
 	};
 	
 	// suggested to disable environment so butterflies and snakes aren't seen during snow lol

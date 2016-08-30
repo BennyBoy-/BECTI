@@ -13,7 +13,7 @@
   # PARAMETERS #
     0	[String]: The type of vehicle to create
     1	[Array/Object]: The 2D/3D position where the vehicle should be created at
-    2	[Integer]: The Azimuth direction (0-360Â°) of the vehicle
+    2	[Integer]: The Azimuth direction (0-360°) of the vehicle
     3	[Side/Integer]: The Side or Side ID of the vehicle
     4	{Optionnal} [Boolean]: Determine if the vehicle should be created locked or not
     5	{Optionnal} [Boolean]: Determine if the vehicle should be "public" or not
@@ -61,12 +61,11 @@ if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 
 _vehicle = createVehicle [_type, _position, [], 7, _special];
 _velocity = velocity _vehicle;
+_vehicle setDir _direction;
+_vehicle setVectorUp surfaceNormal position _vehicle;
 //--- Adding 2 second god mode to vehicles on spawn to prevent damage
 _vehicle  spawn {_this allowDamage false; sleep 2; _this allowDamage true};
-_vehicle setDir _direction;
 
-_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1]; //--- Make the vehicle spawn above the ground level to prevent any bisteries
-_vehicle allowDamage true;
 if (isNull _created) then {
 	_vehicle setDir _direction;
 	//Unmanned Unit fix
@@ -75,7 +74,6 @@ if (isNull _created) then {
 	if (_special != "FLY") then {
 		_vehicle setVelocity [0,0,1];
 	} else {
-
 		_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
 	};
 };

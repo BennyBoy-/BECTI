@@ -28,13 +28,13 @@
 	- The returned value will be an array of positions if the _return_one param is set to false
 	
   # EXAMPLE #
-    _positions = [getPos player, 100, "sea", 10, 6, 1, false] call CTI_CO_FNC_GetRandomPosition
-	  -> Will return the nearby "sea" positions around the player within 100m
-	_position = [getPos player, 100, "meadow", 10, 6, 1, true] call CTI_CO_FNC_GetRandomPosition
-	  -> Will return the nearby "sea" positions around the player within 100m
+    _positions = [getPos player, 100, "sea", 10, 6, 0.7, false] call CTI_CO_FNC_GetRandomBestPlaces
+	  -> Will return 6 "sea" positions within 100m of the player using a precision of 10m and expecting an expression result above 0.7
+	_position = [getPos player, 100, "meadow", 10, 6, 0.7, true] call CTI_CO_FNC_GetRandomBestPlaces
+	  -> Will return only one "meadow" position within 100m of the player using a precision of 10m and expecting an expression result above 0.7
 */
 
-params ["_position", ["_radius", 200], ["_layout", "meadow"], ["_precision", 50], ["_source_count", 3], ["_valid_floor", 1], ["_return_one", true]];
+params ["_position", ["_radius", 200], ["_layout", "meadow"], ["_precision", 8], ["_source_count", 3], ["_valid_floor", 0.7], ["_return_one", true]];
 private ["_formula", "_places", "_positions"];
 
 _formula = switch (_layout) do {

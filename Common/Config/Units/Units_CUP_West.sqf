@@ -1045,26 +1045,6 @@ _d pushBack 0;
 
 //--- Air Vehicles
 
-_c pushBack 'CUP_B_AH64D_USA';
-_p pushBack '';
-_n pushBack 'AH64-D';
-_o pushBack 40000;
-_t pushBack 20;
-_u pushBack 4;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'CUP_B_AH64D_AT_USA';
-_p pushBack '';
-_n pushBack 'AH64D AT USA';
-_o pushBack 60000;
-_t pushBack 20;
-_u pushBack 3;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
 _c pushBack 'CUP_B_AW159_Cannon_RN_Grey';
 _p pushBack '';
 _n pushBack 'AW159 Hellcat Armed';
@@ -1075,26 +1055,6 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_B_AH1Z_NOAA_USMC';
-_p pushBack '';
-_n pushBack 'AH1Z';
-_o pushBack 52850;
-_t pushBack 20;
-_u pushBack 4;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-/*
-_c pushBack 'CUP_B_AH1_AT_BAF';
-_p pushBack '';
-_n pushBack 'AH64D AT BAF';
-_o pushBack 60000;
-_t pushBack 20;
-_u pushBack 5;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-*/
 _c pushBack 'CUP_B_Merlin_HC3A_GB';
 _p pushBack '';
 _n pushBack '';
@@ -1235,12 +1195,72 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;*/
 
+_c pushBack 'CUP_B_AH64D_NO_USA';
+_p pushBack '';
+_n pushBack 'AH-64 Apache (30mm Chin Cannon)';
+_o pushBack 15000;
+_t pushBack 50;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_AH64D_ES_USA';
+_p pushBack '';
+_n pushBack 'AH-64 Apache (Rocket Pods)';
+_o pushBack 20000;
+_t pushBack 50;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_AH64D_AT_USA';
+_p pushBack '';
+_n pushBack 'AH-64 Apache (AT)';
+_o pushBack 40000;
+_t pushBack 50;
+_u pushBack 4;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_AH1Z_NoWeapons_USMC';
+_p pushBack '';
+_n pushBack 'AH-1Z Cobra (20mm Chin Cannon)';
+_o pushBack 15000;
+_t pushBack 20;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_AH1Z_Escort_USMC';
+_p pushBack '';
+_n pushBack 'AH-1Z Cobra (Rocket Pods)';
+_o pushBack 20000;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_AH1Z_AT_USMC';
+_p pushBack '';
+_n pushBack 'AH-1Z Cobra (AT)';
+_o pushBack 40000;
+_t pushBack 20;
+_u pushBack 5;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'CUP_B_A10_CAS_USA';
 _p pushBack '';
 _n pushBack 'A10 LGB';
 _o pushBack 43350;
 _t pushBack 20;
-_u pushBack 4;
+_u pushBack 3;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
@@ -1250,17 +1270,27 @@ _p pushBack '';
 _n pushBack 'A10 AGM';
 _o pushBack 53350;
 _t pushBack 20;
-_u pushBack 5;
+_u pushBack 4;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
 _c pushBack 'CUP_B_F35B_AA_USMC';
 _p pushBack '';
-_n pushBack 'F35 CAP';
+_n pushBack 'F35 (AA)';
+_o pushBack 30000;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_F35B_LGB_USMC';
+_p pushBack '';
+_n pushBack 'F35 (LGB)';
 _o pushBack 36000;
 _t pushBack 20;
-_u pushBack 2;
+_u pushBack 4;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
@@ -1318,19 +1348,19 @@ _d pushBack 0;
 _c pushBack 'USAF_AC130U';
 _p pushBack '';
 _n pushBack 'AC-130U Spooky';
-_o pushBack 45900;
+_o pushBack 35900;
 _t pushBack 20;
-_u pushBack 4;
+_u pushBack 3;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'CUP_B_C130J_USMC';
+_c pushBack 'CUP_B_C130J_USMC';
 _p pushBack '';
 _n pushBack '';
-_o pushBack 15000;
+_o pushBack 4000;
 _t pushBack 20;
-_u pushBack 1;
+_u pushBack 0;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
@@ -1338,12 +1368,12 @@ _d pushBack 0;
 _c pushBack 'CUP_B_C130J_Cargo_USMC';
 _p pushBack '';
 _n pushBack '';
-_o pushBack 15000;
+_o pushBack 4000;
 _t pushBack 20;
-_u pushBack 1;
+_u pushBack 0;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
-_d pushBack 0;*/
+_d pushBack 0;
 
 _c pushBack 'CUP_B_MH6J_USA';
 _p pushBack '';
@@ -1355,22 +1385,12 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'CUP_B_AH6X_USA';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 9000;
-_t pushBack 20;
-_u pushBack 1;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
 _c pushBack 'CUP_B_AH6J_Escort_USA';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 9000;
 _t pushBack 20;
-_u pushBack 1;
+_u pushBack 2;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
@@ -1378,12 +1398,12 @@ _d pushBack 0;
 _c pushBack 'CUP_B_AH6J_Escort19_USA';
 _p pushBack '';
 _n pushBack '';
-_o pushBack 10000;
+_o pushBack 12000;
 _t pushBack 20;
-_u pushBack 1;
+_u pushBack 3;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
-_d pushBack 0;*/
+_d pushBack 0;
 
 _c pushBack 'CUP_B_AH6J_AT_USA';
 _p pushBack '';
@@ -1395,40 +1415,10 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_B_AH6J_MP_USA';
-_p pushBack '';
-_n pushBack 'AH6 Multirole';
-_o pushBack 15500;
-_t pushBack 20;
-_u pushBack 2;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'CUP_B_AH1Z_Escort_USMC';
-_p pushBack '';
-_n pushBack 'AH1Z Escort';
-_o pushBack 30850;
-_t pushBack 20;
-_u pushBack 2;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'CUP_B_AH64D_ES_USA';
-_p pushBack '';
-_n pushBack 'AH-64 Apache (Rocket Pods)';
-_o pushBack 30000;
-_t pushBack 50;
-_u pushBack 1;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
 _c pushBack 'CUP_B_AV8B_GBU12_USMC';
 _p pushBack '';
-_n pushBack 'AV8B Harrier GBU12';
-_o pushBack 40000;
+_n pushBack 'AV8B Harrier (LGB)';
+_o pushBack 25000;
 _t pushBack 20;
 _u pushBack 3;
 _f pushBack CTI_FACTORY_AIR;
@@ -1440,17 +1430,17 @@ _p pushBack '';
 _n pushBack 'AV8B Harrier (Rocket Pods)';
 _o pushBack 20000;
 _t pushBack 50;
-_u pushBack 2;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_B_F35B_LGB_USMC';
+_c pushBack 'CUP_B_AV8B_CAP_USMC';
 _p pushBack '';
-_n pushBack 'F-35B (GBU)';
-_o pushBack 50000;
+_n pushBack 'AV8B Harrier (AA)';
+_o pushBack 20000;
 _t pushBack 50;
-_u pushBack 3;
+_u pushBack 2;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;

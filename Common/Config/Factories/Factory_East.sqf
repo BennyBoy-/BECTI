@@ -736,13 +736,19 @@ if (CTI_CUP_ADDON > 0) then {
         _u pushBack 'CUP_O_Ka52_GreyCamo_RU';		
 	_u pushBack 'CUP_B_Mi171Sh_ACR';
 	_u pushBack 'CUP_O_Mi8_SLA_1';
-        _u pushBack 'CUP_O_MI6T_TKA';	
-        _u pushBack 'CUP_O_Mi24_V_RU';			
-	_u pushBack 'CUP_O_Mi24_P_RU';			
-	_u pushBack 'CUP_I_Mi24_Mk3_FAB_AAF';		
-	_u pushBack 'CUP_I_Mi24_Mk4_AT_AAF';		
-	_u pushBack 'CUP_I_Mi24_Mk3_S8_GSh_AAF';	
-	_u pushBack 'CUP_O_Su25_RU_1';			
+        _u pushBack 'CUP_O_MI6T_TKA';			
+	_u pushBack 'CUP_I_Mi24_Mk3_Empty_ION';		
+	_u pushBack 'CUP_I_Mi24_Mk3_ION';		
+	_u pushBack 'CUP_I_Mi24_Mk3_AT_ION';
+	_u pushBack 'CUP_I_Mi24_Mk4_Empty_ION';		
+	_u pushBack 'CUP_I_Mi24_Mk4_ION';		
+	_u pushBack 'CUP_I_Mi24_Mk4_AT_ION';
+	_u pushBack 'CUP_I_Ka60_GL_Blk_ION';		
+	_u pushBack 'CUP_O_Su25_RU_3';	
+	_u pushBack 'CUP_O_Su25_RU_1';
+	_u pushBack 'CUP_O_C130J_TKA';
+	_u pushBack 'CUP_O_C130J_Cargo_TKA';
+	_u pushBack 'CUP_O_Su25_RU_2';	
 	_u pushBack 'CUP_B_L39_BMB_CZ';			
 	_u pushBack 'CUP_O_SU34_LGB_CSAT';	
 	_u pushBack 'CUP_O_SU34_AGM_CSAT';	
@@ -764,11 +770,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_Ka60_Hex_CSAT';
 	_u pushBack 'CUP_O_Ka60_GL_Hex_CSAT';
 	_u pushBack 'CUP_C_DC3_CIV';
-	_u pushBack 'CUP_O_C130J_TKA';
-	_u pushBack 'CUP_O_C130J_Cargo_TKA';
 	_u pushBack 'OFPS_SU25';
-	_u pushBack 'CUP_O_SU34_LGB_CSAT';
-	_u pushBack 'CUP_B_SU34_AGM_CSAT';
 */
 
 	if (CTI_FACTION_EAST == 0) then {
