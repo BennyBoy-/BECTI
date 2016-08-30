@@ -637,6 +637,46 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 10;
 
+_c pushBack 'O_T_VTOL_02_infantry_hex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 54400;
+_t pushBack 50;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 10;
+
+_c pushBack 'O_T_VTOL_02_vehicle_hex_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 54400;
+_t pushBack 50;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 10;
+
+_c pushBack 'O_T_VTOL_02_infantry_grey_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 54400;
+_t pushBack 50;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 10;
+
+_c pushBack 'O_T_VTOL_02_vehicle_grey_F';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 54400;
+_t pushBack 50;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 10;
+
 //--- Naval Vehicles
 
 _c pushBack 'C_Scooter_Transport_01_F';
