@@ -710,10 +710,12 @@ if (CTI_FACTION_EAST == 2) then {
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
 	//Universal APEX
-			_u pushBack "O_T_UAV_04_CAS_F";
+	_u pushBack "O_T_UAV_04_CAS_F";
 	
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid APEX
+	_u pushBack "O_T_VTOL_02_infantry_hex_F";
+	_u pushBack "O_T_VTOL_02_vehicle_hex_F";
 		
 	};
 	if (CTI_FACTION_EAST == 1) then {
@@ -721,11 +723,11 @@ if (CTI_APEX_ADDON > 0) then {
 	_u pushBack "O_T_VTOL_02_infantry_F";
 	_u pushBack "O_T_VTOL_02_vehicle_F";
 
-	
-
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter APEX
+	_u pushBack "O_T_VTOL_02_infantry_grey_F";
+	_u pushBack "O_T_VTOL_02_vehicle_grey_F";
 		
 	};
 };
