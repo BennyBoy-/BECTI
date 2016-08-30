@@ -191,6 +191,7 @@ if (_attempts >= 500) then {
 0 spawn {
 	waitUntil {!isNil 'CTI_InitTowns'};
 	
+	execFSM "Server\FSM\update_ai_defensive.fsm";
 	execFSM "Server\FSM\update_garbage_collector.fsm";
 	execFSM "Server\FSM\update_resources.fsm";
 	execFSM "Server\FSM\update_victory.fsm";

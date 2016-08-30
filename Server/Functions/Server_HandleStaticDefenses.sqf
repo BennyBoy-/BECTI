@@ -58,8 +58,7 @@ while {alive _structure} do {
 	_manned = false;
 	{
 		if !(isNil {_x getVariable "cti_aman_enabled"}) then {
-			_last_occupied = _x getVariable "cti_aman_time_occupied";
-			if (isNil '_last_occupied') then {_last_occupied = -6000};		
+			_last_occupied = _x getVariable ["cti_aman_time_occupied", -6000];
 			
 			//--- Check if our defense has run out of ammo
 			if !(someAmmo _x) then {
@@ -86,7 +85,7 @@ while {alive _structure} do {
 				_x setVariable ["cti_aman_time_occupied", time];
 			} else {
 				//--- The static is empty
-				if (!alive gunner _x && !alive assignedGunner _x && !_manned && time - _last_occupied > CTI_BASE_DEFENSES_AUTO_DELAY && count(_defense_team call CTI_CO_FNC_GetLiveUnits) < CTI_BASE_DEFENSES_AUTO_LIMIT) then {
+				if (!alive gunner _x && !alive assignedGunner _x && !_manned && time - _last_occupied > CTI_BASE_DEFENSES_AUTO_DELAY && count(_defense_team call CTI_CO_FNC_GetLiveUnits) < CTI_BASE_DEFENSES_AUTO_LIMIT && vectorUp _x select 2 > .5) then {
 					_manned = true;
 					
 					if (CTI_Log_Level >= CTI_Log_Information) then {

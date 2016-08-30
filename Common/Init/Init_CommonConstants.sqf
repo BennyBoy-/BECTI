@@ -599,6 +599,7 @@ CTI_GC_DELAY_STATIC = 80;
 CTI_GC_DELAY_BUILDING = 30;
 CTI_GC_GROUND_CLEANUP_KIND = ["WeaponHolder", "GroundWeaponHolder", "WeaponHolderSimulated", "CraterLong_small", "CraterLong"];
 CTI_GC_GROUND_CLEANUP_DISTANCE_UNIT = 30;
+CTI_GC_CLEANUP_MAN = 1;
 
 CTI_VOTE_TIME = 60; //--- Commander Vote time
 

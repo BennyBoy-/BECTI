@@ -1,4 +1,4 @@
-private ["_groups", "_index", "_limit", "_positions", "_ratio", "_safe_range", "_side", "_sideID", "_teams", "_town", "_tvar", "_vvar"];
+private ["_groups", "_index", "_limit", "_positions", "_ratio", "_safe_range", "_side", "_sideID", "_spawn_range", "_teams", "_town", "_tvar", "_vvar"];
 
 _town = _this select 0;
 _side = _this select 1;
@@ -13,6 +13,7 @@ _tvar = if (_side == resistance) then {"cti_town_resistance_groups"} else {"cti_
 _limit = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI"};
 _ratio = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO"};
 _safe_range = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE} else {CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE};
+_spawn_range = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_RANGE} else {CTI_TOWNS_OCCUPATION_SPAWN_RANGE};
 
 //--- Determine how many AI should be present at a given time (perform a min max from the given SV range)
 _spawn_max_ai = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX} else {CTI_TOWNS_OCCUPATION_SPAWN_AI_MAX};
@@ -76,7 +77,7 @@ while {true} do {
 							["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Retrieved a new enemy-free position within [%1] meters to spawn the [%2] units in group [%3] for town [%4], the new position is [%5]", count _team, _group, _town getVariable "cti_town_name", _side, _position]] call CTI_CO_FNC_Log;
 						};
 					};
-				} forEach ([_position, _safe_range*3, "meadow", 8, 6, 0.1, false] call CTI_CO_FNC_GetRandomBestPlaces);
+				} forEach ([ASLToAGL getPosASL _town, _spawn_range, "meadow", 8, 8, 0.1, false] call CTI_CO_FNC_GetRandomBestPlaces);
 			};
 		};
 		
