@@ -328,8 +328,8 @@ CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 600; //--- Award the bounty depending if the la
 CTI_TOWNS_CAPTURE_DETECTION_MODE = 1; //--- Determine the towns detection mode (0: All, 1: Players, 2: Playable units)
 CTI_TOWNS_CAPTURE_FORCE_MAX = 0.5; //--- The force determine how many units may try to capture a town (caoture rate = SV - round((units force + camp rate) * town rate))
 CTI_TOWNS_CAPTURE_RANGE = 40; //--- The range which a unit/vehicle has to be from a town center to capture it
-CTI_TOWNS_CAPTURE_RATE = 0.1; //--- Determine how fast a town may be captured/protected
-CTI_TOWNS_CAPTURE_RATE_CAMPS = 0.2; //--- Determine how fast a town may be captured while holding it's camps
+CTI_TOWNS_CAPTURE_RATE = 0.2; //--- Determine how fast a town may be captured/protected
+CTI_TOWNS_CAPTURE_RATE_CAMPS = 0.3; //--- Determine how fast a town may be captured while holding it's camps
 
 CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
@@ -349,8 +349,8 @@ CTI_TOWNS_MARKERS_MAP_RANGE = 750; //--- Distance required to show the town SV o
 CTI_TOWNS_MARKERS_PEACE_COLOR = "ColorYellow"; //--- The color used for peace-mode towns
 
 //--- Towns: Patrol
-CTI_TOWNS_PATROL_HOPS = 10; //--- Towns patrol hops (non-waypoint)
-CTI_TOWNS_PATROL_RANGE = 200; //--- Patrol range in a town
+CTI_TOWNS_PATROL_HOPS = 5; //--- Towns patrol hops (non-waypoint), ammount of "waypoints" given to town AI
+CTI_TOWNS_PATROL_RANGE = 200; //--- Patrol range in a town "Max range of waypoints"
 
 //--- Towns: Occupation
 
@@ -440,7 +440,7 @@ CTI_BASE_CONSTRUCTION_BOUNTY = 3; //--- The bounty awarded upon a hostile struct
 CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 500; //--- Decay starts after x seconds unattended.
 CTI_BASE_CONSTRUCTION_DECAY_DELAY = 10; //--- Decay each x seconds.
 CTI_BASE_CONSTRUCTION_DECAY_FROM = 10; //--- Decay of x / 100 each y seconds.
-CTI_BASE_CONSTRUCTION_RANGE = 400; //--- Determine how far the commander may be from the HQ to build
+CTI_BASE_CONSTRUCTION_RANGE = 250; //--- Determine how far the commander may be from the HQ to build
 CTI_BASE_CONSTRUCTION_RATIO_INIT = 1; //--- The initial construction ratio
 CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.60; //--- The completion ratio is multiplied by this coefficient to make repairs less effective at each factory's destruction.
 CTI_BASE_CONSTRUCTION_REFUNDS = 0.60; //--- The refund value of a structure (structure cost * x)
@@ -448,9 +448,9 @@ CTI_BASE_CONSTRUCTION_REFUNDS = 0.60; //--- The refund value of a structure (str
 //--- Base: Defenses
 CTI_BASE_DEFENSES_AUTO_DELAY = 250; //--- Delay after which a new unit will replace a dead one for a defense
 CTI_BASE_DEFENSES_AUTO_LIMIT = 20; //--- Amount of independent units which may man nearby defenses
-CTI_BASE_DEFENSES_AUTO_RANGE = 400; //--- Range from the nearest barrack at which AI may auto man a defense
-CTI_BASE_DEFENSES_AUTO_REARM_RANGE = 400; //--- Range needed for a defense to be able to rearm at a service point
-CTI_BASE_DEFENSES_EMPTY_TIMEOUT = 400; //--- Delay after which an empty defense is considered empty
+CTI_BASE_DEFENSES_AUTO_RANGE = 250; //--- Range from the nearest barrack at which AI may auto man a defense
+CTI_BASE_DEFENSES_AUTO_REARM_RANGE = 250; //--- Range needed for a defense to be able to rearm at a service point
+CTI_BASE_DEFENSES_EMPTY_TIMEOUT = 350; //--- Delay after which an empty defense is considered empty
 
 //--- Base: HQ
 CTI_BASE_HQ_BOUNTY = 2.50; //--- The bounty awarded upon HQ destruction
@@ -595,7 +595,7 @@ CTI_SCORE_BUILD_VALUE_PERPOINT = 1500; //--- Structure value / x
 CTI_SCORE_SALVAGE_VALUE_PERPOINT = 2000; //--- Unit value / x
 CTI_SCORE_TOWN_VALUE_PERPOINT = 100; //--- Town value / x
 
-CTI_UI_TOWNS_PROGRESSBAR_DISTANCE = 550;
+CTI_UI_TOWNS_PROGRESSBAR_DISTANCE = 320;
 
 CTI_GC_DELAY = 90;
 CTI_GC_DELAY_AIR = 360;
