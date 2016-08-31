@@ -468,7 +468,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_M1135_ATGMV_Woodland';	
 	_u pushBack 'CUP_B_LR_Special_CZ_W';		
 	_u pushBack 'CUP_B_HMMWV_TOW_USMC';		
-	_u pushBack 'CUP_B_LAV25M240_USMC';		
 	_u pushBack 'CUP_B_HMMWV_Avenger_USMC';		
 	_u pushBack 'CUP_B_M1129_MC_MK19_Desert';				
 	_u pushBack 'CUP_B_M1030';
@@ -622,7 +621,8 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_M6LineBacker_USA_W'; 
 	_u pushBack 'CUP_B_M1A2_TUSK_MG_US_Army';  
 	_u pushBack 'CUP_B_M270_DPICM_USMC';
-        _u pushBack 'CUP_B_FV510_GB_W';	
+        _u pushBack 'CUP_B_FV510_GB_W';
+        _u pushBack 'CUP_B_LAV25M240_USMC';
 /*
 	_u pushBack 'CUP_B_AAV_USMC';
 	_u pushBack 'CUP_B_M113_USA';
