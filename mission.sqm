@@ -129,7 +129,7 @@ class Mission
 		class Item1
 		{
 			dataType="Marker";
-			position[]={2623.8315,64.655251,664.50537};
+			position[]={2623,64.025002,672};
 			name="cti-spawn1";
 			type="Empty";
 			id=1;
