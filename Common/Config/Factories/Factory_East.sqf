@@ -460,7 +460,6 @@ if (CTI_CUP_ADDON > 0) then {
         _u pushBack 'CUP_O_Ural_Refuel_RU';		
 	_u pushBack 'CUP_O_BTR90_RU';	
 	_u pushBack 'CUP_O_LR_SPG9_TKA';
-/*
 	_u pushBack 'CUP_M1030';
 	_u pushBack 'CUP_B_TowingTractor_USMC';
 	_u pushBack 'CUP_C_Skoda_White_CIV';
@@ -497,7 +496,8 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_GAZ_Vodnik_BPPU_RU';
 	_u pushBack 'CUP_O_GAZ_Vodnik_MedEvac_RU';
 	_u pushBack 'CUP_I_Datsun_PK';
-*/
+
+
 
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid CUP
@@ -528,6 +528,8 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'OFPS_UAZ_METIS';
 	_u pushBack 'OFPS_UAZ';
 	_u pushBack 'OFPS_UAZ_SPG9';
+	_u pushBack 'sfp_dakota';
+	_u pushBack 'sfp_mercedes';
 //	_u pushBack 'dbo_CIV_ol_bike';
 
 	if (CTI_FACTION_EAST == 0) then {
