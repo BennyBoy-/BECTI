@@ -316,7 +316,29 @@ _n pushBack '';
 _o pushBack 200;
 _t pushBack 10;
 _u pushBack 0;
-_f pushBack CTI_FACTORY_BARRACKS;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+//SFP Light Vehicles
+
+_c pushBack 'sfp_dakota';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 150;
+_t pushBack 10;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'sfp_mercedes';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 300;
+_t pushBack 10;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
