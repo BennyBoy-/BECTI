@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,3};
 link4[] = {3,4};
-globals[] = {0.000000,0,0,0,0,640,480,1,129,6316128,1,-454.516235,362.175446,361.950592,-337.128723,309,1724,1};
-window[] = {2,-1,-1,-1,-1,435,2050,3417,-346,3,327};
+globals[] = {0.000000,0,0,0,0,640,480,1,129,6316128,1,-454.516235,362.175446,361.950592,-337.128723,350,609,1};
+window[] = {0,-1,-1,-1,-1,594,1920,3287,-187,1,368};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -49,25 +49,16 @@ class FSM
                         name = "Update_AI_Defensive";
                         itemno = 2;
                         init = /*%FSM<STATEINIT""">*/"{" \n
-                         "_logic = (_x) call CTI_CO_FNC_GetSideLogic;" \n
-                         "_defensive_team = _logic getVariable ""cti_defensive_team"";" \n
-                         "" \n
-                         "{" \n
-                         "if (vehicle _x == _x) then {" \n
-                         "deleteVehicle _x" \n
-                         "} else {" \n
-                         "//Adding in loop for AI To go in combat mode due to bug with remote AI in gun" \n
-                         "	_x setBehaviour ""COMBAT"";" \n
-                         "	_x setCombatMode ""RED"";" \n
-                         "	_x enableAttack true;" \n
-                         "	_x allowFleeing 0;" \n
-                         "	};" \n
-                         "" \n
-                         "} forEach units _defensive_team;" \n
+                         "	_logic = (_x) call CTI_CO_FNC_GetSideLogic;" \n
+                         "	_defensive_team = _logic getVariable ""cti_defensive_team"";" \n
+                         "	" \n
+                         "	//--- Make sure that AIs didn't ran out of their statics" \n
+                         "	{" \n
+                         "		if (vehicle _x == _x) then {deleteVehicle _x};" \n
+                         "	} forEach units _defensive_team;" \n
                          "} forEach CTI_PLAYABLE_SIDES;" \n
                          "" \n
-                         "_ncycle = time + 60;" \n
-                         ""/*%FSM</STATEINIT""">*/;
+                         "_ncycle = time + 20;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
