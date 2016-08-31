@@ -1153,6 +1153,8 @@ if (CTI_CUP_ADDON > 0) then {
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
 	//Universal OFPS
+	_u pushBack 'sfp_dakota';
+	_u pushBack 'sfp_mercedes';
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid OFPS
