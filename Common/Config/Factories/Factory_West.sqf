@@ -492,8 +492,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_Jackal2_GMG_GB_W';
 	_u pushBack 'CUP_B_Jackal2_L2A1_GB_D';
 	_u pushBack 'CUP_B_Jackal2_L2A1_GB_W';
-	_u pushBack 'CUP_B_LAV25_USMC';
-	_u pushBack 'CUP_B_LAV25M240_USMC';
 	_u pushBack 'CUP_B_M1126_ICV_M2_Desert';
 	_u pushBack 'CUP_B_M1126_ICV_MK19_Desert';
 	_u pushBack 'CUP_B_M1128_MGS_Desert';
