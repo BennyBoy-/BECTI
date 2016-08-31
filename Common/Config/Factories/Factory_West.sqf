@@ -471,7 +471,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_LAV25M240_USMC';		
 	_u pushBack 'CUP_B_HMMWV_Avenger_USMC';		
 	_u pushBack 'CUP_B_M1129_MC_MK19_Desert';				
-/* 
 	_u pushBack 'CUP_B_M1030';
 	_u pushBack 'CUP_B_TowingTractor_USMC';
 	_u pushBack 'CUP_B_Dingo_GL_CZ_Wdl';
@@ -517,7 +516,8 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_Ridgback_HMG_GB_D';
 	_u pushBack 'CUP_B_Wolfhound_GMG_GB_W';
 	_u pushBack 'CUP_B_Wolfhound_HMG_GB_W';
-*/
+	_u pushBack 'sfp_dakota';
+	_u pushBack 'sfp_mercedes';
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid CUP
