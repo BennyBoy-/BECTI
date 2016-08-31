@@ -820,7 +820,7 @@ _d pushBack 0;
 
 //--- Heavy Vehicles
 
-_c pushBack 'CUP_B_LAV25_USMC';
+_c pushBack 'CUP_B_LAV25M240_USMC';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 8000;
