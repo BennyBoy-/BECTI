@@ -90,16 +90,6 @@ with missionNamespace do {
 		_ai setSkill ["commanding", 1]; // Communication skills
 		_ai setSkill ["general", 1]; //Sets all above
 
-		//--- Update the gunner's properties every 60 seconds to fix them going into hold fire mode
-		_ai spawn {
-		while {alive _this} do {
-		_this setBehaviour "AWARE";
-		_this setCombatMode "RED";
-		_this enableAttack true;
-		sleep 60;
-			};
-		};
-
 
 		// diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 	};
