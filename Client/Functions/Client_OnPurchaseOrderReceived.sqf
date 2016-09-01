@@ -71,7 +71,7 @@ _req_time_out = time + (_var_classname select CTI_UNIT_TIME);
 
 //--- Soft limit (skip for empty vehicles)
 _player_ai_count = CTI_PLAYERS_GROUPSIZE;
-if ( CTI_PLAYERS_GROUPSIZE == 0) then {_player_ai_count = player getVariable ["CTI_PLAYER_GROUPSIZE"];} else {_player_ai_count = CTI_PLAYERS_GROUPSIZE;};
+if ( CTI_PLAYERS_GROUPSIZE == 0) then {_player_ai_count = player getVariable ["CTI_PLAYER_GROUPSIZE",[]];} else {_player_ai_count = CTI_PLAYERS_GROUPSIZE;};
 if !(_process) then { if ((count units (group player))+1 <= _player_ai_count) then { _process = true }};
 if !(_process) exitWith { [_req_seed, _req_classname, _req_buyer, _factory] remoteExec ["CTI_PVF_SRV_AnswerPurchase", CTI_PV_SERVER] }; //--- Can't do it but we answer to the server.
 

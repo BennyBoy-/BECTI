@@ -107,6 +107,8 @@ switch (_action) do {
 	};
 	case "onPurchase": {
 		_selected = _this select 1;
+		_player_ai_count = CTI_PLAYERS_GROUPSIZE;
+		if ( CTI_PLAYERS_GROUPSIZE == 0) then {_player_ai_count = player getVariable ["CTI_PLAYER_GROUPSIZE",[]];} else {_player_ai_count = CTI_PLAYERS_GROUPSIZE;};
 		
 		if (_selected == -1) exitWith {}; //nothing selected.
 		
@@ -120,9 +122,6 @@ switch (_action) do {
 			if (count _veh_info > 0) then {
 				if !((_veh_info select 0) || (_veh_info select 1) || (_veh_info select 2) || (_veh_info select 3)) then { _isEmpty = true };
 			};
-			
-			_player_ai_count = CTI_PLAYERS_GROUPSIZE;
-			if ( CTI_PLAYERS_GROUPSIZE == 0) then {_player_ai_count = player getVariable ["CTI_PLAYER_GROUPSIZE"];} else {_player_ai_count = CTI_PLAYERS_GROUPSIZE;};
 			
 			if (alive(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory")) then {
 				_ai_enabled = missionNamespace getVariable "CTI_AI_TEAMS_ENABLED";
