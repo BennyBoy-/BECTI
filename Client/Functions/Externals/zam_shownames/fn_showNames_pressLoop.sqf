@@ -344,6 +344,8 @@ for "" from 0 to 1 step 0 do {
 	
 	//////////////////////////////////////////////////////////////////////////////////UPDATE OBJECTS	
 	if(ZAM_showNames_default_on) then {
+		// Update sun/moon
+		_ambient_light = sunormoon;
 		_vd = viewDistance * 0.9;
 		// Get Array
 		_temp_array = if (!isMultiplayer) then {allUnits} else {playableUnits};
