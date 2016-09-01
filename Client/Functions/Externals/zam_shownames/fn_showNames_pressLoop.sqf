@@ -29,6 +29,11 @@ _dist_ruck = _this select 6;
 _dist_misc = _this select 7;
 _dist_man_id = _this select 8;
 
+//Default Color
+_ambient_light_r = 0.77;
+_ambient_light_g = 0.51;
+_ambient_light_b = 0.08;
+
 // Safety
 if (isNil "ZAM_showNames_var_drawJobs") then {ZAM_showNames_var_drawJobs = []};
 
@@ -50,11 +55,6 @@ for "" from 0 to 1 step 0 do {
 
 	// Default view distance
 	_vd_player = viewDistance;
-	
-	//Default Color
-	if (isNull _ambient_light_r) then {_ambient_light_r = 0.77;};
-	if (isNull _ambient_light_g) then {_ambient_light_g = 0.51;};
-	if (isNull _ambient_light_b) then {_ambient_light_b = 0.08;};
 
 	// Fade effect intial values
 	if (ZAM_showNames_fade) then {
