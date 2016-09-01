@@ -121,10 +121,13 @@ switch (_action) do {
 				if !((_veh_info select 0) || (_veh_info select 1) || (_veh_info select 2) || (_veh_info select 3)) then { _isEmpty = true };
 			};
 			
+			_player_ai_count = CTI_PLAYERS_GROUPSIZE;
+			if ( CTI_PLAYERS_GROUPSIZE == 0) then {_player_ai_count = (player getVariable ["CTI_PLAYER_GROUPSIZE"];);} else {_player_ai_count = CTI_PLAYERS_GROUPSIZE;};
+			
 			if (alive(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory")) then {
 				_ai_enabled = missionNamespace getVariable "CTI_AI_TEAMS_ENABLED";
 				if (_ai_enabled == 1 || (isPlayer leader _selected_group && _ai_enabled == 0)) then {
-					if ((count units _selected_group)+1 <= CTI_PLAYERS_GROUPSIZE || _isEmpty) then { //todo ai != player limit
+					if ((count units _selected_group)+1 <= _player_ai_count || _isEmpty) then { //todo ai != player limit
 						_proc_purchase = true;
 						if (_isEmpty && _selected_group != group player) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Empty vehicles may not be purchased for other groups."; };
 						

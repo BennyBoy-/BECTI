@@ -354,9 +354,10 @@ if ( (missionNamespace getVariable 'CTI_SM_NONV')>0 || (missionNamespace getVari
 // Map Markers
 0 execVM "Client\Functions\Externals\Prodavec_markers\MapMarkersTitling.sqf";
 
-//adaptative group size
+//group size scripts
 if ( CTI_PLAYERS_GROUPSIZE == 0) then {
-	0 execVM "Client\Functions\Externals\Adaptive_playerAI\Client_AdaptGroup.sqf";
+	//0 execVM "Client\Functions\Externals\Adaptive_playerAI\Client_AdaptGroup.sqf";
+	0 execVM "Client\Functions\Client_SetPlayerAI.sqf";
 };
 
 //Earplugs

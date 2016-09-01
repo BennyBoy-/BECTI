@@ -230,8 +230,8 @@ class Params {
 	class CTI_PLAYERS_GROUPSIZE {
 		title = "AI: Player Group Size";
 		values[] = {0,1,2,3,4,5,8,10,12,14,16};
-		texts[] = {"AutoAdaptative","1","2","3","4","5","8","10","12","14","16"};
-		default = 5;
+		texts[] = {"Rank Based","1","2","3","4","5","8","10","12","14","16"};
+		default = 0;
 	};
 	class SEPARATOR5 {
 		title = "=========================== UNITS ============================";
