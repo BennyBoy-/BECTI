@@ -50,6 +50,11 @@ for "" from 0 to 1 step 0 do {
 
 	// Default view distance
 	_vd_player = viewDistance;
+	
+	//Default Color
+	if (isNull _ambient_light_r) then {_ambient_light_r = 0.77;};
+	if (isNull _ambient_light_g) then {_ambient_light_g = 0.51;};
+	if (isNull _ambient_light_b) then {_ambient_light_b = 0.08;};
 
 	// Fade effect intial values
 	if (ZAM_showNames_fade) then {
