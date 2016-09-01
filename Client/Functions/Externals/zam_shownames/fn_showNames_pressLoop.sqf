@@ -50,6 +50,11 @@ for "" from 0 to 1 step 0 do {
 
 	// Default view distance
 	_vd_player = viewDistance;
+	
+	//Default Color
+	_ambient_light_r = 0.77;
+	_ambient_light_g = 0.51;
+	_ambient_light_b = 0.08;
 
 	// Fade effect intial values
 	if (ZAM_showNames_fade) then {
@@ -218,9 +223,9 @@ for "" from 0 to 1 step 0 do {
 					_colour_g = (_ambient_light - _volume) max 0;	// Subtract other colors proportional to volume	(floor 0)
 					_colour_b = (_ambient_light - _volume) max 0;	// Subtract other colors proportional to volume	(floor 0)
 				} else {
-					_colour_r = _ambient_light;
-					_colour_g = _ambient_light;
-					_colour_b = _ambient_light;
+					_colour_r = _ambient_light_r;
+					_colour_g = _ambient_light_g;
+					_colour_b = _ambient_light_b;
 				};
 
 			};
@@ -239,9 +244,9 @@ for "" from 0 to 1 step 0 do {
 				_height = - 1.65;
 				_vd_id = _dist_ruck;
 				_vd_fog_mod_x = 0.4;
-				_colour_r = _ambient_light;
-				_colour_g = _ambient_light;
-				_colour_b = _ambient_light;
+				_colour_r = _ambient_light_r;
+				_colour_g = _ambient_light_g;
+				_colour_b = _ambient_light_b;
 			};
 			//------------------------------------
 
@@ -257,9 +262,9 @@ for "" from 0 to 1 step 0 do {
 				_height = - 1.65;
 				_vd_id = _dist_misc;
 				_vd_fog_mod_x = 0.77;
-				_colour_r = _ambient_light;
-				_colour_g = _ambient_light;
-				_colour_b = _ambient_light;
+				_colour_r = _ambient_light_r;
+				_colour_g = _ambient_light_g;
+				_colour_b = _ambient_light_b;
 			//------------------------------------
 
 		};
@@ -345,16 +350,15 @@ for "" from 0 to 1 step 0 do {
 	//////////////////////////////////////////////////////////////////////////////////UPDATE OBJECTS	
 	if(ZAM_showNames_default_on) then {
 		// Update sun/moon
-		_currenttime = sunormoon;
-		if (_currenttime > 0.4) then {
-			_colour_r = 0.77;
-			_colour_g = 0.51;
-			_colour_b = 0.08;
+		_ambient_light = sunormoon;
+		if (_ambient_light > 0.4) then {
+			_ambient_light_r = 0.77;
+			_ambient_light_g = 0.51;
+			_ambient_light_b = 0.08;
 		} else {
-			_ambient_light = sunormoon;
-			_colour_r = _ambient_light;
-			_colour_g = _ambient_light;
-			_colour_b = _ambient_light;
+			_ambient_light_r = _ambient_light;
+			_ambient_light_g = _ambient_light;
+			_ambient_light_b = _ambient_light;
 		};
 		_vd = viewDistance * 0.9;
 		// Get Array
