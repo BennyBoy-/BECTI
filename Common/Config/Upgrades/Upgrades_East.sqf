@@ -38,8 +38,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500], //--- Air CM
 	[3500, 7000, 10000], //--- Towns Depots
 	[1000, 2000], //--- Halo
-	[1500], //--- Air Radar
-	[1500], //--- Art Radar
+	[1500,1500,1500], //--- Air Radar
+	[1500,1500,1500], //--- Art Radar
 	[1500,2500,3500], //--- Respawn Range
 	[1500], //--- IR SMOKE
 	[75000], //--- Satellite
@@ -61,8 +61,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	0, //--- Air CM
 	0, //--- Towns Occupation
 	0, //--- Halo
-	0, //--- Air Radar
-	0, //--- Art Radar
+	1, //--- Air Radar
+	1, //--- Art Radar
 	3, //--- Respawn Range
 	0, //--- IR Smoke
 	0, //--- Satellite
@@ -83,8 +83,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	1, //--- Air CM
 	3, //--- Towns Occupation
 	2, //--- Halo
-	1, //--- Air Radar
-	1, //--- Art Radar
+	3, //--- Air Radar
+	3, //--- Art Radar
 	3, //--- Respawn Range
 	1, //--- IR Smoke
 	1, //--- Satellite
@@ -106,8 +106,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[CTI_UPGRADE_AIR, 1]], //--- Air CM
 	[[CTI_UPGRADE_BARRACKS,1],[CTI_UPGRADE_LIGHT,1],[CTI_UPGRADE_HEAVY,1]], //--- Towns Occupation
 	[[CTI_UPGRADE_AIR, 1],[CTI_UPGRADE_AIR, 2]], //--- Halo
-	[[]], //--- Air Radar
-	[[]], //--- Art Radar
+	[[],[],[]], //--- Air Radar
+	[[],[],[]], //--- Art Radar
 	[[],[],[]], //--- Respawn Range
 	[[]], //--- IR Smoke
 	[[CTI_UPGRADE_AIR, 3]], //--- Satellite
@@ -129,8 +129,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[1], //--- Air CM
 		[1, 1, 1], //--- Towns Occupation
 		[1, 1], //--- Halo
-		[1], //--- Air Radar
-		[1], //--- Art Radar
+		[1, 1, 1], //--- Air Radar
+		[1, 1, 1], //--- Art Radar
 		[1, 1, 1], //--- Respawn Range
 		[1], //--- IR Smoke
 		[1], //--- Satellite
@@ -151,8 +151,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[60], //--- Air CM
 		[60, 120, 180], //--- Towns Occupation
 		[60, 120], //--- Halo
-		[60], //--- Air Radar
-		[60], //--- Art Radar
+		[60,60,60], //--- Air Radar
+		[60,60,60], //--- Art Radar
 		[60,120,180], //--- Respawn Range
 		[60], //--- IR Smoke
 		[600], //--- Satellite
