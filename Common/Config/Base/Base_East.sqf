@@ -144,21 +144,39 @@ _placements pushBack 	[180, 60];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 4]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
-_headers pushBack 		[CTI_RADAR, "Air Radar", "Air Radar"];
-_classes pushBack 		["Land_TTowerBig_2_F", "Land_TTowerBig_2_ruins_F"];
-_prices pushBack 		8000;
-_times pushBack 		120;
-_placements pushBack 	[180, 30, false];
-_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 2]];
-_conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+if (CTI_CUP_ADDON > 0) then { 
+	_headers pushBack 		[CTI_RADAR, "Air Radar", "Air Radar"];
+	_classes pushBack 		["GUE_WarfareBAntiAirRadar", "Land_TTowerBig_1_ruins_F"];
+	_prices pushBack 		8000;
+	_times pushBack 		120;
+	_placements pushBack 	[180, 30, false];
+	_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 2]];
+	_conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
-_headers pushBack 		[CTI_RADAR_ART, "Artillery Radar", "Artillery Radar"];
-_classes pushBack 		["Land_TTowerBig_2_F", "Land_TTowerBig_2_ruins_F"];
-_prices pushBack 		8000;
-_times pushBack 		120;
-_placements pushBack 	[180, 30, false];
-_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 2]];
-_conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+	_headers pushBack 		[CTI_RADAR_ART, "Artillery Radar", "Artillery Radar"];
+	_classes pushBack 		["Gue_WarfareBArtilleryRadar", "Land_TTowerBig_2_ruins_F"];
+	_prices pushBack 		8000;
+	_times pushBack 		120;
+	_placements pushBack 	[180, 30, false];
+	_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 2]];
+	_conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+} else {
+	_headers pushBack 		[CTI_RADAR, "Air Radar", "Air Radar"];
+	_classes pushBack 		["Land_TTowerBig_1_F", "Land_TTowerBig_1_ruins_F"];
+	_prices pushBack 		8000;
+	_times pushBack 		120;
+	_placements pushBack 	[180, 30, false];
+	_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 2]];
+	_conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+
+	_headers pushBack 		[CTI_RADAR_ART, "Artillery Radar", "Artillery Radar"];
+	_classes pushBack 		["Land_TTowerBig_2_F", "Land_TTowerBig_2_ruins_F"];
+	_prices pushBack 		8000;
+	_times pushBack 		120;
+	_placements pushBack 	[180, 30, false];
+	_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 2]];
+	_conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+};
 
 [_side, _headers, _classes, _prices, _times, _placements, _specials, _conditions] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Structures.sqf";
 
