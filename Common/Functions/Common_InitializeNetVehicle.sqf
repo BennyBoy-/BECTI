@@ -41,8 +41,7 @@ _marker_size = [1,1];
 _marker_color = CTI_P_SideColor;
 
 //--- Perform general operations
-_special = _vehicle getVariable "cti_spec";
-if (isNil '_special') then { _special = [] };
+_special = _vehicle getVariable ["cti_spec", []];
 if (typeName _special != "ARRAY") then { _special = [_special] };
 
 if (CTI_SPECIAL_REPAIRTRUCK in _special) then { //--- Repair truck.

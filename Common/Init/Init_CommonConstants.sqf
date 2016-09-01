@@ -8,6 +8,7 @@ CTI_FACTORY_AMMO = 5;
 CTI_FACTORY_NAVAL = 6;
 CTI_FACTORY_DEPOT = 7;
 CTI_FACTORY_RADAR = 8;
+CTI_FACTORY_RADAR_ART = 9;
 
 CTI_PV_SERVER = 2;
 CTI_PV_CLIENTS = if (!isMultiplayer || CTI_IsHostedServer) then {0} else {-2};
@@ -23,10 +24,11 @@ CTI_NAVAL = "Naval";
 CTI_DEPOT = "Depot";
 CTI_DEPOT_NAVAL = "DepotNaval";
 CTI_RADAR = "Radar";
+CTI_RADAR_ART = "RadarArt";
 CTI_HQ_DEPLOY = "HQDeployed";
 CTI_HQ_MOBILIZE = "HQMobilized";
 
-CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL,CTI_RADAR];
+CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL,CTI_RADAR,CTI_RADAR_ART];
 
 CTI_WEST_COLOR = "ColorBlue";
 CTI_EAST_COLOR = "ColorRed";
@@ -424,6 +426,18 @@ with missionNamespace do {
  * 
  * - Common\Config\Base\Base_xxx.sqf: Define the structures and defenses for a side (where xxx is the side/faction)
  */
+
+
+//--- Base: Air Radar
+CTI_BASE_AIRRADAR_RANGES = [5000, 10000, 15000]; //--- Ranges used by the Air Radar (based on upgrade)
+CTI_BASE_AIRRADAR_Z_OFFSET = 35; //--- Z Offset detection for Air Radar (0: Disabled)
+
+//--- Base: Artillery Radar
+CTI_BASE_ARTRADAR_MARKER_ACCURACY = 80; //--- Accuracy of the marker (Artillery Distance Radar / value)
+CTI_BASE_ARTRADAR_MARKER_TIMEOUT = 600; //--- Time needed for an artillery marker to expire
+CTI_BASE_ARTRADAR_RANGES = [5000, 10000, 15000]; //--- Ranges used by the Artillery Radar (based on upgrade)
+CTI_BASE_ARTRADAR_REPORT_COOLDOWN = 300; //--- Time after which an artillery piece may be reported again
+CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY = 8; //--- Time after which a projectile is considered tracked (-1: Disabled)
 
 //--- Base: Area
 CTI_BASE_AREA_RANGE = 500;

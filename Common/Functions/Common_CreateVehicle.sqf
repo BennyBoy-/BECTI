@@ -44,19 +44,21 @@
 	  -> Create a locked and handled "B_Quadbike_01_F" at the player's position facing South on the player's initial side
 */
 
-private ["_direction", "_handle", "_locked", "_net", "_position", "_side", "_special", "_type", "_vehicle", "_velocity"];
+private ["_direction", "_handle", "_locked", "_net", "_position", "_side", "_sideID", "_special", "_type", "_vehicle", "_velocity"];
 
 _type = _this select 0;
 _position = _this select 1;
 _direction = _this select 2;
-_side = _this select 3;
+_sideID = _this select 3;
 _locked = if (count _this > 4) then {_this select 4} else {false};
 _net = if (count _this > 5) then {_this select 5} else {false};
 _handle = if (count _this > 6) then {_this select 6} else {false};
 _special = if (count _this > 7) then {_this select 7} else {"FORM"};
 
 if (typeName _position == "OBJECT") then {_position = getPos _position};
-if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
+if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
+
+_side = _sideID call CTI_CO_FNC_GetSideFromID;
 
 _vehicle = createVehicle [_type, _position, [], 7, _special];
 _velocity = velocity _vehicle;
@@ -68,14 +70,24 @@ if (_special == "FLY") then {
 };
 
 if (_locked) then {_vehicle lock 2};
-if (_net) then {_vehicle setVariable ["cti_net", _side, true]};
+if (_net) then {_vehicle setVariable ["cti_net", _sideID, true]};
 if (_handle) then {
-	_vehicle addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _side]]; //--- Called on destruction
+	_vehicle addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]]; //--- Called on destruction
 	_vehicle addEventHandler ["hit", {_this spawn CTI_CO_FNC_OnUnitHit}]; //--- Register importants hits
 	//--- Track who get in or out of the vehicle so that we may determine the death more easily
 	_vehicle addEventHandler ["getIn", {_this spawn CTI_CO_FNC_OnUnitGetOut}]; 
 	_vehicle addEventHandler ["getOut", {_this spawn CTI_CO_FNC_OnUnitGetOut}]; 
-	_vehicle setVariable ["cti_occupant", _side call CTI_CO_FNC_GetSideFromID];
+	_vehicle setVariable ["cti_occupant", _side];
+};
+
+//--- Air Radar tracking
+if (_vehicle isKindOf "Air" && CTI_BASE_AIRRADAR_Z_OFFSET > 0) then {
+	{(_vehicle) remoteExec ["CTI_PVF_CLT_OnAirUnitTracked", _x]} forEach CTI_PLAYABLE_SIDES - [_side];
+};
+
+//--- Artillery Radar tracking
+if (getNumber(configFile >> "CfgVehicles" >> _type >> "artilleryScanner") > 0 && CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1) then {
+	(_vehicle) remoteExec ["CTI_PVF_CLT_OnArtilleryPieceTracked", CTI_PV_CLIENTS];
 };
 
 //--- ZEUS Curator Editable
