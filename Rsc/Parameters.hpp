@@ -240,16 +240,16 @@ class Params {
 		default = 1;
 	};
 	class CTI_VEHICLES_AIR_FFAR {
-		title = "UNITS: Aircraft FFAR NO FUNCTION YET";
+		title = "UNITS: Aircraft FFAR";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_VEHICLES_AIR_DAR {
-		title = "UNITS: Aircraft DAR NO FUNCTION YET";
+		title = "UNITS: Aircraft DAR";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_VEHICLES_AIR_AA {
 		title = "UNITS: Aircraft AA Missiles";

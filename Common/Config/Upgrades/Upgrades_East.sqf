@@ -9,8 +9,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], [
 	true, //--- Heavy
 	true, //--- Naval
 	true, //--- Air
-	true, //--- Air FFAR
-	true, //--- Air DAR
+	(missionNamespace getVariable "CTI_VEHICLES_AIR_FFAR") == 1, //--- Air FFAR
+	(missionNamespace getVariable "CTI_VEHICLES_AIR_DAR") == 1, //--- Air DAR
 	(missionNamespace getVariable "CTI_VEHICLES_AIR_AT") == 1, //--- Air AT
 	(missionNamespace getVariable "CTI_VEHICLES_AIR_AA") == 1, //--- Air AA
 	(missionNamespace getVariable "CTI_VEHICLES_AIR_CM") == 1, //--- Air CM
