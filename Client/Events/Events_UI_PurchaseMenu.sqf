@@ -122,7 +122,7 @@ switch (_action) do {
 			};
 			
 			_player_ai_count = CTI_PLAYERS_GROUPSIZE;
-			if ( CTI_PLAYERS_GROUPSIZE == 0) then {_player_ai_count = (player getVariable ["CTI_PLAYER_GROUPSIZE"];);} else {_player_ai_count = CTI_PLAYERS_GROUPSIZE;};
+			if ( CTI_PLAYERS_GROUPSIZE == 0) then {_player_ai_count = player getVariable ["CTI_PLAYER_GROUPSIZE"];} else {_player_ai_count = CTI_PLAYERS_GROUPSIZE;};
 			
 			if (alive(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory")) then {
 				_ai_enabled = missionNamespace getVariable "CTI_AI_TEAMS_ENABLED";
