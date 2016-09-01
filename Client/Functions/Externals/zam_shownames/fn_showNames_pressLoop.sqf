@@ -345,7 +345,17 @@ for "" from 0 to 1 step 0 do {
 	//////////////////////////////////////////////////////////////////////////////////UPDATE OBJECTS	
 	if(ZAM_showNames_default_on) then {
 		// Update sun/moon
-		_ambient_light = sunormoon;
+		_currenttime = sunormoon;
+		if (_currenttime > 0.4) then {
+			_colour_r = 0.77;
+			_colour_g = 0.51;
+			_colour_b = 0.08;
+		} else {
+			_ambient_light = sunormoon;
+			_colour_r = _ambient_light;
+			_colour_g = _ambient_light;
+			_colour_b = _ambient_light;
+		};
 		_vd = viewDistance * 0.9;
 		// Get Array
 		_temp_array = if (!isMultiplayer) then {allUnits} else {playableUnits};

@@ -178,8 +178,8 @@ if !(hasInterface) exitWith {/*diag_log "showNames_init.sqf - Finished (!hasInte
 		"PuristaSemibold"
 		"TahomaB"
 	*/
-	zam_shownames_var_smallFont = "PuristaMedium";
-	zam_shownames_var_bigFont = "PuristaBold";
+	zam_shownames_var_smallFont = "TahomaB";
+	zam_shownames_var_bigFont = "TahomaB";
 
 	//// Key Handlers are added using CBA
 
