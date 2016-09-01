@@ -14,6 +14,37 @@ with missionNamespace do {
 		_this addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", CTI_P_SideID]];
 	};
 	
+	//--- The client receives an Air unit to track
+	CTI_PVF_CLT_OnAirUnitTracked = {
+		_vehicle = _this;
+		
+		(_vehicle) spawn CTI_CL_FNC_UpdateAirRadarMarker;
+	};
+	
+	//--- The client receives an Artillery piece to track
+	CTI_PVF_CLT_OnArtilleryPieceTracked = {
+		_artillery = _this;
+		
+		_artillery addEventHandler ["Fired", {[_this select 0, _this select 4, _this select 6] spawn CTI_CL_FNC_OnArtilleryFired}];
+	};
+	
+	//--- The client receives an Artillery fire notification
+	CTI_PVF_CLT_OnArtilleryPieceFire = {
+		_position = _this select 0;
+		_direction = _this select 1;
+		
+		hint parseText format["<t size='1.3' color='#eded23'>Warning</t><br /><br />Hostile Artillery fire detected at grid <t color='#F5D363'>%1</t>.", mapGridPosition _position];
+		
+		_marker = createMarkerLocal [format ["cti_artradar_hostile_%1", CTI_P_MarkerIterator], _position]; //todo randomize
+		CTI_P_MarkerIterator = CTI_P_MarkerIterator + 1;
+		_marker setMarkerTypeLocal "mil_arrow";
+		_marker setMarkerColorLocal "ColorBrown";
+		_marker setMarkerDirLocal _direction;
+		_marker setMarkerSizeLocal [0.5, 0.5];
+		
+		_marker spawn {sleep CTI_BASE_ARTRADAR_MARKER_TIMEOUT; deleteMarkerLocal _this};
+	};
+	
 	//--- The client receives a bounty for killing a structure
 	CTI_PVF_CLT_OnBountyStructure = {
 		_label = _this select 0;

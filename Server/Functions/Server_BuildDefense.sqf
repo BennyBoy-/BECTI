@@ -31,7 +31,7 @@
     _defense = [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, CTI_P_WallsAutoAlign, CTI_P_DefensesAutoManning] call CTI_SE_FNC_BuildDefense;
 */
 
-private ["_autoalign", "_defense", "_direction", "_direction_structure", "_fob", "_limit", "_logic", "_manned", "_origin", "_position", "_ruins", "_side", "_stronger", "_var", "_varname"];
+private ["_autoalign", "_defense", "_direction", "_direction_structure", "_fob", "_limit", "_logic", "_manned", "_origin", "_position", "_ruins", "_side", "_sideID", "_stronger", "_var", "_varname"];
 
 _varname = _this select 0;
 _var = missionNamespace getVariable _varname;
@@ -43,6 +43,7 @@ _autoalign = _this select 5;
 _manned = if (count _this > 6) then {_this select 6} else {false};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
+_sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Server\Functions\Server_BuildDefense.sqf", format["Received a Defense build request from side [%1] for a [%2] structure at position [%3], manned? [%4]", _side, _var select 1, _position, _manned]] call CTI_CO_FNC_Log;
@@ -100,7 +101,7 @@ if (_stronger != -1) then {_defense addEventHandler ["handleDamage", format["get
 _ruins = "";
 {if (_x select 0 == "RuinOnDestroyed") exitWith {_ruins = _x select 1}} forEach (_var select 5);
 
-_defense addEventHandler ["killed", format["[_this select 0, _this select 1, %1, '%2', '%3'] spawn CTI_SE_FNC_OnDefenseDestroyed", _side call CTI_CO_FNC_GetSideID, _ruins, _varname]];
+_defense addEventHandler ["killed", format["[_this select 0, _this select 1, %1, '%2', '%3'] spawn CTI_SE_FNC_OnDefenseDestroyed", _sideID, _ruins, _varname]];
 
 if (_defense emptyPositions "gunner" > 0) then { //--- Hard defense
 	//todo: determine if the defense is "auto" or not via config simulation
@@ -108,12 +109,12 @@ if (_defense emptyPositions "gunner" > 0) then { //--- Hard defense
 	
 	//--- The defense is eligible for auto manning
 	if (_manned && CTI_BASE_DEFENSES_AUTO_LIMIT > 0) then {_defense setVariable ["cti_aman_enabled", true]};
+	
+	//--- The defense may be an artillery piece, if so we track it
+	if (CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1 && getNumber(configFile >> "CfgVehicles" >> (_var select 1) >> "artilleryScanner") > 0) then {
+		(_defense) remoteExec ["CTI_PVF_CLT_OnArtilleryPieceTracked", CTI_PV_CLIENTS];
+	};
 };
-
-// _defense addEventHandler ["killed", {}];
-
-	// _defense addEVentHandler ["hit", {player sidechat format["%1",getDammage (_this select 0)];}];
-// _defense setDammage 1;
 
 //AdminZeus
 if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_defense],true];};
