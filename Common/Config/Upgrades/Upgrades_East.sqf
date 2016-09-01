@@ -195,8 +195,8 @@ if (CTI_IsClient) then {
 		["Heavy Factory", "Unlock better armored units"], //--- Heavy
 		["Naval Factory", "Unlock better naval units"], //--- Naval
 		["Aircraft Factory", "Unlock better aircraft units"], //--- Air
-		["(DISABLED) Aircraft FFAR", "Unlocks the FFAR Rockets for Aircrafts"], //--- Air FFAR
-		["(DISABLED) Aircraft DAR", "Unlocks the DAR Rockets for Aircrafts"], //--- Air DAR
+		["Aircraft FFAR", "Unlocks the FFAR Rockets for Aircrafts"], //--- Air FFAR
+		["Aircraft DAR", "Unlocks the DAR Rockets for Aircrafts"], //--- Air DAR
 		["Aircraft AT", "Unlocks the Anti Tank Missiles for Aircrafts"], //--- Air AT
 		["Aircraft AA", "Unlocks the Anti Air Missiles for Aircrafts"], //--- Air AA
 		["Aircraft Countermeasures", "Allows Aircraft to deploy countermeasures"], //--- Air CM
