@@ -202,8 +202,8 @@ if (CTI_IsClient) then {
 		["Aircraft Countermeasures", "Allows Aircraft to deploy countermeasures"], //--- Air CM
 		["Towns Depot", "Improves Vehicles available at Depots"], //--- Towns Depot
 		["Halo", "Enable HALO Jumping from the Air factory and Depots"], //--- Halo
-		["(DISABLED) Air Radar", "Enable Air Radars"], //--- Air Radar
-		["(DISABLED) Artillery Radar", "Enable Artillery radar on Air Radars"], //--- Art Radar
+		["Air Radar", "Increase Range of Air Radar"], //--- Air Radar
+		["Artillery Radar", "Increase Range of Artillery Radar"], //--- Art Radar
 		["Respawn Range", "Increase the max range of the respawn trucks, town camps and FOBS."], //--- Respawn Range
 		["(DISABLED) IR Smoke", "Enable IR Smoke Deployment from Vehicles"], //--- IR Smoke
 		["(DISABLED) Satellite", "Allows the use of the satellite camera"], //--- Satellite
