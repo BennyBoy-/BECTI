@@ -37,10 +37,10 @@ with missionNamespace do {
 		
 		_marker = createMarkerLocal [format ["cti_artradar_hostile_%1", CTI_P_MarkerIterator], _position]; //todo randomize
 		CTI_P_MarkerIterator = CTI_P_MarkerIterator + 1;
-		_marker setMarkerTypeLocal "hd_arrow";
+		_marker setMarkerTypeLocal "mil_arrow2";
 		_marker setMarkerColorLocal "ColorYellow";
 		_marker setMarkerDirLocal _direction;
-		_marker setMarkerSizeLocal [1, 1];
+		_marker setMarkerSizeLocal [1.2, 1.2];
 		
 		_marker spawn {sleep CTI_BASE_ARTRADAR_MARKER_TIMEOUT; deleteMarkerLocal _this};
 	};
