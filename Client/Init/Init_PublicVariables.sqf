@@ -40,7 +40,7 @@ with missionNamespace do {
 		_marker setMarkerTypeLocal "mil_arrow2";
 		_marker setMarkerColorLocal "ColorYellow";
 		_marker setMarkerDirLocal _direction;
-		_marker setMarkerSizeLocal [1.2, 1.2];
+		_marker setMarkerSizeLocal [1, 1];
 		
 		_marker spawn {sleep CTI_BASE_ARTRADAR_MARKER_TIMEOUT; deleteMarkerLocal _this};
 	};

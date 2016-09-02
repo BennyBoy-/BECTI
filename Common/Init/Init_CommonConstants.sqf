@@ -437,7 +437,7 @@ with missionNamespace do {
 
 //--- Base: Air Radar
 CTI_BASE_AIRRADAR_RANGES = [4000, 8000, 12000]; //--- Ranges used by the Air Radar (based on upgrade)
-CTI_BASE_AIRRADAR_Z_OFFSET = 35; //--- Z Offset detection for Air Radar (0: Disabled)
+CTI_BASE_AIRRADAR_Z_OFFSET = 50; //--- Z Offset detection for Air Radar (0: Disabled)
 
 //--- Base: Artillery Radar
 CTI_BASE_ARTRADAR_MARKER_ACCURACY = 80; //--- Accuracy of the marker (Artillery Distance Radar / value)
