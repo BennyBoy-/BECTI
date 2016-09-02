@@ -240,6 +240,10 @@ CTI_UPGRADE_REST = 15;
 CTI_UPGRADE_IRSMOKE = 16;
 CTI_UPGRADE_SATELLITE = 17;
 CTI_UPGRADE_NUKE = 18;
+CTI_UPGRADE_SUPPLY_RATE = 19;
+
+//--- Supply
+CTI_UPGRADE_CST_SUPPLY_COEF [0, 15, 30, 40] //--- Supply coefficient (Default + upgrade)
 
 //-----------------------------------------------------------------------------------------------------------------------//
 
@@ -436,13 +440,13 @@ with missionNamespace do {
 
 
 //--- Base: Air Radar
-CTI_BASE_AIRRADAR_RANGES = [4000, 8000, 12000]; //--- Ranges used by the Air Radar (based on upgrade)
+CTI_BASE_AIRRADAR_RANGES = [2500, 5000, 10000, 15000]; //--- Ranges used by the Air Radar (default + based on upgrade)
 CTI_BASE_AIRRADAR_Z_OFFSET = 50; //--- Z Offset detection for Air Radar (0: Disabled)
 
 //--- Base: Artillery Radar
 CTI_BASE_ARTRADAR_MARKER_ACCURACY = 80; //--- Accuracy of the marker (Artillery Distance Radar / value)
 CTI_BASE_ARTRADAR_MARKER_TIMEOUT = 600; //--- Time needed for an artillery marker to expire
-CTI_BASE_ARTRADAR_RANGES = [4000, 8000, 12000]; //--- Ranges used by the Artillery Radar (based on upgrade)
+CTI_BASE_ARTRADAR_RANGES = [2500, 5000, 10000, 15000]; //--- Ranges used by the Artillery Radar (default + based on upgrade)
 CTI_BASE_ARTRADAR_REPORT_COOLDOWN = 300; //--- Time after which an artillery piece may be reported again
 CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY = 8; //--- Time after which a projectile is considered tracked (-1: Disabled)
 
