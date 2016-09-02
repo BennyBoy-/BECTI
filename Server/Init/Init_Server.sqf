@@ -186,12 +186,13 @@ if (_attempts >= 500) then {
 	} forEach (synchronizedObjects _logic);
 	
 	//--- Disable Thermals and Statics
-	if ( (missionNamespace getVariable 'CTI_SM_NV_THER_VEH')==1 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {
+	if ( (missionNamespace getVariable 'CTI_SM_NV_THER_VEH') > 0 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {
 		0 spawn {
 			while {! CTi_GameOver} do {
 				{
-					_x disableTIEquipment true;
-					_x disableNVGEquipment true;
+					if ((missionNamespace getVariable 'CTI_SM_NV_THER_VEH')== 1) then {_x disableNVGEquipment true;};
+					if ((missionNamespace getVariable 'CTI_SM_NV_THER_VEH')== 2) then {_x disableTIEquipment true;};
+					if ((missionNamespace getVariable 'CTI_SM_NV_THER_VEH')== 3 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {_x disableTIEquipment true;_x disableNVGEquipment true;};
 				}
 				forEach vehicles;
 				sleep 10;
@@ -205,6 +206,7 @@ if (_attempts >= 500) then {
 0 spawn {
 	waitUntil {!isNil 'CTI_InitTowns'};
 	
+	execFSM "Server\FSM\update_ai_defensive.fsm";
 	execFSM "Server\FSM\update_garbage_collector.fsm";
 	execFSM "Server\FSM\update_resources.fsm";
 	execFSM "Server\FSM\update_victory.fsm";

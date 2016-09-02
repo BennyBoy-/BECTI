@@ -72,9 +72,8 @@ _items = [["", ""], ["", "", "", "", ""]];
 		default {[-1]};
 	};
 	if (_slot select 0 == -1) then { //--- The simulation couldn't be determined, try to get the subtype maybe?
-		switch (getNumber(configFile >> 'CfgWeapons' >> _x >> 'ItemInfo' >> 'type')) do {
-			case CTI_SUBTYPE_UAVTERMINAL: {_slot = [1,1]};
-		};
+		if (getNumber(configFile >> 'CfgWeapons' >> _x >> 'ItemInfo' >> 'type') isEqualTo CTI_SUBTYPE_UAVTERMINAL) then {_slot = [1,1]};
+		if (getNumber(configFile >> 'CfgWeapons' >> _x >> 'useAsBinocular') isEqualTo 1 && getText(configFile >> 'CfgWeapons' >> _x >> 'simulation') isEqualTo "weapon") then {_slot = [0,1]};
 	};
 	if (_slot select 0 != -1) then { (_items select (_slot select 0)) set [_slot select 1, _x] };
 } forEach _allitems;

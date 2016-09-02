@@ -468,10 +468,8 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_M1135_ATGMV_Woodland';	
 	_u pushBack 'CUP_B_LR_Special_CZ_W';		
 	_u pushBack 'CUP_B_HMMWV_TOW_USMC';		
-	_u pushBack 'CUP_B_LAV25M240_USMC';		
 	_u pushBack 'CUP_B_HMMWV_Avenger_USMC';		
 	_u pushBack 'CUP_B_M1129_MC_MK19_Desert';				
-/* 
 	_u pushBack 'CUP_B_M1030';
 	_u pushBack 'CUP_B_TowingTractor_USMC';
 	_u pushBack 'CUP_B_Dingo_GL_CZ_Wdl';
@@ -494,8 +492,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_Jackal2_GMG_GB_W';
 	_u pushBack 'CUP_B_Jackal2_L2A1_GB_D';
 	_u pushBack 'CUP_B_Jackal2_L2A1_GB_W';
-	_u pushBack 'CUP_B_LAV25_USMC';
-	_u pushBack 'CUP_B_LAV25M240_USMC';
 	_u pushBack 'CUP_B_M1126_ICV_M2_Desert';
 	_u pushBack 'CUP_B_M1126_ICV_MK19_Desert';
 	_u pushBack 'CUP_B_M1128_MGS_Desert';
@@ -517,7 +513,8 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_Ridgback_HMG_GB_D';
 	_u pushBack 'CUP_B_Wolfhound_GMG_GB_W';
 	_u pushBack 'CUP_B_Wolfhound_HMG_GB_W';
-*/
+	_u pushBack 'sfp_dakota';
+	_u pushBack 'sfp_mercedes';
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid CUP
@@ -622,7 +619,8 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_M6LineBacker_USA_W'; 
 	_u pushBack 'CUP_B_M1A2_TUSK_MG_US_Army';  
 	_u pushBack 'CUP_B_M270_DPICM_USMC';
-        _u pushBack 'CUP_B_FV510_GB_W';	
+        _u pushBack 'CUP_B_FV510_GB_W';
+        _u pushBack 'CUP_B_LAV25M240_USMC';
 /*
 	_u pushBack 'CUP_B_AAV_USMC';
 	_u pushBack 'CUP_B_M113_USA';
@@ -1153,6 +1151,8 @@ if (CTI_CUP_ADDON > 0) then {
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
 	//Universal OFPS
+	_u pushBack 'sfp_dakota';
+	_u pushBack 'sfp_mercedes';
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid OFPS

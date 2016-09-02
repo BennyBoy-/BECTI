@@ -230,8 +230,8 @@ class Params {
 	class CTI_PLAYERS_GROUPSIZE {
 		title = "AI: Player Group Size";
 		values[] = {0,1,2,3,4,5,8,10,12,14,16};
-		texts[] = {"AutoAdaptative","1","2","3","4","5","8","10","12","14","16"};
-		default = 5;
+		texts[] = {"Rank Based","1","2","3","4","5","8","10","12","14","16"};
+		default = 0;
 	};
 	class SEPARATOR5 {
 		title = "=========================== UNITS ============================";
@@ -240,16 +240,16 @@ class Params {
 		default = 1;
 	};
 	class CTI_VEHICLES_AIR_FFAR {
-		title = "UNITS: Aircraft FFAR NO FUNCTION YET";
+		title = "UNITS: Aircraft FFAR";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_VEHICLES_AIR_DAR {
-		title = "UNITS: Aircraft DAR NO FUNCTION YET";
+		title = "UNITS: Aircraft DAR";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_VEHICLES_AIR_AA {
 		title = "UNITS: Aircraft AA Missiles";
@@ -312,15 +312,15 @@ class Params {
 		default = 25;
 	};
 	class CTI_SM_NONV {
-		title = "GAMEPLAY: No NVs, No Thermal";
-		values[] = {0,1};
-		texts[] = {"False","True"};
+		title = "GAMEPLAY: Disable NVs, Thermal on Players";
+		values[] = {0,1,2,3};
+		texts[] = {"Default","Disable NV", "Disable Thermals","Disable NV/THERMALS"};
 		default = 0;
 	};
 	class CTI_SM_NV_THER_VEH {
 		title = "GAMEPLAY: Disable NVs, Thermal on Vehicles, Statics";
-		values[] = {0,1};
-		texts[] = {"False","True"};
+		values[] = {0,1,2,3};
+		texts[] = {"Default","Disable NV", "Disable Thermals","Disable NV/THERMALS"};
 		default = 0;
 	};
 	class SEPARATOR7 {

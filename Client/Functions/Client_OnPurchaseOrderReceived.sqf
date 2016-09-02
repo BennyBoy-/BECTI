@@ -70,7 +70,9 @@ if !(_req_classname isKindOf "Man") then {
 _req_time_out = time + (_var_classname select CTI_UNIT_TIME);
 
 //--- Soft limit (skip for empty vehicles)
-if !(_process) then { if ((count units (group player))+1 <= CTI_PLAYERS_GROUPSIZE) then { _process = true }};
+_player_ai_count = CTI_PLAYERS_GROUPSIZE;
+if ( CTI_PLAYERS_GROUPSIZE == 0) then {_player_ai_count = player getVariable ["CTI_PLAYER_GROUPSIZE",[]];} else {_player_ai_count = CTI_PLAYERS_GROUPSIZE;};
+if !(_process) then { if ((count units (group player))+1 <= _player_ai_count) then { _process = true }};
 if !(_process) exitWith { [_req_seed, _req_classname, _req_buyer, _factory] remoteExec ["CTI_PVF_SRV_AnswerPurchase", CTI_PV_SERVER] }; //--- Can't do it but we answer to the server.
 
 //--- Check if the buyer has enough funds to perform this operation
@@ -103,7 +105,7 @@ while { time <= _req_time_out && alive _factory } do { sleep .25 };
 if !(alive _factory) exitWith { diag_log "the factory is dead" };
 
 //--- Soft limit (skip for empty vehicles)
-if !(_process) then { if ((count units (group player))+1 <= CTI_PLAYERS_GROUPSIZE) then { _process = true }};
+if !(_process) then { if ((count units (group player))+1 <= _player_ai_count) then { _process = true }};
 if !(_process) exitWith { [_req_seed, _req_classname, _req_buyer, _factory] remoteExec ["CTI_PVF_SRV_AnswerPurchase", CTI_PV_SERVER] }; //--- Can't do it but we answer to the server.
 
 _funds = (_req_buyer) call CTI_CO_FNC_GetFunds;

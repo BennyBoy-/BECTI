@@ -64,5 +64,5 @@ if (_randomDirection) then {_object setDir random 360};
 if (_faceAway) then {
 	_destination = getPos _object;
 	_object setDir -((((_destination select 1) - (_position select 1)) atan2 ((_destination select 0) - (_position select 0))) - 90);
-	_object setVectorUp surfaceNormal _position;
+	_object setVectorUp surfaceNormal position _object;
 };

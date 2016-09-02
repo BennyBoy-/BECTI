@@ -40,8 +40,8 @@ _ambient_light = sunormoon;
 
 // Distance to get objects from. Also used as max ID ranges (excluding magnification)
 _dist_man = 100;  // distance to pick up people
-_dist_ruck = 13; // distance to pick up ruck
-_dist_misc = 15; // distance to pick up misc objects
+_dist_ruck = 10; // distance to pick up ruck
+_dist_misc = 10; // distance to pick up misc objects
 _dist_man_id = 10;	// Distance you must be within to learn their name
 
 // Magnification multiplier that will be used to get distances.

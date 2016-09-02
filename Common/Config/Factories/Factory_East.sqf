@@ -460,7 +460,6 @@ if (CTI_CUP_ADDON > 0) then {
         _u pushBack 'CUP_O_Ural_Refuel_RU';		
 	_u pushBack 'CUP_O_BTR90_RU';	
 	_u pushBack 'CUP_O_LR_SPG9_TKA';
-/*
 	_u pushBack 'CUP_M1030';
 	_u pushBack 'CUP_B_TowingTractor_USMC';
 	_u pushBack 'CUP_C_Skoda_White_CIV';
@@ -497,7 +496,8 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_GAZ_Vodnik_BPPU_RU';
 	_u pushBack 'CUP_O_GAZ_Vodnik_MedEvac_RU';
 	_u pushBack 'CUP_I_Datsun_PK';
-*/
+
+
 
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid CUP
@@ -528,6 +528,8 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'OFPS_UAZ_METIS';
 	_u pushBack 'OFPS_UAZ';
 	_u pushBack 'OFPS_UAZ_SPG9';
+	_u pushBack 'sfp_dakota';
+	_u pushBack 'sfp_mercedes';
 //	_u pushBack 'dbo_CIV_ol_bike';
 
 	if (CTI_FACTION_EAST == 0) then {
@@ -710,10 +712,12 @@ if (CTI_FACTION_EAST == 2) then {
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
 	//Universal APEX
-			_u pushBack "O_T_UAV_04_CAS_F";
+	_u pushBack "O_T_UAV_04_CAS_F";
 	
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid APEX
+	_u pushBack "O_T_VTOL_02_infantry_hex_F";
+	_u pushBack "O_T_VTOL_02_vehicle_hex_F";
 		
 	};
 	if (CTI_FACTION_EAST == 1) then {
@@ -721,11 +725,11 @@ if (CTI_APEX_ADDON > 0) then {
 	_u pushBack "O_T_VTOL_02_infantry_F";
 	_u pushBack "O_T_VTOL_02_vehicle_F";
 
-	
-
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter APEX
+	_u pushBack "O_T_VTOL_02_infantry_grey_F";
+	_u pushBack "O_T_VTOL_02_vehicle_grey_F";
 		
 	};
 };
@@ -1158,6 +1162,8 @@ if (CTI_CUP_ADDON > 0) then {
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
 	//Universal OFPS
+	_u pushBack 'sfp_dakota';
+	_u pushBack 'sfp_mercedes';
 	
 
 	if (CTI_FACTION_EAST == 0) then {

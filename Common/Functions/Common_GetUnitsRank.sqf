@@ -28,28 +28,28 @@ _rank = rank _this;
 
 _score = [_this] call CTI_CO_FNC_GetUnitsScore;
 switch (true) do {
-	case (_score < 200) : { 
+	case (_score < 150) : { 
 		_this setRank "PRIVATE";
 	};
-	case (_score >= 200 && _score < 350) : { 
+	case (_score >= 150 && _score < 300) : { 
 		_this setRank "CORPORAL";
 	};
-	case (_score >= 500 && _score < 600) : { 
+	case (_score >= 300 && _score < 450) : { 
 		_this setRank "SERGEANT";
 	};
-	case (_score >= 600 && _score < 700) : { 
+	case (_score >= 600 && _score < 750) : { 
 		_this setRank "LIEUTENANT";
 	};
-	case (_score >= 700 && _score < 800) : { 
+	case (_score >= 750 && _score < 900) : { 
 		_this setRank "CAPTAIN";
 	};
-	case (_score >= 800 && _score < 900) : { 
+	case (_score >= 900 && _score < 1050) : { 
 		_this setRank "MAJOR";
 	};
-	case (_score >= 900 && _score < 1000) : { 
+	case (_score >= 1050 && _score < 1200) : { 
 		_this setRank "COLONEL";
 	};
-	case (_score >= 1000) : { 
+	case (_score >= 1200) : { 
 		_this setRank "GENERAL";
 	};
 };

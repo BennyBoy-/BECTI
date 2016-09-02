@@ -545,25 +545,7 @@ _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_B_LAV25_USMC';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 8000;
-_t pushBack 10;
-_u pushBack 1;
-_f pushBack CTI_FACTORY_LIGHT;
-_s pushBack "";
-_d pushBack 0;*/
-
-_c pushBack 'CUP_B_LAV25M240_USMC';
-_p pushBack '';
-_n pushBack 'LAV25';
-_o pushBack 6400;
-_t pushBack 10;
-_u pushBack 1;
-_f pushBack CTI_FACTORY_LIGHT;
-_s pushBack "";
-_d pushBack 0;
+*/
 
 /*_c pushBack 'CUP_B_M1126_ICV_M2_Desert';
 _p pushBack '';
@@ -837,6 +819,16 @@ _d pushBack 0;
 
 
 //--- Heavy Vehicles
+
+_c pushBack 'CUP_B_LAV25M240_USMC';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 8000;
+_t pushBack 10;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
 
 _c pushBack 'CUP_B_AAV_USMC';
 _p pushBack '';
