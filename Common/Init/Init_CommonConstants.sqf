@@ -436,13 +436,13 @@ with missionNamespace do {
 
 
 //--- Base: Air Radar
-CTI_BASE_AIRRADAR_RANGES = [5000, 10000, 15000]; //--- Ranges used by the Air Radar (based on upgrade)
+CTI_BASE_AIRRADAR_RANGES = [4000, 8000, 12000]; //--- Ranges used by the Air Radar (based on upgrade)
 CTI_BASE_AIRRADAR_Z_OFFSET = 35; //--- Z Offset detection for Air Radar (0: Disabled)
 
 //--- Base: Artillery Radar
 CTI_BASE_ARTRADAR_MARKER_ACCURACY = 80; //--- Accuracy of the marker (Artillery Distance Radar / value)
 CTI_BASE_ARTRADAR_MARKER_TIMEOUT = 600; //--- Time needed for an artillery marker to expire
-CTI_BASE_ARTRADAR_RANGES = [5000, 10000, 15000]; //--- Ranges used by the Artillery Radar (based on upgrade)
+CTI_BASE_ARTRADAR_RANGES = [4000, 8000, 12000]; //--- Ranges used by the Artillery Radar (based on upgrade)
 CTI_BASE_ARTRADAR_REPORT_COOLDOWN = 300; //--- Time after which an artillery piece may be reported again
 CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY = 8; //--- Time after which a projectile is considered tracked (-1: Disabled)
 

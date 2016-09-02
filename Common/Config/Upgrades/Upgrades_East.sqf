@@ -38,8 +38,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500], //--- Air CM
 	[3500, 7000, 10000], //--- Towns Depots
 	[1000, 2000], //--- Halo
-	[1500,1500,1500], //--- Air Radar
-	[1500,1500,1500], //--- Art Radar
+	[6000,6000,6000], //--- Air Radar
+	[6000,6000,6000], //--- Art Radar
 	[1500,2500,3500], //--- Respawn Range
 	[1500], //--- IR SMOKE
 	[75000], //--- Satellite
