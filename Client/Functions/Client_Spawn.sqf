@@ -19,5 +19,6 @@ if (!(isNil "_keybindtablet")) then {
 //If default On Mode
 if(ZAM_showNames_default_on) then {
 	ZAM_showNames_on = false;
+	sleep 5;
 	player call ZAM_fnc_showNames_Press;
 };
