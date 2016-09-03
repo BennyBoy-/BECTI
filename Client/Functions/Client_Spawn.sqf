@@ -15,3 +15,9 @@ if (!(isNil "_keybindtablet")) then {
 	_actualkeytablet = ((_keybindtablet) select 5) select 0;
 	tablet_hotkeyDIKCodeNumberWin = _actualkeytablet;
 };
+
+//If default On Mode
+if(ZAM_showNames_default_on) then {
+	ZAM_showNames_on = false;
+	player call ZAM_fnc_showNames_Press;
+};

@@ -1037,7 +1037,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 				
 				// current magazine
 				//--- Is there a primary weapon?
-				/*for '_i' from 0 to 2 do {
+				for '_i' from 0 to 2 do {
 					_gear_sub = (_gear select 0) select _i;
 					
 					if (_gear_sub select 0 != "") then { //--- There is a weapon
@@ -1045,7 +1045,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 						
 						if (_item in _magazines) then {	_idcs = _idcs + [77901+_i] };
 					};
-				};*/
+				};
 			};
 			case "CfgGlasses": {
 				_idcs = [77005];
