@@ -197,10 +197,10 @@ if !(hasInterface) exitWith {/*diag_log "showNames_init.sqf - Finished (!hasInte
 	};
 	
 	//If default On Mode
-	if(ZAM_showNames_default_on) then {
+	/*if(ZAM_showNames_default_on) then {
 		ZAM_showNames_on = false;
 		sleep 10;
 		_this call ZAM_fnc_showNames_Press;
-	};
+	};*/
 
 };
