@@ -1137,7 +1137,8 @@ _u pushBack "OFPS_HUNTER_HMG";
 if (CTI_CUP_ADDON > 0) then { 
 	//Universal CUP
 _u pushBack 'CUP_B_HMMWV_Unarmed_USMC';		
-_u pushBack 'CUP_B_HMMWV_M2_USMC';
+_u pushBack 'CUP_B_HMMWV_M2_GPK_USA';
+_u pushBack 'CUP_B_HMMWV_MK19_USMC';	
 	
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid CUP

@@ -492,7 +492,7 @@ _p pushBack '';
 _n pushBack 'UAZ GMG';
 _o pushBack 1850;
 _t pushBack 30;
-_u pushBack 0;
+_u pushBack 2;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;

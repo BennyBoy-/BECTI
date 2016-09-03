@@ -1166,6 +1166,7 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'sfp_mercedes';
 	_u pushBack 'OFPS_UAZ';
 	_u pushBack 'OFPS_UAZ_MG';
+	_u pushBack 'OFPS_UAZ_AGS30';
 	
 
 	if (CTI_FACTION_EAST == 0) then {
