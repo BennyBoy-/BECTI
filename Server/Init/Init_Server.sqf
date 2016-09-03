@@ -185,12 +185,13 @@ if (_attempts >= 500) then {
 	} forEach (synchronizedObjects _logic);
 	
 	//--- Disable Thermals and Statics
-	if ( (missionNamespace getVariable 'CTI_SM_NV_THER_VEH')==1 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {
+	if ( (missionNamespace getVariable 'CTI_SM_NV_THER_VEH') > 0 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {
 		0 spawn {
 			while {! CTi_GameOver} do {
 				{
-					_x disableTIEquipment true;
-					_x disableNVGEquipment true;
+					if ((missionNamespace getVariable 'CTI_SM_NV_THER_VEH')== 1) then {_x disableNVGEquipment true;};
+					if ((missionNamespace getVariable 'CTI_SM_NV_THER_VEH')== 2) then {_x disableTIEquipment true;};
+					if ((missionNamespace getVariable 'CTI_SM_NV_THER_VEH')== 3 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {_x disableTIEquipment true;_x disableNVGEquipment true;};
 				}
 				forEach vehicles;
 				sleep 10;
@@ -204,6 +205,7 @@ if (_attempts >= 500) then {
 0 spawn {
 	waitUntil {!isNil 'CTI_InitTowns'};
 	
+	execFSM "Server\FSM\update_ai_defensive.fsm";
 	execFSM "Server\FSM\update_garbage_collector.fsm";
 	execFSM "Server\FSM\update_resources.fsm";
 	execFSM "Server\FSM\update_victory.fsm";
@@ -217,11 +219,12 @@ if (_attempts >= 500) then {
 if (CTI_ZOMBIE_MODE == 0) then {
 	_it=0;
 	_possible_it_off=[0,0,0,0,0,0,6,6,6,12,12,12,18];
-	if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 10) then {
-		_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL")*6;
+	if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 18) then {
+		_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL");
 	} else {
 		_it= _possible_it_off select floor random (count _possible_it_off);
 	};
+	//Default Time Starts at 0600am
 	skipTime _it;
 } else {
 	// set time to dusk 6pm
@@ -251,7 +254,7 @@ if (CTI_ZOMBIE_MODE == 0) then {
 if !( isNil "ADMIN_ZEUS") then {
 	0 spawn {
 		while {!CTI_GameOver} do {
-			ADMIN_ZEUS addCuratorEditableObjects [playableUnits,true];
+			ADMIN_ZEUS addCuratorEditableObjects [playableUnits+switchableUnits,true];
 			sleep 5;
 		};
 	};

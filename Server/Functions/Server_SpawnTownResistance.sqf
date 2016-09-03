@@ -24,7 +24,7 @@
 	Common Function: CTI_CO_FNC_ArrayShuffle
 	Common Function: CTI_CO_FNC_CreateUnit
 	Common Function: CTI_CO_FNC_CreateVehicle
-	Common Function: CTI_CO_FNC_GetEmptyPosition
+	Common Function: CTI_CO_FNC_GetRandomBestPlaces
 	Common Function: CTI_CO_FNC_GetRandomPosition
 	Common Function: CTI_CO_FNC_GetTownCamps
 	Common Function: CTI_CO_FNC_ManVehicle
@@ -142,7 +142,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["GUER_TOWNS_SQUAD_APC3_MIXED", 3, 70]
 						],
 						[
-							["GUER_TOWNS_SQUAD_ARMORED1_MIXED", 1, 50]
+							["GUER_TOWNS_SQUAD_ARMORED1_MIXED", 1, 40]
 						],
 						[
 							["GUER_TOWNS_SQUAD_LIGHT4", 1, 10],
@@ -154,8 +154,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["GUER_TOWNS_SQUAD_APC3", 2, 50]
 						],
 						[
-							["GUER_TOWNS_SQUAD_ARMORED1", 1, 5],
-							["GUER_TOWNS_SQUAD_ARMORED2", 1, 30]
+							["GUER_TOWNS_SQUAD_ARMORED1", 1, 20]
 						],
 						[
 							["GUER_TOWNS_SQUAD_VEHICLE_AA1", 2, 50],
@@ -181,8 +180,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["GUER_TOWNS_SQUAD_APC3_MIXED", 4, 80]
 						],
 						[
-							["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 2, 70],
-							["GUER_TOWNS_SQUAD_ARMORED3_MIXED", 1, 50]
+							["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 1, 60],
+							["GUER_TOWNS_SQUAD_ARMORED3_MIXED", 1, 40]
 						],
 						[
 							["GUER_TOWNS_SQUAD_LIGHT5", 2, 50],
@@ -195,7 +194,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 						],
 						[
 							["GUER_TOWNS_SQUAD_ARMORED2", 1, 10],
-							["GUER_TOWNS_SQUAD_ARMORED3", 1, 30]
+							["GUER_TOWNS_SQUAD_ARMORED3", 1, 20]
 						],
 						[
 							["GUER_TOWNS_SQUAD_VEHICLE_AA2", 1, 20],
@@ -220,8 +219,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["GUER_TOWNS_SQUAD_APC3_MIXED", 4, 70]
 						],
 						[
-							["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 2, 30],
-							["GUER_TOWNS_SQUAD_ARMORED3_MIXED", 3, 60]
+							["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 1, 20],
+							["GUER_TOWNS_SQUAD_ARMORED3_MIXED", 1, 50]
 						],
 						[
 							["GUER_TOWNS_SQUAD_LIGHT6", 1, 30],
@@ -232,8 +231,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["GUER_TOWNS_SQUAD_APC3", 3, 70]
 						],
 						[
-							["GUER_TOWNS_SQUAD_ARMORED2", 1, 30],
-							["GUER_TOWNS_SQUAD_ARMORED3", 1, 60]
+							["GUER_TOWNS_SQUAD_ARMORED2", 1, 20],
+							["GUER_TOWNS_SQUAD_ARMORED3", 1, 50]
 						],
 						[
 							["GUER_TOWNS_SQUAD_VEHICLE_AA2", 1, 20],
@@ -592,13 +591,12 @@ _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 		if (count _camps > 0 && random 100 > 30) then {
 			_camp_index = floor(random count _camps);
 			_position = [ASLToAGL getPosASL(_camps select _camp_index), 10, CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS, _tries] call CTI_CO_FNC_GetRandomPosition;
-			_position = [_position, 30, "meadow", 8, 3, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
+			_position = [_position, 30, "meadow", 8, 5, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
 			_camps deleteAt _camp_index;
 		} else {
 			_position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, _tries] call CTI_CO_FNC_GetRandomPosition;
-			_position = [_position, 80, "meadow", 8, 3, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
+			_position = [_position, 80, "meadow", 8, 5, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
 		};
-		// _position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 	} else {
 		_position = [[ASLToAGL getPosASL _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE/1.5, 0] call CTI_CO_FNC_GetRandomPosition, 200, "sea", 8, 3, 1, true] call CTI_CO_FNC_GetRandomBestPlaces;
 	};
@@ -606,6 +604,7 @@ _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 	_positions pushBack _position;
 	
 	_group = createGroup resistance;
+	_group setGroupIdGlobal [format["(%1) %2", _town, _group]];
 	_groups pushBack _group;
 	
 	//--- Set AI to Combat mode

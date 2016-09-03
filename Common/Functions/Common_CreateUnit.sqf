@@ -54,11 +54,6 @@ if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSid
 
 _unit = _team createUnit [_classname, _position, [], 0, _special];
 
-//--- AiRAndomSkill Call the function
-_AISkill = missionNamespace getVariable "CTI_AI_SKILL";
-_AISkill= _AISkill  ;
-_skill = [_AISkill] call CTI_CO_FNC_GetRandomSkill;
-
 if (_net) then {_unit setVariable ["cti_net", _sideID, true]};
 
 //--- Add a Killed EH.

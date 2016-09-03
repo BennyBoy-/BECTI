@@ -107,6 +107,8 @@ switch (_action) do {
 	};
 	case "onPurchase": {
 		_selected = _this select 1;
+		_player_ai_count = CTI_PLAYERS_GROUPSIZE;
+		if ( CTI_PLAYERS_GROUPSIZE == 0) then {_player_ai_count = player getVariable ["CTI_PLAYER_GROUPSIZE",[]];} else {_player_ai_count = CTI_PLAYERS_GROUPSIZE;};
 		
 		if (_selected == -1) exitWith {}; //nothing selected.
 		
@@ -124,7 +126,7 @@ switch (_action) do {
 			if (alive(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory")) then {
 				_ai_enabled = missionNamespace getVariable "CTI_AI_TEAMS_ENABLED";
 				if (_ai_enabled == 1 || (isPlayer leader _selected_group && _ai_enabled == 0)) then {
-					if ((count units _selected_group)+1 <= CTI_PLAYERS_GROUPSIZE || _isEmpty) then { //todo ai != player limit
+					if ((count units _selected_group)+1 <= _player_ai_count || _isEmpty) then { //todo ai != player limit
 						_proc_purchase = true;
 						if (_isEmpty && _selected_group != group player) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Empty vehicles may not be purchased for other groups."; };
 						

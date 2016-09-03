@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_occupation.fsm">*/
+/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, town_occupation.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Start FSM"};
@@ -15,11 +15,11 @@ item10[] = {"Inactive",4,218,400.000000,-200.000000,500.000000,-150.000000,1.000
 item11[] = {"Still_active",8,218,400.000000,0.000000,500.000000,50.000000,0.000000,"Still active"};
 item12[] = {"Timed_out",4,218,600.000000,100.000000,700.000000,150.000000,1.000000,"Timed out"};
 item13[] = {"Skip",2,250,400.000000,-100.000000,500.000000,-50.000000,0.000000,"Skip"};
-item14[] = {"Cleanup",2,4346,600.000000,-300.000000,700.000000,-250.000000,0.000000,"Cleanup"};
+item14[] = {"Cleanup",2,250,600.000000,-300.000000,700.000000,-250.000000,0.000000,"Cleanup"};
 item15[] = {"Occupation_Active",2,250,250.000000,-200.000000,350.000000,-150.000000,0.000000,"Occupation" \n "Active?"};
 item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
 item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
-item18[] = {"Create",2,250,-400.000000,200.000000,-300.000000,250.000000,0.000000,"Create"};
+item18[] = {"Create",2,4346,-400.000000,200.000000,-300.000000,250.000000,0.000000,"Create"};
 item19[] = {"Occupation_Active_1",2,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"Occupation" \n "Active?"};
 item20[] = {"Inactive",8,218,-250.000000,200.000000,-150.000000,250.000000,0.000000,"Inactive"};
 item21[] = {"Active",4,218,400.000000,200.000000,500.000000,250.000000,1.000000,"Active"};
@@ -60,7 +60,7 @@ link28[] = {23,24};
 link29[] = {24,15};
 link30[] = {25,1};
 link31[] = {26,25};
-globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-407.879578,821.950806,517.815918,-500.493317,1064,881,1};
+globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-463.360901,766.469299,475.049347,-543.260498,1064,881,1};
 window[] = {2,-1,-1,-1,-1,956,175,1430,175,3,1082};
 *//*%FSM</HEAD>*/
 class FSM
@@ -165,7 +165,11 @@ class FSM
        "" \n
        "if !(_peace_mode) then {" \n
        "	_objects = [];" \n
-       "	{if (((ASLToAGL getPosASL _x) select 2) < CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR) then {_objects pushBack _x}} forEach (_town nearEntities [""AllVehicles"", CTI_TOWNS_OCCUPATION_DETECTION_RANGE]);" \n
+       "	switch (CTI_TOWNS_CAPTURE_DETECTION_MODE) do {" \n
+       "		case 1: {{if (_x distance _town <= CTI_TOWNS_OCCUPATION_DETECTION_RANGE && (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR)) then {_objects pushBack _x}} forEach allPlayers};" \n
+       "		case 2: {{if (_x distance _town <= CTI_TOWNS_OCCUPATION_DETECTION_RANGE && (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR)) then {_objects pushBack _x}} forEach (playableUnits + switchableUnits)};" \n
+       "		default {{if (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR) then {_objects pushBack _x}} forEach (_town nearEntities [""AllVehicles"", CTI_TOWNS_OCCUPATION_DETECTION_RANGE])};" \n
+       "	};" \n
        "" \n
        "	_count_enemies = 0;" \n
        "	if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") > 0) then {" \n

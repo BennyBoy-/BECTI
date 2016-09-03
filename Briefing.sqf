@@ -38,7 +38,6 @@ player createDiaryRecord ["menu2",
 You can set custom keybinding under Configure --> Controls --> Configure Addons --> Select OFPS
 <br/>
 <br/>
-We are looking into user remapping
 "]];
 
 player createDiarySubject ["menu6", "Admins"];

@@ -26,5 +26,5 @@ author = "Benny";
 class Header {
 	gameType = CTI;
 	minPlayers = 1;
-	maxPlayers = 32;
+	maxPlayers = 40;
 };

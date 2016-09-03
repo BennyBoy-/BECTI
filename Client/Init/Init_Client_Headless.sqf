@@ -101,13 +101,17 @@ with missionNamespace do {
 			_ai setSkill ["commanding", 1]; // Communication skills
 			_ai setSkill ["general", 1]; //Sets all above
 
-			//--- Set to Combat
-			_ai setBehaviour "AWARE";
-			_ai setCombatMode "RED";
-			_ai setSpeedMode "FULL";
-			_ai enableAttack true;
+			//--- Update the gunner's properties every 60 seconds to fix them going into hold fire mode
+			_ai spawn {
+				while {alive _this} do {
+					_this setBehaviour "DANGER";
+					_this setCombatMode "YELLOW";
+					_this enableAttack true;
+					_this allowFleeing 0;
+					sleep 60;
+				};
+			};
 		};
-		
 		// diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 	};
 	
@@ -236,14 +240,8 @@ with missionNamespace do {
 		
 		_town setVariable [_hc_tvar, (_town getVariable [_hc_tvar, []]) + _groups];
 		
-		//--- Set AI to Combat mode
-		_groups setBehaviour "AWARE";
-		_groups setCombatMode "RED";
-		_groups setSpeedMode "FULL";
-		_groups enableAttack true;
-
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FUNCTION: CTI_PVF_HC_UpdateTownGroups", format["Registered [%1] Town Groups [%2] for town [%3] on side [%4] ", count(_groups), _groups, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FUNCTION: CTI_PVF_HC_UpdateTownGroups", format["Registered [%1] Town Groups [%2] for town [%3] on side [%4]", count(_groups), _groups, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
 	};
 	
@@ -252,6 +250,10 @@ with missionNamespace do {
 		private ["_fuel", "_vehicle"];
 		_vehicle = _this select 0;
 		_fuel = _this select 1;
+		
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FUNCTION: CTI_PVF_CLT_RequestVehicleRefuel", format["Performing a refuel operation on [%1] (%2) with a fuel value of [%3]", _vehicle, typeOf _vehicle, _fuel]] call CTI_CO_FNC_Log;
+		};
 		
 		_vehicle setFuel _fuel;
 	};
@@ -262,6 +264,10 @@ with missionNamespace do {
 		_vehicle = _this select 0;
 		_locked = _this select 1;
 		
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FUNCTION: CTI_PVF_CLT_RequestVehicleLock", format["Performing a lock operation on [%1] (%2) with a lock value of [%3]", _vehicle, typeOf _vehicle, _locked]] call CTI_CO_FNC_Log;
+		};
+		
 		_vehicle lock _locked;
 	};
 	
@@ -271,6 +277,10 @@ with missionNamespace do {
 		_vehicle = _this select 0;
 		_hitPoints = _this select 1;
 		_repair = _this select 2;
+		
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FUNCTION: CTI_PVF_CLT_RequestVehicleHitPointsRepair", format["Performing a part repair operation on [%1] (%2) with a repair value of [%3]", _vehicle, typeOf _vehicle, _repair]] call CTI_CO_FNC_Log;
+		};
 		
 		{
 			_damages = _vehicle getHit _x;
@@ -290,6 +300,11 @@ with missionNamespace do {
 		_vehicle = _this select 0;
 		_amount = _this select 1;
 		
-		_vehicle setVehicleAmmoDef _amount;
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FUNCTION: CTI_PVF_CLT_RequestVehicleRearm", format["Performing a rearm operation on [%1] (%2) with a rearm value of [%3]", _vehicle, typeOf _vehicle, _amount]] call CTI_CO_FNC_Log;
+		};
+		
+		// _vehicle setVehicleAmmoDef _amount;
+		_vehicle setVehicleAmmo _amount;
 	};
 };

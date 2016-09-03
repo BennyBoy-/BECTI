@@ -28,6 +28,11 @@ if !(hasInterface) exitWith {/*diag_log "showNames_init.sqf - Finished (!hasInte
 		zam_showNames_enabled = 			if !(isNil "zam_showNames_enabled") then {zam_showNames_enabled} else {true}
 	};
 
+	// Enable Show by default
+	if (isNil "ZAM_showNames_default_on"            ) then {
+		ZAM_showNames_default_on = 			if !(isNil "ZAM_showNames_default_on") then {ZAM_showNames_default_on} else {true}
+	};
+	
 	// Use key as toggle
 	if (isNil "zam_showNames_toggle"             ) then {
 		zam_showNames_toggle = 				if !(isNil "zam_showNames_toggle") then {zam_showNames_toggle} else {false}
@@ -173,8 +178,8 @@ if !(hasInterface) exitWith {/*diag_log "showNames_init.sqf - Finished (!hasInte
 		"PuristaSemibold"
 		"TahomaB"
 	*/
-	zam_shownames_var_smallFont = "PuristaMedium";
-	zam_shownames_var_bigFont = "PuristaBold";
+	zam_shownames_var_smallFont = "TahomaB";
+	zam_shownames_var_bigFont = "TahomaB";
 
 	//// Key Handlers are added using CBA
 
@@ -183,12 +188,19 @@ if !(hasInterface) exitWith {/*diag_log "showNames_init.sqf - Finished (!hasInte
 	if (ZAM_showNames_group_names) then {
 		["ZAM", "Toggle group names", ["Toggle Group Names", "Show the person's Group ID next to their name."], {ZAM_showNames_group_names_toggle = !(call compile "ZAM_showNames_group_names_toggle"); true}, "", [0x15, [false, true, false]]] call cba_fnc_addKeybind;
 	};
-
+	ZAM_showNames_on = false;
 	// Key press and release. No release code if toggle mode is on.
 	if !(zam_showNames_toggle) then {
 		["ZAM", "showNames", ["Show Names", "To actually show the names"], {_this call ZAM_fnc_showNames_Press}, {_this call ZAM_fnc_showNames_Release}, [0x15, [false, false, false]]] call cba_fnc_addKeybind;
 	} else {
 		["ZAM", "showNames", ["Show Names", "To actually show the names"], {_this call ZAM_fnc_showNames_Press}, "", [0x15, [false, false, false]]] call cba_fnc_addKeybind;
 	};
+	
+	//If default On Mode
+	/*if(ZAM_showNames_default_on) then {
+		ZAM_showNames_on = false;
+		sleep 10;
+		_this call ZAM_fnc_showNames_Press;
+	};*/
 
 };

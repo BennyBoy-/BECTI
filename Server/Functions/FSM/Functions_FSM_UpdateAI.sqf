@@ -65,6 +65,15 @@ CTI_FSM_UpdateAI_RespawnLeader_SP = {
 	_group selectLeader _leader;
 	_leader disableAI "MOVE";
 	
+	//--- ZEUS Curator Editable
+	if !(isNil "ADMIN_ZEUS") then {
+		if (CTI_IsServer) then {
+			ADMIN_ZEUS addCuratorEditableObjects [[_leader], true];
+		} else {
+			[ADMIN_ZEUS, _leader] remoteExec ["CTI_PVF_SRV_RequestAddCuratorEditable", CTI_PV_SERVER];
+		};
+	};
+	
 	_group setVariable ["cti_nextrespawn", time + (missionNamespace getVariable "CTI_RESPAWN_TIMER")];
 	_respawn_start = time;
 	

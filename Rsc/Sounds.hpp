@@ -1,3 +1,18 @@
+class CfgMusic
+{
+	tracks[]={"MKY_Blizzard","MKY_Snowfall"};
+
+	class MKY_Blizzard
+	{
+		name = "";
+		sound[] = {"Rsc\Sounds\m0nkey_blizzard.ogg", db+0, 1.0};
+	};
+	class MKY_Snowfall
+	{
+		name = "";
+		sound[] = {"Rsc\Sounds\m0nkey_snowfall.ogg", db+0, 1.0};
+	};
+};
 class CfgSounds {
 	sounds[] = {prison,nuke,nuclear_boom,nuclear_heartbeat,nuclear_geiger,geiger_1,geiger_2,geiger_3,akbar,choppa,AR_Rappel_Loop,AR_Rappel_Start,AR_Rappel_End,AUR_Rappel_Loop,AUR_Rappel_Start,AUR_Rappel_End,Vent,Vent2,Para};
 	class prison {

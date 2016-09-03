@@ -58,8 +58,7 @@ while {alive _structure} do {
 	_manned = false;
 	{
 		if !(isNil {_x getVariable "cti_aman_enabled"}) then {
-			_last_occupied = _x getVariable "cti_aman_time_occupied";
-			if (isNil '_last_occupied') then {_last_occupied = -6000};		
+			_last_occupied = _x getVariable ["cti_aman_time_occupied", -6000];
 			
 			//--- Check if our defense has run out of ammo
 			if !(someAmmo _x) then {
@@ -69,14 +68,15 @@ while {alive _structure} do {
 				
 				if (count _ammo_trucks > 0 || !isNull _nearest) then {
 					if (CTI_Log_Level >= CTI_Log_Information) then {
-						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4), local [%5]?", _x, typeOf _x, _nearest, typeOf _nearest, local _x]] call CTI_CO_FNC_Log;
+						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4), defense is local [%5]? gunner is local [%6]?", _x, typeOf _x, _nearest, typeOf _nearest, local _x, local gunner _x]] call CTI_CO_FNC_Log;
 					};
 					
-					if (local _x) then {
-						_x setVehicleAmmoDef 1;
+					if (local gunner _x) then {
+						// _x setVehicleAmmoDef 1;
+						_x setVehicleAmmo 1;
 					} else {
-						[_x, 1] remoteExec ["CTI_PVF_CLT_RequestVehicleRearm", owner _x];
-					}
+						[_x, 1] remoteExec ["CTI_PVF_CLT_RequestVehicleRearm", owner gunner _x];
+					};
 				};
 			};
 			
@@ -85,7 +85,7 @@ while {alive _structure} do {
 				_x setVariable ["cti_aman_time_occupied", time];
 			} else {
 				//--- The static is empty
-				if (!alive gunner _x && !alive assignedGunner _x && !_manned && time - _last_occupied > CTI_BASE_DEFENSES_AUTO_DELAY && count(_defense_team call CTI_CO_FNC_GetLiveUnits) < CTI_BASE_DEFENSES_AUTO_LIMIT) then {
+				if (!alive gunner _x && !alive assignedGunner _x && !_manned && time - _last_occupied > CTI_BASE_DEFENSES_AUTO_DELAY && count(_defense_team call CTI_CO_FNC_GetLiveUnits) < CTI_BASE_DEFENSES_AUTO_LIMIT && vectorUp _x select 2 > .5) then {
 					_manned = true;
 					
 					if (CTI_Log_Level >= CTI_Log_Information) then {

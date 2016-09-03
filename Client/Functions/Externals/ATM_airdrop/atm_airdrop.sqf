@@ -53,14 +53,16 @@ onMapSingleClick '
 	_ct =[ATM_Jump_clickpos, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestFriendlyTown; 
 	_fobs = CTI_P_SideLogic getVariable ["cti_fobs", []];
 	_fob = [ATM_Jump_clickpos, _fobs] call CTI_CO_FNC_GetClosestEntity;
+	_bases = CTI_P_SideLogic getVariable ["cti_structures_areas", []];
+	_base = [ATM_Jump_clickpos, _bases] call CTI_CO_FNC_GetClosestEntity;
 	_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
 	_upgrade_halo = _upgrades select CTI_UPGRADE_HALO;
 	if (_upgrade_halo > 1) then {
-		if ((ATM_Jump_clickpos distance  _ct < CTI_MARKERS_TOWN_AREA_RANGE) || (ATM_Jump_clickpos distance  _fob < CTI_MARKERS_TOWN_AREA_RANGE)) then { 
+		if ((ATM_Jump_clickpos distance  _ct < CTI_MARKERS_TOWN_AREA_RANGE) || (ATM_Jump_clickpos distance  _fob < CTI_MARKERS_TOWN_AREA_RANGE) || (ATM_Jump_clickpos distance  _base < CTI_BASE_AREA_RANGE)) then { 
 			ATM_Jump_mapclick = true; onMapSingleClick ""; true;
 		};
 	} else {
-		if (ATM_Jump_clickpos distance  _ct < CTI_MARKERS_TOWN_AREA_RANGE) then { 
+		if ((ATM_Jump_clickpos distance  _ct < CTI_MARKERS_TOWN_AREA_RANGE) || (ATM_Jump_clickpos distance  _base < CTI_BASE_AREA_RANGE)) then { 
 			ATM_Jump_mapclick = true; onMapSingleClick ""; true;
 		};
 	};

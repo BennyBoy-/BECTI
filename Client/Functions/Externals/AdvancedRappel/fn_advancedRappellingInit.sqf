@@ -26,6 +26,17 @@ AR_RAPPEL_POINT_CLASS_HEIGHT_OFFSET = [
 	["All", [-0.05, -0.05, -0.05, -0.05, -0.05, -0.05]]
 ];
 
+AR_Has_Addon_Animations_Installed = {
+	(count getText ( configFile / "CfgMovesBasic" / "ManActions" / "AR_01" )) > 0;
+};
+
+AR_Has_Addon_Sounds_Installed = {
+	private ["_config","_configMission"];
+	_config = getArray ( configFile / "CfgSounds" / "AR_Rappel_Start" / "sound" );
+	_configMission = getArray ( missionConfigFile / "CfgSounds" / "AR_Rappel_Start" / "sound" );
+	(count _config > 0 || count _configMission > 0);
+};
+
 AR_Rappel_All_Cargo = {
 	params ["_vehicle",["_rappelHeight",25],["_positionASL",[]]];
 	if(isPlayer (driver _vehicle)) exitWith {};
@@ -136,10 +147,7 @@ AR_Play_Rappelling_Sounds_Global = {
 
 AR_Play_Rappelling_Sounds = {
 	params ["_player","_rappelDevice","_rappelAncor"];
-	private ["_config","_configMission"];
-	_config = getArray ( configFile / "CfgSounds" / "AR_Rappel_Start" / "sound" );
-	_configMission = getArray ( missionConfigFile / "CfgSounds" / "AR_Rappel_Start" / "sound" );
-	if(!hasInterface || ( count _config == 0 && count _configMission == 0) ) exitWith {};
+	if(!hasInterface || !(call AR_Has_Addon_Sounds_Installed) ) exitWith {};
 	if(player distance _player < 15) then {
 		[_player, "AR_Rappel_Start"] call AR_Play_3D_Sound;
 		[_rappelDevice, "AR_Rappel_Loop"] call AR_Play_3D_Sound;
@@ -286,7 +294,7 @@ AR_Get_Heli_Rappel_Points = {
 
 	_validRappelPoints = [];
 	{
-		if(count _x > 0) then {
+		if(count _x > 0 && count _validRappelPoints < missionNamespace getVariable ["AR_MAX_RAPPEL_POINTS_OVERRIDE",6]) then {
 			_validRappelPoints pushBack _x;
 		};
 	} forEach _rappelPoints;
@@ -367,48 +375,61 @@ AR_Client_Rappel_From_Heli = {
 		
 		[[_player,_rappelDevice,_anchor],"AR_Play_Rappelling_Sounds_Global"] call AR_RemoteExecServer;
 		
-		_rope2 = ropeCreate [_rappelDevice, [0.16,0,0], 60];
-		_rope2 allowDamage false;
-		_rope1 = ropeCreate [_rappelDevice, [0,0.15,0], _anchor, [0, 0, 0], 3];
-		_rope1 allowDamage false;
+		_bottomRopeLength = 60;
+		_bottomRope = ropeCreate [_rappelDevice, [-0.15,0,0], _bottomRopeLength];
+		_bottomRope allowDamage false;
+		_topRopeLength = 3;
+		_topRope = ropeCreate [_rappelDevice, [0,0.15,0], _anchor, [0, 0, 0], _topRopeLength];
+		_topRope allowDamage false;
 
-		_player setVariable ["AR_Rappel_Rope_Top",_rope1];
-		_player setVariable ["AR_Rappel_Rope_Bottom",_rope2];
-
-		_player switchMove "HubSittingChairC_idle1";
-		
-		[[_player,true],"AR_Enable_Rappelling_Animation"] call AR_RemoteExecServer;
+		[_player] spawn AR_Enable_Rappelling_Animation_Client;
 		
 		_gravityAccelerationVec = [0,0,-9.8];
 		_velocityVec = [0,0,0];
 		_lastTime = diag_tickTime;
 		_lastPosition = AGLtoASL (_rappelDevice modelToWorldVisual [0,0,0]);
-		_dir = random 365;
-		_dirSpinFactor = ((random 10) - 5) / 5;
+		_lookDirFreedom = 50;
+		_dir = (random 360) + (_lookDirFreedom / 2);
+		_dirSpinFactor = (((random 10) - 5) / 5) max 0.1;
 		
-		_decendRopeKeyDownHandler = -1;
-		if(_player == player) then {			
-			_decendRopeKeyDownHandler = (findDisplay 46) displayAddEventHandler ["KeyDown", {
-				private ["_topRope","_bottomRope"];
+		_ropeKeyDownHandler = -1;
+		_ropeKeyUpHandler = -1;
+		if(_player == player) then {
+
+			_player setVariable ["AR_DECEND_PRESSED",false];
+			_player setVariable ["AR_FAST_DECEND_PRESSED",false];
+			_player setVariable ["AR_RANDOM_DECEND_SPEED_ADJUSTMENT",0];
+			
+			_ropeKeyDownHandler = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_this select 1 in (actionKeys "MoveBack")) then {
-					_topRope = player getVariable ["AR_Rappel_Rope_Top",nil];
-					if(!isNil "_topRope") then {
-						ropeUnwind [ _topRope, 3, (ropeLength _topRope) + 0.5];
-					};
-					_bottomRope = player getVariable ["AR_Rappel_Rope_Bottom",nil];
-					if(!isNil "_bottomRope") then {
-						ropeUnwind [ _bottomRope, 3, (ropeLength _bottomRope) - 0.5];
-					};
+					player setVariable ["AR_DECEND_PRESSED",true];
+				};
+				if(_this select 1 in (actionKeys "Turbo")) then {
+					player setVariable ["AR_FAST_DECEND_PRESSED",true];
 				};
 			}];
+			
+			_ropeKeyUpHandler = (findDisplay 46) displayAddEventHandler ["KeyUp", {
+				if(_this select 1 in (actionKeys "MoveBack")) then {
+					player setVariable ["AR_DECEND_PRESSED",false];
+				};
+				if(_this select 1 in (actionKeys "Turbo")) then {
+					player setVariable ["AR_FAST_DECEND_PRESSED",false];
+				};
+			}];
+			
 		} else {
-			[_rope1,_rope2] spawn {
-				params ["_rope1","_rope2"];
+		
+			_player setVariable ["AR_DECEND_PRESSED",false];
+			_player setVariable ["AR_FAST_DECEND_PRESSED",false];
+			_player setVariable ["AR_RANDOM_DECEND_SPEED_ADJUSTMENT",(random 2) - 1];
+
+			[_player] spawn {
+				params ["_player"];
 				sleep 2;
-				_randomSpeedFactor = ((random 10) - 5) / 10;
-				ropeUnwind [ _rope1, 3 + _randomSpeedFactor, ropeLength _rope2];
-				ropeUnwind [ _rope2, 3 + _randomSpeedFactor, ropeLength _rope1];
+				_player setVariable ["AR_DECEND_PRESSED",true];
 			};
+			
 		};
 		
 		// Cause player to fall from rope if heli is moving too fast
@@ -424,6 +445,8 @@ AR_Client_Rappel_From_Heli = {
 				sleep 2;
 			};
 		};
+		
+
 		
 		while {true} do {
 		
@@ -446,29 +469,72 @@ AR_Client_Rappel_From_Heli = {
 			
 			_heliPos = AGLtoASL (_heli modelToWorldVisual _rappelPoint);
 			
-			if(_newPosition distance _heliPos > ((ropeLength _rope1) + 1)) then {
-				_newPosition = (_heliPos) vectorAdd (( vectorNormalized ( (_heliPos) vectorFromTo _newPosition )) vectorMultiply ((ropeLength _rope1) + 1));
+			if(_newPosition distance _heliPos > _topRopeLength) then {
+				_newPosition = (_heliPos) vectorAdd (( vectorNormalized ( (_heliPos) vectorFromTo _newPosition )) vectorMultiply _topRopeLength);
 				_surfaceVector = ( vectorNormalized ( _newPosition vectorFromTo (_heliPos) ));
 				_velocityVec = _velocityVec vectorAdd (( _surfaceVector vectorMultiply (_velocityVec vectorDotProduct _surfaceVector)) vectorMultiply -1);
 			};
 
-			_rappelDevice setPosWorld (_newPosition vectorAdd (_velocityVec vectorMultiply 0.1) );
+			_rappelDevice setPosWorld (_lastPosition vectorAdd ((_newPosition vectorDiff _lastPosition) vectorMultiply 6));
+			
 			_rappelDevice setVectorDir (vectorDir _player); 
 			_player setPosWorld [_newPosition select 0, _newPosition select 1, (_newPosition select 2)-0.6];
 			_player setVelocity [0,0,0];
 			
+			// Handle rappelling down rope
+			if(_player getVariable ["AR_DECEND_PRESSED",false]) then {
+				_decendSpeedMetersPerSecond = 3.5;
+				if(_player getVariable ["AR_FAST_DECEND_PRESSED",false]) then {
+					_decendSpeedMetersPerSecond = 5;
+				};
+				_decendSpeedMetersPerSecond = _decendSpeedMetersPerSecond + (_player getVariable ["AR_RANDOM_DECEND_SPEED_ADJUSTMENT",0]);
+				_bottomRopeLength = _bottomRopeLength - (_timeSinceLastUpdate * _decendSpeedMetersPerSecond);
+				_topRopeLength = _topRopeLength + (_timeSinceLastUpdate * _decendSpeedMetersPerSecond);
+				ropeUnwind [_topRope, _decendSpeedMetersPerSecond, _topRopeLength - 0.5];
+				ropeUnwind [_bottomRope, _decendSpeedMetersPerSecond, _bottomRopeLength];
+			};
+			
 			// Fix player direction
-			_player setDir _dir;
 			_dir = _dir + ((360/1000) * _dirSpinFactor);
+			if(isPlayer _player) then {
+				_currentDir = getDir _player;
+				_minDir = (_dir - (_lookDirFreedom/2)) mod 360;
+				_maxDir = (_dir + (_lookDirFreedom/2)) mod 360;
+				_minDegreesToMax = 0;
+				_minDegreesToMin = 0;
+				if( _currentDir > _maxDir ) then {
+					_minDegreesToMax = (_currentDir - _maxDir) min (360 - _currentDir + _maxDir);
+				};
+				if( _currentDir < _maxDir ) then {
+					_minDegreesToMax = (_maxDir - _currentDir) min (360 - _maxDir + _currentDir);
+				};
+				if( _currentDir > _minDir ) then {
+					_minDegreesToMin = (_currentDir - _minDir) min (360 - _currentDir + _minDir);
+				};
+				if( _currentDir < _minDir ) then {
+					_minDegreesToMin = (_minDir - _currentDir) min (360 - _minDir + _currentDir);
+				};
+				if( _minDegreesToMin > _lookDirFreedom || _minDegreesToMax > _lookDirFreedom ) then {
+					if( _minDegreesToMin < _minDegreesToMax ) then {
+						_player setDir _minDir;
+					} else {
+						_player setDir _maxDir;
+					};
+				} else {
+					_player setDir (_currentDir  + ((360/1000) * _dirSpinFactor));
+				};
+			} else {
+				_player setDir _dir;
+			};
 			
 			_lastPosition = _newPosition;
 			
-			if((getPos _player) select 2 < 1 || !alive _player || vehicle _player != _player || ropeLength _rope2 <= 1 || _player getVariable ["AR_Detach_Rope",false] ) exitWith {};
+			if((getPos _player) select 2 < 1 || !alive _player || vehicle _player != _player || _bottomRopeLength <= 1 || _player getVariable ["AR_Detach_Rope",false] ) exitWith {};
 
 			sleep 0.01;
 		};
 				
-		if(ropeLength _rope2 > 1 && alive _player && vehicle _player == _player) then {
+		if(_bottomRopeLength > 1 && alive _player && vehicle _player == _player) then {
 		
 			_playerStartASLIntersect = getPosASL _player;
 			_playerEndASLIntersect = [_playerStartASLIntersect select 0, _playerStartASLIntersect select 1, (_playerStartASLIntersect select 2) - 5];
@@ -504,21 +570,21 @@ AR_Client_Rappel_From_Heli = {
 			
 		};
 		
-		_player switchMove "";
-		[[_player,false],"AR_Enable_Rappelling_Animation"] call AR_RemoteExecServer;
-
-		ropeDestroy _rope1;
-		ropeDestroy _rope2;		
+		ropeDestroy _topRope;
+		ropeDestroy _bottomRope;		
 		deleteVehicle _anchor;
 		deleteVehicle _rappelDevice;
 		
 		_player setVariable ["AR_Is_Rappelling",nil,true];
 		_player setVariable ["AR_Rappelling_Vehicle", nil, true];
-		_player setVariable ["AR_Rappel_Rope_Top",nil];
-		_player setVariable ["AR_Rappel_Rope_Bottom",nil];
+		_player setVariable ["AR_Detach_Rope",nil];
 		
-		if(_decendRopeKeyDownHandler != -1) then {			
-			(findDisplay 46) displayRemoveEventHandler ["KeyDown", _decendRopeKeyDownHandler];
+		if(_ropeKeyDownHandler != -1) then {			
+			(findDisplay 46) displayRemoveEventHandler ["KeyDown", _ropeKeyDownHandler];
+		};
+		
+		if(_ropeKeyUpHandler != -1) then {			
+			(findDisplay 46) displayRemoveEventHandler ["KeyUp", _ropeKeyUpHandler];
 		};
 		
 		sleep 2;
@@ -530,23 +596,141 @@ AR_Client_Rappel_From_Heli = {
 	};
 };
 
+
 AR_Enable_Rappelling_Animation = {
-	_this remoteExec ["AR_Client_Enable_Rappelling_Animation", 0];
+	params ["_player"];
+	[_player,true] remoteExec ["AR_Enable_Rappelling_Animation_Client", 0];
 };
 
-AR_Client_Enable_Rappelling_Animation = {
-	params ["_player",["_enable",true]];
-	if(_enable) then {
-		if(_player != player) then {
-			_player switchMove "HubSittingChairC_idle1";	
-			_player enableSimulation false;
+AR_Current_Weapon_Type_Selected = {
+	params ["_player"];
+	if(currentWeapon _player == handgunWeapon _player) exitWith {"HANDGUN"};
+	if(currentWeapon _player == primaryWeapon _player) exitWith {"PRIMARY"};
+	if(currentWeapon _player == secondaryWeapon _player) exitWith {"SECONDARY"};
+	"OTHER";
+};
+
+AR_Enable_Rappelling_Animation_Client = {
+	params ["_player",["_globalExec",false]];
+	
+	if(local _player && _globalExec) exitWith {};
+	
+	if(local _player && !_globalExec) then {
+		[[_player],"AR_Enable_Rappelling_Animation"] call AR_RemoteExecServer;
+	};
+
+	if(_player != player) then {
+		_player enableSimulation false;
+	};
+	
+	if(call AR_Has_Addon_Animations_Installed) then {		
+		if([_player] call AR_Current_Weapon_Type_Selected == "HANDGUN") then {
+			if(local _player) then {
+				if(missionNamespace getVariable ["AR_DISABLE_SHOOTING_OVERRIDE",false]) then {
+					_player switchMove "AR_01_Idle_Pistol_No_Actions";
+				} else {
+					_player switchMove "AR_01_Idle_Pistol";
+				};
+				_player setVariable ["AR_Animation_Move","AR_01_Idle_Pistol_No_Actions",true];
+			} else {
+				_player setVariable ["AR_Animation_Move","AR_01_Idle_Pistol_No_Actions"];			
+			};
+		} else {
+			if(local _player) then {
+				if(missionNamespace getVariable ["AR_DISABLE_SHOOTING_OVERRIDE",false]) then {
+					_player switchMove "AR_01_Idle_No_Actions";
+				} else {
+					_player switchMove "AR_01_Idle";
+				};
+				_player setVariable ["AR_Animation_Move","AR_01_Idle_No_Actions",true];
+			} else {
+				_player setVariable ["AR_Animation_Move","AR_01_Idle_No_Actions"];
+			};
+		};
+		if!(local _player) then {
+			// Temp work around to avoid seeing other player as standing
+			_player switchMove (_player getVariable ["AR_Animation_Move","HubSittingChairC_idle1"]);
+			sleep 1;
+			_player switchMove (_player getVariable ["AR_Animation_Move","HubSittingChairC_idle1"]);
+			sleep 1;
+			_player switchMove (_player getVariable ["AR_Animation_Move","HubSittingChairC_idle1"]);
+			sleep 1;
+			_player switchMove (_player getVariable ["AR_Animation_Move","HubSittingChairC_idle1"]);
 		};
 	} else {
-		if(_player != player) then {
-			_player switchMove "";	
-			_player enableSimulation true;
+		if(local _player) then {
+			_player switchMove "HubSittingChairC_idle1";
+			_player setVariable ["AR_Animation_Move","HubSittingChairC_idle1",true];
+		} else {
+			_player setVariable ["AR_Animation_Move","HubSittingChairC_idle1"];		
 		};
 	};
+
+	_animationEventHandler = -1;
+	if(local _player) then {
+		_animationEventHandler = _player addEventHandler ["AnimChanged",{
+			params ["_player","_animation"];
+			if(call AR_Has_Addon_Animations_Installed) then {
+				if((toLower _animation) find "ar_" < 0) then {
+					if([_player] call AR_Current_Weapon_Type_Selected == "HANDGUN") then {
+						_player switchMove "AR_01_Aim_Pistol";
+						_player setVariable ["AR_Animation_Move","AR_01_Aim_Pistol_No_Actions",true];
+					} else {
+						_player switchMove "AR_01_Aim";
+						_player setVariable ["AR_Animation_Move","AR_01_Aim_No_Actions",true];
+					};
+				} else {
+					if(toLower _animation == "ar_01_aim") then {
+						_player setVariable ["AR_Animation_Move","AR_01_Aim_No_Actions",true];
+					};
+					if(toLower _animation == "ar_01_idle") then {
+						_player setVariable ["AR_Animation_Move","AR_01_Idle_No_Actions",true];
+					};
+					if(toLower _animation == "ar_01_aim_pistol") then {
+						_player setVariable ["AR_Animation_Move","AR_01_Aim_Pistol_No_Actions",true];
+					};
+					if(toLower _animation == "ar_01_idle_pistol") then {
+						_player setVariable ["AR_Animation_Move","AR_01_Idle_Pistol_No_Actions",true];
+					};
+				};
+			} else {
+				_player switchMove "HubSittingChairC_idle1";
+				_player setVariable ["AR_Animation_Move","HubSittingChairC_idle1",true];
+			};
+		}];
+	};
+	
+	if(!local _player) then {
+		[_player] spawn {
+			params ["_player"];
+			private ["_currentState"];
+			while {_player getVariable ["AR_Is_Rappelling",false]} do {
+				_currentState = toLower animationState _player;
+				_newState = toLower (_player getVariable ["AR_Animation_Move",""]);
+				if!(call AR_Has_Addon_Animations_Installed) then {
+					_newState = "HubSittingChairC_idle1";
+				};
+				if(_currentState != _newState) then {
+					_player switchMove _newState;
+					_player switchGesture "";
+					sleep 1;
+					_player switchMove _newState;
+					_player switchGesture "";
+				};
+				sleep 0.1;
+			};			
+		};
+	};
+	
+	waitUntil {!(_player getVariable ["AR_Is_Rappelling",false])};
+	
+	if(_animationEventHandler != -1) then {
+		_player removeEventHandler ["AnimChanged", _animationEventHandler];
+	};
+	
+	_player switchMove "";	
+	_player enableSimulation true;
+	
 };
 
 AR_Rappel_Detach_Action = {
