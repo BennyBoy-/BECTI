@@ -1039,10 +1039,10 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 				//--- Is there a primary weapon?
 				for '_i' from 0 to 2 do {
 					_gear_sub = (_gear select 0) select _i;
-					
+
 					if (_gear_sub select 0 != "") then { //--- There is a weapon
 						_magazines = (getArray(configFile >> 'CfgWeapons' >> (_gear_sub select 0) >> 'magazines')) call CTI_CO_FNC_ArrayToLower;
-						
+
 						if (_item in _magazines) then {	_idcs = _idcs + [77901+_i] };
 					};
 				};
@@ -1215,7 +1215,7 @@ CTI_UI_Gear_OnShoppingItemDrop = {
 					};
 				};
 				case "ListItems": { _updated = [_item] call CTI_UI_Gear_TryContainerAddItem };
-				// case "CurrentMagazine": { _updated = [_item, _path, _idc-7000] call CTI_UI_Gear_ChangeCurrentMagazine };
+				case "CurrentMagazine": { _updated = [_item, _path, _idc-7000] call CTI_UI_Gear_ChangeCurrentMagazine };
 			};
 			
 			if (_current != _item && _gear_index != -1) then {
