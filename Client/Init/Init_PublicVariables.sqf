@@ -43,6 +43,26 @@ with missionNamespace do {
 		};
 	};
 	
+	//--- The client (side commander) receives a bounty for base defense kills
+	CTI_PVF_CLT_OnBaseDefensesKillBounty = {
+		_type_killed = _this select 0;
+		_award = _this select 1;
+		_killed_pname = _this select 2;
+		
+		_delay = 5 + random 30;
+		sleep _delay;
+		
+		_var = missionNamespace getVariable _type_killed;
+		_label = _var select CTI_UNIT_LABEL;
+		diag_log ("killdbg: awarding P " + player);
+		(_award) call CTI_CL_FNC_ChangePlayerFunds;
+		if (_killed_pname == "") then {
+			["award-bounty-basedefense", [_award, _label]] call CTI_CL_FNC_DisplayMessage;
+		} else {
+			["award-bounty-basedefense-player", [_award, _killed_pname, _label]] call CTI_CL_FNC_DisplayMessage;
+		};
+	};
+	
 	//--- The client receives a Camp Capture notification
 	CTI_PVF_CLT_OnCampCaptured = { _this spawn CTI_CL_FNC_OnCampCaptured };
 	
