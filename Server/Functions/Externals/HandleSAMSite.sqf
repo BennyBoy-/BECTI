@@ -32,11 +32,9 @@ _sideNum = switch (_side) do {
 };
 
 _logFctn = {
-	//_talker = leader _radarVehicle; 
-	_talker = player; 
 	_text = "SAM Control : " + _this;
-	[_talker,_text] remoteExec ["commandChat"];
-	diag_log _text;
+	//[player,_text] remoteExec ["commandChat"];
+	//diag_log _text;
 };
 
 "Ready" call _logFctn;
