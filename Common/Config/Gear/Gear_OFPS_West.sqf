@@ -87,7 +87,7 @@ _p pushBack 300;
 
 //assault 
 _i pushBack "bear_MX_GL_white_F";
-_u pushBack 0;
+_u pushBack 1;
 _p pushBack 300;
 
 _i pushBack "bear_MX_white_F";
@@ -95,15 +95,15 @@ _u pushBack 0;
 _p pushBack 300;
 
 _i pushBack "bear_MX_SW_white_F";
-_u pushBack 0;
+_u pushBack 1;
 _p pushBack 300;
 
 _i pushBack "bear_MXC_white_F";
-_u pushBack 0;
+_u pushBack 1;
 _p pushBack 300;
 
 _i pushBack "bear_MXM_white_F";
-_u pushBack 0;
+_u pushBack 1;
 _p pushBack 300;
 
 
@@ -114,11 +114,11 @@ _p pushBack 300;
 
 //support
 _i pushBack "IP_launch_O_Titan_short_snw_F";
-_u pushBack 2;
-_p pushBack 1500;
+_u pushBack 4;
+_p pushBack 1550;
 
 _i pushBack "IP_launch_O_Titan_snw_F";
-_u pushBack 2;
+_u pushBack 3;
 _p pushBack 1500;
 
 
