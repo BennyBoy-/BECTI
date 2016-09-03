@@ -43,6 +43,8 @@ CTI_CL_FNC_EarPlugsDeath = compileFinal preprocessFile "Client\Functions\Externa
 CTI_CL_FNC_Spawn = compileFinal preprocessFile "Client\Functions\Client_Spawn.sqf";
 CTI_CL_FNC_Death = compileFinal preprocessFile "Client\Functions\Client_Death.sqf";
 CTI_CL_FNC_UpdateAirRadarMarker = compileFinal preprocessFile "Client\Functions\Client_UpdateAirRadarMarker.sqf";
+CTI_CL_FNC_UpdateRadarMarkerAir = compileFinal preprocessFile "Client\Functions\Client_UpdateRadarMarkerAir.sqf";
+CTI_CL_FNC_UpdateRadarMarkerArt = compileFinal preprocessFile "Client\Functions\Client_UpdateRadarMarkerArt.sqf";
 
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateClientAI.sqf";
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateOrders.sqf";
