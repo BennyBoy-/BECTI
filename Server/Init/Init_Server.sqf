@@ -259,3 +259,27 @@ if !( isNil "ADMIN_ZEUS") then {
 		};
 	};
 };
+
+
+// Initialize control scripts for Pook SAM Site
+// Must have exactly 1 instance per side, running on HC if possible
+0 spawn {
+	// Give HCs some init time
+	sleep 30;
+	
+	_hcs = missionNamespace getVariable "CTI_HEADLESS_CLIENTS";
+	
+	// Run on server or HC
+	if ( !isNil '_hcs' && {count _hcs > 0} ) then {
+		_hc = (_hcs select 0) select 0;
+		{
+			FNC_HandleSAMSite = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\HandleSAMSite.sqf";
+			[east] spawn FNC_HandleSAMSite;
+			[west] spawn FNC_HandleSAMSite;
+		} remoteExec ["bis_fnc_call", _hc];
+	} else {
+		FNC_HandleSAMSite = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\HandleSAMSite.sqf";
+		[east] spawn FNC_HandleSAMSite;
+		[west] spawn FNC_HandleSAMSite;
+	};
+};

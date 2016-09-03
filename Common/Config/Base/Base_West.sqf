@@ -650,14 +650,14 @@ _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 
-_headers pushBack 		"AN/MPQ-53 Radar";
+_headers pushBack 		"AN/MPQ-53 - AA Radar";
 _classes pushBack 		"POOK_ANMPQ53_CDF";
 _prices pushBack 		5000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 
-_headers pushBack 		"MIM-104 PAC-2 AA Battery";
+_headers pushBack 		"MIM-104 PAC-2 - AA Launcher";
 _classes pushBack 		"pook_MIM104_PAC2Battery_CDF";
 _prices pushBack 		80000;
 _placements pushBack 	[180, 15];
