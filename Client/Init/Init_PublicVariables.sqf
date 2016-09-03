@@ -75,23 +75,30 @@ with missionNamespace do {
 	};
 	
 	//--- The client (side commander) receives a bounty for base defense kills
-	CTI_PVF_CLT_OnBaseDefensesKillBounty = {
+	CTI_PVF_CLT_OnBaseDefensesKill = {
 		_type_killed = _this select 0;
 		_award = _this select 1;
 		_killed_pname = _this select 2;
 		
-		_delay = 5 + random 30;
-		//sleep _delay;
-		
 		_var = missionNamespace getVariable _type_killed;
 		_label = _var select CTI_UNIT_LABEL;
-		diag_log ("killdbg: awarding P " + str(player));
-		(_award) call CTI_CL_FNC_ChangePlayerFunds;
-		if (_killed_pname == "") then {
-			["award-bounty-basedefense", [_award, _label]] call CTI_CL_FNC_DisplayMessage;
-		} else {
-			["award-bounty-basedefense-player", [_award, _killed_pname, _label]] call CTI_CL_FNC_DisplayMessage;
-		};
+		
+		diag_log "killbounty-debug: EH";
+		
+		if (call CTI_CL_FNC_IsPlayerCommander) then {
+			(_award) call CTI_CL_FNC_ChangePlayerFunds;
+			if (_killed_pname == "") then {
+				["award-bounty-basedefense", [_award, _label]] call CTI_CL_FNC_DisplayMessage;
+			} else {
+				["award-bounty-basedefense-player", [_award, _killed_pname, _label]] call CTI_CL_FNC_DisplayMessage;
+			};
+		} else {	// Notification to players
+			if (_killed_pname == "") then {
+				["basedefense-kill", [_label]] call CTI_CL_FNC_DisplayMessage;
+			} else {
+				["basedefense-kill-player", [_killed_pname, _label]] call CTI_CL_FNC_DisplayMessage;
+			};
+		}
 	};
 	
 	//--- The client receives a Camp Capture notification

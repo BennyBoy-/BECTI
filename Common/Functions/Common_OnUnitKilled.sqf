@@ -114,15 +114,11 @@ if (!isNil '_var') then {
 					} else {
 						// Award kills of base defense team to commander
 						_logic = (side _x) call CTI_CO_FNC_GetSideLogic;
-						_defense_team = _logic getVariable "cti_defensive_team";
-						diag_log ("killdbg: A2");
-						diag_log ("killdbg: A3 side-> " + str(side _x) + " logic-> " + str(_logic) + " group-> " + str(_x) + " isD-> " + str(_x getVariable "isDefensiveTeam"));
 						
-						if (_x getVariable "isDefensiveTeam") then {
-							diag_log "killdbg: ->comm";
-							_commander = (side _x) call CTI_CO_FNC_GetSideCommanderTeam;
-							diag_log ( "killdbg: comm is " + str(_commander));
-							[_var_name, _bounty, _killed_pname] remoteExec ["CTI_PVF_CLT_OnBaseDefensesKillBounty", leader _commander];
+						("kill by group-> " + str(_x) + " sidedefteam-> " +  str((_logic getVariable ["cti_defensive_team", "undef"])) + " isbasedefkill-> " + str(_x == (_logic getVariable ["cti_defensive_team", false]))) remoteexec ["diag_log"];
+						
+						if (_x == (_logic getVariable ["cti_defensive_team", false])) then {
+							[_var_name, _bounty, _killed_pname] remoteExec ["CTI_PVF_CLT_OnBaseDefensesKill", side _x];
 						};
 					};
 				} forEach _award_groups;
