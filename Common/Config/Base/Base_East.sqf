@@ -603,12 +603,12 @@ _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 
-_headers pushBack 		"Concrete Vehicle Bunker";
+/*_headers pushBack 		"Concrete Vehicle Bunker";
 _classes pushBack 		"Land_Ammostore2";
 _prices pushBack 		1000;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
-_coinmenus pushBack 	["HQ"];
+_coinmenus pushBack 	["HQ"];*/
 
 _headers pushBack 		"Large Hangar (Green)";
 _classes pushBack 		"Land_Ss_hangar";

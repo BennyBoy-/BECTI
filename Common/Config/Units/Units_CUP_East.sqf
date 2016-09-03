@@ -682,7 +682,7 @@ _d pushBack 0;
 _c pushBack 'CUP_O_BM21_RU';
 _p pushBack '';
 _n pushBack 'Ural Grad (MLRS)';
-_o pushBack 70550;
+_o pushBack 160000;
 _t pushBack 30;
 _u pushBack 4;
 _f pushBack CTI_FACTORY_LIGHT;

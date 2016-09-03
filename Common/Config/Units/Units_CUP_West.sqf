@@ -587,7 +587,7 @@ _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'CUP_B_M1130_CV_M2_Desert';
+_c pushBack 'CUP_B_M1130_CV_M2_Desert';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 2000;
@@ -605,7 +605,7 @@ _t pushBack 10;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "service-medic";
-_d pushBack 0;*/
+_d pushBack 0;
 
 _c pushBack 'CUP_B_M1135_ATGMV_Woodland';
 _p pushBack '';
@@ -617,7 +617,7 @@ _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'CUP_RG31_M2';
+_c pushBack 'CUP_RG31_M2';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 800;
@@ -765,7 +765,7 @@ _t pushBack 10;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
-_d pushBack 0;*/
+_d pushBack 0;
 
 _c pushBack 'C_Quadbike_01_F';
 _p pushBack '';
@@ -913,7 +913,7 @@ _d pushBack 0;
 _c pushBack 'CUP_B_M270_DPICM_USMC';
 _p pushBack '';
 _n pushBack 'M270 MLRS (DPICM)';
-_o pushBack 101350;
+_o pushBack 160000;
 _t pushBack 20;
 _u pushBack 4;
 _f pushBack CTI_FACTORY_HEAVY;
