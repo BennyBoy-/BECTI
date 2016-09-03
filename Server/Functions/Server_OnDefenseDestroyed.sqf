@@ -24,7 +24,6 @@
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideFromID
 	Common Function: CTI_CO_FNC_GetSideLogic
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
     _defense addEventHandler ["killed", format["[_this select 0, _this select 1, %1, '%2', '%3'] spawn CTI_SE_FNC_OnDefenseDestroyed", _side call CTI_CO_FNC_GetSideID, _ruins, _varname]];
@@ -57,7 +56,7 @@ if (_ruins != "") then {
 	{deleteVehicle _x} forEach (nearestObjects [_position, [_ruins], 25]);
 	
 	//--- Current clients need to clean the remains.
-	["CLIENT", "Client_RemoveRuins", [_position, _ruins]] call CTI_CO_FNC_NetSend;
+	[_position, _ruins] remoteExec ["CTI_PVF_CLT_RemoveRuins", CTI_PV_CLIENTS];
 };
 
 deleteVehicle _killed;

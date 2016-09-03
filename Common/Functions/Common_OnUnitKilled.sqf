@@ -83,7 +83,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 			//--- The kill does not come from the leader, award the score to the leader in any cases.
 			if (_killer != leader _group_killer) then {
 				_points = switch (true) do {case (_type_killed isKindOf "Infantry"): {1};case (_type_killed isKindOf "Car"): {2};case (_type_killed isKindOf "Ship"): {4};case (_type_killed isKindOf "Motorcycle"): {1};case (_type_killed isKindOf "Tank"): {4};case (_type_killed isKindOf "Helicopter"): {4};case (_type_killed isKindOf "Plane"): {6};case (_type_killed isKindOf "StaticWeapon"): {2};case (_type_killed isKindOf "Building"): {2};default {1}};
-				if (CTI_IsServer) then {[leader _group_killer, _points] spawn CTI_SE_FNC_AddScore} else {["SERVER", "Request_AddScore", [leader _group_killer, _points]] call CTI_CO_FNC_NetSend};
+				if (CTI_IsServer) then {[leader _group_killer, _points] spawn CTI_SE_FNC_AddScore} else {[leader _group_killer, _points] remoteExec ["CTI_PVF_SRV_RequestAddScore", CTI_PV_SERVER]};
 			};
 			
 			if (_side_killed_original == _side_killed) then { //--- If the side of the vehicle was different from the side of the killed unit (which can be the last occupant), then we skip the bounty part.
@@ -110,7 +110,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 				//--- Award
 				{
 					if (_x call CTI_CO_FNC_IsGroupPlayable) then {
-						if (isPlayer leader _x) then {[["CLIENT", leader _x], "Client_AwardBounty", [_var_name, _bounty, _killed_pname]] call CTI_CO_FNC_NetSend} else {[_x, _bounty] call CTI_CO_FNC_ChangeFunds};
+						if (isPlayer leader _x) then {[_var_name, _bounty, _killed_pname] remoteExec ["CTI_PVF_CLT_OnBountyUnit", leader _x]} else {[_x, _bounty] call CTI_CO_FNC_ChangeFunds};
 					};
 				} forEach _award_groups;
 			};
@@ -134,12 +134,20 @@ if (!isNil '_var' && _isplayable_killer) then {
 						if (_isplayable_killer) then { //--- If the killer unit belong to a playable group, then we penalize that group.
 							[_group_killer, -_penalty] call CTI_CO_FNC_ChangeFunds;
 							_show_local = if (CTI_IsHostedServer || CTI_IsClient) then {true} else {false};
-							[["CLIENT", _side_killed], "Client_OnMessageReceived", ["penalty", [_var_name, _group_killer, _penalty]], _show_local] call CTI_CO_FNC_NetSend;
-							[["CLIENT", _killer], "Client_OnTeamkill"] call CTI_CO_FNC_NetSend;
+							["penalty", [_var_name, _group_killer, _penalty]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side_killed];
+							remoteExec ["CTI_PVF_CLT_OnTeamkill", _killer];
 						};
 					};
 				};
 			};
 		};
+	};
+};
+
+//--- Remove "men" instantly on death if enabled
+if (CTI_GC_CLEANUP_MAN > 0 && !_isvehicle_killed) then {
+	_killed spawn {
+		sleep 2;
+		deleteVehicle _this;
 	};
 };

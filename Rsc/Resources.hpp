@@ -13,6 +13,25 @@
 #define CT_MAP					101
 #define CT_LISTNBOX				102
 
+#define CT_SLIDER           3
+#define CT_CHECKBOXES       7
+#define CT_HTML             9
+#define CT_STATIC_SKEW      10
+#define CT_TREE             12
+#define CT_CONTEXT_MENU     14
+#define CT_XKEYDESC         40
+#define CT_XBUTTON          41
+#define CT_XLISTBOX         42
+#define CT_XCOMBO           44
+#define CT_ANIMATED_TEXTURE 45
+#define CT_OBJECT           80
+#define CT_OBJECT_ZOOM      81
+#define CT_OBJECT_CONTAINER 82
+#define CT_OBJECT_CONT_ANIM 83
+#define CT_LINEBREAK        98
+#define CT_USER             99
+#define CT_MAP_MAIN         101
+
 #include "Styles.hpp"
 
 //--- Text / Picture
@@ -28,7 +47,7 @@ class RscText {
 	colorShadow[] = {0,0,0,0.5};
 	font = "PuristaMedium";
 	text="";
-	SizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	SizeEx = "(			(			(			((safezoneW / safezoneH) min 1.0) / 1.0) / 25) * 1)";
 	colorText[] = {1,1,1,1.0};
 	colorBackground[] = {0,0,0,0};
 	linespacing = 1;
@@ -578,6 +597,14 @@ class RscMapControl {
 		importance = 1;
 		coefMin = 1;
 		coefMax = 1;
+	};
+	class LineMarker
+	{
+		lineDistanceMin = 3e-005;
+		lineLengthMin = 5;
+		lineWidthThick = 0.014;
+		lineWidthThin = 0.008;
+		textureComboBoxColor = "#(argb,8,8,3)color(1,1,1,1)";
 	};
 	class CustomMark {
 		icon = "\A3\ui_f\data\map\mapcontrol\custommark_ca.paa";

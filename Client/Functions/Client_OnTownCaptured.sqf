@@ -3,7 +3,7 @@
 	Script: 		Client\Functions\Client_OnTownCaptured.sqf
 	Alias:			CTI_CL_FNC_OnTownCaptured
 	Description:	Called by the server whenever a town is captured by either side
-					Note this function is called automatically by the PVF "Client_OnTownCaptured"
+					Note this function is called automatically by the PVF "CTI_PVF_CLT_OnTownCaptured"
 	Author: 		Benny
 	Creation Date:	19-09-2013
 	Revision Date:	19-09-2013
@@ -25,7 +25,6 @@
 	Common Function: CTI_CO_FNC_GetLiveUnits
 	Common Function: CTI_CO_FNC_GetSideColoration
 	Common Function: CTI_CO_FNC_GetSideFromID
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
 	[_structure, _variable] call CTI_CL_FNC_OnTownCaptured
@@ -56,7 +55,7 @@ if (_side_new == CTI_P_SideJoined) then { //--- The player's side has captured i
 		};
 		
 		_score = round(_value / CTI_SCORE_TOWN_VALUE_PERPOINT);
-		if (_score > 0) then {["SERVER", "Request_AddScore", [player, _score]] call CTI_CO_FNC_NetSend}; //--- Award some score
+		if (_score > 0) then {[player, _score] remoteExec ["CTI_PVF_SRV_RequestAddScore", CTI_PV_SERVER]}; //--- Award some score
 		(_value) call CTI_CL_FNC_ChangePlayerFunds; //--- Award some money
 		["town-capture", [_town, _value]] call CTI_CL_FNC_DisplayMessage;
 	};

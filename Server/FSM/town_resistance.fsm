@@ -1,29 +1,33 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_resistance.fsm">*/
+/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, town_resistance.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Cycle"};
-item2[] = {"Resistance_hold",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Resistance hold" \n "the town?"};
-item3[] = {"End_FSM",1,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"End FSM"};
-item4[] = {"Held_by_Resistan",4,218,-100.000000,-100.000000,0.000000,-50.000000,2.000000,"Held by" \n "Resistance"};
-item5[] = {"Gameover",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
-item6[] = {"Enemy_Near_",2,4346,-100.000000,0.000000,0.000000,50.000000,0.000000,"Enemy Near?"};
-item7[] = {"Not_held_by_Resi",4,218,50.000000,-200.000000,150.000000,-150.000000,1.000000,"Not held by" \n "Resistance"};
-item8[] = {"Resistance_Timeout",2,250,175.000000,100.000000,275.000000,150.000000,0.000000,"Resistance" \n "Timeout?"};
-item9[] = {"Active",8,218,175.000000,0.000000,275.000000,50.000000,0.000000,"Active"};
-item10[] = {"Inactive",4,218,175.000000,-200.000000,275.000000,-150.000000,1.000000,"Inactive"};
-item11[] = {"Still_active",8,218,300.000000,0.000000,400.000000,50.000000,0.000000,"Still active"};
-item12[] = {"Timed_out",4,218,375.000000,100.000000,475.000000,150.000000,1.000000,"Timed out"};
-item13[] = {"Skip",2,250,300.000000,-200.000000,400.000000,-150.000000,0.000000,"Skip"};
-item14[] = {"Cleanup",2,250,375.000000,-400.000000,475.000000,-350.000000,0.000000,"Cleanup"};
-item15[] = {"Resistance_Active",2,250,50.000000,-100.000000,150.000000,-50.000000,0.000000,"Resistance" \n "Active?"};
-item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
-item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
-item18[] = {"Create",2,250,-400.000000,200.000000,-300.000000,250.000000,0.000000,"Create"};
-item19[] = {"Resistance_Active_1",2,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"Resistance" \n "Active?"};
-item20[] = {"Inactive",8,218,-250.000000,200.000000,-150.000000,250.000000,0.000000,"Inactive"};
-item21[] = {"Active",4,218,175.000000,200.000000,275.000000,250.000000,1.000000,"Active"};
+item2[] = {"Town_Occupant",2,250,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Town" \n "Occupant"};
+item3[] = {"End_FSM",1,250,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"End FSM"};
+item4[] = {"Resistance",4,218,-100.000000,-200.000000,0.000000,-150.000000,2.000000,"Resistance"};
+item5[] = {"Gameover",8,218,-250.000000,-300.000000,-150.000000,-250.000000,0.000000,"Gameover"};
+item6[] = {"Enemy_Near_",2,4346,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"Enemy Near?"};
+item7[] = {"East___West",4,218,50.000000,-300.000000,150.000000,-250.000000,1.000000,"East / West"};
+item8[] = {"Resistance_Timeout",2,250,400.000000,0.000000,500.000000,50.000000,0.000000,"Resistance" \n "Timeout?"};
+item9[] = {"Active",8,218,250.000000,0.000000,350.000000,50.000000,0.000000,"Active"};
+item10[] = {"Inactive",4,218,400.000000,-300.000000,500.000000,-250.000000,1.000000,"Inactive"};
+item11[] = {"Still_active",8,218,400.000000,-100.000000,500.000000,-50.000000,0.000000,"Still active"};
+item12[] = {"Timed_out",4,218,600.000000,0.000000,700.000000,50.000000,1.000000,"Timed out"};
+item13[] = {"Skip",2,250,400.000000,-200.000000,500.000000,-150.000000,0.000000,"Skip"};
+item14[] = {"Cleanup",2,250,600.000000,-400.000000,700.000000,-350.000000,0.000000,"Cleanup"};
+item15[] = {"Resistance_Active",2,250,250.000000,-300.000000,350.000000,-250.000000,0.000000,"Resistance" \n "Active?"};
+item16[] = {"Contact",8,218,-100.000000,0.000000,0.000000,50.000000,0.000000,"Contact"};
+item17[] = {"Clear",4,218,50.000000,-100.000000,150.000000,-50.000000,1.000000,"Clear"};
+item18[] = {"Create",2,250,-400.000000,100.000000,-300.000000,150.000000,0.000000,"Create"};
+item19[] = {"Resistance_Active_1",2,250,-100.000000,100.000000,0.000000,150.000000,0.000000,"Resistance" \n "Active?"};
+item20[] = {"Inactive",8,218,-250.000000,100.000000,-150.000000,150.000000,0.000000,"Inactive"};
+item21[] = {"Active",4,218,400.000000,100.000000,500.000000,150.000000,1.000000,"Active"};
 item22[] = {"",7,210,-354.000000,-379.000000,-346.000000,-371.000000,0.000000,""};
+item23[] = {"",7,210,196.000000,-279.000000,204.000000,-271.000000,0.000000,""};
+item24[] = {"",7,210,196.000000,-79.000000,204.000000,-71.000000,0.000000,""};
+item25[] = {"",7,210,546.000000,-379.000000,554.000000,-371.000000,0.000000,""};
+item26[] = {"",7,210,546.000000,-179.000000,554.000000,-171.000000,0.000000,""};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,4};
@@ -33,27 +37,31 @@ link5[] = {4,6};
 link6[] = {5,3};
 link7[] = {6,16};
 link8[] = {6,17};
-link9[] = {7,15};
+link9[] = {7,23};
 link10[] = {8,11};
 link11[] = {8,12};
 link12[] = {9,8};
 link13[] = {10,13};
 link14[] = {11,13};
 link15[] = {12,14};
-link16[] = {13,1};
-link17[] = {14,1};
+link16[] = {13,26};
+link17[] = {14,25};
 link18[] = {15,9};
 link19[] = {15,10};
 link20[] = {16,19};
-link21[] = {17,15};
+link21[] = {17,24};
 link22[] = {18,22};
 link23[] = {19,20};
 link24[] = {19,21};
 link25[] = {20,18};
 link26[] = {21,8};
 link27[] = {22,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-556.201904,575.023926,205.193542,-671.531311,918,881,1};
-window[] = {2,-1,-1,-1,-1,806,25,1280,25,3,936};
+link28[] = {23,15};
+link29[] = {24,23};
+link30[] = {25,1};
+link31[] = {26,25};
+globals[] = {25.000000,1,0,0,0,640,480,1,164,6316128,1,-438.058258,721.755859,329.359497,-644.732910,918,881,1};
+window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,936};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -78,7 +86,7 @@ class FSM
         class Cycle
         {
           priority = 0.000000;
-          to="Resistance_hold";
+          to="Town_Occupant";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -87,18 +95,18 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "Resistance_hold">*/
-    class Resistance_hold
+    /*%FSM<STATE "Town_Occupant">*/
+    class Town_Occupant
     {
-      name = "Resistance_hold";
+      name = "Town_Occupant";
       init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;" \n
        "" \n
        "_sideID = _town getVariable ""cti_town_sideID"";"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "Held_by_Resistan">*/
-        class Held_by_Resistan
+        /*%FSM<LINK "Resistance">*/
+        class Resistance
         {
           priority = 2.000000;
           to="Enemy_Near_";
@@ -107,8 +115,8 @@ class FSM
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-        /*%FSM<LINK "Not_held_by_Resi">*/
-        class Not_held_by_Resi
+        /*%FSM<LINK "East___West">*/
+        class East___West
         {
           priority = 1.000000;
           to="Resistance_Active";
@@ -145,18 +153,31 @@ class FSM
     class Enemy_Near_
     {
       name = "Enemy_Near_";
-      init = /*%FSM<STATEINIT""">*/"_objects = [];" \n
-       "{if (((ASLToAGL getPosASL _x) select 2) < CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR) then {_objects pushBack _x}} forEach (_town nearEntities [""AllVehicles"", CTI_TOWNS_RESISTANCE_DETECTION_RANGE]);" \n
+      init = /*%FSM<STATEINIT""">*/"_count_enemies = 0;" \n
        "" \n
-       "_count_enemies = 0;" \n
-       "if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") > 0) then {" \n
-       "	{" \n
-       "		if ((_x countSide _objects) > 0 && _count_enemies < 1) then {" \n
-       "			if ([_town, _x] Call CTI_SE_FNC_CanCaptureTerritorialTown) then {_count_enemies = [_objects, resistance] call CTI_CO_FNC_GetAreaEnemiesCount};" \n
-       "		};" \n
-       "	} forEach [west, east];" \n
-       "} else {" \n
-       "	_count_enemies = [_objects, resistance] call CTI_CO_FNC_GetAreaEnemiesCount;" \n
+       "//--- Check if the town is in a peace mode" \n
+       "_peace_mode = false;" \n
+       "if (missionNamespace getVariable ""CTI_TOWNS_PEACE"" > 0) then {" \n
+       "	if (time < (_town getVariable ""cti_town_peace"")) then {_peace_mode = true};" \n
+       "};" \n
+       "" \n
+       "if !(_peace_mode) then {" \n
+       "	_objects = [];" \n
+       "	switch (CTI_TOWNS_CAPTURE_DETECTION_MODE) do {" \n
+       "		case 1: {{if (_x distance _town <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE && (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR)) then {_objects pushBack _x}} forEach allPlayers};" \n
+       "		case 2: {{if (_x distance _town <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE && (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR)) then {_objects pushBack _x}} forEach (playableUnits + switchableUnits)};" \n
+       "		default {{if (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR) then {_objects pushBack _x}} forEach (_town nearEntities [""AllVehicles"", CTI_TOWNS_RESISTANCE_DETECTION_RANGE])};" \n
+       "	};" \n
+       "" \n
+       "	if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") > 0) then {" \n
+       "		{" \n
+       "			if ((_x countSide _objects) > 0 && _count_enemies < 1) then {" \n
+       "				if ([_town, _x] Call CTI_SE_FNC_CanCaptureTerritorialTown) then {_count_enemies = [_objects, resistance] call CTI_CO_FNC_GetAreaEnemiesCount};" \n
+       "			};" \n
+       "		} forEach [west, east];" \n
+       "	} else {" \n
+       "		_count_enemies = [_objects, resistance] call CTI_CO_FNC_GetAreaEnemiesCount;" \n
+       "	};" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -193,6 +214,8 @@ class FSM
        "	//--- Do we still have some fighting units?" \n
        "	_lives = 0;" \n
        "	{_lives = _lives + count(_x call CTI_CO_FNC_GetLiveUnits)} forEach _town_groups;" \n
+       "	" \n
+       "	//[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is still active with [%2] units alive amongst the [%3] groups"", _town getVariable ""cti_town_name"", _lives, _town_groups]] call CTI_CO_FNC_Log;" \n
        "	" \n
        "	if (_lives >= CTI_TOWNS_RESISTANCE_MIN_ACTIVE) then { //--- There's still some units fighting! it's not that inactive!" \n
        "		_town setVariable [""cti_town_resistance_activeTime"", time];" \n
@@ -236,7 +259,7 @@ class FSM
         class Cycle
         {
           priority = 0.000000;
-          to="Resistance_hold";
+          to="Town_Occupant";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -255,11 +278,12 @@ class FSM
        "	};" \n
        "	" \n
        "	{" \n
-       "		[[""CLIENT"", _x select 1], ""Client_OnTownDelegationRemoval"", [_town, resistance]] call CTI_CO_FNC_NetSend;" \n
+       "		[_town, resistance] remoteExec [""CTI_PVF_HC_OnTownDelegationRemoval"", _x select 1];" \n
        "	} forEach (missionNamespace getVariable ""CTI_HEADLESS_CLIENTS"");" \n
        "};" \n
        "" \n
        "//--- Teams Units." \n
+       "/* //--- Valid Deletion, do not remove" \n
        "{" \n
        "	[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] units will be removed"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
        "	if !(isNil '_x') then {" \n
@@ -278,7 +302,33 @@ class FSM
        "			[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] was deleted?"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
        "		};" \n
        "	};" \n
-       "} forEach _town_groups;" \n
+       "} forEach _town_groups;*/" \n
+       "//--- Teams Units." \n
+       "[_town, _town_groups] spawn {" \n
+       "	_town = _this select 0;" \n
+       "	_town_groups = _this select 1;" \n
+       "	{" \n
+       "		[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] units will be removed"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+       "		if !(isNil '_x') then {" \n
+       "			[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is not nil"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+       "			if !(isNull _x) then {" \n
+       "				[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is not null ([%3] units), is local? [%4], owner [%5]"", _town getVariable ""cti_town_name"", _x, count units _x, local _x, groupOwner _x]] call CTI_CO_FNC_Log;" \n
+       "				// if (local _x) then {" \n
+       "					{" \n
+       "						[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] deleting unit [%2] from group [%3], local? [%4]"", _town getVariable ""cti_town_name"", _x, group _x, local _x]] call CTI_CO_FNC_Log;" \n
+       "						deleteVehicle _x;" \n
+       "						[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is unit removed? unit [%2]"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+       "						sleep 4;" \n
+       "					} forEach units _x;" \n
+       "					[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is about to be removed, units count [%3]"", _town getVariable ""cti_town_name"", _x, count units _x]] call CTI_CO_FNC_Log;" \n
+       "					sleep 2;" \n
+       "					deleteGroup _x;" \n
+       "				// };" \n
+       "				[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] was deleted?"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+       "			};" \n
+       "		};" \n
+       "	} forEach _town_groups;" \n
+       "};" \n
        "" \n
        "//--- Teams vehicles." \n
        "{" \n
@@ -287,6 +337,7 @@ class FSM
        "	};" \n
        "} forEach (_town getVariable ""cti_town_resistance_active_vehicles"");" \n
        "" \n
+       "_town setVariable [""cti_town_resistance_groups"", []];" \n
        "_town setVariable [""cti_town_resistance_active_vehicles"", []];" \n
        "_town setVariable [""cti_town_resistance_active"", false];" \n
        "" \n
@@ -300,7 +351,7 @@ class FSM
         class Cycle
         {
           priority = 0.000000;
-          to="Resistance_hold";
+          to="Town_Occupant";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -355,10 +406,10 @@ class FSM
        "" \n
        "//--- If we couldn't delegate it then we create it from the server" \n
        "if !(_delegated) then {" \n
-       "	_town_vehicles = [_town, resistance, _town_teams, _town_groups, _town_positions] call CTI_CO_FNC_CreateTownUnits;" \n
-       "	_town setVariable [""cti_town_resistance_active_vehicles"", (_town getVariable ""cti_town_resistance_active_vehicles"") + _town_vehicles];" \n
+       "	[_town, resistance, _town_teams, _town_groups, _town_positions] spawn CTI_CO_FNC_CreateTownUnits;" \n
        "};" \n
        "" \n
+       "_town setVariable [""cti_town_resistance_activeTime"", time];" \n
        "_town setVariable [""cti_town_resistance_active"", true];" \n
        "" \n
        "if (CTI_Log_Level >= CTI_Log_Information) then {" \n
@@ -371,7 +422,7 @@ class FSM
         class Cycle
         {
           priority = 0.000000;
-          to="Resistance_hold";
+          to="Town_Occupant";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;

@@ -33,9 +33,10 @@ CTI_SE_FNC_SpawnTownOccupation = compileFinal preprocessFileLineNumbers "Server\
 CTI_SE_FNC_SpawnTownResistance = compileFinal preprocessFileLineNumbers "Server\Functions\Server_SpawnTownResistance.sqf";
 CTI_SE_FNC_StartFactoryQueue = compileFinal preprocessFileLineNumbers "Server\Functions\Server_StartFactoryQueue.sqf";
 CTI_SE_FNC_StartUpgrade = compileFinal preprocessFileLineNumbers "Server\Functions\Server_StartUpgrade.sqf";
+CTI_SE_FNC_ToggleHQ = compileFinal preprocessFileLineNumbers "Server\Functions\Server_ToggleHQ.sqf";
 CTI_SE_FNC_TrashObject = compileFinal preprocessFileLineNumbers "Server\Functions\Server_TrashObject.sqf";
+CTI_SE_FNC_UpdateBaseAreas = compileFinal preprocessFileLineNumbers "Server\Functions\Server_UpdateBaseAreas.sqf";
 CTI_SE_FNC_VoteForCommander = compileFinal preprocessFileLineNumbers "Server\Functions\Server_VoteForCommander.sqf";
-CTI_SE_FNC_Weather_Hook= compileFinal preprocessFileLineNumbers "Server\Functions\Server_Weather_Hook.sqf";
 
 funcCalcAlignPosDir = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fCalcAlignPosDir.sqf";
 funcVectorAdd = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorAdd.sqf";
@@ -97,6 +98,7 @@ if (_attempts >= 500) then {
 	
 	//--- Generic per-logic variables
 	_logic setVariable ["cti_hq", _hq, true];
+	_logic setVariable ["cti_hq_deployed", false, true];
 	_logic setVariable ["cti_structures_wip", []];
 	_logic setVariable ["cti_structures", [], true];
 	_logic setVariable ["cti_structures_areas", [], true];
@@ -122,6 +124,9 @@ if (_attempts >= 500) then {
 	if (CTI_BASE_DEFENSES_AUTO_LIMIT > 0) then {
 		_defense_team = createGroup _side;
 		_defense_team setGroupID ["Defense Team"];
+		_defense_team setBehaviour "COMBAT";
+		_defense_team setCombatMode "RED";
+		_defense_team enableAttack true;
 		_logic setVariable ["cti_defensive_team", _defense_team];
 	};
 	
@@ -179,6 +184,20 @@ if (_attempts >= 500) then {
 		};
 	} forEach (synchronizedObjects _logic);
 	
+	//--- Disable Thermals and Statics
+	if ( (missionNamespace getVariable 'CTI_SM_NV_THER_VEH') > 0 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {
+		0 spawn {
+			while {! CTi_GameOver} do {
+				{
+					if ((missionNamespace getVariable 'CTI_SM_NV_THER_VEH')== 1) then {_x disableNVGEquipment true;};
+					if ((missionNamespace getVariable 'CTI_SM_NV_THER_VEH')== 2) then {_x disableTIEquipment true;};
+					if ((missionNamespace getVariable 'CTI_SM_NV_THER_VEH')== 3 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {_x disableTIEquipment true;_x disableNVGEquipment true;};
+				}
+				forEach vehicles;
+				sleep 10;
+			};
+		};
+	};
 	_logic setVariable ["cti_teams", _teams, true];
 } forEach [[west, CTI_WEST, _westLocation], [east, CTI_EAST, _eastLocation]];
 
@@ -186,6 +205,7 @@ if (_attempts >= 500) then {
 0 spawn {
 	waitUntil {!isNil 'CTI_InitTowns'};
 	
+	execFSM "Server\FSM\update_ai_defensive.fsm";
 	execFSM "Server\FSM\update_garbage_collector.fsm";
 	execFSM "Server\FSM\update_resources.fsm";
 	execFSM "Server\FSM\update_victory.fsm";
@@ -196,29 +216,37 @@ if (_attempts >= 500) then {
 };
 
 // Date init
-_it=0;
-_possible_it_off=[0,0,0,0,0,0,6,6,6,12,12,12,18];
-if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 10) then {
-	_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL")*6;
+if (CTI_ZOMBIE_MODE == 0) then {
+	_it=0;
+	_possible_it_off=[0,0,0,0,0,0,6,6,6,12,12,12,18];
+	if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 18) then {
+		_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL");
+	} else {
+		_it= _possible_it_off select floor random (count _possible_it_off);
+	};
+	//Default Time Starts at 0600am
+	skipTime _it;
 } else {
-	_it= _possible_it_off select floor random (count _possible_it_off);
+	// set time to dusk 6pm
+	skipTime 12;
 };
-skipTime _it;
 
-// dynamic wheather
-0 spawn CTI_SE_FNC_Weather_Hook;
-		
+// dynamic weather
+execVM "Server\Functions\Server_Weather_Hook.sqf";	
+
 // Fast time compression
-0 spawn {
-	_day_ratio = 14/CTI_WEATHER_FAST;
-	_night_ratio = 10/CTI_WEATHER_FAST_NIGHT;
-	while {!CTI_Gameover} do {
-		if (daytime > 5 && daytime <19 ) then {
-			if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio ; };
-		} else {
-			if (timeMultiplier !=  _night_ratio) then {setTimeMultiplier _night_ratio ; };
+if (CTI_ZOMBIE_MODE == 0) then {
+	0 spawn {
+		_day_ratio = 14/CTI_WEATHER_FAST;
+		_night_ratio = 10/CTI_WEATHER_FAST_NIGHT;
+		while {!CTI_Gameover} do {
+			if (daytime > 5 && daytime <19 ) then {
+				if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio ; };
+			} else {
+				if (timeMultiplier !=  _night_ratio) then {setTimeMultiplier _night_ratio ; };
+			};
+			sleep 120;
 		};
-		sleep 120;
 	};
 };
 
@@ -226,7 +254,7 @@ skipTime _it;
 if !( isNil "ADMIN_ZEUS") then {
 	0 spawn {
 		while {!CTI_GameOver} do {
-			ADMIN_ZEUS addCuratorEditableObjects [playableUnits,true];
+			ADMIN_ZEUS addCuratorEditableObjects [playableUnits+switchableUnits,true];
 			sleep 5;
 		};
 	};

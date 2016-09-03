@@ -23,20 +23,25 @@
 	
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideLogic
-	Common Function: CTI_CO_FNC_NetSend
 	Server Function: CTI_SE_FNC_HandleStructureConstruction
 	
   # EXAMPLE #
     _placed = [_placed, CTI_CL_VAR_SideJoined, getPos _preview, getDir _preview] call CTI_SE_FNC_BuildStructure;
 */
 
-_var = missionNamespace getVariable (_this select 0);
+_classname = _this select 0;
 _side = _this select 1;
 _position = _this select 2;
 _direction = _this select 3;
 _origin = if (count _this > 4) then {_this select 4} else {objNull};
 
+_var = missionNamespace getVariable _classname;
+
 _position set [2, 0];
+
+if (CTI_Log_Level >= CTI_Log_Information) then {
+	["INFORMATION", "FILE: Server\Functions\Server_BuildStructure.sqf", format["Received a Structure build request from side [%1] for a [%2] at position [%3]", _side, (_var select 0) select 1, _position]] call CTI_CO_FNC_Log;
+};
 
 _structure = ((_var select 1) select 1) createVehicle _position;
 _structure setDir _direction;
@@ -53,13 +58,11 @@ _structure setVariable ["cti_structure_type", ((_var select 0) select 0)];
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull]];
 
-[_side, _structure, _this select 0, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
+[_side, _structure, _classname, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
 
-[["CLIENT", _side], "Client_OnMessageReceived", ["structure-preplaced", [_this select 0, _position]]] call CTI_CO_FNC_NetSend;
+["structure-preplaced", [_classname, _position]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 
-if !(isNull _origin) then {
-	[["CLIENT", _origin], "Client_ReceiveStructureBase", _structure] call CTI_CO_FNC_NetSend;
-};
+if !(isNull _origin) then { (_structure) remoteExec ["CTI_PVF_CLT_OnStructurePlaced", _origin] };
 
 //AdminZeus
 if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_structure],true];};

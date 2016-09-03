@@ -26,7 +26,6 @@
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideFromID
 	Common Function: CTI_CO_FNC_GetSideLogic
-	Common Function: CTI_CO_FNC_NetSend
 	Server Function: CTI_SE_FNC_HandleStructureConstruction
 	
   # EXAMPLE #
@@ -51,6 +50,10 @@ _sell = if (isNil {_killed getVariable "cti_sell"}) then {false} else {true};
 _logic setVariable ["cti_structures", (_logic getVariable "cti_structures") - [_killed, objNull], true];
 _var = missionNamespace getVariable _variable;
 
+if (CTI_Log_Level >= CTI_Log_Information) then {
+	["INFORMATION", "FILE: Server\Functions\Server_OnBuildingDestroyed.sqf", format["A [%1] from side [%2] was destroyed by [%3] at position [%4], was it sold? [%5]", (_var select 0) select 1, _side, _killer, _position, _sell]] call CTI_CO_FNC_Log;
+};
+
 //--- The structure was not sold
 if !(_sell) then {
 	//--- Replace with ruins
@@ -66,7 +69,7 @@ if !(_sell) then {
 	_structure setVariable ["cti_structures_iteration", (_var select 3)/100];
 	_structure setVariable ["cti_structure_type", ((_var select 0) select 0)];
 
-	[_side, _structure, _variable, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
+	[_side, _structure, _variable, _position, _direction, true] spawn CTI_SE_FNC_HandleStructureConstruction;
 
 	_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull]];
 	
@@ -77,47 +80,18 @@ if !(_sell) then {
 				_label = ((_var select 0) select 1);
 				_award = round((_var select 2) * CTI_BASE_CONSTRUCTION_BOUNTY);
 				
-				[["CLIENT", _killer], "Client_AwardBountyStructure", [_label, _award]] call CTI_CO_FNC_NetSend;
-				["CLIENT", "Client_OnMessageReceived", ["structure-destroyed", [name _killer, _label]]] call CTI_CO_FNC_NetSend;
+				[_label, _award] remoteExec ["CTI_PVF_CLT_OnBountyStructure", _killer];
+				["structure-destroyed", [name _killer, _label]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", CTI_PV_CLIENTS];
 			} else {
 				//--- AI Reward
 			};
 		};
 	};
 	
-	diag_log format ["DEBUG:: Server_OnBuildingDestroyed.sqf:: structure %1 on side %2 was destroyed (not sold), killer %3", ((_var select 1) select 1), _sideID, _killer];
+	// diag_log format ["DEBUG:: Server_OnBuildingDestroyed.sqf:: structure %1 on side %2 was destroyed (not sold), killer %3", ((_var select 1) select 1), _sideID, _killer];
 } else { //--- The structure was sold
-	private ["_areas", "_closest", "_delete_pos", "_need_update", "_structures_positions"];
-	//--- We update the base area array to remove potential empty areas. First we get the 2D positions of our structures
-	_areas = _logic getVariable "cti_structures_areas";
-	_structures_positions = [];
-	{
-		_pos = getPos _x;
-		_pos = [_pos select 0, _pos select 1];
-		_structures_positions pushBack _pos;
-	} forEach ((_side call CTI_CO_FNC_GetSideStructures) + (_logic getVariable "cti_structures_wip"));
-
-	//--- Check for empty areas now
-	_need_update = false;
-	_delete_pos = [];
-	{
-		_closest = [_x, _structures_positions] call CTI_CO_FNC_GetClosestEntity;
-		if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _delete_pos pushBack _x; _areas set [_forEachIndex, "!nil!"]};
-		// if (_closest distance _x > CTI_BASE_AREA_RANGE) then {_need_update = true; _areas deleteAt _forEachIndex};
-	} forEach +_areas;
-
-	//--- Only update if we have to
-	if (_need_update) then {
-		_areas = _areas - ["!nil!"];
-		_logic setVariable ["cti_structures_areas", _areas, true];
-		
-		//--- Wipe the defense/structures upon area expiration
-		{
-			{
-				if !(isNil {_x getVariable "cti_managed"}) then {deleteVehicle _x};
-			} forEach (nearestObjects [_x, missionNamespace getVariable format ["CTI_%1_DEFENSES_NAMES", _side], CTI_BASE_AREA_RANGE]);
-		} forEach _delete_pos;
-	};
+	//--- Update base areas
+	(_side) call CTI_SE_FNC_UpdateBaseAreas;
 };
 
 sleep 5;
@@ -128,5 +102,5 @@ _classnames = if (count _classnames > 2) then {[_classnames select 1] + (_classn
 
 {if (isNil {_x getVariable "cti_completion"}) then { deleteVehicle _x }} forEach (nearestObjects [_position, _classnames, 25]);
 
-[["CLIENT", _side], "Client_OnStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;
-["CLIENT", "Client_RemoveRuins", [_position, _variable]] call CTI_CO_FNC_NetSend;
+[_position, _variable, _sell] remoteExec ["CTI_PVF_CLT_OnFriendlyStructureDestroyed", _side];
+[_position, _variable] remoteExec ["CTI_PVF_CLT_RemoveRuins", CTI_PV_CLIENTS];

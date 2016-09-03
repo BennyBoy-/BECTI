@@ -20,19 +20,23 @@
 	
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetFundsCommander
+	Common Function: CTI_CO_FNC_GetFundsTeam
 	Common Function: CTI_CO_FNC_IsGroupCommander
 	
   # EXAMPLE #
     _funds = (group player) call CTI_CO_FNC_GetFunds
 */
 
-private ["_group", "_side"];
+private ["_funds", "_group", "_side"];
 
 _group = _this;
 _side = side _group;
 
+_funds = 0;
 if (_group call CTI_CO_FNC_IsGroupCommander) then {
-	(_side) call CTI_CO_FNC_GetFundsCommander;
+	_funds = (_side) call CTI_CO_FNC_GetFundsCommander;
 } else {
-	_group getVariable "cti_funds";
+	_funds = (_group) call CTI_CO_FNC_GetFundsTeam;
 };
+
+_funds

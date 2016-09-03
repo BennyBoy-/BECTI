@@ -26,7 +26,6 @@
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideFromID
 	Common Function: CTI_CO_FNC_GetSideLogic
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
     _structure addEventHandler ["handledamage", format ["[_this select 0, _this select 2, _this select 3, %1, %2, '%3', %4] call CTI_SE_FNC_OnBuildingHandleDamage", (_side) call CTI_CO_FNC_GetSideID, _reduce_damages, _variable, _position]];
@@ -51,7 +50,7 @@ _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 
 if (time - (_logic getVariable "cti_structures_lasthit") > 30 && _damage >= 0.02 && alive _damaged) then {
 	_logic setVariable ["cti_structures_lasthit", time];
-	[["CLIENT", _side], "Client_OnMessageReceived", ["structure-attacked", [_variable, _position]]] call CTI_CO_FNC_NetSend;
+	["structure-attacked", [_variable, _position]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 };
 
 _damage

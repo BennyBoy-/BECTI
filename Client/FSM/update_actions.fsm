@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, update_actions.fsm">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, update_actions.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-554.049622,262.642029,242.139771,-456.939575,854,881,1};
-window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,872};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-457.107819,165.700150,575.219543,-317.919952,190,635,1};
+window[] = {0,-1,-1,-1,-1,833,52,1307,52,1,208};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -72,8 +72,8 @@ class FSM
        "	};" \n
        "	if (!isNull _commander) then {" \n
        "		if (_commander == group player) then {" \n
-       "			CTI_HQ_BuildAction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_BuildMenu.sqf"", """", 93, false, true, """", ""_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange""];" \n
-       "			(_hq) spawn (missionNamespace getVariable ""CTI_PVF_Client_AddHQActions"");" \n
+       "			//CTI_HQ_BuildAction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_CoinBuild.sqf"", ""HQ"", 93, false, true, """", ""_target == player && CTI_Base_HQInRange""];" \n
+       "			(_hq) spawn (missionNamespace getVariable ""CTI_PVF_CLT_AddHQActions"");" \n
        "		};" \n
        "	};" \n
        "};" \n
@@ -99,6 +99,14 @@ class FSM
        "CTI_Base_RepairInRange = if !(isNull ([CTI_REPAIR, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
        "CTI_Base_NavalInRange = if !(isNull ([CTI_NAVAL, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
        "" \n
+       "CTI_Base_RepairInRange_Mobile = if (count([player, CTI_SPECIAL_REPAIRTRUCK, CTI_SERVICE_REPAIR_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles) > 0) then {true} else {false};" \n
+       "" \n
+       "//--- Depot check" \n
+       "_depot = [player, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;" \n
+       "CTI_Base_DepotInRange = if (isNull _depot) then {false} else {true};" \n
+       "CTI_Base_GearInRange_Depot = CTI_Base_DepotInRange;" \n
+       "" \n
+       "//--- FOB Check" \n
        "_in_range = false;" \n
        "if (CTI_BASE_FOB_MAX > 0) then {" \n
        "	_nearest = [vehicle player, CTI_P_SideLogic getVariable [""cti_fobs"",[]]] call CTI_CO_FNC_GetClosestEntity;" \n
@@ -106,9 +114,25 @@ class FSM
        "};" \n
        "CTI_Base_GearInRange_FOB = _in_range;" \n
        "" \n
+       "//--- Track the player's gear" \n
        "if (CTI_GEAR_RESPAWN_WITH_LAST > 0) then {" \n
-       "	if (alive player) then {CTI_P_CurrentGear = (player) call CTI_UI_Gear_GetUnitEquipment};" \n
+       "	if (alive player && !CTI_P_Respawning) then {CTI_P_CurrentGear = (player) call CTI_CO_FNC_GetUnitLoadout};" \n
        "};" \n
+       "" \n
+       "//--- Actions" \n
+       "if (""ToolKit"" in items player && player == vehicle player) then {" \n
+       "	if (count(vehicle player nearEntities [[""Car"",""Air"",""Tank"",""Ship""], 10]) > 0) then {" \n
+       "		if !(CTI_P_ActionLockPick) then {CTI_P_ActionLockPick = true};" \n
+       "		if !(CTI_P_ActionRepair) then {CTI_P_ActionRepair = true};" \n
+       "	} else {" \n
+       "		if (CTI_P_ActionLockPick) then {CTI_P_ActionLockPick = false};" \n
+       "		if (CTI_P_ActionRepair) then {CTI_P_ActionRepair = false};" \n
+       "	};" \n
+       "} else {" \n
+       "	if (CTI_P_ActionLockPick) then {CTI_P_ActionLockPick = false};" \n
+       "	if (CTI_P_ActionRepair) then {CTI_P_ActionRepair = false};" \n
+       "};" \n
+       "" \n
        "" \n
        "/*//debug" \n
        "CTI_Base_BarracksInRange = true;" \n

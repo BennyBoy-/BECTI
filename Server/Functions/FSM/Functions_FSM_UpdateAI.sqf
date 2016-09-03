@@ -65,6 +65,15 @@ CTI_FSM_UpdateAI_RespawnLeader_SP = {
 	_group selectLeader _leader;
 	_leader disableAI "MOVE";
 	
+	//--- ZEUS Curator Editable
+	if !(isNil "ADMIN_ZEUS") then {
+		if (CTI_IsServer) then {
+			ADMIN_ZEUS addCuratorEditableObjects [[_leader], true];
+		} else {
+			[ADMIN_ZEUS, _leader] remoteExec ["CTI_PVF_SRV_RequestAddCuratorEditable", CTI_PV_SERVER];
+		};
+	};
+	
 	_group setVariable ["cti_nextrespawn", time + (missionNamespace getVariable "CTI_RESPAWN_TIMER")];
 	_respawn_start = time;
 	
@@ -306,7 +315,7 @@ CTI_FSM_UpdateAI_Order_Move = {
 	_reload = _this select 3;
 	
 	//--- Notify the side if the order wasn't reloaded
-	if !(_reload) then {[["CLIENT", _side], "Client_OnMessageReceived", ["order-move", leader _group]] call CTI_CO_FNC_NetSend};
+	if !(_reload) then {["order-move", leader _group] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side]};
 	
 	_group move _position;
 };
@@ -349,8 +358,8 @@ CTI_FSM_UpdateAI_Order_TakeTown = {
 	//--- Notify the side if the order wasn't reloaded
 	if !(_reload) then {
 		switch (true) do {
-			case (_order in [CTI_ORDER_TAKETOWN, CTI_ORDER_TAKETOWN_AUTO]): {[["CLIENT", _side], "Client_OnMessageReceived", ["order-taketowns", leader _group]] call CTI_CO_FNC_NetSend};
-			case (_order in [CTI_ORDER_TAKEHOLDTOWN, CTI_ORDER_TAKEHOLDTOWN_AUTO]): {[["CLIENT", _side], "Client_OnMessageReceived", ["order-takeholdtowns", leader _group]] call CTI_CO_FNC_NetSend};
+			case (_order in [CTI_ORDER_TAKETOWN, CTI_ORDER_TAKETOWN_AUTO]): {["order-taketowns", leader _group] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side]};
+			case (_order in [CTI_ORDER_TAKEHOLDTOWN, CTI_ORDER_TAKEHOLDTOWN_AUTO]): {["order-takeholdtowns", leader _group] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side]};
 		};
 	};
 	
@@ -461,7 +470,7 @@ CTI_FSM_UpdateAI_Order_HoldTownsBase = {
 	_sideID = (_side) call CTI_CO_FNC_GetSideID;
 	
 	//--- Notify the side if the order wasn't reloaded
-	if !(_reload) then {[["CLIENT", _side], "Client_OnMessageReceived", ["order-holdtowns", leader _group]] call CTI_CO_FNC_NetSend};
+	if !(_reload) then {["order-holdtowns", leader _group] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side]};
 	
 	//--- We patrol!
 //todo: improve next node picking (distance > max / 2 or so).

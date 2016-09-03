@@ -23,7 +23,6 @@
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_ArrayShuffle
 	Common Function: CTI_CO_FNC_Log
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
     [Town0, West, [["ClassA","ClassB"], ["ClassA"]], [GroupA, GroupB], [[652, 231, 0], [600, 200, 0]]] call CTI_SE_FNC_AttemptTownDelegation
@@ -47,6 +46,9 @@ if !(isNil '_candidates') then {
 		//--- Mix it so that we have different HC clients all the time
 		if (count _candidates > 1) then {_candidates = (_candidates) call CTI_CO_FNC_ArrayShuffle};
 		
+		//--- Update the HC town groups
+		{[_town, _side, _groups] remoteExec ["CTI_PVF_HC_UpdateTownGroups", _x select 1]} forEach _candidates;
+		
 		//--- Attempt to perform a load-balanced creation
 		_delegation_table = [];
 		for '_i' from 0 to _candidates_count do {
@@ -61,6 +63,7 @@ if !(isNil '_candidates') then {
 		};
 		
 		//--- Delegate the creation now
+		_sleep_thread = 0; //--- Debug: add a delay while HC are fucked
 		{
 			_owner_id = (_candidates select _forEachIndex) select 0;
 			_hc_entity = (_candidates select _forEachIndex) select 1;
@@ -89,7 +92,10 @@ if !(isNil '_candidates') then {
 				};
 			} forEach _x;
 			
-			[["CLIENT", _hc_entity], "Client_OnTownDelegationReceived", [_town, _side, _sub_teams, _sub_groups, _sub_positions]] call CTI_CO_FNC_NetSend;
+			// [_town, _side, _sub_teams, _sub_groups, _sub_positions] remoteExec ["CTI_PVF_HC_OnTownDelegationReceived", _hc_entity];
+			[_town, _side, _sub_teams, _sub_groups, _sub_positions, _sleep_thread] remoteExec ["CTI_PVF_HC_OnTownDelegationReceived", _hc_entity]; //--- debug while hc is fubar, add a delay
+			
+			_sleep_thread = _sleep_thread + 10; //--- Debug: add a delay while HC are fucked
 			
 			if (CTI_Log_Level >= CTI_Log_Information) then {
 				["INFORMATION", "FILE: Server\Functions\Server_AttemptTownDelegation.sqf", format["Delegating unit creation to Headless Client [%1] with owner ID [%2] in [%3] for [%4] team(s) on [%5]", _uid, _owner_id, _town getVariable "cti_town_name", count _sub_teams, _side]] call CTI_CO_FNC_Log;

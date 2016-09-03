@@ -9,7 +9,7 @@ switch (_action) do {
 		
 		uiNamespace setVariable ["cti_dialog_ui_mapcommandmenu_group_current", grpNull];
 		uiNamespace setVariable ["cti_dialog_ui_mapcommandmenu_group_current_order", -1];
-		uiNamespace setVariable ["cti_dialog_ui_mapcommandmenu_mapclick", false];
+		uiNamespace setVariable ["cti_dialog_ui_mapcommandmenu_mapclick", ""];
 		
 		uiNamespace setVariable ["cti_dialog_ui_mapcommandmenu_groups", _groups];
 		
@@ -100,10 +100,10 @@ switch (_action) do {
 					if (_all) then {
 						_ais = [];
 						{if!(isPlayer leader _x) then {_ais pushBack _x}} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
-						if (count _ais > 0) then {["SERVER", "Request_AIOrderAction", [_ais, _order, CTI_P_SideJoined]] call CTI_CO_FNC_NetSend};
+						if (count _ais > 0) then {[_ais, _order, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestAIOrderAction", CTI_PV_SERVER]};
 					} else {
 						_who = (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups") select _value;
-						if!(isPlayer leader _who) then {["SERVER", "Request_AIOrderAction", [_who, _order, CTI_P_SideJoined]] call CTI_CO_FNC_NetSend};
+						if!(isPlayer leader _who) then {[_who, _order, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestAIOrderAction", CTI_PV_SERVER]};
 					};
 				};
 			};
@@ -140,59 +140,64 @@ switch (_action) do {
 		_mx = _event select 2;
 		_my = _event select 3;
 		
-		if (_button == 0 && uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_mapclick") then {
-			uiNamespace setVariable ["cti_dialog_ui_mapcommandmenu_mapclick", false];
+		_operation = uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_mapclick";
+		if (_button == 0 && _operation != "") then {
+			uiNamespace setVariable ["cti_dialog_ui_mapcommandmenu_mapclick", ""];
 			((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220013) ctrlSetStructuredText parseText "";
 			
-			_value = lnbCurSelRow 220002;
-			if (_value > -1) then {
-				_value = lnbValue [220002, [_value, 0]];
-				_all = if (_value < 0) then {true} else {false};
-				
-				_order = uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_order";
-				switch (_order) do { //--- Transform generic to singles
-					case CTI_ORDER_TAKETOWNS: {_order = CTI_ORDER_TAKETOWN};
-					case CTI_ORDER_TAKEHOLDTOWNS: {_order = CTI_ORDER_TAKEHOLDTOWN};
-					case CTI_ORDER_HOLDTOWNSBASES: {_order = CTI_ORDER_HOLDTOWNSBASE};
-				};
-				_mappos = ((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220001) ctrlMapScreenToWorld [_mx, _my];
-				switch (true) do {
-					case (_order in [CTI_ORDER_TAKETOWN, CTI_ORDER_TAKEHOLDTOWN]): {
-						_nearest = [_mappos, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestEnemyTown;
-						if !(isNull _nearest) then {
-							if (_mappos distance _nearest < 500) then {
-								if (_all) then {
-									{[_x, _order, _nearest] call CTI_UI_MapCommanding_TrySetOrder} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
-								} else {
-									_who = (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups") select _value;
-									[_who, _order, _nearest] call CTI_UI_MapCommanding_TrySetOrder;
+			switch (_operation) do {
+				case "order": {
+					_value = lnbCurSelRow 220002;
+					if (_value > -1) then {
+						_value = lnbValue [220002, [_value, 0]];
+						_all = if (_value < 0) then {true} else {false};
+						
+						_order = uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_order";
+						switch (_order) do { //--- Transform generic to singles
+							case CTI_ORDER_TAKETOWNS: {_order = CTI_ORDER_TAKETOWN};
+							case CTI_ORDER_TAKEHOLDTOWNS: {_order = CTI_ORDER_TAKEHOLDTOWN};
+							case CTI_ORDER_HOLDTOWNSBASES: {_order = CTI_ORDER_HOLDTOWNSBASE};
+						};
+						_mappos = ((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220001) ctrlMapScreenToWorld [_mx, _my];
+						switch (true) do {
+							case (_order in [CTI_ORDER_TAKETOWN, CTI_ORDER_TAKEHOLDTOWN]): {
+								_nearest = [_mappos, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestEnemyTown;
+								if !(isNull _nearest) then {
+									if (_mappos distance _nearest < 500) then {
+										if (_all) then {
+											{[_x, _order, _nearest] call CTI_UI_MapCommanding_TrySetOrder} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
+										} else {
+											_who = (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups") select _value;
+											[_who, _order, _nearest] call CTI_UI_MapCommanding_TrySetOrder;
+										};
+									};
 								};
 							};
-						};
-					};
-					case (_order == CTI_ORDER_HOLDTOWNSBASE): {
-						_closest_town = [_mappos, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestFriendlyTown;
-						_list = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-						if !(isNull _closest_town) then {_list pushBack _closest_town}; //--- Add the closest town
-						_nearest = [_mappos, _list] call CTI_CO_FNC_GetClosestEntity;
-						if !(isNull _nearest) then {
-							if (_mappos distance _nearest < 500) then {
-								if (_all) then {
-									{[_x, _order, _nearest] call CTI_UI_MapCommanding_TrySetOrder} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
-								} else {
-									_who = (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups") select _value;
-									[_who, _order, _nearest] call CTI_UI_MapCommanding_TrySetOrder;
+							case (_order == CTI_ORDER_HOLDTOWNSBASE): {
+								_closest_town = [_mappos, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestFriendlyTown;
+								_list = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
+								if !(isNull _closest_town) then {_list pushBack _closest_town}; //--- Add the closest town
+								_nearest = [_mappos, _list] call CTI_CO_FNC_GetClosestEntity;
+								if !(isNull _nearest) then {
+									if (_mappos distance _nearest < 500) then {
+										if (_all) then {
+											{[_x, _order, _nearest] call CTI_UI_MapCommanding_TrySetOrder} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
+										} else {
+											_who = (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups") select _value;
+											[_who, _order, _nearest] call CTI_UI_MapCommanding_TrySetOrder;
+										};
+									};
 								};
 							};
-						};
-					};
-					case (_order == CTI_ORDER_MOVE): {
-						if !(surfaceIsWater _mappos) then {
-							if (_all) then {
-								{[_x, _order, _mappos] call CTI_UI_MapCommanding_TrySetOrder} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
-							} else {
-								_who = (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups") select _value;
-								[_who, _order, _mappos] call CTI_UI_MapCommanding_TrySetOrder;
+							case (_order == CTI_ORDER_MOVE): {
+								if !(surfaceIsWater _mappos) then {
+									if (_all) then {
+										{[_x, _order, _mappos] call CTI_UI_MapCommanding_TrySetOrder} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
+									} else {
+										_who = (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups") select _value;
+										[_who, _order, _mappos] call CTI_UI_MapCommanding_TrySetOrder;
+									};
+								};
 							};
 						};
 					};
@@ -242,10 +247,10 @@ switch (_action) do {
 					if (_all) then {
 						_ais = [];
 						{if!(isPlayer leader _x) then {_ais pushBack _x}} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
-						if (count _ais > 0) then {["SERVER", "Request_AIOrderAction", [_ais, _order, CTI_P_SideJoined]] call CTI_CO_FNC_NetSend};
+						if (count _ais > 0) then {[_ais, _order, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestAIOrderAction", CTI_PV_SERVER]};
 					} else {
 						_who = (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups") select _value;
-						if!(isPlayer leader _who) then {["SERVER", "Request_AIOrderAction", [_who, _order, CTI_P_SideJoined]] call CTI_CO_FNC_NetSend};
+						if!(isPlayer leader _who) then {[_who, _order, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestAIOrderAction", CTI_PV_SERVER]};
 					};
 				};
 			};
@@ -261,7 +266,7 @@ switch (_action) do {
 			_order = uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_order";
 			
 			if !(isNil '_order') then {
-				uiNamespace setVariable ["cti_dialog_ui_mapcommandmenu_mapclick", true];
+				uiNamespace setVariable ["cti_dialog_ui_mapcommandmenu_mapclick", "order"];
 				((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220013) ctrlSetStructuredText parseText format["<t color='#efa12b' align='center'>Click on the map to terminate the order assignment</t>"];
 			};
 		};

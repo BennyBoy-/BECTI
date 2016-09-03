@@ -23,6 +23,9 @@ if (CTI_IsServer) then {
 	_town setVariable ["cti_town_lastSideID", _sideID, true];
 	_town setVariable ["cti_town_sideID", _sideID, true];
 	
+	//--- Update the flag texture
+	if (typeOf _town == "FlagPole_F") then {_town setFlagTexture (missionNamespace getVariable [format["%1_TOWNS_FLAG_TEXTURE", _town_side], CTI_TOWNS_FLAG_TEXTURE_PEACE])};
+	
 	(_town) execFSM "Server\FSM\town_capture.fsm";
 	(_town) execFSM "Server\FSM\town_resistance.fsm";
 	if (missionNamespace getVariable "CTI_TOWNS_OCCUPATION" > 0) then {(_town) execFSM "Server\FSM\town_occupation.fsm"};
@@ -53,5 +56,13 @@ if (CTI_IsClient) then {
 	_marker setMarkerTypeLocal "mil_flag";
 	_marker setMarkerColorLocal _coloration;
 	_marker setMarkerSizeLocal [0.5, 0.5]; 
-	// _marker setMarkerAlphaLocal CTI_MARKERS_OPACITY;
+	
+	//--- Capture marker
+	//_marker = createMarkerLocal [format ["cti_town_marker_%1_capture", _town], getPos _town];
+	//_marker setMarkerAlphaLocal .2;
+	//_marker setMarkerColorLocal "ColorBlack";
+	//_marker setMarkerShapeLocal "ELLIPSE";
+	//_marker setMarkerBrushLocal "SolidBorder";
+	//_marker setMarkerSizeLocal [CTI_TOWNS_CAPTURE_RANGE, CTI_TOWNS_CAPTURE_RANGE]; 
+
 };

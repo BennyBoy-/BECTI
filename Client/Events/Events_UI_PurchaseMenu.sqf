@@ -10,36 +10,37 @@ switch (_action) do {
 		_factory_type = _get select 2;
 		
 		if (isNull _factory) exitWith { closeDialog 0; };
-		// if (count _factories == 0) exitWith {  }; //debug
 		
 		{if (isNil {uiNamespace getVariable format ["cti_dialog_ui_purchasemenu_vehicon_%1", _x]}) then {uiNamespace setVariable [format ["cti_dialog_ui_purchasemenu_vehicon_%1", _x], true]}} forEach ['driver','gunner','commander','turrets','lock'];
 		uiNamespace setVariable ["cti_dialog_ui_purchasemenu_unitcost", 90000]; //--- Muhahahah!
 		
+		if (call CTI_CL_FNC_IsPlayerCommander) then {
+			_groups = if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" == 1) then {(CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups} else {(CTI_P_SideJoined) call CTI_CO_FNC_GetSidePlayerGroups};
+			uiNamespace setVariable ["cti_dialog_ui_purchasemenu_teams", _groups];
+			{
+				_header_ai = if (isPlayer leader _x) then {""} else {"[AI] "};
+				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110016) lbAdd format ["%1%2 (%3)", _header_ai, _x getVariable ["cti_alias", CTI_PLAYER_DEFAULT_ALIAS], name leader _x];
+				if (leader _x == player) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110016) lbSetCurSel _forEachIndex};
+			} forEach (_groups);
+		} else {
+			_groups = [group player];
+			uiNamespace setVariable ["cti_dialog_ui_purchasemenu_teams", _groups];
+			
+			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110016) lbAdd format ["%1 (%2)", group player, name player];
+			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110016) lbSetCurSel 0;
+		};
+
+		uiNamespace setVariable ["cti_dialog_ui_purchasemenu_team", group player];
+		
+		(_factory_type) call CTI_UI_Purchase_LoadFactories;
 		call CTI_UI_Purchase_SetVehicleIconsColor;
 		(_factory_index) call CTI_UI_Purchase_SetIcons;
 		(_factory_type) call CTI_UI_Purchase_FillUnitsList;
 		call CTI_UI_Purchase_OnUnitListLoad;
 		
-		(_factory_type) call CTI_UI_Purchase_LoadFactories;
 		
 		if (_factory_type != CTI_REPAIR || !(call CTI_CL_FNC_IsPlayerCommander)) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlShow false};
 		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.535), SafeZoneY + (SafeZoneH * 0.825), SafeZoneW * 0.275, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlCommit 0;
-		
-		_groups = [group player];
-		if (call CTI_CL_FNC_IsPlayerCommander) then {
-			_groups = if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" == 1) then {(CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups} else {(CTI_P_SideJoined) call CTI_CO_FNC_GetSidePlayerGroups};
-			{
-				_header_ai = if (isPlayer leader _x) then {""} else {"[AI] "};
-				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110008) lbAdd format ["%1%2 (%3)", _header_ai, _x getVariable ["cti_alias", CTI_PLAYER_DEFAULT_ALIAS], name leader _x];
-				if (leader _x == player) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110008) lbSetCurSel _forEachIndex};
-			} forEach (_groups);
-		} else {
-			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110008) lbAdd format ["%1 (%2)", group player, name player];
-			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110008) lbSetCurSel 0;
-		};
-		
-		uiNamespace setVariable ["cti_dialog_ui_purchasemenu_team", group player];
-		uiNamespace setVariable ["cti_dialog_ui_purchasemenu_teams", _groups];
 		
 		execVM "Client\GUI\GUI_PurchaseMenu.sqf";
 	};
@@ -73,14 +74,14 @@ switch (_action) do {
 		_factory_index = _this select 1;
 		_factory_type = _this select 2;
 		
-		_available = [CTI_Base_BarracksInRange, CTI_Base_LightInRange, CTI_Base_HeavyInRange, CTI_Base_AirInRange, CTI_Base_RepairInRange, CTI_Base_AmmoInRange, CTI_Base_NavalInRange];
+		_available = [CTI_Base_BarracksInRange, CTI_Base_LightInRange, CTI_Base_HeavyInRange, CTI_Base_AirInRange, CTI_Base_RepairInRange, CTI_Base_AmmoInRange, CTI_Base_NavalInRange, CTI_Base_DepotInRange];
 		
 		if (_available select _factory_index) then {
+			(_factory_type) call CTI_UI_Purchase_LoadFactories;
 			(_factory_index) call CTI_UI_Purchase_SetIcons;
 			(_factory_type) call CTI_UI_Purchase_FillUnitsList;
 			call CTI_UI_Purchase_OnUnitListLoad;
 			
-			(_factory_type) call CTI_UI_Purchase_LoadFactories;
 			if (call CTI_CL_FNC_IsPlayerCommander) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlShow (if (_factory_type == CTI_REPAIR) then {true} else {false})};
 		};
 	};
@@ -106,13 +107,15 @@ switch (_action) do {
 	};
 	case "onPurchase": {
 		_selected = _this select 1;
+		_player_ai_count = CTI_PLAYERS_GROUPSIZE;
+		if ( CTI_PLAYERS_GROUPSIZE == 0) then {_player_ai_count = player getVariable ["CTI_PLAYER_GROUPSIZE",[]];} else {_player_ai_count = CTI_PLAYERS_GROUPSIZE;};
 		
 		if (_selected == -1) exitWith {}; //nothing selected.
 		
 		_funds = call CTI_CL_FNC_GetPlayerFunds;
 		if (_funds > (uiNamespace getVariable "cti_dialog_ui_purchasemenu_unitcost")) then {
 			_classname = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbData [_selected, 0];
-			_selected_group = (uiNamespace getVariable "cti_dialog_ui_purchasemenu_teams") select (lbCurSel ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110008)); //todo Change that by combo value
+			_selected_group = (uiNamespace getVariable "cti_dialog_ui_purchasemenu_teams") select (lbCurSel ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110016)); //todo Change that by combo value
 			
 			_isEmpty = false;
 			_veh_info = if (_classname isKindOf "Man") then { [] } else { call CTI_UI_Purchase_GetVehicleInfo };
@@ -123,7 +126,7 @@ switch (_action) do {
 			if (alive(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory")) then {
 				_ai_enabled = missionNamespace getVariable "CTI_AI_TEAMS_ENABLED";
 				if (_ai_enabled == 1 || (isPlayer leader _selected_group && _ai_enabled == 0)) then {
-					if ((count units _selected_group)+1 <= CTI_PLAYERS_GROUPSIZE || _isEmpty) then { //todo ai != player limit
+					if ((count units _selected_group)+1 <= _player_ai_count || _isEmpty) then { //todo ai != player limit
 						_proc_purchase = true;
 						if (_isEmpty && _selected_group != group player) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Empty vehicles may not be purchased for other groups."; };
 						
@@ -154,8 +157,8 @@ switch (_action) do {
 			if (_funds >= CTI_VEHICLES_SALVAGER_PRICE) then {
 				if (count(CTI_P_SideLogic getVariable "cti_salvagers") < CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX) then { 
 					if (time - CTI_P_LastIndepSalvagerPurchased > 5) then {
-						CTI_P_LastIndepSalvagerPurchased = time;
-						["SERVER", "Request_Purchase", [CTI_P_SideJoined, group player, CTI_P_SideJoined, format["CTI_Salvager_Independent_%1", CTI_P_SideJoined], uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", [], (time + random 10000 - random 500 + diag_frameno)]] call CTI_CO_FNC_NetSend;
+						CTI_P_LastIndepSalvagerPurchased = time;						
+						[CTI_P_SideJoined, group player, CTI_P_SideJoined, format["CTI_Salvager_Independent_%1", CTI_P_SideJoined], uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", [], (time + random 10000 - random 500 + diag_frameno)] remoteExec ["CTI_PVF_SRV_RequestPurchase", CTI_PV_SERVER];
 					} else {
 						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Please wait a few seconds before performing this operation again.";
 					};
@@ -202,7 +205,7 @@ switch (_action) do {
 					CTI_P_PurchaseRequests deleteAt _index;
 					
 					//--- Notify the server thread that our request has been canceled.
-					["SERVER", "Request_PurchaseCancel", [_seed, _classname, _req_factory, _req_team, group player]] call CTI_CO_FNC_NetSend;
+					[_seed, _classname, _req_factory, _req_team, group player] remoteExec ["CTI_PVF_SRV_RequestPurchaseCancel", CTI_PV_SERVER];
 				} else {
 					hint "commander assigned units may not be removed";
 				};

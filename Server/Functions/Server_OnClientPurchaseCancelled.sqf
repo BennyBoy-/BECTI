@@ -20,9 +20,6 @@
   # SYNTAX #
 	[SEED, CLASSNAME, FACTORY, TARGET, BUYER] call CTI_SE_FNC_OnClientPurchase
 	
-  # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_NetSend
-	
   # EXAMPLE #
     [_team, group player, CTI_P_SideJoined, _classname, _factory, _veh_infos, _seed] call CTI_SE_FNC_OnClientPurchase
 */
@@ -47,12 +44,10 @@ _index = -1;
 } forEach _list;
 
 if (_index != -1) then {
-	// _list set [_index, "!REMOVE!"];
-	// _list = _list - ["!REMOVE!"];
 	_list deleteAt _index;
 	_factory setVariable ["cti_queue_processing", _list];
 };
 
 if (_req_target != _req_buyer && isPlayer leader _req_target) then { //--- Notify the remote target
-	[["CLIENT", leader _req_target], "Client_OnPurchaseOrderCancelled", [_req_seed, _req_classname, _factory]] call CTI_CO_FNC_NetSend;
+	[_req_seed, _req_classname, _factory] remoteExec ["CTI_PVF_CLT_OnPurchaseOrderCancelled", leader _req_target];
 };

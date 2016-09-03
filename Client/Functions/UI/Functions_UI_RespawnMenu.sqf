@@ -1,5 +1,5 @@
 CTI_UI_Respawn_GetAvailableLocations = {
-	private ["_fobs", "_hq", "_ignore_mobile_crew", "_list", "_mobile", "_structures"];
+	private ["_fobs", "_hq", "_ignore_mobile_crew", "_list", "_mobile", "_structures","_up","_respawnrangefob"];
 	
 	_list = [];
 	
@@ -12,7 +12,9 @@ CTI_UI_Respawn_GetAvailableLocations = {
 	//--- Add FOBs if available.
 	if (CTI_BASE_FOB_MAX > 0) then {
 		_fobs = CTI_P_SideLogic getVariable ["cti_fobs", []];
-		{if (alive _x && _x distance CTI_DeathPosition <= CTI_RESPAWN_FOB_RANGE) then {_list pushBack _x}} forEach _fobs;
+		_up=if (!( count ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) == 0)) then {((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_REST} else {0};
+		_respawnrangefob=CTI_RESPAWN_FOB_RANGE+500*_up;
+		{if (alive _x && _x distance CTI_DeathPosition <= _respawnrangefob) then {_list pushBack _x}} forEach _fobs;
 	};
 	
 	//--- Add camps if camp respawn is enabled
@@ -41,13 +43,13 @@ CTI_UI_Respawn_GetAvailableLocations = {
 CTI_UI_Respawn_GetMobileRespawn = {
 	private ["_available", "_center"];
 	_center = _this;
-	
+	_up=if (!( count ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) == 0)) then {((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_REST} else {0};
+	_range=500+500*_up;
 	_available = [];
-	
+
 	{
 		if ((_x getVariable ["cti_spec", -1]) == CTI_SPECIAL_MEDICALVEHICLE && (_x getVariable ["cti_net", -1]) == CTI_P_SideID) then {_available pushBack _x};
-	} forEach (_center nearEntities [["Car","Air","Tank","Ship"], CTI_RESPAWN_MOBILE_RANGE]);
-	
+	} forEach (_center nearEntities [["Car","Air","Tank","Ship","Thing","StaticWeapon"], _range]);
 	_available
 };
 
@@ -76,7 +78,11 @@ CTI_UI_Respawn_GetRespawnLabel = {
 		case (!isNil {_location getVariable "cti_camp_town"}): { 
 			_town = _location getVariable "cti_camp_town";
 			switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") do {
-				case 1: {_value = format["Camp (%1) - $%2", _town getVariable "cti_town_name", CTI_RESPAWN_CAMPS_CONDITION_PRICED]};
+				case 1: {
+					_coefficient = if (_town getVariable "cti_town_sideID" == CTI_P_SideID) then {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_FRIENDLY} else {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_ENEMY};
+					_price = round((_town getVariable "cti_town_sv") * _coefficient);
+					_value = format["Camp (%1) - $%2", _town getVariable "cti_town_name", _price];
+				};
 				case 2: {_value = format["Camp (%1) - %2 Spawn Remaining", _town getVariable "cti_town_name", _town getVariable "cti_camp_respawn_count"]};
 				default {_value = format["Camp (%1)", _town getVariable "cti_town_name"]};
 			};
@@ -226,7 +232,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 	if (_where isKindOf "Man") then { //--- The location is an AI?
 		if (_where in units player) then { //--- The AI is in the player group?
 			_pos = getPos _where; //--- Get the AI position (todo: copy the stance)
-			_respawn_ai_gear = (_where) call CTI_UI_Gear_GetUnitEquipment; //--- Get the AI current equipment using the Gear UI function
+			_respawn_ai_gear = (_where) call CTI_CO_FNC_GetUnitLoadout; //--- Get the AI current equipment using the Gear UI function
 			deleteVehicle _where; //--- Remove the AI
 			player setPos _pos; //--- Place the player where the AI was
 			_respawn_ai = true;
@@ -242,7 +248,11 @@ CTI_UI_Respawn_OnRespawnReady = {
 			if ((missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") > 0) then {
 				_town = _where getVariable "cti_camp_town";
 				switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") do {
-					case 1: {(-CTI_RESPAWN_CAMPS_CONDITION_PRICED) call CTI_CL_FNC_ChangePlayerFunds}; //--- Priced, deduce the cost from the player's funds
+					case 1: {
+						_coefficient = if (_town getVariable "cti_town_sideID" == CTI_P_SideID) then {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_FRIENDLY} else {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_ENEMY};
+						_price = round((_town getVariable "cti_town_sv") * _coefficient);
+						(-_price) call CTI_CL_FNC_ChangePlayerFunds
+					}; //--- Priced, deduce the cost from the player's funds
 					case 2: {_town setVariable ["cti_camp_respawn_count", (_town getVariable "cti_camp_respawn_count") - 1]};
 				};
 			};
@@ -283,5 +293,12 @@ CTI_UI_Respawn_OnRespawnReady = {
 	};
 	
 	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
+	
+	//Earplugs
+	player spawn {call CTI_CL_FNC_EarPlugsSpawn; };
+	
+	//Spawn Init for Tablet
+	player spawn {call CTI_CL_FNC_Spawn; };
+	
 	CTI_P_Respawning = false;
 };

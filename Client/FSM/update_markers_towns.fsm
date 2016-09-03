@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, update_markers_towns.fsm">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, update_markers_towns.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-346.052856,249.315308,147.414398,-362.214325,743,636,1};
-window[] = {0,-1,-1,-1,-1,856,75,1330,75,1,761};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-346.052856,249.315308,11.998779,-350.821564,967,635,1};
+window[] = {0,-1,-1,-1,-1,1176,526,2313,395,1,985};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -23,7 +23,9 @@ class FSM
     class Start_FSM
     {
       name = "Start_FSM";
-      init = /*%FSM<STATEINIT""">*/"_ncycle = 0;"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_ncycle = 0;" \n
+       "" \n
+       "_last_areas = [];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -46,8 +48,8 @@ class FSM
       name = "Update_Markers";
       init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;" \n
        "" \n
+       "//--- Towns" \n
        "_units = (units group player) Call CTI_CO_FNC_GetLiveUnits;" \n
-       "" \n
        "{" \n
        "	_town = _x;" \n
        "	_visible = false;" \n
@@ -58,7 +60,31 @@ class FSM
        "	} else {" \n
        "		(format[""cti_town_marker_%1"", _town]) setMarkerTextLocal format[""  %1"", _town getVariable ""cti_town_name""];" \n
        "	};" \n
-       "} forEach CTI_Towns;"/*%FSM</STATEINIT""">*/;
+       "} forEach CTI_Towns;" \n
+       "" \n
+       "//--- Base areas" \n
+       "_areas = CTI_P_SideLogic getVariable[""cti_structures_areas"", []];" \n
+       "" \n
+       "//--- Remove potential old areas" \n
+       "{" \n
+       "	if !(_x in _areas) then {" \n
+       "		deleteMarkerLocal format[""cti_base_area_%1%2"", round (_x select 0), round (_x select 1)];" \n
+       "	};" \n
+       "} forEach _last_areas;" \n
+       "" \n
+       "//--- Add potential new areas" \n
+       "{" \n
+       "	if !(_x in _last_areas) then {" \n
+       "		_marker = createMarkerLocal [format[""cti_base_area_%1%2"", round (_x select 0), round (_x select 1)], _x];" \n
+       "		_marker setMarkerAlphaLocal 0.3;" \n
+       "		_marker setMarkerColorLocal CTI_P_SideColor;" \n
+       "		_marker setMarkerShapeLocal ""ELLIPSE"";" \n
+       "		_marker setMarkerBrushLocal ""SolidBorder"";" \n
+       "		_marker setMarkerSizeLocal [CTI_BASE_AREA_RANGE, CTI_BASE_AREA_RANGE];" \n
+       "	};" \n
+       "} forEach _areas;" \n
+       "" \n
+       "_last_areas = +_areas;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

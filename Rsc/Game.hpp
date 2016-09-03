@@ -3,12 +3,19 @@ respawn = 3;
 respawnDelay = 3;
 respawnDialog = false;
 
-//--- Require briefing.html to show up.
-onLoadMission = "OFPS Benny Warfare - Stratis - hc";
-onLoadMissionTime = false;
-onLoadName = "OFPS Benny Warfare hc";
+//--- Respawn Revive - Doesn't work ATM, needs Benny's touch!
+//respawnTemplates[] = {"Revive"};
+//respawnOnStart = -1;
+//reviveDelay = 15;
+//reviveForceRespawnDelay = 3;
+//reviveBleedOutDelay = 450;
 
-briefingName = "OFPS Benny Warfare hc";
+//--- Require briefing.html to show up.
+onLoadMission = "OFPS Benny Warfare";
+onLoadMissionTime = false;
+onLoadName = "OFPS Benny Warfare";
+
+briefingName = "OFPS Benny Warfare";
 
 //--- ArmA 3 Specifics
 dev = "Benny";
@@ -19,5 +26,5 @@ author = "Benny";
 class Header {
 	gameType = CTI;
 	minPlayers = 1;
-	maxPlayers = 32;
+	maxPlayers = 40;
 };

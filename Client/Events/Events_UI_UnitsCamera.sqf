@@ -245,6 +245,23 @@ switch (_action) do {
 			};
 		};
 	};
+	case "onUnitUnflip": {
+		_who = uiNamespace getVariable "cti_dialog_ui_unitscam_focus";
+		_who_vehicle = vehicle _who;
+		if (alive _who && speed _who_vehicle < 5 && (getPos _who_vehicle select 2) < 5 && !isPlayer _who) then {
+			_unflip = false;
+			if (call CTI_CL_FNC_IsPlayerCommander) then {
+				_unflip = true
+			} else {
+				if (_who in units player) then {_unflip = true};
+			};
+
+			if (_unflip) then {
+				_who_vehicle setPos [getPos _who_vehicle select 0, getPos _who_vehicle select 1, 1];
+				_who_vehicle setVelocity [0,0,1];
+			};
+		};
+	};
 	case "onUnload": {
 		CTI_UnitsCamera cameraEffect["TERMINATE","BACK"];
 		camDestroy CTI_UnitsCamera;

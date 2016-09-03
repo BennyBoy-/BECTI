@@ -11,9 +11,12 @@
 #include "Rsc\Sounds.hpp"
 #include "Rsc\Debriefing.hpp"
 #include "Rsc\Parameters.hpp"
-
-// Disable AI Slots
-//disabledAI = 1; -THIS BREAKS GAME TICKET WAS PUT IN FOR BENNY TO CHECK IT OUT
+#include "Client\Functions\Externals\AdvancedUrbanRapel\Rapelactions.hpp"
+#include "Client\Functions\Externals\ATM_airdrop\ATM_airdrop.hpp"
+#include "Client\Functions\Externals\zam_shownames\zam_shownames.cpp"
 
 // ^HS^ for Headless Client
 joinUnassigned = 0;
+
+// Debug Enable
+enableDebugConsole = 1;

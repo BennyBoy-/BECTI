@@ -3,7 +3,7 @@
 	Script: 		Client\Functions\Client_OnCampCaptured.sqf
 	Alias:			CTI_CL_FNC_OnCampCaptured
 	Description:	Called by the server whenever a camp is captured by either side
-					Note this function is called automatically by the PVF "Client_OnCampCaptured"
+					Note this function is called automatically by the PVF "CTI_PVF_CLT_OnCampCaptured"
 	Author: 		Benny
 	Creation Date:	20-04-2016
 	Revision Date:	20-04-2016

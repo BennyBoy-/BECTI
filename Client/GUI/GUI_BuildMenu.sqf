@@ -1,4 +1,5 @@
 _last_funds = -1;
+_last_supply = -1;
 _last_workercount = -1;
 
 while { true } do {
@@ -13,9 +14,10 @@ while { true } do {
 		};
 	} forEach (CTI_P_SideLogic getVariable "cti_workers");
 	_funds = call CTI_CL_FNC_GetPlayerFunds;
+	_supply = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply;
 	
-	if (_last_funds != _funds) then {
-		((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100008) ctrlSetStructuredText (parseText format["Resources: <t color='%2'>$%1</t>", _funds, CTI_P_Coloration_Money]);
+	if (_last_funds != _funds || _last_supply != _supply) then {
+		((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100008) ctrlSetStructuredText (parseText format["Resources: <t color='%2'>$%1</t> | <t color='%2'>S%3</t>", _funds, CTI_P_Coloration_Money, _supply]);
 	};
 	
 	if (_last_workercount != _count) then {
@@ -23,6 +25,7 @@ while { true } do {
 	};
 	
 	_last_funds = _funds;
+	_last_supply = _supply;
 	_last_workercount = _count;
 	
 	sleep .1;

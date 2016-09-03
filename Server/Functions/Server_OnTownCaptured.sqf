@@ -22,7 +22,6 @@
 	Common Function: CTI_CO_FNC_GetSideFromID
 	Common Function: CTI_CO_FNC_GetSideID
 	Common Function: CTI_CO_FNC_GetSideLogic
-	Common Function: CTI_CO_FNC_NetSend
 	Server Function: CTI_SE_FNC_AddScore
 	
   # EXAMPLE #
@@ -30,7 +29,7 @@
 	  -> Town0 is now captured by West
 */
 
-private ["_award_teams", "_currentSideID", "_last_capture", "_newSide", "_newSideID", "_town", "_town_camps"];
+private ["_award_teams", "_currentSideID", "_flagTexture", "_last_capture", "_newSide", "_newSideID", "_town", "_town_camps"];
 
 _town = _this select 0;
 _newSide = _this select 1;
@@ -42,9 +41,29 @@ _town setVariable ["cti_town_sideID", _newSideID, true];
 _town setVariable ["cti_town_lastSideID", _currentSideID, true];
 
 //--- Set the town in a peace mode if needed for the specified amount of time
+_flagTexture = missionNamespace getVariable [format["%1_TOWNS_FLAG_TEXTURE", _newSide], CTI_TOWNS_FLAG_TEXTURE_PEACE];
 if (missionNamespace getVariable "CTI_TOWNS_PEACE" > 0) then {
 	_town setVariable ["cti_town_peace", time + (missionNamespace getVariable "CTI_TOWNS_PEACE"), true];
+	_flagTexture = CTI_TOWNS_FLAG_TEXTURE_PEACE;
+	
+	//--- Thread spawn, Update the flag textures upon peace mode expiration if applicable
+	if (typeOf _town == "FlagPole_F") then {
+		[_town, _newSide] spawn {
+			_town = _this select 0;
+			_newSide = _this select 1;
+			
+			while {time < (_town getVariable "cti_town_peace")} do { sleep .5 };
+			
+			//--- Only update if the new side ID match the current side ID
+			if ((_newSide call CTI_CO_FNC_GetSideID) == (_town getVariable "cti_town_sideID")) then {
+				_town setFlagTexture (missionNamespace getVariable [format["%1_TOWNS_FLAG_TEXTURE", _newSide], CTI_TOWNS_FLAG_TEXTURE_PEACE]);
+			};
+		};
+	};
 };
+
+//--- Update the flag texture
+if (typeOf _town == "FlagPole_F") then {_town setFlagTexture _flagTexture};
 
 //--- Update the camps if needed
 _town_camps = _town getVariable "cti_town_camps";
@@ -60,7 +79,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Server\Functions\Server_OnTownCaptured.sqf", format["Town [%1] has been captured, from [%2] to [%3]", _town getVariable "cti_town_name", (_currentSideID) Call CTI_CO_FNC_GetSideFromID, _newSide]] call CTI_CO_FNC_Log;
 };
 
-["CLIENT", "Client_OnTownCaptured", [_town, _newSideID, _currentSideID]] call CTI_CO_FNC_NetSend;
+[_town, _newSideID, _currentSideID] remoteExec ["CTI_PVF_CLT_OnTownCaptured", CTI_PV_CLIENTS];
 
 if (_newSide != resistance && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" == 1)) then { //--- Award the AI
 	_award_teams = [];

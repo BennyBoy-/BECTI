@@ -76,11 +76,17 @@ _funds = (_req_buyer) call CTI_CO_FNC_GetFunds;
 if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete };
 // [_req_buyer, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
 
-_var = missionNamespace getVariable format ["CTI_%1_%2", _req_side, _factory getVariable "cti_structure_type"];
-_direction = 360 - ((_var select 4) select 0);
-_distance = ((_var select 4) select 1) + (_var_classname select CTI_UNIT_DISTANCE);
+_direction = 360 - CTI_TOWNS_DEPOT_BUILD_DIRECTION;
+_distance = CTI_TOWNS_DEPOT_BUILD_DISTANCE + (_var_classname select CTI_UNIT_DISTANCE);
+_var = missionNamespace getVariable [format ["CTI_%1_%2", _req_side, _factory getVariable ["cti_structure_type", ""]], []];
+if (count _var > 0) then {
+	_direction = 360 - ((_var select 4) select 0);
+	_distance = ((_var select 4) select 1) + (_var_classname select CTI_UNIT_DISTANCE);
+};
+
 _position = _factory modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
 _position set [2, .5];
+
 
 while { time <= _req_time_out && alive _factory } do { sleep .25 }; //--- Construction...
 
@@ -102,8 +108,10 @@ if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory
 if (typeName _req_target == "SIDE") then { _req_target = createGroup _req_side };
 
 _vehicle = objNull;
+_units = [];
 if (_model isKindOf "Man") then {
 	_vehicle = [_model, _req_target, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
+	_units pushBack _vehicle;
 } else {
 	private ["_crew", "_unit"];
 	_vehicle = [_model, _position, _direction + getDir _factory, _sideID, true, true, true] call CTI_CO_FNC_CreateVehicle;
@@ -113,10 +121,12 @@ if (_model isKindOf "Man") then {
 	
 	_unit = [_crew, _req_target, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 	_unit moveInDriver _vehicle;
+	_units pushBack _unit;
 	
 	{
 		_unit = [_crew, _req_target, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 		_unit moveInTurret [_vehicle, _x];
+		_units pushBack _unit;
 	} forEach (_model call CTI_CO_FNC_GetVehicleTurrets);
 
 	[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
@@ -129,6 +139,15 @@ if (_model isKindOf "Man") then {
 if (_script != "" && alive _vehicle) then {
 	[_vehicle, _req_side, _script] spawn CTI_CO_FNC_InitializeCustomVehicle;
 	if (_customid > -1) then {_vehicle setVariable ["cti_customid", _customid, true]};
+};
+
+//--- ZEUS Curator Editable
+if !(isNil "ADMIN_ZEUS") then {
+	if (CTI_IsServer) then {
+		ADMIN_ZEUS addCuratorEditableObjects [_units, true];
+	} else {
+		[ADMIN_ZEUS, _units] remoteExec ["CTI_PVF_SRV_RequestAddCuratorEditable", CTI_PV_SERVER];
+	};
 };
 
 [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete;

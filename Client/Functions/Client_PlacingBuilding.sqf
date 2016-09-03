@@ -22,7 +22,6 @@
 	Client Function: CTI_CO_FNC_ChangeSideSupply
 	Common Function: CTI_CO_FNC_GetDirTo
 	Client Function: CTI_CO_FNC_GetSideSupply
-	Common Function: CTI_CO_FNC_NetSend
 	
   # EXAMPLE #
     [_selected, CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ, CTI_BASE_CONSTRUCTION_RANGE] spawn CTI_CL_FNC_PlacingBuilding;
@@ -64,6 +63,7 @@ _deh = (findDisplay 46) displayAddEventHandler ["KeyDown", "nullReturn = _this s
 
 _var = missionNamespace getVariable _variable;
 _local = ((_var select 1) select 0) createVehicleLocal getPos player;
+_local allowDamage false;
 _direction_structure = (_var select 4) select 0;
 _distance_structure = (_var select 4) select 1;
 _last_collision_update = -600;
@@ -74,7 +74,7 @@ _action2 = player addAction ["<t color='#F86363'>Cancel Structure</t>", "Client\
 _pos = [];
 _dir = 0;
 
-_helper = "Sign_Arrow_Large_Blue_F" createVehicleLocal getPos player;
+_helper = if (count(_var select 4) < 3) then {"Sign_Arrow_Large_Blue_F" createVehicleLocal getPos player} else {objNull};
 
 while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled} do {
 	_pos = player modelToWorld [0, _distance_structure + CTI_P_KeyDistance + 5, 0];
@@ -89,10 +89,12 @@ while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled} do {
 	_local setPos _pos;
 	_local setDir _dir;
 	
-	_helper_pos = _local modelToWorld [(sin (360 -_direction_structure) * _distance_structure), (cos (360 -_direction_structure) * _distance_structure), 0];
-	_helper_pos set [2, 0];
-	_helper setPos _helper_pos;
-	_helper setDir _dir;
+	if !(isNull _helper) then {
+		_helper_pos = _local modelToWorld [(sin (360 -_direction_structure) * _distance_structure), (cos (360 -_direction_structure) * _distance_structure), 0];
+		_helper_pos set [2, 0];
+		_helper setPos _helper_pos;
+		_helper setDir _dir;
+	};
 	
 	sleep .01;
 };
@@ -102,8 +104,7 @@ player removeAction _action2;
 
 CTI_P_PreBuilding = false;
 
-detach _helper;
-deleteVehicle _helper;
+if !(isNull _helper) then {deleteVehicle _helper};
 deleteVehicle _local;
 
 (findDisplay 46) displayRemoveEventHandler ["KeyDown", _deh];
@@ -133,7 +134,13 @@ if !(_in_area) then {
 if !(CTI_VAR_StructureCanceled) then {
 	if (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply) >= (_var select 2)) then {
 		[CTI_P_SideJoined, -(_var select 2)] call CTI_CO_FNC_ChangeSideSupply;
-		["SERVER", "Request_Building", [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player]] call CTI_CO_FNC_NetSend;
+		
+		//--- Check whether we're dealing with the HQ or a normal structure
+		if !(((_var select 0) select 0) in [CTI_HQ_DEPLOY, CTI_HQ_MOBILIZE]) then {
+			[_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player] remoteExec ["CTI_PVF_SRV_RequestBuilding", CTI_PV_SERVER];
+		} else {
+			[_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir] remoteExec ["CTI_PVF_SRV_RequestHQToggle", CTI_PV_SERVER];
+		};
 	} else {
 		hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to place that structure.";
 	};

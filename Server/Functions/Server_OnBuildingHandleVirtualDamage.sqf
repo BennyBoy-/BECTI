@@ -29,14 +29,13 @@
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideFromID
 	Common Function: CTI_CO_FNC_GetSideLogic
-	Common Function: CTI_CO_FNC_NetSend
 	Server Function: CTI_SE_FNC_OnBuildingDestroyed
 	
   # EXAMPLE #
     _structure addEventHandler ["handledamage", format ["[_this select 0, _this select 2, _this select 3, '%1', %2, %3, %4, %5, %6] call CTI_SE_FNC_OnBuildingHandleVirtualDamage", _variable, (_side) call CTI_CO_FNC_GetSideID, _position, _direction, _completion_ratio, _reduce_damages]];
 */
 
-private ["_completion_ratio", "_damage", "_damaged", "_direction", "_logic", "_position", "_reduce_damages", "_shooter", "_side", "_sideID", "_variable", "_virtual_damages"];
+private ["_completion_ratio", "_damage", "_damaged", "_direction", "_logic", "_position", "_reduce_damages", "_shooter", "_side", "_sideID", "_var", "_variable", "_virtual_damages"];
 
 _damaged = _this select 0;
 _damage = _this select 1;
@@ -66,13 +65,26 @@ _damaged setVariable ["cti_altdmg", _virtual_damages];
 if (_virtual_damages >= 1 || !alive _damaged) then {
 	_damaged removeAllEventHandlers "handleDamage";
 	_damaged setDammage 1;
-	[_damaged, _shooter, _variable, _sideID, _position, _direction, _completion_ratio] spawn CTI_SE_FNC_OnBuildingDestroyed
+	
+	_var = missionNamespace getVariable _variable;
+	
+	if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then {
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FILE: Server\Functions\Server_OnBuildingHandleVirtualDamage.sqf", format["HQ [%1] from side [%2] has been destroyed (virtual damages) by [%3]", _damaged, _side, _shooter]] call CTI_CO_FNC_Log;
+		};
+		[_damaged, _shooter, _sideID] spawn CTI_SE_FNC_OnHQDestroyed;
+	} else {
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FILE: Server\Functions\Server_OnBuildingHandleVirtualDamage.sqf", format["A [%1] structure from side [%2] has been destroyed (virtual damages) by [%3]", ((_var select 0) select 1), _side, _shooter]] call CTI_CO_FNC_Log;
+		};
+		[_damaged, _shooter, _variable, _sideID, _position, _direction, _completion_ratio] spawn CTI_SE_FNC_OnBuildingDestroyed;
+	};
 };
 
 //--- Display a message to the team
 if (time - (_logic getVariable "cti_structures_lasthit") > 30 && _damage >= 0.02 && alive _damaged) then {
 	_logic setVariable ["cti_structures_lasthit", time];
-	[["CLIENT", _side], "Client_OnMessageReceived", ["structure-attacked", [_variable, _position]]] call CTI_CO_FNC_NetSend;
+	["structure-attacked", [_variable, _position]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 };
 
 0

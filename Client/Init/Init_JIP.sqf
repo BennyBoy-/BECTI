@@ -36,8 +36,8 @@ if (isMultiplayer) then {sleep 5}; //--- Wait in MP for the net var to kick in
 	_x setVariable ["cti_ai_order_pos", [0,0]];
 } forEach ((units player - [player]) call CTI_CO_FNC_GetLiveUnits); //--- Track players AI if needed
 
-//--- Track FOB if needed
-{[_x, "FOB"] spawn CTI_PVF_Client_OnSpecialConstructed} forEach (CTI_P_SideLogic getVariable ["cti_fobs", []]);
+//--- Track FOB(s) if needed
+{(_x) spawn CTI_PVF_CLT_OnFOBDeployment} forEach (CTI_P_SideLogic getVariable ["cti_fobs", []]);
 
 //--- Add lock/unlock to team vehicles if needed.
 {
@@ -59,3 +59,17 @@ if (isMultiplayer) then {sleep 5}; //--- Wait in MP for the net var to kick in
 		};
 	};
 } forEach (units player call CTI_CO_FNC_GetLiveUnits);
+
+//--- Anti Air Radar update
+if (CTI_BASE_AIRRADAR_Z_OFFSET > 0 || CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1) then {
+	{
+		if (alive _x && _x isKindOf "Air" && CTI_BASE_AIRRADAR_Z_OFFSET > 0) then {
+			_sideID = _x getVariable ["cti_net", -1];
+			if (_sideID != CTI_P_SideID && _sideID != -1) then {(_x) spawn CTI_CL_FNC_UpdateAirRadarMarker};
+		};
+		if (alive _x && _x isKindOf "StaticWeapon" && CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1 && getNumber(configFile >> "CfgVehicles" >> typeOf _x >> "artilleryScanner") > 0) then {
+			_sideID = _x getVariable ["cti_net_static", -1];
+			if (_sideID != -1) then {_artillery addEventHandler ["Fired", {[_this select 0, _this select 4, _this select 6] spawn CTI_CL_FNC_OnArtilleryFired}]};
+		};
+	} forEach vehicles;
+};

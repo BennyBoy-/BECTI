@@ -5,7 +5,6 @@ CTI_CO_FNC_ArrayShuffle = compileFinal preprocessFileLineNumbers "Common\Functio
 CTI_CO_FNC_ArrayToLower = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ArrayToLower.sqf";
 CTI_CO_FNC_ChangeFunds = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ChangeFunds.sqf";
 CTI_CO_FNC_ChangeFundsCommander = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ChangeFundsCommander.sqf";
-CTI_CO_FNC_ChangeFundsTeam = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ChangeFundsTeam.sqf";
 CTI_CO_FNC_ChangeSideSupply = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ChangeSideSupply.sqf";
 CTI_CO_FNC_ConvertGearToFlat = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ConvertGearToFlat.sqf";
 CTI_CO_FNC_CreateTeam = compileFinal preprocessFileLineNumbers "Common\Functions\Common_CreateTeam.sqf";
@@ -16,8 +15,10 @@ CTI_CO_FNC_EquipContainerBackpack = compileFinal preprocessFileLineNumbers "Comm
 CTI_CO_FNC_EquipContainerUniform = compileFinal preprocessFileLineNumbers "Common\Functions\Common_EquipContainerUniform.sqf";
 CTI_CO_FNC_EquipContainerVest = compileFinal preprocessFileLineNumbers "Common\Functions\Common_EquipContainerVest.sqf";
 CTI_CO_FNC_EquipUnit = compileFinal preprocessFileLineNumbers "Common\Functions\Common_EquipUnit.sqf";
+CTI_CO_FNC_EquipVehicleCargo = compileFinal preprocessFileLineNumbers "Common\Functions\Common_EquipVehicleCargo.sqf";
 CTI_CO_FNC_EquipVehicleCargoSpace = compileFinal preprocessFileLineNumbers "Common\Functions\Common_EquipVehicleCargoSpace.sqf";
 CTI_CO_FNC_GetAreaEnemiesCount = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetAreaEnemiesCount.sqf";
+CTI_CO_FNC_GetClosestDepot = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetClosestDepot.sqf";
 CTI_CO_FNC_GetClosestEnemyTown = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetClosestEnemyTown.sqf";
 CTI_CO_FNC_GetClosestEntity = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetClosestEntity.sqf";
 CTI_CO_FNC_GetClosestFriendlyTown = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetClosestFriendlyTown.sqf";
@@ -37,6 +38,7 @@ CTI_CO_FNC_GetItemBaseConfig = compileFinal preprocessFileLineNumbers "Common\Fu
 CTI_CO_FNC_GetLiveUnits = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetLiveUnits.sqf";
 CTI_CO_FNC_GetNearestSpecialVehicles = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetNearestSpecialVehicles.sqf";
 CTI_CO_FNC_GetPositionFrom = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetPositionFrom.sqf";
+CTI_CO_FNC_GetRandomBestPlaces = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetRandomBestPlaces.sqf";
 CTI_CO_FNC_GetRandomPosition = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetRandomPosition.sqf";
 CTI_CO_FNC_GetRespawnCamps = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetRespawnCamps.sqf";
 CTI_CO_FNC_GetSideColoration = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetSideColoration.sqf";
@@ -57,7 +59,11 @@ CTI_CO_FNC_GetTeamVehicles = compileFinal preprocessFileLineNumbers "Common\Func
 CTI_CO_FNC_GetTownCamps = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTownCamps.sqf";
 CTI_CO_FNC_GetTownCampsOnSide = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTownCampsOnSide.sqf";
 CTI_CO_FNC_GetTownsResources = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTownsResources.sqf";
+CTI_CO_FNC_GetUnitLoadout = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetUnitLoadout.sqf";
 CTI_CO_FNC_GetUnitsScore = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetUnitsScore.sqf";
+CTI_CO_FNC_GetUnitsRank = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetUnitsRank.sqf";
+CTI_CO_FNC_GetUpgrade = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetUpgrade.sqf";
+CTI_CO_FNC_GetVehicleCargo = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetVehicleCargo.sqf";
 CTI_CO_FNC_GetVehicleTurrets = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetVehicleTurrets.sqf";
 CTI_CO_FNC_HasOrderedChanged = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasOrderedChanged.sqf";
 CTI_CO_FNC_HasStructure = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasStructure.sqf";
@@ -66,11 +72,10 @@ CTI_CO_FNC_InitializeCustomVehicle = compileFinal preprocessFileLineNumbers "Com
 CTI_CO_FNC_InitializeNetVehicle = compileFinal preprocessFileLineNumbers "Common\Functions\Common_InitializeNetVehicle.sqf";
 CTI_CO_FNC_IsGroupCommander = compileFinal preprocessFileLineNumbers "Common\Functions\Common_IsGroupCommander.sqf";
 CTI_CO_FNC_IsGroupPlayable = compileFinal preprocessFileLineNumbers "Common\Functions\Common_IsGroupPlayable.sqf";
+CTI_CO_FNC_IsHQDeployed = compileFinal preprocessFileLineNumbers "Common\Functions\Common_IsHQDeployed.sqf";
 CTI_CO_FNC_ManVehicle = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ManVehicle.sqf";
 CTI_CO_FNC_MarkerUpdate = compileFinal preprocessFileLineNumbers "Common\Functions\Common_MarkerUpdate.sqf";
-CTI_CO_FNC_NetSend = compileFinal preprocessFileLineNumbers "Common\Functions\Common_NetSend.sqf";
 CTI_CO_FNC_OnHQHandleDamage = compileFinal preprocessFileLineNumbers "Common\Functions\Common_OnHQHandleDamage.sqf";
-CTI_CO_FNC_OnPVFReceived = compileFinal preprocessFileLineNumbers "Common\Functions\Common_OnPVFReceived.sqf";
 CTI_CO_FNC_OnUnitGetOut = compileFinal preprocessFileLineNumbers "Common\Functions\Common_OnUnitGetOut.sqf";
 CTI_CO_FNC_OnUnitHit = compileFinal preprocessFileLineNumbers "Common\Functions\Common_OnUnitHit.sqf";
 CTI_CO_FNC_OnUnitKilled = compileFinal preprocessFileLineNumbers "Common\Functions\Common_OnUnitKilled.sqf";
@@ -84,6 +89,7 @@ CTI_CO_FNC_SanitizeAircraftAA = compileFinal preprocessFileLineNumbers "Common\F
 CTI_CO_FNC_SanitizeAircraftAT = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraftAT.sqf";
 CTI_CO_FNC_SanitizeAircraftCM = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraftCM.sqf";
 CTI_CO_FNC_SanitizeAircraftFFAR = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraftFFAR.sqf";
+CTI_CO_FNC_SanitizeAircraftDAR = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraftDAR.sqf";
 CTI_CO_FNC_SanitizeArtillery = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeArtillery.sqf";
 
 CTI_CO_CustomIterator = 0;
@@ -107,15 +113,20 @@ call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_East.sqf";
 (west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_East.sqf";
 
+//--- APEX UNITS
+if (CTI_APEX_ADDON > 0) then { 
+(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_APEX_West.sqf";
+(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_APEX_East.sqf";
+};
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
-(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_West.sqf";
-(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_East.sqf";
+	(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_West.sqf";
+	(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_East.sqf";
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
-(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_OFPS_West.sqf";
-(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_OFPS_East.sqf";
+	(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_OFPS_West.sqf";
+	(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_OFPS_East.sqf";
 };
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_West.sqf";
@@ -126,9 +137,6 @@ if (CTI_OFPS_ADDON > 0) then {
 
 //--- External Functions/Modules
 (east) call compile preprocessFileLineNumbers "Common\Functions\External\Functions_SHK.sqf";
-
-//--- Network communication handler
-"CTI_NetCom" addPublicVariableEventHandler {(_this select 1) Spawn CTI_CO_FNC_OnPVFReceived};
 
 //--- Respawn markers
 createMarkerLocal ["respawn_east",getMarkerPos "CTI_EastRespawn"];
@@ -145,11 +153,66 @@ createMarkerLocal ["respawn_west",getMarkerPos "CTI_WestRespawn"];
 "respawn_west" setMarkerAlphaLocal 0;
 
 //--- AI/Players Loadouts, to prevent any bisteries, DO NOT give them a pistol.
+if (CTI_CUP_ADDON > 0) then { 
+	if (CTI_FACTION_WEST == 0) then {
+	//Arid Vanilla
+	missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
+		[["CUP_smg_MP5A5",["","","",""],["CUP_30Rnd_9x19_MP5"]],["CUP_launch_M136",["","","",""],["CUP_M136_M"]],["CUP_hgun_M9",["","","",""],["CUP_15Rnd_9x19_M9"]]],
+		[["CUP_U_B_USMC_MARPAT_WDL_RolledUp",["firstaidkit","firstaidkit","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5"]],["CUP_V_C_Police_Holster",["CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","",""]],["B_AssaultPack_rgr",["CUP_HandGrenade_M67","CUP_HandGrenade_M67",""]]],
+		["CUP_H_USMC_Headset_GoggleW_HelmetWDL",""],[["nvgoggles","binocular"],["itemmap","","itemradio","itemcompass","itemwatch"]]]];
+	};
+	if (CTI_FACTION_EAST == 0) then {	
+	missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
+		[["hgun_PDW2000_F",["","","",""],["30Rnd_9x21_Mag"]],["CUP_launch_RPG18",["","","",""],["CUP_RPG18_M"]],["CUP_hgun_Makarov",["","","",""],["CUP_8Rnd_9x18_Makarov_M"]]],
+		[["CUP_U_O_RUS_EMR_1_VDV",["firstaidkit","firstaidkit","30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag"]],["CUP_V_C_Police_Holster",["30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag","",""]],["B_FieldPack_oli",["CUP_HandGrenade_RGD5","CUP_HandGrenade_RGD5"]]],
+		["CUP_H_RUS_6B27_NVG_olive",""],[["CUP_NVG_PVS7","binocular"],["itemmap","","itemradio","itemcompass","itemwatch"]]]];
+
+	};
+	
+	if (CTI_FACTION_WEST == 1) then {
+	// Tropic Vanilla
+	missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
+		[["CUP_smg_MP5A5",["","","",""],["CUP_30Rnd_9x19_MP5"]],["CUP_launch_M136",["","","",""],["CUP_M136_M"]],["CUP_hgun_M9",["","","",""],["CUP_15Rnd_9x19_M9"]]],
+		[["CUP_U_B_USMC_MARPAT_WDL_RolledUp",["firstaidkit","firstaidkit","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5"]],["CUP_V_C_Police_Holster",["CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","",""]],["B_AssaultPack_rgr",["CUP_HandGrenade_M67","CUP_HandGrenade_M67",""]]],
+		["CUP_H_USMC_Headset_GoggleW_HelmetWDL",""],[["nvgoggles","binocular"],["itemmap","","itemradio","itemcompass","itemwatch"]]]];
+	};
+	if (CTI_FACTION_EAST == 1) then {	
+	missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
+		[["hgun_PDW2000_F",["","","",""],["30Rnd_9x21_Mag"]],["CUP_launch_RPG18",["","","",""],["CUP_RPG18_M"]],["CUP_hgun_Makarov",["","","",""],["CUP_8Rnd_9x18_Makarov_M"]]],
+		[["CUP_U_O_RUS_EMR_1_VDV",["firstaidkit","firstaidkit","30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag"]],["CUP_V_C_Police_Holster",["30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag","",""]],["B_FieldPack_oli",["CUP_HandGrenade_RGD5","CUP_HandGrenade_RGD5"]]],
+		["CUP_H_RUS_6B27_NVG_olive",""],[["CUP_NVG_PVS7","binocular"],["itemmap","","itemradio","itemcompass","itemwatch"]]]];
+
+	};
+	if (CTI_FACTION_WEST == 2) then {
+	//Winter Vanilla
+	missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
+		[["CUP_smg_MP5A5",["","","",""],["CUP_30Rnd_9x19_MP5"]],["CUP_launch_M136",["","","",""],["CUP_M136_M"]],["CUP_hgun_M9",["","","",""],["CUP_15Rnd_9x19_M9"]]],
+		[["sfp_m90s_uniform",["firstaidkit","firstaidkit","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5"]],["CUP_V_C_Police_Holster",["CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","CUP_30Rnd_9x19_MP5","",""]],["B_AssaultPack_rgr",["CUP_HandGrenade_M67","CUP_HandGrenade_M67",""]]],
+		["CUP_H_USMC_Headset_GoggleW_HelmetWDL",""],[["nvgoggles","binocular"],["itemmap","","itemradio","itemcompass","itemwatch"]]]];
+	};
+	if (CTI_FACTION_EAST == 2) then {	
+	missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
+		[["hgun_PDW2000_F",["","","",""],["30Rnd_9x21_Mag"]],["CUP_launch_RPG18",["","","",""],["CUP_RPG18_M"]],["CUP_hgun_Makarov",["","","",""],["CUP_8Rnd_9x18_Makarov_M"]]],
+		[["IP_U_O_CombatUniform_SnowHex",["firstaidkit","firstaidkit","30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag"]],["CUP_V_C_Police_Holster",["30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag","",""]],["B_FieldPack_oli",["CUP_HandGrenade_RGD5","CUP_HandGrenade_RGD5"]]],
+		["CUP_H_RUS_6B27_NVG_olive",""],[["CUP_NVG_PVS7","binocular"],["itemmap","","itemradio","itemcompass","itemwatch"]]]];
+
+	};
+}else {
+//Default Vanilla
 missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
-	[["CUP_arifle_M16A4_Base",["","",""],["30Rnd_556x45_Stanag_Tracer_Green"]],["CUP_launch_M136",["","",""],["CUP_M136_M"]],["hgun_p07_f",["","",""],[]]],
-	[["U_B_CombatUniform_mcam",["firstaidkit","firstaidkit","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],["V_PlateCarrier1_blk",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","16rnd_9x21_mag","16rnd_9x21_mag","smokeshell","smokeshellblue"]],["CUP_B_AssaultPack_Black",["CUP_HandGrenade_M67","CUP_HandGrenade_M67",""]]],
-	["H_HelmetB_black",""],[["nvgoggles","binocular"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
+	[["arifle_Mk20_ACO_pointer_F",["","acc_pointer_ir","optic_aco",""],[]],["",["","","",""],[]],["hgun_p07_f",["","","",""],[]]],
+	[["u_b_combatuniform_mcam",["firstaidkit","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],
+	["v_platecarrier2_rgr",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","16rnd_9x21_mag","16rnd_9x21_mag","smokeshell","smokeshellgreen","chemlight_green","chemlight_green"]],
+	["b_assaultpack_rgr_lat",["","",""]]],
+	["h_helmetb_sand",""],[["",""],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
+	
 missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
-	[["CUP_arifle_AK47",["","",""],["CUP_30Rnd_762x39_AK47_M"]],["",["","",""],[""]],["CUP_launch_RPG18",[],["CUP_RPG18_M"]],["hgun_rook40_f",["","",""],[]]],
-	[["u_o_combatuniform_ocamo",["firstaidkit","firstaidkit","CUP_30Rnd_762x39_AK47_M","CUP_30Rnd_762x39_AK47_M","CUP_30Rnd_762x39_AK47_M","CUP_30Rnd_762x39_AK47_M"]],["V_Chestrig_blk",["CUP_30Rnd_762x39_AK47_M","CUP_30Rnd_762x39_AK47_M","16rnd_9x21_mag","16rnd_9x21_mag","smokeshell","smokeshellred"]],["CUP_B_AssaultPack_Coyote",["CUP_HandGrenade_RGD5","CUP_HandGrenade_RGD5"]]],
-	["H_HelmetSpecO_ocamo",""],[["nvgoggles","binocular"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
+	[["arifle_TRG21_ACO_pointer_F",["","","optic_aco_grn"],["30Rnd_556x45_Stanag"]],["",["","",""],[""]],["hgun_rook40_f",["","",""],[]]],
+	[["u_o_combatuniform_ocamo",["firstaidkit","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],
+	["v_tacvest_khk",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","16rnd_9x21_mag","16rnd_9x21_mag","smokeshell","smokeshellred","chemlight_red","chemlight_red"]],
+	["b_fieldpack_cbr_lat",[]]],
+	["h_helmeto_ocamo",""],[["",""],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
+};
+
+	
+	

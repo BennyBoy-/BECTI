@@ -4,7 +4,7 @@
 	Alias:			CTI_CL_FNC_OnFriendlyStructureDestroyed
 	Description:	Called by the server "Killed" EH whenever a friendly structure is destroyed
 					Note this function is automatically called by the EH but can be called manually
-					It is called from the PVF "CTI_PVF_Client_OnStructureKilled"
+					It is called from the PVF "CTI_PVF_CLT_OnFriendlyStructureDestroyed"
 	Author: 		Benny
 	Creation Date:	19-09-2013
 	Revision Date:	19-09-2013
@@ -40,8 +40,8 @@ if !(_sell) then {
 };
 
 {
-	// if !(alive (_x select 3)) then {CTI_P_PurchaseRequests set [_forEachIndex, "!REMOVE!"]};
-	if !(alive (_x select 3)) then {CTI_P_PurchaseRequests deleteAt _forEachIndex};
+	if !(alive (_x select 3)) then {CTI_P_PurchaseRequests set [_forEachIndex, "!REMOVE!"]};
+	// if !(alive (_x select 3)) then {CTI_P_PurchaseRequests deleteAt _forEachIndex};
 } forEach +CTI_P_PurchaseRequests;
 
-// CTI_P_PurchaseRequests = CTI_P_PurchaseRequests - ["!REMOVE!"];
+CTI_P_PurchaseRequests = CTI_P_PurchaseRequests - ["!REMOVE!"];

@@ -31,7 +31,6 @@ private ["_funds", "_group", "_side", "_value"];
 
 _group = _this select 0;
 _value = _this select 1;
-_side = side _group;
 
 _side = side _group;
 

@@ -58,27 +58,54 @@ while {alive _structure} do {
 	_manned = false;
 	{
 		if !(isNil {_x getVariable "cti_aman_enabled"}) then {
-			_last_occupied = _x getVariable "cti_aman_time_occupied";
-			if (isNil '_last_occupied') then {_last_occupied = -6000};
+			_last_occupied = _x getVariable ["cti_aman_time_occupied", -6000];
+			
+			//--- Check if our defense has run out of ammo
+			if !(someAmmo _x) then {
+				//--- Check if we have a nearby ammo source
+				_ammo_trucks = [_x, CTI_SPECIAL_AMMOTRUCK, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
+				_nearest = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
+				
+				if (count _ammo_trucks > 0 || !isNull _nearest) then {
+					if (CTI_Log_Level >= CTI_Log_Information) then {
+						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4), defense is local [%5]? gunner is local [%6]?", _x, typeOf _x, _nearest, typeOf _nearest, local _x, local gunner _x]] call CTI_CO_FNC_Log;
+					};
+					
+					if (local gunner _x) then {
+						// _x setVehicleAmmoDef 1;
+						_x setVehicleAmmo 1;
+					} else {
+						[_x, 1] remoteExec ["CTI_PVF_CLT_RequestVehicleRearm", owner gunner _x];
+					};
+				};
+			};
 			
 			//--- The static is occupied
 			if (alive gunner _x || alive assignedGunner _x) then {
 				_x setVariable ["cti_aman_time_occupied", time];
 			} else {
 				//--- The static is empty
-				if (!alive gunner _x && !alive assignedGunner _x && !_manned && time - _last_occupied > CTI_BASE_DEFENSES_AUTO_DELAY && count(_defense_team call CTI_CO_FNC_GetLiveUnits) < CTI_BASE_DEFENSES_AUTO_LIMIT) then {
+				if (!alive gunner _x && !alive assignedGunner _x && !_manned && time - _last_occupied > CTI_BASE_DEFENSES_AUTO_DELAY && count(_defense_team call CTI_CO_FNC_GetLiveUnits) < CTI_BASE_DEFENSES_AUTO_LIMIT && vectorUp _x select 2 > .5) then {
 					_manned = true;
 					
 					if (CTI_Log_Level >= CTI_Log_Information) then {
 						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Creating a unit to man the defense [%1] (%2)", _x, typeOf _x]] call CTI_CO_FNC_Log;
 					};
 					
-					//--- Was there an AI in there previously?
+					//--- Was there an AI assigned in there previously?
 					if !(isNull assignedGunner _x) then {
 						if (CTI_Log_Level >= CTI_Log_Debug) then {
 							["DEBUG", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Defense [%1] (%2) has an assigned gunner (%3), attempting to unassign him", _x, typeOf _x, assignedGunner _x]] call CTI_CO_FNC_Log;
 						};
 						unassignVehicle (assignedGunner _x);
+					};
+					
+					//--- Check if the AI is still the gunner
+					if !(isNull gunner _x) then {
+						if (CTI_Log_Level >= CTI_Log_Debug) then {
+							["DEBUG", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Defense [%1] (%2) has a gunner (%3), attempting to delete him", _x, typeOf _x, gunner _x]] call CTI_CO_FNC_Log;
+						};
+						_x deleteVehicleCrew gunner _x;
 					};
 					
 					//--- Do we have an HC?
@@ -88,7 +115,7 @@ while {alive _structure} do {
 					};
 					
 					//--- The arguments used to create the AI
-					_ai_args = [missionNamespace getVariable format["CTI_%1_Soldier", _side], _defense_team, _position, _sideID, _net];
+					_ai_args = [missionNamespace getVariable format["CTI_%1_Static", _side], _defense_team, _position, _sideID, _net];
 					
 					//--- No delegation possible, create on the server
 					if !(_delegate) then {
@@ -104,25 +131,29 @@ while {alive _structure} do {
 						_ai assignAsGunner _x;
 						[_ai] orderGetIn true;
 						_ai moveInGunner _x;
+						
+						//--- Change Skill
+						_ai setSkill ["aimingAccuracy", 1]; // Set accuracy
+						_ai setSkill ["aimingShake", 1]; // Set weapon sway handling
+						_ai setSkill ["aimingSpeed", 1]; // Set aiming speed
+						_ai setSkill ["reloadSpeed", 1]; // Max out reload speed
+						_ai setSkill ["spotDistance", 1]; // Set detection distance
+						_ai setSkill ["spotTime", 1]; // Set detection time
+						_ai setSkill ["courage", 1]; // Never retreat
+						_ai setSkill ["commanding", 1]; // Communication skills
+						_ai setSkill ["general", 1]; //Sets all above
+
+						//--- Set to Combat
+						_ai setBehaviour "AWARE";
+						_ai setCombatMode "RED";
+						_ai setSpeedMode "FULL";
+						_ai enableAttack true;
+
 					} else {
 						//--- At least one HC is available
-						[_x, _defense_team, _sideID, _ai_args] Call CTI_SE_FNC_AttemptDefenseDelegation;
+						[_x, _defense_team, _side, _ai_args] Call CTI_SE_FNC_AttemptDefenseDelegation;
 					};
 					
-				};
-			};
-			
-			//--- But.. our defense may run out of ammo?
-			if !(someAmmo _x) then {
-				//--- Check if we have a nearby ammo source
-				_ammo_trucks = [_x, CTI_SPECIAL_AMMOTRUCK, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
-				_nearest = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
-				
-				if (count _ammo_trucks > 0 || !isNull _nearest) then {
-					if (CTI_Log_Level >= CTI_Log_Information) then {
-						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4)", _x, typeOf _x, _nearest, typeOf _nearest]] call CTI_CO_FNC_Log;
-					};
-					_x setVehicleAmmoDef 1;
 				};
 			};
 		};

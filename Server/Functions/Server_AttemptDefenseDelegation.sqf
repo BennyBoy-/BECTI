@@ -19,18 +19,15 @@
   # SYNTAX #
 	[UNIT, GROUP, SIDE ID, AI ARRAY ARGS] call CTI_SE_FNC_AttemptTownDelegation
 	
-  # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_NetSend
-	
   # EXAMPLE #
     [ai1, defGroup, 1, ["B_Soldier_R", defGroup, [500, 600, 0], 1, true]] Call CTI_SE_FNC_AttemptDefenseDelegation;
 */
 
-private ["_ai_args", "_hc", "_hcs", "_result", "_sideID", "_static", "_unit"];
+private ["_ai_args", "_hc", "_hcs", "_result", "_side", "_sideID", "_static", "_unit"];
 
 _static = _this select 0;
 _group = _this select 1;
-_sideID = _this select 2;
+_side = _this select 2;
 _ai_args = _this select 3;
 
 _hcs = missionNamespace getVariable "CTI_HEADLESS_CLIENTS";
@@ -39,6 +36,8 @@ _hcs = missionNamespace getVariable "CTI_HEADLESS_CLIENTS";
 if (isNil '_hcs') exitWith {false};
 //--- Don't bother if we have no more HC connected
 if (count _hcs < 1) exitWith {false};
+
+_sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 //--- Grab the first HC.
 _hc = (_hcs select 0) select 0;
@@ -57,11 +56,35 @@ if (groupOwner _group != _hc) then {
 	
 	//--- If the ownership was successfully changed, we want to add back the killed EH again on the non-initialized units.
 	if (_result) then {
-		[["CLIENT", _hc], "CTI_PVF_Client_OnDefenseDelegationLocalityChanged", [_group, _sideID]] call CTI_CO_FNC_NetSend;
+		[_group, _sideID] remoteExec ["CTI_PVF_HC_OnDefenseDelegationLocalityChanged", _hc];
 	};
 };
 
+//--- Respawn the defense since AI assignment will not work on the HC on the second time
+if !(isNil {_static getVariable "cti_delegated"}) then {
+	private ["_direction", "_position", "_var", "_varname"];
+	_position = position _static;
+	_direction = direction _static;
+	
+	_varname = format["CTI_%1_%2", _side, typeOf _static];
+	_var = missionNamespace getVariable _varname;
+	
+	deleteVehicle _static;
+	
+	_static = (_var select 1) createVehicle _position;
+	_static setVariable ["cti_managed", true];
+	_static setDir _direction;
+	_static setPos _position;
+	
+	_static addEventHandler ["killed", format["[_this select 0, _this select 1, %1, '%2', '%3'] spawn CTI_SE_FNC_OnDefenseDestroyed", _sideID, "", _varname]];
+	[_static, CTI_BASE_DEFENSES_EMPTY_TIMEOUT] spawn CTI_SE_FNC_HandleEmptyVehicle; //--- Track the defense lifespan
+	
+	if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_static], true]};
+};
+
+_static setVariable ["cti_delegated", true];
+
 //--- Send the creation request to the HC now
-[["CLIENT", _hc], "Client_OnDefenseDelegationReceived", [_static, _ai_args]] call CTI_CO_FNC_NetSend;
+[_static, _ai_args] remoteExec ["CTI_PVF_HC_OnDefenseDelegationReceived", _hc];
 
 true

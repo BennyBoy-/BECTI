@@ -53,19 +53,18 @@ if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
 
 _unit = _team createUnit [_classname, _position, [], 0, _special];
-_unit setSkill (0.3 + (random 0.5));//tbd tweak
 
 if (_net) then {_unit setVariable ["cti_net", _sideID, true]};
 
 //--- Add a Killed EH.
 _unit addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
 
-//admin zeus
-if !( isNil "ADMIN_ZEUS"  ) then {
-	if !(isServer) then {
-		["SERVER", "Server_Addeditable",[ADMIN_ZEUS,_unit]] call CTI_CO_FNC_NetSend;
+//--- ZEUS Curator Editable
+if !(isNil "ADMIN_ZEUS") then {
+	if (CTI_IsServer) then {
+		ADMIN_ZEUS addCuratorEditableObjects [[_unit], true];
 	} else {
-		ADMIN_ZEUS addCuratorEditableObjects [[_unit],true] ;
+		[ADMIN_ZEUS, _unit] remoteExec ["CTI_PVF_SRV_RequestAddCuratorEditable", CTI_PV_SERVER];
 	};
 };
 
