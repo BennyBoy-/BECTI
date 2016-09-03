@@ -101,6 +101,8 @@ with missionNamespace do {
 			};
 		};
 
+		(group _ai) setVariable ["isDefensiveTeam", true];
+		
 		// diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 	};
 	

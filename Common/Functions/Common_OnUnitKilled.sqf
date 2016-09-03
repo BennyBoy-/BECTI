@@ -115,9 +115,10 @@ if (!isNil '_var') then {
 						// Award kills of base defense team to commander
 						_logic = (side _x) call CTI_CO_FNC_GetSideLogic;
 						_defense_team = _logic getVariable "cti_defensive_team";
-						diag_log ("killdbg: A3 " + str(side _x) + " B " + str(_logic) + " D " + str(_x) + " IS " + str(_x getVariable "isD"));
+						diag_log ("killdbg: A2");
+						diag_log ("killdbg: A3 side-> " + str(side _x) + " logic-> " + str(_logic) + " group-> " + str(_x) + " isD-> " + str(_x getVariable "isDefensiveTeam"));
 						
-						if (_x == _defense_team) then {
+						if (_x getVariable "isDefensiveTeam") then {
 							diag_log "killdbg: ->comm";
 							_commander = (side _x) call CTI_CO_FNC_GetSideCommanderTeam;
 							diag_log ( "killdbg: comm is " + str(_commander));

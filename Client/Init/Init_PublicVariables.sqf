@@ -81,11 +81,11 @@ with missionNamespace do {
 		_killed_pname = _this select 2;
 		
 		_delay = 5 + random 30;
-		sleep _delay;
+		//sleep _delay;
 		
 		_var = missionNamespace getVariable _type_killed;
 		_label = _var select CTI_UNIT_LABEL;
-		diag_log ("killdbg: awarding P " + player);
+		diag_log ("killdbg: awarding P " + str(player));
 		(_award) call CTI_CL_FNC_ChangePlayerFunds;
 		if (_killed_pname == "") then {
 			["award-bounty-basedefense", [_award, _label]] call CTI_CL_FNC_DisplayMessage;
