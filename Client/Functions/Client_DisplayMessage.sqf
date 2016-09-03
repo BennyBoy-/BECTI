@@ -41,6 +41,10 @@ _parameters = if (count _this > 1) then {_this select 1} else {[]};
 switch (_message_var) do {
 	case "award-bounty": {player groupChat format ["$%1 awarded for the neutralization of a %2", _parameters select 0, _parameters select 1]};
 	case "award-bounty-pvp": {player groupChat format ["$%1 awarded for the neutralization of %2 (%3)", _parameters select 0, _parameters select 1, _parameters select 2]};
+	case "award-bounty-basedefense": {CTI_P_ChatID commandChat format ["$%1 awarded for the neutralization of a %2 by our base defenses", _parameters select 0, _parameters select 1]};
+	case "award-bounty-basedefense-player": {CTI_P_ChatID commandChat format ["$%1 awarded for the neutralization of %2 (%3) by our base defenses", _parameters select 0, _parameters select 1, _parameters select 2]};
+	case "basedefense-kill": {CTI_P_ChatID commandChat format ["Our base defenses have neutralized a %1", _parameters select 0]};
+	case "basedefense-kill-player": {CTI_P_ChatID commandChat format ["Our base defenses have neutralized %1 (%2)", _parameters select 0, _parameters select 1]};
 	case "award-bounty-structure": {player groupChat format ["$%1 awarded for the neutralization of %2 structure", _parameters select 0, _parameters select 1]};
 	case "build-by": {
 		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _parameters select 1];

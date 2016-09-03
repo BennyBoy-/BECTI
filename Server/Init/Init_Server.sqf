@@ -127,7 +127,7 @@ if (_attempts >= 500) then {
 		_defense_team setBehaviour "COMBAT";
 		_defense_team setCombatMode "RED";
 		_defense_team enableAttack true;
-		_logic setVariable ["cti_defensive_team", _defense_team];
+		_logic setVariable ["cti_defensive_team", _defense_team, true];
 	};
 	
 	//--- Add FOB if needed
