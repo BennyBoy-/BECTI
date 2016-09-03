@@ -21,11 +21,12 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], [
 	true, //--- Respawn Range
 	true, //--- IR SMOKE
 	true, //--- Satellite
-	true //--- Nuke
+	true, //--- Nuke
+	true //--- Supply Rate
 ]];
 
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
-	[1000,2000,3500,5000], //--- Gear
+    [1000,2000,3500,5000], //--- Gear
 	[500,1000,1500], //--- Barracks
 	[1500,3500,4500,4000,6000], //--- Light
 	[2000,4000,6000,8000], //--- Heavy
@@ -38,12 +39,13 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500], //--- Air CM
 	[3500, 7000, 10000], //--- Towns Depots
 	[1000, 2000], //--- Halo
-	[6000,6000,6000], //--- Air Radar
-	[6000,6000,6000], //--- Art Radar
+	[1500, 3000, 5000], //--- Air Radar
+	[1500, 3000, 5000], //--- Art Radar
 	[1500,2500,3500], //--- Respawn Range
 	[1500], //--- IR SMOKE
 	[75000], //--- Satellite
-	[100000] //--- Nuke
+	[100000], //--- Nuke
+	[12000, 24000, 36000] //--- Supply Rate
 ]];
 
 if (CTI_GUERILLA_MODE == 1 || CTI_ZOMBIE_MODE == 1) then {
@@ -66,7 +68,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	3, //--- Respawn Range
 	0, //--- IR Smoke
 	0, //--- Satellite
-	0 //--- Nuke
+	0, //--- Nuke
+	3 //--- Supply Rate
 ]];
 } else {
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
@@ -88,7 +91,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	3, //--- Respawn Range
 	1, //--- IR Smoke
 	1, //--- Satellite
-	1 //--- Nuke
+	1, //--- Nuke
+	3 //--- Supply Rate
 ]];
 };
 
@@ -111,11 +115,12 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[],[],[]], //--- Respawn Range
 	[[]], //--- IR Smoke
 	[[CTI_UPGRADE_AIR, 3]], //--- Satellite
-	[[CTI_UPGRADE_LIGHT,4]] //--- Nuke
+	[[CTI_UPGRADE_LIGHT,4]], //--- Nuke
+	[[],[],[]] //--- Supply Rate
 ]];
 
 if (CTI_DEV_MODE > 0) then { 
-missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
+	missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[1, 1, 1, 1], //--- Gear
 		[1, 1, 1], //--- Barracks
 		[1, 1, 1, 1, 1], //--- Light
@@ -134,8 +139,9 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[1, 1, 1], //--- Respawn Range
 		[1], //--- IR Smoke
 		[1], //--- Satellite
-		[1] //--- Nuke
-]];
+		[1], //--- Nuke
+		[1,1,1] //--- Supply Rate
+	]];
 }else {
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[60,120,360,480], //--- Gear
@@ -150,14 +156,11 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[60], //--- Air AA
 		[60], //--- Air CM
 		[60, 120, 180], //--- Towns Occupation
-		[60, 120], //--- Halo
-		[60,60,60], //--- Air Radar
-		[60,60,60], //--- Art Radar
-		[60,120,180], //--- Respawn Range
 		[60], //--- IR Smoke
 		[600], //--- Satellite
-		[300] //--- Nuke
-]];
+		[300], //--- Nuke
+		[60, 75, 90] //--- Supply Rate
+	]];
 };
 
 //todo, on commander missing link checkup, skip disabled upgrades.
@@ -170,6 +173,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_AI_ORDER", _side], [
 	[CTI_UPGRADE_HEAVY, 1],
 	[CTI_UPGRADE_NAVAL, 1],
 	[CTI_UPGRADE_AIR, 1],
+	[CTI_UPGRADE_SUPPLY_RATE, 1],
 	[CTI_UPGRADE_GEAR, 3],
 	[CTI_UPGRADE_TOWNS, 2],
 	[CTI_UPGRADE_AIR_FFAR, 1],
@@ -177,6 +181,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_AI_ORDER", _side], [
 	[CTI_UPGRADE_AIR_AT, 1],
 	[CTI_UPGRADE_AIR_AA, 1],
 	[CTI_UPGRADE_AIR_CM, 1],
+	[CTI_UPGRADE_SUPPLY_RATE, 2],
 	[CTI_UPGRADE_TOWNS, 3],
 	[CTI_UPGRADE_HALO, 1],
 	[CTI_UPGRADE_AIRR, 1],
@@ -207,7 +212,8 @@ if (CTI_IsClient) then {
 		["Respawn Range", "Increase the max range of the respawn trucks, town camps and FOBS."], //--- Respawn Range
 		["(DISABLED) IR Smoke", "Enable IR Smoke Deployment from Vehicles"], //--- IR Smoke
 		["(DISABLED) Satellite", "Allows the use of the satellite camera"], //--- Satellite
-		["Nuclear Arms Deal", "Unlock Nuke Truck in Light Factory"] //--- Nuke
+		["Nuclear Arms Deal", "Unlock Nuke Truck in Light Factory"], //--- Nuke
+		["Supply Rate", "Improves the Supply delivery rate"] //--- Supply Rate
 	]];
 };
 
