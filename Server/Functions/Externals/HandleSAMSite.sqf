@@ -17,7 +17,7 @@ private ["_detectionMinAlt", "_engagementDistanceMax", "_radarNames", "_launcher
 _detectionMinAlt = 100;
 _radarNames = ["pook_SNR75_radar", "POOK_ANMPQ53_CDF"];	// east, west
 _launcherNames = ["pook_SA20_static_INS", "pook_MIM104_PAC2Battery"];	// east, west
-_reloadTime = 10;	// Launcher reload time. This is the minimum interval in which a single launcher will be fired
+_reloadTime = 90;	// Launcher reload time. This is the minimum interval in which a single launcher will be fired
 _missileLockTime = 3;	// Minimum missile lock time
 _targetEngagementInterval = 5;		// Minimum time between engagements of a single target
 // ---------------------
