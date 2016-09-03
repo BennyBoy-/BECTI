@@ -267,8 +267,8 @@ if (CTI_TOWNS_OCCUPATION_RESISTANCE == 4) then {
 	GUER_NAVAL_LARGE_ASSAULT_BOAT = ["I_Boat_Armed_01_minigun_F"];
 };
 if (CTI_TOWNS_OCCUPATION_RESISTANCE == 5) then { 
-//--- CUP - Takistani Locals TOWN OCCUPATION
-	//--- Infantry
+//--- CUP - TAKISTANI MILITARY TOWN OCCUPATION
+    //--- Infantry
 	GUER_SOLDIER = "CUP_I_TK_GUE_Soldier";
 	GUER_SOLDIER_AA = "CUP_I_TK_GUE_Soldier_AA";
 	GUER_SOLDIER_AR = "CUP_I_TK_GUE_Soldier_AR";
@@ -287,37 +287,37 @@ if (CTI_TOWNS_OCCUPATION_RESISTANCE == 5) then {
 	GUER_SOLDIER_SQUADLEADER = "CUP_I_TK_GUE_Commander";
 	//--- Naval Infantry
 	GUER_SOLDIER_NAVAL_INFANTRY = "I_diver_F";
-	GUER_SOLDIER_NAVAL_SQUADLEADER = "I_diver_TL_F";
-	//--- Light Vehicles
-	GUER_VEHICLE_LIGHT1 = ["CUP_I_Datsun_PK"];
-	GUER_VEHICLE_LIGHT2 = ["CUP_I_LR_MG_AAF"];
-	GUER_VEHICLE_LIGHT3 = ["CUP_I_BTR40_MG_TKG"];
-	GUER_VEHICLE_LIGHT4 = ["CUP_I_M113_RACS"];
-	GUER_VEHICLE_LIGHT5 = ["CUP_I_BRDM2_HQ_NAPA"];
-	GUER_VEHICLE_LIGHT6 = ["CUP_I_BRDM2_NAPA"];
-	GUER_VEHICLE_LIGHT7 = ["CUP_I_BRDM2_ATGM_NAPA"];
-	//--- APCs
-	GUER_VEHICLE_APC1 = ["CUP_I_BMP1_TK_GUE"];
-	GUER_VEHICLE_APC2 = ["CUP_I_BMP2_NAPA"];
-	GUER_VEHICLE_APC3 = ["I_APC_tracked_03_cannon_F"];
-	//--- Tanks
-	GUER_VEHICLE_ARMORED1 = ["CUP_I_T34_NAPA"];	
-	GUER_VEHICLE_ARMORED2 = ["CUP_I_T55_TK_GUE"];
-	GUER_VEHICLE_ARMORED3 = ["CUP_I_T72_NAPA"];
-	//--- AA Vehicles
-	GUER_VEHICLE_AA1 = ["CUP_I_ZSU23_AAF"];
-	GUER_VEHICLE_AA2 = ["CUP_I_Ural_ZU23_NAPA"];
-	GUER_VEHICLE_AA3 = ["CUP_I_M163_AAF"];
-	//--- Air
-	GUER_AIR_HELI1 = ["CUP_O_UH1H_SLA"];
-	GUER_AIR_HELI2 = [""];
-	GUER_AIR_AA = [""];
-	GUER_AIR_CAS = [""];
-	//--- Boats
-	GUER_NAVAL_ASSAULT_BOAT1 = ["CUP_B_RHIB2Turret_USMC"];
-	GUER_NAVAL_ASSAULT_BOAT2 = ["I_Boat_Armed_01_minigun_F"];
-	GUER_NAVAL_MEDIUM_ASSAULT_BOAT = ["I_Boat_Armed_01_minigun_F"];
-	GUER_NAVAL_LARGE_ASSAULT_BOAT = ["I_Boat_Armed_01_minigun_F"];
+GUER_SOLDIER_NAVAL_SQUADLEADER = "I_diver_TL_F";
+    //--- Light Vehicles
+    GUER_VEHICLE_LIGHT1 = ["CUP_O_UAZ_MG_TKA"];
+    GUER_VEHICLE_LIGHT2 = ["CUP_O_UAZ_AGS30_TKA"];
+    GUER_VEHICLE_LIGHT3 = ["CUP_O_LR_MG_TKA"];
+    GUER_VEHICLE_LIGHT4 = ["CUP_O_BTR40_MG_TKA"];
+    GUER_VEHICLE_LIGHT5 = ["CUP_O_LR_SPG9_TKA"];
+    GUER_VEHICLE_LIGHT6 = ["CUP_O_UAZ_SPG9_TKA"];
+    GUER_VEHICLE_LIGHT7 = ["CUP_O_BRDM2_TKA"];
+    //--- APCs
+    GUER_VEHICLE_APC1 = ["CUP_O_M113_TKA"];
+    GUER_VEHICLE_APC2 = ["CUP_O_BMP1_TKA"];
+    GUER_VEHICLE_APC3 = ["CUP_O_BMP2_TKA"];
+    //--- Tanks
+    GUER_VEHICLE_ARMORED1 = ["CUP_O_T34_TKA"]; 
+    GUER_VEHICLE_ARMORED2 = ["CUP_O_T55_TK"];
+    GUER_VEHICLE_ARMORED3 = ["CUP_O_T72_TKA"];
+    //--- AA Vehicles
+    GUER_VEHICLE_AA1 = ["CUP_O_Ural_ZU23_TKA"];
+    GUER_VEHICLE_AA2 = ["CUP_O_BMP2_ZU_TKA"];
+    GUER_VEHICLE_AA3 = ["CUP_O_ZSU23_TK"];
+    //--- Air
+    GUER_AIR_HELI1 = ["CUP_O_UH1H_TKA"];
+    GUER_AIR_HELI2 = ["CUP_O_Mi24_D_TK"];
+    GUER_AIR_AA = ["CUP_O_Su25_TKA"];
+    GUER_AIR_CAS = ["CUP_O_Su25_TKA"];
+    //--- Boats
+    GUER_NAVAL_ASSAULT_BOAT1 = ["I_Boat_Armed_01_minigun_F"];
+    GUER_NAVAL_ASSAULT_BOAT2 = ["I_Boat_Armed_01_minigun_F"];
+    GUER_NAVAL_MEDIUM_ASSAULT_BOAT = ["I_Boat_Armed_01_minigun_F"];
+    GUER_NAVAL_LARGE_ASSAULT_BOAT = ["I_Boat_Armed_01_minigun_F"];
 };
 if (CTI_TOWNS_OCCUPATION_RESISTANCE == 6) then { 
 //--- MIXED TOWN OCCUPATION - vanilla/cup/ofps/etc..
@@ -424,6 +424,113 @@ if (CTI_TOWNS_OCCUPATION_RESISTANCE == 7) then {
 	GUER_NAVAL_ASSAULT_BOAT2 = ["I_Boat_Armed_01_minigun_F"];
 	GUER_NAVAL_MEDIUM_ASSAULT_BOAT = ["I_Boat_Armed_01_minigun_F"];
 	GUER_NAVAL_LARGE_ASSAULT_BOAT = ["I_Boat_Armed_01_minigun_F"];
+};
+if (CTI_TOWNS_OCCUPATION_RESISTANCE == 8) then { 
+//--- AAF / SFP WINTER TOWN OCCUPATION - WINTER
+	//--- Infantry
+	GUER_SOLDIER = "AAF_D_Soldier_F";
+	GUER_SOLDIER_AA = "AAF_D_Special_AA_F";
+	GUER_SOLDIER_AR = "AAF_D_Special_AR_F";
+	GUER_SOLDIER_AT = "AAF_D_Special_AT_F";
+	GUER_SOLDIER_CREW = "AAF_D_Soldier_crew_F";
+	GUER_SOLDIER_LAT = "AAF_D_Soldier_LAT_F";
+	GUER_SOLDIER_HAT = "AAF_D_Special_AT_F";
+	GUER_SOLDIER_ENGINEER = "AAF_D_Soldier_engineer_F";
+	GUER_SOLDIER_EXP = "AAF_D_Special_exp_F";
+	GUER_SOLDIER_GL = "AAF_D_Special_GL_F";
+	GUER_SOLDIER_MEDIC = "AAF_D_Special_Medic_F";
+	GUER_SOLDIER_MG = "AAF_D_Soldier_AR_F";
+	GUER_SOLDIER_PILOT = "AAF_D_Soldier_pilot_F";
+	GUER_SOLDIER_SNIPER = "AAF_D_Sniper_F";
+	GUER_SOLDIER_TEAMLEADER = "AAF_D_Special_TL_F";
+	GUER_SOLDIER_SQUADLEADER = "AAF_D_Special_SL_F";
+	//--- Naval Infantry
+	GUER_SOLDIER_NAVAL_INFANTRY = "I_diver_F";
+	GUER_SOLDIER_NAVAL_SQUADLEADER = "I_diver_TL_F";
+	//--- Light Vehicles
+	GUER_VEHICLE_LIGHT1 = ["sfp_bv206_winter"];
+	GUER_VEHICLE_LIGHT2 = ["sfp_tgb1111_sog_ksp58"];
+	GUER_VEHICLE_LIGHT3 = ["sfp_tgb13_ksp58"];
+	GUER_VEHICLE_LIGHT4 = ["sfp_tgb1111"];
+	GUER_VEHICLE_LIGHT5 = ["sfp_tgb1111_sog_rbs56"];
+	GUER_VEHICLE_LIGHT6 = ["sfp_tgb16_rws"];
+	GUER_VEHICLE_LIGHT7 = ["sfp_tgb16_rws"];
+	//--- APCs
+	GUER_VEHICLE_APC1 = ["sfp_patgb203"];
+	GUER_VEHICLE_APC2 = ["sfp_strf90c_snow"];
+	GUER_VEHICLE_APC3 = ["sfp_lvkv90c_snow"];
+	//--- Tanks
+	GUER_VEHICLE_ARMORED1 = ["sfp_ikv91"];	
+	GUER_VEHICLE_ARMORED2 = ["sfp_strv102"];
+	GUER_VEHICLE_ARMORED3 = ["sfp_strv122_snow"];
+	//--- AA Vehicles
+	GUER_VEHICLE_AA1 = [""];
+	GUER_VEHICLE_AA2 = [""];
+	GUER_VEHICLE_AA3 = [""];
+	//--- Air
+	GUER_AIR_HELI1 = [""];
+	GUER_AIR_HELI2 = [""];
+	GUER_AIR_AA = [""];
+	GUER_AIR_CAS = [""];
+	//--- Boats
+	GUER_NAVAL_ASSAULT_BOAT1 = ["sfp_strb90"];
+	GUER_NAVAL_ASSAULT_BOAT2 = ["sfp_strb90_rws"];
+	GUER_NAVAL_MEDIUM_ASSAULT_BOAT = ["sfp_strb90_rws"];
+	GUER_NAVAL_LARGE_ASSAULT_BOAT = ["sfp_strb90_rws"];
+};
+if (CTI_TOWNS_OCCUPATION_RESISTANCE == 9) then { 
+//--- Swedish Forces TOWN OCCUPATION - WINTER - SAVING FOR USE LATER
+/*	//--- Infantry
+	GUER_SOLDIER = "sfp_m90s_rifleman_ak5";
+	GUER_SOLDIER_AA = "sfp_m90s_aa_specialist_rbs69";
+	GUER_SOLDIER_AR = "sfp_m90s_automaticrifleman_ksp90";
+	GUER_SOLDIER_AT = "sfp_m90s_at_specialist_pskott86";
+	GUER_SOLDIER_CREW = "sfp_m90s_crew";
+	GUER_SOLDIER_LAT = "sfp_m90s_at_specialist_pskott86";
+	GUER_SOLDIER_HAT = "sfp_m90s_at_specialist_grg86";
+	GUER_SOLDIER_ENGINEER = "sfp_m90s_engineer";
+	GUER_SOLDIER_EXP = "sfp_m90s_explosive_specialist";
+	GUER_SOLDIER_GL = "sfp_m90s_gr";
+	GUER_SOLDIER_MEDIC = "sfp_m90s_medic";
+	GUER_SOLDIER_MG = "sfp_m90s_machinegunner_ksp58";
+	GUER_SOLDIER_PILOT = "sfp_m90s_pilot";
+	GUER_SOLDIER_SNIPER = "sfp_m90s_rifleman_ag90";
+	GUER_SOLDIER_TEAMLEADER = "sfp_m90s_teamleader";
+	GUER_SOLDIER_SQUADLEADER = "sfp_m90s_squadleader";
+	//--- Naval Infantry
+	GUER_SOLDIER_NAVAL_INFANTRY = "sfp_m90t_combat_diver";
+	GUER_SOLDIER_NAVAL_SQUADLEADER = "sfp_m90t_combat_diver_tl";
+	//--- Light Vehicles
+	GUER_VEHICLE_LIGHT1 = ["sfp_bv206_winter"];
+	GUER_VEHICLE_LIGHT2 = ["sfp_tgb1111_sog_ksp58"];
+	GUER_VEHICLE_LIGHT3 = ["sfp_tgb13_ksp58"];
+	GUER_VEHICLE_LIGHT4 = ["sfp_tgb1111"];
+	GUER_VEHICLE_LIGHT5 = ["sfp_tgb1111_sog_rbs56"];
+	GUER_VEHICLE_LIGHT6 = ["sfp_tgb16_rws"];
+	GUER_VEHICLE_LIGHT7 = ["sfp_tgb16_rws"];
+	//--- APCs
+	GUER_VEHICLE_APC1 = ["sfp_patgb203"];
+	GUER_VEHICLE_APC2 = ["sfp_strf90c_snow"];
+	GUER_VEHICLE_APC3 = ["sfp_lvkv90c_snow"];
+	//--- Tanks
+	GUER_VEHICLE_ARMORED1 = ["sfp_ikv91"];	
+	GUER_VEHICLE_ARMORED2 = ["sfp_strv102"];
+	GUER_VEHICLE_ARMORED3 = ["sfp_strv122_snow"];
+	//--- AA Vehicles
+	GUER_VEHICLE_AA1 = [""];
+	GUER_VEHICLE_AA2 = [""];
+	GUER_VEHICLE_AA3 = [""];
+	//--- Air
+	GUER_AIR_HELI1 = [""];
+	GUER_AIR_HELI2 = [""];
+	GUER_AIR_AA = [""];
+	GUER_AIR_CAS = [""];
+	//--- Boats
+	GUER_NAVAL_ASSAULT_BOAT1 = ["sfp_strb90"];
+	GUER_NAVAL_ASSAULT_BOAT2 = ["sfp_strb90_rws"];
+	GUER_NAVAL_MEDIUM_ASSAULT_BOAT = ["sfp_strb90_rws"];
+	GUER_NAVAL_LARGE_ASSAULT_BOAT = ["sfp_strb90_rws"];
+	*/
 };
 //--- Town Teams Templates
 //--- Infantry Squads

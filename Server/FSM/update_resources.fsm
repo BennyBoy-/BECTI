@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,162,6316128,1,-620.422607,163.824570,50.778564,-570.654663,973,881,1};
-window[] = {2,-1,-1,-1,-1,906,125,1380,125,3,991};
+globals[] = {25.000000,1,0,0,0,640,480,1,162,6316128,1,-620.422607,163.824570,50.778564,-570.654663,786,771,1};
+window[] = {2,-1,-1,-1,-1,956,1855,3110,175,3,804};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -100,7 +100,10 @@ class FSM
        "	if (_pool_income_commander > 0) then {[_side, _pool_income_commander] call CTI_CO_FNC_ChangeFundsCommander};" \n
        "	" \n
        "	//--- Last, we deal with the supply" \n
-       "	if (_supply > 0) then {[_side, _supply] call CTI_CO_FNC_ChangeSideSupply};" \n
+       "	if (_supply > 0) then {" \n
+       "		_supply =  _supply + (_supply * (CTI_UPGRADE_CST_SUPPLY_COEF select ([_side, CTI_UPGRADE_SUPPLY_RATE] call CTI_CO_FNC_GetUpgrade)));" \n
+       "		[_side, _supply] call CTI_CO_FNC_ChangeSideSupply;" \n
+       "	};" \n
        "	" \n
        "	if (CTI_Log_Level >= CTI_Log_Information) then {" \n
        "		[""INFORMATION"", ""FILE: Server\FSM\update_resources.fsm"", format[""Income dispatching for side [%1] with Award percentage [%2], Resources percentage [%3] resulting in a Commander Pool of [$%4] and a Player Pool of [$%5] for a total pool size of [$%6] and a supply income of [%7S]"", _side, _percent_award, _percent_resources, _pool_income_commander, _pool_income_players, _pool_income_total, _supply]] call CTI_CO_FNC_Log;" \n

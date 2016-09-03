@@ -47,7 +47,7 @@ class RscText {
 	colorShadow[] = {0,0,0,0.5};
 	font = "PuristaMedium";
 	text="";
-	SizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	SizeEx = "(			(			(			((safezoneW / safezoneH) min 1.0) / 1.0) / 25) * 1)";
 	colorText[] = {1,1,1,1.0};
 	colorBackground[] = {0,0,0,0};
 	linespacing = 1;

@@ -14,6 +14,37 @@ with missionNamespace do {
 		_this addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", CTI_P_SideID]];
 	};
 	
+	//--- The client receives an Air unit to track
+	CTI_PVF_CLT_OnAirUnitTracked = {
+		_vehicle = _this;
+		
+		(_vehicle) spawn CTI_CL_FNC_UpdateAirRadarMarker;
+	};
+	
+	//--- The client receives an Artillery piece to track
+	CTI_PVF_CLT_OnArtilleryPieceTracked = {
+		_artillery = _this;
+		
+		_artillery addEventHandler ["Fired", {[_this select 0, _this select 4, _this select 6] spawn CTI_CL_FNC_OnArtilleryFired}];
+	};
+	
+	//--- The client receives an Artillery fire notification
+	CTI_PVF_CLT_OnArtilleryPieceFire = {
+		_position = _this select 0;
+		_direction = _this select 1;
+		
+		hint parseText format["<t size='1.3' color='#eded23'>Warning</t><br /><br />Hostile Artillery fire detected at grid <t color='#F5D363'>%1</t>.", mapGridPosition _position];
+		
+		_marker = createMarkerLocal [format ["cti_artradar_hostile_%1", CTI_P_MarkerIterator], _position]; //todo randomize
+		CTI_P_MarkerIterator = CTI_P_MarkerIterator + 1;
+		_marker setMarkerTypeLocal "mil_arrow2";
+		_marker setMarkerColorLocal "ColorYellow";
+		_marker setMarkerDirLocal _direction;
+		_marker setMarkerSizeLocal [1, 1];
+		
+		_marker spawn {sleep CTI_BASE_ARTRADAR_MARKER_TIMEOUT; deleteMarkerLocal _this};
+	};
+	
 	//--- The client receives a bounty for killing a structure
 	CTI_PVF_CLT_OnBountyStructure = {
 		_label = _this select 0;
@@ -79,8 +110,10 @@ with missionNamespace do {
 		_marker setMarkerSizeLocal [0.75, 0.75]; 
 		_marker setMarkerTextLocal "FOB";
 		_fob addAction ["<t color='#e67b09'>FOB: Buy Bike (50$)</t>","Client\Actions\Action_Buy_Town.sqf", ["dbo_CIV_new_bike",50,true], 99, false, true, "", " !CTI_P_PreBuilding && vehicle player == player"];
-		_fob addAction ["<t color='#e67b09'>FOB: Buy Motorcycle (150$)</t>","Client\Actions\Action_Buy_Town.sqf", ["CUP_M1030",150,true], 99, false, true, "", " !CTI_P_PreBuilding && vehicle player == player"];
+//		_fob addAction ["<t color='#e67b09'>FOB: Buy Motorcycle (150$)</t>","Client\Actions\Action_Buy_Town.sqf", ["CUP_M1030",150,true], 99, false, true, "", " !CTI_P_PreBuilding && vehicle player == player"];
 		_fob addAction ["<t color='#e67b09'>FOB: Buy Quadbike (250$)</t>","Client\Actions\Action_Buy_Town.sqf", ["C_Quadbike_01_F",250,true], 99, false, true, "", " !CTI_P_PreBuilding && vehicle player == player"];
+		_fob addAction ["<t color='#e67b09'>FOB: Buy Scooter (150$)</t>","Client\Actions\Action_Buy_Town.sqf", ["sfp_dakota",150,true], 99, false, true, "", " !CTI_P_PreBuilding && vehicle player == player"];
+		_fob addAction ["<t color='#e67b09'>FOB: Buy Mercedes Benz (500$)</t>","Client\Actions\Action_Buy_Town.sqf", ["sfp_mercedes",500,true], 99, false, true, "", " !CTI_P_PreBuilding && vehicle player == player"];
 		
 		[_fob, _marker] spawn {
 			_structure = _this select 0;

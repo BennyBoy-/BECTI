@@ -17,7 +17,7 @@
 if !(isNil "ZAM_showNames_var_loopExlusion_pressLoop") exitWith {/*hint "I tried to run more than one loop at once"*/};
 ZAM_showNames_var_loopExlusion_pressLoop = 1;
 
-private ["_objects", "_dist_man", "_isGroup", "_dist_ruck", "_ambient_light", "_player", "_ambient_light", "_dist_man_id"];
+private ["_objects", "_dist_man", "_isGroup", "_dist_ruck", "_ambient_light", "_player", "_ambient_light", "_dist_man_id", "_magn", "_vd", "_temp_array", "_isGroup"];
 
 _objects = _this select 0;
 _player = _this select 1;
@@ -28,6 +28,11 @@ _dist_man = _this select 5;
 _dist_ruck = _this select 6;
 _dist_misc = _this select 7;
 _dist_man_id = _this select 8;
+
+//Default Color
+_ambient_light_r = 0.77;
+_ambient_light_g = 0.51;
+_ambient_light_b = 0.08;
 
 // Safety
 if (isNil "ZAM_showNames_var_drawJobs") then {ZAM_showNames_var_drawJobs = []};
@@ -166,55 +171,29 @@ for "" from 0 to 1 step 0 do {
 				call {
 					// In a vehicle
 					if ((vehicle _x) != _x) exitWith {
-						_text_size_max = 0.035; // was 0.05 (then 0.035)
+						_text_size_max = 0.06; // was 0.05 (then 0.035)
 						_height_mod = -1;
 					};
 					// Crouching
 					if ((stance _x) == "CROUCH") exitWith {
-						_text_size_max = 0.135; // was 0.15 (then 0.105)
-						_height_mod = -0.48;
+						_text_size_max = 0.06; // was 0.15 (then 0.105)
+						_height_mod = -0.4;
 					};
 					// Prone
 					if ((stance _x) == "PRONE") exitWith {
-						_text_size_max = 0.135; // was 0.15 (then 0.105)
-						_height_mod = 0.02;
+						_text_size_max = 0.06; // was 0.15 (then 0.105)
+						_height_mod = 0.03;
 					};
 					// Default (Standing)
-					_text_size_max = 0.135; // was 0.15 (then 0.105)
-					_height_mod = 0.08;
+					_text_size_max = 0.06; // was 0.15 (then 0.105)
+					_height_mod = 0.1;
 				};
 
 				// Apply rank option
 				call {
 					if (ZAM_showNames_ranks && {_same_side && _isKnown}) exitWith {
 						//set rank according to current score
-						_score = score _x;
-						switch (true) do {
-							case (_score < 200) : { 
-								_x setRank "PRIVATE";
-							};
-							case (_score >= 200 && _score < 350) : { 
-								_x setRank "CORPORAL";
-							};
-							case (_score >= 500 && _score < 600) : { 
-								_x setRank "SERGEANT";
-							};
-							case (_score >= 600 && _score < 700) : { 
-								_x setRank "LIEUTENANT";
-							};
-							case (_score >= 700 && _score < 800) : { 
-								_x setRank "CAPTAIN";
-							};
-							case (_score >= 800 && _score < 900) : { 
-								_x setRank "MAJOR";
-							};
-							case (_score >= 900 && _score < 1000) : { 
-								_x setRank "COLONEL";
-							};
-							case (_score >= 1000) : { 
-								_x setRank "GENERAL";
-							};
-						};
+						_rank = (_x) call CTI_CO_FNC_GetUnitsRank;
 					
 						_rank_path = [rank _x] call ZAM_fnc_showNames_getRankIcon;
 						_icon_size = ((_icon_size_base / (_distance max 0.01)) * _magn) min 1.8;	// Cap icon size (was 7 and 2)
@@ -226,7 +205,7 @@ for "" from 0 to 1 step 0 do {
 				};
 
 				// Text size
-				_text_size = ((0.37 / (_distance max 0.01)) * _magn) min _text_size_max;	// Cap text size (was 0.55)
+				_text_size = ((1.1 / (_distance max 0.01)) * _magn) min _text_size_max;	// Cap text size (was 0.55)
 
 				// Height above head
 				_height = _height_mod + _height_mod_icon;
@@ -244,9 +223,9 @@ for "" from 0 to 1 step 0 do {
 					_colour_g = (_ambient_light - _volume) max 0;	// Subtract other colors proportional to volume	(floor 0)
 					_colour_b = (_ambient_light - _volume) max 0;	// Subtract other colors proportional to volume	(floor 0)
 				} else {
-					_colour_r = _ambient_light;
-					_colour_g = _ambient_light;
-					_colour_b = _ambient_light;
+					_colour_r = _ambient_light_r;
+					_colour_g = _ambient_light_g;
+					_colour_b = _ambient_light_b;
 				};
 
 			};
@@ -265,9 +244,9 @@ for "" from 0 to 1 step 0 do {
 				_height = - 1.65;
 				_vd_id = _dist_ruck;
 				_vd_fog_mod_x = 0.4;
-				_colour_r = _ambient_light;
-				_colour_g = _ambient_light;
-				_colour_b = _ambient_light;
+				_colour_r = _ambient_light_r;
+				_colour_g = _ambient_light_g;
+				_colour_b = _ambient_light_b;
 			};
 			//------------------------------------
 
@@ -283,9 +262,9 @@ for "" from 0 to 1 step 0 do {
 				_height = - 1.65;
 				_vd_id = _dist_misc;
 				_vd_fog_mod_x = 0.77;
-				_colour_r = _ambient_light;
-				_colour_g = _ambient_light;
-				_colour_b = _ambient_light;
+				_colour_r = _ambient_light_r;
+				_colour_g = _ambient_light_g;
+				_colour_b = _ambient_light_b;
 			//------------------------------------
 
 		};
@@ -366,6 +345,57 @@ for "" from 0 to 1 step 0 do {
 	};
 
 	//hint format ["ZAM_showNames_fnc_pressLoop count: %1", count ZAM_showNames_var_drawJobs];
+		
+	// Update sun/moon
+	_ambient_light = sunormoon;
+	if (_ambient_light > 0.4) then {
+		_ambient_light_r = 0.77;
+		_ambient_light_g = 0.51;
+		_ambient_light_b = 0.08;
+	} else {
+		_ambient_light_r = _ambient_light;
+		_ambient_light_g = _ambient_light;
+		_ambient_light_b = _ambient_light;
+	};
+	
+	//////////////////////////////////////////////////////////////////////////////////UPDATE OBJECTS	
+	if(ZAM_showNames_default_on) then {
+		_vd = viewDistance * 0.9;
+		// Get Array
+		_temp_array = if (!isMultiplayer) then {allUnits} else {playableUnits};
+		// Remove player
+		_temp_array = [_temp_array, [player]] call ZAM_fnc_showNames_filterArrayByEquality;
+		// Remove if player on different side or too far away (with support for setCaptive)
+		_objects = [_temp_array, { ( (side (group _this)) != _player_side ) || { player distance _this > ( (_dist_man * _magn) min _vd ) }}] call ZAM_fnc_showNames_filterArrayByCode;
+
+		// Check if there are group members for group differentiation
+		_isGroup = if (ZAM_showNames_group) then {
+			( {if (group _x == group _player) exitWith {1}} count _objects ) != 0;
+		} else {false};
+
+		// Ruck name tags
+		if (ZAM_showNames_rucks) then {
+			// Find all gear stacks on ground
+			_temp_array = (getPosATL player) nearObjects ["GroundWeaponHolder", (_dist_ruck * _magn) min _vd];
+
+			// Remove gear stacks that don't have rucks or name tags
+			_temp_array = [_temp_array, { _ruck = firstBackpack _this; isNull (_ruck) || {_ruck getVariable ["zam_showNames_tag",""] == ""} }] call ZAM_fnc_showNames_filterArrayByCode;
+
+			// Add to names_to_show
+			{
+				_objects set [count _objects, _x]
+			} count _temp_array;
+		};
+
+		// Add Discoverable objects (if not already in the obkects list)
+		{
+			if !(_x in _objects) then {
+				_objects set [count _objects, _x]
+			};
+		} count ZAM_showNames_var_discoverable;
+	};
+	//////////////////////////////////////////////////////////////////////////////////END UPDATE	
+	
 
 	// Delay
 	sleep ZAM_showNames_var_pressLoop_delay;

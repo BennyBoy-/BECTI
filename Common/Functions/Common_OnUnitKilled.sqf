@@ -155,3 +155,11 @@ if (!isNil '_var') then {
 		};
 	};
 };
+
+//--- Remove "men" instantly on death if enabled
+if (CTI_GC_CLEANUP_MAN > 0 && !_isvehicle_killed) then {
+	_killed spawn {
+		sleep 2;
+		deleteVehicle _this;
+	};
+};

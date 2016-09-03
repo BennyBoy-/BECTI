@@ -14,6 +14,21 @@ if (CTI_WEATHER_WIND >= 0) then { _wind_setting = CTI_WEATHER_WIND / 10 };
 if (CTI_WEATHER_WAVES ==-1) then { _waves_setting = random 1 };
 if (CTI_WEATHER_WAVES >= 0) then { _waves_setting = CTI_WEATHER_WAVES / 100 };
 
+if (CTI_WEATHER_SNOW > 0) then { 
+	_rain_setting = 0;
+	_overcast_setting = 100;
+	_fog_setting = 80;
+	_wind_setting = 0.8;
+	_waves_setting = 90;
+};
+if (CTI_WEATHER_SAND > 0) then { 
+	_rain_setting = 0;
+	_overcast_setting = 0;
+	_fog_setting = 0;
+	_wind_setting = 0.8;
+	_waves_setting = 90;
+};
+
 //Initial Weather Settings
 _nexttime = 0;
 _nexttime setRain _rain_setting;

@@ -15,13 +15,17 @@ sleep 3;
 waitUntil {animationState player != "Acts_carFixingWheel" || !alive player || vehicle player != player || !alive _vehicle || _vehicle distance player > 5};
 
 if (alive player && vehicle player == player && alive _vehicle && _vehicle distance player <= 5) then {
+	
 	//--- Overall repairs (Global Arg)
+
+	/*	
 	if (_dammages > 0) then {
 		_dammages = _dammages - .15;
 		if (_dammages < 0) then {_dammages = 0};
 		_vehicle setDammage _dammages;
 	};
-	
+	*/
+
 	//--- Parts repairs (Local Arg)
 	if (local _vehicle) then {
 		[_vehicle, _hitPoints, .10] call CTI_PVF_CLT_RequestVehicleHitPointsRepair;
@@ -29,6 +33,13 @@ if (alive player && vehicle player == player && alive _vehicle && _vehicle dista
 		[_vehicle, _hitPoints, .10] remoteExec ["CTI_PVF_SRV_RequestVehicleHitPointsRepair", CTI_PV_SERVER];
 	};
 	
+	//--- Removed option to skip reapir if unit is at 100% health
+	//--- This fixes bug when wheels dont get repaired
+	_dammages = _dammages - .15;
+	if (_dammages < 0) then {_dammages = 0};
+	_vehicle setDammage _dammages;
+
+
 	//--- Fuel (Local Arg)
 	if (fuel _vehicle < .10) then {
 		if (local _vehicle) then {

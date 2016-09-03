@@ -3,6 +3,7 @@ class CfgMovesBasic
 	class DefaultDie;
 	class ManActions
 	{
+		AR_01 = "AR_01_Idle";
 		AUR_01 = "AUR_01_Idle";
 		AUR_01_Jump1 = "";
 		AUR_01_Jump2 = "";
@@ -17,6 +18,152 @@ class CfgMovesBasic
 			AUR_01_Jump3[] = {"AUR_01_Jump3","Gesture"};
 		};
 		class RifleStandActions;
+		class AR_BaseActions: RifleStandActions
+		{
+			AdjustF = "";
+			AdjustB = "";
+			AdjustL = "";
+			AdjustR = "";
+			AdjustLF = "";
+			AdjustLB = "";
+			AdjustRB = "";
+			AdjustRF = "";
+			agonyStart = "";
+			agonyStop = "";
+			medicStop = "";
+			medicStart = "";
+			medicStartUp = "";
+			medicStartRightSide = "";
+			GestureAgonyCargo = "";
+			grabCarry = "";
+			grabCarried = "";
+			grabDrag = "";
+			grabDragged = "";
+			carriedStill = "";
+			released = "";
+			releasedBad = "";
+			Stop = "";
+			StopRelaxed = "";
+			TurnL = "";
+			TurnR = "";
+			TurnLRelaxed = "";
+			TurnRRelaxed = "";
+			ReloadMagazine = "";
+			ReloadMGun = "";
+			ReloadRPG = "ReloadRPG";
+			ReloadMortar = "";
+			WalkF = "";
+			WalkLF = "";
+			WalkRF = "";
+			WalkL = "";
+			WalkR = "";
+			WalkLB = "";
+			WalkRB = "";
+			WalkB = "";
+			PlayerWalkF = "";
+			PlayerWalkLF = "";
+			PlayerWalkRF = "";
+			PlayerWalkL = "";
+			PlayerWalkR = "";
+			PlayerWalkLB = "";
+			PlayerWalkRB = "";
+			PlayerWalkB = "";
+			SlowF = "";
+			SlowLF = "";
+			SlowRF = "";
+			SlowL = "";
+			SlowR = "";
+			SlowLB = "";
+			SlowRB = "";
+			SlowB = "";
+			PlayerSlowF = "";
+			PlayerSlowLF = "";
+			PlayerSlowRF = "";
+			PlayerSlowL = "";
+			PlayerSlowR = "";
+			PlayerSlowLB = "";
+			PlayerSlowRB = "";
+			PlayerSlowB = "";
+			FastF = "";
+			FastLF = "";
+			FastRF = "";
+			FastL = "";
+			FastR = "";
+			FastLB = "";
+			FastRB = "";
+			FastB = "";
+			TactF = "";
+			TactLF = "";
+			TactRF = "";
+			TactL = "";
+			TactR = "";
+			TactLB = "";
+			TactRB = "";
+			TactB = "";
+			PlayerTactF = "";
+			PlayerTactLF = "";
+			PlayerTactRF = "";
+			PlayerTactL = "";
+			PlayerTactR = "";
+			PlayerTactLB = "";
+			PlayerTactRB = "";
+			PlayerTactB = "";
+			EvasiveLeft = "";
+			EvasiveRight = "";
+			startSwim = "";
+			surfaceSwim = "";
+			bottomSwim = "";
+			StopSwim = "";
+			startDive = "";
+			SurfaceDive = "";
+			BottomDive = "";
+			StopDive = "";
+			Down = "";
+			Up = "";
+			PlayerStand = "";
+			PlayerCrouch = "";
+			PlayerProne = "";
+			Lying = "";
+			Stand = "";
+			Combat = "";
+			Crouch = "";
+			CanNotMove = "";
+			Civil = "";
+			CivilLying = "";
+			FireNotPossible = "";
+			WeaponOn = "";
+			WeaponOff = "";
+			Default = "";
+			JumpOff = "";
+			StrokeFist = "";
+			StrokeGun = "";
+			SitDown = "";
+			Salute = "";
+			saluteOff = "";
+			GetOver = "";
+			Diary = "";
+			Surrender = "";
+			Gear = "";
+			BinocOn = "";
+			BinocOff = "";
+			PutDown = "";
+			PutDownEnd = "";
+			Medic = "";
+			MedicOther = "";
+			Treated = "";
+			LadderOnDown = "";
+			LadderOnUp = "";
+			LadderOff = "";
+			LadderOffTop = "";
+			LadderOffBottom = "";
+			PrimaryWeapon = "";
+			SecondaryWeapon = "";
+			Binoculars = "";
+			StartFreefall = "";
+			FDStart = "";
+			useFastMove = 0;
+			stance = "ManStanceUndefined";
+		};
 		class AUR_BaseActions: RifleStandActions
 		{
 			AdjustF = "";
@@ -163,6 +310,61 @@ class CfgMovesBasic
 			useFastMove = 0;
 			stance = "ManStanceUndefined";
 		};
+		class AR_01_Actions: AR_BaseActions
+		{
+			upDegree = "ManPosCombat";
+			stop = "AR_01_Aim";
+			stopRelaxed = "AR_01_Aim";
+			default = "AR_01_Aim";
+			Stand = "AR_01_Idle";
+			HandGunOn = "AR_01_Aim_Pistol";
+			PrimaryWeapon = "AR_01_Aim";
+			SecondaryWeapon = "";
+			Binoculars = "";
+			die = "AR_01_Die";
+			Unconscious = "AR_01_Die";
+			civil = "";
+		};
+		class AR_01_DeadActions: AR_BaseActions
+		{
+			stop = "AR_01_Die";
+			default = "AR_01_Die";
+			die = "AR_01_Die";
+			Unconscious = "AR_01_Die";
+		};
+		class AR_01_IdleActions: AR_01_Actions
+		{
+			upDegree = "ManPosStand";
+			stop = "AR_01_Idle";
+			stopRelaxed = "AR_01_Idle";
+			default = "AR_01_Idle";
+			Combat = "AR_01_Aim";
+			fireNotPossible = "AR_01_Aim";
+			PlayerStand = "AR_01_Aim";
+		};
+		class AR_01_PistolActions: AR_01_Actions
+		{
+			upDegree = "ManPosHandGunStand";
+			stop = "AR_01_Aim_Pistol";
+			stopRelaxed = "AR_01_Aim_Pistol";
+			default = "AR_01_Aim_Pistol";
+			throwGrenade[] = {"GestureThrowGrenadePistol","Gesture"};
+			Stand = "AR_01_Idle_Pistol";
+			die = "AR_01_Die_Pistol";
+			Unconscious = "AR_01_Die_Pistol";
+		};
+		class AR_01_IdlePistolActions: AR_01_Actions
+		{
+			upDegree = "ManPosHandGunStand";
+			stop = "AR_01_Idle_Pistol";
+			stopRelaxed = "AR_01_Idle_Pistol";
+			default = "AR_01_Idle_Pistol";
+			Combat = "AR_01_Aim_Pistol";
+			fireNotPossible = "AR_01_Aim_Pistol";
+			PlayerStand = "AR_01_Aim_Pistol";
+			die = "AR_01_Die_Pistol";
+			Unconscious = "AR_01_Die_Pistol";
+		};
 		class AUR_01_Actions: AUR_BaseActions
 		{
 			upDegree = "ManPosCombat";
@@ -268,12 +470,179 @@ class CfgMovesMaleSdr: CfgMovesBasic
 			disableWeapons = 1;
 			disableWeaponsLong = 1;
 		};
+		class AR_01_Aim: cargo_base_Rope
+		{
+			actions = "AR_01_Actions";
+			leftHandIKCurve[] = {1};
+			minPlayTime = 0.1;
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aim.rtm";
+			speed = 100000;
+			ConnectTo[] = {};
+			InterpolateTo[] = {"AR_01_Idle",0.1,"AR_01_Aim_ToPistol",0.1,"AR_01_Die",0.1};
+			variantsAI[] = {"AR_01_Aim_Idling",1};
+			variantsPlayer[] = {"AR_01_Aim_Idling",1};
+		};
+		class AR_01_Aim_No_Actions: AR_01_Aim
+		{
+			actions = "NoActions";
+			variantsPlayer[] = {};
+			variantsAI[] = {};
+			ConnectTo[] = {};
+			InterpolateTo[] = {};
+		};
+		class AR_01_Aim_Idling: AR_01_Aim
+		{
+			variantsPlayer[] = {};
+			headBobStrength = 0;
+			soundEnabled = 1;
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aim1.rtm";
+			speed = -8;
+			ConnectTo[] = {"AR_01_Aim",0.1};
+		};
+		class AR_01_Idle: cargo_base_idle
+		{
+			actions = "AR_01_IdleActions";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_idle.rtm";
+			speed = 100000;
+			minPlayTime = 0.1;
+			aiming = "aimingDefault";
+			leftHandIKCurve[] = {0};
+			InterpolateTo[] = {"AR_01_Aim",0.1,"AR_01_Aim_ToPistol",0.1,"AR_01_Die",0.1};
+			variantsAI[] = {"AR_01_Idle_Idling",1};
+			variantsPlayer[] = {"AR_01_Idle_Idling",1};
+		};
+		class AR_01_Idle_No_Actions: AR_01_Idle
+		{
+			actions = "NoActions";
+			variantsPlayer[] = {};
+			variantsAI[] = {};
+			ConnectTo[] = {};
+			InterpolateTo[] = {};
+		};
+		class AR_01_Idle_Idling: AR_01_Idle
+		{
+			variantsPlayer[] = {};
+			headBobStrength = 0;
+			soundEnabled = 1;
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_idle1.rtm";
+			speed = -10;
+			ConnectTo[] = {"AR_01_Idle",0.1};
+		};
+		class AR_01_Aim_Pistol: cargo_basepistol
+		{
+			actions = "AR_01_PistolActions";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aimpistol.rtm";
+			aiming = "aimingRifleSlingDefault";
+			aimingBody = "aimingUpRifleSlingDefault";
+			speed = 100000;
+			variantsAI[] = {"AR_01_Aim_Pistol_Idling",1};
+			variantsPlayer[] = {"AR_01_Aim_Pistol_Idling",1};
+			ConnectTo[] = {};
+			InterpolateTo[] = {"AR_01_Aim_FromPistol",0.1,"AR_01_Idle_Pistol",0.2,"AR_01_Die_Pistol",0.5};
+		};
+		class AR_01_Aim_Pistol_No_Actions: AR_01_Aim_Pistol
+		{
+			actions = "NoActions";
+			variantsPlayer[] = {};
+			variantsAI[] = {};
+			ConnectTo[] = {};
+			InterpolateTo[] = {};
+		};
+		class AR_01_Aim_Pistol_Idling: AR_01_Aim_Pistol
+		{
+			variantsPlayer[] = {};
+			headBobStrength = 0;
+			soundEnabled = 1;
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aimpistol1.rtm";
+			speed = -8;
+			ConnectTo[] = {"AR_01_Aim_Pistol",0.1};
+		};
+		class AR_01_Idle_Pistol: cargo_base_idle_pistol
+		{
+			actions = "AR_01_IdlePistolActions";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_idlepistol.rtm";
+			speed = 100000;
+			aiming = "aimingRifleSlingDefault";
+			aimingBody = "aimingUpRifleSlingDefault";
+			InterpolateTo[] = {"AR_01_Aim_Pistol",0.1,"AR_01_Aim_FromPistol",0.1,"AR_01_Die_Pistol",0.1};
+			variantsAI[] = {"AR_01_Idle_Pistol_Idling",1};
+			variantsPlayer[] = {"AR_01_Idle_Pistol_Idling",1};
+		};
+		class AR_01_Idle_Pistol_No_Actions: AR_01_Idle_Pistol
+		{
+			actions = "NoActions";
+			variantsPlayer[] = {};
+			variantsAI[] = {};
+			ConnectTo[] = {};
+			InterpolateTo[] = {};
+		};
+		class AR_01_Idle_Pistol_Idling: AR_01_Idle
+		{
+			variantsPlayer[] = {};
+			headBobStrength = 0;
+			soundEnabled = 1;
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_idlepistol1.rtm";
+			speed = -10;
+			ConnectTo[] = {"AR_01_Idle_Pistol",0.1};
+		};
+		class AR_01_Aim_ToPistol: AmovPpneMstpSrasWrflDnon_AmovPpneMstpSrasWpstDnon
+		{
+			actions = "AR_01_PistolActions";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aimtopistol.rtm";
+			speed = 2;
+			ConnectTo[] = {"AR_01_Aim_ToPistol_End",0.1};
+			InterpolateTo[] = {};
+		};
+		class AR_01_Aim_ToPistol_End: AmovPpneMstpSrasWrflDnon_AmovPpneMstpSrasWpstDnon_end
+		{
+			actions = "AR_01_PistolActions";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aimtopistol_end.rtm";
+			speed = 1.875;
+			ConnectTo[] = {"AR_01_Aim_Pistol",0.1};
+			InterpolateTo[] = {};
+		};
+		class AR_01_Aim_FromPistol: AmovPpneMstpSrasWpstDnon_AmovPpneMstpSrasWrflDnon
+		{
+			actions = "AR_01_PistolActions";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aimFrompistol.rtm";
+			speed = 2.307692;
+			ConnectTo[] = {"AR_01_Aim_FromPistol_End",0.1};
+			InterpolateTo[] = {};
+		};
+		class AR_01_Aim_FromPistol_End: AmovPpneMstpSrasWpstDnon_AmovPpneMstpSrasWrflDnon_end
+		{
+			actions = "AR_01_Actions";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aimfrompistol_end.rtm";
+			aiming = "aimingDefault";
+			aimingBody = "aimingUpDefault";
+			speed = 2;
+			leftHandIKCurve[] = {0,0,0.5,1};
+			ConnectTo[] = {"AR_01_Aim",0.1};
+			InterpolateTo[] = {};
+		};
+		class AR_01_Die: DefaultDie
+		{
+			actions = "AR_01_DeadActions";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_die.rtm";
+			speed = 1;
+			looped = "false";
+			terminal = 1;
+			ragdoll = 1;
+			ConnectTo[] = {"Unconscious",0.1};
+			InterpolateTo[] = {};
+		};
+		class AR_01_Die_Pistol: AR_01_Die
+		{
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_die.rtm";
+			actions = "AR_01_DeadActions";
+			showHandGun = 1;
+		};
 		class AUR_01_Aim: cargo_base_Rope
 		{
 			actions = "AUR_01_Actions";
 			leftHandIKCurve[] = {1};
 			minPlayTime = 0.1;
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_aim.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aim.rtm";
 			speed = 100000;
 			ConnectTo[] = {};
 			InterpolateTo[] = {"AUR_01_Idle",0.1,"AUR_01_Aim_ToPistol",0.1,"AUR_01_Die",0.1};
@@ -293,14 +662,14 @@ class CfgMovesMaleSdr: CfgMovesBasic
 			variantsPlayer[] = {};
 			headBobStrength = 0;
 			soundEnabled = 1;
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_aim1.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aim1.rtm";
 			speed = -8;
 			ConnectTo[] = {"AUR_01_Aim",0.1};
 		};
 		class AUR_01_Idle: cargo_base_idle
 		{
 			actions = "AUR_01_IdleActions";
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_idle.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_idle.rtm";
 			speed = 100000;
 			minPlayTime = 0.1;
 			aiming = "aimingDefault";
@@ -322,14 +691,14 @@ class CfgMovesMaleSdr: CfgMovesBasic
 			variantsPlayer[] = {};
 			headBobStrength = 0;
 			soundEnabled = 1;
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_idle1.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_idle1.rtm";
 			speed = -10;
 			ConnectTo[] = {"AUR_01_Idle",0.1};
 		};
 		class AUR_01_Aim_Pistol: cargo_basepistol
 		{
 			actions = "AUR_01_PistolActions";
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_aimpistol.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aimpistol.rtm";
 			aiming = "aimingRifleSlingDefault";
 			aimingBody = "aimingUpRifleSlingDefault";
 			speed = 100000;
@@ -351,14 +720,14 @@ class CfgMovesMaleSdr: CfgMovesBasic
 			variantsPlayer[] = {};
 			headBobStrength = 0;
 			soundEnabled = 1;
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_aimpistol1.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aimpistol1.rtm";
 			speed = -8;
 			ConnectTo[] = {"AUR_01_Aim_Pistol",0.1};
 		};
 		class AUR_01_Idle_Pistol: cargo_base_idle_pistol
 		{
 			actions = "AUR_01_IdlePistolActions";
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_idlepistol.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_idlepistol.rtm";
 			speed = 100000;
 			aiming = "aimingRifleSlingDefault";
 			aimingBody = "aimingUpRifleSlingDefault";
@@ -379,14 +748,14 @@ class CfgMovesMaleSdr: CfgMovesBasic
 			variantsPlayer[] = {};
 			headBobStrength = 0;
 			soundEnabled = 1;
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_idlepistol1.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_idlepistol1.rtm";
 			speed = -10;
 			ConnectTo[] = {"AUR_01_Idle_Pistol",0.1};
 		};
 		class AUR_01_Aim_ToPistol: AmovPpneMstpSrasWrflDnon_AmovPpneMstpSrasWpstDnon
 		{
 			actions = "AUR_01_PistolActions";
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_aimtopistol.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aimtopistol.rtm";
 			speed = 2;
 			ConnectTo[] = {"AUR_01_Aim_ToPistol_End",0.1};
 			InterpolateTo[] = {};
@@ -394,7 +763,7 @@ class CfgMovesMaleSdr: CfgMovesBasic
 		class AUR_01_Aim_ToPistol_End: AmovPpneMstpSrasWrflDnon_AmovPpneMstpSrasWpstDnon_end
 		{
 			actions = "AUR_01_PistolActions";
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_aimtopistol_end.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aimtopistol_end.rtm";
 			speed = 1.875;
 			ConnectTo[] = {"AUR_01_Aim_Pistol",0.1};
 			InterpolateTo[] = {};
@@ -402,7 +771,7 @@ class CfgMovesMaleSdr: CfgMovesBasic
 		class AUR_01_Aim_FromPistol: AmovPpneMstpSrasWpstDnon_AmovPpneMstpSrasWrflDnon
 		{
 			actions = "AUR_01_PistolActions";
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_aimFrompistol.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aimFrompistol.rtm";
 			speed = 2.307692;
 			ConnectTo[] = {"AUR_01_Aim_FromPistol_End",0.1};
 			InterpolateTo[] = {};
@@ -410,7 +779,7 @@ class CfgMovesMaleSdr: CfgMovesBasic
 		class AUR_01_Aim_FromPistol_End: AmovPpneMstpSrasWpstDnon_AmovPpneMstpSrasWrflDnon_end
 		{
 			actions = "AUR_01_Actions";
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_aimfrompistol_end.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_aimfrompistol_end.rtm";
 			aiming = "aimingDefault";
 			aimingBody = "aimingUpDefault";
 			speed = 2;
@@ -421,7 +790,7 @@ class CfgMovesMaleSdr: CfgMovesBasic
 		class AUR_01_Die: DefaultDie
 		{
 			actions = "AUR_01_DeadActions";
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_die.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_die.rtm";
 			speed = 1;
 			looped = "false";
 			terminal = 1;
@@ -431,7 +800,7 @@ class CfgMovesMaleSdr: CfgMovesBasic
 		};
 		class AUR_01_Die_Pistol: AUR_01_Die
 		{
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_die.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_die.rtm";
 			actions = "AUR_01_DeadActions";
 			showHandGun = 1;
 		};
@@ -502,7 +871,7 @@ class CfgGesturesMale
 	{
 		class AUR_01_Jump1: Default
 		{
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_Jump1.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_Jump1.rtm";
 			minPlayTime = 1;
 			looped = 0;
 			speed = 0.2;
@@ -521,12 +890,12 @@ class CfgGesturesMale
 		};
 		class AUR_01_Jump2: AUR_01_Jump1
 		{
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_Jump2.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_Jump2.rtm";
 			speed = 1e-008;
 		};
 		class AUR_01_Jump3: AUR_01_Jump1
 		{
-			file = "\AUR_AdvancedUrbanRappelling\anims\Rup_RopeFX_01_Jump3.rtm";
+			file = "Client\Functions\Externals\AdvancedUrbanRapel\anims\Rup_RopeFX_01_Jump3.rtm";
 			speed = 0.85;
 		};
 	};

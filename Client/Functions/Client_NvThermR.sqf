@@ -1,5 +1,17 @@
 private ["_restrict","_gear","_func1","_u","_func2"];
-_restrict=["optic_NVS","optic_Nightstalker","optic_tws","optic_tws_mg","NVGoggles"];
+_restrict=[];
+if (CTI_SM_NONV == 1) then {
+	//No NV
+	_restrict=["NVGoggles","NVGogglesB_gry_F","optic_NVS","optic_Nightstalker","H_HelmetSpecO_ghex_F","CUP_optic_AN_PAS_13c1","CUP_optic_AN_PAS_13c2","CUP_optic_AN_PVS_10","CUP_optic_AN_PVS_4"];
+};
+if (CTI_SM_NONV == 2) then {
+	//No Thermals
+	_restrict=["NVGogglesB_gry_F","optic_Nightstalker","optic_tws","optic_tws_mg","H_HelmetSpecO_ghex_F","CUP_optic_AN_PAS_13c1","CUP_optic_AN_PAS_13c2"];
+};
+if (CTI_SM_NONV == 3) then {
+	//No NV and No Thermals
+	_restrict=["NVGoggles","NVGogglesB_gry_F","optic_NVS","optic_Nightstalker","optic_tws","optic_tws_mg","H_HelmetSpecO_ghex_F","CUP_optic_AN_PAS_13c1","CUP_optic_AN_PAS_13c2","CUP_optic_AN_PVS_10","CUP_optic_AN_PVS_4"];
+};
 
 if (CTI_isClient) then {
 	waitUntil {!isnil "CTI_InitClient"};

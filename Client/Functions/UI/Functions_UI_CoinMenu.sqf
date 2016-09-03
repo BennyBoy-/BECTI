@@ -74,9 +74,11 @@ CTI_Coin_LoadSubMenu = {
 			_sub_itemVariable = [];
 			{
 				_info = missionNamespace getVariable _x;
-				_sub_items pushBack format["%1  -  $%2", _info select 0, _info select 2];
-				_sub_itemEnabled pushBack (if (_funds >= _info select 2) then {1} else {0});
-				_sub_itemVariable pushBack _x;
+				if ((missionNamespace getVariable "CTI_COIN_SOURCE") in (_info select 6)) then {
+					_sub_items pushBack format["%1  -  $%2", _info select 0, _info select 2];
+					_sub_itemEnabled pushBack (if (_funds >= _info select 2) then {1} else {0});
+					_sub_itemVariable pushBack _x;
+				};
 			} forEach (missionNamespace getVariable format["CTI_COIN_%1_DEFENSE_CATEGORY_%2", CTI_P_SideJoined, _x]);
 			
 			[_category, format["CTI_COIN_SubItem_%1", _x], [_sub_itemVariable, _sub_items, _sub_itemEnabled], "", "missionNamespace setVariable ['CTI_COIN_PARAM', %1]; missionNamespace setVariable ['CTI_COIN_PARAM_KIND', 'DEFENSES']; missionNamespace setVariable ['CTI_COIN_MENU', commandingMenu]"] call BIS_FNC_createmenu;

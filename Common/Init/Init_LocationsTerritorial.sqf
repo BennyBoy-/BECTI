@@ -204,6 +204,57 @@ switch (toLower(worldName)) do {
 };
 
 switch (toLower(worldName)) do {
+	case "chernarus_winter": {
+		Kamenka setVariable ["cti_town_neighbors", [Pavlovo, Komarovo]];
+		Komarovo setVariable ["cti_town_neighbors", [Pavlovo, Balota, Kamenka]];
+		Balota setVariable ["cti_town_neighbors", [Kozlovka, Komarovo, Chernogorsk]];
+		Chernogorsk setVariable ["cti_town_neighbors", [Balota, Nadezhdino, Prigorodki, Kozlovka, Mogilevka]];
+		Chernogorsk setVariable ["cti_town_neighbors", [Balota, Nadezhdino, Prigorodki, Kozlovka, Mogilevka]];
+		Prigorodki setVariable ["cti_town_neighbors", [Chernogorsk, Elektrozavodsk, Pusta]];
+		Elektrozavodsk setVariable ["cti_town_neighbors", [Prigorodki, Pusta, Kamyshovo, Staroye]];
+		Kamyshovo setVariable ["cti_town_neighbors", [Solnichniy, Elektrozavodsk, Msta, Tulga]];
+		Solnichniy setVariable ["cti_town_neighbors", [Kamyshovo, Msta, Nizhnoye, Dolina, Orlovets, Tulga]];
+		Nizhnoye setVariable ["cti_town_neighbors", [Solnichniy, Berezino]];
+		Berezino setVariable ["cti_town_neighbors", [Nizhnoye, Khelm, Orlovets, Dubrovka]];
+		Khelm setVariable ["cti_town_neighbors", [Berezino, Krasnostav]];
+		Krasnostav setVariable ["cti_town_neighbors", [Olsha, Gvozdno, Dubrovka, Khelm, PobedaDam]];
+		Olsha setVariable ["cti_town_neighbors", [Krasnostav, Khelm]];
+		Gvozdno setVariable ["cti_town_neighbors", [Krasnostav, Grishino, Dubrovka, PobedaDam, Altar, DevilsCastle]];
+		Grishino setVariable ["cti_town_neighbors", [Gvozdno, Petrovka, Kabanino, AirField, Altar, DevilsCastle]];
+		Petrovka setVariable ["cti_town_neighbors", [Grishino, Lopatino, Airfield, DevilsCastle]];
+		Lopatino setVariable ["cti_town_neighbors", [Petrovka, Vybor, Pustoshka, Airfield]];
+		Myshkino setVariable ["cti_town_neighbors", [Zelenogorsk, Pustoshka]];
+		Zelenogorsk setVariable ["cti_town_neighbors", [Myshkino, Pogorevka, Kozlovka, Pavlovo]];
+		Pavlovo setVariable ["cti_town_neighbors", [Kamenka, Komarovo, Zelenogorsk]];
+		Kozlovka setVariable ["cti_town_neighbors", [Zelenogorsk, Nadezhdino, Chernogorsk, Balota, Pogorevka]];
+		Nadezhdino setVariable ["cti_town_neighbors", [Kozlovka, Chernogorsk, Mogilevka, Vyshnoye]];
+		Mogilevka setVariable ["cti_town_neighbors", [Vyshnoye, Pusta, Nadezhdino, Staroye, Chernogorsk]];
+		Pusta setVariable ["cti_town_neighbors", [Mogilevka, Elektrozavodsk, Prigorodki, Staroye]];
+		Staroye setVariable ["cti_town_neighbors", [Shakhovka, Guglovo, Elektrozavodsk, Msta, Mogilevka, Pusta]];
+		Msta setVariable ["cti_town_neighbors", [Staroye, Kamyshovo, Solnichniy, Dolina, Tulga]];
+		Dolina setVariable ["cti_town_neighbors", [Staroye, Solnichniy, Solnichniy, Polana]];
+		Orlovets setVariable ["cti_town_neighbors", [Nizhnoye, Polana, Dolina, Solnichniy]];
+		Polana setVariable ["cti_town_neighbors", [Orlovets, Dolina, Shakhovka, Gorka]];
+		Gorka setVariable ["cti_town_neighbors", [Dubrovka, NovySobor, Polana, Guglovo, Altar]];
+		Dubrovka setVariable ["cti_town_neighbors", [Gorka, Krasnostav, Berezino, Khelm, Altar]];
+		Shakhovka setVariable ["cti_town_neighbors", [Staroye, Polana, Dolina]];
+		Guglovo setVariable ["cti_town_neighbors", [Staroye, NovySobor, Shakhovka, Vyshnoye]];
+		Vyshnoye setVariable ["cti_town_neighbors", [StarySobor, Guglovo, Mogilevka, Nadezhdino, Pogorevka]];
+		StarySobor setVariable ["cti_town_neighbors", [Vyshnoye, Kabanino, Pogorevka, NovySobor]];
+		Pogorevka setVariable ["cti_town_neighbors", [Zelenogorsk, StarySobor, Vyshnoye, Pustoshka, Pustoshka]];
+		Kabanino setVariable ["cti_town_neighbors", [Vybor, Grishino, StarySobor, Pogorevka]];
+		Vybor setVariable ["cti_town_neighbors", [Kabanino, Lopatino, Pustoshka, Pogorevka]];
+		Pustoshka setVariable ["cti_town_neighbors", [Vybor, Myshkino, Lopatino, Pogorevka]];
+		PobedaDam setVariable ["cti_town_neighbors", [Gvozdno, Krasnostav]];
+		Airfield setVariable ["cti_town_neighbors", [Vybor, Lopatino, Kabanino, Petrovka, Grishino]];
+		Tulga setVariable ["cti_town_neighbors", [Solnichniy, Kamyshovo, Msta]];
+		Altar setVariable ["cti_town_neighbors", [NovySobor, Gorka, Gvozdno]];
+		DevilsCastle setVariable ["cti_town_neighbors", [Grishino, Gvozdno, Petrovka]];
+		NovySobor setVariable ["cti_town_neighbors", [StarySobor, Guglovo, Gorka, Altar]];
+	};
+};
+
+switch (toLower(worldName)) do {
 	case "sara_dbe1": {
 		IslaDelVida setVariable ["cti_town_neighbors",[Hunapu,WorkCamp,FuelDepot]];
 		Hunapu setVariable ["cti_town_neighbors",[IslaDelVida,WorkCamp,Pacamac]];
@@ -281,10 +332,10 @@ switch (toLower(worldName)) do {
 
 switch (toLower(worldName)) do {
 	case "beketov": {
-		Sentsy setVariable ["cti_town_neighbors",[OutpostJordan,KrasnyeSeltsy]];
-		KrasnyeSeltsy setVariable ["cti_town_neighbors",[Shalaevo,Sentsy,Polshishkino]];
+		Sentsy setVariable ["cti_town_neighbors",[OutpostJordan,KrasyneSeltsy]];
+		KrasyneSeltsy setVariable ["cti_town_neighbors",[Shalaevo,Sentsy,Polshishkino]];
 		Polivanovo setVariable ["cti_town_neighbors",[Shalaevo,Zhukovo,Polshishkino]];
-		Polshishkino setVariable ["cti_town_neighbors",[Shalaevo,KrasnyeSeltsy,Zhukovo,Polshishkino,Mikhalevo]];
+		Polshishkino setVariable ["cti_town_neighbors",[Shalaevo,KrasyneSeltsy,Zhukovo,Polshishkino,Mikhalevo]];
 		Zhukovo setVariable ["cti_town_neighbors",[Polivanovo,Polshishkino,Kuzhadon]];
 		Kuzhadon setVariable ["cti_town_neighbors",[Zhukovo,Armanikha,Shpagino]];
 		Shpagino setVariable ["cti_town_neighbors",[Kuzhadon,NorthWestBeketov]];
@@ -306,6 +357,6 @@ switch (toLower(worldName)) do {
 		Arshavino setVariable ["cti_town_neighbors",[Vorontsovo,Studenets,Dubionki]];
 		Dubionki setVariable ["cti_town_neighbors",[Arshavino,OutpostJordan]];
 		OutpostJordan setVariable ["cti_town_neighbors",[Dubionki,Sentsy]];
-		Shalaevo setVariable ["cti_town_neighbors",[Polivanovo,Polshishkino,KrasnyeSeltsy]];
+		Shalaevo setVariable ["cti_town_neighbors",[Polivanovo,Polshishkino,KrasyneSeltsy]];
 	};
 };

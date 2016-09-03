@@ -22,6 +22,7 @@ CTI_CL_FNC_InitializeStructure = compileFinal preprocessFile "Client\Functions\C
 CTI_CL_FNC_JoinRequestAnswer = compileFinal preprocessFile "Client\Functions\Client_JoinRequestAnswer.sqf";
 CTI_CL_FNC_PlacingBuilding = compileFinal preprocessFile "Client\Functions\Client_PlacingBuilding.sqf";
 CTI_CL_FNC_PlacingDefense = compileFinal preprocessFile "Client\Functions\Client_PlacingDefense.sqf";
+CTI_CL_FNC_OnArtilleryFired = compileFinal preprocessFile "Client\Functions\Client_OnArtilleryFired.sqf";
 CTI_CL_FNC_OnCampCaptured = compileFinal preprocessFile "Client\Functions\Client_OnCampCaptured.sqf";
 CTI_CL_FNC_OnExplosivePlaced = compileFinal preprocessFile "Client\Functions\Client_OnExplosivePlaced.sqf";
 CTI_CL_FNC_OnHQDestroyed = compileFinal preprocessFile "Client\Functions\Client_OnHQDestroyed.sqf";
@@ -41,7 +42,7 @@ CTI_CL_FNC_EarPlugsSpawn = compileFinal preprocessFile "Client\Functions\Externa
 CTI_CL_FNC_EarPlugsDeath = compileFinal preprocessFile "Client\Functions\Externals\cmEarplugs\earplugs_death.sqf";
 CTI_CL_FNC_Spawn = compileFinal preprocessFile "Client\Functions\Client_Spawn.sqf";
 CTI_CL_FNC_Death = compileFinal preprocessFile "Client\Functions\Client_Death.sqf";
-
+CTI_CL_FNC_UpdateAirRadarMarker = compileFinal preprocessFile "Client\Functions\Client_UpdateAirRadarMarker.sqf";
 
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateClientAI.sqf";
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateOrders.sqf";
@@ -344,7 +345,7 @@ if (CTI_BASE_NOOBPROTECTION == 1) then {player addEventHandler ["fired", {_this 
 if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
 
 // Thermal / NV restriction
-if ( (missionNamespace getVariable 'CTI_SM_NONV')==1 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {
+if ( (missionNamespace getVariable 'CTI_SM_NONV')>0 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {
 	0 execVM "Client\Functions\Client_NvThermR.sqf";
 };
 
@@ -354,9 +355,10 @@ if ( (missionNamespace getVariable 'CTI_SM_NONV')==1 || (missionNamespace getVar
 // Map Markers
 0 execVM "Client\Functions\Externals\Prodavec_markers\MapMarkersTitling.sqf";
 
-//adaptative group size
+//group size scripts
 if ( CTI_PLAYERS_GROUPSIZE == 0) then {
-	0 execVM "Client\Functions\Externals\Adaptive_playerAI\Client_AdaptGroup.sqf";
+	//0 execVM "Client\Functions\Externals\Adaptive_playerAI\Client_AdaptGroup.sqf";
+	0 execVM "Client\Functions\Client_SetPlayerAI.sqf";
 };
 
 //Earplugs

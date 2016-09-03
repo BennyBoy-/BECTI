@@ -5,7 +5,7 @@
 	Description:	Place an object/unit/vehicle next to a position
 	Author: 		Benny, Adapted from Mike Melvin
 	Creation Date:	19-09-2013
-	Revision Date:	19-09-2013
+	Revision Date:	28-08-2016
 	
   # PARAMETERS #
     0	[Object]: The object to place
@@ -54,7 +54,7 @@ if (_placeSafe) then {
 	_safeRadius = (_maxRadius - _minRadius) / 2;
 	if (_safeRadius < 5) then {_safeRadius = 5};
 	_destination = [(_position select 0)+((sin _direction)*_radius),(_position select 1)+((cos _direction)*_radius),0.3]; //z: (_position select 2)+0.5
-	[_object,_destination,_safeRadius] call CTI_CO_FNC_PlaceSafe;
+	[_object, _destination, _minRadius] call CTI_CO_FNC_PlaceSafe;
 } else {
 	_object setPos [(_position select 0)+((sin _direction)*_radius),(_position select 1)+((cos _direction)*_radius),0.3]; //z: (_position select 2)+0.5
 };
@@ -64,4 +64,5 @@ if (_randomDirection) then {_object setDir random 360};
 if (_faceAway) then {
 	_destination = getPos _object;
 	_object setDir -((((_destination select 1) - (_position select 1)) atan2 ((_destination select 0) - (_position select 0))) - 90);
+	_object setVectorUp surfaceNormal position _object;
 };
