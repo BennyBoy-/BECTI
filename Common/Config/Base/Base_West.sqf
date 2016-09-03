@@ -650,7 +650,7 @@ _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 
-_headers pushBack 		"AN/MPQ-53 - AA Radar (Max. 1 per Base)";
+_headers pushBack 		"AN/MPQ-53 - AA Radar";
 _classes pushBack 		"POOK_ANMPQ53_CDF";
 _prices pushBack 		5000;
 _placements pushBack 	[180, 15];
