@@ -464,58 +464,42 @@ _p pushBack 200;
 //FIM-92 Stinger Family
 		
 _i pushBack "CUP_launch_FIM92Stinger";
-_u pushBack 2;
-_p pushBack 2000;
+_u pushBack 1;
+_p pushBack 1500;
 
 //Anti-Tank
 		
 //M3 MAAWS Family
 
-/*
 _i pushBack "CUP_launch_MAAWS";
-_u pushBack 1;
-_p pushBack 650; 
-*/
-			
+_u pushBack 3;
+_p pushBack 850; 
+/*		
 _i pushBack "CUP_launch_MAAWS_Scope";
 _u pushBack 2;
 _p pushBack 600;
-
-_i pushBack "CUP_MAAWS";
-_u pushBack 2;
-_p pushBack 600;
-
+*/
 //NLAW Family
 
 _i pushBack "CUP_launch_NLAW";
 _u pushBack 2;
-_p pushBack 1200;
-
+_p pushBack 800;
+/*
 _i pushBack "CUP_BAF_NLAW_Launcher";
 _u pushBack 2;
 _p pushBack 1200;
-
+*/
 //FGM-148 Javelin Family
 
 _i pushBack "CUP_launch_Javelin";
-_u pushBack 3;
+_u pushBack 4;
 _p pushBack 3000;
-
-_i pushBack "CUP_Javelin";
-_u pushBack 3;
-_p pushBack 3000;
-
-/* 
-_i pushBack "CUP_launch_Mk153Mod0";
-_u pushBack 1;
-_p pushBack 500; 
-*/
 
 //MK153 SMAW Family
 
-_i pushBack "CUP_launch_Mk153Mod0_SMAWOptics";
-_u pushBack 1;
-_p pushBack 500;
+_i pushBack "CUP_launch_Mk153Mod0";
+_u pushBack 3;
+_p pushBack 800;
 
 //M136 AT-4 Family
 
@@ -1174,12 +1158,12 @@ _p pushBack 300;
 //--- Rockets Bombs
 
 _i pushBack "CUP_Stinger_M";
-_u pushBack 2;
-_p pushBack 800;
+_u pushBack 1;
+_p pushBack 300;
 
 _i pushBack "CUP_Javelin_M";
-_u pushBack 3;
-_p pushBack 1500;
+_u pushBack 4;
+_p pushBack 500;
 
 _i pushBack "CUP_M136_M";
 _u pushBack 0;
@@ -1192,27 +1176,23 @@ _p pushBack 350;
 _i pushBack "CUP_MAAWS_HEAT_M";
 _u pushBack 2;
 _p pushBack 350;
-
+/*
 _i pushBack "CUP_NLAW_M";
 _u pushBack 2;
-_p pushBack 600;
-
+_p pushBack 300;
+*/
 _i pushBack "CUP_SMAW_HEAA_M";
-_u pushBack 1;
+_u pushBack 3;
 _p pushBack 350;
 
 _i pushBack "CUP_SMAW_HEDP_M";
-_u pushBack 1;
+_u pushBack 3;
 _p pushBack 350;
 
 _i pushBack "CUP_SMAW_Spotting";
-_u pushBack 1;
-_p pushBack 100;
-/* 
-_i pushBack "CUP_AT13_M";
 _u pushBack 3;
-_p pushBack 700;
- */
+_p pushBack 100;
+
 //--CUP Attachments
 
 

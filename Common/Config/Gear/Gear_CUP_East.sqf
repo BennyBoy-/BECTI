@@ -332,7 +332,7 @@ _p pushBack 200;
 //9K32 Strela
 			
 _i pushBack "CUP_launch_9K32Strela";
-_u pushBack 2;
+_u pushBack 1;
 _p pushBack 2000;
 
 
@@ -354,7 +354,7 @@ _p pushBack 2000;
 //METIS Family
 
 _i pushBack "CUP_launch_Metis";
-_u pushBack 2;
+_u pushBack 3;
 _p pushBack 2000;
 
 
@@ -944,19 +944,19 @@ _p pushBack 300;
 
 _i pushBack "CUP_Strela_2_M";
 _u pushBack 2;
-_p pushBack 700;
+_p pushBack 200;
 
 _i pushBack "CUP_Igla_M";
 _u pushBack 2;
-_p pushBack 700;
+_p pushBack 200;
 
 _i pushBack "CUP_Dragon_EP1_M"; //M47 Dragon
 _u pushBack 2;
-_p pushBack 800;
+_p pushBack 200;
 
 _i pushBack "CUP_AT13_M";  //metis missiles
 _u pushBack 2;
-_p pushBack 600;
+_p pushBack 200;
 
 _i pushBack "CUP_RPG18_M";
 _u pushBack 0;
@@ -964,11 +964,11 @@ _p pushBack 100;
 
 _i pushBack "CUP_MAAWS_HEDP_M";
 _u pushBack 2;
-_p pushBack 350;
+_p pushBack 200;
 
 _i pushBack "CUP_MAAWS_HEAT_M";
 _u pushBack 2;
-_p pushBack 350;
+_p pushBack 200;
 
 _i pushBack "CUP_PG7V_M";
 _u pushBack 1;
@@ -976,11 +976,11 @@ _p pushBack 200;
 
 _i pushBack "CUP_PG7VL_M";
 _u pushBack 1;
-_p pushBack 200;
+_p pushBack 250;
 
 _i pushBack "CUP_PG7VR_M";
 _u pushBack 1;
-_p pushBack 200;
+_p pushBack 250;
 
 _i pushBack "CUP_OG7_M";
 _u pushBack 1;
@@ -988,7 +988,7 @@ _p pushBack 250;
 
 _i pushBack "CUP_PG9_AT_M";
 _u pushBack 1;
-_p pushBack 350;
+_p pushBack 250;
 
 _i pushBack "CUP_OG9_HE_M";
 _u pushBack 1;
