@@ -22,7 +22,7 @@ _missileLockTime = 3;	// Minimum missile lock time
 _targetEngagementInterval = 5;		// Minimum time between engagements of a single target
 // ---------------------
 
-sleep 1;	// TODO: needed?
+sleep 1;
 
 _side = _this select 0;
 _sideNum = switch (_side) do {

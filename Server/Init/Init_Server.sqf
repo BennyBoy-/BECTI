@@ -264,7 +264,7 @@ if !( isNil "ADMIN_ZEUS") then {
 // Initialize control scripts for Pook SAM Site
 // Must have exactly 1 instance per side, running on HC if possible
 0 spawn {
-	// Give HCs some time
+	// Give HCs some init time
 	sleep 30;
 	
 	_hcs = missionNamespace getVariable "CTI_HEADLESS_CLIENTS";
