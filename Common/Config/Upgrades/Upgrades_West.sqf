@@ -45,7 +45,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500], //--- IR SMOKE
 	[75000], //--- Satellite
 	[100000], //--- Nuke
-	[12000, 24000, 36000] //--- Supply Rate
+	[4000, 8000, 12000] //--- Supply Rate
 ]];
 
 if (CTI_GUERILLA_MODE == 1 || CTI_ZOMBIE_MODE == 1) then {
