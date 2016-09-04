@@ -489,7 +489,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 
 _headers pushBack 		"Mortar";
 _classes pushBack 		"O_Mortar_01_F";
-_prices pushBack 		10000;
+_prices pushBack 		15000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
@@ -553,7 +553,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 
 _headers pushBack 		"Podnos 2B14";
 _classes pushBack 		"CUP_B_2b14_82mm_CDF";
-_prices pushBack 		10000;
+_prices pushBack 		15000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
