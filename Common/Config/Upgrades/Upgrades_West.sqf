@@ -217,7 +217,7 @@ if (CTI_IsClient) then {
 		["(DISABLED) IR Smoke", "Enable IR Smoke Deployment from Vehicles"], //--- IR Smoke
 		["(DISABLED) Satellite", "Allows the use of the satellite camera"], //--- Satellite
 		["Nuclear Arms Deal", "Unlock Nuke Truck in Light Factory"], //--- Nuke
-		["Supply Rate", "Improves the Supply delivery rate"] //--- Supply Rate
+		["Supply Rate", "Improves rate at which Town SV Raises"] //--- Supply Rate
 	]];
 };
 
