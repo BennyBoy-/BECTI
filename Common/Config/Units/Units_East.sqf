@@ -522,7 +522,7 @@ _d pushBack 0;
 _c pushBack 'O_MBT_02_cannon_F';
 _p pushBack '';
 _n pushBack 'T-100 Varsuk';
-_o pushBack 30400;
+_o pushBack 24300;
 _t pushBack 20;
 _u pushBack 3;
 _f pushBack CTI_FACTORY_HEAVY;

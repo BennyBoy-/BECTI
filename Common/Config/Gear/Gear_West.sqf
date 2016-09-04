@@ -150,11 +150,11 @@ _u pushBack 0;
 _p pushBack 50;
 
 _i pushBack "NLAW_F";
-_u pushBack 2;
-_p pushBack 600;
+_u pushBack 1;
+_p pushBack 400;
 
 _i pushBack "Titan_AA";
-_u pushBack 4;
+_u pushBack 3;
 _p pushBack 200;
 
 _i pushBack "Titan_AP";
@@ -600,11 +600,11 @@ _u pushBack 1;
 _p pushBack 600;
 
 _i pushBack "launch_B_Titan_F";
-_u pushBack 2;
+_u pushBack 3;
 _p pushBack 1500;
 
 _i pushBack "launch_B_Titan_short_F";
-_u pushBack 2;
+_u pushBack 4;
 _p pushBack 1550;
 
 _i pushBack "hgun_P07_F";
@@ -832,12 +832,12 @@ _u pushBack 2;
 _p pushBack 800;
 
 _i pushBack "B_Mortar_01_support_F";
-_u pushBack 1;
-_p pushBack 30;
+_u pushBack 5;
+_p pushBack 50;
 
 _i pushBack "B_Mortar_01_weapon_F";
-_u pushBack 1;
-_p pushBack 5000;
+_u pushBack 5;
+_p pushBack 15000;
 
 //--- Glasses
 _i pushBack "G_Combat";

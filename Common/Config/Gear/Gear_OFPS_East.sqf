@@ -63,7 +63,7 @@ _p pushBack 300;
 _i pushBack "IP_V_BandollierO_snw";
 _u pushBack 0;
 _p pushBack 300;
-
+/*
 _i pushBack "IP_V_TacVest_SnowHex";
 _u pushBack 0;
 _p pushBack 300;
@@ -71,7 +71,7 @@ _p pushBack 300;
 _i pushBack "IP_V_TacVest_SnowTiger";
 _u pushBack 0;
 _p pushBack 300;
-
+*/
 
 //Backpacks
 _i pushBack "IP_B_AssaultPack_SnowHex";
@@ -135,11 +135,11 @@ _p pushBack 1000;
 
 //support
 _i pushBack "IP_launch_O_Titan_short_snw_F";
-_u pushBack 2;
-_p pushBack 1500;
+_u pushBack 4;
+_p pushBack 1550;
 
 _i pushBack "IP_launch_O_Titan_snw_F";
-_u pushBack 2;
+_u pushBack 3;
 _p pushBack 1500;
 
 
