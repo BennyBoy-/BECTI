@@ -228,6 +228,9 @@ CTI_UI_Service_GetPrice = {
 	if (!(isNil {missionNamespace getVariable typeOf _unit}) && _coefficient > -1) then {
 		_cost = ((missionNamespace getVariable typeOf _unit) select CTI_UNIT_PRICE) * _coefficient;
 	};
+	if (_unit isKindOf "B_Mortar_01_F" || _unit isKindOf "O_Mortar_01_F" || _unit isKindOf  "CUP_B_M252_USMC" || _unit isKindOf  "CUP_B_2b14_82mm_CDF" || _unit isKindOf  "Podnos 2B14" ) then {
+		_cost = 5000;
+	};
 	
 	round(_cost)
 };
