@@ -1099,6 +1099,8 @@ _u pushBack "B_Truck_01_transport_F";
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
+_u pushBack "B_Soldier_F";
+_u pushBack "B_crew_F";
 _u pushBack "B_MRAP_01_F";
 _u pushBack "B_MRAP_01_hmg_F";
 	
@@ -1123,6 +1125,8 @@ _u pushBack 'B_T_LSV_01_armed_F';
 	};
 	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic APEX
+_u pushBack "B_T_Soldier_F";
+_u pushBack "B_T_crew_F";
 _u pushBack "OFPS_HUNTER";
 _u pushBack "OFPS_HUNTER_HMG";
 
@@ -1169,6 +1173,8 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter OFPS
+		_u pushBack 'sfp_m90s_rifleman_ak5';
+		_u pushBack 'sfp_m90s_crew';
 		_u pushBack 'sfp_bv206_winter';
 		_u pushBack 'Meaty_Hunter_Sn';		
 		_u pushBack 'Meaty_HunterHMG_Sn';

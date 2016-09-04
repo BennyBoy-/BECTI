@@ -1103,6 +1103,8 @@ _u pushBack 'O_Truck_02_transport_F';
 
 if (CTI_FACTION_EAST == 0) then {
 	//CSAT Arid Vanilla
+	_u pushBack 'O_Soldier_F';
+	_u pushBack 'O_crew_F';
 	_u pushBack 'O_MRAP_02_F';
 	_u pushBack 'O_MRAP_02_hmg_F';
 
@@ -1130,6 +1132,8 @@ if (CTI_APEX_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 1) then {
 		//CSAT Tropic APEX
+	_u pushBack 'O_T_Soldier_F';
+	_u pushBack 'O_T_crew_F';
 	_u pushBack 'O_T_Truck_03_transport_ghex_F';
 	_u pushBack 'O_T_MRAP_02_ghex_F';
 	_u pushBack 'O_T_MRAP_02_hmg_ghex_F';
@@ -1179,6 +1183,8 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter OFPS
+		_u pushBack 'IP_O_Soldier_FST';
+		_u pushBack 'IP_O_crew_FST';
 		_u pushBack 'sfp_bv206_winter';
 		_u pushBack 'AAF_D_MRAP_03_F';
 		_u pushBack 'AAF_D_MRAP_03_hmg_F';
