@@ -243,7 +243,7 @@ CTI_UPGRADE_NUKE = 18;
 CTI_UPGRADE_SUPPLY_RATE = 19;
 
 //--- Supply
-CTI_UPGRADE_CST_SUPPLY_COEF = [0, 0.30, 0.60, 1]; //--- Supply coefficient (Default + upgrade)
+CTI_UPGRADE_CST_SUPPLY_COEF = [1, 2, 3, 4]; //--- Supply coefficient (Default * upgrade)
 
 //-----------------------------------------------------------------------------------------------------------------------//
 
@@ -392,7 +392,7 @@ CTI_TOWNS_SPAWN_SV_MIN = 50; //--- Determine the min SV used for a town as a ref
 
 //--- Towns: Supply
 CTI_TOWNS_SUPPLY_MODE = 1; //--- Supply Mode: (0: Default, 1: Timed)
-CTI_TOWNS_SUPPLY_TIME_INTERVAL = 60; //--- Determine the interval between each town SV increment with time
+CTI_TOWNS_SUPPLY_TIME_INTERVAL = 100; //--- Determine the interval between each town SV increment with time
 CTI_TOWNS_SUPPLY_TIME_INCREASE = 1; //--- Determine the town SV increment when the interval's reached (Potential upgrade?)
 
 //--- Towns: Territorial
