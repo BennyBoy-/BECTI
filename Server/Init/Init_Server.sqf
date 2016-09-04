@@ -127,7 +127,7 @@ if (_attempts >= 500) then {
 		_defense_team setBehaviour "COMBAT";
 		_defense_team setCombatMode "RED";
 		_defense_team enableAttack true;
-		_logic setVariable ["cti_defensive_team", _defense_team];
+		_logic setVariable ["cti_defensive_team", _defense_team, true];
 	};
 	
 	//--- Add FOB if needed
@@ -257,5 +257,29 @@ if !( isNil "ADMIN_ZEUS") then {
 			ADMIN_ZEUS addCuratorEditableObjects [playableUnits+switchableUnits,true];
 			sleep 5;
 		};
+	};
+};
+
+
+// Initialize control scripts for Pook SAM Site
+// Must have exactly 1 instance per side, running on HC if possible
+0 spawn {
+	// Give HCs some init time
+	sleep 30;
+	
+	_hcs = missionNamespace getVariable "CTI_HEADLESS_CLIENTS";
+	
+	// Run on server or HC
+	if ( !isNil '_hcs' && {count _hcs > 0} ) then {
+		_hc = (_hcs select 0) select 0;
+		{
+			FNC_HandleSAMSite = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\HandleSAMSite.sqf";
+			[east] spawn FNC_HandleSAMSite;
+			[west] spawn FNC_HandleSAMSite;
+		} remoteExec ["bis_fnc_call", _hc];
+	} else {
+		FNC_HandleSAMSite = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\HandleSAMSite.sqf";
+		[east] spawn FNC_HandleSAMSite;
+		[west] spawn FNC_HandleSAMSite;
 	};
 };

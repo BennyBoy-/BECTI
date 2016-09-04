@@ -79,28 +79,39 @@ with missionNamespace do {
 		[_ai] orderGetIn true;
 		_ai moveInGunner _static;
 
-		//--- Change Skill
-		_ai setSkill ["aimingAccuracy", 1]; // Set accuracy
-		_ai setSkill ["aimingShake", 1]; // Set weapon sway handling
-		_ai setSkill ["aimingSpeed", 1]; // Set aiming speed
-		_ai setSkill ["reloadSpeed", 1]; // Max out reload speed
-		_ai setSkill ["spotDistance", 1]; // Set detection distance
-		_ai setSkill ["spotTime", 1]; // Set detection time
-		_ai setSkill ["courage", 1]; // Never retreat
-		_ai setSkill ["commanding", 1]; // Communication skills
-		_ai setSkill ["general", 1]; //Sets all above
+		// TODO: deduplicate code (Server_HandleStaticDefenses.sqf)
+		// TODO: proper/extensible vehicle switch
+		
+			
+		diag_log ("samsitedebug: delegate a " + typeOf(_static));
+		
+//--- Configure the weapon / gunner
+		if (typeOf(_static) find "POOK_ANMPQ53" == 0 || typeOf(_static) find "pook_SNR75_radar" == 0 || typeOf(_static) find "pook_MIM104_PAC2" == 0 || typeOf(_static) find "pook_MIM104_PAC2Battery" == 0) then {
+			_ai disableAI "AUTOTARGET";
+			_ai disableAI "TARGET";
+		} else {
+			//--- Change Skill
+			_ai setSkill ["aimingAccuracy", 1]; // Set accuracy
+			_ai setSkill ["aimingShake", 1]; // Set weapon sway handling
+			_ai setSkill ["aimingSpeed", 1]; // Set aiming speed
+			_ai setSkill ["reloadSpeed", 1]; // Max out reload speed
+			_ai setSkill ["spotDistance", 1]; // Set detection distance
+			_ai setSkill ["spotTime", 1]; // Set detection time
+			_ai setSkill ["courage", 1]; // Never retreat
+			_ai setSkill ["commanding", 1]; // Communication skills
+			_ai setSkill ["general", 1]; //Sets all above
 
-		//--- Update the gunner's properties every 60 seconds to fix them going into hold fire mode
-		_ai spawn {
-		while {alive _this} do {
-		_this setBehaviour "DANGER";
-		_this setCombatMode "YELLOW";
-		_this enableAttack true;
-		_this allowFleeing 0;
-		sleep 60;
+			//--- Update the gunner's properties every 60 seconds to fix them going into hold fire mode
+			_ai spawn {
+				while {alive _this} do {
+					_this setBehaviour "DANGER";
+					_this setCombatMode "YELLOW";
+					_this enableAttack true;
+					_this allowFleeing 0;
+					sleep 60;
+				};
 			};
 		};
-
 		// diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 	};
 	

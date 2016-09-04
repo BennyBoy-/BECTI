@@ -45,7 +45,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500], //--- IR SMOKE
 	[75000], //--- Satellite
 	[100000], //--- Nuke
-	[12000, 24000, 36000] //--- Supply Rate
+	[4000, 8000, 12000] //--- Supply Rate
 ]];
 
 if (CTI_GUERILLA_MODE == 1 || CTI_ZOMBIE_MODE == 1) then {
@@ -108,7 +108,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[CTI_UPGRADE_AIR, 1]], //--- Air AT
 	[[CTI_UPGRADE_AIR, 1]], //--- Air AA
 	[[CTI_UPGRADE_AIR, 1]], //--- Air CM
-	[[CTI_UPGRADE_BARRACKS,1],[CTI_UPGRADE_LIGHT,1],[CTI_UPGRADE_HEAVY,1]], //--- Towns Occupation
+	[[CTI_UPGRADE_BARRACKS,1],[CTI_UPGRADE_LIGHT,2],[CTI_UPGRADE_LIGHT,3]], //--- Towns Depots
 	[[CTI_UPGRADE_AIR, 1],[CTI_UPGRADE_AIR, 2]], //--- Halo
 	[[],[],[]], //--- Air Radar
 	[[],[],[]], //--- Art Radar
@@ -205,7 +205,7 @@ if (CTI_IsClient) then {
 		["Aircraft AT", "Unlocks the Anti Tank Missiles for Aircrafts"], //--- Air AT
 		["Aircraft AA", "Unlocks the Anti Air Missiles for Aircrafts"], //--- Air AA
 		["Aircraft Countermeasures", "Allows Aircraft to deploy countermeasures"], //--- Air CM
-		["Towns Depot", "Improves Vehicles available at Depots"], //--- Towns Depot
+		["Towns Depot", "Improves Gear/Vehicles available at Depots, also adds service menu at lvl2"], //--- Towns Depot
 		["Halo", "Enable HALO Jumping from the Air factory and Depots"], //--- Halo
 		["Air Radar", "Increase Range of Air Radar"], //--- Air Radar
 		["Artillery Radar", "Increase Range of Artillery Radar"], //--- Art Radar

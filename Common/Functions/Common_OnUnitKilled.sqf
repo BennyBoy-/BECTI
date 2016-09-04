@@ -75,7 +75,7 @@ _var = missionNamespace getVariable _var_name;
 // this addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", 0]];this addEventHandler ["hit", {_this spawn CTI_CO_FNC_OnUnitHit}];
 // this addEventHandler ["getIn", {_this spawn CTI_CO_FNC_OnUnitGetOut}]; this addEventHandler ["getOut", {_this spawn CTI_CO_FNC_OnUnitGetOut}]; this setVariable ["cti_occupant", west call CTI_CO_FNC_GetSideFromID];
 // player sidechat format ["killed:%1 (%2)    killer:%3 (%4)",_killed, _side_killed,_killer, _side_killer];
-if (!isNil '_var' && _isplayable_killer) then {
+if (!isNil '_var') then {
 	_cost = _var select CTI_UNIT_PRICE;
 	
 	if (_side_killer != _side_killed) then { //--- Kill
@@ -100,7 +100,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 				
 				//--- PVP Leader Reward for AI/Players
 				_killed_pname = "";
-				if (_isplayable_killed && _isplayable_killer) then { 
+				if (_isplayable_killed) then { 
 					_bounty = _bounty + round(score _killed * CTI_BOUNTY_COEF_PVP);
 					_killed_pname = name _killed;
 				};
@@ -111,6 +111,15 @@ if (!isNil '_var' && _isplayable_killer) then {
 				{
 					if (_x call CTI_CO_FNC_IsGroupPlayable) then {
 						if (isPlayer leader _x) then {[_var_name, _bounty, _killed_pname] remoteExec ["CTI_PVF_CLT_OnBountyUnit", leader _x]} else {[_x, _bounty] call CTI_CO_FNC_ChangeFunds};
+					} else {
+						// Award kills of base defense team to commander
+						_logic = (side _x) call CTI_CO_FNC_GetSideLogic;
+						
+						("kill by group-> " + str(_x) + " sidedefteam-> " +  str((_logic getVariable ["cti_defensive_team", "undef"])) + " isbasedefkill-> " + str(_x == (_logic getVariable ["cti_defensive_team", false]))) remoteexec ["diag_log"];
+						
+						if (_x == (_logic getVariable ["cti_defensive_team", false])) then {
+							[_var_name, _bounty, _killed_pname] remoteExec ["CTI_PVF_CLT_OnBaseDefensesKill", side _x];
+						};
 					};
 				} forEach _award_groups;
 			};

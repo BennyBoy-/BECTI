@@ -489,7 +489,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 
 _headers pushBack 		"Mortar";
 _classes pushBack 		"O_Mortar_01_F";
-_prices pushBack 		10000;
+_prices pushBack 		15000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
@@ -553,7 +553,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 
 _headers pushBack 		"Podnos 2B14";
 _classes pushBack 		"CUP_B_2b14_82mm_CDF";
-_prices pushBack 		10000;
+_prices pushBack 		15000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
@@ -675,15 +675,15 @@ _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 
-_headers pushBack 		"AN/MPQ-53 Radar";
-_classes pushBack 		"POOK_ANMPQ53_CDF_IND";
+_headers pushBack 		"SNR-75 - AA Radar";
+_classes pushBack 		"pook_SNR75_radar";
 _prices pushBack 		5000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 
-_headers pushBack 		"MIM-104 PAC-2 AA Battery";
-_classes pushBack 		"pook_MIM104_PAC2Battery_CDF_IND";
+_headers pushBack 		"S-300 PMU - AA Launcher";
+_classes pushBack 		"pook_SA20_static_INS";
 _prices pushBack 		80000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
