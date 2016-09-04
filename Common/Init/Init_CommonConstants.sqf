@@ -344,7 +344,7 @@ CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI
 CTI_TOWNS_DEPOT_BUILD_DIRECTION = 0; //--- Determine the direction a vehicle will use while being spawned from the depot
 CTI_TOWNS_DEPOT_BUILD_DISTANCE = 10; //--- Determine how far a unit/vehicle will spawn from the depot
 CTI_TOWNS_DEPOT_CLASSNAME = ["Land_BagBunker_Large_F","Land_BagBunker_large_green_F","Land_Lighthouse_small_F"]; //--- The classname(s) used for town depots in editor
-CTI_TOWNS_DEPOT_RANGE = 10; //--- Determine how far a player needs to be from a depot in order to use it
+CTI_TOWNS_DEPOT_RANGE = 15; //--- Determine how far a player needs to be from a depot in order to use it
 
 //--- Towns: Economy
 CTI_TOWNS_INCOME_RATIO = 10.0; //--- A value above 1 will increase the resources ($) generation ((Current SV) * ratio)
@@ -590,12 +590,13 @@ CTI_SATCAM_ZOOM_MIN = 50;
 CTI_SATCAM_ZOOM_MAX = 800;
 
 CTI_SERVICE_PRICE_REPAIR = 300;
-CTI_SERVICE_PRICE_REPAIR_COEF = 0.2;
+CTI_SERVICE_PRICE_REPAIR_COEF = 0.1;
 CTI_SERVICE_PRICE_REAMMO = 350;
-CTI_SERVICE_PRICE_REAMMO_COEF = 0.24;
+CTI_SERVICE_PRICE_REAMMO_COEF = 0.25;
 CTI_SERVICE_PRICE_REFUEL = 200;
 CTI_SERVICE_PRICE_REFUEL_COEF = 0.1;
 CTI_SERVICE_PRICE_HEAL = 50;
+CTI_SERVICE_PRICE_DEPOT_COEF = 1.5;
 
 //todo: add fuel & heal later on
 CTI_SERVICE_AMMO_DEPOT_RANGE = 300;

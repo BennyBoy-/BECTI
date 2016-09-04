@@ -37,7 +37,7 @@ _marker setMarkerAlphaLocal 0.6;
 while {alive _vehicle} do {
 	_rangeart = CTI_BASE_ARTRADAR_RANGES select ([CTI_P_SideJoined, CTI_UPGRADE_ARTR] call CTI_CO_FNC_GetUpgrade);
 	_marker setMarkerSizeLocal [_rangeart,_rangeart];	
-	sleep 1;
+	sleep 5;
 };
 
 deleteMarkerLocal _marker;

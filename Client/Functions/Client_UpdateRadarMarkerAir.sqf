@@ -37,7 +37,7 @@ _marker setMarkerAlphaLocal 0.6;
 while {alive _vehicle} do {
 	_rangeair = CTI_BASE_AIRRADAR_RANGES select ([CTI_P_SideJoined, CTI_UPGRADE_AIRR] call CTI_CO_FNC_GetUpgrade);
 	_marker setMarkerSizeLocal [_rangeair,_rangeair];
-	sleep 1;
+	sleep 5;
 };
 
 deleteMarkerLocal _marker;
