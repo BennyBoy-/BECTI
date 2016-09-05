@@ -20,7 +20,7 @@ switch (_action) do {
 		
 		_townupgrade = (CTI_P_SideJoined call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_TOWNS;
 		_available_depot = [vehicle player, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
-		_available_depot = if (isNull _available_depot || _townupgrade < 2) then {[]} else {[_available_depot]};
+		_available_depot = if (isNull _available_depot || _townupgrade < 1) then {[]} else {[_available_depot]};
 		
 		//--- Get the outter vehicles near our mobile supports
 		{
@@ -257,6 +257,7 @@ switch (_action) do {
 			if !(isNil '_selected') then {
 				if (alive _selected) then {
 					if (count ([_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE, CTI_TOWNS_DEPOT_RANGE], 3] call CTI_UI_Service_RangeStill) > 0) then {
+						_funds = call CTI_CL_FNC_GetPlayerFunds;
 						_price = CTI_SERVICE_PRICE_HEAL;
 						if (count crew _selected > 0) then {round((_price = CTI_SERVICE_PRICE_HEAL * count crew _selected)* _tax)};
 						if (_funds >= _price) then {
