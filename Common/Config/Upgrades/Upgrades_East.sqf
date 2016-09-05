@@ -209,7 +209,7 @@ if (CTI_IsClient) then {
 		["Aircraft AT", "Unlocks the Anti Tank Missiles for Aircrafts"], //--- Air AT
 		["Aircraft AA", "Unlocks the Anti Air Missiles for Aircrafts"], //--- Air AA
 		["Aircraft Countermeasures", "Allows Aircraft to deploy countermeasures"], //--- Air CM
-		["Towns Depot", "Improves Gear/Vehicles available at Depots, also adds service menu at lvl2"], //--- Towns Depot
+		["Towns Depot", "Improves Gear/Vehicles available at Depots, also adds service menu at lvl1 w/tax"], //--- Towns Depot
 		["Halo", "Enable HALO Jumping from the Air factory and Depots"], //--- Halo
 		["Air Radar", "Increase Range of Air Radar"], //--- Air Radar
 		["Artillery Radar", "Increase Range of Artillery Radar"], //--- Art Radar
