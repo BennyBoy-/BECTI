@@ -1094,18 +1094,18 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
 _u = [];
 
 //Universal Vanilla
-_u pushBack 'O_Soldier_F';
+_u pushBack "B_Quadbike_01_F";
 _u pushBack "O_G_Offroad_01_F";
 _u pushBack "O_G_Offroad_01_armed_F";
 _u pushBack 'C_Van_01_transport_F';
+_u pushBack 'O_Truck_02_transport_F';
 
 if (CTI_FACTION_EAST == 0) then {
 	//CSAT Arid Vanilla
-	_u pushBack 'O_Truck_02_transport_F';
-	_u pushBack 'O_Truck_03_transport_F';
+	_u pushBack 'O_Soldier_F';
+	_u pushBack 'O_crew_F';
 	_u pushBack 'O_MRAP_02_F';
-	_u pushBack 'O_UGV_01_F';
-	_u pushBack 'O_UGV_01_rcws_F';
+	_u pushBack 'O_MRAP_02_hmg_F';
 
 	
 };
@@ -1122,6 +1122,8 @@ if (CTI_FACTION_EAST == 2) then {
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
 	//Universal APEX
+	_u pushBack 'O_T_LSV_02_armed_F';		
+	_u pushBack 'O_T_LSV_02_unarmed_F';	
 
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid APEX
@@ -1129,12 +1131,11 @@ if (CTI_APEX_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 1) then {
 		//CSAT Tropic APEX
-		_u pushBack 'O_T_Soldier_F';
-		_u pushBack 'O_T_Truck_03_transport_ghex_F';
-		_u pushBack 'O_T_MRAP_02_hmg_ghex_F';
-		_u pushBack 'O_UGV_01_F';
-		_u pushBack 'O_UGV_01_rcws_F';
-	
+	_u pushBack 'O_T_Soldier_F';
+	_u pushBack 'O_T_crew_F';
+	_u pushBack 'O_T_Truck_03_transport_ghex_F';
+	_u pushBack 'O_T_MRAP_02_ghex_F';
+	_u pushBack 'O_T_MRAP_02_hmg_ghex_F';
 		
 	};
 	if (CTI_FACTION_EAST == 2) then {
@@ -1165,6 +1166,9 @@ if (CTI_OFPS_ADDON > 0) then {
 	//Universal OFPS
 	_u pushBack 'sfp_dakota';
 	_u pushBack 'sfp_mercedes';
+	_u pushBack 'OFPS_UAZ';
+	_u pushBack 'OFPS_UAZ_MG';
+	_u pushBack 'OFPS_UAZ_AGS30';
 	
 
 	if (CTI_FACTION_EAST == 0) then {
@@ -1178,7 +1182,10 @@ if (CTI_OFPS_ADDON > 0) then {
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter OFPS
 		_u pushBack 'IP_O_Soldier_FST';
+		_u pushBack 'IP_O_crew_FST';
 		_u pushBack 'sfp_bv206_winter';
+		_u pushBack 'AAF_D_MRAP_03_F';
+		_u pushBack 'AAF_D_MRAP_03_hmg_F';
 	};
 };
 
