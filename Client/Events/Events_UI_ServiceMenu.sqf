@@ -259,7 +259,7 @@ switch (_action) do {
 					if (count ([_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE, CTI_TOWNS_DEPOT_RANGE], 3] call CTI_UI_Service_RangeStill) > 0) then {
 						_funds = call CTI_CL_FNC_GetPlayerFunds;
 						_price = CTI_SERVICE_PRICE_HEAL;
-						if (count crew _selected > 0) then {round((_price = CTI_SERVICE_PRICE_HEAL * count crew _selected)* _tax)};
+						if (count crew _selected > 0) then {_price = round((CTI_SERVICE_PRICE_HEAL * count crew _selected) * _tax)};
 						if (_funds >= _price) then {
 							-(_price) call CTI_CL_FNC_ChangePlayerFunds;
 							[_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE, CTI_TOWNS_DEPOT_RANGE], [CTI_SERVICE_REPAIR_DEPOT_TIME, CTI_SERVICE_REPAIR_TRUCK_TIME, CTI_SERVICE_REPAIR_TOWN_DEPOT_TIME], 3] spawn CTI_UI_Service_ProcessHeal;
