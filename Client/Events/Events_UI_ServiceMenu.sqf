@@ -41,7 +41,7 @@ switch (_action) do {
 				_available_repair_depots = [_x, _repair_depots, CTI_SERVICE_REPAIR_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 				_available_repair_trucks = [_x, CTI_SPECIAL_REPAIRTRUCK, CTI_SERVICE_REPAIR_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
 				_available_depot = [_x, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
-				_available_depot = if (isNull _available_depot || _townupgrade < 2) then {[]} else {[_available_depot]};
+				_available_depot = if (isNull _available_depot || _townupgrade < 1) then {[]} else {[_available_depot]};
 				if (count _available_repair_depots > 0 || count _available_repair_trucks > 0 || count _available_depot > 0) then {
 					_load_content = true; 
 					_content set [3, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks], ["Depot", _available_depot]]];
@@ -53,7 +53,7 @@ switch (_action) do {
 				_available_ammo_depots = [_vehicle, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 				_available_ammo_trucks = [_vehicle, CTI_SPECIAL_AMMOTRUCK, CTI_SERVICE_AMMO_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
 				_available_depot = [_vehicle, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
-				_available_depot = if (isNull _available_depot || _townupgrade < 2) then {[]} else {[_available_depot]};
+				_available_depot = if (isNull _available_depot || _townupgrade < 1) then {[]} else {[_available_depot]};
 				if (count _available_repair_depots > 0 || count _available_repair_trucks > 0 || count _available_depot > 0) then {
 					_load_content = true;
 					_content set [0, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks], ["Depot", _available_depot]]];
