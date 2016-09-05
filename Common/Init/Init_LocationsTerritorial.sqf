@@ -342,7 +342,7 @@ switch (toLower(worldName)) do {
 		Armanikha setVariable ["cti_town_neighbors",[Kuzhadon,NorthWestBeketov]];
 		NorthWestBeketov setVariable ["cti_town_neighbors",[SouthBeketov,EastBeketov,Armanikha,Shpagino]];
 		SouthBeketov setVariable ["cti_town_neighbors",[NorthWestBeketov,EastBeketov]];
-		EastBeketov setVariable ["cti_town_neighbors",[NorthWestBeketov,SouthBeketov]];
+		EastBeketov setVariable ["cti_town_neighbors",[NorthWestBeketov,SouthBeketov,Gavrikolvka]];
 		Gavrikolvka setVariable ["cti_town_neighbors",[EastBeketov,Sevastianovo,Dorogino]];
 		Sevastianovo setVariable ["cti_town_neighbors",[Gavrikolvka,Siukha,Mikhalevo]];
 		Mikhalevo setVariable ["cti_town_neighbors",[Polshishkino,Siukha,Sevastianovo]];
