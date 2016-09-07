@@ -14,7 +14,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], [
 	(missionNamespace getVariable "CTI_VEHICLES_AIR_AT") == 1, //--- Air AT
 	(missionNamespace getVariable "CTI_VEHICLES_AIR_AA") == 1, //--- Air AA
 	(missionNamespace getVariable "CTI_VEHICLES_AIR_CM") == 1, //--- Air CM
-	(missionNamespace getVariable "CTI_TOWNS_OCCUPATION") > 0, //--- Towns Occupation
+	(missionNamespace getVariable "CTI_TOWNS_OCCUPATION") > 0, //--- Towns Depots
 	true, //--- Halom
 	true, //--- Air Radar
 	true, //--- Art Radar
@@ -61,7 +61,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	0, //--- Air AT
 	0, //--- Air AA
 	0, //--- Air CM
-	0, //--- Towns Occupation
+	0, //--- Towns Depots
 	0, //--- Halo
 	1, //--- Air Radar
 	1, //--- Art Radar
@@ -84,7 +84,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	1, //--- Air AT
 	1, //--- Air AA
 	1, //--- Air CM
-	3, //--- Towns Occupation
+	3, //--- Towns Depots
 	2, //--- Halo
 	3, //--- Air Radar
 	3, //--- Art Radar
@@ -132,7 +132,7 @@ if (CTI_DEV_MODE > 0) then {
 		[1], //--- Air AT
 		[1], //--- Air AA
 		[1], //--- Air CM
-		[1, 1, 1], //--- Towns Occupation
+		[1, 1, 1], //--- Towns Depots
 		[1, 1], //--- Halo
 		[1, 1, 1], //--- Air Radar
 		[1, 1, 1], //--- Art Radar
@@ -155,11 +155,15 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[60], //--- Air AT
 		[60], //--- Air AA
 		[60], //--- Air CM
-		[60, 120, 180], //--- Towns Occupation
+		[60,120,180], //--- Towns Depots
+		[60, 60], //--- Halo
+		[60, 60, 60], //--- Air Radar
+		[60, 60, 60], //--- Art Radar
+		[60, 60, 60], //--- Respawn Range
 		[60], //--- IR Smoke
 		[600], //--- Satellite
 		[300], //--- Nuke
-		[60, 75, 90] //--- Supply Rate
+		[60,75,90] //--- Supply Rate
 	]];
 };
 
@@ -205,7 +209,7 @@ if (CTI_IsClient) then {
 		["Aircraft AT", "Unlocks the Anti Tank Missiles for Aircrafts"], //--- Air AT
 		["Aircraft AA", "Unlocks the Anti Air Missiles for Aircrafts"], //--- Air AA
 		["Aircraft Countermeasures", "Allows Aircraft to deploy countermeasures"], //--- Air CM
-		["Towns Depot", "Improves Gear/Vehicles available at Depots, also adds service menu at lvl2"], //--- Towns Depot
+		["Towns Depot", "Improves Gear/Vehicles available at Depots, also adds service menu at lvl1 w/tax"], //--- Towns Depot
 		["Halo", "Enable HALO Jumping from the Air factory and Depots"], //--- Halo
 		["Air Radar", "Increase Range of Air Radar"], //--- Air Radar
 		["Artillery Radar", "Increase Range of Artillery Radar"], //--- Art Radar
@@ -213,7 +217,7 @@ if (CTI_IsClient) then {
 		["(DISABLED) IR Smoke", "Enable IR Smoke Deployment from Vehicles"], //--- IR Smoke
 		["(DISABLED) Satellite", "Allows the use of the satellite camera"], //--- Satellite
 		["Nuclear Arms Deal", "Unlock Nuke Truck in Light Factory"], //--- Nuke
-		["Supply Rate", "Improves the Supply delivery rate"] //--- Supply Rate
+		["Supply Rate", "Improves rate at which Town SV Raises"] //--- Supply Rate
 	]];
 };
 

@@ -115,9 +115,11 @@ if (!isNil '_var') then {
 						// Award kills of base defense team to commander
 						_logic = (side _x) call CTI_CO_FNC_GetSideLogic;
 						
-						("kill by group-> " + str(_x) + " sidedefteam-> " +  str((_logic getVariable ["cti_defensive_team", "undef"])) + " isbasedefkill-> " + str(_x == (_logic getVariable ["cti_defensive_team", false]))) remoteexec ["diag_log"];
+						if (isNull _logic) exitWith{};
 						
-						if (_x == (_logic getVariable ["cti_defensive_team", false])) then {
+						("kill by group-> " + str(_x) + " sidedefteam-> " +  str((_logic getVariable ["cti_defensive_team", "undef"])) + " isbasedefkill-> " + str(_x == (_logic getVariable ["cti_defensive_team", objNull]))) remoteexec ["diag_log"];
+						
+						if (_x == (_logic getVariable ["cti_defensive_team", objNull])) then {
 							[_var_name, _bounty, _killed_pname] remoteExec ["CTI_PVF_CLT_OnBaseDefensesKill", side _x];
 						};
 					};

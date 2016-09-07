@@ -243,7 +243,7 @@ CTI_UPGRADE_NUKE = 18;
 CTI_UPGRADE_SUPPLY_RATE = 19;
 
 //--- Supply
-CTI_UPGRADE_CST_SUPPLY_COEF = [1, 2, 3, 4]; //--- Supply coefficient (Default + upgrade)
+CTI_UPGRADE_CST_SUPPLY_COEF = [1, 2, 3, 4]; //--- Supply coefficient (Default * upgrade)
 
 //-----------------------------------------------------------------------------------------------------------------------//
 
@@ -335,14 +335,14 @@ CTI_TOWNS_CAPTURE_DETECTION_MODE = 1; //--- Determine the towns detection mode (
 CTI_TOWNS_CAPTURE_FORCE_MAX = 0.5; //--- The force determine how many units may try to capture a town (caoture rate = SV - round((units force + camp rate) * town rate))
 CTI_TOWNS_CAPTURE_RANGE = 40; //--- The range which a unit/vehicle has to be from a town center to capture it
 CTI_TOWNS_CAPTURE_RATE = 0.2; //--- Determine how fast a town may be captured/protected
-CTI_TOWNS_CAPTURE_RATE_CAMPS = 0.3; //--- Determine how fast a town may be captured while holding it's camps
+CTI_TOWNS_CAPTURE_RATE_CAMPS = 0.5; //--- Determine how fast a town may be captured while holding it's camps
 
 CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
 
 //--- Towns: Depot
 CTI_TOWNS_DEPOT_BUILD_DIRECTION = 0; //--- Determine the direction a vehicle will use while being spawned from the depot
-CTI_TOWNS_DEPOT_BUILD_DISTANCE = 10; //--- Determine how far a unit/vehicle will spawn from the depot
+CTI_TOWNS_DEPOT_BUILD_DISTANCE = 15; //--- Determine how far a unit/vehicle will spawn from the depot
 CTI_TOWNS_DEPOT_CLASSNAME = ["Land_BagBunker_Large_F","Land_BagBunker_large_green_F","Land_Lighthouse_small_F"]; //--- The classname(s) used for town depots in editor
 CTI_TOWNS_DEPOT_RANGE = 15; //--- Determine how far a player needs to be from a depot in order to use it
 
@@ -392,7 +392,7 @@ CTI_TOWNS_SPAWN_SV_MIN = 50; //--- Determine the min SV used for a town as a ref
 
 //--- Towns: Supply
 CTI_TOWNS_SUPPLY_MODE = 1; //--- Supply Mode: (0: Default, 1: Timed)
-CTI_TOWNS_SUPPLY_TIME_INTERVAL = 60; //--- Determine the interval between each town SV increment with time
+CTI_TOWNS_SUPPLY_TIME_INTERVAL = 100; //--- Determine the interval between each town SV increment with time
 CTI_TOWNS_SUPPLY_TIME_INCREASE = 1; //--- Determine the town SV increment when the interval's reached (Potential upgrade?)
 
 //--- Towns: Territorial
@@ -440,13 +440,13 @@ with missionNamespace do {
 
 
 //--- Base: Air Radar
-CTI_BASE_AIRRADAR_RANGES = [2500, 5000, 10000, 15000]; //--- Ranges used by the Air Radar (default + based on upgrade)
+CTI_BASE_AIRRADAR_RANGES = [4000, 6000, 12000, 18000]; //--- Ranges used by the Air Radar (default + based on upgrade)
 CTI_BASE_AIRRADAR_Z_OFFSET = 50; //--- Z Offset detection for Air Radar (0: Disabled)
 
 //--- Base: Artillery Radar
 CTI_BASE_ARTRADAR_MARKER_ACCURACY = 80; //--- Accuracy of the marker (Artillery Distance Radar / value)
-CTI_BASE_ARTRADAR_MARKER_TIMEOUT = 600; //--- Time needed for an artillery marker to expire
-CTI_BASE_ARTRADAR_RANGES = [2500, 5000, 10000, 15000]; //--- Ranges used by the Artillery Radar (default + based on upgrade)
+CTI_BASE_ARTRADAR_MARKER_TIMEOUT = 400; //--- Time needed for an artillery marker to expire
+CTI_BASE_ARTRADAR_RANGES = [4000, 6000, 12000, 18000]; //--- Ranges used by the Artillery Radar (default + based on upgrade)
 CTI_BASE_ARTRADAR_REPORT_COOLDOWN = 300; //--- Time after which an artillery piece may be reported again
 CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY = 8; //--- Time after which a projectile is considered tracked (-1: Disabled)
 
@@ -465,7 +465,7 @@ CTI_BASE_CONSTRUCTION_REFUNDS = 0.60; //--- The refund value of a structure (str
 
 //--- Base: Defenses
 CTI_BASE_DEFENSES_AUTO_DELAY = 250; //--- Delay after which a new unit will replace a dead one for a defense
-CTI_BASE_DEFENSES_AUTO_LIMIT = 20; //--- Amount of independent units which may man nearby defenses
+CTI_BASE_DEFENSES_AUTO_LIMIT = 25; //--- Amount of independent units which may man nearby defenses
 CTI_BASE_DEFENSES_AUTO_RANGE = 250; //--- Range from the nearest barrack at which AI may auto man a defense
 CTI_BASE_DEFENSES_AUTO_REARM_RANGE = 250; //--- Range needed for a defense to be able to rearm at a service point
 CTI_BASE_DEFENSES_EMPTY_TIMEOUT = 350; //--- Delay after which an empty defense is considered empty

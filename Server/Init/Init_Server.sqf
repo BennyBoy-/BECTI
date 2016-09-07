@@ -119,6 +119,7 @@ if (_attempts >= 500) then {
 	// for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { _upgrades pushBack 1 };
 	_logic setVariable ["cti_upgrades", _upgrades, true];
 	_logic setVariable ["cti_upgrade", -1, true];
+	_logic setVariable ["cti_upgrade_lt", -1, true];
 	
 	//--- Create the defensive teams if needed
 	if (CTI_BASE_DEFENSES_AUTO_LIMIT > 0) then {
