@@ -115,7 +115,7 @@ _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 25]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
 _headers pushBack 		[CTI_AIR, "Aircraft Factory", "Air"];
-_classes pushBack 		["Land_Airport_Tower_F", "Land_Airport_Tower_ruins_F"];
+_classes pushBack 		["Land_Radar_Small_F", "Land_Radar_Small_ruins_F"];
 _prices pushBack 		8000;
 _times pushBack 		140;
 _placements pushBack 	[180, 40];
