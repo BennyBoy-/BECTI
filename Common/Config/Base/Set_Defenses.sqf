@@ -7,6 +7,7 @@ _prices = _this select 3;
 _placements = _this select 4;
 _categories = _this select 5;
 _coinmenus = _this select 6;
+_coinblacklist = _this select 7;
 
 _defenses = [];
 _defenses_cname = [];
@@ -37,7 +38,8 @@ for '_i' from 0 to (count _headers) -1 do {
 			_categories select _i,
 			_placements select _i,
 			_special,
-			_coinmenus select _i
+			_coinmenus select _i,
+			_coinblacklist select _i
 		];
 		
 		if !((_categories select _i) in _sub_categories) then {
