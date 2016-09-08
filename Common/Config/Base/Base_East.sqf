@@ -98,7 +98,7 @@ _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side
 
 _headers pushBack 		[CTI_CONTROLCENTER, "Control Center", "CC"];
 _classes pushBack 		["Land_Research_HQ_F", "Land_Research_HQ_ruins_F", ["Land_Research_HQ_F"]];							  
-_prices pushBack 		8000;
+_prices pushBack 		4000;
 _times pushBack 		90;
 _placements pushBack 	[90, 25, false];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 4.3]];
@@ -114,7 +114,7 @@ _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side
 
 _headers pushBack 		[CTI_AIR, "Aircraft Factory", "Air"];
 _classes pushBack 		["Land_Airport_Tower_F", "Land_Airport_Tower_ruins_F"];
-_prices pushBack 		8000;
+_prices pushBack 		6000;
 _times pushBack 		140;
 _placements pushBack 	[180, 40];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 20000]]; 
