@@ -14,7 +14,7 @@ _d = []; //--- Extra Distance (From Factory)
 //--- Infantry
 _c pushBack 'CUP_O_RU_Soldier';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Army Soldier'; 
 _o pushBack 300;
 _t pushBack 5;
 _u pushBack 0;
@@ -24,7 +24,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Soldier_AA';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Army Soldier (AA)'; 
 _o pushBack 900;
 _t pushBack 5;
 _u pushBack 1;
@@ -34,7 +34,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Soldier_MG';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Army Soldier (MG)'; 
 _o pushBack 550;
 _t pushBack 5;
 _u pushBack 1;
@@ -44,7 +44,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_soldier_GL';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Army Soldier (GL)'; 
 _o pushBack 375;
 _t pushBack 5;
 _u pushBack 0;
@@ -54,7 +54,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Spotter';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Army Spotter'; 
 _o pushBack 350;
 _t pushBack 5;
 _u pushBack 1;
@@ -64,7 +64,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Crew';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Army Crew'; 
 _o pushBack 150;
 _t pushBack 5;
 _u pushBack 0;
@@ -74,7 +74,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Soldier_AT';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Army Soldier (AT)'; 
 _o pushBack 550;
 _t pushBack 5;
 _u pushBack 1;
@@ -84,7 +84,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Soldier_HAT';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Army Soldier (Metis)'; 
 _o pushBack 1400;
 _t pushBack 5;
 _u pushBack 3;
@@ -94,7 +94,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Engineer';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Army Engineer'; 
 _o pushBack 600;
 _t pushBack 5;
 _u pushBack 1;
@@ -116,7 +116,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Medic';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Army Medic'; 
 _o pushBack 300;
 _t pushBack 5;
 _u pushBack 1;
@@ -126,7 +126,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Pilot';
 _p pushBack '';
-_n pushBack 'Pilot'; 
+_n pushBack 'Russian Army Pilot'; 
 _o pushBack 150;
 _t pushBack 5;
 _u pushBack 0;
@@ -136,7 +136,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Sniper_KSVK';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Army Sniper'; 
 _o pushBack 1000;
 _t pushBack 5;
 _u pushBack 3;
@@ -146,7 +146,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Soldier_VDV_EMR';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Airborne Soldier'; 
 _o pushBack 300;
 _t pushBack 5;
 _u pushBack 0;
@@ -156,7 +156,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Soldier_AA_VDV_EMR';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Airborne Soldier (AA)'; 
 _o pushBack 900;
 _t pushBack 5;
 _u pushBack 1;
@@ -166,7 +166,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Soldier_MG_VDV_EMR';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Airborne Soldier (MG)'; 
 _o pushBack 550;
 _t pushBack 5;
 _u pushBack 1;
@@ -176,7 +176,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Soldier_GL_VDV_EMR';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Airborne Soldier (GL)'; 
 _o pushBack 375;
 _t pushBack 5;
 _u pushBack 0;
@@ -186,7 +186,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Spotter_VDV_EMR';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Airborne Spotter'; 
 _o pushBack 350;
 _t pushBack 5;
 _u pushBack 1;
@@ -196,7 +196,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Crew_VDV_EMR';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Airborne Crew'; 
 _o pushBack 150;
 _t pushBack 5;
 _u pushBack 0;
@@ -206,7 +206,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Soldier_AT_VDV_EMR';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Airborne Soldier (AT)'; 
 _o pushBack 550;
 _t pushBack 5;
 _u pushBack 1;
@@ -216,7 +216,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Soldier_HAT_VDV_EMR';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Airborne Soldier (Metis)'; 
 _o pushBack 1400;
 _t pushBack 5;
 _u pushBack 3;
@@ -226,7 +226,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Engineer_VDV_EMR';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Airborne Engineer'; 
 _o pushBack 600;
 _t pushBack 5;
 _u pushBack 1;
@@ -248,7 +248,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Medic_VDV_EMR';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Airborne Medic'; 
 _o pushBack 300;
 _t pushBack 5;
 _u pushBack 1;
@@ -258,7 +258,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Pilot_VDV_EMR';
 _p pushBack '';
-_n pushBack 'Pilot'; 
+_n pushBack 'Russian Airborne Pilot'; 
 _o pushBack 150;
 _t pushBack 5;
 _u pushBack 0;
@@ -268,7 +268,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Sniper_VDV_EMR';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'Russian Airborne Sniper'; 
 _o pushBack 900;
 _t pushBack 5;
 _u pushBack 1;

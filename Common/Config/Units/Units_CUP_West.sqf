@@ -14,7 +14,7 @@ _d = []; //--- Extra Distance (From Factory)
 //--- Infantry
 
 _c pushBack 'CUP_B_US_Soldier';
-_p pushBack '';
+_p pushBack 'US Army Soldier';
 _n pushBack 'Soldier'; 
 _o pushBack 300;
 _t pushBack 5;
@@ -25,7 +25,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_AA';
 _p pushBack '';
-_n pushBack 'Soldier Stinger'; 
+_n pushBack 'US Army Soldier (AA)'; 
 _o pushBack 900;
 _t pushBack 5;
 _u pushBack 1;
@@ -35,7 +35,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Soldier_MG';
 _p pushBack '';
-_n pushBack 'Soldier MG'; 
+_n pushBack 'US Army Soldier (MG)'; 
 _o pushBack 350;
 _t pushBack 5;
 _u pushBack 1;
@@ -45,7 +45,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Crew';
 _p pushBack '';
-_n pushBack 'Crew'; 
+_n pushBack 'US Army Crew'; 
 _o pushBack 150;
 _t pushBack 5;
 _u pushBack 0;
@@ -55,7 +55,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_AT';
 _p pushBack '';
-_n pushBack 'Soldier SMAW'; 
+_n pushBack 'US Army Soldier (SMAW)'; 
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 2;
@@ -65,7 +65,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_HAT';
 _p pushBack '';
-_n pushBack 'Soldier Javeline'; 
+_n pushBack 'US Army Soldier (Javeline)'; 
 _o pushBack 1500;
 _t pushBack 5;
 _u pushBack 3;
@@ -75,7 +75,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Soldier_GL';
 _p pushBack '';
-_n pushBack 'Soldier Grenadier'; 
+_n pushBack 'US Army Soldier (GL)'; 
 _o pushBack 375;
 _t pushBack 5;
 _u pushBack 1;
@@ -85,7 +85,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Spotter';
 _p pushBack '';
-_n pushBack 'Soldier Spotter'; 
+_n pushBack 'US Army Spotter'; 
 _o pushBack 350;
 _t pushBack 5;
 _u pushBack 1;
@@ -95,7 +95,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Medic';
 _p pushBack '';
-_n pushBack 'Soldier Corpsman'; 
+_n pushBack 'US Army Corpsman'; 
 _o pushBack 400;
 _t pushBack 5;
 _u pushBack 1;
@@ -105,7 +105,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Pilot';
 _p pushBack '';
-_n pushBack 'Pilot'; 
+_n pushBack 'US Army Pilot'; 
 _o pushBack 150;
 _t pushBack 5;
 _u pushBack 0;
@@ -115,7 +115,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_US_Sniper_M107';
 _p pushBack '';
-_n pushBack 'Soldier M107'; 
+_n pushBack 'US Army Sniper (M107)'; 
 _o pushBack 1000;
 _t pushBack 5;
 _u pushBack 3;
@@ -125,7 +125,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Pilot';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'USMC Pilot'; 
 _o pushBack 150;
 _t pushBack 5;
 _u pushBack 0;
@@ -135,7 +135,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Crew';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'USMC Crew'; 
 _o pushBack 150;
 _t pushBack 5;
 _u pushBack 0;
@@ -145,7 +145,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Soldier';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'USMC Soldier'; 
 _o pushBack 300;
 _t pushBack 5;
 _u pushBack 0;
@@ -155,7 +155,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Soldier_GL';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'USMC Soldier (GL)'; 
 _o pushBack 350;
 _t pushBack 5;
 _u pushBack 1;
@@ -165,7 +165,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Medic';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'USMC Medic'; 
 _o pushBack 300;
 _t pushBack 5;
 _u pushBack 1;
@@ -175,7 +175,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Engineer';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'USMC Engineer'; 
 _o pushBack 600;
 _t pushBack 5;
 _u pushBack 1;
@@ -185,8 +185,8 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Soldier_Marksman';
 _p pushBack '';
-_n pushBack ''; 
-_o pushBack 300;
+_n pushBack 'USMC Marksman'; 
+_o pushBack 500;
 _t pushBack 5;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_BARRACKS;
@@ -195,7 +195,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Sniper_M107';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'USMC Sniper (M107)'; 
 _o pushBack 1000;
 _t pushBack 5;
 _u pushBack 3;
@@ -205,7 +205,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Soldier_AA';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'USMC Soldier (AA)'; 
 _o pushBack 900;
 _t pushBack 5;
 _u pushBack 1;
@@ -215,7 +215,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Soldier_AT';
 _p pushBack '';
-_n pushBack ''; 
+_n pushBack 'USMC Soldier (AT)'; 
 _o pushBack 500;
 _t pushBack 5;
 _u pushBack 2;
@@ -225,20 +225,10 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Soldier_HAT';
 _p pushBack '';
-_n pushBack 'Javeline'; 
+_n pushBack 'USMC Soldier (Javeline)'; 
 _o pushBack 1500;
 _t pushBack 5;
 _u pushBack 3;
-_f pushBack CTI_FACTORY_BARRACKS;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'CUP_B_FR_Saboteur';
-_p pushBack '';
-_n pushBack ''; 
-_o pushBack 450;
-_t pushBack 5;
-_u pushBack 1;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
