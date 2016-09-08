@@ -121,8 +121,16 @@ CTI_Coin_UpdatePreview = {
 		if (_preview distance CTI_COIN_ORIGIN > CTI_COIN_RANGE) then { //--- Out of boundaries, apply grey
 			_color = CTI_COIN_COLOR_OUTOFRANGE;
 		} else { //--- In boundaries, check for obstruction
-			if !(_preview call CTI_Coin_PreviewSurfaceIsValid) then {
+			if !(_preview call CTI_Coin_PreviewSurfaceIsValid) then { //--- Check if the surface is valid
 				_color = CTI_COIN_COLOR_INVALID;
+			} else {
+				if (CTI_COIN_PARAM_KIND == "DEFENSES") then {
+					if !((CTI_COIN_PARAM select 7) isEqualTo []) then { //--- Check if the defense can be placed according to the blacklist
+						{
+							if !((_preview nearObjects _x) isEqualTo []) exitWith {_color = CTI_COIN_COLOR_INVALID};
+						} forEach (CTI_COIN_PARAM select 7);
+					};
+				};
 			};
 		};
 		
