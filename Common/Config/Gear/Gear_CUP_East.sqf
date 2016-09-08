@@ -911,7 +911,7 @@ _p pushBack 50;
 _i pushBack "CUP_TimeBomb_M";
 _u pushBack 2;
 _p pushBack 500;
- */
+*/
 _i pushBack "CUP_Mine_M";
 _u pushBack 1;
 _p pushBack 300;
@@ -923,7 +923,7 @@ _p pushBack 300;
 _i pushBack "CUP_PipeBomb_M";
 _u pushBack 2;
 _p pushBack 300;
-/* 
+
 _i pushBack "CUP_IED_V1_M";
 _u pushBack 0;
 _p pushBack 300;
@@ -939,7 +939,7 @@ _p pushBack 300;
 _i pushBack "CUP_IED_V4_M";
 _u pushBack 0;
 _p pushBack 300;
- */
+
 //--- Rockets Bombs
 
 _i pushBack "CUP_Strela_2_M";
@@ -1506,6 +1506,10 @@ _i pushBack "CUP_H_SLA_TankerHelmet";
 _u pushBack 0;
 _p pushBack 100;
  */
+ _i pushBack "CUP_H_RUS_Beret_Spetsnaz";
+_u pushBack 0;
+_p pushBack 10;
+ 
 _i pushBack "CUP_H_TK_Beret";
 _u pushBack 0;
 _p pushBack 10;
@@ -1525,11 +1529,11 @@ _p pushBack 100;
 _i pushBack "CUP_H_TK_TankerHelmet";
 _u pushBack 0;
 _p pushBack 100;
-/* 
+
 _i pushBack "CUP_H_C_Ushanka_03";
 _u pushBack 0;
 _p pushBack 100;
- */
+
 _i pushBack "CUP_H_RACS_Helmet_Goggles_DPAT";
 _u pushBack 0;
 _p pushBack 100;

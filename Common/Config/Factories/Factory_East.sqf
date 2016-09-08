@@ -329,6 +329,18 @@ if (CTI_CUP_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 1) then {
 		//CSAT Tropic CUP
+			_u pushBack 'CUP_O_RU_Soldier_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Soldier_AA_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Soldier_MG_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Crew_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Soldier_AT_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Soldier_HAT_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Engineer_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Soldier_GL_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Medic_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Pilot_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Sniper_KSVK_VDV_EMR';
+    _u pushBack 'CUP_O_RU_Spotter_VDV_EMR';
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter CUP

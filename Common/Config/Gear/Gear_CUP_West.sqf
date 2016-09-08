@@ -1103,23 +1103,23 @@ _p pushBack 10;
 _i pushBack "CUP_HandGrenade_M67";
 _u pushBack 0;
 _p pushBack 50;
-/* 
+
 _i pushBack "CUP_HandGrenade_L109A1_HE";
 _u pushBack 0;
 _p pushBack 50;
- */
+/*
 _i pushBack "CUP_HandGrenade_L109A2_HE";
 _u pushBack 0;
 _p pushBack 50;
-/* 
+
 _i pushBack "CUP_HandGrenade_RGD5";
 _u pushBack 0;
 _p pushBack 50;
- */
+
 _i pushBack "CUP_HandGrenade_RGO";
 _u pushBack 0;
 _p pushBack 50;
-
+*/
 
 //--- Bombs Mines IEDS
 /* 
@@ -1441,10 +1441,6 @@ _p pushBack 800;
 
 //--Flash Suppressor Attachment
 
-_i pushBack "CUP_muzzleFlash2SCAR_L";
-_u pushBack 0;
-_p pushBack 50;
-
 _i pushBack "CUP_muzzle_mfsup_SCAR_L";
 _u pushBack 0;
 _p pushBack 50;
@@ -1478,7 +1474,7 @@ _p pushBack 100;
 _i pushBack "CUP_acc_Flashlight";
 _u pushBack 0;
 _p pushBack 50;
-/* 
+ 
 _i pushBack "CUP_acc_Flashlight_wdl";
 _u pushBack 0;
 _p pushBack 100;
@@ -1490,7 +1486,7 @@ _p pushBack 100;
 _i pushBack "CUP_acc_XM8_light_module";
 _u pushBack 0;
 _p pushBack 100;
- */
+
 _i pushBack "CUP_acc_CZ_M3X";
 _u pushBack 0;
 _p pushBack 50;
@@ -1829,11 +1825,11 @@ _p pushBack 400;
 _i pushBack "CUP_H_NAPA_Fedora";
 _u pushBack 0;
 _p pushBack 10;
-/* 
+
 _i pushBack "CUP_H_USMC_Officer_Cap";
 _u pushBack 0;
 _p pushBack 10;
- */
+
 _i pushBack "CUP_H_USMC_Crew_Helmet";
 _u pushBack 0;
 _p pushBack 100;

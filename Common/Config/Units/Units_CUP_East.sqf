@@ -13,9 +13,9 @@ _d = []; //--- Extra Distance (From Factory)
 
 //--- Infantry
 _c pushBack 'CUP_O_RU_Soldier';
-_p pushBack 'Soldier';
+_p pushBack '';
 _n pushBack ''; 
-_o pushBack 100;
+_o pushBack 300;
 _t pushBack 5;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
@@ -24,28 +24,28 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Soldier_AA';
 _p pushBack '';
-_n pushBack 'Soldier Igla'; 
-_o pushBack 500;
+_n pushBack ''; 
+_o pushBack 900;
 _t pushBack 5;
-_u pushBack 0;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Soldier_MG';
 _p pushBack '';
-_n pushBack 'Soldier MG'; 
-_o pushBack 150;
+_n pushBack ''; 
+_o pushBack 550;
 _t pushBack 5;
-_u pushBack 0;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_soldier_GL';
 _p pushBack '';
-_n pushBack 'Soldier Grenadier'; 
-_o pushBack 175;
+_n pushBack ''; 
+_o pushBack 375;
 _t pushBack 5;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
@@ -54,18 +54,18 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Spotter';
 _p pushBack '';
-_n pushBack 'Soldier Spotter'; 
-_o pushBack 150;
+_n pushBack ''; 
+_o pushBack 350;
 _t pushBack 5;
-_u pushBack 0;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Crew';
 _p pushBack '';
-_n pushBack 'Crew'; 
-_o pushBack 50;
+_n pushBack ''; 
+_o pushBack 150;
 _t pushBack 5;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
@@ -74,27 +74,27 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Soldier_AT';
 _p pushBack '';
-_n pushBack 'Soldier RPG7'; 
-_o pushBack 250;
-_t pushBack 5;
-_u pushBack 0;
-_f pushBack CTI_FACTORY_BARRACKS;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'CUP_O_RU_Soldier_HAT';
-_p pushBack '';
-_n pushBack 'Soldier Metis'; 
-_o pushBack 400;
+_n pushBack ''; 
+_o pushBack 550;
 _t pushBack 5;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'CUP_O_RU_Soldier_HAT';
+_p pushBack '';
+_n pushBack ''; 
+_o pushBack 1400;
+_t pushBack 5;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'CUP_O_RU_Engineer';
 _p pushBack '';
-_n pushBack 'Soldier Repair Specialist'; 
+_n pushBack ''; 
 _o pushBack 600;
 _t pushBack 5;
 _u pushBack 1;
@@ -116,10 +116,10 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Medic';
 _p pushBack '';
-_n pushBack 'Soldier Corpsman'; 
-_o pushBack 200;
+_n pushBack ''; 
+_o pushBack 300;
 _t pushBack 5;
-_u pushBack 0;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
@@ -127,7 +127,7 @@ _d pushBack 0;
 _c pushBack 'CUP_O_RU_Pilot';
 _p pushBack '';
 _n pushBack 'Pilot'; 
-_o pushBack 50;
+_o pushBack 150;
 _t pushBack 5;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
@@ -136,35 +136,65 @@ _d pushBack 0;
 
 _c pushBack 'CUP_O_RU_Sniper_KSVK';
 _p pushBack '';
-_n pushBack 'Soldier KSVK'; 
-_o pushBack 400;
+_n pushBack ''; 
+_o pushBack 1000;
+_t pushBack 5;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_RU_Soldier_VDV_EMR';
+_p pushBack '';
+_n pushBack ''; 
+_o pushBack 300;
+_t pushBack 5;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_RU_Soldier_AA_VDV_EMR';
+_p pushBack '';
+_n pushBack ''; 
+_o pushBack 900;
 _t pushBack 5;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'CUP_O_RU_Crew_EMR';
+_c pushBack 'CUP_O_RU_Soldier_MG_VDV_EMR';
 _p pushBack '';
 _n pushBack ''; 
-_o pushBack 100;
+_o pushBack 550;
+_t pushBack 5;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_BARRACKS;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_RU_Soldier_GL_VDV_EMR';
+_p pushBack '';
+_n pushBack ''; 
+_o pushBack 375;
 _t pushBack 5;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_O_RU_Pilot_EMR';
+_c pushBack 'CUP_O_RU_Spotter_VDV_EMR';
 _p pushBack '';
 _n pushBack ''; 
-_o pushBack 100;
+_o pushBack 350;
 _t pushBack 5;
-_u pushBack 0;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_O_RU_Soldier_EMR';
+_c pushBack 'CUP_O_RU_Crew_VDV_EMR';
 _p pushBack '';
 _n pushBack ''; 
 _o pushBack 150;
@@ -174,47 +204,27 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_O_RU_Soldier_GL_EMR';
+_c pushBack 'CUP_O_RU_Soldier_AT_VDV_EMR';
 _p pushBack '';
 _n pushBack ''; 
-_o pushBack 250;
-_t pushBack 5;
-_u pushBack 0;
-_f pushBack CTI_FACTORY_BARRACKS;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'CUP_O_RU_Soldier_MG_EMR';
-_p pushBack '';
-_n pushBack ''; 
-_o pushBack 300;
+_o pushBack 550;
 _t pushBack 5;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_O_RU_Sniper_KSVK_EMR';
+_c pushBack 'CUP_O_RU_Soldier_HAT_VDV_EMR';
 _p pushBack '';
 _n pushBack ''; 
-_o pushBack 400;
+_o pushBack 1400;
 _t pushBack 5;
-_u pushBack 2;
+_u pushBack 3;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_O_RU_Sniper_EMR';
-_p pushBack '';
-_n pushBack ''; 
-_o pushBack 200;
-_t pushBack 5;
-_u pushBack 0;
-_f pushBack CTI_FACTORY_BARRACKS;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'CUP_O_RU_Engineer_EMR';
+_c pushBack 'CUP_O_RU_Engineer_VDV_EMR';
 _p pushBack '';
 _n pushBack ''; 
 _o pushBack 600;
@@ -224,57 +234,39 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_O_RU_Soldier_AT_EMR';
+/*
+_c pushBack 'CUP_O_RU_Soldier_TL_VDV_EMR';
 _p pushBack '';
-_n pushBack ''; 
-_o pushBack 350;
+_n pushBack ["%1 (Russian)"]; 
+_o pushBack 100;
 _t pushBack 5;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+*/
 
-_c pushBack 'CUP_O_RU_Soldier_HAT_EMR';
-_p pushBack '';
-_n pushBack 'Metis'; 
-_o pushBack 700;
-_t pushBack 5;
-_u pushBack 2;
-_f pushBack CTI_FACTORY_BARRACKS;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'CUP_O_RU_Medic_EMR';
+_c pushBack 'CUP_O_RU_Medic_VDV_EMR';
 _p pushBack '';
 _n pushBack ''; 
-_o pushBack 200;
-_t pushBack 5;
-_u pushBack 0;
-_f pushBack CTI_FACTORY_BARRACKS;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'CUP_O_RU_Sabotuer';
-_p pushBack '';
-_n pushBack 'Speznaz'; 
-_o pushBack 250;
+_o pushBack 300;
 _t pushBack 5;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_O_RU_Soldier_Marksman';
+_c pushBack 'CUP_O_RU_Pilot_VDV_EMR';
 _p pushBack '';
-_n pushBack 'Speznaz'; 
-_o pushBack 350;
+_n pushBack 'Pilot'; 
+_o pushBack 150;
 _t pushBack 5;
-_u pushBack 2;
+_u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_O_RU_Soldier_AA_EMR';
+_c pushBack 'CUP_O_RU_Sniper_VDV_EMR';
 _p pushBack '';
 _n pushBack ''; 
 _o pushBack 900;
@@ -285,7 +277,7 @@ _s pushBack "";
 _d pushBack 0;
 
 --- Light Vehicles
-
+/*
 _c pushBack 'CUP_M1030';
 _p pushBack '';
 _n pushBack '';
