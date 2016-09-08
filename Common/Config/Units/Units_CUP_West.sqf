@@ -35,7 +35,7 @@ _d pushBack 0;
 
 _c pushBack 'CUP_B_USMC_Soldier_MG';
 _p pushBack '';
-_n pushBack 'US Army Soldier (MG)'; 
+_n pushBack 'USMC Soldier (MG)'; 
 _o pushBack 350;
 _t pushBack 5;
 _u pushBack 1;
