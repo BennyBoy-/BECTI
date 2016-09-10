@@ -189,7 +189,7 @@ _p pushBack '';
 _n pushBack '';
 _o pushBack 375;
 _t pushBack 5;
-_u pushBack 1;
+_u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
