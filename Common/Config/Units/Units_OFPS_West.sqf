@@ -402,14 +402,23 @@ _d pushBack 0;
 
 _c pushBack 'USAF_C17';
 _p pushBack '';
-_n pushBack 'C17 Transport';
-_o pushBack 9700;
+_n pushBack '';
+_o pushBack 15000;
 _t pushBack 50;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 50;
 
+_c pushBack 'usaf_c5';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 20000;
+_t pushBack 50;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 75;
 
 _c pushBack 'O_UAV_02_F';
 _p pushBack '';

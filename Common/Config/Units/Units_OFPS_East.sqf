@@ -493,6 +493,16 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 50;
 
+_c pushBack 'usaf_c5';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 20000;
+_t pushBack 50;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 75;
+
 _c pushBack 'bwi_a3_t6a_5';
 _p pushBack '';
 _n pushBack '';
