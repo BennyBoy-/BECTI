@@ -248,7 +248,7 @@ _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'dbo_CIV_ol_bike';
+_c pushBack 'dbo_CIV_ol_bike';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 20;
@@ -256,7 +256,7 @@ _t pushBack 10;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
-_d pushBack 0;*/
+_d pushBack 0;
 
 //Snow truck
 _c pushBack 'sfp_bv206_winter';
@@ -400,7 +400,7 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'globemaster_c17_NATO';
+_c pushBack 'USAF_C17';
 _p pushBack '';
 _n pushBack 'C17 Transport';
 _o pushBack 9700;
@@ -442,7 +442,7 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'bwi_a3_t6c';
+_c pushBack 'bwi_a3_t6c';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 5000;
@@ -460,7 +460,7 @@ _t pushBack 20;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
-_d pushBack 0;*/
+_d pushBack 0;
 
 _c pushBack 'B_UCSV_02';
 _p pushBack '';
@@ -472,7 +472,7 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'LDL_C130J';
+_c pushBack 'LDL_C130J';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 40000;
@@ -480,7 +480,7 @@ _t pushBack 50;
 _u pushBack 3;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
-_d pushBack 0;*/
+_d pushBack 0;
 
 _c pushBack 'sab_alphajet3';
 _p pushBack '';
@@ -492,7 +492,7 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'sab_alphajet2';
+_c pushBack 'sab_alphajet2';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 20000;
@@ -500,7 +500,7 @@ _t pushBack 20;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
-_d pushBack 0;*/
+_d pushBack 0;
 
 _c pushBack 'sab_alphajet5';
 _p pushBack '';
@@ -532,7 +532,7 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "service-medic";
 _d pushBack 10;
 
-/*_c pushBack 'pook_tu95ms_CDF';
+_c pushBack 'pook_tu95ms_CDF';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 60000;
@@ -560,7 +560,7 @@ _t pushBack 20;
 _u pushBack 3;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
-_d pushBack 20;*/
+_d pushBack 20;
 
 //--- Naval Vehicles
 
@@ -594,7 +594,7 @@ _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "service-medic";
 _d pushBack 10;
 
-/*_c pushBack 'sfp_gruppbat';
+_c pushBack 'sfp_gruppbat';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 300;
@@ -602,7 +602,7 @@ _t pushBack 25;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "";
-_d pushBack 0;*/
+_d pushBack 0;
 
 _c pushBack 'rhsusf_mkvsoc';
 _p pushBack '';
