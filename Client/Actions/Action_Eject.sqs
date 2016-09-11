@@ -4,12 +4,12 @@
 * scripts, but not in a Static Line Paradrop. Hence, this modification.
 //
 player allowdamage false;
-sleep 1;
+~1
 player action ["eject",vehicle player];
-sleep 3;
+~3
 _para = "Steerable_Parachute_F" createVehicle (position player);
 _para setPos (getPos player);
-sleep 0.2;
+~1
 player moveindriver _para;
-sleep 1;
+~1
 player allowdamage true;
