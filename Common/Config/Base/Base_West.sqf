@@ -389,7 +389,7 @@ _prices pushBack 		4000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [["Land_TentHangar_V1_F", 20], ["Land_sfp_torebodahangar_alt2", 10]];
+_coinblacklist pushBack [];
 
 if (CTI_OFPS_ADDON > 0) then {
 _headers pushBack 		"Mil Shed";
@@ -398,7 +398,7 @@ _prices pushBack 		4000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [["Land_sfp_mil_shed", 10]];
+_coinblacklist pushBack [];
 
 _headers pushBack 		"Hangar Wood";
 _classes pushBack 		"Land_sfp_torebodahangar";
@@ -406,7 +406,7 @@ _prices pushBack 		4000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [["Land_sfp_torebodahangar", 10]];
+_coinblacklist pushBack [];
 
 _headers pushBack 		"Hangar Wood Large";
 _classes pushBack 		"Land_sfp_torebodahangar_alt2";
@@ -414,7 +414,7 @@ _prices pushBack 		5000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [["Land_sfp_torebodahangar_alt2", 10]];
+_coinblacklist pushBack [];
 };
 
 _headers pushBack 		"Dome (Small)";
@@ -423,7 +423,7 @@ _prices pushBack 		4000;
 _placements pushBack 	[0, 30];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [["Land_Dome_Small_F", 10]];
+_coinblacklist pushBack [];
 
 _headers pushBack 		"Dome (Big)";
 _classes pushBack 		"Land_Dome_Big_F";
@@ -431,7 +431,7 @@ _prices pushBack 		5000;
 _placements pushBack 	[0, 50];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [["Land_Dome_Big_F", 10]];
+_coinblacklist pushBack [];
 
 /* Do not add in cannot be destroyed. Can we just Delete these then?-Apollo
 _headers pushBack 		"H-Barrier (Small) (1 Block)";
