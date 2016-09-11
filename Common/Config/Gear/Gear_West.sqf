@@ -9,10 +9,6 @@ _p = [];
 
 //--- Magazines
 
-_i pushBack "ATMine_Range_Mag";
-_u pushBack 1;
-_p pushBack 200;
-
 _i pushBack "APERSMine_Range_Mag";
 _u pushBack 0;
 _p pushBack 100;
@@ -28,6 +24,10 @@ _p pushBack 100;
 _i pushBack "APERSTripMine_Wire_Mag";
 _u pushBack 0;
 _p pushBack 100;
+
+_i pushBack "ATMine_Range_Mag";
+_u pushBack 1;
+_p pushBack 200;
 
 _i pushBack "SatchelCharge_Remote_Mag";
 _u pushBack 3;
@@ -175,7 +175,7 @@ _u pushBack 0;
 _p pushBack 1; 
 */
 
-_i pushBack "O_IR_Grenade";
+_i pushBack "B_IR_Grenade";
 _u pushBack 0;
 _p pushBack 50;
 

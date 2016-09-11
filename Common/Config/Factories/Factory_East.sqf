@@ -329,6 +329,18 @@ if (CTI_CUP_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 1) then {
 		//CSAT Tropic CUP
+			_u pushBack 'CUP_O_RU_Soldier_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Soldier_AA_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Soldier_MG_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Crew_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Soldier_AT_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Soldier_HAT_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Engineer_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Soldier_GL_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Medic_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Pilot_VDV_EMR';
+	_u pushBack 'CUP_O_RU_Sniper_KSVK_VDV_EMR';
+    _u pushBack 'CUP_O_RU_Spotter_VDV_EMR';
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter CUP
@@ -797,7 +809,8 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'sfp_bo105_unarmed';
 	_u pushBack 'sfp_bo105';
 	_u pushBack 'O_UCSV_01';
-	_u pushBack 'globemaster_c17_Qatar';
+	_u pushBack 'USAF_C17';
+	_u pushBack 'usaf_c5';
 	_u pushBack 'LDL_C130J';
 	_u pushBack 'bwi_a3_t6a_5';
 	_u pushBack 'bwi_a3_at6b_2';

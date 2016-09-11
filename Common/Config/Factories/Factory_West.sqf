@@ -329,21 +329,33 @@ if (CTI_CUP_ADDON > 0) then {
 		//NATO Arid CUP
 	_u pushBack 'CUP_B_US_Soldier';
 	_u pushBack 'CUP_B_US_Soldier_AA';
-	_u pushBack 'CUP_B_USMC_Soldier_MG';
 	_u pushBack 'CUP_B_US_Crew';
 	_u pushBack 'CUP_B_US_Soldier_AT';
 	_u pushBack 'CUP_B_US_Soldier_HAT';
-	_u pushBack 'CUP_B_USMC_Engineer';
 	_u pushBack 'CUP_B_US_Soldier_GL';
 	_u pushBack 'CUP_B_US_Medic';
 	_u pushBack 'CUP_B_US_Pilot';
 	_u pushBack 'CUP_B_US_Sniper_M107';
-    _u pushBack 'CUP_B_USMC_Spotter';
 		
 	};
 	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic CUP
-		
+	_u pushBack 'CUP_B_USMC_Soldier';
+	_u pushBack 'CUP_B_USMC_Soldier_MG';
+	_u pushBack 'CUP_B_USMC_Crew';
+	_u pushBack 'CUP_B_USMC_Engineer';
+	_u pushBack 'CUP_B_USMC_Spotter';
+	_u pushBack 'CUP_B_USMC_Soldier_GL';
+	_u pushBack 'CUP_B_USMC_Medic';
+	_u pushBack 'CUP_B_USMC_Pilot';
+	_u pushBack 'CUP_B_USMC_Soldier_Marksman';
+	_u pushBack 'CUP_B_USMC_Sniper_M107';
+	_u pushBack 'CUP_B_USMC_Soldier_AA';
+	_u pushBack 'CUP_B_USMC_Soldier_AT';		
+	_u pushBack 'CUP_B_USMC_Soldier_HAT';
+
+
+	
 	};
 	if (CTI_FACTION_WEST == 2) then {
 		//NATO Winter CUP
@@ -805,7 +817,8 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'usaf_b1b';			
 	_u pushBack 'B_UCSV_01';
 	_u pushBack 'B_UCSV_02';
-	_u pushBack 'globemaster_c17_NATO';
+	_u pushBack 'USAF_C17';
+	_u pushBack 'usaf_c5';
 	_u pushBack 'LDL_C130J';
 	_u pushBack 'bwi_a3_t6a';
 	_u pushBack 'bwi_a3_t6c';

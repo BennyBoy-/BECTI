@@ -92,15 +92,15 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-/*_c pushBack 'B_T_Helipilot_F';
+_c pushBack 'B_T_Helipilot_F';
 _p pushBack '';
 _n pushBack ["%1 (Pacific)"]; 
-_o pushBack 75;
+_o pushBack 175;
 _t pushBack 5;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
-_d pushBack 0;*/
+_d pushBack 0;
 
 _c pushBack 'B_T_Soldier_M_F';
 _p pushBack '';
@@ -155,7 +155,7 @@ _d pushBack 0;
 _c pushBack 'B_T_Soldier_F';
 _p pushBack '';
 _n pushBack ["%1 (Pacific)"]; 
-_o pushBack 175;
+_o pushBack 375;
 _t pushBack 5;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
