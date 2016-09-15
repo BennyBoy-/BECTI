@@ -241,7 +241,7 @@ CTI_UPGRADE_NUKE = 18;
 CTI_UPGRADE_SUPPLY_RATE = 19;
 
 //--- Supply
-CTI_UPGRADE_CST_SUPPLY_COEF [0, 15, 30, 40] //--- Supply coefficient (Default + upgrade)
+CTI_UPGRADE_CST_SUPPLY_COEF = [0, 15, 30, 40]; //--- Supply coefficient (Default + upgrade)
 
 //-----------------------------------------------------------------------------------------------------------------------//
 
