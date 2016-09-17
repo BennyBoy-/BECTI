@@ -389,7 +389,7 @@ _prices pushBack 		4000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [];
+_coinblacklist pushBack [["Land_TentHangar_V1_F", 20], ["Land_sfp_torebodahangar_alt2", 10]];
 
 if (CTI_OFPS_ADDON > 0) then {
 _headers pushBack 		"Mil Shed";
