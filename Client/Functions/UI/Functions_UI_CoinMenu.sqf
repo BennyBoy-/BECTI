@@ -119,6 +119,8 @@ CTI_Coin_DefenseCanBePlaced = {
 			if !(((_preview nearObjects _x) - [_preview]) isEqualTo []) exitWith {_valid = false};
 		} forEach (CTI_COIN_PARAM select 7);
 	};
+	
+	_valid
 };
 
 //--- Update the preview's lifespan
