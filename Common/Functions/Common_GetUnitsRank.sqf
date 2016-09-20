@@ -49,7 +49,7 @@ switch (true) do {
 	case (_score >= 900 && _score < 1050) : { 
 		_this setRank "COLONEL";
 	};
-	case (_score >= 1050) : { 
+	case (_score >= 1050 && _score < 1000000) : { 
 		_this setRank "GENERAL";
 	};
 };
