@@ -397,7 +397,7 @@ _classes pushBack 		"Land_sfp_mil_shed";
 _prices pushBack 		4000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
-_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinmenus pushBack 	["HQ"];
 _coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 10], ["Land_Dome_Big_F", 10], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
 
 _headers pushBack 		"Hangar Wood";
@@ -422,7 +422,7 @@ _classes pushBack 		"Land_Dome_Small_F";
 _prices pushBack 		4000;
 _placements pushBack 	[0, 30];
 _categories pushBack 	"Fortification";
-_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinmenus pushBack 	["HQ"];
 _coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 10], ["Land_Dome_Big_F", 10], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
 
 _headers pushBack 		"Dome (Big)";
