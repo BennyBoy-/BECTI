@@ -273,8 +273,8 @@ switch (toLower(worldName)) do {
 		Pita setVariable ["cti_town_neighbors",[Masbee,TresValles]];
 		TresValles setVariable ["cti_town_neighbors",[Masbee,Pita,Everon]];
 		Everon setVariable ["cti_town_neighbors",[TresValles,Obregan,Modesta,WindFarm]];
-		Obregan setVariable ["cti_town_neighbors",[Mercalillo,Bagango,Everon]];
-		Modesta setVariable ["cti_town_neighbors",[Everon,Corazol]];
+		Obregan setVariable ["cti_town_neighbors",[Mercalillo,Bagango,Everon,Modesta]];
+		Modesta setVariable ["cti_town_neighbors",[Everon,Corazol,Obregan]];
 		Corazol setVariable ["cti_town_neighbors",[Modesta,Ortego,Paraiso]];
 		Rashidah setVariable ["cti_town_neighbors",[Paraiso,Chantico,OilRig]];
 		Paraiso setVariable ["cti_town_neighbors",[Corazol,Somato,Rashidah]];
