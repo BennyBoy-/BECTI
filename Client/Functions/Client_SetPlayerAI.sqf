@@ -26,9 +26,6 @@ while {! CTI_GameOver} do {
 		case (_rank == "COLONEL") : { 
 			_playerai = 9;
 		};
-		case (_rank == "GENERAL") : { 
-			_playerai = 10;
-		};
 	};
 	player setVariable ["CTI_PLAYER_GROUPSIZE", _playerai, true];
 	sleep 30;
