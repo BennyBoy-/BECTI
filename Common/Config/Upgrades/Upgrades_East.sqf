@@ -44,7 +44,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500,2500,3500], //--- Respawn Range
 	[1500], //--- IR SMOKE
 	[75000], //--- Satellite
-	[100000], //--- Nuke
+	[50000], //--- Nuke
 	[4000, 8000, 12000] //--- Supply Rate
 ]];
 
