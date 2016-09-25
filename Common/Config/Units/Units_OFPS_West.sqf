@@ -533,8 +533,8 @@ _s pushBack "";
 
 _c pushBack 'sab_l19_sea_2';
 _p pushBack '';
-_n pushBack '';
-_o pushBack 15000;
+_n pushBack ["%1 (Respawn)"];
+_o pushBack 8000;
 _t pushBack 25;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_AIR;
