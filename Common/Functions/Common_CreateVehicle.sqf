@@ -122,4 +122,12 @@ if !(isNil "ADMIN_ZEUS") then {
 	};
 };
 
+//wheel protection
+if (_vehicle isKindOf "Car" && ! isnil "H_PROTECT_WHEELS") then {
+	_vehicle setVariable ["wheel_prot",true,true];
+	["CLIENT", "Protect_Wheels", _vehicle,true] call CTI_CO_FNC_NetSend;
+	["SERVER", "Protect_Wheels", _vehicle,true] call CTI_CO_FNC_NetSend;
+
+};
+
 _vehicle

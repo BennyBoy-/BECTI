@@ -73,3 +73,9 @@ if (CTI_BASE_AIRRADAR_Z_OFFSET > 0 || CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1)
 		};
 	} forEach vehicles;
 };
+
+//--- Protect wheels
+0 spawn {
+	waitUntil {(! isNil "CTI_PVF_Protect_Wheels") && (! isNil "H_PROTECT_WHEELS")};
+	{if (_x getvariable ["wheel_prot",false]) then {_x call CTI_PVF_Protect_Wheels }; true}count vehicles;
+};

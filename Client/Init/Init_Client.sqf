@@ -49,6 +49,9 @@ CTI_CL_FNC_UpdateRadarMarkerArt = compileFinal preprocessFile "Client\Functions\
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateClientAI.sqf";
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateOrders.sqf";
 
+//--- Protect wheels
+H_PROTECT_WHEELS= compileFinal preprocessFileLineNumbers "Client\Functions\Externals\Protect_Tires\protect_tires.sqf";
+
 CTI_P_SideColor = switch (CTI_P_SideJoined) do { case west: {CTI_WEST_COLOR}; case east: {CTI_EAST_COLOR}; case resistance: {CTI_RESISTANCE_COLOR}; default {"ColorBlack"} };
 CTI_P_MarkerPrefix = switch (CTI_P_SideJoined) do { case west: {"b_"}; case east: {"o_"}; case resistance: {"n_"}; default {""} };
 CTI_P_ChatID = [CTI_P_SideJoined,"HQ"];
@@ -368,6 +371,14 @@ if ( CTI_PLAYERS_GROUPSIZE == 0) then {
 
 //Spawn init calls tablet
 0 spawn { call CTI_CL_FNC_Spawn; };
+
+//Protect Wheels
+with missionNamespace do {
+
+	CTI_PVF_Protect_Wheels ={
+		_this addEventHandler ["HandleDamage",{_this call H_PROTECT_WHEELS}];
+	};
+};
 
 if (CTI_DEBUG) then {
 	// hint "DEBUG MODE IS ENABLED! DON'T FORGET TO TURN IT OFF!";
