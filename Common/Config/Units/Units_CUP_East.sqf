@@ -276,7 +276,7 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
---- Light Vehicles
+//--- Light Vehicles
 /*
 _c pushBack 'CUP_M1030';
 _p pushBack '';

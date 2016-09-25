@@ -37,20 +37,17 @@ switch (true) do {
 	case (_score >= 300 && _score < 450) : { 
 		_this setRank "SERGEANT";
 	};
-	case (_score >= 600 && _score < 750) : { 
+	case (_score >= 450 && _score < 600) : { 
 		_this setRank "LIEUTENANT";
 	};
-	case (_score >= 750 && _score < 900) : { 
+	case (_score >= 600 && _score < 750) : { 
 		_this setRank "CAPTAIN";
 	};
-	case (_score >= 900 && _score < 1050) : { 
+	case (_score >= 750 && _score < 900) : { 
 		_this setRank "MAJOR";
 	};
-	case (_score >= 1050 && _score < 1200) : { 
+	case (_score >= 900) : { 
 		_this setRank "COLONEL";
-	};
-	case (_score >= 1200) : { 
-		_this setRank "GENERAL";
 	};
 };
 

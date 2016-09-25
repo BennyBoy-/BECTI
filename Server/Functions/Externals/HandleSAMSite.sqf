@@ -67,7 +67,7 @@ while {true} do {
 
 		// Filter for targets - hostile, above minAlt, alive
 		{	// TODO: better way to detect hostiles?
-			if (((_side) getFriend (side _x)) < 0.6 && {(getPos _x select 2) > _detectionMinAlt} && {!terrainIntersectASL [eyePos _radarVehicle, getPosASL _x]} && {alive _x} ) then {
+			if (((_side) getFriend (side _x)) < 0.6 && {typeOf(_x) find "UAV_01_F" != 2} && {(getPos _x select 2) > _detectionMinAlt} && {!terrainIntersectASL [eyePos _radarVehicle, getPosASL _x]} && {alive _x} ) then {
 				_detectedPossibleTargets pushbackUnique _x;
 			};
 		} forEach _detectedAirVehicles;

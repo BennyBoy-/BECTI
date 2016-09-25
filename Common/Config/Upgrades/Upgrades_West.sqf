@@ -44,7 +44,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500,2500,3500], //--- Respawn Range
 	[1500], //--- IR SMOKE
 	[75000], //--- Satellite
-	[100000], //--- Nuke
+	[50000], //--- Nuke
 	[4000, 8000, 12000] //--- Supply Rate
 ]];
 
@@ -102,7 +102,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[],[],[],[],[CTI_UPGRADE_NUKE, 1]], //--- Light
 	[[CTI_UPGRADE_LIGHT,1],[CTI_UPGRADE_LIGHT,2],[CTI_UPGRADE_LIGHT,3],[CTI_UPGRADE_LIGHT,4]], //--- Heavy
 	[[],[],[]], //--- Naval
-	[[CTI_UPGRADE_HEAVY,1],[CTI_UPGRADE_HEAVY,2],[CTI_UPGRADE_HEAVY,3],[CTI_UPGRADE_HEAVY,4],[]], //--- Air
+	[[CTI_UPGRADE_HEAVY,1],[CTI_UPGRADE_HEAVY,2],[CTI_UPGRADE_HEAVY,3],[],[]], //--- Air
 	[[CTI_UPGRADE_AIR, 1]], //--- Air FFAR
 	[[CTI_UPGRADE_AIR, 1]], //--- Air DAR
 	[[CTI_UPGRADE_AIR, 1]], //--- Air AT
