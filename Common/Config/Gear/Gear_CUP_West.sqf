@@ -480,11 +480,11 @@ _u pushBack 2;
 _p pushBack 600;
 */
 //NLAW Family
-
+/*
 _i pushBack "CUP_launch_NLAW";
 _u pushBack 2;
 _p pushBack 800;
-/*
+
 _i pushBack "CUP_BAF_NLAW_Launcher";
 _u pushBack 2;
 _p pushBack 1200;
