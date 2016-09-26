@@ -38,7 +38,7 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 												if (_x != "") then { //--- Empty accessories are skipped
 													if (!isClass (configFile >> "CfgWeapons" >> _x) || !(_x in _side_gear)) exitWith {_flag_load = false}; //--- The accessory ain't valid or it's not within the side's gear
 													if (getNumber(configFile >> "CfgWeapons" >> _x >> "type") != CTI_TYPE_ITEM) exitWith {_flag_load = false}; //--- The accessory is not a valid base class!
-													if !(getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type") in [CTI_SUBTYPE_ACC_MUZZLE,CTI_SUBTYPE_ACC_OPTIC,CTI_SUBTYPE_ACC_SIDE]) exitWith {_flag_load = false}; //--- The accessory is not a valid base class (we don't care bout the order)!
+													if !(getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type") in [CTI_SUBTYPE_ACC_MUZZLE,CTI_SUBTYPE_ACC_OPTIC,CTI_SUBTYPE_ACC_SIDE,CTI_SUBTYPE_ACC_BIPOD]) exitWith {_flag_load = false}; //--- The accessory is not a valid base class (we don't care bout the order)!
 												};
 											};
 											if !(_flag_load) exitWith {};
