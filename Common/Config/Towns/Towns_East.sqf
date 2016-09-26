@@ -160,7 +160,7 @@ if (CTI_TOWNS_OCCUPATION_EAST == 2) then {
 	//--- Boats
 	EAST_NAVAL_ASSAULT_BOAT1 = ["CUP_B_RHIB2Turret_USMC"];
 	EAST_NAVAL_ASSAULT_BOAT2 = ["O_Boat_Armed_01_hmg_F"];
-	EAST_NAVAL_MEDIUM_ASSAULT_BOAT = ["rhsusf_mkvsoc"];
+	EAST_NAVAL_MEDIUM_ASSAULT_BOAT = ["O_Boat_Armed_01_hmg_F"];
 	EAST_NAVAL_LARGE_ASSAULT_BOAT = ["sfp_rbb_norrkoping"];
 };
 if (CTI_TOWNS_OCCUPATION_EAST == 3) then { 

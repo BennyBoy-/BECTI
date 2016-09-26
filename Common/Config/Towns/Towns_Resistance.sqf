@@ -369,7 +369,7 @@ if (CTI_TOWNS_OCCUPATION_RESISTANCE == 6) then {
 	//--- Boats
 	GUER_NAVAL_ASSAULT_BOAT1 = ["CUP_B_RHIB2Turret_USMC"];
 	GUER_NAVAL_ASSAULT_BOAT2 = ["I_Boat_Armed_01_minigun_F"];
-	GUER_NAVAL_MEDIUM_ASSAULT_BOAT = ["rhsusf_mkvsoc"];
+	GUER_NAVAL_MEDIUM_ASSAULT_BOAT = ["I_Boat_Armed_01_minigun_F"];
 	GUER_NAVAL_LARGE_ASSAULT_BOAT = ["sfp_rbb_norrkoping"];
 };
 if (CTI_TOWNS_OCCUPATION_RESISTANCE == 7) then { 
