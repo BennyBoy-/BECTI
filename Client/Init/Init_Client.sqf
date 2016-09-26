@@ -354,9 +354,6 @@ if ( (missionNamespace getVariable 'CTI_SM_NONV')>0 || (missionNamespace getVari
 // 3P restrict
 0 execVM "Client\Functions\Externals\Restrict_3dperson\Client_3pRestrict.sqf";
 
-// Map Markers
-0 execVM "Client\Functions\Externals\Prodavec_markers\MapMarkersTitling.sqf";
-
 //group size scripts
 if ( CTI_PLAYERS_GROUPSIZE == 0) then {
 	//0 execVM "Client\Functions\Externals\Adaptive_playerAI\Client_AdaptGroup.sqf";
