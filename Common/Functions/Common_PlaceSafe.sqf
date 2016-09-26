@@ -35,3 +35,6 @@ _radius = _this select 2;
 _position = [_center, _radius] call CTI_CO_FNC_GetEmptyPosition;
 
 _object setPos _position;
+if !(_object isKindOf "Man") then {
+	_object setVectorUp surfaceNormal position _object;
+};
