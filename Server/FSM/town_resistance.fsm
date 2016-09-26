@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, town_resistance.fsm">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, town_resistance.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
@@ -7,7 +7,7 @@ item2[] = {"Town_Occupant",2,250,-100.000000,-300.000000,0.000000,-250.000000,0.
 item3[] = {"End_FSM",1,250,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"End FSM"};
 item4[] = {"Resistance",4,218,-100.000000,-200.000000,0.000000,-150.000000,2.000000,"Resistance"};
 item5[] = {"Gameover",8,218,-250.000000,-300.000000,-150.000000,-250.000000,0.000000,"Gameover"};
-item6[] = {"Enemy_Near_",2,4346,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"Enemy Near?"};
+item6[] = {"Enemy_Near_",2,250,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"Enemy Near?"};
 item7[] = {"East___West",4,218,50.000000,-300.000000,150.000000,-250.000000,1.000000,"East / West"};
 item8[] = {"Resistance_Timeout",2,250,400.000000,0.000000,500.000000,50.000000,0.000000,"Resistance" \n "Timeout?"};
 item9[] = {"Active",8,218,250.000000,0.000000,350.000000,50.000000,0.000000,"Active"};
@@ -15,7 +15,7 @@ item10[] = {"Inactive",4,218,400.000000,-300.000000,500.000000,-250.000000,1.000
 item11[] = {"Still_active",8,218,400.000000,-100.000000,500.000000,-50.000000,0.000000,"Still active"};
 item12[] = {"Timed_out",4,218,600.000000,0.000000,700.000000,50.000000,1.000000,"Timed out"};
 item13[] = {"Skip",2,250,400.000000,-200.000000,500.000000,-150.000000,0.000000,"Skip"};
-item14[] = {"Cleanup",2,250,600.000000,-400.000000,700.000000,-350.000000,0.000000,"Cleanup"};
+item14[] = {"Cleanup",2,4346,600.000000,-400.000000,700.000000,-350.000000,0.000000,"Cleanup"};
 item15[] = {"Resistance_Active",2,250,250.000000,-300.000000,350.000000,-250.000000,0.000000,"Resistance" \n "Active?"};
 item16[] = {"Contact",8,218,-100.000000,0.000000,0.000000,50.000000,0.000000,"Contact"};
 item17[] = {"Clear",4,218,50.000000,-100.000000,150.000000,-50.000000,1.000000,"Clear"};
@@ -60,413 +60,446 @@ link28[] = {23,15};
 link29[] = {24,23};
 link30[] = {25,1};
 link31[] = {26,25};
-globals[] = {25.000000,1,0,0,0,640,480,1,164,6316128,1,-438.058258,721.755859,329.359497,-644.732910,918,881,1};
-window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,936};
+globals[] = {0.000000,0,0,0,0,640,480,1,164,6316128,1,-438.058258,721.755859,329.359497,-644.732910,791,952,1};
+window[] = {0,-1,-1,-1,-1,1322,469,2328,198,1,809};
 *//*%FSM</HEAD>*/
 class FSM
 {
-  fsmName = "town_resistance.fsm";
-  class States
-  {
-    /*%FSM<STATE "Start_FSM">*/
-    class Start_FSM
-    {
-      name = "Start_FSM";
-      init = /*%FSM<STATEINIT""">*/"_town = _this;" \n
-       "" \n
-       "_town setVariable [""cti_town_resistance_active"", false];" \n
-       "_town setVariable [""cti_town_resistance_active_vehicles"", []];" \n
-       "_town setVariable [""cti_town_resistance_activeTime"", -1000];" \n
-       "" \n
-       "_ncycle = time + 5.5 +  random 1;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Cycle">*/
-        class Cycle
+        fsmName = "town_resistance.fsm";
+        class States
         {
-          priority = 0.000000;
-          to="Town_Occupant";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                /*%FSM<STATE "Start_FSM">*/
+                class Start_FSM
+                {
+                        name = "Start_FSM";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"_town = _this;" \n
+                         "" \n
+                         "_town setVariable [""cti_town_resistance_active"", false];" \n
+                         "_town setVariable [""cti_town_resistance_active_vehicles"", []];" \n
+                         "_town setVariable [""cti_town_resistance_activeTime"", -1000];" \n
+                         "" \n
+                         "_ncycle = time + 5.5 +  random 1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Cycle">*/
+                                class Cycle
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Town_Occupant";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Town_Occupant">*/
+                class Town_Occupant
+                {
+                        name = "Town_Occupant";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;" \n
+                         "" \n
+                         "_sideID = _town getVariable ""cti_town_sideID"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Resistance">*/
+                                class Resistance
+                                {
+                                        itemno = 4;
+                                        priority = 2.000000;
+                                        to="Enemy_Near_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _sideID == CTI_RESISTANCE_ID"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "East___West">*/
+                                class East___West
+                                {
+                                        itemno = 7;
+                                        priority = 1.000000;
+                                        to="Resistance_Active";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _sideID != CTI_RESISTANCE_ID"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Gameover">*/
+                                class Gameover
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="End_FSM";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "End_FSM">*/
+                class End_FSM
+                {
+                        name = "End_FSM";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Enemy_Near_">*/
+                class Enemy_Near_
+                {
+                        name = "Enemy_Near_";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"_count_enemies = 0;" \n
+                         "" \n
+                         "//--- Check if the town is in a peace mode" \n
+                         "_peace_mode = false;" \n
+                         "if (missionNamespace getVariable ""CTI_TOWNS_PEACE"" > 0) then {" \n
+                         "	if (time < (_town getVariable ""cti_town_peace"")) then {_peace_mode = true};" \n
+                         "};" \n
+                         "" \n
+                         "if !(_peace_mode) then {" \n
+                         "	_objects = [];" \n
+                         "	switch (CTI_TOWNS_CAPTURE_DETECTION_MODE) do {" \n
+                         "		case 1: {{if (_x distance _town <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE && (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR)) then {_objects pushBack _x}} forEach allPlayers};" \n
+                         "		case 2: {{if (_x distance _town <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE && (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR)) then {_objects pushBack _x}} forEach (playableUnits + switchableUnits)};" \n
+                         "		default {{if (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR) then {_objects pushBack _x}} forEach (_town nearEntities [""AllVehicles"", CTI_TOWNS_RESISTANCE_DETECTION_RANGE])};" \n
+                         "	};" \n
+                         "" \n
+                         "	if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") > 0) then {" \n
+                         "		{" \n
+                         "			if ((_x countSide _objects) > 0 && _count_enemies < 1) then {" \n
+                         "				if ([_town, _x] Call CTI_SE_FNC_CanCaptureTerritorialTown) then {_count_enemies = [_objects, resistance] call CTI_CO_FNC_GetAreaEnemiesCount};" \n
+                         "			};" \n
+                         "		} forEach [west, east];" \n
+                         "	} else {" \n
+                         "		_count_enemies = [_objects, resistance] call CTI_CO_FNC_GetAreaEnemiesCount;" \n
+                         "	};" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Clear">*/
+                                class Clear
+                                {
+                                        itemno = 17;
+                                        priority = 1.000000;
+                                        to="Resistance_Active";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_count_enemies < 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Contact">*/
+                                class Contact
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="Resistance_Active_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Resistance_Timeout">*/
+                class Resistance_Timeout
+                {
+                        name = "Resistance_Timeout";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"//--- Resistance is Active..." \n
+                         "if (_sideID != CTI_RESISTANCE_ID) then { //--- ....yet the current side holding the town is not the resistance" \n
+                         "	//--- Do we still have some fighting units?" \n
+                         "	_lives = 0;" \n
+                         "	{_lives = _lives + count(_x call CTI_CO_FNC_GetLiveUnits)} forEach _town_groups;" \n
+                         "	" \n
+                         "	//[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is still active with [%2] units alive amongst the [%3] groups"", _town getVariable ""cti_town_name"", _lives, _town_groups]] call CTI_CO_FNC_Log;" \n
+                         "	" \n
+                         "	if (_lives >= CTI_TOWNS_RESISTANCE_MIN_ACTIVE) then { //--- There's still some units fighting! it's not that inactive!" \n
+                         "		_town setVariable [""cti_town_resistance_activeTime"", time];" \n
+                         "	};" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Timed_out">*/
+                                class Timed_out
+                                {
+                                        itemno = 12;
+                                        priority = 1.000000;
+                                        to="Cleanup";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time - (_town getVariable ""cti_town_resistance_activeTime"") > CTI_TOWNS_RESISTANCE_INACTIVE_MAX"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Still_active">*/
+                                class Still_active
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Skip";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Skip">*/
+                class Skip
+                {
+                        name = "Skip";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Cycle">*/
+                                class Cycle
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Town_Occupant";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Cleanup">*/
+                class Cleanup
+                {
+                        name = "Cleanup";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/"if !(isNil {missionNamespace getVariable ""CTI_HEADLESS_CLIENTS""}) then {" \n
+                         "	if (CTI_Log_Level >= CTI_Log_Information) then {" \n
+                         "		[""INFORMATION"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Removing Headless Clients delegated units for Resistance in town [%1]"", _town getVariable ""cti_town_name""]] call CTI_CO_FNC_Log;" \n
+                         "	};" \n
+                         "	" \n
+                         "	{" \n
+                         "		[_town, resistance] remoteExec [""CTI_PVF_HC_OnTownDelegationRemoval"", _x select 1];" \n
+                         "	} forEach (missionNamespace getVariable ""CTI_HEADLESS_CLIENTS"");" \n
+                         "};" \n
+                         "" \n
+                         "//--- Teams Units." \n
+                         "/* //--- Valid Deletion, do not remove" \n
+                         "{" \n
+                         "	[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] units will be removed"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+                         "	if !(isNil '_x') then {" \n
+                         "		[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is not nil"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+                         "		if !(isNull _x) then {" \n
+                         "			[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is not null ([%3] units), is local? [%4], owner [%5]"", _town getVariable ""cti_town_name"", _x, count units _x, local _x, groupOwner _x]] call CTI_CO_FNC_Log;" \n
+                         "			if (local _x) then {" \n
+                         "				{" \n
+                         "					[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] deleting unit [%2] from group [%3], local? [%4]"", _town getVariable ""cti_town_name"", _x, group _x, local _x]] call CTI_CO_FNC_Log;" \n
+                         "					deleteVehicle _x;" \n
+                         "					[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is unit removed? unit [%2]"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+                         "				} forEach units _x;" \n
+                         "				[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is about to be removed, units count [%3]"", _town getVariable ""cti_town_name"", _x, count units _x]] call CTI_CO_FNC_Log;" \n
+                         "				deleteGroup _x;" \n
+                         "			};" \n
+                         "			[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] was deleted?"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+                         "		};" \n
+                         "	};" \n
+                         "} forEach _town_groups;*/" \n
+                         "//--- Teams Units." \n
+                         "[_town, _town_groups] spawn {" \n
+                         "	_town = _this select 0;" \n
+                         "	_town_groups = _this select 1;" \n
+                         "	{" \n
+                         "		[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] units will be removed"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+                         "		if !(isNil '_x') then {" \n
+                         "			[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is not nil"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+                         "			if !(isNull _x) then {" \n
+                         "				[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is not null ([%3] units), is local? [%4], owner [%5]"", _town getVariable ""cti_town_name"", _x, count units _x, local _x, groupOwner _x]] call CTI_CO_FNC_Log;" \n
+                         "				// if (local _x) then {" \n
+                         "					{" \n
+                         "						[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] deleting unit [%2] from group [%3], local? [%4]"", _town getVariable ""cti_town_name"", _x, group _x, local _x]] call CTI_CO_FNC_Log;" \n
+                         "						deleteVehicle _x;" \n
+                         "						[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is unit removed? unit [%2]"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+                         "						sleep 4;" \n
+                         "					} forEach units _x;" \n
+                         "					[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is about to be removed, units count [%3]"", _town getVariable ""cti_town_name"", _x, count units _x]] call CTI_CO_FNC_Log;" \n
+                         "					sleep 2;" \n
+                         "					deleteGroup _x;" \n
+                         "				// };" \n
+                         "				[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] was deleted?"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
+                         "			};" \n
+                         "		};" \n
+                         "	} forEach _town_groups;" \n
+                         "};" \n
+                         "" \n
+                         "//--- Teams vehicles." \n
+                         "" \n
+                         "/*{" \n
+                         "	if (alive _x) then {" \n
+                         "		if (!isPlayer _x) then {deleteVehicle _x};" \n
+                         "	};*/" \n
+                         "" \n
+                         "//--- Trying to fix empty vehicles from being removed when town despawns" \n
+                         "{" \n
+                         "	if (alive _x && (count (crew _x)>0) && ({side _x == resistance} count  (crew _x)) ==  (count  (crew _x))) then {" \n
+                         "		deleteVehicle _x;" \n
+                         "	};" \n
+                         "" \n
+                         "} forEach (_town getVariable ""cti_town_resistance_active_vehicles"");" \n
+                         "" \n
+                         "_town setVariable [""cti_town_resistance_groups"", []];" \n
+                         "_town setVariable [""cti_town_resistance_active_vehicles"", []];" \n
+                         "_town setVariable [""cti_town_resistance_active"", false];" \n
+                         "" \n
+                         "if (CTI_Log_Level >= CTI_Log_Information) then {" \n
+                         "	[""INFORMATION"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] has been de-activated"", _town getVariable ""cti_town_name""]] call CTI_CO_FNC_Log;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Cycle">*/
+                                class Cycle
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Town_Occupant";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Resistance_Active">*/
+                class Resistance_Active
+                {
+                        name = "Resistance_Active";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Inactive">*/
+                                class Inactive
+                                {
+                                        itemno = 10;
+                                        priority = 1.000000;
+                                        to="Skip";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(_town getVariable ""cti_town_resistance_active"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Active">*/
+                                class Active
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="Resistance_Timeout";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Create">*/
+                class Create
+                {
+                        name = "Create";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"//--- We get the main information first (The teams, the groups and the positions)" \n
+                         "_return = (_town) call CTI_SE_FNC_SpawnTownResistance;" \n
+                         "_town_teams = _return select 0;" \n
+                         "_town_groups = _return select 1;" \n
+                         "_town_positions = _return select 2;" \n
+                         "" \n
+                         "//--- By default, we try to delegate the creation to the HC Clients" \n
+                         "_delegated = [_town, resistance, _town_teams, _town_groups, _town_positions] call CTI_SE_FNC_AttemptTownDelegation;" \n
+                         "" \n
+                         "//--- If we couldn't delegate it then we create it from the server" \n
+                         "if !(_delegated) then {" \n
+                         "	[_town, resistance, _town_teams, _town_groups, _town_positions] spawn CTI_CO_FNC_CreateTownUnits;" \n
+                         "};" \n
+                         "" \n
+                         "_town setVariable [""cti_town_resistance_activeTime"", time];" \n
+                         "_town setVariable [""cti_town_resistance_active"", true];" \n
+                         "" \n
+                         "if (CTI_Log_Level >= CTI_Log_Information) then {" \n
+                         "	[""INFORMATION"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is now active"", _town getVariable ""cti_town_name""]] call CTI_CO_FNC_Log;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Cycle">*/
+                                class Cycle
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Town_Occupant";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Resistance_Active_1">*/
+                class Resistance_Active_1
+                {
+                        name = "Resistance_Active_1";
+                        itemno = 19;
+                        init = /*%FSM<STATEINIT""">*/"_town setVariable [""cti_town_resistance_activeTime"", time];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Active">*/
+                                class Active
+                                {
+                                        itemno = 21;
+                                        priority = 1.000000;
+                                        to="Resistance_Timeout";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_town getVariable ""cti_town_resistance_active"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Inactive">*/
+                                class Inactive
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="Create";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
         };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Town_Occupant">*/
-    class Town_Occupant
-    {
-      name = "Town_Occupant";
-      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;" \n
-       "" \n
-       "_sideID = _town getVariable ""cti_town_sideID"";"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Resistance">*/
-        class Resistance
+        initState="Start_FSM";
+        finalStates[] =
         {
-          priority = 2.000000;
-          to="Enemy_Near_";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _sideID == CTI_RESISTANCE_ID"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                "End_FSM",
         };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "East___West">*/
-        class East___West
-        {
-          priority = 1.000000;
-          to="Resistance_Active";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _sideID != CTI_RESISTANCE_ID"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Gameover">*/
-        class Gameover
-        {
-          priority = 0.000000;
-          to="End_FSM";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "End_FSM">*/
-    class End_FSM
-    {
-      name = "End_FSM";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Enemy_Near_">*/
-    class Enemy_Near_
-    {
-      name = "Enemy_Near_";
-      init = /*%FSM<STATEINIT""">*/"_count_enemies = 0;" \n
-       "" \n
-       "//--- Check if the town is in a peace mode" \n
-       "_peace_mode = false;" \n
-       "if (missionNamespace getVariable ""CTI_TOWNS_PEACE"" > 0) then {" \n
-       "	if (time < (_town getVariable ""cti_town_peace"")) then {_peace_mode = true};" \n
-       "};" \n
-       "" \n
-       "if !(_peace_mode) then {" \n
-       "	_objects = [];" \n
-       "	switch (CTI_TOWNS_CAPTURE_DETECTION_MODE) do {" \n
-       "		case 1: {{if (_x distance _town <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE && (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR)) then {_objects pushBack _x}} forEach allPlayers};" \n
-       "		case 2: {{if (_x distance _town <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE && (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR)) then {_objects pushBack _x}} forEach (playableUnits + switchableUnits)};" \n
-       "		default {{if (((ASLToAGL getPosASL _x) select 2) <= CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR) then {_objects pushBack _x}} forEach (_town nearEntities [""AllVehicles"", CTI_TOWNS_RESISTANCE_DETECTION_RANGE])};" \n
-       "	};" \n
-       "" \n
-       "	if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") > 0) then {" \n
-       "		{" \n
-       "			if ((_x countSide _objects) > 0 && _count_enemies < 1) then {" \n
-       "				if ([_town, _x] Call CTI_SE_FNC_CanCaptureTerritorialTown) then {_count_enemies = [_objects, resistance] call CTI_CO_FNC_GetAreaEnemiesCount};" \n
-       "			};" \n
-       "		} forEach [west, east];" \n
-       "	} else {" \n
-       "		_count_enemies = [_objects, resistance] call CTI_CO_FNC_GetAreaEnemiesCount;" \n
-       "	};" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Clear">*/
-        class Clear
-        {
-          priority = 1.000000;
-          to="Resistance_Active";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_count_enemies < 1"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Contact">*/
-        class Contact
-        {
-          priority = 0.000000;
-          to="Resistance_Active_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Resistance_Timeout">*/
-    class Resistance_Timeout
-    {
-      name = "Resistance_Timeout";
-      init = /*%FSM<STATEINIT""">*/"//--- Resistance is Active..." \n
-       "if (_sideID != CTI_RESISTANCE_ID) then { //--- ....yet the current side holding the town is not the resistance" \n
-       "	//--- Do we still have some fighting units?" \n
-       "	_lives = 0;" \n
-       "	{_lives = _lives + count(_x call CTI_CO_FNC_GetLiveUnits)} forEach _town_groups;" \n
-       "	" \n
-       "	//[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is still active with [%2] units alive amongst the [%3] groups"", _town getVariable ""cti_town_name"", _lives, _town_groups]] call CTI_CO_FNC_Log;" \n
-       "	" \n
-       "	if (_lives >= CTI_TOWNS_RESISTANCE_MIN_ACTIVE) then { //--- There's still some units fighting! it's not that inactive!" \n
-       "		_town setVariable [""cti_town_resistance_activeTime"", time];" \n
-       "	};" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Timed_out">*/
-        class Timed_out
-        {
-          priority = 1.000000;
-          to="Cleanup";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time - (_town getVariable ""cti_town_resistance_activeTime"") > CTI_TOWNS_RESISTANCE_INACTIVE_MAX"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Still_active">*/
-        class Still_active
-        {
-          priority = 0.000000;
-          to="Skip";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Skip">*/
-    class Skip
-    {
-      name = "Skip";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Cycle">*/
-        class Cycle
-        {
-          priority = 0.000000;
-          to="Town_Occupant";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Cleanup">*/
-    class Cleanup
-    {
-      name = "Cleanup";
-      init = /*%FSM<STATEINIT""">*/"if !(isNil {missionNamespace getVariable ""CTI_HEADLESS_CLIENTS""}) then {" \n
-       "	if (CTI_Log_Level >= CTI_Log_Information) then {" \n
-       "		[""INFORMATION"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Removing Headless Clients delegated units for Resistance in town [%1]"", _town getVariable ""cti_town_name""]] call CTI_CO_FNC_Log;" \n
-       "	};" \n
-       "	" \n
-       "	{" \n
-       "		[_town, resistance] remoteExec [""CTI_PVF_HC_OnTownDelegationRemoval"", _x select 1];" \n
-       "	} forEach (missionNamespace getVariable ""CTI_HEADLESS_CLIENTS"");" \n
-       "};" \n
-       "" \n
-       "//--- Teams Units." \n
-       "/* //--- Valid Deletion, do not remove" \n
-       "{" \n
-       "	[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] units will be removed"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
-       "	if !(isNil '_x') then {" \n
-       "		[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is not nil"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
-       "		if !(isNull _x) then {" \n
-       "			[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is not null ([%3] units), is local? [%4], owner [%5]"", _town getVariable ""cti_town_name"", _x, count units _x, local _x, groupOwner _x]] call CTI_CO_FNC_Log;" \n
-       "			if (local _x) then {" \n
-       "				{" \n
-       "					[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] deleting unit [%2] from group [%3], local? [%4]"", _town getVariable ""cti_town_name"", _x, group _x, local _x]] call CTI_CO_FNC_Log;" \n
-       "					deleteVehicle _x;" \n
-       "					[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is unit removed? unit [%2]"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
-       "				} forEach units _x;" \n
-       "				[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is about to be removed, units count [%3]"", _town getVariable ""cti_town_name"", _x, count units _x]] call CTI_CO_FNC_Log;" \n
-       "				deleteGroup _x;" \n
-       "			};" \n
-       "			[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] was deleted?"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
-       "		};" \n
-       "	};" \n
-       "} forEach _town_groups;*/" \n
-       "//--- Teams Units." \n
-       "[_town, _town_groups] spawn {" \n
-       "	_town = _this select 0;" \n
-       "	_town_groups = _this select 1;" \n
-       "	{" \n
-       "		[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] units will be removed"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
-       "		if !(isNil '_x') then {" \n
-       "			[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is not nil"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
-       "			if !(isNull _x) then {" \n
-       "				[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is not null ([%3] units), is local? [%4], owner [%5]"", _town getVariable ""cti_town_name"", _x, count units _x, local _x, groupOwner _x]] call CTI_CO_FNC_Log;" \n
-       "				// if (local _x) then {" \n
-       "					{" \n
-       "						[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] deleting unit [%2] from group [%3], local? [%4]"", _town getVariable ""cti_town_name"", _x, group _x, local _x]] call CTI_CO_FNC_Log;" \n
-       "						deleteVehicle _x;" \n
-       "						[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is unit removed? unit [%2]"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
-       "						sleep 4;" \n
-       "					} forEach units _x;" \n
-       "					[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] is about to be removed, units count [%3]"", _town getVariable ""cti_town_name"", _x, count units _x]] call CTI_CO_FNC_Log;" \n
-       "					sleep 2;" \n
-       "					deleteGroup _x;" \n
-       "				// };" \n
-       "				[""DEBUG"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] group [%2] was deleted?"", _town getVariable ""cti_town_name"", _x]] call CTI_CO_FNC_Log;" \n
-       "			};" \n
-       "		};" \n
-       "	} forEach _town_groups;" \n
-       "};" \n
-       "" \n
-       "//--- Teams vehicles." \n
-       "{" \n
-       "	if (alive _x) then {" \n
-       "		if (!isPlayer _x) then {deleteVehicle _x};" \n
-       "	};" \n
-       "} forEach (_town getVariable ""cti_town_resistance_active_vehicles"");" \n
-       "" \n
-       "_town setVariable [""cti_town_resistance_groups"", []];" \n
-       "_town setVariable [""cti_town_resistance_active_vehicles"", []];" \n
-       "_town setVariable [""cti_town_resistance_active"", false];" \n
-       "" \n
-       "if (CTI_Log_Level >= CTI_Log_Information) then {" \n
-       "	[""INFORMATION"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] has been de-activated"", _town getVariable ""cti_town_name""]] call CTI_CO_FNC_Log;" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Cycle">*/
-        class Cycle
-        {
-          priority = 0.000000;
-          to="Town_Occupant";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Resistance_Active">*/
-    class Resistance_Active
-    {
-      name = "Resistance_Active";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Inactive">*/
-        class Inactive
-        {
-          priority = 1.000000;
-          to="Skip";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!(_town getVariable ""cti_town_resistance_active"")"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Active">*/
-        class Active
-        {
-          priority = 0.000000;
-          to="Resistance_Timeout";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Create">*/
-    class Create
-    {
-      name = "Create";
-      init = /*%FSM<STATEINIT""">*/"//--- We get the main information first (The teams, the groups and the positions)" \n
-       "_return = (_town) call CTI_SE_FNC_SpawnTownResistance;" \n
-       "_town_teams = _return select 0;" \n
-       "_town_groups = _return select 1;" \n
-       "_town_positions = _return select 2;" \n
-       "" \n
-       "//--- By default, we try to delegate the creation to the HC Clients" \n
-       "_delegated = [_town, resistance, _town_teams, _town_groups, _town_positions] call CTI_SE_FNC_AttemptTownDelegation;" \n
-       "" \n
-       "//--- If we couldn't delegate it then we create it from the server" \n
-       "if !(_delegated) then {" \n
-       "	[_town, resistance, _town_teams, _town_groups, _town_positions] spawn CTI_CO_FNC_CreateTownUnits;" \n
-       "};" \n
-       "" \n
-       "_town setVariable [""cti_town_resistance_activeTime"", time];" \n
-       "_town setVariable [""cti_town_resistance_active"", true];" \n
-       "" \n
-       "if (CTI_Log_Level >= CTI_Log_Information) then {" \n
-       "	[""INFORMATION"", ""FILE: Server\FSM\town_resistance.fsm"", format[""Town [%1] is now active"", _town getVariable ""cti_town_name""]] call CTI_CO_FNC_Log;" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Cycle">*/
-        class Cycle
-        {
-          priority = 0.000000;
-          to="Town_Occupant";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Resistance_Active_1">*/
-    class Resistance_Active_1
-    {
-      name = "Resistance_Active_1";
-      init = /*%FSM<STATEINIT""">*/"_town setVariable [""cti_town_resistance_activeTime"", time];"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Active">*/
-        class Active
-        {
-          priority = 1.000000;
-          to="Resistance_Timeout";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_town getVariable ""cti_town_resistance_active"""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Inactive">*/
-        class Inactive
-        {
-          priority = 0.000000;
-          to="Create";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-  };
-  initState="Start_FSM";
-  finalStates[] =
-  {
-    "End_FSM",
-  };
 };
 /*%FSM</COMPILE>*/
