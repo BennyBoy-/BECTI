@@ -10,6 +10,7 @@ _side_gear = [];
 _list = [];
 if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 	{
+	_flag_load = true;
 		// [_label, _picture, _cost, _x]
 		if (typeName _x == "ARRAY") then { //--- Each items are arrays >> [_label, _picture, _cost, _x, upgrade]
 			_gear = _x select 3;
@@ -32,7 +33,7 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 										if ((!isClass (configFile >> "CfgWeapons" >> _weapon) || !(_weapon in _side_gear)) && _weapon != "") exitWith {_flag_load = false}; //--- Abort if: the weapon is invalid or if it's not within the side's owned templates
 										if (!(getNumber(configFile >> "CfgWeapons" >> _weapon >> "type") in [CTI_TYPE_RIFLE,CTI_TYPE_PISTOL,CTI_TYPE_LAUNCHER,CTI_TYPE_RIFLE2H]) && _weapon != "") exitWith {_flag_load = false}; //--- Make sure that the weapon is a weapon
 										
-										if !(count _accessories in [0,3]) exitWith {_flag_load = false}; //--- The data format is invalid for the accesories
+										if !(count _accessories in [0,4]) exitWith {_flag_load = false}; //--- The data format is invalid for the accesories
 										{
 											if (typeName _x == "STRING") then { //--- The accessory is a string
 												if (_x != "") then { //--- Empty accessories are skipped
