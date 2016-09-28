@@ -171,21 +171,21 @@ for "" from 0 to 1 step 0 do {
 				call {
 					// In a vehicle
 					if ((vehicle _x) != _x) exitWith {
-						_text_size_max = 0.06; // was 0.05 (then 0.035)
+						_text_size_max = 0.05; // was 0.05 (then 0.035)
 						_height_mod = -1;
 					};
 					// Crouching
 					if ((stance _x) == "CROUCH") exitWith {
-						_text_size_max = 0.06; // was 0.15 (then 0.105)
+						_text_size_max = 0.05; // was 0.15 (then 0.105)
 						_height_mod = -0.4;
 					};
 					// Prone
 					if ((stance _x) == "PRONE") exitWith {
-						_text_size_max = 0.06; // was 0.15 (then 0.105)
+						_text_size_max = 0.05; // was 0.15 (then 0.105)
 						_height_mod = 0.03;
 					};
 					// Default (Standing)
-					_text_size_max = 0.06; // was 0.15 (then 0.105)
+					_text_size_max = 0.05; // was 0.15 (then 0.105)
 					_height_mod = 0.1;
 				};
 
@@ -205,7 +205,8 @@ for "" from 0 to 1 step 0 do {
 				};
 
 				// Text size
-				_text_size = ((1.1 / (_distance max 0.01)) * _magn) min _text_size_max;	// Cap text size (was 0.55)
+				_text_size_min = 0.02; 
+				_text_size = (((1.1 / (_distance max 0.01)) * _magn) min _text_size_max) max _text_size_min;	// Cap text size (was 0.55)
 
 				// Height above head
 				_height = _height_mod + _height_mod_icon;
