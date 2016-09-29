@@ -72,7 +72,7 @@ switch (_message_var) do {
 			playMusic "EventTrack02_F_Curator";
 	};
 	case "hq-repair": {CTI_P_ChatID commandChat "The HQ has been repaired"};
-	case "funds-transfer": {player groupChat format ["%2 has transfered you $%1", _parameters select 0, (_parameters select 1) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]]};
+	case "funds-transfer": {player groupChat format ["%2 (%3) has transfered you $%1", _parameters select 0, (_parameters select 1) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], name leader (_parameters select 1)]};
 	case "order-taketowns": {_parameters sideChat "Acknowledged.  Advancing on neutral or enemy towns"};
 	case "order-takeholdtowns": {_parameters sideChat "Acknowledged.  Advancing on neutral or enemy towns with guard duty"};
 	case "order-holdtowns": {_parameters sideChat "Acknowledged.  Proceeding to nearest base or friendly town for guard duty"};
