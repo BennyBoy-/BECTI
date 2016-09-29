@@ -67,7 +67,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				case (_value < 70) : { 
 					_pool_units = [
 						["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 99],
-						["GUER_TOWNS_SQUAD_AT1", 1, 99],			
+						["GUER_TOWNS_SQUAD_AT1", 1, 99],	
+						["GUER_TOWNS_SQUAD_AA", 1, 40],
 						[
 							["GUER_TOWNS_SQUAD_LIGHT1_MIXED", 2, 75],
 							["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 25]
@@ -77,7 +78,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				case (_value >= 70 && _value < 80) : { 
 					_pool_units = [
 						["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 99],
-						["GUER_TOWNS_SQUAD_AT1", 1, 99],			
+						["GUER_TOWNS_SQUAD_AT1", 1, 99],
+						["GUER_TOWNS_SQUAD_AA", 1, 40],
 						[
 							["GUER_TOWNS_SQUAD_LIGHT1_MIXED", 2, 75],
 							["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 25]
@@ -91,7 +93,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 					_pool_units = [
 						["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 75],
 						["GUER_TOWNS_SQUAD_SNIPER", 1, 75],
-						["GUER_TOWNS_SQUAD_AT1", 1, 75],				
+						["GUER_TOWNS_SQUAD_AT1", 1, 75],
+						["GUER_TOWNS_SQUAD_AA", 2, 40],
 						[
 							["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 25],
 							["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 3, 75],
@@ -100,6 +103,9 @@ if (isNil {_town getVariable "cti_naval"}) then {
 						[
 							["GUER_TOWNS_SQUAD_APC1_MIXED", 3, 80],
 							["GUER_TOWNS_SQUAD_APC2_MIXED", 1, 20]
+						],
+						[
+							["GUER_TOWNS_SQUAD_VEHICLE_AA1", 1, 30]
 						]
 					];
 				};
@@ -108,7 +114,8 @@ if (isNil {_town getVariable "cti_naval"}) then {
 						[
 							["GUER_TOWNS_SQUAD_RIFLEMEN3", 1, 50], 
 							["GUER_TOWNS_SQUAD_SNIPER", 1, 20], 
-							["GUER_TOWNS_SQUAD_AT2", 2, 75] 				
+							["GUER_TOWNS_SQUAD_AT2", 2, 75], 
+							["GUER_TOWNS_SQUAD_AA", 2, 40]				
 						],
 						[
 							["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 1, 20],
@@ -120,7 +127,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 							["GUER_TOWNS_SQUAD_APC2_MIXED", 3, 70]
 						],
 						[
-							["GUER_TOWNS_SQUAD_VEHICLE_AA1", 1, 20]
+							["GUER_TOWNS_SQUAD_VEHICLE_AA1", 1, 30]
 						]
 					];
 				};
@@ -177,7 +184,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 						],
 						[
 							["GUER_TOWNS_SQUAD_APC2_MIXED", 2, 30],
-							["GUER_TOWNS_SQUAD_APC3_MIXED", 4, 80]
+							["GUER_TOWNS_SQUAD_APC3_MIXED", 3, 50]
 						],
 						[
 							["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 1, 60],
@@ -190,7 +197,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 						],
 						[
 							["GUER_TOWNS_SQUAD_APC2", 2, 30],
-							["GUER_TOWNS_SQUAD_APC3", 3, 70]
+							["GUER_TOWNS_SQUAD_APC3", 3, 50]
 						],
 						[
 							["GUER_TOWNS_SQUAD_ARMORED2", 1, 10],
@@ -216,7 +223,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 						],
 						[
 							["GUER_TOWNS_SQUAD_APC2_MIXED", 2, 30],
-							["GUER_TOWNS_SQUAD_APC3_MIXED", 4, 70]
+							["GUER_TOWNS_SQUAD_APC3_MIXED", 3, 50]
 						],
 						[
 							["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 1, 20],
@@ -228,7 +235,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 						],
 						[
 							["GUER_TOWNS_SQUAD_APC2", 2, 30],
-							["GUER_TOWNS_SQUAD_APC3", 3, 70]
+							["GUER_TOWNS_SQUAD_APC3", 3, 50]
 						],
 						[
 							["GUER_TOWNS_SQUAD_ARMORED2", 1, 20],
@@ -405,37 +412,51 @@ if (isNil {_town getVariable "cti_naval"}) then {
 		switch (true) do {
 			case (_value < 70) : { 
 				_pool_units = [
-					["GUER_TOWNS_SQUAD_ZOMBIE1", 8, 99]
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 8, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 2, 99]
 				];
 			};
 			case (_value >= 70 && _value < 80) : {  
 				_pool_units = [
-					["GUER_TOWNS_SQUAD_ZOMBIE1", 8, 99]
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 6, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 2, 99]
 				];
 			};
 			case (_value >= 80 && _value < 90) : {
 				_pool_units = [
-					["GUER_TOWNS_SQUAD_ZOMBIE2", 8, 99]
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99]
 				];
 			};
 			case (_value >= 90 && _value < 100) : { 
 				_pool_units = [
-					["GUER_TOWNS_SQUAD_ZOMBIE3", 8, 99]
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99]
 				];
 			};
 			case (_value >= 100 && _value < 110) : { 
 				_pool_units = [
-					["GUER_TOWNS_SQUAD_ZOMBIE3", 8, 99]
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 2, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 6, 99]
 				];
 			};
 			case (_value >= 110 && _value < 120) : {
 				_pool_units = [ 
-					["GUER_TOWNS_SQUAD_ZOMBIE3", 8, 99]
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 2, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 8, 99]
 				];
 			};
 			case (_value >= 120) : { 
 				_pool_units = [
-					["GUER_TOWNS_SQUAD_ZOMBIE3", 8, 99]
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 2, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 8, 99]
 				];
 			};
 		};
