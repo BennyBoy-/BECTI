@@ -171,21 +171,21 @@ for "" from 0 to 1 step 0 do {
 				call {
 					// In a vehicle
 					if ((vehicle _x) != _x) exitWith {
-						_text_size_max = 0.04; // was 0.05 (then 0.035)
+						_text_size_max = 0.035; // was 0.05 (then 0.035)
 						_height_mod = -1;
 					};
 					// Crouching
 					if ((stance _x) == "CROUCH") exitWith {
-						_text_size_max = 0.04; // was 0.15 (then 0.105)
+						_text_size_max = 0.035; // was 0.15 (then 0.105)
 						_height_mod = -0.4;
 					};
 					// Prone
 					if ((stance _x) == "PRONE") exitWith {
-						_text_size_max = 0.04; // was 0.15 (then 0.105)
+						_text_size_max = 0.035; // was 0.15 (then 0.105)
 						_height_mod = 0.03;
 					};
 					// Default (Standing)
-					_text_size_max = 0.04; // was 0.15 (then 0.105)
+					_text_size_max = 0.035; // was 0.15 (then 0.105)
 					_height_mod = 0.1;
 				};
 
