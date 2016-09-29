@@ -846,7 +846,7 @@ _p pushBack '';
 _n pushBack '2S6M Tunguska';
 _o pushBack 19150;
 _t pushBack 20;
-_u pushBack 4;
+_u pushBack 2;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
