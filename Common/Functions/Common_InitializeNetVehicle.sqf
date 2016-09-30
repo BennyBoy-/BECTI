@@ -81,7 +81,7 @@ if (CTI_SPECIAL_NUKETRUCK in _special) then { //--- Nuke vehicle.
 
 //--- Static Line Drop
 if (_vehicle isKindOf "Plane" || _vehicle isKindOf "Helicopter") then {
-	_vehicle addAction ["<t color='#2E9AFE'>Eject With Parachute</t>", "Client\Actions\Action_Eject.sqs",[],0,true,true,"","player in _target && getPos _target select 2 >100"];
+	_vehicle addAction ["<t color='#2E9AFE'>Eject With Parachute</t>", "Client\Actions\Action_Eject.sqs",[],0,false,true,"","player in _target && getPos _target select 2 >80"];
 };
 
 //--- Perform side-speficic operations
