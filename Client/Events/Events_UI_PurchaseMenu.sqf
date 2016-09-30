@@ -118,15 +118,27 @@ switch (_action) do {
 			_selected_group = (uiNamespace getVariable "cti_dialog_ui_purchasemenu_teams") select (lbCurSel ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110016)); //todo Change that by combo value
 			
 			_isEmpty = false;
+			_crew_count = 0;
 			_veh_info = if (_classname isKindOf "Man") then { [] } else { call CTI_UI_Purchase_GetVehicleInfo };
 			if (count _veh_info > 0) then {
 				if !((_veh_info select 0) || (_veh_info select 1) || (_veh_info select 2) || (_veh_info select 3)) then { _isEmpty = true };
+				
+				if (_veh_info select 3) then { //--- Turrets are specified (TODO: Fine tune if turret == driver)
+					_crew_count = count(_classname call CTI_CO_FNC_GetVehicleTurrets);
+					if (_veh_info select 0) then {_crew_count = _crew_count + 1}; //--- Add the driver to the crew count
+					if !(_veh_info select 1) then {_crew_count = _crew_count - 1}; //--- Subtract the gunner from the turrets if needed
+					if !(_veh_info select 2) then {_crew_count = _crew_count - 1}; //--- Subtract the commander from the turrets if needed
+				} else {
+					_crew_count = {_x} count [_veh_info select 0, _veh_info select 1, _veh_info select 2];
+				};
+			} else {
+				_crew_count = 1;
 			};
 			
 			if (alive(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory")) then {
 				_ai_enabled = missionNamespace getVariable "CTI_AI_TEAMS_ENABLED";
 				if (_ai_enabled == 1 || (isPlayer leader _selected_group && _ai_enabled == 0)) then {
-					if ((count units _selected_group)+1 <= _player_ai_count || _isEmpty) then { //todo ai != player limit
+					if ((count units _selected_group)+_crew_count <= _player_ai_count || _isEmpty) then { //todo ai != player limit
 						_proc_purchase = true;
 						if (_isEmpty && _selected_group != group player) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Empty vehicles may not be purchased for other groups."; };
 						
