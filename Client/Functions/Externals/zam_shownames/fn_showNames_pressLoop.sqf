@@ -172,7 +172,7 @@ for "" from 0 to 1 step 0 do {
 					// In a vehicle
 					if ((vehicle _x) != _x) exitWith {
 						_text_size_max = 0.035; // was 0.05 (then 0.035)
-						_height_mod = -1;
+						_height_mod = 1;
 					};
 					// Crouching
 					if ((stance _x) == "CROUCH") exitWith {
@@ -207,6 +207,7 @@ for "" from 0 to 1 step 0 do {
 				// Text size
 				_text_size_min = 0.025; 
 				_text_size = (((1.1 / (_distance max 0.01)) * _magn) min _text_size_max) max _text_size_min;	// Cap text size (was 0.55)
+				_height_mod = _height_mod + ((_distance * 0.0001) min 0.4);//adjust height based on distance
 
 				// Height above head
 				_height = _height_mod + _height_mod_icon;
