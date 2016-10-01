@@ -805,7 +805,7 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'sfp_bo105_unarmed';
 	_u pushBack 'sfp_bo105';
 	_u pushBack 'O_UCSV_01';
-	_u pushBack 'USAF_C17';
+//	_u pushBack 'USAF_C17';
 	_u pushBack 'usaf_c5';
 	_u pushBack 'LDL_C130J';
 	_u pushBack 'bwi_a3_t6a_5';
