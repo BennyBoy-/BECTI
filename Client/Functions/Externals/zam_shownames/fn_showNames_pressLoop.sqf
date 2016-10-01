@@ -207,10 +207,10 @@ for "" from 0 to 1 step 0 do {
 				// Text size
 				_text_size_min = 0.025; 
 				_text_size = (((1.1 / (_distance max 0.01)) * _magn) min _text_size_max) max _text_size_min;	// Cap text size (was 0.55)
-				_height_mod = _height_mod + ((_distance * 0.0002) min 0.8);//adjust height based on distance
+				_height_mod_dist = (_distance * 0.0002) min 0.8;//adjust height based on distance
 
 				// Height above head
-				_height = _height_mod + _height_mod_icon;
+				_height = _height_mod + _height_mod_icon + _height_mod_dist;
 
 				// Max ID range
 				_vd_id = _dist_man;
