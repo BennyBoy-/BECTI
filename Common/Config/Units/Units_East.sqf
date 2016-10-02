@@ -510,7 +510,7 @@ _d pushBack 0;
 _c pushBack 'O_Truck_03_device_F';
 _p pushBack '';
 _n pushBack 'Nuke Truck';
-_o pushBack 110850;
+_o pushBack 80000;
 _t pushBack 25;
 _u pushBack 5;
 _f pushBack CTI_FACTORY_LIGHT;
