@@ -1122,11 +1122,11 @@ _p pushBack 50;
 */
 
 //--- Bombs Mines IEDS
-/* 
+
 _i pushBack "CUP_TimeBomb_M";
 _u pushBack 2;
 _p pushBack 500;
- */
+
 _i pushBack "CUP_Mine_M";
 _u pushBack 1;
 _p pushBack 300;
@@ -1134,11 +1134,11 @@ _p pushBack 300;
 _i pushBack "CUP_MineE_M";
 _u pushBack 1;
 _p pushBack 300;
-/* 
+
 _i pushBack "CUP_PipeBomb_M";
 _u pushBack 1;
 _p pushBack 300;
-
+/* 
 _i pushBack "CUP_IED_V1_M";
 _u pushBack 0;
 _p pushBack 300;
