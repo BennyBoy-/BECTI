@@ -554,7 +554,7 @@ _d pushBack 0;
 _c pushBack 'O_T_MBT_02_arty_ghex_F';
 _p pushBack '';
 _n pushBack ["%1 (Pacific)"]; 
-_o pushBack 85400;
+_o pushBack 160000;
 _t pushBack 30;
 _u pushBack 4;
 _f pushBack CTI_FACTORY_HEAVY;

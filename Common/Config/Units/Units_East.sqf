@@ -542,7 +542,7 @@ _d pushBack 0;
 _c pushBack 'O_MBT_02_arty_F';
 _p pushBack '';
 _n pushBack '2S9 Sochor';
-_o pushBack 120000;
+_o pushBack 160000;
 _t pushBack 20;
 _u pushBack 4;
 _f pushBack CTI_FACTORY_HEAVY;
