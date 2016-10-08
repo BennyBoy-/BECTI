@@ -400,7 +400,6 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-/*
 _c pushBack 'USAF_C17';
 _p pushBack '';
 _n pushBack '';
@@ -410,7 +409,7 @@ _u pushBack 2;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 50;
-*/
+
 _c pushBack 'usaf_c5';
 _p pushBack '';
 _n pushBack '';
