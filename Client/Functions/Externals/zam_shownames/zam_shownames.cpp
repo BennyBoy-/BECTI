@@ -1,5 +1,4 @@
-class CfgFunctions
-{
+
 	class ZAM
 	{
 		class showNames
@@ -23,4 +22,3 @@ class CfgFunctions
 			class showNames_getZoom{description = "Returns the zoom level of the player.";};
 		};
 	};
-};

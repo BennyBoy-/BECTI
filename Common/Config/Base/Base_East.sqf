@@ -743,6 +743,24 @@ _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 _coinblacklist pushBack [];
 
+_headers pushBack 		"AN/MPQ-53 - AA Radar";
+_classes pushBack 		"POOK_ANMPQ53_CDF";
+_prices pushBack 		5000;
+_placements pushBack 	[180, 15];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"MIM-104 PAC-2 - AA Launcher";
+_classes pushBack 		"pook_MIM104_PAC2Battery_CDF";
+_prices pushBack 		80000;
+_placements pushBack 	[180, 15];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ"];
+_coinblacklist pushBack [];
+
+/*
+Disabled due to view bug
 _headers pushBack 		"SNR-75 - AA Radar";
 _classes pushBack 		"pook_SNR75_radar";
 _prices pushBack 		5000;
@@ -758,6 +776,7 @@ _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 _coinblacklist pushBack [];
+*/
 };
 
 _headers pushBack 		["Heli Pad", [["DMG_Reduce", 1]]];

@@ -76,6 +76,9 @@ if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then { //--- Attempt to deploy 
 	if (_is_deployed && alive _current_hq) then { //--- Make sure that the HQ is deployed and alive
 		_logic setVariable ["cti_hq_deployed", false, true];
 		
+		//--- Get a safe position
+		_position = [_position, 90] call CTI_CO_FNC_GetEmptyPosition;
+		
 		//--- Mobilize the HQ
 		_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _position, 0, _side, true, false] call CTI_CO_FNC_CreateVehicle;
 		_hq setVariable ["cti_gc_noremove", true]; //--- HQ wreck cannot be removed nor salvaged

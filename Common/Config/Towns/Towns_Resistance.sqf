@@ -369,7 +369,7 @@ if (CTI_TOWNS_OCCUPATION_RESISTANCE == 6) then {
 	//--- Boats
 	GUER_NAVAL_ASSAULT_BOAT1 = ["CUP_B_RHIB2Turret_USMC"];
 	GUER_NAVAL_ASSAULT_BOAT2 = ["I_Boat_Armed_01_minigun_F"];
-	GUER_NAVAL_MEDIUM_ASSAULT_BOAT = ["rhsusf_mkvsoc"];
+	GUER_NAVAL_MEDIUM_ASSAULT_BOAT = ["I_Boat_Armed_01_minigun_F"];
 	GUER_NAVAL_LARGE_ASSAULT_BOAT = ["sfp_rbb_norrkoping"];
 };
 if (CTI_TOWNS_OCCUPATION_RESISTANCE == 7) then { 
@@ -583,7 +583,7 @@ GUER_TOWNS_SQUAD_VEHICLE_AA1_MIXED = GUER_VEHICLE_AA1 + GUER_TOWNS_SQUAD_AT1;
 GUER_TOWNS_SQUAD_VEHICLE_AA2_MIXED = GUER_VEHICLE_AA2 + GUER_TOWNS_SQUAD_AT2;
 GUER_TOWNS_SQUAD_VEHICLE_AA3_MIXED = GUER_VEHICLE_AA3 + GUER_TOWNS_SQUAD_AT2;
 //--- Zombie Squads
-GUER_TOWNS_SQUAD_ZOMBIE1 = ["RyanZombieboss15", "RyanZombieboss15", "RyanZombieboss15", "RyanZombieB_Soldier_02_f", "RyanZombieB_Soldier_02_fmedium"];
-GUER_TOWNS_SQUAD_ZOMBIE2 = ["RyanZombieboss15", "RyanZombieboss15", "RyanZombieboss15", "RyanZombieB_Soldier_02_f", "RyanZombieB_Soldier_02_f"];
-GUER_TOWNS_SQUAD_ZOMBIE3 = ["RyanZombieboss15", "RyanZombieboss15", "RyanZombieboss15", "RyanZombieboss15", "RyanZombieboss15"];
+GUER_TOWNS_SQUAD_ZOMBIE1 = ["RyanZombieB_Soldier_02_fmedium"];
+GUER_TOWNS_SQUAD_ZOMBIE2 = ["RyanZombieB_Soldier_02_f"];
+GUER_TOWNS_SQUAD_ZOMBIE3 = ["RyanZombieboss15"];
 };

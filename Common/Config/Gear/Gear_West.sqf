@@ -1064,7 +1064,7 @@ _u pushBack 0;
 _p pushBack 750;
 
 _i pushBack "FirstAidKit";
-_u pushBack 1;
+_u pushBack 0;
 _p pushBack 150;
 
 _i pushBack "Medikit";

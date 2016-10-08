@@ -52,8 +52,8 @@ if (CTI_TOWNS_OCCUPATION_WEST == 0) then {
 	//--- Boats
 	WEST_NAVAL_ASSAULT_BOAT1 = ["B_Boat_Armed_01_minigun_F"];
 	WEST_NAVAL_ASSAULT_BOAT2 = ["B_Boat_Armed_01_minigun_F"];
-	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = [""];
-	WEST_NAVAL_LARGE_ASSAULT_BOAT = [""];
+	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = ["B_Boat_Armed_01_minigun_F"];
+	WEST_NAVAL_LARGE_ASSAULT_BOAT = ["B_Boat_Armed_01_minigun_F"];
 };
 if (CTI_TOWNS_OCCUPATION_WEST == 1) then { 
 //--- CUP - US Army TOWN OCCUPATION
@@ -106,7 +106,7 @@ if (CTI_TOWNS_OCCUPATION_WEST == 1) then {
 	//--- Boats
 	WEST_NAVAL_ASSAULT_BOAT1 = ["CUP_B_RHIB2Turret_USMC"];
 	WEST_NAVAL_ASSAULT_BOAT2 = ["B_Boat_Armed_01_minigun_F"];
-	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = ["rhsusf_mkvsoc"];
+	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = ["B_Boat_Armed_01_minigun_F"];
 	WEST_NAVAL_LARGE_ASSAULT_BOAT = ["sfp_rbb_norrkoping"];
 };
 if (CTI_TOWNS_OCCUPATION_WEST == 2) then { 
@@ -160,7 +160,7 @@ if (CTI_TOWNS_OCCUPATION_WEST == 2) then {
 	//--- Boats
 	WEST_NAVAL_ASSAULT_BOAT1 = ["CUP_B_RHIB2Turret_USMC"];
 	WEST_NAVAL_ASSAULT_BOAT2 = ["B_Boat_Armed_01_minigun_F"];
-	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = ["rhsusf_mkvsoc"];
+	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = ["B_Boat_Armed_01_minigun_F"];
 	WEST_NAVAL_LARGE_ASSAULT_BOAT = ["sfp_rbb_norrkoping"];
 };
 if (CTI_TOWNS_OCCUPATION_WEST == 3) then { 
@@ -214,8 +214,8 @@ if (CTI_TOWNS_OCCUPATION_WEST == 3) then {
 	//--- Boats
 	WEST_NAVAL_ASSAULT_BOAT1 = ["B_Boat_Armed_01_minigun_F"];
 	WEST_NAVAL_ASSAULT_BOAT2 = ["B_Boat_Armed_01_minigun_F"];
-	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = [""];
-	WEST_NAVAL_LARGE_ASSAULT_BOAT = [""];
+	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = ["B_Boat_Armed_01_minigun_F"];
+	WEST_NAVAL_LARGE_ASSAULT_BOAT = ["B_Boat_Armed_01_minigun_F"];
 };
 if (CTI_TOWNS_OCCUPATION_WEST == 4) then { 
 //--- WINTER/SFP TOWN OCCUPATION
@@ -268,8 +268,8 @@ if (CTI_TOWNS_OCCUPATION_WEST == 4) then {
 	//--- Boats
 	WEST_NAVAL_ASSAULT_BOAT1 = ["B_Boat_Armed_01_minigun_F"];
 	WEST_NAVAL_ASSAULT_BOAT2 = ["B_Boat_Armed_01_minigun_F"];
-	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = [""];
-	WEST_NAVAL_LARGE_ASSAULT_BOAT = [""];
+	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = ["B_Boat_Armed_01_minigun_F"];
+	WEST_NAVAL_LARGE_ASSAULT_BOAT = ["B_Boat_Armed_01_minigun_F"];
 };
 //--- Town Teams Templates
 //--- Infantry Squads

@@ -145,6 +145,11 @@ if (local player) then {
 	player addMPEventhandler ["MPRespawn", {player setCustomAimCoef _swayamount;}];
 };
 
+//Default Video Settings
+CHVD_allowNoGrass = false; // Set 'false' if you want to disable "None" option for terrain (default: true)
+CHVD_maxView = 3000; // Set maximum view distance (default: 12000)
+CHVD_maxObj = 3000; // Set maximimum object view distance (default: 12000)
+
 //Briefing Entries
 0 execVM "Briefing.sqf";
 

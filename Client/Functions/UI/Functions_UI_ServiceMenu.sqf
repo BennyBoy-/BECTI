@@ -106,7 +106,7 @@ CTI_UI_Service_ProcessRearm = {
 			_times set [_forEachIndex,_x * CTI_AIR_REARM_RATIO];
 		} forEach _times;
 	};
-	if (_unit isKindOf "B_MBT_01_arty_F" || _unit isKindOf "B_MBT_01_mlrs_F" || _unit isKindOf  "O_MBT_02_arty_F" || _unit isKindOf  "CUP_O_BM21_RU" || _unit isKindOf  "CUP_B_M270_HE_USMC" || _unit isKindOf  "CUP_B_M252_USMC") then {
+	if (_unit isKindOf "B_MBT_01_arty_F" || _unit isKindOf "B_MBT_01_mlrs_F" || _unit isKindOf  "O_MBT_02_arty_F" || _unit isKindOf  "CUP_O_BM21_RU" || _unit isKindOf  "CUP_B_M270_HE_USMC" || _unit isKindOf  "CUP_B_M252_USMC" || _unit isKindOf  "O_T_MBT_02_arty_ghex_F" || _unit isKindOf  "OFPS_SCORCHER" || _unit isKindOf  "OFPS_SANDSTORM" || _unit isKindOf  "CUP_B_M270_DPICM_USMC" || _unit isKindOf  "Meaty_Scorcher_Sn" || _unit isKindOf  "Meaty_Sandstorm_Sn") then {
 		{
 			_times set [_forEachIndex,_x * CTI_ART_REARM_RATIO];
 		} forEach _times;

@@ -80,6 +80,8 @@ class RscTitles {
 				h = 0.011 * safezoneH;
 				//colorBackground[] = {0.063,0.063,0.063,0.5};
 				//sizeEx = (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.65) * GUI_GRID_H;
+				//colorText[] = {0,0.35,0.04,1};
+				sizeEx = 0.023;
 			};
 		};
 	};
