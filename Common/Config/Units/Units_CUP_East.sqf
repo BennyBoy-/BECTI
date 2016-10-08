@@ -276,7 +276,7 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
---- Light Vehicles
+//--- Light Vehicles
 /*
 _c pushBack 'CUP_M1030';
 _p pushBack '';
@@ -801,19 +801,9 @@ _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'OFPS_T72A';
+_c pushBack 'CUP_B_T72_CZ';
 _p pushBack '';
 _n pushBack 'T-72';
-_o pushBack 18000;
-_t pushBack 20;
-_u pushBack 2;
-_f pushBack CTI_FACTORY_HEAVY;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'OFPS_T72_T';
-_p pushBack '';
-_n pushBack 'T-72 (Pacific)';
 _o pushBack 18000;
 _t pushBack 20;
 _u pushBack 2;

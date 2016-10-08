@@ -373,7 +373,7 @@ _prices pushBack 		2000;
 _placements pushBack 	[0, 15];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [];
+_coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 10], ["Land_Dome_Big_F", 10], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
 
 _headers pushBack 		["Shed (Land)",[["RuinOnDestroyed", "Land_Shed_Small_ruins_F"], ["DMG_Reduce", 5]]];
 _classes pushBack 		"Land_Shed_Small_F";
@@ -381,7 +381,7 @@ _prices pushBack 		2000;
 _placements pushBack 	[90, 15];
 _categories pushBack 	"Structures_Industrial";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [];
+_coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 10], ["Land_Dome_Big_F", 10], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
 
 _headers pushBack 		["Tent Hangar",[["RuinOnDestroyed", "Land_TentHangar_V1_ruins_F"], ["DMG_Reduce", 5]]];
 _classes pushBack 		"Land_TentHangar_V1_F";
@@ -389,7 +389,7 @@ _prices pushBack 		4000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [["Land_TentHangar_V1_F", 20], ["Land_sfp_torebodahangar_alt2", 10]];
+_coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 10], ["Land_Dome_Big_F", 10], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
 
 if (CTI_OFPS_ADDON > 0) then {
 _headers pushBack 		"Mil Shed";
@@ -397,8 +397,8 @@ _classes pushBack 		"Land_sfp_mil_shed";
 _prices pushBack 		4000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
-_coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [["Land_sfp_mil_shed", 10]];
+_coinmenus pushBack 	["HQ"];
+_coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 10], ["Land_Dome_Big_F", 10], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
 
 _headers pushBack 		"Hangar Wood";
 _classes pushBack 		"Land_sfp_torebodahangar";
@@ -406,7 +406,7 @@ _prices pushBack 		4000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [["Land_sfp_torebodahangar", 10]];
+_coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 10], ["Land_Dome_Big_F", 10], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
 
 _headers pushBack 		"Hangar Wood Large";
 _classes pushBack 		"Land_sfp_torebodahangar_alt2";
@@ -414,7 +414,7 @@ _prices pushBack 		5000;
 _placements pushBack 	[0, 20];
 _categories pushBack 	"Structures_Military";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [["Land_sfp_torebodahangar_alt2", 10]];
+_coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 10], ["Land_Dome_Big_F", 10], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
 };
 
 _headers pushBack 		"Dome (Small)";
@@ -422,8 +422,8 @@ _classes pushBack 		"Land_Dome_Small_F";
 _prices pushBack 		4000;
 _placements pushBack 	[0, 30];
 _categories pushBack 	"Fortification";
-_coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [["Land_Dome_Small_F", 10]];
+_coinmenus pushBack 	["HQ"];
+_coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 10], ["Land_Dome_Big_F", 10], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
 
 _headers pushBack 		"Dome (Big)";
 _classes pushBack 		"Land_Dome_Big_F";
@@ -431,7 +431,7 @@ _prices pushBack 		5000;
 _placements pushBack 	[0, 50];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [["Land_Dome_Big_F", 10]];
+_coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 10], ["Land_Dome_Big_F", 10], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
 
 /* Do not add in cannot be destroyed. Can we just Delete these then?-Apollo
 _headers pushBack 		"H-Barrier (Small) (1 Block)";
@@ -645,7 +645,7 @@ _prices pushBack 		10000;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [];
+_coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 10], ["Land_Dome_Big_F", 10], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
 
 _headers pushBack 		"Large Hangar (Desert)";
 _classes pushBack 		"Land_Ss_hangard";
@@ -653,7 +653,7 @@ _prices pushBack 		10000;
 _placements pushBack 	[90, 7];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [];
+_coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 10], ["Land_Dome_Big_F", 10], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
 
 _headers pushBack 		"EarthenNest (Green)";
 _classes pushBack 		"Land_fort_artillery_nest";

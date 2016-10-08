@@ -109,6 +109,20 @@ CTI_Coin_UpdateItemLabel = {
 	};
 };
 
+CTI_Coin_DefenseCanBePlaced = {
+	_preview = _this;
+	
+	_valid = true;
+	
+	if !((CTI_COIN_PARAM select 7) isEqualTo []) then { //--- Check if the defense can be placed according to the blacklist
+		{
+			if !(((_preview nearObjects _x) - [_preview]) isEqualTo []) exitWith {_valid = false};
+		} forEach (CTI_COIN_PARAM select 7);
+	};
+	
+	_valid
+};
+
 //--- Update the preview's lifespan
 CTI_Coin_UpdatePreview = {
 	private ["_color", "_preview"];
@@ -125,10 +139,8 @@ CTI_Coin_UpdatePreview = {
 				_color = CTI_COIN_COLOR_INVALID;
 			} else {
 				if (CTI_COIN_PARAM_KIND == "DEFENSES") then {
-					if !((CTI_COIN_PARAM select 7) isEqualTo []) then { //--- Check if the defense can be placed according to the blacklist
-						{
-							if !((_preview nearObjects _x) isEqualTo []) exitWith {_color = CTI_COIN_COLOR_INVALID};
-						} forEach (CTI_COIN_PARAM select 7);
+					if !((CTI_COIN_PARAM select 7) isEqualTo []) then {
+						if !(_preview call CTI_Coin_DefenseCanBePlaced) then {_color = CTI_COIN_COLOR_INVALID};
 					};
 				};
 			};
@@ -271,19 +283,24 @@ CTI_Coin_UpdateBaseAreaLimits = {
 CTI_Coin_OnPreviewPlacement = {
 	with missionNamespace do {
 		_item = objNull;//debug
+		_defense_pos_valid = true;
 		switch (CTI_COIN_PARAM_KIND) do {
 			case 'STRUCTURES': {
 				_item = (CTI_COIN_PARAM select 1) select 0;
 			};
 			case 'DEFENSES': {
 				_item = CTI_COIN_PARAM select 1;
+				
+				if !((CTI_COIN_PARAM select 7) isEqualTo []) then {
+					_defense_pos_valid = CTI_COIN_PREVIEW call CTI_Coin_DefenseCanBePlaced;
+				};
 			};
 		};
 		
 		_direction = direction CTI_COIN_PREVIEW;
 		_position = position CTI_COIN_PREVIEW;
 		
-		if (CTI_COIN_PREVIEW call CTI_Coin_PreviewSurfaceIsValid && CTI_COIN_PREVIEW distance CTI_COIN_ORIGIN <= CTI_COIN_RANGE) then { //--- Last check to make sure that the position is valid
+		if (CTI_COIN_PREVIEW call CTI_Coin_PreviewSurfaceIsValid && _defense_pos_valid && CTI_COIN_PREVIEW distance CTI_COIN_ORIGIN <= CTI_COIN_RANGE) then { //--- Last check to make sure that the position is valid
 			deleteVehicle CTI_COIN_PREVIEW;
 			
 			//--- Remove the description overlay content
