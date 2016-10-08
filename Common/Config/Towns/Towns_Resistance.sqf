@@ -583,7 +583,7 @@ GUER_TOWNS_SQUAD_VEHICLE_AA1_MIXED = GUER_VEHICLE_AA1 + GUER_TOWNS_SQUAD_AT1;
 GUER_TOWNS_SQUAD_VEHICLE_AA2_MIXED = GUER_VEHICLE_AA2 + GUER_TOWNS_SQUAD_AT2;
 GUER_TOWNS_SQUAD_VEHICLE_AA3_MIXED = GUER_VEHICLE_AA3 + GUER_TOWNS_SQUAD_AT2;
 //--- Zombie Squads
-GUER_TOWNS_SQUAD_ZOMBIE1 = ["RyanZombieboss15", "RyanZombieboss15", "RyanZombieboss15", "RyanZombieB_Soldier_02_f", "RyanZombieB_Soldier_02_fmedium"];
-GUER_TOWNS_SQUAD_ZOMBIE2 = ["RyanZombieboss15", "RyanZombieboss15", "RyanZombieboss15", "RyanZombieB_Soldier_02_f", "RyanZombieB_Soldier_02_f"];
-GUER_TOWNS_SQUAD_ZOMBIE3 = ["RyanZombieboss15", "RyanZombieboss15", "RyanZombieboss15", "RyanZombieboss15", "RyanZombieboss15"];
+GUER_TOWNS_SQUAD_ZOMBIE1 = ["RyanZombieboss15", "RyanZombieCrawler31"];
+GUER_TOWNS_SQUAD_ZOMBIE2 = ["RyanZombieboss14", "RyanZombieSpider31"];
+GUER_TOWNS_SQUAD_ZOMBIE3 = ["RyanZombieboss13", "RyanZombie31"];
 };

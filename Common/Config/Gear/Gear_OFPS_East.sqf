@@ -50,6 +50,33 @@ _u pushBack 0;
 _p pushBack 100;
 
 
+//hats
+
+_i pushBack "IP_H_Beret_02CSAT";
+_u pushBack 0;
+_p pushBack 100;
+
+
+//helmets
+
+_i pushBack "IP_H_HelmetO_SnowHex";
+_u pushBack 0;
+_p pushBack 300;
+
+_i pushBack "IP_H_HelmetSpecO_SnowHex";
+_u pushBack 0;
+_p pushBack 300;
+
+//face
+
+_i pushBack "BW_Balaclava_blk";
+_u pushBack 0;
+_p pushBack 30;
+
+_i pushBack "AAF_D_Bandmask_G";
+_u pushBack 0;
+_p pushBack 30;
+
 //vests
 
 _i pushBack "IP_V_HarnessOGL_gryST";
@@ -141,6 +168,17 @@ _p pushBack 1550;
 _i pushBack "IP_launch_O_Titan_snw_F";
 _u pushBack 3;
 _p pushBack 1500;
+
+
+//gear
+
+_i pushBack "A3_GPNVG18_BLK_F";
+_u pushBack 2;
+_p pushBack 1000;
+
+_i pushBack "A3_GPNVG18_F";
+_u pushBack 2;
+_p pushBack 1000;
 
 
 //SFP PACK
