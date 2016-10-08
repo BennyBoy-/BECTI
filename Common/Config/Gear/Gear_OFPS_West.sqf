@@ -47,7 +47,6 @@ _i pushBack "AAF_D_TacVest_B";
 _u pushBack 0;
 _p pushBack 300;
 
-
 //Backpacks
 _i pushBack "AAF_D_AssaultPack_B";
 _u pushBack 0;
@@ -377,6 +376,18 @@ _i pushBack "sfp_ghillie_uniform";
 _u pushBack 0;
 _p pushBack 100;
 
+
+//gear
+
+_i pushBack "A3_GPNVG18_BLK_F";
+_u pushBack 2;
+_p pushBack 1000;
+
+_i pushBack "A3_GPNVG18_F";
+_u pushBack 2;
+_p pushBack 1000;
+
+
 //HeadGear
 _i pushBack "sfp_m90w_helmet";
 _u pushBack 0;
@@ -493,6 +504,24 @@ _p pushBack 100;
 _i pushBack "sfp_batmossa_m48";
 _u pushBack 0;
 _p pushBack 100;
+
+_i pushBack "AAF_D_Helmet_B_light_desert";
+_u pushBack 0;
+_p pushBack 300;
+
+_i pushBack "sfp_m90s_helmet_headset";
+_u pushBack 0;
+_p pushBack 300;
+
+//face
+
+_i pushBack "BW_Balaclava_blk";
+_u pushBack 0;
+_p pushBack 30;
+
+_i pushBack "AAF_D_Bandmask_G";
+_u pushBack 0;
+_p pushBack 30;
 
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf"; 
