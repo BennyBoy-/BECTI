@@ -342,11 +342,11 @@ _u pushBack 3;
 _p pushBack 500;
 
 //Lee Enfield Family
-/* 
-_i pushBack "CUP_srifle_LeeEnfield";
-_u pushBack 0;
-_p pushBack 400;
 
+_i pushBack "CUP_srifle_LeeEnfield";
+_u pushBack 1;
+_p pushBack 400;
+/* 
 _i pushBack "CUP_srifle_LeeEnfield_rail";
 _u pushBack 3;
 _p pushBack 550;
@@ -1122,11 +1122,11 @@ _p pushBack 50;
 */
 
 //--- Bombs Mines IEDS
-/* 
+
 _i pushBack "CUP_TimeBomb_M";
 _u pushBack 2;
 _p pushBack 500;
- */
+
 _i pushBack "CUP_Mine_M";
 _u pushBack 1;
 _p pushBack 300;
@@ -1134,11 +1134,11 @@ _p pushBack 300;
 _i pushBack "CUP_MineE_M";
 _u pushBack 1;
 _p pushBack 300;
-/* 
+
 _i pushBack "CUP_PipeBomb_M";
 _u pushBack 1;
 _p pushBack 300;
-
+/* 
 _i pushBack "CUP_IED_V1_M";
 _u pushBack 0;
 _p pushBack 300;
@@ -1561,11 +1561,11 @@ _p pushBack 1000;
 _i pushBack "CUP_U_B_FR_Officer";
 _u pushBack 0;
 _p pushBack 100;
-/* 
+
 _i pushBack "CUP_U_B_FR_DirAction";
 _u pushBack 0;
 _p pushBack 100;
-
+/* 
 _i pushBack "CUP_U_B_FR_DirAction2";
 _u pushBack 0;
 _p pushBack 100;

@@ -233,15 +233,15 @@ _u pushBack 4;
 _p pushBack 1000;
 
 //Lee Enfield Family
-/* 
+
 _i pushBack "CUP_srifle_LeeEnfield";
-_u pushBack 0;
+_u pushBack 1;
 _p pushBack 400;
- */
+ /* 
 _i pushBack "CUP_srifle_LeeEnfield_rail";
 _u pushBack 3;
 _p pushBack 550;
-
+*/
 //Shotguns
 	
 //Saiga Family
@@ -907,11 +907,11 @@ _p pushBack 50;
 
 
 //--- Bombs Mines IEDS
-/* 
+
 _i pushBack "CUP_TimeBomb_M";
 _u pushBack 2;
 _p pushBack 500;
-*/
+
 _i pushBack "CUP_Mine_M";
 _u pushBack 1;
 _p pushBack 300;
@@ -1257,7 +1257,7 @@ _u pushBack 0;
 _p pushBack 100;
 
 //--Uniforms
-/* 
+
 _i pushBack "CUP_U_O_SLA_Officer_Suit";
 _u pushBack 0;
 _p pushBack 100;
@@ -1289,7 +1289,7 @@ _p pushBack 100;
 _i pushBack "CUP_U_O_SLA_Officer";
 _u pushBack 0;
 _p pushBack 100;
- */
+
 _i pushBack "CUP_U_O_TK_Ghillie";
 _u pushBack 2;
 _p pushBack 600;

@@ -461,7 +461,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_UAZ_METIS_RU';		
 	_u pushBack 'CUP_O_GAZ_Vodnik_BPPU_RU';		
 	_u pushBack 'CUP_O_Ural_ZU23_RU';		
-	_u pushBack 'CUP_O_BM21_RU';
 	_u pushBack 'CUP_O_GAZ_Vodnik_MedEvac_RU';	
 	_u pushBack 'CUP_B_UAZ_MG_CDF';			
 	_u pushBack 'CUP_I_BTR40_MG_TKG';		
@@ -619,6 +618,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_ZSU23_SLA';		
 	_u pushBack 'CUP_O_2S6M_RU';		
 	_u pushBack 'CUP_B_T72_CZ';		
+	_u pushBack 'CUP_O_BM21_RU';
 /* 
 	_u pushBack 'CUP_O_BMP1_CSAT';
 	_u pushBack 'CUP_O_BMP1P_CSAT';
@@ -628,7 +628,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_BMP2_ZU_CSAT';
 	_u pushBack 'CUP_O_T55_CSAT';
 	_u pushBack 'CUP_O_ZSU23_CSAT';
-	_u pushBack 'CUP_O_BM21_RU';
 	_u pushBack 'CUP_O_2S6M_RU';
 	_u pushBack 'OFPS_BMP3';
 */
@@ -805,7 +804,7 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'sfp_bo105_unarmed';
 	_u pushBack 'sfp_bo105';
 	_u pushBack 'O_UCSV_01';
-//	_u pushBack 'USAF_C17';
+	//_u pushBack 'USAF_C17';
 	_u pushBack 'usaf_c5';
 	_u pushBack 'LDL_C130J';
 	_u pushBack 'bwi_a3_t6a_5';

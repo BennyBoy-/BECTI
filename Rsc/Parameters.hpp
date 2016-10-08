@@ -39,7 +39,7 @@ class Params {
 		title = "BASE: Startup Placement";
 		values[] = {2000,3000,4000,5000,6000,7000,8000,9000,10000,12000,15000,20000};
 		texts[] = {"2 KM","3 KM","4 KM","5 KM","6 KM","7 KM","8 KM","9 KM","10 KM","12 KM","15 KM","20 KM"};
-		default = 9000;
+		default = 6000;
 	};
 	class SEPARATOR1 {
 		title = "========================== INCOME ============================";
@@ -111,13 +111,13 @@ class Params {
 		title = "TOWNS: Resistance Occupation Squad Count";
 		values[] = {5,10,15,20,25,30,35,40};
 		texts[] = {"Amateur","Novice","Average","Skilled","Professional","Specialist","Expert","Chuck Norris"};
-		default = 10;
+		default = 15;
 	};
 	class CTI_TOWNS_OCCUPATION_LEVEL {
 		title = "TOWNS: Side Occupation Squad Count";
 		values[] = {5,10,15,20,25,30,35,40};
 		texts[] = {"Amateur","Novice","Average","Skilled","Professional","Specialist","Expert","Chuck Norris"};
-		default = 5;
+		default = 15;
 	};
 	class CTI_TOWNS_OCCUPATION_RESISTANCE {
 		title = "TOWNS: Resistance Occupation Forces";
@@ -159,7 +159,7 @@ class Params {
 		title = "TOWNS: Resistance Soft max AI Limit";
 		values[] = {50,100,150,200,250,300,350,400};
 		texts[] = {"50","100","150","200","250","300","350","400"};
-		default = 100;
+		default = 300;
 	};
 	class CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO {
 		title = "TOWNS: Resistance Squad Queue Ratio";
@@ -303,7 +303,7 @@ class Params {
 		title = "GAMEPLAY: 3P view";
 		values[] = {-1,0,1,2};
 		texts[] = {"All","No group view","Vehicle","None"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_WEAPON_SWAY {
 		title = "GAMEPLAY: Weapon Sway Level";
@@ -351,19 +351,19 @@ class Params {
 		title = "VISUAL: Terrain Grid";
 		values[] = {10,20,30,40,50};
 		texts[] = {"Far","Medium","Short","Shorter","Free"};
-		default = 20;
+		default = 50;
 	};
 	class CTI_GRAPHICS_VD_MAX {
 		title = "VISUAL: View Distance";
 		values[] = {1000,1500,2000,2500,3000,3500,4000};
 		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM"};
-		default = 3000;
+		default = 4000;
 	};
 	class CTI_WEATHER_INITIAL {
 		title = "WEATHER: Inital Time";
 		values[] = {-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18};
 		texts[] = {"12 AM","1 AM","2 AM","3 AM","4 AM","5 AM","6 AM","7 AM","8 AM","9 AM","10 AM","11 AM","12 PM","1 PM","2 PM","3 PM","4 PM","5 PM","6 PM","7 PM","8 PM","9 PM","10 PM","11 PM","Random"};
-		default = 5;
+		default = 0;
 	};
 	class CTI_WEATHER_RAIN {
 		title = "WEATHER: Rain (Rain Requires Overcast Greater High)";
@@ -387,37 +387,37 @@ class Params {
 		title = "WEATHER: Overcast";
 		values[] = {-1,0,30,50,75,100};
 		texts[] = {"Random","Clear","Light","Medium","High","Max"};
-		default = 100;
+		default = -1;
 	};
 	class CTI_WEATHER_FOG {
 		title = "WEATHER: Fog";
 		values[] = {-1,0,30,50,75,100};
 		texts[] = {"Random","Clear","Light","Medium","High","Max"};
-		default = 75;
+		default = -1;
 	};
 	class CTI_WEATHER_WIND {
 		title = "WEATHER: Wind";
 		values[] = {-1,0,30,50,75,100};
 		texts[] = {"Random","Clear","Light","Medium","High","Max"};
-		default = 50;
+		default = -1;
 	};
 	class CTI_WEATHER_WAVES {
 		title = "WEATHER: Waves";
 		values[] = {-1,0,30,50,75,100};
 		texts[] = {"Random","Clear","Light","Medium","High","Max"};
-		default = 75;
+		default = -1;
 	};
   	class CTI_WEATHER_FAST {
 		title = "WEATHER: Day Duration";
 		values[] = {1,2,3,4,5,6,7,8,9,10,11,12};
 		texts[] = {"1 hour","2 hours","3 hours","4 hours","5 hours","6 hours","7 hours","8 hours","9 hours","10 hours","11 hours","12 hours"};
-		default = 1;
+		default = 5;
 	};
   	class CTI_WEATHER_FAST_NIGHT {
 		title = "WEATHER: Night Duration";
 		values[] = {1,2,3,4,5,6,7,8,9,10,11,12};
 		texts[] = {"1 hour","2 hours","3 hours","4 hours","5 hours","6 hours","7 hours","8 hours","9 hours","10 hours","11 hours","12 hours"};
-		default = 5;
+		default = 1;
 	};
 	class SEPARATOR9 {
 		title = "=========================== ADDONS ============================";
@@ -459,7 +459,7 @@ class Params {
 		title = "GAMEMODE: Zombie Mode";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_GUERILLA_MODE {
 		title = "GAMEMODE: Guerilla Mode (Low Tech)";
