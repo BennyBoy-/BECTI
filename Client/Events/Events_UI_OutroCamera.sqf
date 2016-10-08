@@ -23,6 +23,7 @@ _cam_attached = _this select 6;
 _x_coord = _this select 7;
 _y_coord = _this select 8;
 _z_coord = _this select 9;
+_cameratext = _this select 10;
 
 // to do exception management
 // if ((isNull _campos1)or(isNull _campos2)or(isNull _targetcam)) then exitWith {};
@@ -30,16 +31,19 @@ _z_coord = _this select 9;
 
 
 // ----------------------
-_dist = 1000 + random 100;
-_distclose = 50 + random 50;
+_dist = 1500 + random 100;
+_distclose = 100 + random 100;
 _dir = random 360;
 _dir2 = random 360;
-_campos1_random = [(getPos _campos1 select 0) + (sin _dir) * _dist, (getPos _campos1 select 1) + (cos _dir) * _dist, 1000];
-_campos2_random = [(getPos _campos2 select 0) + (sin _dir2) * _distclose, (getPos _campos2 select 1) + (cos _dir2) * _distclose, 50];
+_campos1_random = [(getPos _campos1 select 0) + (sin _dir) * _dist, (getPos _campos1 select 1) + (cos _dir) * _dist, 600];
+_campos2_random = [(getPos _campos2 select 0) + (sin _dir) * _distclose, (getPos _campos2 select 1) + (cos _dir) * _distclose, 100];
 
+//fade black out and in
+titleCut ["", "BLACK", 2];
 if (_cam_attached) then {
 	_camera = "camera" camCreate (getpos _campos1);
 			showCinemaBorder true;
+	titleCut ["", "BLACK IN", 2];
 	_camera attachTo [_campos2, [_x_coord,_y_coord,_z_coord]];		
 	_camera cameraEffect ["internal", "BACK"];
 	_camera camCommand "inertia on";
@@ -50,15 +54,19 @@ if (_cam_attached) then {
 	_nvgstate = if (daytime > 18.5 || daytime < 5.5) then {true} else {false};
 	camUseNVG _nvgstate;
 
+	sleep 3;
+	_cameratext spawn BIS_fnc_typeText;
 	sleep _camera_duration;
 
 	_camera cameraeffect ["terminate", "back"];
+	titleCut ["", "BLACK", 2];
 	camDestroy _camera;
 } else {
 
 // initial/start position where camera is created
 _camera = "camera" camCreate (_campos1_random);
 		showCinemaBorder true;
+titleCut ["", "BLACK IN", 2];
 _camera cameraEffect ["internal", "BACK"];
 _camera camCommand "inertia on";
 _camera camPrepareTarget _targetcam;
@@ -74,8 +82,12 @@ _camera camCommitPrepared _camera_duration;
 _nvgstate = if (daytime > 18.5 || daytime < 5.5) then {true} else {false};
 camUseNVG _nvgstate;
 
+sleep 3;
+_cameratext spawn BIS_fnc_typeText;
 sleep _camera_duration;
 
 _camera cameraeffect ["terminate", "back"];
+titleCut ["", "BLACK", 2];
 camDestroy _camera;
 };
+titleCut ["", "BLACK IN", 2];
