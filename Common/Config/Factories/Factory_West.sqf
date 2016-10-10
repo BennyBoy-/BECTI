@@ -624,7 +624,7 @@ if (CTI_CUP_ADDON > 0) then {
 	//Universal CUP
 	_u pushBack 'CUP_B_AAV_USMC';		
 	_u pushBack 'CUP_B_MCV80_GB_W_SLAT';	
-	_u pushBack 'CUP_B_M113_Med_USA';	
+	//_u pushBack 'CUP_B_M113_Med_USA';	respawn issues
 	_u pushBack 'CUP_B_M2A3Bradley_USA_W';  
 	_u pushBack 'CUP_B_M1128_MGS_Woodland'; 
 	_u pushBack 'CUP_B_M163_USA';   	
