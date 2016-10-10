@@ -873,7 +873,7 @@ _d pushBack 0;
 _c pushBack 'CUP_B_M270_DPICM_USMC';
 _p pushBack '';
 _n pushBack 'M270 MLRS (DPICM)';
-_o pushBack 200000;
+_o pushBack 180000;
 _t pushBack 20;
 _u pushBack 4;
 _f pushBack CTI_FACTORY_HEAVY;
