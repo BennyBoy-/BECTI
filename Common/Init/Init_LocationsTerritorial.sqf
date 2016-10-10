@@ -157,10 +157,9 @@ switch (toLower(worldName)) do {
 		Kamenka setVariable ["cti_town_neighbors", [Pavlovo, Komarovo]];
 		Komarovo setVariable ["cti_town_neighbors", [Pavlovo, Balota, Kamenka]];
 		Balota setVariable ["cti_town_neighbors", [Kozlovka, Komarovo, Chernogorsk]];
-		Chernogorsk setVariable ["cti_town_neighbors", [Balota, Nadezhdino, Prigorodki, Kozlovka, Mogilevka]];
-		Chernogorsk setVariable ["cti_town_neighbors", [Balota, Nadezhdino, Prigorodki, Kozlovka, Mogilevka]];
+		Chernogorsk setVariable ["cti_town_neighbors", [Balota, Nadezhdino, Prigorodki, Kozlovka, Mogilevka, FuelDepot]];
 		Prigorodki setVariable ["cti_town_neighbors", [Chernogorsk, Elektrozavodsk, Pusta]];
-		Elektrozavodsk setVariable ["cti_town_neighbors", [Prigorodki, Pusta, Kamyshovo, Staroye]];
+		Elektrozavodsk setVariable ["cti_town_neighbors", [Prigorodki, Pusta, Kamyshovo, Staroye, WindFarm]];
 		Kamyshovo setVariable ["cti_town_neighbors", [Solnichniy, Elektrozavodsk, Msta, Tulga]];
 		Solnichniy setVariable ["cti_town_neighbors", [Kamyshovo, Msta, Nizhnoye, Dolina, Orlovets, Tulga]];
 		Nizhnoye setVariable ["cti_town_neighbors", [Solnichniy, Berezino]];
@@ -200,6 +199,8 @@ switch (toLower(worldName)) do {
 		Altar setVariable ["cti_town_neighbors", [NovySobor, Gorka, Gvozdno]];
 		DevilsCastle setVariable ["cti_town_neighbors", [Grishino, Gvozdno, Petrovka]];
 		NovySobor setVariable ["cti_town_neighbors", [StarySobor, Guglovo, Gorka, Altar]];
+		WindFarm setVariable ["cti_town_neighbors", [Elektrozavodsk]];
+		FuelDepot setVariable ["cti_town_neighbors", [Chernogorsk]];
 	};
 };
 
