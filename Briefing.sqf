@@ -113,10 +113,35 @@ player createDiaryRecord ["menu9",["Credits","<br/>
 -Big thanks to everyone who put time into this!<br/>
 "]];
 
-player createDiarySubject ["menu8", "Mission Update"];
-player createDiaryRecord ["menu8",["Mission Update","<br/>
-<font color='#2ae916' size='14'>What changed in this update?</font><br/>
-- Repair kit (now fixes 25% of damage) and has cool down of 30 sec<br/>
-- Forcelock been fixed <br/>
+player createDiarySubject ["menu8", "Change Log"];
+player createDiaryRecord ["menu8",["Change Log","<br/>
+<font color='#2ae916' size='14'>V1.00</font><br/>
+Fixed: Empty res vehicles will not despawn when town is deactivated<br/>
+Fixed: Player AI running away on killed<br/>
+Fixed: Will not need heavy 4 for air 4 upgrade<br/>
+Fixed: Mobilising MHQ wont glitch into near by objects any more<br/>
+Fixed: Extra Crew player AI limiter didnt work<br/>
+Fixed: Salvage truck respawn time, moved tungushka down to heavy 2<br/>
+Fixed: Altis Camps<br/>
+Fixed: FOB colision with other objects<br/>
+Tweaked: Nuke Price decreased<br/>
+Tweaked: Removed Prodavec map marker script<br/>
+Tweaked: Vote system will requre less people to paticipate<br/>
+Tweaked: Meny transfer will now show player name<br/>
+Tweaked: Incrase probabilityof AA troops in towns, as well as AA vehicles<br/>
+Tweaked: Arty price and upgrade slight bump<br/>
+Tweaked: Adjusted name tags, incrased the distance<br/>
+Tweaked: Disable stolen rep truck functions from outside<br/>
+Tweaked: Winter starting gear<br/>
+Added: Defence team count added to build menu<br/>
+Added: More Starting points<br/>
+Added: New game ending preview<br/>
+Added: New tropical camos<br/>
+Added: 3 step View distance Script (On foot, in vehicle, in air)<br/>
+Added: Cherno and Cherno winter naval towns<br/>
+Added: Bridge on Tanoa<br/>
+Removed Mark V Soc boat due to FPS drop<br/>
+Replaced S-300 system with Patriot on opfor due to texture glitch<br/>
+Removed m113 respawn<br/>
 
 "]];
