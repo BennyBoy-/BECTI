@@ -197,7 +197,7 @@ _prices pushBack 		15000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [];
+_coinblacklist pushBack ["*"];
 
 _headers pushBack 		"Empty Crate";
 _classes pushBack		"O_supplyCrate_F";

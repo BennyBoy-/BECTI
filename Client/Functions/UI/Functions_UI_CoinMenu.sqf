@@ -139,8 +139,12 @@ CTI_Coin_UpdatePreview = {
 				_color = CTI_COIN_COLOR_INVALID;
 			} else {
 				if (CTI_COIN_PARAM_KIND == "DEFENSES") then {
-					if !((CTI_COIN_PARAM select 7) isEqualTo []) then {
-						if !(_preview call CTI_Coin_DefenseCanBePlaced) then {_color = CTI_COIN_COLOR_INVALID};
+					if !((CTI_COIN_PARAM select 7) isEqualTo []) then { //--- A blacklist is specified
+						if ((CTI_COIN_PARAM select 7) isEqualTo ["*"]) then { //--- If a wildcard is specified, treat the defense as a structure
+							if !(_preview call CTI_Coin_PreviewSurfaceIsValid) then {_color = CTI_COIN_COLOR_INVALID};
+						} else { //--- A Grain-based blacklist is specified
+							if !(_preview call CTI_Coin_DefenseCanBePlaced) then {_color = CTI_COIN_COLOR_INVALID};
+						};
 					};
 				};
 			};
@@ -291,8 +295,12 @@ CTI_Coin_OnPreviewPlacement = {
 			case 'DEFENSES': {
 				_item = CTI_COIN_PARAM select 1;
 				
-				if !((CTI_COIN_PARAM select 7) isEqualTo []) then {
-					_defense_pos_valid = CTI_COIN_PREVIEW call CTI_Coin_DefenseCanBePlaced;
+				if !((CTI_COIN_PARAM select 7) isEqualTo []) then { //--- A blacklist is specified
+					if ((CTI_COIN_PARAM select 7) isEqualTo ["*"]) then { //--- If a wildcard is specified, treat the defense as a structure
+						_defense_pos_valid = CTI_COIN_PREVIEW call CTI_Coin_PreviewSurfaceIsValid;
+					} else { //--- A Grain-based blacklist is specified
+						_defense_pos_valid = CTI_COIN_PREVIEW call CTI_Coin_DefenseCanBePlaced;
+					};
 				};
 			};
 		};
