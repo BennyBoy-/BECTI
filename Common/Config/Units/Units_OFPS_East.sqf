@@ -683,6 +683,86 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 20;
 
+_c pushBack 'OFPS_MI24';
+_p pushBack '';
+_n pushBack 'Mi-24 Hind (Chin Cannon, Tropic)';
+_o pushBack 15000;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_MI24P';
+_p pushBack '';
+_n pushBack 'Mi-24P Hind (Tropic)';
+_o pushBack 20000;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_MI24V';
+_p pushBack '';
+_n pushBack 'Mi-24V Hind (Tropic)';
+_o pushBack 40000;
+_t pushBack 20;
+_u pushBack 4;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_MI24Mk4';
+_p pushBack '';
+_n pushBack 'Mi-24 SuperHind Mk.IV (20mm Chin Cannon, Tropic)';
+_o pushBack 16000;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_MI24Mk4_R';
+_p pushBack '';
+_n pushBack 'Mi-24 SuperHind Mk.IV (Rocket Pods, Tropic)';
+_o pushBack 21000;
+_t pushBack 20;
+_u pushBack 4;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_MI24Mk4_AT';
+_p pushBack '';
+_n pushBack 'Mi-24 SuperHind Mk.IV (AT, Tropic)';
+_o pushBack 41000;
+_t pushBack 20;
+_u pushBack 5;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_MI6T';
+_p pushBack '';
+_n pushBack 'Mi-6 (Tropic)';
+_o pushBack 6000;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'OFPS_SU25T';
+_p pushBack '';
+_n pushBack 'SU-25 (Unguided Bombs, Rocket Pods, Tropic)';
+_o pushBack 30000;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
 //--- Naval Vehicles
 
 _c pushBack 'Burnes_LCAC_1';
