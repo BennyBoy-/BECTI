@@ -746,13 +746,6 @@ if (CTI_CUP_ADDON > 0) then {
         _u pushBack 'CUP_O_Ka52_GreyCamo_RU';		
 	_u pushBack 'CUP_B_Mi171Sh_ACR';
 	_u pushBack 'CUP_O_Mi8_SLA_1';
-        _u pushBack 'CUP_O_MI6T_TKA';			
-	_u pushBack 'CUP_I_Mi24_Mk3_Empty_ION';		
-	_u pushBack 'CUP_I_Mi24_Mk3_ION';		
-	_u pushBack 'CUP_I_Mi24_Mk3_AT_ION';
-	_u pushBack 'CUP_I_Mi24_Mk4_Empty_ION';		
-	_u pushBack 'CUP_I_Mi24_Mk4_ION';		
-	_u pushBack 'CUP_I_Mi24_Mk4_AT_ION';
 	_u pushBack 'CUP_I_Ka60_GL_Blk_ION';		
 	_u pushBack 'CUP_O_Su25_RU_3';	
 	_u pushBack 'CUP_O_Su25_RU_1';
@@ -785,11 +778,24 @@ if (CTI_CUP_ADDON > 0) then {
 
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid CUP
-		
+	_u pushBack 'CUP_O_MI6T_TKA';			
+	_u pushBack 'CUP_B_Mi24_D_MEV_CDF';		
+	_u pushBack 'CUP_O_Mi24_P_RU';		
+	_u pushBack 'CUP_O_Mi24_V_RU';
+	_u pushBack 'CUP_I_Mi24_Mk4_Empty_ION';		
+	_u pushBack 'CUP_I_Mi24_Mk4_ION';		
+	_u pushBack 'CUP_I_Mi24_Mk4_AT_ION';
 	};
 	if (CTI_FACTION_EAST == 1) then {
 		//CSAT Tropic CUP
-		
+	_u pushBack 'OFPS_MI6T';			
+	_u pushBack 'OFPS_MI24';		
+	_u pushBack 'OFPS_MI24P';		
+	_u pushBack 'OFPS_MI24V';
+	_u pushBack 'OFPS_MI24Mk4';		
+	_u pushBack 'OFPS_MI24Mk4_R';		
+	_u pushBack 'OFPS_MI24Mk4_AT';
+	_u pushBack 'OFPS_SU25T';
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter CUP

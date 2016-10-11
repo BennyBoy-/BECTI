@@ -958,9 +958,9 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_I_Mi24_Mk3_Empty_ION';
+_c pushBack 'CUP_B_Mi24_D_MEV_CDF';
 _p pushBack '';
-_n pushBack 'Mi-24 SuperHind Mk.III (20mm Chin Cannon)';
+_n pushBack 'Mi-24 Hind (Chin Cannon)';
 _o pushBack 15000;
 _t pushBack 20;
 _u pushBack 2;
@@ -968,9 +968,9 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_I_Mi24_Mk3_ION';
+_c pushBack 'CUP_O_Mi24_P_RU';
 _p pushBack '';
-_n pushBack 'Mi-24 SuperHind Mk.III (Rocket Pods)';
+_n pushBack 'Mi-24P Hind';
 _o pushBack 20000;
 _t pushBack 20;
 _u pushBack 3;
@@ -978,9 +978,9 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'CUP_I_Mi24_Mk3_AT_ION';
+_c pushBack 'CUP_O_Mi24_V_RU';
 _p pushBack '';
-_n pushBack 'Mi-24 SuperHind Mk.III (AT)';
+_n pushBack 'Mi-24V Hind';
 _o pushBack 40000;
 _t pushBack 20;
 _u pushBack 4;
