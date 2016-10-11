@@ -23,16 +23,6 @@ class EditorData
 	};
 };
 binarizationWanted=0;
-addons[]=
-{
-	"A3_Ui_F",
-	"A3_Structures_F_Mil_Flags",
-	"A3_Modules_F",
-	"A3_Characters_F",
-	"A3_Structures_F_Mil_BagBunker",
-	"A3_Modules_F_Curator_Curator",
-	"A3_Structures_F_Dominants_Lighthouse"
-};
 class AddonsMetaData
 {
 	class List
@@ -91,8 +81,8 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="OFPS Benny Warfare - Altis - HC";
-		overviewText="Crafted by Benny for OFPS";
+		briefingName="Conquer the Island BECTI - OFPS.NET";
+		overviewText="Crafted by Benny and OFPS Team - V1.00";
 		resistanceWest=0;
 		startWeather=0;
 		startWind=0;
