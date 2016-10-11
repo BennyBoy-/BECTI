@@ -127,7 +127,7 @@ Fixed: FOB colision with other objects<br/>
 Tweaked: Nuke Price decreased<br/>
 Tweaked: Removed Prodavec map marker script<br/>
 Tweaked: Vote system will requre less people to paticipate<br/>
-Tweaked: Meny transfer will now show player name<br/>
+Tweaked: Money transfer will now show player name<br/>
 Tweaked: Incrase probabilityof AA troops in towns, as well as AA vehicles<br/>
 Tweaked: Arty price and upgrade slight bump<br/>
 Tweaked: Adjusted name tags, incrased the distance<br/>
