@@ -418,7 +418,7 @@ _prices pushBack 		10000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [];
+_coinblacklist pushBack ["*"];
 
 _headers pushBack 		"MG Defense";
 _classes pushBack 		"O_HMG_01_High_F";
