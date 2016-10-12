@@ -46,7 +46,6 @@ funcVectorScale = compileFinal preprocessFileLineNumbers "Server\Functions\Exter
 funcVectorSub = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorSub.sqf";
 
 //--- Load Naval Town Structures
-call compile preprocessFileLineNumbers "Server\Init\initMapStructures.sqf";
 call compile preprocessFileLineNumbers "Server\Init\initTownStructures.sqf";
 
 call compile preprocessFileLineNumbers "Server\Init\Init_PublicVariables.sqf";
