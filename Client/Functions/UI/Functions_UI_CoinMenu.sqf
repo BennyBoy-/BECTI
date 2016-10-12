@@ -184,7 +184,12 @@ CTI_Coin_PreviewSurfaceIsValid = {
 			if (count((position _preview) nearEntities [['Man','Car','Motorcycle','Tank','Air','Ship'], 10]) > 0) then {
 				_isValid = false
 			} else {
-				if (CTI_COIN_PARAM_KIND == "STRUCTURES") then {
+				_defense_collide = false;
+				if (CTI_COIN_PARAM_KIND == "DEFENSES") then {
+					if ((CTI_COIN_PARAM select 7) isEqualTo ["*"]) then {_defense_collide = true};
+				};
+				
+				if (CTI_COIN_PARAM_KIND == "STRUCTURES" || _defense_collide) then {
 					_maxGrad = 24;
 					_minDist = 20;
 					
@@ -296,11 +301,7 @@ CTI_Coin_OnPreviewPlacement = {
 				_item = CTI_COIN_PARAM select 1;
 				
 				if !((CTI_COIN_PARAM select 7) isEqualTo []) then { //--- A blacklist is specified
-					if ((CTI_COIN_PARAM select 7) isEqualTo ["*"]) then { //--- If a wildcard is specified, treat the defense as a structure
-						_defense_pos_valid = CTI_COIN_PREVIEW call CTI_Coin_PreviewSurfaceIsValid;
-					} else { //--- A Grain-based blacklist is specified
-						_defense_pos_valid = CTI_COIN_PREVIEW call CTI_Coin_DefenseCanBePlaced;
-					};
+					if !((CTI_COIN_PARAM select 7) isEqualTo ["*"]) then { _defense_pos_valid = CTI_COIN_PREVIEW call CTI_Coin_DefenseCanBePlaced };
 				};
 			};
 		};
