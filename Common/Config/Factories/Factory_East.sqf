@@ -539,7 +539,7 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'OFPS_UAZ';
 	_u pushBack 'OFPS_UAZ_SPG9';
 	_u pushBack 'sfp_dakota';
-	_u pushBack 'sfp_mercedes';
+	//_u pushBack 'sfp_mercedes';
 //	_u pushBack 'dbo_CIV_ol_bike';
 
 	if (CTI_FACTION_EAST == 0) then {
@@ -1183,6 +1183,8 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'OFPS_UAZ';
 	_u pushBack 'OFPS_UAZ_MG';
 	_u pushBack 'OFPS_UAZ_AGS30';
+	_u pushBack 'usaf_police_car2';
+	_u pushBack 'usaf_police_offroad';
 	
 
 	if (CTI_FACTION_EAST == 0) then {
@@ -1209,6 +1211,10 @@ _u = [];
 //Universal Vanilla
 _u pushBack 'C_Boat_Civil_01_F';
 _u pushBack 'O_Boat_Transport_01_F';
+_u pushBack 'O_Boat_Armed_01_hmg_F';
+_u pushBack 'B_Boat_Armed_01_minigun_F';
+_u pushBack 'C_Boat_Civil_01_rescue_F';
+_u pushBack 'O_SDV_01_F';
 
 if (CTI_FACTION_EAST == 0) then {
 	//CSAT Arid Vanilla
@@ -1225,7 +1231,8 @@ if (CTI_FACTION_EAST == 2) then {
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
 	//Universal APEX
-	
+	_u pushBack "C_Scooter_Transport_01_F";
+	_u pushBack "I_C_Boat_Transport_02_F";
 
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid APEX
@@ -1243,7 +1250,9 @@ if (CTI_APEX_ADDON > 0) then {
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
 	//Universal CUP
-	
+	_u pushBack "CUP_B_RHIB_USMC";
+	_u pushBack "CUP_B_RHIB2Turret_USMC";
+	_u pushBack "CUP_B_Zodiac_USMC";
 
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid CUP
@@ -1261,7 +1270,9 @@ if (CTI_CUP_ADDON > 0) then {
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
 	//Universal OFPS
-	
+	_u pushBack "sfp_svavare2000";
+	_u pushBack "sfp_svavare2000_transport";
+	_u pushBack "sfp_gruppbat";
 
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid OFPS
