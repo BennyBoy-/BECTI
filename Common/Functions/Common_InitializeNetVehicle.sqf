@@ -86,7 +86,7 @@ if (_vehicle isKindOf "Plane" || _vehicle isKindOf "Helicopter") then {
 
 //--- Radio - only huey for now
 if (_vehicle isKindOf "Helicopter" || _vehicle isKindOf "CUP_B_UH1D_GER_KSK") then {
-	_vehicle addAction ["<t color='#2E9AFE'>Radio on</t>", "Client\Functions\Client_VehicleRadio.sqf",1,0,false,true,"","player in _target"];
+	_vehicle addAction ["<t color='#2E9AFE'>Radio on</t>", "Client\Functions\Client_VehicleRadio.sqf",1,0,false,true,"","driver _target == player"];
 };
 //--- Perform side-speficic operations
 if (_sideID != CTI_P_SideID) exitWith {};
