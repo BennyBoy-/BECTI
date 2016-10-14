@@ -8,7 +8,7 @@ class EditorData
 	toggles=5;
 	class ItemIDProvider
 	{
-		nextID=259;
+		nextID=218;
 	};
 	class MarkerIDProvider
 	{
@@ -16,23 +16,13 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1460.1836,309.12036,4821.6187};
-		dir[]={0.2033022,-0.201654,0.95813757};
-		up[]={0.041859582,0.97945446,0.19727877};
-		aside[]={0.97823286,-7.8114681e-008,-0.20756659};
+		pos[]={7090.7749,65.580139,5910.8066};
+		dir[]={-0.059791308,-0.6572606,0.75128973};
+		up[]={-0.052143164,0.75366187,0.65518898};
+		aside[]={0.99684864,-1.1204975e-009,0.07933411};
 	};
 };
 binarizationWanted=0;
-addons[]=
-{
-	"A3_Ui_F",
-	"A3_Structures_F_Mil_Flags",
-	"A3_Modules_F",
-	"A3_Characters_F",
-	"A3_Structures_F_Mil_BagBunker",
-	"A3_Modules_F_Curator_Curator",
-	"A3_Structures_F_Dominants_Lighthouse"
-};
 class AddonsMetaData
 {
 	class List
@@ -129,7 +119,7 @@ class Mission
 		class Item1
 		{
 			dataType="Marker";
-			position[]={2623,64.025002,672};
+			position[]={2623.8315,64.655251,664.50537};
 			name="cti-spawn1";
 			type="Empty";
 			id=1;
@@ -756,14 +746,12 @@ class Mission
 					};
 					id=46;
 					type="O_Soldier_F";
-					atlOffset=-9.5367432e-007;
 				};
 			};
 			class Attributes
 			{
 			};
 			id=45;
-			atlOffset=-9.5367432e-007;
 		};
 		class Item40
 		{
@@ -4613,14 +4601,13 @@ class Mission
 			class PositionInfo
 			{
 				position[]={1755,7.7118025,5271};
-				angles[]={0,1.7879677,0};
+				angles[]={0,1.7879628,0};
 			};
 			side="Empty";
 			flags=5;
 			class Attributes
 			{
 				init="nullreturn = [AirField,this] execVM  ""Common\Init\Init_Camp.sqf"";";
-				name="test";
 			};
 			id=210;
 			type="Land_BagBunker_Tower_F";
@@ -5317,6 +5304,7 @@ class Mission
 							};
 							value="";
 						};
+
 					};
 				};
 				class Attribute3
@@ -5364,8 +5352,8 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={4292.0513,-21.130127,1416.9023};
-			name="alpha_test";
-			text=" BECTI BENNY OFPS ALPHA TEST";
+			name="alpha_";
+			text=" BECTI BENNY OFPS BETA";
 			type="mil_warning";
 			alpha=0.29548854;
 			id=166;
@@ -5375,8 +5363,8 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={5404.6006,-68.890099,7673.8784};
-			name="alpha_test_1";
-			text=" BECTI BENNY OFPS ALPHA TEST";
+			name="alpha__1";
+			text=" BECTI BENNY OFPS BETA";
 			type="mil_warning";
 			alpha=0.29548854;
 			id=167;
@@ -5385,8 +5373,8 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={398.63721,-106.56055,6717.0981};
-			name="alpha_test_2";
-			text=" BECTI BENNY OFPS ALPHA TEST";
+			name="alpha__2";
+			text=" BECTI BENNY OFPS BETA";
 			type="mil_warning";
 			alpha=0.29548854;
 			id=168;
@@ -7057,7 +7045,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={6377.1655,3.6703644,2372.8901};
-				angles[]={0,1.5707999,0};
+				angles[]={0,1.5708,0};
 			};
 			side="Empty";
 			flags=1;
@@ -7067,7 +7055,7 @@ class Mission
 			};
 			id=198;
 			type="Land_Lighthouse_small_F";
-			atlOffset=94.870064;
+			atlOffset=95.3584;
 		};
 		class Item176
 		{
@@ -7075,7 +7063,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={2077.7549,3.6708603,7206.6475};
-				angles[]={0,1.5707999,0};
+				angles[]={0,1.5708,0};
 			};
 			side="Empty";
 			flags=1;
@@ -7085,7 +7073,7 @@ class Mission
 			};
 			id=199;
 			type="Land_Lighthouse_small_F";
-			atlOffset=47.616081;
+			atlOffset=47.6688;
 		};
 		class Item177
 		{
@@ -7093,7 +7081,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={488.12131,3.6703644,3099.9604};
-				angles[]={0,1.5707999,0};
+				angles[]={0,1.5708,0};
 			};
 			side="Empty";
 			flags=1;
@@ -7103,7 +7091,7 @@ class Mission
 			};
 			id=200;
 			type="Land_Lighthouse_small_F";
-			atlOffset=118.96576;
+			atlOffset=118.586;
 		};
 		class Item178
 		{
@@ -7130,7 +7118,7 @@ class Mission
 					};
 					id=203;
 					type="O_Soldier_F";
-					atlOffset=0.034998894;
+					atlOffset=0.034999847;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -7160,7 +7148,7 @@ class Mission
 			{
 			};
 			id=202;
-			atlOffset=0.034998894;
+			atlOffset=0.034999847;
 		};
 		class Item179
 		{
@@ -7187,7 +7175,7 @@ class Mission
 					};
 					id=205;
 					type="O_Soldier_F";
-					atlOffset=0.035000801;
+					atlOffset=0.034999847;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -7217,7 +7205,7 @@ class Mission
 			{
 			};
 			id=204;
-			atlOffset=0.035000801;
+			atlOffset=0.034999847;
 		};
 		class Item180
 		{
