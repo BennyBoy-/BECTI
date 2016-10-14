@@ -526,7 +526,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_Wolfhound_GMG_GB_W';
 	_u pushBack 'CUP_B_Wolfhound_HMG_GB_W';
 	_u pushBack 'sfp_dakota';
-	_u pushBack 'sfp_mercedes';
+	//_u pushBack 'sfp_mercedes';
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid CUP
@@ -813,13 +813,9 @@ if (CTI_CUP_ADDON > 0) then {
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
 	//Universal OFPS
-	_u pushBack 'O_UAV_02_F';
-	_u pushBack 'usaf_b1b';			
+	_u pushBack 'O_UAV_02_F';		
 	_u pushBack 'B_UCSV_01';
 	_u pushBack 'B_UCSV_02';
-	//_u pushBack 'USAF_C17';
-	_u pushBack 'usaf_c5';
-	_u pushBack 'LDL_C130J';
 	_u pushBack 'bwi_a3_t6a';
 	_u pushBack 'bwi_a3_t6c';
 	_u pushBack 'bwi_a3_at6b';
@@ -833,6 +829,21 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'pook_tu95MSM_CDF';
 	_u pushBack 'JS_JC_FA18F';
 	_u pushBack "sab_l19_sea_2";
+	_u pushBack 'USAF_CV22';
+	_u pushBack 'USAF_CV22IDWS';
+	_u pushBack 'USAF_HH60G';
+	_u pushBack 'USAF_HH60GMED';
+	_u pushBack 'USAF_C130J';
+	_u pushBack 'USAF_C130J_Cargo';
+	_u pushBack 'USAF_MC130';
+	_u pushBack 'LDL_C130J';
+	_u pushBack 'USAF_AC130U';
+	//_u pushBack 'USAF_C17';
+	_u pushBack 'usaf_c5';
+	_u pushBack 'USAF_MQ9';
+	_u pushBack 'USAF_RQ4A';
+	_u pushBack 'USAF_A10';
+	_u pushBack 'usaf_b1b';	
 
 
 	if (CTI_FACTION_WEST == 0) then {
@@ -1174,6 +1185,8 @@ if (CTI_OFPS_ADDON > 0) then {
 	//Universal OFPS
 	_u pushBack 'sfp_dakota';
 	_u pushBack 'sfp_mercedes';
+	_u pushBack 'usaf_police_car2';
+	_u pushBack 'usaf_police_offroad';
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid OFPS
@@ -1199,6 +1212,9 @@ _u = [];
 //Universal Vanilla
 _u pushBack "C_Boat_Civil_01_F";
 _u pushBack "B_Boat_Transport_01_F";
+_u pushBack "B_Boat_Armed_01_minigun_F";
+_u pushBack 'C_Boat_Civil_01_police_F';
+_u pushBack "B_SDV_01_F";
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
@@ -1215,7 +1231,8 @@ if (CTI_FACTION_WEST == 2) then {
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
 	//Universal APEX
-	
+	_u pushBack "C_Scooter_Transport_01_F";
+	_u pushBack "I_C_Boat_Transport_02_F";
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid APEX
@@ -1233,7 +1250,9 @@ if (CTI_APEX_ADDON > 0) then {
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
 	//Universal CUP
-	
+	_u pushBack "CUP_B_RHIB_USMC";
+	_u pushBack "CUP_B_RHIB2Turret_USMC";
+	_u pushBack "CUP_B_Zodiac_USMC";
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid CUP
@@ -1251,7 +1270,9 @@ if (CTI_CUP_ADDON > 0) then {
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
 	//Universal OFPS
-	
+	_u pushBack "sfp_svavare2000";
+	_u pushBack "sfp_svavare2000_transport";
+	_u pushBack "sfp_gruppbat";
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid OFPS

@@ -291,6 +291,28 @@ _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
+//USAF Light Vehicles
+_c pushBack 'usaf_police_car2';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 300;
+_t pushBack 10;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'usaf_police_offroad';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 300;
+_t pushBack 10;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "";
+_d pushBack 0;
+
+
 //--- Heavy Vehicles
 
 _c pushBack 'Meaty_Marshall_Sn';
@@ -481,16 +503,6 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'LDL_C130J';
-_p pushBack '';
-_n pushBack '';
-_o pushBack 40000;
-_t pushBack 50;
-_u pushBack 3;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
 _c pushBack 'sab_alphajet3';
 _p pushBack '';
 _n pushBack 'Alpha Jet CAP';
@@ -570,6 +582,127 @@ _u pushBack 3;
 _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 20;
+
+_c pushBack 'USAF_HH60G';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 6000;
+_t pushBack 40;
+_u pushBack 1;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'USAF_HH60GMED';
+_p pushBack '';
+_n pushBack (format ["Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
+_o pushBack 10000;
+_t pushBack 40;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "service-medic";
+_d pushBack 0;
+
+_c pushBack 'USAF_A10';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 60000;
+_t pushBack 40;
+_u pushBack 4;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'USAF_CV22';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 10000;
+_t pushBack 40;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'USAF_CV22IDWS';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 10000;
+_t pushBack 40;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'USAF_C130J';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 6000;
+_t pushBack 40;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'USAF_C130J_Cargo';
+_p pushBack '';
+_n pushBack (format ["Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
+_o pushBack 6000;
+_t pushBack 40;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "service-medic";
+_d pushBack 0;
+
+_c pushBack 'USAF_MC130';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 6000;
+_t pushBack 40;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'LDL_C130J';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 35900;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'USAF_AC130U';
+_p pushBack '';
+_n pushBack 'AC-130U Spooky';
+_o pushBack 35900;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'USAF_MQ9';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 25000;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'USAF_RQ4A';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 30000;
+_t pushBack 20;
+_u pushBack 4;
+_f pushBack CTI_FACTORY_AIR;
+_s pushBack "";
+_d pushBack 0;
+
 
 //--- Naval Vehicles
 
