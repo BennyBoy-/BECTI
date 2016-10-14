@@ -47,6 +47,8 @@ funcVectorSub = compileFinal preprocessFileLineNumbers "Server\Functions\Externa
 
 //--- Load Naval Town Structures
 call compile preprocessFileLineNumbers "Server\Init\initTownStructures.sqf";
+//--- Load Map Structures
+call compile preprocessFileLineNumbers "Server\Init\initMapStructures.sqf";
 
 call compile preprocessFileLineNumbers "Server\Init\Init_PublicVariables.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_RepairTruck.sqf";
