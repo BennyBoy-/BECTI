@@ -49,9 +49,9 @@ class Params {
 	};
 	class CTI_ECONOMY_INCOME_CYCLE {
 		title = "INCOME: Delay";
-		values[] = {60,90,120,160,190};
-		texts[] = {"01:00 Minute","01:30 Minutes","02:00 Minutes","02:30 Minutes","03:00 Minutes"};
-		default = 60;
+		values[] = {15,30,,45,60,75,90,105,120,160,190};
+		texts[] = {"15 Seconds","30 Seconds","45 Seconds","01:00 Minute","01:15 Minute","01:30 Minutes","01:45 Minutes","02:00 Minutes","02:30 Minutes","03:00 Minutes"};
+		default = 45;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER {
 		title = "INCOME: Starting Funds (East Commander)";
