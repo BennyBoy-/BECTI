@@ -147,8 +147,10 @@ if (local player) then {
 
 //Default Video Settings
 CHVD_allowNoGrass = false; // Set 'false' if you want to disable "None" option for terrain (default: true)
-CHVD_maxView = 3000; // Set maximum view distance (default: 12000)
-CHVD_maxObj = 3000; // Set maximimum object view distance (default: 12000)
+CHVD_maxView = 2500; // Set maximum Foot view distance (default: 12000) 
+CHVD_maxViewVeh = 3000; // Set maximum Vehicle view distance (default: 12000)
+CHVD_maxViewAir = 3500; // Set maximum Air view distance (default: 12000)
+CHVD_maxObj = 3500; // Set maximimum object view distance (default: 12000)
 
 //Briefing Entries
 0 execVM "Briefing.sqf";
@@ -238,4 +240,14 @@ if (CTI_WEATHER_SAND > 0) then {
 	if (isServer) then {
 		nul = [] execVM "Server\Functions\Externals\MKY_Sand_Server.sqf";
 	};
+};
+//Radio
+Common_Say3D = compile preprocessFileLineNumbers "Common\Functions\Common_Say3D.sqf";
+if (isNil "Radio_Say3D") then {
+    Radio_Say3D = [objNull,0];
+};
+"Radio_Say3D" addPublicVariableEventHandler {
+      private["_array"];
+      _array = _this select 1;
+     (_array select 0) say3D (_array select 1);
 };

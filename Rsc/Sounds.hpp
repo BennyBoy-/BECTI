@@ -14,7 +14,7 @@ class CfgMusic
 	};
 };
 class CfgSounds {
-	sounds[] = {prison,nuke,nuclear_boom,nuclear_heartbeat,nuclear_geiger,geiger_1,geiger_2,geiger_3,akbar,choppa,AR_Rappel_Loop,AR_Rappel_Start,AR_Rappel_End,AUR_Rappel_Loop,AUR_Rappel_Start,AUR_Rappel_End,Vent,Vent2,Para};
+	sounds[] = {prison,nuke,nuclear_boom,nuclear_heartbeat,nuclear_geiger,geiger_1,geiger_2,geiger_3,akbar,choppa,AR_Rappel_Loop,AR_Rappel_Start,AR_Rappel_End,AUR_Rappel_Loop,AUR_Rappel_Start,AUR_Rappel_End,Vent,Vent2,Para,valkyries_loud};
 	class prison {
 		name = "prison";
 		sound[] = {"Rsc\Sounds\prison.ogg", 1, 1.0};
@@ -114,5 +114,10 @@ class CfgSounds {
 	class Vent {name="Vent";sound[]={Client\Functions\Externals\ATM_airdrop\data\Vent.ogg,db-11,1.0};titles[] = {};};
 	class Vent2 {name="Vent2";sound[]={Client\Functions\Externals\ATM_airdrop\data\Vent2.ogg,db-11,1.0};titles[] = {};};
 	class Para {name="Para";sound[]={Client\Functions\Externals\ATM_airdrop\data\parachute.ogg,db-11,1.0};titles[] = {};};
+	class valkyries_loud {
+		name = "valkyries_loud";
+		sound[] = {"ofps_sound\sounds\valkyries.ogg", 50, 1.0};
+		titles[] = {};
+	};
 
 };

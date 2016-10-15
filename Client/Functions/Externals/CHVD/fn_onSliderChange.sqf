@@ -1,4 +1,4 @@
-private ["_sliderPos","_updateType"];
+private ["_sliderPos","_updateType","_maxview"];
 _varType1 = [_this, 0, "", [""]] call BIS_fnc_param;
 _slider1 = ctrlIDC ([_this, 1, 0, [0, controlNull]] call BIS_fnc_param);
 _sliderPos = [_this, 2, 0, [0]] call BIS_fnc_param;
@@ -17,14 +17,26 @@ if (count _this < 8) then {
 		_updateType = 1;
 	};
 };
+_maxview = CHVD_maxView;
+switch (_varType1) do {
+	case 'CHVD_foot': {
+		_maxview = CHVD_maxView;
+	};
+	case 'CHVD_car': {
+		_maxview = CHVD_maxViewVeh;
+	};
+	case 'CHVD_air': {
+		_maxview = CHVD_maxViewAir;
+	};
+};
 
 switch (_updateType) do {
 	case 1: {
-		sliderSetPosition [_slider1, _sliderPos min CHVD_maxView];
-		ctrlSetText [_text1, str round (_sliderPos min CHVD_maxView)];
-		sliderSetRange [_slider2, 0, _sliderPos min CHVD_maxView];
+		sliderSetPosition [_slider1, _sliderPos min _maxview];
+		ctrlSetText [_text1, str round (_sliderPos min _maxview)];
+		sliderSetRange [_slider2, 0, _sliderPos min _maxview];
 			
-		call compile format ["%1 = %2", _varType1, _sliderPos min CHVD_maxView];
+		call compile format ["%1 = %2", _varType1, _sliderPos min _maxview];
 		call compile format ["profileNamespace setVariable ['%1',%1]", _varType1];
 		
 		if ((call compile _varType2) > _sliderPos) then {
@@ -47,11 +59,11 @@ switch (_updateType) do {
 		[_updateType] call CHVD_fnc_updateSettings;
 	};
 	case 3: {		
-		sliderSetPosition [_slider1, _sliderPos min CHVD_maxView];
-		ctrlSetText [_text1, str round (_sliderPos min CHVD_maxView)];
-		sliderSetRange [_slider2, 0, _sliderPos min CHVD_maxView];
+		sliderSetPosition [_slider1, _sliderPos min _maxview];
+		ctrlSetText [_text1, str round (_sliderPos min _maxview)];
+		sliderSetRange [_slider2, 0, _sliderPos min _maxview];
 			
-		call compile format ["%1 = %2", _varType1, _sliderPos min CHVD_maxView];
+		call compile format ["%1 = %2", _varType1, _sliderPos min _maxview];
 		call compile format ["profileNamespace setVariable ['%1',%1]", _varType1];
 		
 		if ((call compile _varType2) > _sliderPos) then {

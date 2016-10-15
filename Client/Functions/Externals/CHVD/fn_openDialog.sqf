@@ -13,7 +13,7 @@ disableSerialization;
 	sliderSetSpeed [_x select 3, 500, 500];
 	sliderSetPosition [_x select 0, _x select 1];
 	sliderSetPosition [_x select 3, (_x select 4) min (_x select 1)];
-} forEach [[1900,CHVD_foot,CHVD_maxView,1901,CHVD_footObj,CHVD_maxObj],[1902,CHVD_car,CHVD_maxView,1903,CHVD_carObj,CHVD_maxObj],[1904,CHVD_air,CHVD_maxView,1905,CHVD_airObj,CHVD_maxObj]];
+} forEach [[1900,CHVD_foot,CHVD_maxView,1901,CHVD_footObj,CHVD_maxObj],[1902,CHVD_car,CHVD_maxViewVeh,1903,CHVD_carObj,CHVD_maxObj],[1904,CHVD_air,CHVD_maxViewAir,1905,CHVD_airObj,CHVD_maxObj]];
 
 {
 	((finddisplay 2900) displayCtrl (_x select 0)) cbSetChecked (_x select 1);
