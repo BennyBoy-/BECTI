@@ -1113,6 +1113,8 @@ _u pushBack "O_G_Offroad_01_F";
 _u pushBack "O_G_Offroad_01_armed_F";
 _u pushBack 'C_Van_01_transport_F';
 _u pushBack 'O_Truck_02_transport_F';
+_u pushBack 'C_Boat_Civil_01_F';
+_u pushBack 'O_Boat_Transport_01_F';
 
 if (CTI_FACTION_EAST == 0) then {
 	//CSAT Arid Vanilla
@@ -1138,6 +1140,8 @@ if (CTI_APEX_ADDON > 0) then {
 	//Universal APEX
 	_u pushBack 'O_T_LSV_02_armed_F';		
 	_u pushBack 'O_T_LSV_02_unarmed_F';	
+	_u pushBack "C_Scooter_Transport_01_F";
+	_u pushBack "I_C_Boat_Transport_02_F";
 
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid APEX
@@ -1160,7 +1164,9 @@ if (CTI_APEX_ADDON > 0) then {
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
 	//Universal CUP
-	
+	_u pushBack "CUP_B_RHIB_USMC";
+	_u pushBack "CUP_B_RHIB2Turret_USMC";
+	_u pushBack "CUP_B_Zodiac_USMC";
 
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid CUP
