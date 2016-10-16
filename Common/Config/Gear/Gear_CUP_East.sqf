@@ -193,8 +193,8 @@ _p pushBack 500;
 //CZ550 Family
 
 _i pushBack "CUP_srifle_CZ550_rail";
-_u pushBack 3;
-_p pushBack 500;
+_u pushBack 2;
+_p pushBack 300;
 
 //CZ750 Family
 

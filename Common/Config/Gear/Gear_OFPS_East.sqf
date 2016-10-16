@@ -9,6 +9,37 @@ _p = [];
 
 //************************OFPS Stuff************************
 
+//launchers
+_i pushBack "sfp_pskott68";
+_u pushBack 1;
+_p pushBack 700;
+
+_i pushBack "sfp_grg86";
+_u pushBack 1;
+_p pushBack 900;
+
+//Launcher ammo
+
+_i pushBack "sfp_pskott68_mag";
+_u pushBack 1;
+_p pushBack 150;
+
+_i pushBack "sfp_grg_he_mag";
+_u pushBack 1;
+_p pushBack 150;
+
+_i pushBack "sfp_grg_heat_mag";
+_u pushBack 1;
+_p pushBack 150;
+
+_i pushBack "sfp_grg_heat_66_mag";
+_u pushBack 1;
+_p pushBack 150;
+
+_i pushBack "sfp_grg_heat_62_mag";
+_u pushBack 1;
+_p pushBack 150;
+
 //-- Magazines
 _i pushBack "hlc_500rnd_762x51_Belt";
 _u pushBack 3;

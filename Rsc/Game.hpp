@@ -18,11 +18,11 @@ respawnDialog = false;
 //ReviveBleedOutDelay = 120;              //unconscious state duration (in secs)
 
 //--- Require briefing.html to show up.
-onLoadMission = "Conquer the Island BECTI- OFPS.NET";
+onLoadMission = "Conquer the Island BECTI";
 onLoadMissionTime = false;
-onLoadName = "Conquer the Island BECTI- OFPS.NET";
+onLoadName = "Conquer the Island BECTI";
 
-briefingName = "Conquer the Island BECTI- OFPS.NET";
+briefingName = "Conquer the Island BECTI";
 
 //--- ArmA 3 Specifics
 dev = "Benny";

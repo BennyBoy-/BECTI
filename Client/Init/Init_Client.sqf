@@ -288,7 +288,7 @@ if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%
 if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined]}) then {execVM "Client\Init\Init_Persistent_Gear.sqf"};
 
 //--- Graphics/video thread (persistent)
-0 spawn {
+/*0 spawn {
 	//--- View Distance
 	_distance = profileNamespace getVariable "CTI_PERSISTENT_VIEW_DISTANCE";
 	_distance_max = missionNamespace getVariable "CTI_GRAPHICS_VD_MAX";
@@ -329,7 +329,7 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_
 	if (_grid > _grid_max) then { _grid = _grid_max };
 	setTerrainGrid _grid;
 
-};
+};*/
 
 // CTI_PurchaseMenu = player addAction ["<t color='#a5c4ff'>DEBUG: Purchase Units</t>", "Client\Actions\Action_PurchaseMenu.sqf", "HQ", 1, false, true, "", "_target == player"];//debug
 // player addAction ["<t color='#a5c4ff'>MENU debug: Factory</t>", "Client\Actions\Action_PurchaseMenu.sqf", "HQ", 93, false, true, "", "_target == player"];
