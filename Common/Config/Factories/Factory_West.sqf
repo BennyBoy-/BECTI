@@ -1120,6 +1120,8 @@ _u pushBack "B_G_Offroad_01_F";
 _u pushBack "B_G_Offroad_01_armed_F";
 _u pushBack "C_Van_01_transport_F";
 _u pushBack "B_Truck_01_transport_F";
+_u pushBack "C_Boat_Civil_01_F";
+_u pushBack "B_Boat_Transport_01_F";
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
@@ -1140,8 +1142,10 @@ if (CTI_FACTION_WEST == 2) then {
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 
 	//Universal APEX
-_u pushBack 'B_T_LSV_01_unarmed_F';
-_u pushBack 'B_T_LSV_01_armed_F';
+	_u pushBack 'B_T_LSV_01_unarmed_F';
+	_u pushBack 'B_T_LSV_01_armed_F';
+	_u pushBack "C_Scooter_Transport_01_F";
+	_u pushBack "I_C_Boat_Transport_02_F";
 	
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid APEX
@@ -1166,6 +1170,9 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_HMMWV_Unarmed_USMC';		
 	_u pushBack 'CUP_B_HMMWV_M2_GPK_USA';
 	_u pushBack 'CUP_B_HMMWV_MK19_USMC';	
+	_u pushBack "CUP_B_RHIB_USMC";
+	_u pushBack "CUP_B_RHIB2Turret_USMC";
+	_u pushBack "CUP_B_Zodiac_USMC";
 	
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid CUP
