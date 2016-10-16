@@ -22,7 +22,7 @@ onLoadMission = "Conquer the Island BECTI";
 onLoadMissionTime = false;
 onLoadName = "Conquer the Island BECTI";
 
-briefingName = "Conquer the Island BECTI - OFPS.NET";
+briefingName = "Conquer the Island BECTI";
 
 //--- ArmA 3 Specifics
 dev = "Benny";
