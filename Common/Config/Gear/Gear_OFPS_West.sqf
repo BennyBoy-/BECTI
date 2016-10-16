@@ -168,6 +168,10 @@ _i pushBack "sfp_remington870";
 _u pushBack 0;
 _p pushBack 300;
 
+_i pushBack "sfp_ak5c_m203";
+_u pushBack 1;
+_p pushBack 300;
+
 
 //lmg
 _i pushBack "sfp_ksp90";
@@ -178,9 +182,18 @@ _i pushBack "sfp_ksp58";
 _u pushBack 0;
 _p pushBack 300;
 
+_i pushBack "CUP_lmg_m249_SQuantoon";
+_u pushBack 1;
+_p pushBack 500;
+
+
 
 //snipers
 _i pushBack "sfp_psg90";
+_u pushBack 2;
+_p pushBack 400;
+
+_i pushBack "srifle_DMR_06_olive_F";
 _u pushBack 2;
 _p pushBack 300;
 
@@ -188,6 +201,18 @@ _p pushBack 300;
 
 
 //ammo
+_i pushBack "20Rnd_762x51_Mag";
+_u pushBack 1;
+_p pushBack 30;
+
+_i pushBack "sfp_9Rnd_762x51_psg90";
+_u pushBack 2;
+_p pushBack 30;
+
+_i pushBack "CUP_200Rnd_TE4_Red_Tracer_556x45_M249";
+_u pushBack 1;
+_p pushBack 50;
+
 _i pushBack "sfp_36Rnd_9mm_kpistm45";
 _u pushBack 0;
 _p pushBack 30;
