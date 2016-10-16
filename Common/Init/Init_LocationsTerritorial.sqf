@@ -60,9 +60,6 @@ switch (toLower(worldName)) do {
 		RadarPlatform setVariable ["cti_town_neighbors",[NorthAirfield,Frini,FuelDepot]];
 		WindFarm setVariable ["cti_town_neighbors",[AgiosKonstantinos,Kavala]];
 	};
-};
-
-switch (toLower(worldName)) do {
 	case "stratis": {
 		OutpostNorth setVariable ["cti_town_neighbors",[AgiaMarina,ComPlatform,KillFarm]];
 		KillFarm setVariable ["cti_town_neighbors",[OutpostNorth,CampRogain,AgiaMarina]];
@@ -87,9 +84,6 @@ switch (toLower(worldName)) do {
 		ComPlatform setVariable ["cti_town_neighbors",[OutpostNorth,AirBase,AgiaMarina]];
 		FuelDepot setVariable ["cti_town_neighbors",[CampTempest,Girna,OysterBay,JayCove,AirBase]];
 	};
-};
-
-switch (toLower(worldName)) do {
 	case "tanoa": {
 		Tuvanaka setVariable ["cti_town_neighbors", [TuvanakaAirbase,Belfort]];
 		TuvanakaAirbase setVariable ["cti_town_neighbors", [Tuvanaka,CampRemnants]];
@@ -150,17 +144,13 @@ switch (toLower(worldName)) do {
 		Oumere setVariable ["cti_town_neighbors", [FuelDepot,Kotomo,BloodRuins,Luganville]];
 		Luganville setVariable ["cti_town_neighbors", [Vatukoulo,Oumere]];
 	};
-};
-
-switch (toLower(worldName)) do {
 	case "chernarus": {
 		Kamenka setVariable ["cti_town_neighbors", [Pavlovo, Komarovo]];
 		Komarovo setVariable ["cti_town_neighbors", [Pavlovo, Balota, Kamenka]];
 		Balota setVariable ["cti_town_neighbors", [Kozlovka, Komarovo, Chernogorsk]];
-		Chernogorsk setVariable ["cti_town_neighbors", [Balota, Nadezhdino, Prigorodki, Kozlovka, Mogilevka]];
-		Chernogorsk setVariable ["cti_town_neighbors", [Balota, Nadezhdino, Prigorodki, Kozlovka, Mogilevka]];
+		Chernogorsk setVariable ["cti_town_neighbors", [Balota, Nadezhdino, Prigorodki, Kozlovka, Mogilevka, FuelDepot]];
 		Prigorodki setVariable ["cti_town_neighbors", [Chernogorsk, Elektrozavodsk, Pusta]];
-		Elektrozavodsk setVariable ["cti_town_neighbors", [Prigorodki, Pusta, Kamyshovo, Staroye]];
+		Elektrozavodsk setVariable ["cti_town_neighbors", [Prigorodki, Pusta, Kamyshovo, Staroye, WindFarm]];
 		Kamyshovo setVariable ["cti_town_neighbors", [Solnichniy, Elektrozavodsk, Msta, Tulga]];
 		Solnichniy setVariable ["cti_town_neighbors", [Kamyshovo, Msta, Nizhnoye, Dolina, Orlovets, Tulga]];
 		Nizhnoye setVariable ["cti_town_neighbors", [Solnichniy, Berezino]];
@@ -200,10 +190,9 @@ switch (toLower(worldName)) do {
 		Altar setVariable ["cti_town_neighbors", [NovySobor, Gorka, Gvozdno]];
 		DevilsCastle setVariable ["cti_town_neighbors", [Grishino, Gvozdno, Petrovka]];
 		NovySobor setVariable ["cti_town_neighbors", [StarySobor, Guglovo, Gorka, Altar]];
+		WindFarm setVariable ["cti_town_neighbors", [Elektrozavodsk]];
+		FuelDepot setVariable ["cti_town_neighbors", [Chernogorsk]];
 	};
-};
-
-switch (toLower(worldName)) do {
 	case "chernarus_winter": {
 		Kamenka setVariable ["cti_town_neighbors", [Pavlovo, Komarovo]];
 		Komarovo setVariable ["cti_town_neighbors", [Pavlovo, Balota, Kamenka]];
@@ -252,9 +241,6 @@ switch (toLower(worldName)) do {
 		DevilsCastle setVariable ["cti_town_neighbors", [Grishino, Gvozdno, Petrovka]];
 		NovySobor setVariable ["cti_town_neighbors", [StarySobor, Guglovo, Gorka, Altar]];
 	};
-};
-
-switch (toLower(worldName)) do {
 	case "sara_dbe1": {
 		IslaDelVida setVariable ["cti_town_neighbors",[Hunapu,WorkCamp,FuelDepot]];
 		Hunapu setVariable ["cti_town_neighbors",[IslaDelVida,WorkCamp,Pacamac]];
@@ -292,9 +278,6 @@ switch (toLower(worldName)) do {
 		OilRig setVariable ["cti_town_neighbors",[Tlaloc,Pacamac,Rashidah,FuelDepot]];
 		WindFarm setVariable ["cti_town_neighbors",[Rahmandi,Everon,Iguana,Dolores]];
 	};
-};
-
-switch (toLower(worldName)) do {
 	case "takistan": {
 		Nur setVariable ["cti_town_neighbors", [Nagara]];
 		Nagara setVariable ["cti_town_neighbors", [Nur,Shamali,Gospandi,Rasman]];
@@ -328,9 +311,6 @@ switch (toLower(worldName)) do {
 		Ravanay setVariable ["cti_town_neighbors", [Zavarak,Karachinar]];
 		Karachinar setVariable ["cti_town_neighbors", [Zavarak,Ravanay]];
 	};
-};
-
-switch (toLower(worldName)) do {
 	case "beketov": {
 		Sentsy setVariable ["cti_town_neighbors",[OutpostJordan,KrasyneSeltsy]];
 		KrasyneSeltsy setVariable ["cti_town_neighbors",[Shalaevo,Sentsy,Polshishkino]];
@@ -358,5 +338,107 @@ switch (toLower(worldName)) do {
 		Dubionki setVariable ["cti_town_neighbors",[Arshavino,OutpostJordan]];
 		OutpostJordan setVariable ["cti_town_neighbors",[Dubionki,Sentsy]];
 		Shalaevo setVariable ["cti_town_neighbors",[Polivanovo,Polshishkino,KrasyneSeltsy]];
+	};
+	case "napf": {
+		Bernerplatte setVariable ["cti_town_neighbors",[Airbase,Feldmoos]];
+		Feldmoos setVariable ["cti_town_neighbors",[Bernerplatte,Worb]];
+		Worb setVariable ["cti_town_neighbors",[Feldmoos,Airbase,Hindelbank,Signau]];
+		Hindelbank setVariable ["cti_town_neighbors",[Worb,FuelDepot,Muttenz,Huttwil]];
+		FuelDepot setVariable ["cti_town_neighbors",[Hindelbank,Bubendorf,OilRig]];
+		OilRig setVariable ["cti_town_neighbors",[FuelDepot,Seltisberg,Hafen]];
+		Bubendorf setVariable ["cti_town_neighbors",[Huttwil,FuelDepot,Seltisberg]];
+		Huttwil setVariable ["cti_town_neighbors",[Hindelbank,Muttenz,Bubendorf,NeueWelt]];
+		Seltisberg setVariable ["cti_town_neighbors",[Bubendorf,NeueWelt,OilRig,Trueb,Lenzburg]];
+		NeueWelt setVariable ["cti_town_neighbors",[Huttwil,Seltisberg,Trueb]];
+		Muttenz setVariable ["cti_town_neighbors",[Signau,Hindelbank,Huttwil]];
+		Signau setVariable ["cti_town_neighbors",[Eggwil,Worb,Muttenz,Chatzbach]];
+		Chatzbach setVariable ["cti_town_neighbors",[Ramsebode,Bruderholz,Signau]];
+		Eggwil setVariable ["cti_town_neighbors",[Airbase,Schangen,Signau]];
+		Airbase setVariable ["cti_town_neighbors",[Bernerplatte,Worb,Eggwil,Schangen]];
+		Hungerschwand setVariable ["cti_town_neighbors",[Schangen,Goldwil]];
+		Schangen setVariable ["cti_town_neighbors",[Airbase,Hungerschwand,Schrattendamm,Eggwil,Ramsebode]];
+		Schrattendamm setVariable ["cti_town_neighbors",[Schangen,Sorenberg]];
+		Goldwil setVariable ["cti_town_neighbors",[Hungerschwand,Brienz,WindFarm]];
+		WindFarm setVariable ["cti_town_neighbors",[Goldwil,Brienz,SouthAirstrip]];
+		Brienz setVariable ["cti_town_neighbors",[Goldwil,WindFarm,Froburg,Sorenberg]];
+		Froburg setVariable ["cti_town_neighbors",[Brienz,SouthAirstrip,Griswil]];
+		SouthAirstrip setVariable ["cti_town_neighbors",[Froburg,WindFarm]];
+		Griswil setVariable ["cti_town_neighbors",[Froburg,Village,Sorenberg]];
+		Village setVariable ["cti_town_neighbors",[Griswil,Alpnach]];
+		Sorenberg setVariable ["cti_town_neighbors",[Griswil,Brienz,Farnen,Schrattendamm]];
+		Farnen setVariable ["cti_town_neighbors",[Sorenberg,Liestal]];
+		Ramsebode setVariable ["cti_town_neighbors",[Schangen,Liestal,Chatzbach,Bruderholz]];
+		Bruderholz setVariable ["cti_town_neighbors",[Ramsebode,Chatzbach,NapfCastle]];
+		Eichmatt setVariable ["cti_town_neighbors",[Trueb,NapfCastle]];
+		Lenzburg setVariable ["cti_town_neighbors",[Seltisberg,Trueb,Hafen,Olten]];
+		Hafen setVariable ["cti_town_neighbors",[OilRig,Lenzburg,Olten]];
+		Olten setVariable ["cti_town_neighbors",[Lenzburg,Hafen,Lausen,Hirsegg]];
+		Hirsegg setVariable ["cti_town_neighbors",[Trueb,Olten,Lausen,NapfCastle]];
+		Lausen setVariable ["cti_town_neighbors",[Olten,Hirsegg,Luzern,InternationalAir]];
+		NapfCastle setVariable ["cti_town_neighbors",[Hirsegg,Eichmatt,Bruderholz,Romoos]];
+		Liestal setVariable ["cti_town_neighbors",[Sachseln,Ramsebode,Farnen,Romoos,Wolhusen]];
+		Schimbrig setVariable ["cti_town_neighbors",[Alpnach,Sachseln]];
+		Alpnach setVariable ["cti_town_neighbors",[Village,Schimbrig,Pfeffikon]];
+		Sachseln setVariable ["cti_town_neighbors",[Schimbrig,Liestal,Wolhusen]];
+		Romoos setVariable ["cti_town_neighbors",[NapfCastle,Liestal,Wolhusen]];
+		Wolhusen setVariable ["cti_town_neighbors",[Romoos,Luzern,Liestal,Sachseln,Horw]];
+		Luzern setVariable ["cti_town_neighbors",[Lausen,Wolhusen,InternationalAir,Horw]];
+		Horw setVariable ["cti_town_neighbors",[Luzern,InternationalAir,Pfeffikon,Wolhusen]];
+		InternationalAir setVariable ["cti_town_neighbors",[Luzern,Lausen,Horw,Suhrenfeld]];
+		Suhrenfeld setVariable ["cti_town_neighbors",[Pfeffikon,InternationalAir]];
+		Pfeffikon setVariable ["cti_town_neighbors",[Horw,Suhrenfeld,Alpnach]];
+		Trueb setVariable ["cti_town_neighbors",[Hirsegg,Seltisberg,NeueWelt,Lenzburg,Eichmatt]];
+
+	};
+	case "napfwinter": {
+		Bernerplatte setVariable ["cti_town_neighbors",[Airbase,Feldmoos]];
+		Feldmoos setVariable ["cti_town_neighbors",[Bernerplatte,Worb]];
+		Worb setVariable ["cti_town_neighbors",[Feldmoos,Airbase,Hindelbank,Signau]];
+		Hindelbank setVariable ["cti_town_neighbors",[Worb,FuelDepot,Muttenz,Huttwil]];
+		FuelDepot setVariable ["cti_town_neighbors",[Hindelbank,Bubendorf,OilRig]];
+		OilRig setVariable ["cti_town_neighbors",[FuelDepot,Seltisberg,Hafen]];
+		Bubendorf setVariable ["cti_town_neighbors",[Huttwil,FuelDepot,Seltisberg]];
+		Huttwil setVariable ["cti_town_neighbors",[Hindelbank,Muttenz,Bubendorf,NeueWelt]];
+		Seltisberg setVariable ["cti_town_neighbors",[Bubendorf,NeueWelt,OilRig,Trueb,Lenzburg]];
+		NeueWelt setVariable ["cti_town_neighbors",[Huttwil,Seltisberg,Trueb]];
+		Muttenz setVariable ["cti_town_neighbors",[Signau,Hindelbank,Huttwil]];
+		Signau setVariable ["cti_town_neighbors",[Eggwil,Worb,Muttenz,Chatzbach]];
+		Chatzbach setVariable ["cti_town_neighbors",[Ramsebode,Bruderholz,Signau]];
+		Eggwil setVariable ["cti_town_neighbors",[Airbase,Schangen,Signau]];
+		Airbase setVariable ["cti_town_neighbors",[Bernerplatte,Worb,Eggwil,Schangen]];
+		Hungerschwand setVariable ["cti_town_neighbors",[Schangen,Goldwil]];
+		Schangen setVariable ["cti_town_neighbors",[Airbase,Hungerschwand,Schrattendamm,Eggwil,Ramsebode]];
+		Schrattendamm setVariable ["cti_town_neighbors",[Schangen,Sorenberg]];
+		Goldwil setVariable ["cti_town_neighbors",[Hungerschwand,Brienz,WindFarm]];
+		WindFarm setVariable ["cti_town_neighbors",[Goldwil,Brienz,SouthAirstrip]];
+		Brienz setVariable ["cti_town_neighbors",[Goldwil,WindFarm,Froburg,Sorenberg]];
+		Froburg setVariable ["cti_town_neighbors",[Brienz,SouthAirstrip,Griswil]];
+		SouthAirstrip setVariable ["cti_town_neighbors",[Froburg,WindFarm]];
+		Griswil setVariable ["cti_town_neighbors",[Froburg,Village,Sorenberg]];
+		Village setVariable ["cti_town_neighbors",[Griswil,Alpnach]];
+		Sorenberg setVariable ["cti_town_neighbors",[Griswil,Brienz,Farnen,Schrattendamm]];
+		Farnen setVariable ["cti_town_neighbors",[Sorenberg,Liestal]];
+		Ramsebode setVariable ["cti_town_neighbors",[Schangen,Liestal,Chatzbach,Bruderholz]];
+		Bruderholz setVariable ["cti_town_neighbors",[Ramsebode,Chatzbach,NapfCastle]];
+		Eichmatt setVariable ["cti_town_neighbors",[Trueb,NapfCastle]];
+		Lenzburg setVariable ["cti_town_neighbors",[Seltisberg,Trueb,Hafen,Olten]];
+		Hafen setVariable ["cti_town_neighbors",[OilRig,Lenzburg,Olten]];
+		Olten setVariable ["cti_town_neighbors",[Lenzburg,Hafen,Lausen,Hirsegg]];
+		Hirsegg setVariable ["cti_town_neighbors",[Trueb,Olten,Lausen,NapfCastle]];
+		Lausen setVariable ["cti_town_neighbors",[Olten,Hirsegg,Luzern,InternationalAir]];
+		NapfCastle setVariable ["cti_town_neighbors",[Hirsegg,Eichmatt,Bruderholz,Romoos]];
+		Liestal setVariable ["cti_town_neighbors",[Sachseln,Ramsebode,Farnen,Romoos,Wolhusen]];
+		Schimbrig setVariable ["cti_town_neighbors",[Alpnach,Sachseln]];
+		Alpnach setVariable ["cti_town_neighbors",[Village,Schimbrig,Pfeffikon]];
+		Sachseln setVariable ["cti_town_neighbors",[Schimbrig,Liestal,Wolhusen]];
+		Romoos setVariable ["cti_town_neighbors",[NapfCastle,Liestal,Wolhusen]];
+		Wolhusen setVariable ["cti_town_neighbors",[Romoos,Luzern,Liestal,Sachseln,Horw]];
+		Luzern setVariable ["cti_town_neighbors",[Lausen,Wolhusen,InternationalAir,Horw]];
+		Horw setVariable ["cti_town_neighbors",[Luzern,InternationalAir,Pfeffikon,Wolhusen]];
+		InternationalAir setVariable ["cti_town_neighbors",[Luzern,Lausen,Horw,Suhrenfeld]];
+		Suhrenfeld setVariable ["cti_town_neighbors",[Pfeffikon,InternationalAir]];
+		Pfeffikon setVariable ["cti_town_neighbors",[Horw,Suhrenfeld,Alpnach]];
+		Trueb setVariable ["cti_town_neighbors",[Hirsegg,Seltisberg,NeueWelt,Lenzburg,Eichmatt]];
+
 	};
 };

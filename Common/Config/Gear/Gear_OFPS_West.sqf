@@ -261,6 +261,10 @@ _i pushBack "sfp_9Rnd_127x99_ag90";
 _u pushBack 0;
 _p pushBack 30;
 
+_i pushBack "sfp_12Gauge_8rd_Pellets";
+_u pushBack 0;
+_p pushBack 30;
+
 //explosives
 _i pushBack "sfp_flashbang";
 _u pushBack 0;

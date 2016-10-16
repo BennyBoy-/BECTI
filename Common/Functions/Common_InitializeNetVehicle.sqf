@@ -84,6 +84,10 @@ if (_vehicle isKindOf "Plane" || _vehicle isKindOf "Helicopter") then {
 	_vehicle addAction ["<t color='#2E9AFE'>Eject With Parachute</t>", "Client\Actions\Action_Eject.sqs",[],0,false,true,"","player in _target && getPos _target select 2 >80"];
 };
 
+//--- Radio - only huey for now
+if (_vehicle isKindOf "Helicopter" || _vehicle isKindOf "CUP_B_UH1D_GER_KSK") then {
+	_vehicle addAction ["<t color='#2E9AFE'>Radio on</t>", "Client\Functions\Client_VehicleRadio.sqf",1,0,false,true,"","driver _target == player"];
+};
 //--- Perform side-speficic operations
 if (_sideID != CTI_P_SideID) exitWith {};
 

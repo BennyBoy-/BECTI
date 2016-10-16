@@ -1297,16 +1297,6 @@ _f pushBack CTI_FACTORY_AIR;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'USAF_AC130U';
-_p pushBack '';
-_n pushBack 'AC-130U Spooky';
-_o pushBack 35900;
-_t pushBack 20;
-_u pushBack 3;
-_f pushBack CTI_FACTORY_AIR;
-_s pushBack "";
-_d pushBack 0;
-
 _c pushBack 'CUP_B_C130J_USMC';
 _p pushBack '';
 _n pushBack '';

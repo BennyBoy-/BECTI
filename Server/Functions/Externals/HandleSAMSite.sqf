@@ -18,7 +18,7 @@ _detectionMinAlt = 100;
 _radarNames = ["pook_SNR75_radar", "POOK_ANMPQ53_CDF"];	// east, west
 _launcherNames = ["pook_SA20_static_INS", "pook_MIM104_PAC2Battery"];	// east, west
 _reloadTime = 90;	// Launcher reload time. This is the minimum interval in which a single launcher will be fired
-_missileLockTime = 3;	// Minimum missile lock time
+_missileLockTime = 5;	// Minimum missile lock time
 _targetEngagementInterval = 5;		// Minimum time between engagements of a single target
 // ---------------------
 
@@ -41,7 +41,8 @@ _logFctn = {
 // Main cycle - prepare, scan for targets, shoot
 while {true} do {
 
-	_engagementDistanceMax = CTI_BASE_AIRRADAR_RANGES select ([_side, CTI_UPGRADE_AIRR] call CTI_CO_FNC_GetUpgrade);
+	//_engagementDistanceMax = CTI_BASE_AIRRADAR_RANGES select ([_side, CTI_UPGRADE_AIRR] call CTI_CO_FNC_GetUpgrade);
+	_engagementDistanceMax = 6000;
 	
 	// Gather usable launchers
 	_availableLaunchers = [];

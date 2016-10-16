@@ -139,8 +139,12 @@ CTI_Coin_UpdatePreview = {
 				_color = CTI_COIN_COLOR_INVALID;
 			} else {
 				if (CTI_COIN_PARAM_KIND == "DEFENSES") then {
-					if !((CTI_COIN_PARAM select 7) isEqualTo []) then {
-						if !(_preview call CTI_Coin_DefenseCanBePlaced) then {_color = CTI_COIN_COLOR_INVALID};
+					if !((CTI_COIN_PARAM select 7) isEqualTo []) then { //--- A blacklist is specified
+						if ((CTI_COIN_PARAM select 7) isEqualTo ["*"]) then { //--- If a wildcard is specified, treat the defense as a structure
+							if !(_preview call CTI_Coin_PreviewSurfaceIsValid) then {_color = CTI_COIN_COLOR_INVALID};
+						} else { //--- A Grain-based blacklist is specified
+							if !(_preview call CTI_Coin_DefenseCanBePlaced) then {_color = CTI_COIN_COLOR_INVALID};
+						};
 					};
 				};
 			};
@@ -180,7 +184,12 @@ CTI_Coin_PreviewSurfaceIsValid = {
 			if (count((position _preview) nearEntities [['Man','Car','Motorcycle','Tank','Air','Ship'], 10]) > 0) then {
 				_isValid = false
 			} else {
-				if (CTI_COIN_PARAM_KIND == "STRUCTURES") then {
+				_defense_collide = false;
+				if (CTI_COIN_PARAM_KIND == "DEFENSES") then {
+					if ((CTI_COIN_PARAM select 7) isEqualTo ["*"]) then {_defense_collide = true};
+				};
+				
+				if (CTI_COIN_PARAM_KIND == "STRUCTURES" || _defense_collide) then {
 					_maxGrad = 24;
 					_minDist = 20;
 					
@@ -291,8 +300,8 @@ CTI_Coin_OnPreviewPlacement = {
 			case 'DEFENSES': {
 				_item = CTI_COIN_PARAM select 1;
 				
-				if !((CTI_COIN_PARAM select 7) isEqualTo []) then {
-					_defense_pos_valid = CTI_COIN_PREVIEW call CTI_Coin_DefenseCanBePlaced;
+				if !((CTI_COIN_PARAM select 7) isEqualTo []) then { //--- A blacklist is specified
+					if !((CTI_COIN_PARAM select 7) isEqualTo ["*"]) then { _defense_pos_valid = CTI_COIN_PREVIEW call CTI_Coin_DefenseCanBePlaced };
 				};
 			};
 		};

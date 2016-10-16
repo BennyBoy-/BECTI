@@ -8,6 +8,8 @@
 	//Define variables, load from profileNamespace
 	CHVD_allowNoGrass = if (isNil "CHVD_allowNoGrass") then {true} else {CHVD_allowNoGrass};
 	CHVD_maxView = if (isNil "CHVD_maxView") then {12000} else {CHVD_maxView};
+	CHVD_maxViewVeh = if (isNil "CHVD_maxViewVeh") then {12000} else {CHVD_maxViewVeh};
+	CHVD_maxViewAir = if (isNil "CHVD_maxViewAir") then {12000} else {CHVD_maxViewAir};
 	CHVD_maxObj = if (isNil "CHVD_maxObj") then {12000} else {CHVD_maxObj};
 
 	CHVD_footSyncObj = profileNamespace getVariable ["CHVD_footSyncObj",false];
@@ -15,8 +17,8 @@
 	CHVD_airSyncObj = profileNamespace getVariable ["CHVD_airSyncObj",false];
 
 	CHVD_foot = (profileNamespace getVariable ["CHVD_foot",viewDistance]) min CHVD_maxView;
-	CHVD_car = (profileNamespace getVariable ["CHVD_car",viewDistance]) min CHVD_maxView;
-	CHVD_air = (profileNamespace getVariable ["CHVD_air",viewDistance]) min CHVD_maxView;
+	CHVD_car = (profileNamespace getVariable ["CHVD_car",viewDistance]) min CHVD_maxViewVeh;
+	CHVD_air = (profileNamespace getVariable ["CHVD_air",viewDistance]) min CHVD_maxViewAir;
 
 	CHVD_footObj = (profileNamespace getVariable ["CHVD_footObj",viewDistance]) min CHVD_maxObj;
 	CHVD_carObj = (profileNamespace getVariable ["CHVD_carObj",viewDistance]) min CHVD_maxObj;
