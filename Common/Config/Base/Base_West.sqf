@@ -720,7 +720,6 @@ _prices pushBack 		5000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [];
 
 _headers pushBack 		"MIM-104 PAC-2 - AA Launcher";
 _classes pushBack 		"pook_MIM104_PAC2Battery_CDF";
@@ -728,7 +727,6 @@ _prices pushBack 		80000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [];
 };
 
 _headers pushBack 		["Heli Pad", [["DMG_Reduce", 1]]];
