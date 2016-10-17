@@ -113,8 +113,8 @@ player createDiaryRecord ["menu9",["Credits","<br/>
 -Big thanks to everyone who put time into this!<br/>
 "]];
 
-player createDiarySubject ["menu8", "Change Log"];
-player createDiaryRecord ["menu8",["Change Log","<br/>
+player createDiarySubject ["menu10", "Change Log"];
+player createDiaryRecord ["menu10",["Change Log","<br/>
 <font color='#2ae916' size='14'>V1.00</font><br/>
 Fixed: Empty res vehicles will not despawn when town is deactivated<br/>
 Fixed: Player AI running away on killed<br/>
