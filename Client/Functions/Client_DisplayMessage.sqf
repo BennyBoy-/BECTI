@@ -70,14 +70,15 @@ switch (_message_var) do {
 	};
 	case "commander-vote-start": {CTI_P_ChatID commandChat format["%1 has initiated a commander vote!", _parameters]};//--- Todo, popup system with helper on/off
 	case "hq-destroyed": {
-			CTI_P_ChatID commandChat "The HQ has been destroyed!";
-			playMusic "EventTrack02_F_Curator";
+		CTI_P_ChatID commandChat "The HQ has been destroyed!";
+		playMusic "EventTrack02_F_Curator";
 	};
 	case "hq-repair": {
 		CTI_P_ChatID commandChat "The HQ has been repaired";
 		playsound "bobcat_engine_start";
 	};
-	case "funds-transfer": {player groupChat format ["%2 (%3) has transfered you $%1", _parameters select 0, (_parameters select 1) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], name leader (_parameters select 2)]};
+	case "fob-sold": {CTI_P_ChatID commandChat format ["A FOB has been sold at Grid %1", _parameters]};
+	case "funds-transfer": {player groupChat format ["%2 has transfered you $%1", _parameters select 0, (_parameters select 1) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]]};
 	case "order-taketowns": {_parameters sideChat "Acknowledged.  Advancing on neutral or enemy towns"};
 	case "order-takeholdtowns": {_parameters sideChat "Acknowledged.  Advancing on neutral or enemy towns with guard duty"};
 	case "order-holdtowns": {_parameters sideChat "Acknowledged.  Proceeding to nearest base or friendly town for guard duty"};
@@ -120,9 +121,10 @@ switch (_message_var) do {
 		playsound "vr_shutdown";
 	};
 	case "structure-sold": {
-		player commandChat format ["Sold a %1 structure for S%2", _parameters select 0, _parameters select 1];
+		CTI_P_ChatID commandChat format ["A %1 structure has been sold at Grid %2", _parameters select 0, _parameters select 1];
 		playsound "Simulation_Fatal";
 	};
+	case "structure-sold-refund": {CTI_P_ChatID commandChat format ["S%1 were received from selling a %2 structure", _parameters select 0, _parameters select 1]};
 	case "structure-teamkill-attempt": {
 		CTI_P_ChatID commandChat format ["Player %1 from group %2 tried to place an explosive near a friendly %3! (the explosive was removed)", _parameters select 0, _parameters select 1, _parameters select 2];
 	};

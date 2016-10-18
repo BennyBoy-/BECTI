@@ -3,8 +3,7 @@ _action = _this select 0;
 
 switch (_action) do {
 	case "onLoad": {
-		_logic = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic;
-		_workers = _logic getVariable "cti_workers";
+		_workers = CTI_P_SideLogic getVariable "cti_workers";
 		uiNamespace setVariable ["cti_dialog_ui_workersmenu_workers", _workers];
 		uiNamespace setVariable ["cti_dialog_ui_workersmenu_sellmode", 0];
 		
@@ -51,7 +50,16 @@ switch (_action) do {
 			_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 			_mappos = ((uiNamespace getVariable "cti_dialog_ui_workersmenu") displayCtrl 260001) ctrlMapScreenToWorld [_mx, _my];
 			_nearest = [_mappos, _structures] call CTI_CO_FNC_GetClosestEntity;
-			if (_nearest distance _mappos < 500) then {
+			
+			//--- Add FOBs if available.
+			_fobr = objNull;
+			if (CTI_BASE_FOB_MAX > 0) then {
+				_fob = [_mappos, (CTI_P_SideLogic getVariable ["cti_fobs", []])] call CTI_CO_FNC_GetClosestEntity;
+				if (alive _fob && ((_fob distance _mappos) < (_nearest distance _mappos))) then {_fobr = _fob};
+			};
+			
+			//--- Deal with a structure
+			if (_nearest distance _mappos < 500 && isNull _fobr) then {
 				if (isNil {_nearest getVariable "cti_sell"}) then {
 					//--- Commander Refund
 					if (!isNil {_nearest getVariable "cti_structure_type"} && isNil{_nearest getVariable "cti_sell"}) then {
@@ -60,14 +68,24 @@ switch (_action) do {
 						
 						_label = ((_var select 0) select 1);
 						_refund = round((_var select 2) * CTI_BASE_CONSTRUCTION_REFUNDS);
+						_coords = mapGridPosition _nearest;
 						[CTI_P_SideJoined, _refund] call CTI_CO_FNC_ChangeSideSupply;
 						
-						["structure-sold", [_label, _refund]] call CTI_CL_FNC_DisplayMessage;
+						["structure-sold", [_label, _coords]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", CTI_P_SideJoined];
+						["structure-sold-refund", [_refund, _label]] call CTI_CL_FNC_DisplayMessage;
 					};
 					
-					//todo bcast
 					_nearest setDammage 1;
 				};
+			};
+			
+			//--- Deal with a FOB
+			if !(isNull _fobr) then {
+				CTI_P_SideLogic setVariable ["cti_fobs", (CTI_P_SideLogic getVariable "cti_fobs") - [_fobr, objNull], true];
+				_coords = mapGridPosition _fobr;
+				deleteVehicle _fobr;
+				
+				["fob-sold", _coords] remoteExec ["CTI_PVF_CLT_OnMessageReceived", CTI_P_SideJoined];
 			};
 			
 			uiNamespace setVariable ["cti_dialog_ui_workersmenu_sellmode", 0];

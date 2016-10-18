@@ -768,7 +768,7 @@ _prices pushBack 		5000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [];
+_coinblacklist pushBack ["*"];
 
 _headers pushBack 		"S-300 PMU - AA Launcher";
 _classes pushBack 		"pook_SA20_static_INS";
@@ -776,7 +776,7 @@ _prices pushBack 		80000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [];
+_coinblacklist pushBack ["*"];
 
 };
 
