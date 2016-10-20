@@ -73,3 +73,10 @@ if (CTI_BASE_AIRRADAR_Z_OFFSET > 0 || CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1)
 		};
 	} forEach vehicles;
 };
+
+//--- Wheels protection
+if (CTI_VEHICLES_PROTECT_TIRES > 0) then {
+	{
+		if (alive _x && _x isKindOf "Car" && !(_x getVariable ["cti_wheels_protect", false])) then {_x addEventHandler ["HandleDamage", {_this call CTI_CO_FNC_EXT_HandleTiresDamages}]};
+	} forEach vehicles;
+};
