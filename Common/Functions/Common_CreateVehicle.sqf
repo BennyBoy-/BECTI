@@ -82,7 +82,7 @@ if (_handle) then {
 
 //--- Tire protection (Client, HC, Server). TODO: Detect if the vehicle has wheels
 if (CTI_VEHICLES_PROTECT_TIRES > 0 && _vehicle isKindOf "Car") then {
-	_x setVariable ["cti_wheels_protect", true, true];
+	_vehicle setVariable ["cti_wheels_protect", true, true];
 	(_vehicle) remoteExec ["CTI_PVF_CO_AddVehicleHandleTiresDamages"];
 };
 
