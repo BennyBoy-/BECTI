@@ -93,7 +93,7 @@ CTI_CO_FNC_SanitizeAircraftDAR = compileFinal preprocessFileLineNumbers "Common\
 CTI_CO_FNC_SanitizeArtillery = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeArtillery.sqf";
 
 //--- External Functions
-CTI_CO_FNC_EXT_HandleTiresDamages = compileFinal preprocessFileLineNumbers " Common\Functions\External\External_HandleTiresDamages.sqf";
+CTI_CO_FNC_EXT_HandleTiresDamages = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeArtillery.sqf";
 
 //--- Initialize the common PV
 call compile preprocessFile "Common\Init\Init_PublicVariables.sqf";
