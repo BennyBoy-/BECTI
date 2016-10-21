@@ -743,6 +743,8 @@ _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 _coinblacklist pushBack [];
 
+/*
+Disabled due to firing at friendlys
 _headers pushBack 		"AN/MPQ-53 - AA Radar";
 _classes pushBack 		"POOK_ANMPQ53_CDF";
 _prices pushBack 		5000;
@@ -758,16 +760,15 @@ _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 _coinblacklist pushBack [];
+*/
 
-/*
-Disabled due to view bug
 _headers pushBack 		"SNR-75 - AA Radar";
 _classes pushBack 		"pook_SNR75_radar";
 _prices pushBack 		5000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [];
+_coinblacklist pushBack ["*"];
 
 _headers pushBack 		"S-300 PMU - AA Launcher";
 _classes pushBack 		"pook_SA20_static_INS";
@@ -775,8 +776,8 @@ _prices pushBack 		80000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
-_coinblacklist pushBack [];
-*/
+_coinblacklist pushBack ["*"];
+
 };
 
 _headers pushBack 		["Heli Pad", [["DMG_Reduce", 1]]];

@@ -39,7 +39,7 @@ class Params {
 		title = "BASE: Startup Placement";
 		values[] = {2000,3000,4000,5000,6000,7000,8000,9000,10000,12000,15000,20000};
 		texts[] = {"2 KM","3 KM","4 KM","5 KM","6 KM","7 KM","8 KM","9 KM","10 KM","12 KM","15 KM","20 KM"};
-		default = 6000;
+		default = 8000;
 	};
 	class SEPARATOR1 {
 		title = "========================== INCOME ============================";
@@ -49,9 +49,9 @@ class Params {
 	};
 	class CTI_ECONOMY_INCOME_CYCLE {
 		title = "INCOME: Delay";
-		values[] = {15,30,,45,60,75,90,105,120,160,190};
-		texts[] = {"15 Seconds","30 Seconds","45 Seconds","01:00 Minute","01:15 Minute","01:30 Minutes","01:45 Minutes","02:00 Minutes","02:30 Minutes","03:00 Minutes"};
-		default = 45;
+		values[] = {30,35,40,45,50,55,60,65,70,75,80};
+		texts[] = {"30 Seconds","35 Seconds","40 Seconds","45 Seconds","50 Seconds","55 Seconds","01:00 Minutes","01:05 Minutes","01:10 Minutes","01:15 Minutes"};
+		default = 55;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER {
 		title = "INCOME: Starting Funds (East Commander)";
