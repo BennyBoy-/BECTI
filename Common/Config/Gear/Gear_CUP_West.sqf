@@ -37,6 +37,12 @@ _i pushBack "CUP_lmg_minimi_railed";
 _u pushBack 1;
 _p pushBack 400;
 
+//CZ550 Family
+
+_i pushBack "CUP_srifle_CZ550";
+_u pushBack 2;
+_p pushBack 300;
+
 //G36 Family
 
 _i pushBack "CUP_arifle_G36A";
@@ -239,13 +245,17 @@ _p pushBack 600;
 
 _i pushBack "CUP_arifle_MG36";
 _u pushBack 1;
-_p pushBack 450;
+_p pushBack 400;
 
 _i pushBack "CUP_arifle_MG36_camo";
 _u pushBack 1;
-_p pushBack 450;
+_p pushBack 400;
 
 _i pushBack "CUP_MG36_camo";
+_u pushBack 1;
+_p pushBack 400;
+
+_i pushBack "CUP_arifle_G36C_holo_snds";
 _u pushBack 1;
 _p pushBack 450;
 
@@ -341,6 +351,10 @@ _i pushBack "CUP_srifle_M110";
 _u pushBack 3;
 _p pushBack 500;
 
+_i pushBack "CUP_srifle_M110_ANPAS13c2";
+_u pushBack 3;
+_p pushBack 550;
+
 //Lee Enfield Family
 
 _i pushBack "CUP_srifle_LeeEnfield";
@@ -424,7 +438,7 @@ _p pushBack 100;
  */
 //UZI Family
 
-_i pushBack "CUP_hgun_MicroUzi";
+_i pushBack "CUP_hgun_MicroUzi_snds";
 _u pushBack 0;
 _p pushBack 200;
 

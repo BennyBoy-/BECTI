@@ -38,6 +38,10 @@ _p pushBack 400;
 _i pushBack "CUP_arifle_AK74_GL_kobra";
 _u pushBack 1;
 _p pushBack 400;
+
+_i pushBack "CUP_arifle_AK74M_GL_pso";
+_u pushBack 1;
+_p pushBack 400;
 /* 
 _i pushBack "CUP_arifle_AKS";
 _u pushBack 2;
@@ -92,6 +96,10 @@ _p pushBack 500;
 _i pushBack "CUP_arifle_CZ805_B_GL";
 _u pushBack 3;
 _p pushBack 600;
+
+_i pushBack "CUP_arifle_CZ805_A2_ZDDot_Flashlight_Snds";
+_u pushBack 3;
+_p pushBack 650;
 
 //VZ 58 Family
 /* 
@@ -192,7 +200,7 @@ _p pushBack 500;
 
 //CZ550 Family
 
-_i pushBack "CUP_srifle_CZ550_rail";
+_i pushBack "CUP_srifle_CZ550";
 _u pushBack 2;
 _p pushBack 300;
 
@@ -202,9 +210,17 @@ _i pushBack "CUP_srifle_CZ750";
 _u pushBack 4;
 _p pushBack 550;
 
+_i pushBack "CUP_srifle_CZ750_SOS_bipod";
+_u pushBack 4;
+_p pushBack 550;
+
 //SVD Family
 
 _i pushBack "CUP_SVD";
+_u pushBack 3;
+_p pushBack 550;
+
+_i pushBack "CUP_srifle_SVD_pso";
 _u pushBack 3;
 _p pushBack 550;
 /* 
@@ -226,11 +242,19 @@ _i pushBack "CUP_srifle_VSSVintorez";
 _u pushBack 4;
 _p pushBack 700;
 
+_i pushBack "CUP_srifle_VSSVintorez_pso";
+_u pushBack 4;
+_p pushBack 700;
+
 //KSVK Family
 
 _i pushBack "CUP_srifle_ksvk";
 _u pushBack 4;
-_p pushBack 1000;
+_p pushBack 800;
+
+_i pushBack "CUP_srifle_ksvk_PSO3";
+_u pushBack 4;
+_p pushBack 850;
 
 //Lee Enfield Family
 
