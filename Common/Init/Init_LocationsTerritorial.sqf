@@ -389,12 +389,9 @@ switch (toLower(worldName)) do {
 		Pfeffikon setVariable ["cti_town_neighbors",[Horw,Suhrenfeld,Alpnach]];
 		Trueb setVariable ["cti_town_neighbors",[Hirsegg,Seltisberg,NeueWelt,Lenzburg,Eichmatt]];
 		Unterdorf setVariable ["cti_town_neighbors",[Muttenz,Hasle,Hindelbank]];
-		Hindelbank setVariable ["cti_town_neighbors",[Muttenz,Hasle,Hindelbank]];
 		Ittingen setVariable ["cti_town_neighbors",[Worb,Hasle,Hindelbank]];
-		Hasle setVariable ["cti_town_neighbors",[Worb,Ittingen,Unterdorf]];
+		Hasle setVariable ["cti_town_neighbors",[Ittingen,Unterdorf]];
 		Waldegg setVariable ["cti_town_neighbors",[Hungerschwand]];
-		Goldwil setVariable ["cti_town_neighbors",[Brienz]];
-		Hafen setVariable ["cti_town_neighbors",[Lenzburg,Olten]];
 		Nordstern setVariable ["cti_town_neighbors",[Olten]];
 		Mayak setVariable ["cti_town_neighbors",[Lausen,InternationalAir]];
 
@@ -449,12 +446,9 @@ switch (toLower(worldName)) do {
 		Pfeffikon setVariable ["cti_town_neighbors",[Horw,Suhrenfeld,Alpnach]];
 		Trueb setVariable ["cti_town_neighbors",[Hirsegg,Seltisberg,NeueWelt,Lenzburg,Eichmatt]];
 		Unterdorf setVariable ["cti_town_neighbors",[Muttenz,Hasle,Hindelbank]];
-		Hindelbank setVariable ["cti_town_neighbors",[Muttenz,Hasle,Hindelbank]];
 		Ittingen setVariable ["cti_town_neighbors",[Worb,Hasle,Hindelbank]];
-		Hasle setVariable ["cti_town_neighbors",[Worb,Ittingen,Unterdorf]];
+		Hasle setVariable ["cti_town_neighbors",[Ittingen,Unterdorf]];
 		Waldegg setVariable ["cti_town_neighbors",[Hungerschwand]];
-		Goldwil setVariable ["cti_town_neighbors",[Brienz]];
-		Hafen setVariable ["cti_town_neighbors",[Lenzburg,Olten]];
 		Nordstern setVariable ["cti_town_neighbors",[Olten]];
 		Mayak setVariable ["cti_town_neighbors",[Lausen,InternationalAir]];
 
