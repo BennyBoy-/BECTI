@@ -115,6 +115,23 @@ player createDiaryRecord ["menu9",["Credits","<br/>
 
 player createDiarySubject ["menu10", "Change Log"];
 player createDiaryRecord ["menu10",["Change Log","<br/>
+
+<font color='#2ae916' size='14'>V1.01</font><br/>
+Added: Fob removal via base managment for commander<br/>
+Added: Tire Protection script<br/>
+Tweaked patriot system building collison<br/>
+Tweaked starting placment for both teams<br/>
+Added: Extra CUP rifles with scopes<br/>
+Tweaked: Economy<br/>
+Added: Extra 6 towns to Napf<br/>
+Fixed: Floating camps on Napf<br/>
+Removed: DPICM Arty<br/>
+Added: No AI limiter for commander<br/>
+Added: Warning message before Vote menu opens<br/>
+Added: More Winter units<br/>
+Tweaked: Units and prices<br/>
+Tweaked: Terrain Grid<br/>
+
 <font color='#2ae916' size='14'>V1.00</font><br/>
 Fixed: Empty res vehicles will not despawn when town is deactivated<br/>
 Fixed: Player AI running away on killed<br/>

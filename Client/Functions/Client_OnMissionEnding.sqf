@@ -26,7 +26,7 @@
 	[West, "loose"] spawn CTI_CL_FNC_OnMissionEnding
 */
 
-private ["_result", "_side", "_win"];
+private ["_result", "_side", "_win","_enemyhq","_hq","_winnerside","_loserside","_winnername","_losername","_winnertext","_losertext","_cameratext1","_cameratext2","_endtext","_endmusic","_firstshot","_secondshot"];
 
 _side = _this select 0;
 _result = _this select 1;
@@ -71,18 +71,18 @@ switch (_win) do {
 playMusic _endmusic;
 sleep 5;
 [[["Game Over...","<br/><br/><t align = 'center' shadow = '1' size = '1.4' font='PuristaBold'>%1</t>"]],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"] spawn BIS_fnc_typeText;
-sleep 5;
+sleep 30;
 _endtext spawn BIS_fnc_typeText;
-sleep 8;
+sleep 15;
 
 if (!isNil "_camera_run") exitWith {};
 _camera_run = true;
 _enemyhq = (_loserside) call CTI_CO_FNC_GetSideHQ;
-_firstshot = [_enemyhq, _enemyhq, _enemyhq, 30, 0.5, 0.4, false, 0, 0, 1, _cameratext1] execVM "Client\Events\Events_UI_OutroCamera.sqf";
+_firstshot = [_enemyhq, _enemyhq, _enemyhq, 45, 0.5, 0.4, false, 0, 0, 1, _cameratext1] execVM "Client\Events\Events_UI_OutroCamera.sqf";
 waitUntil {scriptdone _firstshot};
 
 _hq = (_winnerside) call CTI_CO_FNC_GetSideHQ;
-_secondshot = [_hq, _hq, _hq, 30, 0.5, 0.4, false, 0, 0, 1, _cameratext2] execVM "Client\Events\Events_UI_OutroCamera.sqf";
+_secondshot = [_hq, _hq, _hq, 45, 0.5, 0.4, false, 0, 0, 1, _cameratext2] execVM "Client\Events\Events_UI_OutroCamera.sqf";
 waitUntil {scriptdone _secondshot};
 
 

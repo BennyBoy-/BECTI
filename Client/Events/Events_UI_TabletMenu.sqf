@@ -150,8 +150,8 @@ switch (_action) do {
 				if (alive player && dialog) then {
 					closeDialog 0;
 					CTI_P_LastRootMenu = "CTI_RscTabletOptions";
-					[[["Vote Warning! (10s)","<br/><br/><t align = 'center' shadow = '1' size = '1.4' font='PuristaBold'>%1</t>"]],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"] spawn BIS_fnc_typeText;
-					sleep 10;
+					hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Commander vote will start in 15 seconds.";
+					sleep 15;
 					createDialog "CTI_RscVoteMenu";
 				};
 			};
