@@ -799,7 +799,13 @@ if (CTI_CUP_ADDON > 0) then {
 	};
 	if (CTI_FACTION_EAST == 2) then {
 		//CSAT Winter CUP
-		
+			_u pushBack 'CUP_O_MI6T_TKA';			
+	_u pushBack 'CUP_B_Mi24_D_MEV_CDF';		
+	_u pushBack 'CUP_O_Mi24_P_RU';		
+	_u pushBack 'CUP_O_Mi24_V_RU';
+	_u pushBack 'CUP_I_Mi24_Mk4_Empty_ION';		
+	_u pushBack 'CUP_I_Mi24_Mk4_ION';		
+	_u pushBack 'CUP_I_Mi24_Mk4_AT_ION';
 	};
 };
 //--- OFPS UNITS

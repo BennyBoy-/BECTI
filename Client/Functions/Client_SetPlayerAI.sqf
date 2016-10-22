@@ -27,6 +27,7 @@ while {! CTI_GameOver} do {
 			_playerai = 9;
 		};
 	};
+	if (call CTI_CL_FNC_IsPlayerCommander) then {_playerai = 9;};
 	player setVariable ["CTI_PLAYER_GROUPSIZE", _playerai, true];
 	sleep 30;
 };

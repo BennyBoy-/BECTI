@@ -90,6 +90,12 @@ if (_handle) then {
 	_vehicle setVariable ["cti_occupant", _side];
 };
 
+//--- Tire protection (Client, HC, Server). TODO: Detect if the vehicle has wheels
+if (CTI_VEHICLES_PROTECT_TIRES > 0 && _vehicle isKindOf "Car") then {
+	_vehicle setVariable ["cti_wheels_protect", true, true];
+	(_vehicle) remoteExec ["CTI_PVF_CO_AddVehicleHandleTiresDamages"];
+};
+
 //--- Air Radar tracking
 if (_vehicle isKindOf "Air" && CTI_BASE_AIRRADAR_Z_OFFSET > 0) then {
 	{(_vehicle) remoteExec ["CTI_PVF_CLT_OnAirUnitTracked", _x]} forEach CTI_PLAYABLE_SIDES - [_side];
