@@ -151,7 +151,7 @@ with missionNamespace do {
 		["commander-vote-start", _name] call CTI_CL_FNC_DisplayMessage;
 		
 		waitUntil{CTI_P_SideLogic getVariable "cti_votetime" > -1 || !alive player};
-		
+
 		if (alive player) then {
 			closeDialog 0;
 			createDialog "CTI_RscVoteMenu";

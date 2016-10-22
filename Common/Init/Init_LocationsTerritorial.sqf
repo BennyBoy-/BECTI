@@ -371,7 +371,7 @@ switch (toLower(worldName)) do {
 		Bruderholz setVariable ["cti_town_neighbors",[Ramsebode,Chatzbach,NapfCastle]];
 		Eichmatt setVariable ["cti_town_neighbors",[Trueb,NapfCastle]];
 		Lenzburg setVariable ["cti_town_neighbors",[Seltisberg,Trueb,Hafen,Olten,Hafen]];
-		Hafen setVariable ["cti_town_neighbors",[OilRig,Lenzburg,Olten,]];
+		Hafen setVariable ["cti_town_neighbors",[OilRig,Lenzburg,Olten]];
 		Olten setVariable ["cti_town_neighbors",[Lenzburg,Hafen,Lausen,Hirsegg,Nordstern]];
 		Hirsegg setVariable ["cti_town_neighbors",[Trueb,Olten,Lausen,NapfCastle]];
 		Lausen setVariable ["cti_town_neighbors",[Olten,Hirsegg,Luzern,Mayak]];
@@ -431,7 +431,7 @@ switch (toLower(worldName)) do {
 		Bruderholz setVariable ["cti_town_neighbors",[Ramsebode,Chatzbach,NapfCastle]];
 		Eichmatt setVariable ["cti_town_neighbors",[Trueb,NapfCastle]];
 		Lenzburg setVariable ["cti_town_neighbors",[Seltisberg,Trueb,Hafen,Olten,Hafen]];
-		Hafen setVariable ["cti_town_neighbors",[OilRig,Lenzburg,Olten,]];
+		Hafen setVariable ["cti_town_neighbors",[OilRig,Lenzburg,Olten]];
 		Olten setVariable ["cti_town_neighbors",[Lenzburg,Hafen,Lausen,Hirsegg,Nordstern]];
 		Hirsegg setVariable ["cti_town_neighbors",[Trueb,Olten,Lausen,NapfCastle]];
 		Lausen setVariable ["cti_town_neighbors",[Olten,Hirsegg,Luzern,Mayak]];
