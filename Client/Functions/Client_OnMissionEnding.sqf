@@ -51,10 +51,29 @@ switch (_loserside) do {
 	case West: {_losername = "Blufor";};
 	case East: {_losername = "Opfor";};
 };
+
+//team scores
+_winnerscore = scoreSide _winnerside; 
+_loserscore = scoreSide _loserside;
+_winnerscoretext = format ["%1 Team Score: %2", _winnername, _winnerscore];
+_loserscoretext = format ["%1 Team Score: %2", _losername, _loserscore];
+_scoretext = format ["%1 : %2 vs %3 : %4", _winnername,_winnerscore, _losername, _loserscore];
+//player score
+_playerscore = getPlayerScores player;
+_playerscore_kills = _playerscore select 0;
+_playerscore_vehicle = _playerscore select 1;
+_playerscore_armor = _playerscore select 2;
+_playerscore_air = _playerscore select 3;
+_playerscore_deaths = _playerscore select 4;
+_playerscore_score = _playerscore select 5;
+_playerscoretext = format ["INFANTRY: %1 | VEHICLES: %2 | ARMOR: %3 | AIR: %4 | DEATHS: %5 | SCORE: %6", _playerscore_kills, _playerscore_vehicle, _playerscore_armor, _playerscore_air, _playerscore_deaths, _playerscore_score];
+
 _winnertext = format ["%1 Has Dominated the Battlefield!", _winnername];
 _losertext = format ["%1 Has Lost All Factories and MHQ!", _losername];
+_scoretext1 = format ["Congratulations %1", _winnername];
 _cameratext1 = [[[_losertext,"<br/><t align = 'center' shadow = '1' size = '1.4' font='PuristaBold'>%1</t>"]],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"];
 _cameratext2 = [[[_winnertext,"<br/><t align = 'center' shadow = '1' size = '1.4' font='PuristaBold'>%1</t>"]],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"];
+_cameratext3 = [[[_scoretext1,"<br/><t align = 'center' shadow = '1' size = '1.4' font='PuristaBold'>%1</t>"]],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"];
 
 _endtext = [];
 _endmusic = "";
@@ -71,19 +90,25 @@ switch (_win) do {
 playMusic _endmusic;
 sleep 5;
 [[["Game Over...","<br/><br/><t align = 'center' shadow = '1' size = '1.4' font='PuristaBold'>%1</t>"]],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"] spawn BIS_fnc_typeText;
+titleText [_playerscoretext, "PLAIN DOWN", 30];
+
 sleep 30;
 _endtext spawn BIS_fnc_typeText;
-sleep 15;
+sleep 5;
 
 if (!isNil "_camera_run") exitWith {};
 _camera_run = true;
 _enemyhq = (_loserside) call CTI_CO_FNC_GetSideHQ;
-_firstshot = [_enemyhq, _enemyhq, _enemyhq, 45, 0.5, 0.4, false, 0, 0, 1, _cameratext1] execVM "Client\Events\Events_UI_OutroCamera.sqf";
+_firstshot = [_enemyhq, _enemyhq, _enemyhq, 40, 0.5, 0.4, false, 0, 0, 1, _cameratext1, _loserscoretext] execVM "Client\Events\Events_UI_OutroCamera.sqf";
 waitUntil {scriptdone _firstshot};
 
 _hq = (_winnerside) call CTI_CO_FNC_GetSideHQ;
-_secondshot = [_hq, _hq, _hq, 45, 0.5, 0.4, false, 0, 0, 1, _cameratext2] execVM "Client\Events\Events_UI_OutroCamera.sqf";
+_secondshot = [_hq, _hq, _hq, 40, 0.5, 0.4, false, 0, 0, 1, _cameratext2, _winnerscoretext] execVM "Client\Events\Events_UI_OutroCamera.sqf";
 waitUntil {scriptdone _secondshot};
+closeDialog 0;
+createDialog "RscDisplayMPScoreTable";
+_thirdshot = [_hq, _hq, _hq, 60, 0.5, 0.4, false, 0, 0, 1, _cameratext3, _scoretext] execVM "Client\Events\Events_UI_OutroCamera.sqf";
+waitUntil {scriptdone _thirdshot};
 
 
 if (_win) then {["END1", true, 0] call BIS_fnc_endMission} else {["END2", false, 0] call BIS_fnc_endMission};
