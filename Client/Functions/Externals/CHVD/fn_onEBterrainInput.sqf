@@ -4,8 +4,12 @@ _textCtrl = [_this, 1, controlNull, [0, controlNull]] call BIS_fnc_param;
 _listbox = [_this, 2, controlNull, [0, controlNull]] call BIS_fnc_param;
 
 _textValue = [ctrlText _textCtrl, "0123456789."] call BIS_fnc_filterString;
-_textValue = if (_textValue == "") then {50} else {call compile _textValue min 50 max 3.125};
-
+//_textValue = if (_textValue == "") then {50} else {call compile _textValue min 50 max 3.125};
+if (CHVD_maxTerrain) then {
+	_textValue = if (_textValue == "") then {3.125} else {call compile _textValue min 3.125 max 3.125};
+} else {
+	_textValue = if (_textValue == "") then {50} else {call compile _textValue min 50 max 3.125};
+};
 
 if (!CHVD_allowNoGrass) then {
 	_textValue = _textValue min 48.99;

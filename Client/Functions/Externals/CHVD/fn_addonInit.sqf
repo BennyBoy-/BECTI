@@ -11,6 +11,7 @@
 	CHVD_maxViewVeh = if (isNil "CHVD_maxViewVeh") then {12000} else {CHVD_maxViewVeh};
 	CHVD_maxViewAir = if (isNil "CHVD_maxViewAir") then {12000} else {CHVD_maxViewAir};
 	CHVD_maxObj = if (isNil "CHVD_maxObj") then {12000} else {CHVD_maxObj};
+	CHVD_maxTerrain = if (isNil "CHVD_maxTerrain") then {true} else {CHVD_maxTerrain};
 
 	CHVD_footSyncObj = profileNamespace getVariable ["CHVD_footSyncObj",false];
 	CHVD_carSyncObj = profileNamespace getVariable ["CHVD_carSyncObj",false];
@@ -24,9 +25,17 @@
 	CHVD_carObj = (profileNamespace getVariable ["CHVD_carObj",viewDistance]) min CHVD_maxObj;
 	CHVD_airObj = (profileNamespace getVariable ["CHVD_airObj",viewDistance]) min CHVD_maxObj;
 
-	CHVD_footTerrain = if (CHVD_allowNoGrass) then {profileNamespace getVariable ["CHVD_footTerrain",25]} else {(profileNamespace getVariable ["CHVD_footTerrain",25]) min 48.99 max 3.125};
-	CHVD_carTerrain = if (CHVD_allowNoGrass) then {profileNamespace getVariable ["CHVD_carTerrain",25]} else {(profileNamespace getVariable ["CHVD_carTerrain",25]) min 48.99 max 3.125};
-	CHVD_airTerrain = if (CHVD_allowNoGrass) then {profileNamespace getVariable ["CHVD_airTerrain",25]} else {(profileNamespace getVariable ["CHVD_airTerrain",25]) min 48.99 max 3.125};
+	if (CHVD_maxTerrain) then {
+		CHVD_footTerrain = if (CHVD_allowNoGrass) then {profileNamespace getVariable ["CHVD_footTerrain",25]} else {(profileNamespace getVariable ["CHVD_footTerrain",3.125]) min 3.125 max 3.125};
+		CHVD_carTerrain = if (CHVD_allowNoGrass) then {profileNamespace getVariable ["CHVD_carTerrain",25]} else {(profileNamespace getVariable ["CHVD_carTerrain",3.125]) min 3.125 max 3.125};
+		CHVD_airTerrain = if (CHVD_allowNoGrass) then {profileNamespace getVariable ["CHVD_airTerrain",25]} else {(profileNamespace getVariable ["CHVD_airTerrain",3.125]) min 3.125 max 3.125};
+	} else {
+		CHVD_footTerrain = if (CHVD_allowNoGrass) then {profileNamespace getVariable ["CHVD_footTerrain",25]} else {(profileNamespace getVariable ["CHVD_footTerrain",25]) min 48.99 max 3.125};
+		CHVD_carTerrain = if (CHVD_allowNoGrass) then {profileNamespace getVariable ["CHVD_carTerrain",25]} else {(profileNamespace getVariable ["CHVD_carTerrain",25]) min 48.99 max 3.125};
+		CHVD_airTerrain = if (CHVD_allowNoGrass) then {profileNamespace getVariable ["CHVD_airTerrain",25]} else {(profileNamespace getVariable ["CHVD_airTerrain",25]) min 48.99 max 3.125};
+	};
+	
+	
 
 	//Begin initialization
 	waitUntil {!isNull player};
