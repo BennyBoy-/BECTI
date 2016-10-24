@@ -156,6 +156,17 @@ CHVD_maxTerrain = true; //hardsets terrain grid to max (default: 3.125)
 //Briefing Entries
 0 execVM "Briefing.sqf";
 
+//Keybinds
+keyspressed = compile preprocessFile "Client\Events\Events_UI_Keybinds.sqf";
+0 spawn {
+	while {!CTI_GameOver} do {
+		disableSerialization;
+		_display = findDisplay 46;
+		_display displaySetEventHandler ["KeyDown","_this call keyspressed"];
+		sleep 2;
+	};
+};
+
 ///Snow and Sand Weather
 if (CTI_WEATHER_SNOW > 0) then { 		
     MKY_arSnowEFX = [];

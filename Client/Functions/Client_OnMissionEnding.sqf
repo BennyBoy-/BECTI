@@ -26,7 +26,7 @@
 	[West, "loose"] spawn CTI_CL_FNC_OnMissionEnding
 */
 
-private ["_result", "_side", "_win","_enemyhq","_hq","_winnerside","_loserside","_winnername","_losername","_winnertext","_losertext","_cameratext1","_cameratext2","_endtext","_endmusic","_firstshot","_secondshot"];
+private ["_result", "_side", "_win","_enemyhq","_hq","_winnerside","_loserside","_winnername","_losername","_winnertext","_losertext","_scoretext1","_cameratext1","_cameratext2","_cameratext3","_endtext","_endmusic","_firstshot","_secondshot","_scoretext","_playerscore","_playerscore_kills","_playerscore_vehicle","_playerscore_armor","_playerscore_air","_playerscore_deaths","_playerscore_score","_playerscoretext","",""];
 
 _side = _this select 0;
 _result = _this select 1;
