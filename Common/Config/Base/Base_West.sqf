@@ -577,7 +577,7 @@ _classes pushBack 		"CUP_B_D30_AT_CDF";
 _prices pushBack 		6000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
-_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinmenus pushBack 	["HQ"];
 _coinblacklist pushBack [];
 
 _headers pushBack 		"M252 81mm mortar";
@@ -593,7 +593,7 @@ _classes pushBack 		"CUP_B_ZU23_CDF";
 _prices pushBack 		4000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
-_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinmenus pushBack 	["HQ"];
 _coinblacklist pushBack [];
 /*
 _headers pushBack 		"RAM Launcher";
