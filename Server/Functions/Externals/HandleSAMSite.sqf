@@ -42,7 +42,7 @@ _logFctn = {
 while {true} do {
 
 	//_engagementDistanceMax = CTI_BASE_AIRRADAR_RANGES select ([_side, CTI_UPGRADE_AIRR] call CTI_CO_FNC_GetUpgrade);
-	_engagementDistanceMax = 6000;
+	_engagementDistanceMax = 3500;
 	
 	// Gather usable launchers
 	_availableLaunchers = [];
