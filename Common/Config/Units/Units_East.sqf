@@ -574,7 +574,7 @@ _d pushBack 0;*/
 _c pushBack 'O_Truck_03_repair_F';
 _p pushBack '';
 _n pushBack 'Repair Truck';
-_o pushBack 6850;
+_o pushBack 10000;
 _t pushBack 25;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_REPAIR;

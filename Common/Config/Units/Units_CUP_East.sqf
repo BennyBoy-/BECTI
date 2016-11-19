@@ -886,7 +886,7 @@ _d pushBack 0;
 _c pushBack 'CUP_O_Ural_Repair_RU';
 _p pushBack '';
 _n pushBack 'Ural Repair';
-_o pushBack 6850;
+_o pushBack 10000;
 _t pushBack 10;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_REPAIR;

@@ -544,7 +544,7 @@ _d pushBack 0;
 _c pushBack 'B_Truck_01_Repair_F';
 _p pushBack '';
 _n pushBack 'HEMTT Repair';
-_o pushBack 6850;
+_o pushBack 10000;
 _t pushBack 25;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_REPAIR;
