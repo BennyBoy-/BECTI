@@ -899,7 +899,7 @@ _d pushBack 0;
 _c pushBack 'CUP_O_Ural_Reammo_RU';
 _p pushBack '';
 _n pushBack 'Ural Ammo';
-_o pushBack 8750;
+_o pushBack 6000;
 _t pushBack 10;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_AMMO;

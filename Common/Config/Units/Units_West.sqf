@@ -606,7 +606,7 @@ _d pushBack 0;*/
 _c pushBack 'B_Truck_01_ammo_F';
 _p pushBack '';
 _n pushBack 'HEMTT Ammo';
-_o pushBack 8750;
+_o pushBack 6000;
 _t pushBack 25;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_AMMO;
@@ -616,7 +616,7 @@ _d pushBack 0;
 _c pushBack 'B_Slingload_01_Ammo_F';
 _p pushBack '';
 _n pushBack 'Vehicle Ammo POD';
-_o pushBack 9800;
+_o pushBack 4000;
 _t pushBack 10;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_AMMO;
