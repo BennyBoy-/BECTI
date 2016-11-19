@@ -157,6 +157,7 @@ CHVD_maxTerrain = true; //hardsets terrain grid to max (default: 3.125)
 0 execVM "Briefing.sqf";
 
 //Keybinds
+/*
 keyspressed = compile preprocessFile "Client\Events\Events_UI_Keybinds.sqf";
 0 spawn {
 	while {!CTI_GameOver} do {
@@ -165,6 +166,15 @@ keyspressed = compile preprocessFile "Client\Events\Events_UI_Keybinds.sqf";
 		_display displaySetEventHandler ["KeyDown","_this call keyspressed"];
 		sleep 2;
 	};
+};
+player removeEventHandler ["RscDisplayMPScoreTable",0];
+*/
+
+//hide score on HUD
+_displayscorehud = uiNamespace getVariable [ "RscMissionStatus_display", displayNull ];
+if ( !isNull _displayscorehud ) then {
+	_statusscorehud = _displayscorehud displayCtrl 15283;
+	_statusscorehud ctrlShow false;	
 };
 
 ///Snow and Sand Weather
