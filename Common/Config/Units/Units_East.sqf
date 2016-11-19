@@ -564,7 +564,7 @@ _d pushBack 0;
 /*_c pushBack 'O_Truck_02_box_F';
 _p pushBack '';
 _n pushBack 'Repair Truck';
-_o pushBack 10000;
+_o pushBack 8000;
 _t pushBack 25;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_REPAIR;
@@ -574,7 +574,7 @@ _d pushBack 0;*/
 _c pushBack 'O_Truck_03_repair_F';
 _p pushBack '';
 _n pushBack 'Repair Truck';
-_o pushBack 10000;
+_o pushBack 8000;
 _t pushBack 25;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_REPAIR;
@@ -624,7 +624,7 @@ _d pushBack 0;*/
 _c pushBack "Land_Pod_Heli_Transport_04_repair_F";
 _p pushBack '';
 _n pushBack 'Repair POD';
-_o pushBack 8000;
+_o pushBack 6000;
 _t pushBack 25;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_REPAIR;

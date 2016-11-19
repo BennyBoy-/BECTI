@@ -421,7 +421,7 @@ _d pushBack 0;
 _c pushBack 'AAF_D_Truck_02_box_F';
 _p pushBack '';
 _n pushBack 'Repair Truck (Snow)';
-_o pushBack 10000;
+_o pushBack 8000;
 _t pushBack 25;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_REPAIR;

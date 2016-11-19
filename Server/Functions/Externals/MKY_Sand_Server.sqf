@@ -2,7 +2,7 @@
 // whether server is dedicated or the host, return a wind index for the EFX
 
 MKY_arWind = [0,[0,-1]];
-
+ 
 // server may need to send data to JIP client
 "JIP_varSandData" addPublicVariableEventHandler {
 	(owner (_this select 0)) publicVariableClient "varFadeIn";

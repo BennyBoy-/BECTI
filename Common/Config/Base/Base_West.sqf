@@ -79,7 +79,7 @@ _classes pushBack		["Land_Research_house_V1_F", "Land_Research_house_V1_ruins_F"
 _prices pushBack 		500;
 _times pushBack			0;
 _placements pushBack 	[180, 15, false];
-_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 12]];
+_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 18]];
 _conditions pushBack 	(compile format["!(%1 call CTI_CO_FNC_IsHQDeployed)", _side]);
 
 _headers pushBack		[CTI_BARRACKS, "Barracks", "Barracks"];
@@ -193,7 +193,7 @@ _coinblacklist = [];
 
 _headers pushBack 		["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"], ["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0))}]]];
 _classes pushBack 		"Land_Medevac_house_V1_F";
-_prices pushBack 		20000;
+_prices pushBack 		25000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
@@ -724,7 +724,7 @@ _coinblacklist pushBack ["*"];
 
 _headers pushBack 		"MIM-104 PAC-2 - AA Launcher";
 _classes pushBack 		"pook_MIM104_PAC2Battery_CDF";
-_prices pushBack 		80000;
+_prices pushBack 		60000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
