@@ -83,6 +83,11 @@ _c pushBack "CUP_O_BM21_RU ";
 _m pushBack ["CUP_40Rnd_GRAD_HE"];
 _b pushBack [2, 3, 6];
 _r pushBack [[800,1000], [800,2000], [800,4000], [800,6000]];
-		
+
+//sfp static art	
+_c pushBack "sfp_fh77";
+_m pushBack ["32Rnd_155mm_Mo_shells","8Rnd_82mm_Mo_shells","8Rnd_82mm_Mo_shells","8Rnd_82mm_Mo_shells","8Rnd_82mm_Mo_shells","8Rnd_82mm_Mo_Flare_white","8Rnd_82mm_Mo_Smoke_white"];
+_b pushBack [2, 3, 6];
+_r pushBack [[800,1000], [800,2000], [800,4000], [800,6000]];
 
 [_c, _m, _b, _r] call compile preprocessFileLineNumbers "Common\Config\Artillery\Set_Artillery.sqf";
