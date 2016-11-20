@@ -811,6 +811,16 @@ _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'CUP_O_T90_RU';
+_p pushBack '';
+_n pushBack 'T-90';
+_o pushBack 20000;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'OFPS_ZSU23';
 _p pushBack '';
 _n pushBack 'ZSU23 Shilka';
@@ -841,12 +851,22 @@ _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;*/
 
-_c pushBack 'CUP_O_2S6M_RU';
+_c pushBack 'CUP_O_2S6_RU';
 _p pushBack '';
-_n pushBack '2S6M Tunguska';
-_o pushBack 19150;
+_n pushBack '2S6M Tunguska (3000/6000)';
+_o pushBack 20000;
 _t pushBack 20;
 _u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_O_2S6M_RU';
+_p pushBack '';
+_n pushBack '2S6M Tunguska (5000/10000)';
+_o pushBack 25000;
+_t pushBack 20;
+_u pushBack 3;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
@@ -1218,6 +1238,18 @@ _o pushBack 100;
 _t pushBack 25;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_NAVAL;
+_s pushBack "";
+_d pushBack 0;
+
+//--- Depot Vehicles
+
+_c pushBack 'CUP_C_Ikarus_TKC';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 1000;
+_t pushBack 25;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 

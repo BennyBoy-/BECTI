@@ -617,19 +617,21 @@ if (CTI_CUP_ADDON > 0) then {
 	//_u pushBack 'CUP_B_M113_Med_USA';	respawn issues 
 	_u pushBack 'CUP_B_M163_USA';   	
 	//_u pushBack 'CUP_B_M270_DPICM_USMC'; reload issues
-        _u pushBack 'CUP_B_LAV25M240_USMC';
-/*
-	_u pushBack 'CUP_B_AAV_USMC';
-	_u pushBack 'CUP_B_M113_USA';
-	_u pushBack 'CUP_B_M113_Med_USA';
-	_u pushBack 'CUP_B_M163_USA';
-	_u pushBack 'CUP_B_M1A2_TUSK_MG_US_Army';
-	_u pushBack 'CUP_B_M270_HE_USMC';
-	_u pushBack 'CUP_B_M2Bradley_USA_D';
-	_u pushBack 'CUP_B_M2A3Bradley_USA_D';
-	_u pushBack 'CUP_B_M6LineBacker_USA_W';
-	_u pushBack 'CUP_B_MCV80_GB_D_SLAT';
-*/
+    _u pushBack 'CUP_B_LAV25M240_USMC';
+	_u pushBack 'CUP_B_M1A1_NATO_T';
+	/*
+		_u pushBack 'CUP_B_AAV_USMC';
+		_u pushBack 'CUP_B_M113_USA';
+		_u pushBack 'CUP_B_M113_Med_USA';
+		_u pushBack 'CUP_B_M163_USA';
+		_u pushBack 'CUP_B_M1A2_TUSK_MG_US_Army';
+		_u pushBack 'CUP_B_M270_HE_USMC';
+		_u pushBack 'CUP_B_M2Bradley_USA_D';
+		_u pushBack 'CUP_B_M2A3Bradley_USA_D';
+		_u pushBack 'CUP_B_M6LineBacker_USA_W';
+		_u pushBack 'CUP_B_MCV80_GB_D_SLAT';
+	*/
+	_u pushBack 'CUP_B_Challenger2_NATO';
 
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid CUP
@@ -650,35 +652,42 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_MCV80_GB_D_SLAT';
 	_u pushBack 'CUP_B_FV510_GB_D';
 	_u pushBack 'CUP_B_M1A1_DES_US_Army';
-	_u pushBack 'CUP_B_M1A2_TUSK_MG_DES_US_Army';  
+	_u pushBack 'CUP_B_M1A2_TUSK_MG_DES_US_Army'; 
+	_u pushBack 'CUP_B_Challenger2_Desert_BAF';
+	_u pushBack 'CUP_B_Challenger2_2CD_BAF';
 	
 		
 	};
 	if (CTI_FACTION_WEST == 1) then {
 		//NATO Tropic CUP
-	_u pushBack 'CUP_B_M1126_ICV_M2_Woodland';
-	_u pushBack 'CUP_B_M1126_ICV_MK19_Woodland';
-	_u pushBack 'CUP_B_M1128_MGS_Woodland';
-	_u pushBack 'CUP_B_M1129_MC_MK19_Woodland';
-	_u pushBack 'CUP_B_M1130_CV_M2_Woodland';
-	_u pushBack 'CUP_B_M1133_MEV_Woodland';
-	_u pushBack 'CUP_B_M1135_ATGMV_Woodland';
-	_u pushBack 'CUP_B_M1128_MGS_Woodland';
-	_u pushBack 'CUP_B_FV432_Bulldog_GB_W';
-	_u pushBack 'CUP_B_FV432_Bulldog_GB_W_RWS';
-	_u pushBack 'CUP_B_M2Bradley_USA_W';
-	_u pushBack 'CUP_B_M2A3Bradley_USA_W';
-	_u pushBack 'CUP_B_M6LineBacker_USA_W';
-	_u pushBack 'CUP_B_FV510_GB_W_SLAT';
-	_u pushBack 'CUP_B_MCV80_GB_W_SLAT';
-    _u pushBack 'CUP_B_FV510_GB_W';
-	_u pushBack 'CUP_B_M1A2_TUSK_MG_US_Army';    	
-		
-	};
-	if (CTI_FACTION_WEST == 2) then {
-		//NATO Winter CUP
-		
-	};
+		_u pushBack 'CUP_B_M1126_ICV_M2_Woodland';
+		_u pushBack 'CUP_B_M1126_ICV_MK19_Woodland';
+		_u pushBack 'CUP_B_M1128_MGS_Woodland';
+		_u pushBack 'CUP_B_M1129_MC_MK19_Woodland';
+		_u pushBack 'CUP_B_M1130_CV_M2_Woodland';
+		_u pushBack 'CUP_B_M1133_MEV_Woodland';
+		_u pushBack 'CUP_B_M1135_ATGMV_Woodland';
+		_u pushBack 'CUP_B_M1128_MGS_Woodland';
+		_u pushBack 'CUP_B_FV432_Bulldog_GB_W';
+		_u pushBack 'CUP_B_FV432_Bulldog_GB_W_RWS';
+		_u pushBack 'CUP_B_M2Bradley_USA_W';
+		_u pushBack 'CUP_B_M2A3Bradley_USA_W';
+		_u pushBack 'CUP_B_M6LineBacker_USA_W';
+		_u pushBack 'CUP_B_FV510_GB_W_SLAT';
+		_u pushBack 'CUP_B_MCV80_GB_W_SLAT';
+		_u pushBack 'CUP_B_FV510_GB_W';
+		_u pushBack 'CUP_B_M1A1_Woodland_US_Army';
+		_u pushBack 'CUP_B_M1A2_TUSK_MG_US_Army';    
+		_u pushBack 'CUP_B_Challenger2_Woodland_BAF';
+		_u pushBack 'CUP_B_Challenger2_2CW_BAF';		
+			
+		};
+		if (CTI_FACTION_WEST == 2) then {
+			//NATO Winter CUP
+			_u pushBack 'CUP_B_Challenger2_Snow_BAF';
+			_u pushBack 'CUP_B_Challenger2_2CS_BAF';
+			
+		};
 };
 //--- OFPS UNITS
 if (CTI_OFPS_ADDON > 0) then { 
@@ -1189,6 +1198,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack "CUP_B_RHIB_USMC";
 	_u pushBack "CUP_B_RHIB2Turret_USMC";
 	_u pushBack "CUP_B_Zodiac_USMC";
+	_u pushBack "CUP_C_Ikarus_Chernarus";
 	
 	if (CTI_FACTION_WEST == 0) then {
 		//NATO Arid CUP

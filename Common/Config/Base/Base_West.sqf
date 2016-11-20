@@ -690,17 +690,65 @@ _coinblacklist pushBack [];
 
 
 if (CTI_OFPS_ADDON > 0) then {
-_headers pushBack 		"RBS 70 aa";
+_headers pushBack 		"Granatkastare m/84 Mortar";
+_classes pushBack 		"sfp_grk84";
+_prices pushBack 		15000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"RBS 70 (SHORAD MANPADS AA)";
 _classes pushBack 		"sfp_rbs70";
 _prices pushBack 		8000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"RBS 77 (Hawk)";
+_classes pushBack 		"sfp_rbs77";
+_prices pushBack 		20000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"RBS 97 (Swedish HAWK)";
+_classes pushBack 		"sfp_rbs97";
+_prices pushBack 		20000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"RBS 17 Hellfire (Coastal Missile)";
+_classes pushBack 		"sfp_rbs17";
+_prices pushBack 		6000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"RBS 17 Hellfire Ammobox";
+_classes pushBack 		"sfp_rbs17_missile_container";
+_prices pushBack 		300;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
 
+_headers pushBack 		"Field Howitzer 77 (150mm)";
+_classes pushBack 		"sfp_fh77";
+_prices pushBack 		160000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ"];
+_coinblacklist pushBack [];
+
 _headers pushBack 		"C-RAM Phalanx";
 _classes pushBack 		"C_at_phalanx_35AI";
-_prices pushBack 		25000;
+_prices pushBack 		20000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
@@ -708,7 +756,7 @@ _coinblacklist pushBack [];
 
 _headers pushBack 		"C-RAM Phalanx Missle";
 _classes pushBack 		"C_at_phalanx_missile_35AI";
-_prices pushBack 		30000;
+_prices pushBack 		35000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];

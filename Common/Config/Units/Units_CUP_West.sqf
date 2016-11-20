@@ -860,9 +860,49 @@ _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
 
+_c pushBack 'CUP_B_M1A1_NATO_T';
+_p pushBack '';
+_n pushBack ["%1 (NATO)"];
+_o pushBack 20000;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
 _c pushBack 'CUP_B_M1A1_DES_US_Army';
 _p pushBack '';
-_n pushBack '';
+_n pushBack ["%1 (Desert US Army)"];
+_o pushBack 20000;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_M1A1_Woodland_US_Army';
+_p pushBack '';
+_n pushBack ["%1 (Woodland US Army)"];
+_o pushBack 20000;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_M1A1_DES_USMC';
+_p pushBack '';
+_n pushBack ["%1 (Desert USMC)"];
+_o pushBack 20000;
+_t pushBack 20;
+_u pushBack 2;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_M1A1_Woodland_USMC';
+_p pushBack '';
+_n pushBack ["%1 (Woodland USMC)"];
 _o pushBack 20000;
 _t pushBack 20;
 _u pushBack 2;
@@ -1056,6 +1096,76 @@ _n pushBack '';
 _o pushBack 8000;
 _t pushBack 20;
 _u pushBack 1;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_Challenger2_NATO';
+_p pushBack '';
+_n pushBack ["%1 (NATO)"];
+_o pushBack 22000;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_Challenger2_Desert_BAF';
+_p pushBack '';
+_n pushBack ["%1 (Desert)"];
+_o pushBack 22000;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_Challenger2_Snow_BAF';
+_p pushBack '';
+_n pushBack ["%1 (Winter)"];
+_o pushBack 22000;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_Challenger2_2CS_BAF';
+_p pushBack '';
+_n pushBack ["%1 (Winter Tiger)"];
+_o pushBack 22000;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_Challenger2_2CW_BAF';
+_p pushBack '';
+_n pushBack ["%1 (Woodland Tiger)"];
+_o pushBack 22000;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_Challenger2_2CD_BAF';
+_p pushBack '';
+_n pushBack ["%1 (Desert Tiger)"];
+_o pushBack 22000;
+_t pushBack 20;
+_u pushBack 3;
+_f pushBack CTI_FACTORY_HEAVY;
+_s pushBack "";
+_d pushBack 0;
+
+_c pushBack 'CUP_B_Challenger2_Woodland_BAF';
+_p pushBack '';
+_n pushBack ["%1 (Woodland)"];
+_o pushBack 22000;
+_t pushBack 20;
+_u pushBack 3;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
@@ -1536,6 +1646,18 @@ _o pushBack 100;
 _t pushBack 25;
 _u pushBack 0;
 _f pushBack CTI_FACTORY_NAVAL;
+_s pushBack "";
+_d pushBack 0;
+
+//--- Depot Vehicles
+
+_c pushBack 'CUP_C_Ikarus_Chernarus';
+_p pushBack '';
+_n pushBack '';
+_o pushBack 1000;
+_t pushBack 25;
+_u pushBack 0;
+_f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
