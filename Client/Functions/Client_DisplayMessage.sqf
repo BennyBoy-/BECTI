@@ -80,7 +80,7 @@ switch (_message_var) do {
 	case "fob-sold": {CTI_P_ChatID commandChat format ["A FOB has been sold at Grid %1", _parameters]};
 	case "funds-transfer": {
 		player groupChat format ["%2 has transfered you $%1", _parameters select 0, name (_parameters select 1) ];
-		hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t color='#55bcfc'>%3</t> transfered <t color='%1'>$%2</t> to you.", CTI_P_Coloration_Money, _amount, name (_parameters select 1)];
+		hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t color='#55bcfc'>%3</t> transfered <t color='%1'>$%2</t> to you.", CTI_P_Coloration_Money, _parameters select 0, name (_parameters select 1)];
 				uiNamespace setVariable ["cti_dialog_ui_transferresourcesmenu_forceupdate", true];
 	};
 	case "order-taketowns": {_parameters sideChat "Acknowledged.  Advancing on neutral or enemy towns"};
