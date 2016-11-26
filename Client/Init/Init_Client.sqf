@@ -282,19 +282,19 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 				};
 				_town_west = "";
 				switch (CTI_TOWNS_OCCUPATION_WEST) do {
-					case 0: {_town_west = "Vanilla";};
-					case 1: {_town_west = "CUP - US Army";};
-					case 2: {_town_west = "Mixed";};
+					case 0: {_town_west = "Vanilla NATO";};
+					case 1: {_town_west = "US Army";};
+					case 2: {_town_west = "Mixed Forces";};
 					case 3: {_town_west = "Pacific Special Forces";};
-					case 4: {_town_west = "Winter";};
+					case 4: {_town_west = "Winter NATO";};
 				};
 				_town_east = "";
 				switch (CTI_TOWNS_OCCUPATION_EAST) do {
-					case 0: {_town_east = "Vanilla";};
-					case 1: {_town_east = "CUP - Russians";};
-					case 2: {_town_east = "Mixed";};
+					case 0: {_town_east = "Vanilla CSAT";};
+					case 1: {_town_east = "Russians";};
+					case 2: {_town_east = "Mixed Forces";};
 					case 3: {_town_east = "Pacific Special Forces";};
-					case 4: {_town_east = "Winter";};
+					case 4: {_town_east = "Winter CSAT";};
 				};
 				_town_indie = "";
 				switch (CTI_TOWNS_OCCUPATION_RESISTANCE) do {
