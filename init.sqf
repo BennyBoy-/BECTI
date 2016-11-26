@@ -161,16 +161,30 @@ CHVD_maxTerrain = true; //hardsets terrain grid to max (default: 3.125)
 keyspressed = compile preprocessFile "Client\Events\Events_UI_Keybinds.sqf";
 0 spawn {
 	while {!CTI_GameOver} do {
-		disableSerialization;
 		_display = findDisplay 46;
 		_display displaySetEventHandler ["KeyDown","_this call keyspressed"];
 		sleep 2;
 	};
 };
 player removeEventHandler ["RscDisplayMPScoreTable",0];
-*/
 
+(findDisplay 46) displayAddEventHandler
+[
+	"KeyDown",
+	{
+		_handled = false;
+		if ((_this select 1) in actionKeys "networkStats") then
+		{
+			_handled = true;
+		};
+		_handled;
+	}
+];
+*/
+//Disable Scoreboard
+showScoretable 0;
 //hide score on HUD
+disableSerialization;
 _displayscorehud = uiNamespace getVariable [ "RscMissionStatus_display", displayNull ];
 if ( !isNull _displayscorehud ) then {
 	_statusscorehud = _displayscorehud displayCtrl 15283;

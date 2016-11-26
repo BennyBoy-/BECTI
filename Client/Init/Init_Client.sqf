@@ -245,21 +245,165 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 			MissionIntro = [] spawn {
 				playMusic "EventTrack02a_F_EPB";
 				cutText ["Welcome", "BLACK IN", 3];
-				_sidename = "Blufor";
-				switch (CTI_P_SideJoined) do {
-					case West: {_sidename = "Blufor";};
-					case East: {_sidename = "Opfor";};
+				//Gather game settings
+				_mapname = worldName;
+				_startyear = date select 0;
+				_startmonth = date select 1;
+				switch (_startmonth) do {
+					case 1: {_startmonth = "January";};
+					case 2: {_startmonth = "Feburary";};
+					case 3: {_startmonth = "March";};
+					case 4: {_startmonth = "April";};
+					case 5: {_startmonth = "May";};
+					case 6: {_startmonth = "June";};
+					case 7: {_startmonth = "July";};
+					case 8: {_startmonth = "August";};
+					case 9: {_startmonth = "September";};
+					case 10: {_startmonth = "October";};
+					case 11: {_startmonth = "November";};
+					case 12: {_startmonth = "December";};
 				};
-				_sidewelcome = format ["Welcome to %1 Comrade", _sidename];
+				_starthour = date select 3;
+				_startampm = "";
+				if (_starthour < 12) then {_startampm = "AM"; } else {_startampm = "PM";};
+				_startmin = date select 4;
+				_placement_distance = CTI_BASE_STARTUP_PLACEMENT;
+				_faction_west = "";
+				switch (CTI_FACTION_WEST) do {
+					case 0: {_faction_west = "NATO Arid";};
+					case 1: {_faction_west = "NATO Tropic";};
+					case 2: {_faction_west = "NATO Winter";};
+				};
+				_faction_east = "";
+				switch (CTI_FACTION_EAST) do {
+					case 0: {_faction_east = "CSAT Arid";};
+					case 1: {_faction_east = "CSAT Tropic";};
+					case 2: {_faction_east = "CSAT Winter";};
+				};
+				_town_west = "";
+				switch (CTI_TOWNS_OCCUPATION_WEST) do {
+					case 0: {_town_west = "Vanilla";};
+					case 1: {_town_west = "CUP - US Army";};
+					case 2: {_town_west = "Mixed";};
+					case 3: {_town_west = "Pacific Special Forces";};
+					case 4: {_town_west = "Winter";};
+				};
+				_town_east = "";
+				switch (CTI_TOWNS_OCCUPATION_EAST) do {
+					case 0: {_town_east = "Vanilla";};
+					case 1: {_town_east = "CUP - Russians";};
+					case 2: {_town_east = "Mixed";};
+					case 3: {_town_east = "Pacific Special Forces";};
+					case 4: {_town_east = "Winter";};
+				};
+				_town_indie = "";
+				switch (CTI_TOWNS_OCCUPATION_RESISTANCE) do {
+					case 0: {_town_indie = "Vanilla - AAF";};
+					case 1: {_town_indie = "Vanilla - FIA";};
+					case 2: {_town_indie = "CUP - ION PMC";};
+					case 3: {_town_indie = "CUP - NAPA Chernarus";};
+					case 4: {_town_indie = "CUP - Royal Army Corp Of Sahrani";};
+					case 5: {_town_indie = "CUP - Takistani Military";};
+					case 6: {_town_indie = "Mixed";};
+					case 7: {_town_indie = "Syndikat Paramilitary";};
+					case 8: {_town_indie = "AAF/Swedish Winter";};
+				};
+				_town_level_resistance = "";
+				switch (CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE) do {
+					case 5: {_town_level_resistance = "Amateur";};
+					case 10: {_town_level_resistance = "Novice";};
+					case 15: {_town_level_resistance = "Average";};
+					case 20: {_town_level_resistance = "Skilled";};
+					case 25: {_town_level_resistance = "Professional";};
+					case 30: {_town_level_resistance = "Specialist";};
+					case 35: {_town_level_resistance = "Expert";};
+					case 40: {_town_level_resistance = "Chuck Norris";};
+				};
+				_town_level_occ = "";
+				switch (CTI_TOWNS_OCCUPATION_LEVEL) do {
+					case 5: {_town_level_occ = "Amateur";};
+					case 10: {_town_level_occ = "Novice";};
+					case 15: {_town_level_occ = "Average";};
+					case 20: {_town_level_occ = "Skilled";};
+					case 25: {_town_level_occ = "Professional";};
+					case 30: {_town_level_occ = "Specialist";};
+					case 35: {_town_level_occ = "Expert";};
+					case 40: {_town_level_occ = "Chuck Norris";};
+				};
+				_territorymode = "";
+				switch (CTI_TOWNS_TERRITORIAL) do {
+					case 0: {_territorymode = "Territory Mode Off";};
+					case 1: {_territorymode = "Territory Mode On";};
+				};
+				_mode_zombie = "";
+				switch (CTI_ZOMBIE_MODE) do {
+					case 0: {_mode_zombie = "Zombie Mode Off";};
+					case 1: {_mode_zombie = "Zombie Mode On";};
+				};
+				_mode_guerrilla = "";
+				switch (CTI_GUERILLA_MODE) do {
+					case 0: {_mode_guerrilla = "Guerilla Mode Off";};
+					case 1: {_mode_guerrilla = "Guerilla Mode On";};
+				};
+				//Gather Side Specific settings
+				_faction_friend_sidename = "";
+				_faction_enemy_sidename = "";
+				_faction_friend_army = "";
+				_faction_enemy_army = "";
+				switch (CTI_P_SideJoined) do {
+					case West: {
+						_faction_friend_sidename = _faction_west + " Soldier";
+						_faction_enemy_sidename = _faction_east;
+						_faction_friend_army = _town_west;
+						_faction_enemy_army = _town_east;
+					};
+					case East: {
+						_faction_friend_sidename = _faction_east + " Comrade";
+						_faction_enemy_sidename = _faction_west;
+						_faction_friend_army = _town_east;
+						_faction_enemy_army = _town_west;
+					};
+				};
+				//Assemble intro strings
+				_introtext_1 = format ["%1 : %2 , %3 , %4:%5 %6", _mapname, _startyear, _startmonth, _starthour, _startmin, _startampm];
+				_introtext_2 = format ["Welcome to %1", _faction_friend_sidename];
+				_introtext_3 = format ["%1 , %2 army", _town_level_occ, _faction_friend_army];
+				_introtext_4 = format ["A local %1 , %2 army occupies the area", _town_level_resistance, _town_indie];
+				_introtext_5 = format ["Intel reports another %1 army started %2m away.", _faction_enemy_army, _placement_distance];
+				_introtext_6 = format ["%1", _territorymode];
+				_introtext_7 = format ["%1", _mode_guerrilla];
+				_introtext_8 = format ["%1", _mode_zombie];
 				if (CTI_DEV_MODE == 0) then {
 					if (!isNil "_camera_run") exitWith {};
 					_camera_run = true;
 					_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
-					_firstshot = [_hq, _hq, _hq, 25, 0.5, 0.4, false, 0, 0, 1] execVM "Client\Events\Events_UI_IntroCamera.sqf";
+					_firstshot = [_hq, _hq, _hq, 60, 0.5, 0.4, false, 0, 0, 1] execVM "Client\Events\Events_UI_IntroCamera.sqf";
 					sleep 5;
-					[[["OFPS CTI WARFARE","<t align = 'center' shadow = '1' size = '1.4' font='PuristaBold'>%1</t><br/>"],["CAPTURE THE ISLAND","<t align = 'center' shadow = '1' size = '1.2' font='PuristaBold'>%1</t><br/>"]],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"] spawn BIS_fnc_typeText;
-					sleep 8;
-					[[[_sidewelcome,"<br/><br/><t align = 'center' shadow = '1' size = '1.2' font='PuristaBold'>%1</t>"]],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"] spawn BIS_fnc_typeText;
+					[
+						[["OFPS CTI WARFARE","<t align = 'center' shadow = '1' size = '1.4' font='PuristaBold'>%1</t><br/>"],
+						["CAPTURE THE ISLAND","<t align = 'center' shadow = '1' size = '1.2' font='PuristaBold'>%1</t><br/>"],
+						[_introtext_1,"<br/><t align = 'center' shadow = '1' size = '1.1' font='PuristaBold'>%1</t><br/>"],
+						[_introtext_6,"<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>"]]
+					] spawn BIS_fnc_typeText;
+					sleep 16;
+					[
+						[[_introtext_2,"<br/><br/><br/><t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>"],
+						[_introtext_3,"<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>"]]
+					] spawn BIS_fnc_typeText;
+					sleep 12;
+					[
+						[[_introtext_4,"<br/><br/><br/><t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>"],
+						[_introtext_5,"<br/><t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>"]]
+					] spawn BIS_fnc_typeText;
+					sleep 15;
+					if (CTI_GUERILLA_MODE == 1) then {
+						[[[_introtext_7,"<br/><br/><br/><t align = 'center' shadow = '1' size = '1.1' font='PuristaBold'>%1</t>"]],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"] spawn BIS_fnc_typeText;
+						sleep 3;
+					};
+					if (CTI_ZOMBIE_MODE == 1) then {
+						[[[_introtext_8,"<br/><br/><br/><t align = 'center' shadow = '1' size = '1.1' font='PuristaBold'>%1</t>"]],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"] spawn BIS_fnc_typeText;
+						sleep 3;
+					};
 					waitUntil {scriptdone _firstshot};
 				};
 				cutText ["", "BLACK", 2];
@@ -272,10 +416,8 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 			};
 			waitUntil {scriptDone MissionIntro};
 			
-	
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_votetime"}};
 	
-
 	if (CTI_P_SideLogic getVariable "cti_votetime" > 0) then {createDialog "CTI_RscVoteMenu"};
 	waitUntil { !dialog };
 	createDialog "CTI_RscTabletDialogWelcome";	
