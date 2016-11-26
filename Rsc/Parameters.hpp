@@ -39,7 +39,7 @@ class Params {
 		title = "BASE: Startup Placement";
 		values[] = {2000,3000,4000,5000,6000,7000,8000,9000,10000,12000,15000,20000};
 		texts[] = {"2 KM","3 KM","4 KM","5 KM","6 KM","7 KM","8 KM","9 KM","10 KM","12 KM","15 KM","20 KM"};
-		default = 8000;
+		default = 10000;
 	};
 	class SEPARATOR1 {
 		title = "========================== INCOME ============================";
@@ -87,13 +87,13 @@ class Params {
 		title = "SUPPLY: Starting Supply (East Team)";
 		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
 		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
-		default = 20000;
+		default = 25000;
 	};
 	class CTI_ECONOMY_STARTUP_SUPPLY_WEST {
 		title = "SUPPLY: Starting Supply (West Team)";
 		values[] = {9000,15000,20000,25000,30000,35000,40000,45000,50000,60000,100000000};
 		texts[] = {"$9000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$100000000"};
-		default = 20000;
+		default = 25000;
 	};
 	class SEPARATOR2 {
 		title = "========================== TOWNS ============================";
@@ -111,13 +111,13 @@ class Params {
 		title = "TOWNS: Resistance Occupation Squad Count";
 		values[] = {5,10,15,20,25,30,35,40};
 		texts[] = {"Amateur","Novice","Average","Skilled","Professional","Specialist","Expert","Chuck Norris"};
-		default = 15;
+		default = 20;
 	};
 	class CTI_TOWNS_OCCUPATION_LEVEL {
 		title = "TOWNS: Side Occupation Squad Count";
 		values[] = {5,10,15,20,25,30,35,40};
 		texts[] = {"Amateur","Novice","Average","Skilled","Professional","Specialist","Expert","Chuck Norris"};
-		default = 15;
+		default = 20;
 	};
 	class CTI_TOWNS_OCCUPATION_RESISTANCE {
 		title = "TOWNS: Resistance Occupation Forces";
