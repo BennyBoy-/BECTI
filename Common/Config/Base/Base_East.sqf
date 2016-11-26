@@ -766,7 +766,7 @@ _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
-
+/*
 _headers pushBack 		"Field Howitzer 77 (150mm)";
 _classes pushBack 		"sfp_fh77";
 _prices pushBack 		160000;
@@ -774,7 +774,7 @@ _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 _coinblacklist pushBack [];
-
+*/
 _headers pushBack 		"C-RAM Phalanx";
 _classes pushBack 		"C_at_phalanx_35AI";
 _prices pushBack 		20000;
