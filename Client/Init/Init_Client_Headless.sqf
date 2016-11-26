@@ -82,10 +82,7 @@ with missionNamespace do {
 		// TODO: deduplicate code (Server_HandleStaticDefenses.sqf)
 		// TODO: proper/extensible vehicle switch
 		
-			
-		diag_log ("samsitedebug: delegate a " + typeOf(_static));
-		
-//--- Configure the weapon / gunner
+		//--- Configure the weapon / gunner
 		if (typeOf(_static) find "POOK_ANMPQ53" == 0 || typeOf(_static) find "pook_SNR75_radar" == 0 || typeOf(_static) find "pook_MIM104_PAC2" == 0 || typeOf(_static) find "pook_MIM104_PAC2Battery" == 0) then {
 			_ai disableAI "AUTOTARGET";
 			_ai disableAI "TARGET";

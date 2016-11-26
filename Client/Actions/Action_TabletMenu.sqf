@@ -1,1 +1,1 @@
-createDialog "CTI_RscTabletDialog"
+createDialog "CTI_RscTabletDialog";

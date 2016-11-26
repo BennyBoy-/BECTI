@@ -147,13 +147,49 @@ if (local player) then {
 
 //Default Video Settings
 CHVD_allowNoGrass = false; // Set 'false' if you want to disable "None" option for terrain (default: true)
-CHVD_maxView = 2500; // Set maximum Foot view distance (default: 12000) 
-CHVD_maxViewVeh = 3000; // Set maximum Vehicle view distance (default: 12000)
+CHVD_maxView = 3500; // Set maximum Foot view distance (default: 12000) 
+CHVD_maxViewVeh = 3500; // Set maximum Vehicle view distance (default: 12000)
 CHVD_maxViewAir = 3500; // Set maximum Air view distance (default: 12000)
 CHVD_maxObj = 3500; // Set maximimum object view distance (default: 12000)
+CHVD_maxTerrain = true; //hardsets terrain grid to max (default: 3.125)
 
 //Briefing Entries
 0 execVM "Briefing.sqf";
+
+//Keybinds
+/*
+keyspressed = compile preprocessFile "Client\Events\Events_UI_Keybinds.sqf";
+0 spawn {
+	while {!CTI_GameOver} do {
+		_display = findDisplay 46;
+		_display displaySetEventHandler ["KeyDown","_this call keyspressed"];
+		sleep 2;
+	};
+};
+player removeEventHandler ["RscDisplayMPScoreTable",0];
+
+(findDisplay 46) displayAddEventHandler
+[
+	"KeyDown",
+	{
+		_handled = false;
+		if ((_this select 1) in actionKeys "networkStats") then
+		{
+			_handled = true;
+		};
+		_handled;
+	}
+];
+*/
+//Disable Scoreboard
+showScoretable 0;
+//hide score on HUD
+disableSerialization;
+_displayscorehud = uiNamespace getVariable [ "RscMissionStatus_display", displayNull ];
+if ( !isNull _displayscorehud ) then {
+	_statusscorehud = _displayscorehud displayCtrl 15283;
+	_statusscorehud ctrlShow false;	
+};
 
 ///Snow and Sand Weather
 if (CTI_WEATHER_SNOW > 0) then { 		

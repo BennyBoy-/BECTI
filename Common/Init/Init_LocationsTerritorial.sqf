@@ -347,7 +347,7 @@ switch (toLower(worldName)) do {
 		FuelDepot setVariable ["cti_town_neighbors",[Hindelbank,Bubendorf,OilRig]];
 		OilRig setVariable ["cti_town_neighbors",[FuelDepot,Seltisberg,Hafen]];
 		Bubendorf setVariable ["cti_town_neighbors",[Huttwil,FuelDepot,Seltisberg]];
-		Huttwil setVariable ["cti_town_neighbors",[Hindelbank,Muttenz,Bubendorf,NeueWelt]];
+		Huttwil setVariable ["cti_town_neighbors",[Unterdorf,Muttenz,Bubendorf,NeueWelt]];
 		Seltisberg setVariable ["cti_town_neighbors",[Bubendorf,NeueWelt,OilRig,Trueb,Lenzburg]];
 		NeueWelt setVariable ["cti_town_neighbors",[Huttwil,Seltisberg,Trueb]];
 		Muttenz setVariable ["cti_town_neighbors",[Signau,Hindelbank,Huttwil,Unterdorf]];
@@ -404,7 +404,7 @@ switch (toLower(worldName)) do {
 		FuelDepot setVariable ["cti_town_neighbors",[Hindelbank,Bubendorf,OilRig]];
 		OilRig setVariable ["cti_town_neighbors",[FuelDepot,Seltisberg,Hafen]];
 		Bubendorf setVariable ["cti_town_neighbors",[Huttwil,FuelDepot,Seltisberg]];
-		Huttwil setVariable ["cti_town_neighbors",[Hindelbank,Muttenz,Bubendorf,NeueWelt]];
+		Huttwil setVariable ["cti_town_neighbors",[Unterdorf,Muttenz,Bubendorf,NeueWelt]];
 		Seltisberg setVariable ["cti_town_neighbors",[Bubendorf,NeueWelt,OilRig,Trueb,Lenzburg]];
 		NeueWelt setVariable ["cti_town_neighbors",[Huttwil,Seltisberg,Trueb]];
 		Muttenz setVariable ["cti_town_neighbors",[Signau,Hindelbank,Huttwil,Unterdorf]];
@@ -451,6 +451,5 @@ switch (toLower(worldName)) do {
 		Waldegg setVariable ["cti_town_neighbors",[Hungerschwand]];
 		Nordstern setVariable ["cti_town_neighbors",[Olten]];
 		Mayak setVariable ["cti_town_neighbors",[Lausen,InternationalAir]];
-
 	};
 };

@@ -71,3 +71,13 @@ if (CHVD_airSyncObj) then {
 	ctrlEnable [1905,true];
 	ctrlEnable [1018,true];
 };
+
+if (CHVD_maxTerrain) then {
+	ctrlEnable [1500,false];
+	ctrlEnable [1501,false];
+	ctrlEnable [1502,false];
+} else {	
+	ctrlEnable [1500,true];
+	ctrlEnable [1501,true];
+	ctrlEnable [1502,true];
+};

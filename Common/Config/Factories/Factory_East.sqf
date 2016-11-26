@@ -616,9 +616,11 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_T55_CSAT';		
 	_u pushBack 'CUP_O_BMP2_AMB_RU';	
 	_u pushBack 'CUP_O_ZSU23_SLA';		
-	_u pushBack 'CUP_O_2S6M_RU';		
+	_u pushBack 'CUP_O_2S6_RU';
+	_u pushBack 'CUP_O_2S6M_RU';	
 	_u pushBack 'CUP_B_T72_CZ';		
 	_u pushBack 'CUP_O_BM21_RU';
+	_u pushBack 'CUP_O_T90_RU';
 /* 
 	_u pushBack 'CUP_O_BMP1_CSAT';
 	_u pushBack 'CUP_O_BMP1P_CSAT';
@@ -630,6 +632,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_ZSU23_CSAT';
 	_u pushBack 'CUP_O_2S6M_RU';
 	_u pushBack 'OFPS_BMP3';
+	_u pushBack 'OFPS_BMP3_T';
 */
 
 	if (CTI_FACTION_EAST == 0) then {
@@ -645,6 +648,8 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'OFPS_BMP2_HQ_T';
 	_u pushBack 'OFPS_BMP2_M_T';
 	_u pushBack 'OFPS_BMP2_ZSU_T';
+	_u pushBack 'OFPS_BMP3';
+	_u pushBack 'OFPS_BMP3_T';
 		
 	};
 	if (CTI_FACTION_EAST == 2) then {
@@ -662,7 +667,6 @@ if (CTI_OFPS_ADDON > 0) then {
 	_u pushBack 'OFPS_BMP2_M';			
 	_u pushBack 'CUP_O_2S6M_RU';				
     _u pushBack 'OFPS_BMP2_ZSU';
-	_u pushBack 'OFPS_BMP3';
 
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid OFPS
@@ -1173,6 +1177,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack "CUP_B_RHIB_USMC";
 	_u pushBack "CUP_B_RHIB2Turret_USMC";
 	_u pushBack "CUP_B_Zodiac_USMC";
+	_u pushBack "CUP_C_Ikarus_TKC";
 
 	if (CTI_FACTION_EAST == 0) then {
 		//CSAT Arid CUP

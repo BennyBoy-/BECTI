@@ -25,8 +25,8 @@ onLoadName = "Conquer the Island BECTI";
 briefingName = "Conquer the Island BECTI";
 
 //--- ArmA 3 Specifics
-dev = "Benny";
-author = "Benny";
+dev = "Benny and OFPS Team";
+author = "Benny and OFPS Team";
 // overviewPicture
 
 //--- Properties.

@@ -24,6 +24,7 @@ _x_coord = _this select 7;
 _y_coord = _this select 8;
 _z_coord = _this select 9;
 _cameratext = _this select 10;
+_cameratextscore = _this select 11;
 
 // to do exception management
 // if ((isNull _campos1)or(isNull _campos2)or(isNull _targetcam)) then exitWith {};
@@ -84,6 +85,7 @@ camUseNVG _nvgstate;
 
 sleep 3;
 _cameratext spawn BIS_fnc_typeText;
+titleText [_cameratextscore, "PLAIN DOWN", 15];
 sleep _camera_duration;
 
 _camera cameraeffect ["terminate", "back"];

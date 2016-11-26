@@ -79,6 +79,28 @@ if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
 };
 
 if (isNil '_get') then { //--- The player has joined for the first time.
+	//--- Check if the teamstack protection is enabled or not
+	if ((missionNamespace getVariable "CTI_TEAMSTACK") > 0) then {
+		//--- Retrieve the player count for each given side (minus the connecting client)
+		_west_players = {side _x == west} count (playableUnits - [_leader]);
+		_east_players = {side _x == east} count (playableUnits - [_leader]);
+		
+		diag_log format["DEBUG:: STACKING: Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)];
+		
+		if (abs(_west_players - _east_players) <= (missionNamespace getVariable "CTI_TEAMSTACK")) then {
+			//--- Team stacking is ok so far
+			
+			diag_log format["DEBUG:: STACKING: Player [%1] [%2] on side [%3] is allowed to join!", _name, _uid, _side, _west_players, _east_players];
+			
+			// store info + diag
+		} else {
+			//--- The team stack limit has been reached, send this player back to the lobby
+			diag_log format["DEBUG:: STACKING: Player [%1] [%2] on side [%3] is not allowed to join!", _name, _uid, _side, _west_players, _east_players];
+			
+			// throw the player back to the lobby (rexec) + diag
+		};
+	};
+
 	//--- Format is [UID, Funds, First Joined side, Last Joined side (current one)]
 	missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], [_uid, 0, _side, _side, []]];
 	
