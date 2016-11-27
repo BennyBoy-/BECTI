@@ -114,6 +114,10 @@ if (_defense emptyPositions "gunner" > 0) then { //--- Hard defense
 	if (CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1 && getNumber(configFile >> "CfgVehicles" >> (_var select 1) >> "artilleryScanner") > 0) then {
 		(_defense) remoteExec ["CTI_PVF_CLT_OnArtilleryPieceTracked", CTI_PV_CLIENTS];
 	};
+	
+	if (typeOf(_defense) find "POOK_ANMPQ53" == 0 || typeOf(_defense) find "pook_SNR75_radar" == 0 || typeOf(_defense) find "pook_MIM104_PAC2" == 0 || typeOf(_defense) find "pook_MIM104_PAC2Battery" == 0) then {
+		_defense setVehicleLock "LOCKED";
+	}
 };
 
 //AdminZeus
