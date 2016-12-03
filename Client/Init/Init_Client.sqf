@@ -373,36 +373,35 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 				_introtext_6 = format ["%1", _territorymode];
 				_introtext_7 = format ["%1", _mode_guerrilla];
 				_introtext_8 = format ["%1", _mode_zombie];
-				if (CTI_DEV_MODE == 0) then {
+				
+				_introuid = getPlayerUID player;
+				_introget = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _introuid];
+
+				if (CTI_DEV_MODE == 0 || isNil '_introget') then {
 					if (!isNil "_camera_run") exitWith {};
 					_camera_run = true;
 					_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
-					_firstshot = [_hq, _hq, _hq, 60, 0.5, 0.4, false, 0, 0, 1] execVM "Client\Events\Events_UI_IntroCamera.sqf";
-					sleep 5;
+					_firstshot = [_hq, _hq, _hq, 40, 0.5, 0.4, false, 0, 0, 1] execVM "Client\Events\Events_UI_IntroCamera.sqf";
+					sleep 4;
 					[
 						[["OFPS CTI WARFARE","<t align = 'center' shadow = '1' size = '1.4' font='PuristaBold'>%1</t><br/>"],
 						["CAPTURE THE ISLAND","<t align = 'center' shadow = '1' size = '1.2' font='PuristaBold'>%1</t><br/>"],
 						[_introtext_1,"<br/><t align = 'center' shadow = '1' size = '1.1' font='PuristaBold'>%1</t><br/>"],
 						[_introtext_6,"<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>"]]
 					] spawn BIS_fnc_typeText;
-					sleep 16;
+					sleep 13;
 					[
-						[[_introtext_2,"<br/><br/><br/><t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>"],
+						[[_introtext_2,"<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>"],
 						[_introtext_3,"<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>"]]
 					] spawn BIS_fnc_typeText;
-					sleep 12;
-					[
-						[[_introtext_4,"<br/><br/><br/><t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>"],
-						[_introtext_5,"<br/><t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>"]]
-					] spawn BIS_fnc_typeText;
-					sleep 15;
+					sleep 10;
+					titleText [_introtext_4, "PLAIN", 1];sleep 4;titleFadeOut 1;
+					titleText [_introtext_5, "PLAIN", 1];sleep 4;titleFadeOut 1;
 					if (CTI_GUERILLA_MODE == 1) then {
-						[[[_introtext_7,"<br/><br/><br/><t align = 'center' shadow = '1' size = '1.1' font='PuristaBold'>%1</t>"]],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"] spawn BIS_fnc_typeText;
-						sleep 3;
+						titleText [_introtext_7, "PLAIN", 1];sleep 4;titleFadeOut 1;
 					};
 					if (CTI_ZOMBIE_MODE == 1) then {
-						[[[_introtext_8,"<br/><br/><br/><t align = 'center' shadow = '1' size = '1.1' font='PuristaBold'>%1</t>"]],0,0,"<t color='#FFFFFFFF' align='center'>%1</t>"] spawn BIS_fnc_typeText;
-						sleep 3;
+						titleText [_introtext_8, "PLAIN", 1];sleep 4;titleFadeOut 1;
 					};
 					waitUntil {scriptdone _firstshot};
 				};

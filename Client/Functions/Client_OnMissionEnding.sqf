@@ -26,12 +26,11 @@
 	[West, "loose"] spawn CTI_CL_FNC_OnMissionEnding
 */
 
-private ["_result", "_side", "_win","_enemyhq","_hq","_winnerside","_loserside","_winnername","_losername","_winnertext","_losertext","_scoretext1","_cameratext1","_cameratext2","_cameratext3","_endtext","_endmusic","_firstshot","_secondshot","_scoretext","_playerscore","_playerscore_kills","_playerscore_vehicle","_playerscore_armor","_playerscore_air","_playerscore_deaths","_playerscore_score","_playerscoretext"];
+private ["_result", "_side", "_win","_enemyhq","_winnerhq","_winnerside","_loserside","_winnername","_losername","_winnertext","_losertext","_scoretext1","_cameratext1","_cameratext2","_cameratext3","_endtext","_endmusic","_firstshot","_secondshot","_scoretext","_playerscore","_playerscore_kills","_playerscore_vehicle","_playerscore_armor","_playerscore_air","_playerscore_deaths","_playerscore_score","_playerscoretext"];
 
 _side = _this select 0;
 _result = _this select 1;
 
-CTI_GameOver = true;
 // player sidechat "%1 lost!!! booo! brit sucks btw.";
 //todo camera work and shitz
 _win = false;
@@ -102,15 +101,15 @@ _enemyhq = (_loserside) call CTI_CO_FNC_GetSideHQ;
 _firstshot = [_enemyhq, _enemyhq, _enemyhq, 40, 0.5, 0.4, false, 0, 0, 1, _cameratext1, _loserscoretext] execVM "Client\Events\Events_UI_OutroCamera.sqf";
 waitUntil {scriptdone _firstshot};
 
-_hq = (_winnerside) call CTI_CO_FNC_GetSideHQ;
-_secondshot = [_hq, _hq, _hq, 40, 0.5, 0.4, false, 0, 0, 1, _cameratext2, _winnerscoretext] execVM "Client\Events\Events_UI_OutroCamera.sqf";
+_winnerhq = (_winnerside) call CTI_CO_FNC_GetSideHQ;
+_secondshot = [_winnerhq, _winnerhq, _winnerhq, 40, 0.5, 0.4, false, 0, 0, 1, _cameratext2, _winnerscoretext] execVM "Client\Events\Events_UI_OutroCamera.sqf";
 waitUntil {scriptdone _secondshot};
 closeDialog 0;
 //createDialog "RscDisplayMPScoreTable";
 showScoretable 1;
-_thirdshot = [_hq, _hq, _hq, 60, 0.5, 0.4, false, 0, 0, 1, _cameratext3, _scoretext] execVM "Client\Events\Events_UI_OutroCamera.sqf";
+_thirdshot = [_winnerhq, _winnerhq, _winnerhq, 60, 0.5, 0.4, false, 0, 0, 1, _cameratext3, _scoretext] execVM "Client\Events\Events_UI_OutroCamera.sqf";
 waitUntil {scriptdone _thirdshot};
 showScoretable 0;
 
-
+CTI_GameOver = true;
 if (_win) then {["END1", true, 0] call BIS_fnc_endMission} else {["END2", false, 0] call BIS_fnc_endMission};

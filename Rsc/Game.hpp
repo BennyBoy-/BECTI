@@ -24,7 +24,7 @@ onLoadName = "Conquer the Island BECTI";
 
 briefingName = "Conquer the Island BECTI";
 
-disableChannels[] = { {0,false,true}, {2,true,true}, {6,true,true} };   
+//disableChannels[] = { {0,false,true}, {2,true,true}, {6,true,true} };   
 /*  disableChannels[] = {{channelID<number>, disableChat<bool>, disableVoice<bool>},{channelID<number>, disableChat<bool>, disableVoice<bool>},...}; 
 
 0=global, 1=side, 2=command, 3=group, 4=vehicle, 5=direct, 6=system 
