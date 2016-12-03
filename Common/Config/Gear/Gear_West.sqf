@@ -832,11 +832,11 @@ _u pushBack 2;
 _p pushBack 800;
 
 _i pushBack "B_Mortar_01_support_F";
-_u pushBack 5;
+_u pushBack 4;
 _p pushBack 50;
 
 _i pushBack "B_Mortar_01_weapon_F";
-_u pushBack 5;
+_u pushBack 4;
 _p pushBack 15000;
 
 //--- Glasses
@@ -863,6 +863,10 @@ _p pushBack 2;
 //--- Helms
 _i pushBack "H_HelmetB";
 _u pushBack 0;
+_p pushBack 5;
+
+_i pushBack "H_HelmetB_camo";
+_u pushBack 1;
 _p pushBack 5;
 
 _i pushBack "H_HelmetB_paint";
@@ -906,6 +910,14 @@ _u pushBack 0;
 _p pushBack 2;
 
 _i pushBack "H_Watchcap_blk";
+_u pushBack 0;
+_p pushBack 2;
+
+_i pushBack "H_MilCap_gen_F";
+_u pushBack 0;
+_p pushBack 2;
+
+_i pushBack "H_Beret_02";
 _u pushBack 0;
 _p pushBack 2;
 
