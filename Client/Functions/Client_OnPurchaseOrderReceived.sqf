@@ -135,6 +135,10 @@ _units = [];
 if (_model isKindOf "Man") then {
 	_vehicle = [_model, group player, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit;
 	_units pushBack _vehicle;
+	if (_model == missionNamespace getVariable format["CTI_%1_%2", CTI_P_SideJoined, "Crew"] || 
+		_model == missionNamespace getVariable format["CTI_%1_%2", CTI_P_SideJoined, "Pilot"]) then {
+		_vehicle call FNC_AdjustPlayerCrewSkill;
+	};
 } else {
 	_vehicle = [_model, _position, _direction + getDir _factory, CTI_P_SideID, (_veh_infos select 4), true, true] call CTI_CO_FNC_CreateVehicle;
 	
@@ -149,6 +153,7 @@ if (_model isKindOf "Man") then {
 		
 		if (_veh_infos select 0) then {
 			_unit = [_crew, group player, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit;
+			_unit call FNC_AdjustPlayerCrewSkill;
 			_unit moveInDriver _vehicle;
 			_units pushBack _unit;
 		};
@@ -156,14 +161,15 @@ if (_model isKindOf "Man") then {
 		{
 			if (count _x == 1 && _veh_infos select 3) then {
 				_unit = [_crew, group player, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit;
+				_unit call FNC_AdjustPlayerCrewSkill;
 				_unit moveInTurret [_vehicle, (_x select 0)];
 				_units pushBack _unit;
 			}; //--- Turret
 			
 			if (count _x == 2) then {
 				switch (_x select 1) do {
-					case "Gunner": { if (_veh_infos select 1) then { _unit = [_crew, group player, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit; _unit moveInTurret [_vehicle, (_x select 0)]; _units pushBack _unit; }};
-					case "Commander": { if (_veh_infos select 2) then { _unit = [_crew, group player, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit; _unit moveInTurret [_vehicle, (_x select 0)]; _units pushBack _unit; }};
+					case "Gunner": { if (_veh_infos select 1) then { _unit = [_crew, group player, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit; _unit call FNC_AdjustPlayerCrewSkill; _unit moveInTurret [_vehicle, (_x select 0)]; _units pushBack _unit; }};
+					case "Commander": { if (_veh_infos select 2) then { _unit = [_crew, group player, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit; _unit call FNC_AdjustPlayerCrewSkill; _unit moveInTurret [_vehicle, (_x select 0)]; _units pushBack _unit; }};
 				};
 			};
 		} forEach (_var_classname select CTI_UNIT_TURRETS);
