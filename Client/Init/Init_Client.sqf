@@ -373,11 +373,8 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 				_introtext_6 = format ["%1", _territorymode];
 				_introtext_7 = format ["%1", _mode_guerrilla];
 				_introtext_8 = format ["%1", _mode_zombie];
-				
-				_introuid = getPlayerUID player;
-				_introget = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _introuid];
 
-				if (CTI_DEV_MODE == 0 || isNil '_introget') then {
+				if (CTI_DEV_MODE == 0) then {
 					if (!isNil "_camera_run") exitWith {};
 					_camera_run = true;
 					_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
