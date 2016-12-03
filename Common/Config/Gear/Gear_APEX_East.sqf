@@ -25,7 +25,15 @@ _i pushBack "B_ViperHarness_ghex_F";
 _u pushBack 3;
 _p pushBack 500;
 
+_i pushBack "B_ViperHarness_hex_F";
+_u pushBack 3;
+_p pushBack 500;
+
 _i pushBack "B_ViperLightHarness_ghex_F";
+_u pushBack 3;
+_p pushBack 500;
+
+_i pushBack "B_ViperLightHarness_hex_F";
 _u pushBack 3;
 _p pushBack 500;
 
@@ -84,6 +92,10 @@ _i pushBack "H_HelmetO_ViperSP_ghex_F";
 _u pushBack 3;
 _p pushBack 2000;
 
+_i pushBack "H_HelmetO_ViperSP_hex_F";
+_u pushBack 3;
+_p pushBack 2000;
+
 
 //Face
 //UNIVERSAL
@@ -104,10 +116,18 @@ _i pushBack "O_NVGoggles_ghex_F";
 _u pushBack 0;
 _p pushBack 500;
 
+_i pushBack "O_NVGoggles_hex_F";
+_u pushBack 0;
+_p pushBack 500;
+
 
 //Binocs:
 //CSAT
 _i pushBack "Laserdesignator_02_ghex_F";
+_u pushBack 3;
+_p pushBack 1000;
+
+_i pushBack "Laserdesignator_02_hex_F";
 _u pushBack 3;
 _p pushBack 1000;
 
@@ -138,6 +158,10 @@ _i pushBack "U_O_V_Soldier_Viper_F";
 _u pushBack 3;
 _p pushBack 1000;
 
+_i pushBack "U_O_V_Soldier_Viper_hex_F";
+_u pushBack 3;
+_p pushBack 1000;
+
 //Guns:
 //(Ak-74)
 _i pushBack "arifle_AKM_F";
@@ -154,12 +178,20 @@ _i pushBack "arifle_CTAR_ghex_F";
 _u pushBack 1;
 _p pushBack 300;
 
+_i pushBack "arifle_CTAR_hex_F";
+_u pushBack 1;
+_p pushBack 300;
+
 _i pushBack "arifle_CTAR_blk_F";
 _u pushBack 1;
 _p pushBack 300;
 
 //(CAR-95GL)
 _i pushBack "arifle_CTAR_GL_ghex_F";
+_u pushBack 1;
+_p pushBack 400;
+
+_i pushBack "arifle_CTAR_GL_hex_F";
 _u pushBack 1;
 _p pushBack 400;
 
@@ -172,12 +204,20 @@ _i pushBack "arifle_CTARS_ghex_F";
 _u pushBack 1;
 _p pushBack 400;
 
+_i pushBack "arifle_CTARS_hex_F";
+_u pushBack 1;
+_p pushBack 400;
+
 _i pushBack "arifle_CTARS_blk_F";
 _u pushBack 1;
 _p pushBack 400;
 
 //(CMR-76 Sniper)
 _i pushBack "srifle_DMR_07_ghex_F";
+_u pushBack 2;
+_p pushBack 500;
+
+_i pushBack "srifle_DMR_07_hex_F";
 _u pushBack 2;
 _p pushBack 500;
 
@@ -192,6 +232,10 @@ _p pushBack 1000;
 
 //(Type 115 AR/CQB Hybrid)
 _i pushBack "arifle_ARX_ghex_F";
+_u pushBack 3;
+_p pushBack 700;
+
+_i pushBack "arifle_ARX_hex_F";
 _u pushBack 3;
 _p pushBack 700;
 
@@ -281,12 +325,20 @@ _i pushBack "muzzle_snds_65_TI_ghex_F";
 _u pushBack 4;
 _p pushBack 650;
 
+_i pushBack "muzzle_snds_65_TI_hex_F";
+_u pushBack 4;
+_p pushBack 650;
+
 _i pushBack "muzzle_snds_65_TI_blk_F";
 _u pushBack 4;
 _p pushBack 650;
 
 //(CAR-95)
 _i pushBack "muzzle_snds_58_wdm_F";
+_u pushBack 3;
+_p pushBack 500;
+
+_i pushBack "muzzle_snds_58_khk_F";
 _u pushBack 3;
 _p pushBack 500;
 
@@ -319,10 +371,9 @@ _p pushBack 800;
 
 //Bipod:
 
-_i pushBack "bipod_01_F_khk";
+_i pushBack "bipod_01_F_ghex";
 _u pushBack 0;
 _p pushBack 100; 
-
 
 //Launchers:
 _i pushBack "launch_RPG32_ghex_F";

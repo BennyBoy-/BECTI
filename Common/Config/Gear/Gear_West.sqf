@@ -934,6 +934,18 @@ _i pushBack "muzzle_snds_M";
 _u pushBack 4;
 _p pushBack 800;
 
+_i pushBack "muzzle_snds_338_black";
+_u pushBack 4;
+_p pushBack 800;
+
+_i pushBack "muzzle_snds_338_green";
+_u pushBack 4;
+_p pushBack 800;
+
+_i pushBack "muzzle_snds_338_sand";
+_u pushBack 4;
+_p pushBack 800;
+
 _i pushBack "optic_arco";
 _u pushBack 2;
 _p pushBack 400;
@@ -960,6 +972,22 @@ _p pushBack 200;
 
 _i pushBack "optic_SOS";
 _u pushBack 4;
+_p pushBack 800;
+
+_i pushBack "optic_SOS";
+_u pushBack 4;
+_p pushBack 800;
+
+_i pushBack "optic_LRPS";
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "optic_AMS_khk";
+_u pushBack 3;
+_p pushBack 800;
+
+_i pushBack "optic_AMS_snd";
+_u pushBack 3;
 _p pushBack 800;
 
 _i pushBack "optic_NVS";
@@ -1001,7 +1029,7 @@ _p pushBack 100;
 _i pushBack "bipod_01_F_blk";
 _u pushBack 2;
 _p pushBack 100;
-/* 
+
 _i pushBack "bipod_01_F_mtp";
 _u pushBack 0;
 _p pushBack 100;
@@ -1021,7 +1049,7 @@ _p pushBack 100;
 _i pushBack "bipod_03_F_blk";
 _u pushBack 0;
 _p pushBack 100;
- */
+ 
 //--- Items
 _i pushBack "NVGoggles";
 _u pushBack 0;
