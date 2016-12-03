@@ -366,35 +366,31 @@ _i pushBack "srifle_DMR_01_F";  //Rahim 7.62
 _u pushBack 3;
 _p pushBack 500;
 
-_i pushBack "srifle_DMR_04_F	";  //ASP-1 Kir 12.7 mm
+_i pushBack "srifle_DMR_04_F";  //ASP-1 Kir 12.7 mm
 _u pushBack 4;
 _p pushBack 1000;
 
-_i pushBack "srifle_DMR_04_Tan_F	";  
+_i pushBack "srifle_DMR_04_Tan_F";  
 _u pushBack 4;
 _p pushBack 1000;
 
-_i pushBack "srifle_DMR_04_F	";  //Cyrus 9.3 mm
+_i pushBack "srifle_DMR_04_F";  //Cyrus 9.3 mm
 _u pushBack 3;
 _p pushBack 800;
 
-_i pushBack "srifle_DMR_05_hex_F	";  
+_i pushBack "srifle_DMR_05_hex_F";  
 _u pushBack 3;
 _p pushBack 800;
 
-_i pushBack "srifle_DMR_05_tan_f	";  
+_i pushBack "srifle_DMR_05_tan_f";  
 _u pushBack 3;
 _p pushBack 800;
 
-_i pushBack "MMG_01_hex_F	";  //Navid 9.3 mm
+_i pushBack "MMG_01_hex_F";  //Navid 9.3 mm
 _u pushBack 3;
 _p pushBack 800;
 
-_i pushBack "MMG_01_tan_F	"; 
-_u pushBack 3;
-_p pushBack 800;
-
-_i pushBack "srifle_DMR_04_F	";  
+_i pushBack "MMG_01_tan_F"; 
 _u pushBack 3;
 _p pushBack 800;
 
@@ -1020,6 +1016,18 @@ _i pushBack "muzzle_snds_H";
 _u pushBack 2;
 _p pushBack 500;
 
+_i pushBack "bipod_02_F_blk";
+_u pushBack 0;
+_p pushBack 100; 
+
+_i pushBack "bipod_02_F_hex";
+_u pushBack 0;
+_p pushBack 100; 
+
+_i pushBack "bipod_01_F_khk";
+_u pushBack 0;
+_p pushBack 100; 
+
 _i pushBack "muzzle_snds_H_MG";
 _u pushBack 3;
 _p pushBack 700;
@@ -1040,6 +1048,14 @@ _i pushBack "muzzle_snds_M";
 _u pushBack 3;
 _p pushBack 700;
 
+_i pushBack "muzzle_snds_93mmg_tan";
+_u pushBack 4;
+_p pushBack 650;
+
+_i pushBack "muzzle_snds_93mmg";
+_u pushBack 4;
+_p pushBack 650;
+
 _i pushBack "optic_arco";
 _u pushBack 3;
 _p pushBack 400;
@@ -1059,7 +1075,6 @@ _p pushBack 200;
 _i pushBack "optic_ACO_grn";
 _u pushBack 0;
 _p pushBack 200;
-
 
 _i pushBack "optic_SOS";
 _u pushBack 4;
@@ -1087,6 +1102,18 @@ _u pushBack 4;
 _p pushBack 800;
 
 _i pushBack "optic_LRPS";
+_u pushBack 4;
+_p pushBack 800;
+
+_i pushBack "optic_KHS_hex";
+_u pushBack 4;
+_p pushBack 800;
+
+_i pushBack "optic_KHS_blk";
+_u pushBack 4;
+_p pushBack 800;
+
+_i pushBack "optic_KHS_khk";
 _u pushBack 4;
 _p pushBack 800;
 
