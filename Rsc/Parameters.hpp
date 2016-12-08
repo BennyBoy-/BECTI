@@ -309,7 +309,7 @@ class Params {
 		title = "GAMEPLAY: Weapon Sway Level";
 		values[] = {0,25,50,75,100};
 		texts[] = {"None","Little","Normal","Allot","Full"};
-		default = 25;
+		default = 0;
 	};
 	class CTI_SM_NONV {
 		title = "GAMEPLAY: Disable NVs, Thermal on Players";
