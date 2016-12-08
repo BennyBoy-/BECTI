@@ -105,23 +105,23 @@ _p pushBack 150;
 
 _i pushBack "RPG32_F";
 _u pushBack 2;
-_p pushBack 100;
+_p pushBack 300;
 
 _i pushBack "RPG32_HE_F";
 _u pushBack 2;
-_p pushBack 50;
+_p pushBack 250;
 
 _i pushBack "Titan_AA";
 _u pushBack 3;
-_p pushBack 500;
+_p pushBack 2000;
 
 _i pushBack "Titan_AP";
 _u pushBack 4;
-_p pushBack 500;
+_p pushBack 800;
 
 _i pushBack "Titan_AT";
 _u pushBack 4;
-_p pushBack 500;
+_p pushBack 3500;
 
 _i pushBack "16Rnd_9x21_Mag";  //Rook 40
 _u pushBack 0;
@@ -417,11 +417,11 @@ _p pushBack 600;
 
 _i pushBack "launch_O_Titan_F";
 _u pushBack 4;
-_p pushBack 1500;
+_p pushBack 2500;
 
 _i pushBack "launch_O_Titan_short_F";
 _u pushBack 3;
-_p pushBack 1500;
+_p pushBack 2000;
 
 
 _i pushBack "hgun_Rook40_F";
@@ -481,25 +481,30 @@ _i pushBack "U_O_FullGhillie_ard";
 _u pushBack 3;
 _p pushBack 600;
 
-
 _i pushBack "U_OG_Guerilla1_1";
 _u pushBack 1;
 _p pushBack 500;
+
 _i pushBack "U_OG_Guerilla2_1";
 _u pushBack 1;
 _p pushBack 500;
+
 _i pushBack "U_OG_Guerilla2_2";
 _u pushBack 1;
 _p pushBack 500;
+
 _i pushBack "U_OG_Guerilla2_3";
 _u pushBack 1;
 _p pushBack 500;
+
 _i pushBack "U_OG_Guerilla3_1";
 _u pushBack 1;
 _p pushBack 500;
+
 _i pushBack "U_OG_Guerilla3_2";
 _u pushBack 1;
 _p pushBack 500;
+
 _i pushBack "U_OG_Guerrilla_6_1";
 _u pushBack 1;
 _p pushBack 500;
