@@ -322,7 +322,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
 
 _headers pushBack 		"Camo net";
-_classes pushBack 		"CamoNet_BLUFOR_F";
+_classes pushBack 		"CamoNet_OPFOR_F";
 _prices pushBack 		50;
 _placements pushBack 	[0, 15];
 _categories pushBack 	"Fortification";
@@ -330,7 +330,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
 
 _headers pushBack 		"Camo net open";
-_classes pushBack 		"CamoNet_BLUFOR_open_F";
+_classes pushBack 		"CamoNet_OPFOR_open_F";
 _prices pushBack 		50;
 _placements pushBack 	[0, 15];
 _categories pushBack 	"Fortification";
@@ -338,7 +338,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
 
 _headers pushBack 		"Camo net vehicle";
-_classes pushBack 		"CamoNet_BLUFOR_big_F";
+_classes pushBack 		"CamoNet_OPFOR_big_F";
 _prices pushBack 		50;
 _placements pushBack 	[0, 15];
 _categories pushBack 	"Fortification";
@@ -1037,7 +1037,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
 
 _headers pushBack 		"Camo net";
-_classes pushBack 		"CamoNet_BLUFOR_F";
+_classes pushBack 		"CamoNet_OPFOR_F";
 _prices pushBack 		50;
 _placements pushBack 	[0, 15];
 _categories pushBack 	"Fortification";
@@ -1045,7 +1045,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
 
 _headers pushBack 		"Camo net open";
-_classes pushBack 		"CamoNet_BLUFOR_open_F";
+_classes pushBack 		"CamoNet_OPFOR_open_F";
 _prices pushBack 		50;
 _placements pushBack 	[0, 15];
 _categories pushBack 	"Fortification";
@@ -1053,7 +1053,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
 
 _headers pushBack 		"Camo net vehicle";
-_classes pushBack 		"CamoNet_BLUFOR_big_F";
+_classes pushBack 		"CamoNet_OPFOR_big_F";
 _prices pushBack 		50;
 _placements pushBack 	[0, 15];
 _categories pushBack 	"Fortification";
