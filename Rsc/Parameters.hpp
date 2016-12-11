@@ -455,6 +455,12 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 0;
 	};
+	class CTI_IF3_ADDON {
+		title = "ADDON: OFPS MOD Pack Support";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 1;
+	};
 	class SEPARATOR10 {
 		title = "========================= GAMEMODES ===========================";
 		values[] = {1};
