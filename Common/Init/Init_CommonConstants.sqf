@@ -537,7 +537,7 @@ CTI_VEHICLES_PROTECT_TIRES = 1; //--- Determine whether the damages applied to t
 //--- Vehicles: Repair Trucks
 CTI_VEHICLES_REPAIRTRUCK_BASE_BUILD_COEFFICIENT = 2; //--- Repair trucks build speed multiplier (<coefficient> / (<structure build time> / 100)), higher is faster.
 CTI_VEHICLES_REPAIRTRUCK_BASE_REPAIR = 0.01; //--- Repair trucks repair iteration per action over a structure.
-CTI_VEHICLES_REPAIRTRUCK_BASE_REPAIR_RANGE = 25; //--- Repair trucks may repair structures in that range
+CTI_VEHICLES_REPAIRTRUCK_BASE_REPAIR_RANGE = 50; //--- Repair trucks may repair structures in that range
 
 //--- Vehicles: Salvage Trucks
 CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX = 2; //--- Maximum amount of Independent Salvage Trucks which may be present per side

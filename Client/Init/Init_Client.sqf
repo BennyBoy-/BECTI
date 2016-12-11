@@ -156,6 +156,12 @@ if (CTI_OFPS_ADDON > 0) then {
 	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_OFPS_East.sqf"};
 };
 
+//--- Load IF3 Gear
+if (CTI_IF3_ADDON > 0) then {
+	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_IF3_West.sqf"};
+	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_IF3_East.sqf"};
+};
+
 CTI_InitClient = true;
 
 //--- Wait for a proper overall init (disabled slot?)
