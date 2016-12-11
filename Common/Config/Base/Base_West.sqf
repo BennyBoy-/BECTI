@@ -11,6 +11,10 @@ if (CTI_FACTION_WEST == 2) then {
 	//NATO Winter Vanilla
 	missionNamespace setVariable [format["CTI_%1_HQ", _side], "Meaty_Marshall_Sn"];
 };
+if (CTI_FACTION_WEST == 3) then {
+	//IF3 Nazi Germany
+	missionNamespace setVariable [format["CTI_%1_HQ", _side], "LIB_SdKfz_7"];
+};
 missionNamespace setVariable [format["CTI_%1_Factories", _side], ["Barracks","Light","Heavy","Air"]];
 
 missionNamespace setVariable [format["CTI_%1_Base_Template", _side], [
@@ -138,6 +142,8 @@ _placements pushBack 	[90, 25];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 50]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 
+//If it's just WWII, no Naval Fact required
+if (CTI_CUP_ADDON > 0 || CTI_VANILLA_ADDON > 0 || CTI_OFPS_ADDON > 0) then { 
 _headers pushBack 		[CTI_NAVAL, "Naval Yard", "Naval"];
 _classes pushBack 		["Land_Lighthouse_small_F", "Land_Lighthouse_small_ruins_F"];
 _prices pushBack 		2000;
@@ -145,7 +151,11 @@ _times pushBack 		35;
 _placements pushBack 	[180, 60];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 8]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+};
 
+if (CTI_IF3_ADDON > 0) then { 
+ //Sorry No Air/Arty Radar
+} else {
 if (CTI_CUP_ADDON > 0) then { 
 	_headers pushBack 		[CTI_RADAR, "Air Radar", "Air Radar"];
 	_classes pushBack 		["GUE_WarfareBAntiAirRadar", "Land_TTowerBig_1_ruins_F"];
@@ -179,6 +189,7 @@ if (CTI_CUP_ADDON > 0) then {
 	_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 8]];
 	_conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 };
+};
 
 [_side, _headers, _classes, _prices, _times, _placements, _specials, _conditions] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Structures.sqf";
 
@@ -190,6 +201,9 @@ _placements = [];
 _categories = [];
 _coinmenus = [];
 _coinblacklist = [];
+
+//If IF3 is not turned on, allow the statics below for Nazi Germany
+if (CTI_IF3_ADDON == 0) then { 
 
 _headers pushBack 		["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"], ["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0))}]]];
 _classes pushBack 		"Land_Medevac_house_V1_F";
@@ -882,5 +896,292 @@ _placements pushBack 	[0, 5];
 _categories pushBack 	"Structures";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
+
+};
+
+//If IF3 is loaded then only allow these statics
+if (CTI_IF3_ADDON > 0) then { 
+
+_headers pushBack 		["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"], ["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0))}]]];
+_classes pushBack 		"Land_Medevac_house_V1_F";
+_prices pushBack 		25000;
+_placements pushBack 	[180, 15];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack ["*"];
+
+_headers pushBack 		"MG42 Defense";
+_classes pushBack 		"LIB_MG42_Lafette";
+_prices pushBack 		1500;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"MG42 Defense LOW";
+_classes pushBack 		"LIB_MG42_Lafette_Low";
+_prices pushBack 		1500;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Pak40 AT Gun";
+_classes pushBack 		"LIB_Pak40";
+_prices pushBack 		6000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Mortar";
+_classes pushBack 		"LIB_GrWr34";
+_prices pushBack 		15000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Searchlight";
+_classes pushBack 		"LIB_GER_SearchLight";
+_prices pushBack 		500;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"AA Flak 30 Cannon (low rate)";
+_classes pushBack 		"LIB_Flak_30";
+_prices pushBack 		8000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"AA Flak 38 Cannon (High rate)";
+_classes pushBack 		"LIB_Flakvierling_38";
+_prices pushBack 		16000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_coinmenus pushBack 	["HQ"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Empty Crate";
+_classes pushBack		"O_supplyCrate_F";
+_prices pushBack 		5;
+_placements pushBack 	[0, 2];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Short Sandbag";
+_classes pushBack 		"Land_BagFence_Short_F";
+_prices pushBack 		5;
+_placements pushBack 	[0, 5];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Long Sandbag";
+_classes pushBack 		"Land_BagFence_Long_F";
+_prices pushBack 		10;
+_placements pushBack 	[0, 5];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Round Sandbag";
+_classes pushBack 		"Land_BagFence_Round_F";
+_prices pushBack 		10;
+_placements pushBack 	[0, 5];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Bunker (Small)";
+_classes pushBack 		"Land_BagBunker_Small_F";
+_prices pushBack 		50;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Razor Wire";
+_classes pushBack 		"Land_Razorwire_F";
+_prices pushBack 		1;
+_placements pushBack 	[0, 5];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		["Fence",[["CanAutoAlign", 7.5, 0]]];
+_classes pushBack 		"Land_Mil_WiredFence_F";
+_prices pushBack 		5;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Gate";
+_classes pushBack 		"Land_Mil_WiredFence_Gate_F";
+_prices pushBack 		5;
+_placements pushBack	[0, 15];
+_categories pushBack 	"Structures_Fences";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		["High Wall (Mil)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_Mil_WallBig_4m_F";
+_prices pushBack 		20;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		["High Wall Gate (Mil)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_Mil_WallBig_Gate_F";
+_prices pushBack 		40;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Camo net";
+_classes pushBack 		"CamoNet_BLUFOR_F";
+_prices pushBack 		50;
+_placements pushBack 	[0, 15];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Camo net open";
+_classes pushBack 		"CamoNet_BLUFOR_open_F";
+_prices pushBack 		50;
+_placements pushBack 	[0, 15];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Camo net vehicle";
+_classes pushBack 		"CamoNet_BLUFOR_big_F";
+_prices pushBack 		50;
+_placements pushBack 	[0, 15];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Tower";
+_classes pushBack  		"Land_Cargo_Patrol_V1_F";
+_prices pushBack  		150;
+_placements pushBack 	[0, 15];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack  		["Cargo Tower (big)",[["RuinOnDestroyed", "Land_Cargo_Tower_V1_ruins_F"], ["DMG_Reduce", 8]]];
+_classes pushBack  		"Land_Cargo_Tower_V1_F";
+_prices pushBack  		4000;
+_placements pushBack 	[0, 30];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack  		["Shed (Roof)",[["RuinOnDestroyed", "Land_Shed_Big_ruins_F"], ["DMG_Reduce", 8]]];
+_classes pushBack  		"Land_Shed_Big_F";
+_prices pushBack 		2000;
+_placements pushBack 	[0, 15];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 25], ["Land_Dome_Big_F", 40], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
+
+_headers pushBack 		["Shed (Land)",[["RuinOnDestroyed", "Land_Shed_Small_ruins_F"], ["DMG_Reduce", 5]]];
+_classes pushBack 		"Land_Shed_Small_F";
+_prices pushBack 		2000;
+_placements pushBack 	[90, 15];
+_categories pushBack 	"Structures_Industrial";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [["Land_Shed_Big_F", 10], ["Land_TentHangar_V1_F", 10], ["Land_sfp_mil_shed", 10], ["Land_sfp_torebodahangar", 10], ["Land_sfp_torebodahangar_alt2", 10], ["Land_Dome_Small_F", 25], ["Land_Dome_Big_F", 40], ["Land_Ss_hangar", 20], ["Land_Ss_hangard", 20]];
+
+_headers pushBack 		["H-Barrier10xTall",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Base_WarfareBBarrier10xTall";
+_prices pushBack 		500;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		["H-Barrier10x",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Base_WarfareBBarrier10x";
+_prices pushBack 		300;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		["H-Barrier5x",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Base_WarfareBBarrier5x";
+_prices pushBack 		150;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"EarthenNest (Green)";
+_classes pushBack 		"Land_fort_artillery_nest";
+_prices pushBack 		250;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"EarthenWall (Green)";
+_classes pushBack 		"Land_fort_rampart";
+_prices pushBack 		100;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Lamp";
+_classes pushBack 		"Land_LampHalogen_F";
+_prices pushBack 		5;
+_placements pushBack 	[90, 15];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Campfire";
+_classes pushBack 		"FirePlace_burning_F";
+_prices pushBack 		50;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Camp Chair";
+_classes pushBack 		"Land_CampingChair_V1_F";
+_prices pushBack 		50;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"Camp Table";
+_classes pushBack 		"Land_CampingTable_F";
+_prices pushBack 		50;
+_placements pushBack 	[90, 7];
+_categories pushBack 	"Fortification";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+_headers pushBack 		"WindSock";
+_classes pushBack 		"Windsock_01_F";
+_prices pushBack 		1;
+_placements pushBack 	[0, 5];
+_categories pushBack 	"Structures";
+_coinmenus pushBack 	["HQ", "RepairTruck"];
+_coinblacklist pushBack [];
+
+};
 
 [_side, _headers, _classes, _prices, _placements, _categories, _coinmenus, _coinblacklist] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Defenses.sqf";
