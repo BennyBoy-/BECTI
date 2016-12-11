@@ -133,8 +133,12 @@ call compile preprocessFile "Client\Functions\UI\Functions_UI_ServiceMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UnitsCamera.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UpgradeMenu.sqf";
 
-if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_West.sqf"};
-if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_East.sqf"};
+//--- Load Vanilla Gear
+if (CTI_APEX_ADDON > 0) then {
+	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_West.sqf"};
+	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_East.sqf"};
+};
+
 
 //--- Load APEX Gear
 if (CTI_APEX_ADDON > 0) then {
@@ -273,28 +277,32 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 					case 0: {_faction_west = "NATO Arid";};
 					case 1: {_faction_west = "NATO Tropic";};
 					case 2: {_faction_west = "NATO Winter";};
+					case 3: {_faction_west = "IF3 Germans";};
 				};
 				_faction_east = "";
 				switch (CTI_FACTION_EAST) do {
 					case 0: {_faction_east = "CSAT Arid";};
 					case 1: {_faction_east = "CSAT Tropic";};
 					case 2: {_faction_east = "CSAT Winter";};
+					case 3: {_faction_west = "IF3 SOV/USA";};
 				};
 				_town_west = "";
 				switch (CTI_TOWNS_OCCUPATION_WEST) do {
 					case 0: {_town_west = "Vanilla NATO";};
-					case 1: {_town_west = "US Army";};
-					case 2: {_town_west = "Mixed Forces";};
+					case 1: {_town_west = "CUP - US Army";};
+					case 2: {_town_west = "Mixed";};
 					case 3: {_town_west = "Pacific Special Forces";};
-					case 4: {_town_west = "Winter NATO";};
+					case 4: {_town_west = "Winter";};
+					case 5: {_town_west = "IF3 Germany";};
 				};
 				_town_east = "";
 				switch (CTI_TOWNS_OCCUPATION_EAST) do {
-					case 0: {_town_east = "Vanilla CSAT";};
+					case 0: {_town_east = "Vanilla";};
 					case 1: {_town_east = "Russians";};
 					case 2: {_town_east = "Mixed Forces";};
 					case 3: {_town_east = "Pacific Special Forces";};
 					case 4: {_town_east = "Winter CSAT";};
+					case 5: {_town_east = "IF3 SOV/USA";};
 				};
 				_town_indie = "";
 				switch (CTI_TOWNS_OCCUPATION_RESISTANCE) do {
@@ -306,7 +314,8 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 					case 5: {_town_indie = "CUP - Takistani Military";};
 					case 6: {_town_indie = "Mixed";};
 					case 7: {_town_indie = "Syndikat Paramilitary";};
-					case 8: {_town_indie = "AAF/Swedish Winter";};
+					case 8: {_town_indie = "AAF/Swedish Winter";};   
+					case 9: {_town_indie = "IF3 Polish";};   
 				};
 				_town_level_resistance = "";
 				switch (CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE) do {
