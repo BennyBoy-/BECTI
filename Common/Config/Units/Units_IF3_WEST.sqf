@@ -35,7 +35,7 @@ _d pushBack 0;
 
 _c pushBack 'LIB_GER_AT_soldier';
 _p pushBack '';
-_n pushBack '']; 
+_n pushBack ''; 
 _o pushBack 2000;
 _t pushBack 5;
 _u pushBack 3;
@@ -108,17 +108,7 @@ _p pushBack '';
 _n pushBack ''; 
 _o pushBack 8000;
 _t pushBack 5;
-_u pushBack 1;
-_f pushBack CTI_FACTORY_BARRACKS;
-_s pushBack "";
-_d pushBack 0;
-
-_c pushBack 'sfp_m90s_rifleman_ak5';
-_p pushBack '';
-_n pushBack ["Rifleman (Snow)"]; 
-_o pushBack 375;
-_t pushBack 5;
-_u pushBack 0;
+_u pushBack 3;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
@@ -147,7 +137,7 @@ _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'LIB_US_GMC_Tent';
+_c pushBack 'LIB_opelblitz_open_y_camo';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 800;
@@ -265,7 +255,7 @@ _d pushBack 0;
 
 //--- Ammo Vehicles
 
-_c pushBack 'LIB_opelblitzammo';
+_c pushBack 'LIB_opelblitz_ammo';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 5000;
@@ -277,7 +267,7 @@ _d pushBack 0;
 
 //--Fuel Truck
 
-_c pushBack 'LIB_opelblitzammo';
+_c pushBack 'LIB_opelblitz_fuel';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 2500;
