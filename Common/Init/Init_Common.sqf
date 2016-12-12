@@ -113,11 +113,14 @@ call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_East.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades_East.sqf";
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Base\Base_West.sqf";
-(east) call compile preprocessFileLineNumbers "Common\Config\Base\Base_East.sqf";
+(east) call compile preprocessFileLineNumbers "Common\Config\Base\Base_East.sqf"; 
 
+//--- VANILLA UNITS
+if (CTI_VANILLA_ADDON > 0) then { 
 (resistance) call compile preprocessFileLineNumbers "Common\Config\Units\Units_Resistance.sqf";
 (west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_East.sqf";
+};
 
 //--- APEX UNITS
 if (CTI_APEX_ADDON > 0) then { 

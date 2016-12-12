@@ -407,8 +407,8 @@ with missionNamespace do {
 	if (isNil 'CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO') then {CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO = 40}; //--- Determine the AI queue ratio (Queued unit = Groups * ratio/100)
 	if (isNil 'CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE') then {CTI_TOWNS_OCCUPATION_LEVEL_RESISTANCE = 10}; //--Set town occ max group for resistance
 	if (isNil 'CTI_TOWNS_OCCUPATION_LEVEL') then {CTI_TOWNS_OCCUPATION_LEVEL = 8}; //-- Set Town occ max group
-	if (isNil 'CTI_TOWNS_OCCUPATION_RESISTANCE') then {CTI_TOWNS_OCCUPATION_RESISTANCE = 9}; //--- Set Town Occupation Forces
-	if (isNil 'CTI_TOWNS_OCCUPATION_WEST') then {CTI_TOWNS_OCCUPATION_WEST = 4};
+	if (isNil 'CTI_TOWNS_OCCUPATION_RESISTANCE') then {CTI_TOWNS_OCCUPATION_RESISTANCE = 10}; //--- Set Town Occupation Forces
+	if (isNil 'CTI_TOWNS_OCCUPATION_WEST') then {CTI_TOWNS_OCCUPATION_WEST = 5};
 	if (isNil 'CTI_TOWNS_OCCUPATION_EAST') then {CTI_TOWNS_OCCUPATION_EAST = 5};
 	if (isNil 'CTI_TOWNS_PEACE') then {CTI_TOWNS_PEACE = 1200}; //--- Enable or disable the Town Peace mode (Expressed in seconds, 0 is disabled)
 	if (isNil 'CTI_TOWNS_RESISTANCE_LIMIT_AI') then {CTI_TOWNS_RESISTANCE_LIMIT_AI = 150}; //--- Determine the soft limit for overall resistance Town AI
@@ -641,6 +641,7 @@ CTI_HALO_ALTITUDE = 1200;
 CTI_HALO_RATIO = 1;
 CTI_HALO_COST = 1000;
 
+if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 1};
 CTI_VOTE_TIME = 60; //--- Commander Vote time
 if (CTI_DEV_MODE > 0) then {
 	CTI_VOTE_TIME = 5;
@@ -673,7 +674,7 @@ with missionNamespace do {
 	if (isNil 'CTI_ECONOMY_STARTUP_SUPPLY_EAST') then {CTI_ECONOMY_STARTUP_SUPPLY_EAST = 1200};
 	if (isNil 'CTI_ECONOMY_STARTUP_SUPPLY_WEST') then {CTI_ECONOMY_STARTUP_SUPPLY_WEST = 1200};
 
-	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 1};
+	
 	if (CTI_DEV_MODE > 0) then {
 		CTI_ECONOMY_STARTUP_FUNDS_EAST = 1000000;
 		CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER = 1000000;
@@ -727,7 +728,7 @@ with missionNamespace do {
 	if (isNil 'CTI_IF3_ADDON') then {CTI_IF3_ADDON = 1};
 	
 
-	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 0};
+
 	if (isNil 'CTI_ZOMBIE_MODE') then {CTI_ZOMBIE_MODE = 0};
 	if (isNil 'CTI_GUERILLA_MODE') then {CTI_GUERILLA_MODE = 0};
 
