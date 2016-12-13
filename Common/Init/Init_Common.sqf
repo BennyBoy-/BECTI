@@ -212,8 +212,27 @@ if (CTI_CUP_ADDON > 0) then {
 		[["hgun_PDW2000_F",["","","",""],["30Rnd_9x21_Mag"]],["CUP_launch_RPG18",["","","",""],["CUP_RPG18_M"]],["CUP_hgun_Makarov",["","","",""],["CUP_8Rnd_9x18_Makarov_M"]]],
 		[["IP_U_O_CombatUniform_SnowHex",["firstaidkit","firstaidkit","30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag"]],["CUP_V_C_Police_Holster",["30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Mag","",""]],["B_FieldPack_oli",["CUP_HandGrenade_RGD5","CUP_HandGrenade_RGD5"]]],
 		["CUP_H_RUS_6B27_NVG_olive",""],[["CUP_NVG_PVS7","binocular"],["itemmap","","itemradio","itemcompass","itemwatch"]]]];
-
 	};
+};
+	
+if (CTI_IF3_ADDON > 0) then { 
+	
+	if (CTI_FACTION_WEST == 3) then {
+	//IF3 Nazi Germany
+	missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
+		[["LIB_K98",["","","",""],["lib_5Rnd_792x57"]],["LIB_RPzB",["","","",""],["LIB_1Rnd_RPzB"]],["LIB_P38",["","","",""],["lib_8Rnd_9x19"]]],
+		[["U_LIB_GER_Recruit",["firstaidkit","firstaidkit","lib_5Rnd_792x57","lib_5Rnd_792x57","lib_5Rnd_792x57","lib_5Rnd_792x57"]],["V_LIB_GER_VestKar98",["lib_5Rnd_792x57","lib_5Rnd_792x57","lib_5Rnd_792x57","lib_5Rnd_792x57","",""]],["B_LIB_GER_A_frame",["LIB_shg24","LIB_shg24",""]]],
+		["H_LIB_GER_Cap",""],[["","LIB_Binocular_GER"],["itemmap","","itemradio","itemcompass","itemwatch"]]]];
+	};
+	if (CTI_FACTION_EAST == 3) then {	
+	//IF3 Soviet/USA
+	missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
+		[["LIB_M9130",["","","",""],["lib_5Rnd_762x54"]],["LIB_M1A1_Bazooka",["","","",""],["LIB_1Rnd_60mm_M6"]],["LIB_M1895",["","","",""],["lib_7Rnd_762x38"]]],
+		[["U_LIB_SOV_Strelok",["firstaidkit","firstaidkit","lib_5Rnd_762x54","lib_5Rnd_762x54","lib_5Rnd_762x54","lib_5Rnd_762x54"]],["V_LIB_SOV_RA_SVTBelt",["lib_5Rnd_762x54","lib_5Rnd_762x54","lib_5Rnd_762x54","lib_5Rnd_762x54","",""]],["B_LIB_US_Bandoleer",["lib_m39","lib_m39"]]],
+		["H_LIB_SOV_RA_PrivateCap",""],[["","LIB_Binocular_SU"],["itemmap","","itemradio","itemcompass","itemwatch"]]]];
+		};
+
+		
 }else {
 //Default Vanilla
 missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
