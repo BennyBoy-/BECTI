@@ -39,7 +39,7 @@ if (isNil "ZAM_showNames_var_drawJobs") then {ZAM_showNames_var_drawJobs = []};
 
 
 //===================== Code run continuously to update name tags =====================
-for "" from 0 to 1 step 0 do {
+for "_i" from 0 to 1 step 0 do {
 
 	// Loop ends when the key is released
 	if !(ZAM_showNames_on) exitWith {};
