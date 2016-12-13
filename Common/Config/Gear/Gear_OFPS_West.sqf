@@ -48,6 +48,12 @@ _u pushBack 0;
 _p pushBack 300;
 
 //Backpacks
+
+//very large bags
+_i pushBack "B_Bergen_mcamo_F";
+_u pushBack 3;
+_p pushBack 600;
+
 _i pushBack "AAF_D_AssaultPack_B";
 _u pushBack 0;
 _p pushBack 300;
@@ -114,11 +120,11 @@ _p pushBack 300;
 //support
 _i pushBack "IP_launch_O_Titan_short_snw_F";
 _u pushBack 4;
-_p pushBack 1550;
+_p pushBack 2500;
 
 _i pushBack "IP_launch_O_Titan_snw_F";
 _u pushBack 3;
-_p pushBack 1500;
+_p pushBack 2000;
 
 
 

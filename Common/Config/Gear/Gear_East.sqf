@@ -105,23 +105,23 @@ _p pushBack 150;
 
 _i pushBack "RPG32_F";
 _u pushBack 2;
-_p pushBack 100;
+_p pushBack 300;
 
 _i pushBack "RPG32_HE_F";
 _u pushBack 2;
-_p pushBack 50;
+_p pushBack 250;
 
 _i pushBack "Titan_AA";
 _u pushBack 3;
-_p pushBack 500;
+_p pushBack 2000;
 
 _i pushBack "Titan_AP";
 _u pushBack 4;
-_p pushBack 500;
+_p pushBack 800;
 
 _i pushBack "Titan_AT";
 _u pushBack 4;
-_p pushBack 500;
+_p pushBack 3500;
 
 _i pushBack "16Rnd_9x21_Mag";  //Rook 40
 _u pushBack 0;
@@ -417,11 +417,11 @@ _p pushBack 600;
 
 _i pushBack "launch_O_Titan_F";
 _u pushBack 4;
-_p pushBack 1500;
+_p pushBack 2500;
 
 _i pushBack "launch_O_Titan_short_F";
 _u pushBack 3;
-_p pushBack 1500;
+_p pushBack 2000;
 
 
 _i pushBack "hgun_Rook40_F";
@@ -481,25 +481,30 @@ _i pushBack "U_O_FullGhillie_ard";
 _u pushBack 3;
 _p pushBack 600;
 
-
 _i pushBack "U_OG_Guerilla1_1";
 _u pushBack 1;
 _p pushBack 500;
+
 _i pushBack "U_OG_Guerilla2_1";
 _u pushBack 1;
 _p pushBack 500;
+
 _i pushBack "U_OG_Guerilla2_2";
 _u pushBack 1;
 _p pushBack 500;
+
 _i pushBack "U_OG_Guerilla2_3";
 _u pushBack 1;
 _p pushBack 500;
+
 _i pushBack "U_OG_Guerilla3_1";
 _u pushBack 1;
 _p pushBack 500;
+
 _i pushBack "U_OG_Guerilla3_2";
 _u pushBack 1;
 _p pushBack 500;
+
 _i pushBack "U_OG_Guerrilla_6_1";
 _u pushBack 1;
 _p pushBack 500;
@@ -639,27 +644,23 @@ _u pushBack 2;
 _p pushBack 800;
 
 _i pushBack "O_HMG_01_A_weapon_F";
-_u pushBack 1;
+_u pushBack 4;
 _p pushBack 500;
 
 _i pushBack "O_GMG_01_A_weapon_F";
-_u pushBack 2;
+_u pushBack 4;
 _p pushBack 800;
-
-_i pushBack "O_HMG_01_support_F";
-_u pushBack 2;
-_p pushBack 100;
 
 _i pushBack "O_GMG_01_support_F";
 _u pushBack 2;
 _p pushBack 100;
 
 _i pushBack "O_Mortar_01_support_F";
-_u pushBack 5;
+_u pushBack 4;
 _p pushBack 50;
 
 _i pushBack "O_Mortar_01_weapon_F";
-_u pushBack 5;
+_u pushBack 4;
 _p pushBack 15000;
 
 //--- Glasses
@@ -781,11 +782,11 @@ _i pushBack "H_PilotHelmetFighter_O";
 _u pushBack 1;
 _p pushBack 150;
 
-
+/*
 _i pushBack "H_MilCap_mcamo";
 _u pushBack 0;
 _p pushBack 5;
-
+*/
 _i pushBack "H_MilCap_ocamo";
 _u pushBack 0;
 _p pushBack 5;
@@ -797,19 +798,11 @@ _p pushBack 5;
 _i pushBack "H_MilCap_gry";
 _u pushBack 0;
 _p pushBack 5;
-
+/*
 _i pushBack "H_MilCap_dgtl";
 _u pushBack 0;
 _p pushBack 5;
-
-_i pushBack "H_Beret_02";
-_u pushBack 0;
-_p pushBack 5;
-
-_i pushBack "H_Beret_Colonel";
-_u pushBack 0;
-_p pushBack 5;
-
+*/
 _i pushBack "H_Beret_blk";
 _u pushBack 0;
 _p pushBack 5;
@@ -837,11 +830,11 @@ _p pushBack 5;
 _i pushBack "H_Bandanna_khk";
 _u pushBack 1;
 _p pushBack 5;
-
+/*
 _i pushBack "H_Bandanna_mcamo";
 _u pushBack 1;
 _p pushBack 5;
-
+*/
 _i pushBack "H_Bandanna_sgg";
 _u pushBack 1;
 _p pushBack 5;
@@ -901,7 +894,7 @@ _p pushBack 5;
 _i pushBack "H_Watchcap_khk";
 _u pushBack 0;
 _p pushBack 5;
-
+/*
 _i pushBack "H_Booniehat_khk_hs";
 _u pushBack 0;
 _p pushBack 5;
@@ -921,7 +914,7 @@ _p pushBack 5;
 _i pushBack "H_Booniehat_dgtl";
 _u pushBack 0;
 _p pushBack 5;
-
+*/
 _i pushBack "H_Cap_grn_BI";
 _u pushBack 0;
 _p pushBack 5;
@@ -929,11 +922,11 @@ _p pushBack 5;
 _i pushBack "H_Cap_blk";
 _u pushBack 0;
 _p pushBack 5;
-
+/*
 _i pushBack "H_Cap_blu";
 _u pushBack 0;
 _p pushBack 5;
-
+*/
 _i pushBack "H_Cap_blk_CMMG";
 _u pushBack 0;
 _p pushBack 5;
@@ -953,7 +946,7 @@ _p pushBack 5;
 _i pushBack "H_Cap_oli_hs";
 _u pushBack 0;
 _p pushBack 5;
-
+/*
 _i pushBack "H_Cap_khaki_specops_UK";
 _u pushBack 0;
 _p pushBack 5;
@@ -973,7 +966,7 @@ _p pushBack 5;
 _i pushBack "H_Cap_brn_SPECOPS";
 _u pushBack 0;
 _p pushBack 5;
-
+*/
 _i pushBack "H_Hat_brown";
 _u pushBack 0;
 _p pushBack 5;

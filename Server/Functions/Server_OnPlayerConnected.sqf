@@ -82,8 +82,8 @@ if (isNil '_get') then { //--- The player has joined for the first time.
 	//--- Check if the teamstack protection is enabled or not
 	if ((missionNamespace getVariable "CTI_TEAMSTACK") > 0) then {
 		//--- Retrieve the player count for each given side (minus the connecting client)
-		_west_players = {side _x == west} count (playableUnits - [_leader]);
-		_east_players = {side _x == east} count (playableUnits - [_leader]);
+		_west_players = {side _x == west && isPlayer _x} count (playableUnits - [_leader]);
+		_east_players = {side _x == east && isPlayer _x} count (playableUnits - [_leader]);
 		
 		diag_log format["DEBUG:: STACKING: Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)];
 		
