@@ -197,7 +197,7 @@ _placements pushBack 	[180, 15];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack ["*"];
-
+/*
 _headers pushBack 		"Empty Crate";
 _classes pushBack 		"O_supplyCrate_F";
 _prices pushBack 		5;
@@ -205,7 +205,7 @@ _placements pushBack 	[0, 2];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
-
+*/
 _headers pushBack 		"Short Sandbag";
 _classes pushBack 		"Land_BagFence_Short_F";
 _prices pushBack 		5;

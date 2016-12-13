@@ -10,6 +10,12 @@ _p = [];
 //************************APEX Stuff************************
 
 //Backpacks
+
+//very large bags
+_i pushBack "B_Bergen_hex_F";
+_u pushBack 3;
+_p pushBack 600;
+
 //(Default Pack- medium)
 _i pushBack "B_FieldPack_ghex_F";
 _u pushBack 0;
@@ -96,6 +102,10 @@ _i pushBack "H_HelmetO_ViperSP_hex_F";
 _u pushBack 3;
 _p pushBack 2000;
 
+//(Syndakyt)
+_i pushBack "U_I_C_Soldier_Camo_F";
+_u pushBack 0;
+_p pushBack 300;
 
 //Face
 //UNIVERSAL
@@ -382,11 +392,11 @@ _p pushBack 600;
 
 _i pushBack "launch_O_Titan_ghex_F";
 _u pushBack 3;
-_p pushBack 1500;
+_p pushBack 2000;
 
 _i pushBack "launch_O_Titan_short_ghex_F";
 _u pushBack 4;
-_p pushBack 1550;
+_p pushBack 2500;
 
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf";
