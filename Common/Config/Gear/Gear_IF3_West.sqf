@@ -94,7 +94,7 @@ _p pushBack 450;
 
 
 //LIB_RPzB AT ammo nazi
-_i pushBack"LIB_1Rnd_RPzB";
+_i pushBack "LIB_1Rnd_RPzB";
 _u pushBack 0;
 _p pushBack 600;
 

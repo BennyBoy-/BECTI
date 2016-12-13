@@ -425,16 +425,7 @@ if (CTI_IF3_ADDON > 0) then {
   _u pushBack 'LIB_GER_pilot';
   _u pushBack 'LIB_GER_scout_sniper';
   _u pushBack 'LIB_GER_lieutenant';
-  _u pushBack '';
-  _u pushBack '';
-  _u pushBack '';
-  _u pushBack '';
-  _u pushBack '';
-  _u pushBack '';
-  _u pushBack '';
-  _u pushBack '';
-  _u pushBack '';
-  _u pushBack '';
+  
 };
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u];
