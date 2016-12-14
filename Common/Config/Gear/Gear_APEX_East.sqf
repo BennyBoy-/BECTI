@@ -10,12 +10,6 @@ _p = [];
 //************************APEX Stuff************************
 
 //Backpacks
-
-//very large bags
-_i pushBack "B_Bergen_hex_F";
-_u pushBack 3;
-_p pushBack 600;
-
 //(Default Pack- medium)
 _i pushBack "B_FieldPack_ghex_F";
 _u pushBack 0;
@@ -102,10 +96,6 @@ _i pushBack "H_HelmetO_ViperSP_hex_F";
 _u pushBack 3;
 _p pushBack 2000;
 
-//(Syndakyt)
-_i pushBack "U_I_C_Soldier_Camo_F";
-_u pushBack 0;
-_p pushBack 300;
 
 //Face
 //UNIVERSAL

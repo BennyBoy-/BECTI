@@ -48,12 +48,6 @@ _u pushBack 0;
 _p pushBack 300;
 
 //Backpacks
-
-//very large bags
-_i pushBack "B_Bergen_mcamo_F";
-_u pushBack 3;
-_p pushBack 600;
-
 _i pushBack "AAF_D_AssaultPack_B";
 _u pushBack 0;
 _p pushBack 300;
