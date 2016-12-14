@@ -31,6 +31,7 @@ CTI_Coin_CreateRootMenu = {
 
 //--- Used to create the root submenus
 CTI_Coin_LoadSubMenu = {
+	private["_price"];
 	params["_categories"];
 
 	//--- Load the structures if needed
@@ -75,8 +76,10 @@ CTI_Coin_LoadSubMenu = {
 			{
 				_info = missionNamespace getVariable _x;
 				if ((missionNamespace getVariable "CTI_COIN_SOURCE") in (_info select 6)) then {
-					_sub_items pushBack format["%1  -  $%2", _info select 0, _info select 2];
-					_sub_itemEnabled pushBack (if (_funds >= _info select 2) then {1} else {0});
+					_price = "";
+					if ((missionNamespace getVariable "CTI_COIN_SOURCE") == 'RepairTruck') then {_price = ((_info select 2) * CTI_VEHICLES_REPAIRTRUCK_BUILD_TAX_COEFFICIENT)} else {_price = (_info select 2)};
+					_sub_items pushBack format["%1  -  $%2", _info select 0, _price];
+					_sub_itemEnabled pushBack (if (_funds >= _price) then {1} else {0});
 					_sub_itemVariable pushBack _x;
 				};
 			} forEach (missionNamespace getVariable format["CTI_COIN_%1_DEFENSE_CATEGORY_%2", CTI_P_SideJoined, _x]);
@@ -290,6 +293,7 @@ CTI_Coin_UpdateBaseAreaLimits = {
 
 //--- A structure or defense preview is placed down
 CTI_Coin_OnPreviewPlacement = {
+	private ["_price"];
 	with missionNamespace do {
 		_item = objNull;//debug
 		_defense_pos_valid = true;
@@ -341,8 +345,10 @@ CTI_Coin_OnPreviewPlacement = {
 					};
 				};
 				case 'DEFENSES': {
+					_price = "";
+					if ((missionNamespace getVariable "CTI_COIN_SOURCE") == 'RepairTruck') then {_price = ((CTI_COIN_PARAM select 2) * CTI_VEHICLES_REPAIRTRUCK_BUILD_TAX_COEFFICIENT)} else {_price = (CTI_COIN_PARAM select 2)};
 					_variable = format ["CTI_%1_%2", CTI_P_SideJoined, CTI_COIN_PARAM select 1];
-					-(CTI_COIN_PARAM select 2) call CTI_CL_FNC_ChangePlayerFunds;
+					-(_price) call CTI_CL_FNC_ChangePlayerFunds;
 					[_variable, CTI_P_SideJoined, _position, _direction, player, profileNamespace getVariable ["CTI_COIN_WALLALIGN", true], profileNamespace getVariable ["CTI_COIN_AUTODEFENSE", true]] remoteExec ["CTI_PVF_SRV_RequestDefense", CTI_PV_SERVER];
 				};
 			};
