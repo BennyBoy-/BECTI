@@ -32,5 +32,3 @@ joinUnassigned = 0;
 
 // Debug Enable
 enableDebugConsole = 1;
-
-};

@@ -120,42 +120,4 @@ class CfgSounds {
 		titles[] = {};
 	};
 
-// sounds
-
-	class fl_start_1
-	{
-		name = "fl_start_1";
-		sound[] = {"\Rsc\Sounds\fl_start_1.ogg", 1, 1};
-		titles[] = {1, ""};
-	};	
-	class fl_burn_1
-	{
-		name = "fl_burn_1";
-		sound[] = {"\Rsc\Sounds\fl_burn_1.ogg", 1, 1};
-		titles[] = {1, ""};
-	};
-	class fl_start_2
-	{
-		name = "fl_start_2";
-		sound[] = {"\Rsc\Soundsfl_start_2.ogg", 1, 1};
-		titles[] = {1, ""};
-	};	
-	class fl_burn_2
-	{
-		name = "fl_burn_2";
-		sound[] = {"\Rsc\Soundsfl_burn_2.ogg", 1, 1};
-		titles[] = {1, ""};
-	};
-	class fl_start_3
-	{
-		name = "fl_start_3";
-		sound[] = {"\Rsc\Soundsfl_start_3.ogg", 1, 1};
-		titles[] = {1, ""};
-	};	
-	class fl_burn_3
-	{
-		name = "fl_burn_3";
-		sound[] = {"\Rsc\Soundsfl_burn_3.ogg", 1, 1};
-		titles[] = {1, ""};
-	};		
 };

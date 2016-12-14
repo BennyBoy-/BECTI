@@ -145,11 +145,6 @@ if (local player) then {
 	player addMPEventhandler ["MPRespawn", {player setCustomAimCoef _swayamount;}];
 };
 
-//Flares
-execvm "Client\Functions\Externals\ini_roadflare.sqf";
-execVM "Client\Functions\Externals\AL_roadflare\al_roadflare.sqf";
-execVM "Client\Functions\Externals\AL_roadflare\al_roadflare_effect.sqf";
-
 //Default Video Settings
 CHVD_allowNoGrass = false; // Set 'false' if you want to disable "None" option for terrain (default: true)
 CHVD_maxView = 3500; // Set maximum Foot view distance (default: 12000) 
