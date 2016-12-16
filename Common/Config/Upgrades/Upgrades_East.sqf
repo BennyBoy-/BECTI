@@ -171,6 +171,32 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 };
 };
 
+if (CTI_IF3_ADDON > 0) then {
+
+missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
+	[[],[],[],[]], //--- Gear
+	[[CTI_UPGRADE_GEAR, 1],[CTI_UPGRADE_GEAR, 2],[CTI_UPGRADE_GEAR, 3]], //--- Barracks
+	[[],[],[],[],[]], //--- Light
+	[[CTI_UPGRADE_LIGHT,1],[CTI_UPGRADE_LIGHT,2],[CTI_UPGRADE_LIGHT,3],[]], //--- Heavy
+	[[],[],[]], //--- Naval
+	[[CTI_UPGRADE_HEAVY,1],[CTI_UPGRADE_HEAVY,2],[],[],[]], //--- Air
+	[[CTI_UPGRADE_AIR, 1]], //--- Air FFAR
+	[[CTI_UPGRADE_AIR, 1]], //--- Air DAR
+	[[CTI_UPGRADE_AIR, 1]], //--- Air AT
+	[[CTI_UPGRADE_AIR, 1]], //--- Air AA
+	[[CTI_UPGRADE_AIR, 1]], //--- Air CM
+	[[CTI_UPGRADE_BARRACKS,1],[CTI_UPGRADE_LIGHT,2],[CTI_UPGRADE_LIGHT,3]], //--- Towns Depots
+	[[CTI_UPGRADE_AIR, 1],[CTI_UPGRADE_AIR, 2]], //--- Halo
+	[[],[],[]], //--- Air Radar
+	[[],[],[]], //--- Art Radar
+	[[],[],[]], //--- Respawn Range
+	[[]], //--- IR Smoke
+	[[CTI_UPGRADE_AIR, 3]], //--- Satellite
+	[[CTI_UPGRADE_LIGHT,4]], //--- Nuke
+	[[],[],[]] //--- Supply Rate
+]];
+} else {
+
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[],[],[],[]], //--- Gear
 	[[CTI_UPGRADE_GEAR, 1],[CTI_UPGRADE_GEAR, 2],[CTI_UPGRADE_GEAR, 3]], //--- Barracks
@@ -194,6 +220,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[],[],[]] //--- Supply Rate
 ]];
 
+};
 if (CTI_DEV_MODE > 0) then { 
 	missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[1, 1, 1, 1], //--- Gear
@@ -347,6 +374,32 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_AI_ORDER", _side], [
 ]];
 
 if (CTI_IsClient) then {
+	if (CTI_IF3_ADDON > 0) then {
+
+		missionNamespace setVariable [Format["CTI_%1_UPGRADES_LABELS", _side], [
+		["Gear", "Unlock better gear"], //--- Gear
+		["Barracks", "Unlock better infantry units"], //--- Barracks
+		["Light Factory", "Unlock better motorized units"], //--- Light
+		["Heavy Factory", "Unlock better armored units"], //--- Heavy
+		["Disabled", "Not available with IF3"], //--- Naval
+		["Aircraft Factory", "Unlock better aircraft units"], //--- Air
+		["Disabled", "Not available with IF3"], //--- Air FFAR
+		["Disabled", "Not available with IF3"], //--- Air DAR
+		["Disabled", "Not available with IF3"], //--- Air AT
+		["Disabled", "Not available with IF3"], //--- Air AA
+		["Disabled", "Not available with IF3"], //--- Air CM
+		["Towns Depot", "Improves Gear/Vehicles available at Depots, also adds service menu at lvl1 w/tax"], //--- Towns Depot
+		["Halo", "Enable HALO Jumping from the Air factory and Depots"], //--- Halo
+		["Disabled", "Not available with IF3"], //--- Air Radar
+		["Disabled", "Not available with IF3"], //--- Art Radar
+		["Respawn Range", "Increase the max range of the respawn trucks, town camps and FOBS."], //--- Respawn Range
+		["Disabled", "Not available with IF3"], //--- IR Smoke
+		["Disabled", "Not available with IF3"], //--- Satellite
+		["Disabled", "Not available with IF3"], //--- Nuke
+		["Supply Rate", "Improves rate at which Town SV Raises"] //--- Supply Rate
+		]];
+	} else {
+
 	missionNamespace setVariable [Format["CTI_%1_UPGRADES_LABELS", _side], [
 		["Gear", "Unlock better gear"], //--- Gear
 		["Barracks", "Unlock better infantry units"], //--- Barracks
@@ -368,7 +421,12 @@ if (CTI_IsClient) then {
 		["(DISABLED) Satellite", "Allows the use of the satellite camera"], //--- Satellite
 		["Nuclear Arms Deal", "Unlock Nuke Truck in Light Factory"], //--- Nuke
 		["Supply Rate", "Improves rate at which Town SV Raises"] //--- Supply Rate
-	]];
+		]];
+
+
+	};
+
+
 };
 
 //--- Check potential missing definition.
