@@ -32,13 +32,13 @@ if (CTI_FACTION_EAST == 2) then {
 };
 if (CTI_FACTION_WEST == 3) then {
 	//IF3 SOV/USA 
-	missionNamespace setVariable [format["CTI_%1_Commander", _side], "LIB_US_captain"];
-	missionNamespace setVariable [format["CTI_%1_Worker", _side], "LIB_US_rifleman"];
-	missionNamespace setVariable [format["CTI_%1_Diver", _side], "LIB_US_rifleman"];
-	missionNamespace setVariable [format["CTI_%1_Soldier", _side], "LIB_US_rifleman"];
-	missionNamespace setVariable [format["CTI_%1_Crew", _side], "LIB_US_tank_crew"];
-	missionNamespace setVariable [format["CTI_%1_Pilot", _side], "LIB_US_pilot"];
-	missionNamespace setVariable [format["CTI_%1_Static", _side], "LIB_US_rifleman"];
+	missionNamespace setVariable [format["CTI_%1_Commander", _side], "LIB_SOV_captain"];
+	missionNamespace setVariable [format["CTI_%1_Worker", _side], "LIB_SOV_rifleman"];
+	missionNamespace setVariable [format["CTI_%1_Diver", _side], "LIB_SOV_rifleman"];
+	missionNamespace setVariable [format["CTI_%1_Soldier", _side], "LIB_SOV_rifleman"];
+	missionNamespace setVariable [format["CTI_%1_Crew", _side], "LIB_SOV_tank_crew"];
+	missionNamespace setVariable [format["CTI_%1_Pilot", _side], "LIB_SOV_pilot"];
+	missionNamespace setVariable [format["CTI_%1_Static", _side], "LIB_SOV_rifleman"];
 };
 if (CTI_CUP_ADDON > 0) then {
 	if (CTI_OFPS_ADDON > 0) then {
@@ -391,17 +391,17 @@ if (CTI_OFPS_ADDON > 0) then {
 
 if (CTI_IF3_ADDON > 0) then { 
 //-- IF3 UNITS
-  _u pushBack 'LIB_US_rifleman';
+  _u pushBack 'LIB_SOV_rifleman';
   _u pushBack 'LIB_SOV_smgunner';
   _u pushBack 'LIB_US_AT_soldier';
-  _u pushBack 'LIB_US_tank_crew';
+  _u pushBack 'LIBSOVtank_crew';
   _u pushBack 'LIB_SOV_AT_grenadier';
   _u pushBack 'LIB_SOV_sapper';
   _u pushBack 'LIB_wp_medic';
   _u pushBack 'LIB_SOV_assault_mgunner';
-  _u pushBack 'LIB_US_pilot';
+  _u pushBack 'LIBSOVpilot';
   _u pushBack 'LIB_SOV_scout_sniper';
-  _u pushBack 'LIB_US_captain';
+  _u pushBack 'LIBSOVcaptain';
   
 };
 

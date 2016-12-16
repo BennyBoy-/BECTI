@@ -13,7 +13,7 @@ _d = []; //--- Extra Distance (From Factory)
 
 //--- Infantry
 
-_c pushBack 'LIB_US_rifleman';
+_c pushBack 'LIB_SOV_rifleman';
 _p pushBack '';
 _n pushBack ''; 
 _o pushBack 500;
@@ -33,7 +33,7 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'LIB_US_AT_soldier';
+_c pushBack 'LIB_SOV_AT_soldier';
 _p pushBack '';
 _n pushBack ''; 
 _o pushBack 2000;
@@ -43,7 +43,7 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'LIB_US_tank_crew';
+_c pushBack 'LIB_SOV_gun_crew';
 _p pushBack '';
 _n pushBack ''; 
 _o pushBack 250;
@@ -73,7 +73,7 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'LIB_wp_medic';
+_c pushBack 'LIB_SOV_medic';
 _p pushBack '';
 _n pushBack ''; 
 _o pushBack 400;
@@ -93,7 +93,7 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'LIB_US_pilot';
+_c pushBack 'LIB_SOV_pilot';
 _p pushBack '';
 _n pushBack ''; 
 _o pushBack 300;
@@ -113,7 +113,7 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-_c pushBack 'LIB_US_captain';
+_c pushBack 'LIB_SOV_captain';
 _p pushBack '';
 _n pushBack ''; 
 _o pushBack 750;

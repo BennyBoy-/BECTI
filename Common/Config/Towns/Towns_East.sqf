@@ -275,22 +275,22 @@ if (CTI_TOWNS_OCCUPATION_EAST == 4) then {
 if (CTI_TOWNS_OCCUPATION_WEST == 5) then { 
 //--- Iron Front 3 Soviet/USA
 //--- Infantry
-	EAST_SOLDIER = "LIB_US_rifleman";
+	EAST_SOLDIER = "LIB_SOV_rifleman";
 	EAST_SOLDIER_AA = "LIB_SOV_rifleman";
-	EAST_SOLDIER_AR = "LIB_US_smgunner";
-	EAST_SOLDIER_AT = "LIB_US_AT_soldier";
+	EAST_SOLDIER_AR = "LIB_SOV_smgunner";
+	EAST_SOLDIER_AT = "LIB_SOV_AT_soldier";
 	EAST_SOLDIER_CREW = "LIB_SOV_tank_crew";
-	EAST_SOLDIER_LAT = "LIB_wp_AT_grenadier";
+	EAST_SOLDIER_LAT = "LIB_SOV_AT_grenadier";
 	EAST_SOLDIER_HAT = "LIB_SOV_AT_soldier";
 	EAST_SOLDIER_ENGINEER = "LIB_SOV_sapper";
 	EAST_SOLDIER_EXP = "LIB_SOV_assault_smgunner";
 	EAST_SOLDIER_GL = "LIB_SOV_AT_grenadier";
-	EAST_SOLDIER_MEDIC = "LIB_wp_medic";
+	EAST_SOLDIER_MEDIC = "LIB_SOV_medic";
 	EAST_SOLDIER_MG = "LIB_SOV_scout_mgunner";
-	EAST_SOLDIER_PILOT = "LIB_US_pilot";
+	EAST_SOLDIER_PILOT = "LIB_SOV_pilot";
 	EAST_SOLDIER_SNIPER = "LIB_SOV_scout_sniper";
-	EAST_SOLDIER_TEAMLEADER = "LIB_US_first_lieutenant";
-	EAST_SOLDIER_SQUADLEADER = "LIB_US_captain";
+	EAST_SOLDIER_TEAMLEADER = "LIB_SOV_captain";
+	EAST_SOLDIER_SQUADLEADER = "LIB_SOV_captain";
 	//--- Naval Infantry
 	EAST_SOLDIER_NAVAL_INFANTRY = "";
 	EAST_SOLDIER_NAVAL_SQUADLEADER = "";

@@ -371,7 +371,7 @@ _i pushBack "U_LIB_SOV_Tank_kapitan";//RA tankist cloths (kapitan)
 _u pushBack 2;
 _p pushBack 250;
 
-	//US Uniforms
+/*	//US Uniforms
 
 _i pushBack "U_LIB_US_Private";//US clothing (private)
 _u pushBack 0;
@@ -400,6 +400,8 @@ _p pushBack 100;
 _i pushBack "U_LIB_US_Cap";//US clothing (Captain)
 _u pushBack 2;
 _p pushBack 150;
+
+*/
 
 //--- Vests
 
