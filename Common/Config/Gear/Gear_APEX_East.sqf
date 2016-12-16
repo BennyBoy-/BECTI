@@ -382,11 +382,11 @@ _p pushBack 600;
 
 _i pushBack "launch_O_Titan_ghex_F";
 _u pushBack 3;
-_p pushBack 1500;
+_p pushBack 2000;
 
 _i pushBack "launch_O_Titan_short_ghex_F";
 _u pushBack 4;
-_p pushBack 1550;
+_p pushBack 2500;
 
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf";

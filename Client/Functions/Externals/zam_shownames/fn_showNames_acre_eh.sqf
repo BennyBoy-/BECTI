@@ -33,7 +33,7 @@
 	_var_name = "ZAM_showNames_var_acre_speaking";	// Used in setVariable
 
 	// Main loop (for loop for performance reasons)
-	for "" from 0 to 1 step 0 do {
+	for "_i" from 0 to 1 step 0 do {
 
 
 		// Make sure the player is alive and functional

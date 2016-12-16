@@ -207,12 +207,12 @@ if (CTI_IF3_ADDON == 0) then {
 
 _headers pushBack 		["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"], ["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0))}]]];
 _classes pushBack 		"Land_Medevac_house_V1_F";
-_prices pushBack 		25000;
+_prices pushBack 		10000;
 _placements pushBack 	[180, 15];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack ["*"];
-
+/*
 _headers pushBack 		"Empty Crate";
 _classes pushBack		"O_supplyCrate_F";
 _prices pushBack 		5;
@@ -220,6 +220,7 @@ _placements pushBack 	[0, 2];
 _categories pushBack 	"Fortification";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
+*/
 
 _headers pushBack 		"Short Sandbag";
 _classes pushBack 		"Land_BagFence_Short_F";
