@@ -24,6 +24,30 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], [
 	true, //--- Nuke
 	true //--- Supply Rate
 ]];
+if (CTI_IF3_ADDON > 0) then {
+missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
+    [1000,2000,3500,5000], //--- Gear
+	[500,1000,1500], //--- Barracks
+	[1500,3500,4500], //--- Light
+	[2000,4000,6000,15000], //--- Heavy
+	[0,0], //--- Naval
+	[5000,10000], //--- Air
+	[0], //--- Air FFAR
+	[0], //--- Air DAR
+	[0], //--- Air AT
+	[0], //--- Air AA
+	[0], //--- Air CM
+	[2500, 5000, 7500], //--- Towns Depots
+	[1000, 2000], //--- Halo
+	[0], //--- Air Radar
+	[0], //--- Art Radar
+	[1500,2500,3500], //--- Respawn Range
+	[0], //--- IR SMOKE
+	[0], //--- Satellite
+	[0], //--- Nuke
+	[4000, 8000, 12000] //--- Supply Rate
+]];
+} else {
 if (CTI_GUERILLA_MODE == 1 || CTI_ZOMBIE_MODE == 1) then {
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
     [1000,2000,3500,5000], //--- Gear
@@ -71,7 +95,33 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[4000, 8000, 12000] //--- Supply Rate
 ]];
 };
+};
 
+
+if (CTI_IF3_ADDON > 0) then {
+missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
+	4, //--- Gear
+	3, //--- Barracks
+	3, //--- Light
+	4, //--- Heavy
+	0, //--- Naval
+	2, //--- Air
+	0, //--- Air FFAR
+	0, //--- Air DAR
+	0, //--- Air AT
+	0, //--- Air AA
+	0, //--- Air CM
+	3, //--- Towns Depots
+	2, //--- Halo
+	0, //--- Air Radar
+	0, //--- Art Radar
+	3, //--- Respawn Range
+	0, //--- IR Smoke
+	0, //--- Satellite
+	0, //--- Nuke
+	3 //--- Supply Rate
+]];
+} else {
 if (CTI_GUERILLA_MODE == 1 || CTI_ZOMBIE_MODE == 1) then {
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	4, //--- Gear
@@ -119,9 +169,10 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	3 //--- Supply Rate
 ]];
 };
+};
 
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
-	[[],[],[],[]], //--- Gear
+		[[],[],[],[]], //--- Gear
 	[[CTI_UPGRADE_GEAR, 1],[CTI_UPGRADE_GEAR, 2],[CTI_UPGRADE_GEAR, 3]], //--- Barracks
 	[[],[],[],[],[CTI_UPGRADE_NUKE, 1]], //--- Light
 	[[CTI_UPGRADE_LIGHT,1],[CTI_UPGRADE_LIGHT,2],[CTI_UPGRADE_LIGHT,3],[CTI_UPGRADE_LIGHT,4]], //--- Heavy
