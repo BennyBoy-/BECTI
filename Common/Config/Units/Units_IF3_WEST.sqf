@@ -166,8 +166,8 @@ _u pushBack 4;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
-
-_c pushBack 'LIB_SdKfz_7_AA';
+/*
+_c pushBack 'LIB_SdKfz_7_AA';   //Mobile AA, high rate...OP
 _p pushBack '';
 _n pushBack ''; 
 _o pushBack 30000;
@@ -176,7 +176,7 @@ _u pushBack 5;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
-
+*/
 //--- Heavy Vehicles
 
 _c pushBack 'LIB_StuG_III_G';
@@ -222,7 +222,7 @@ _d pushBack 0;
 _c pushBack 'LIB_PzKpfwVI_B';
 _p pushBack '';
 _n pushBack '';
-_o pushBack 50000;
+_o pushBack 80000;
 _t pushBack 30;
 _u pushBack 4;
 _f pushBack CTI_FACTORY_HEAVY;

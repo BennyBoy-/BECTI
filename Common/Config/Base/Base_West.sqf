@@ -811,7 +811,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
 
 _headers pushBack 		"Flag";
-_classes pushBack 		"Flag_NATO_F";
+_classes pushBack 		"flag_GER_co";
 _prices pushBack 		50;
 _placements pushBack 	[90, 15];
 _categories pushBack 	"Flag";
@@ -958,7 +958,7 @@ _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
-
+/* A bit OP
 _headers pushBack 		"AA Flak 38 Cannon (High rate)";
 _classes pushBack 		"LIB_Flakvierling_38";
 _prices pushBack 		16000;
@@ -966,7 +966,7 @@ _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
 _coinblacklist pushBack [];
-
+*/
 _headers pushBack 		"Empty Crate";
 _classes pushBack		"O_supplyCrate_F";
 _prices pushBack 		5;

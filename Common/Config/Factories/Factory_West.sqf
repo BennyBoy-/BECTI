@@ -590,11 +590,10 @@ if (CTI_IF3_ADDON > 0) then {
 //-- IF3 UNITS
  
   _u pushBack 'LIB_kfz1';
-  _u pushBack 'LIB_US_GMC_Tent';
   _u pushBack 'LIB_opelblitz_open_y_camo';
   _u pushBack 'LIB_kfz1_MG42';
   _u pushBack 'LIB_SdKfz251_FFV';
-  _u pushBack 'LIB_SdKfz_7_AA';
+ // _u pushBack 'LIB_SdKfz_7_AA';
 
 };
 

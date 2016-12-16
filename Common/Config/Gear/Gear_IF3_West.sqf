@@ -145,6 +145,10 @@ _i pushBack"LIB_shumine_42_MINE_mag";//Nazi Schuetzenmine 42
 _u pushBack 2;
 _p pushBack 450;
 
+_i pushBack "LIB_US_TNT_4pound_mag";//US 4 pound of TNT
+_u pushBack 3;
+_p pushBack 850;
+
 _i pushBack"LIB_TROTIL_MINE_mag";//Nazi Satchel charge (1 kg)
 _u pushBack 2;
 _p pushBack 150;

@@ -808,7 +808,7 @@ _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
 
 _headers pushBack 		"Flag";
-_classes pushBack 		"Flag_NATO_F";
+_classes pushBack 		"flag_SU_co";
 _prices pushBack 		50;
 _placements pushBack 	[90, 15];
 _categories pushBack 	"Flag";

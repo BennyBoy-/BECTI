@@ -111,19 +111,19 @@ class Params {
 		title = "TOWNS: Resistance Occupation Squad Count";
 		values[] = {5,10,15,20,25,30,35,40};
 		texts[] = {"Amateur","Novice","Average","Skilled","Professional","Specialist","Expert","Chuck Norris"};
-		default = 10;
+		default = 20;
 	};
 	class CTI_TOWNS_OCCUPATION_LEVEL {
 		title = "TOWNS: Side Occupation Squad Count";
 		values[] = {5,10,15,20,25,30,35,40};
 		texts[] = {"Amateur","Novice","Average","Skilled","Professional","Specialist","Expert","Chuck Norris"};
-		default = 10;
+		default = 20;
 	};
 	class CTI_TOWNS_OCCUPATION_RESISTANCE {
 		title = "TOWNS: Resistance Occupation Forces";
 		values[] = {0,1,2,3,4,5,6,7,8,9};
 		texts[] = {"Vanilla - AAF","Vanilla - FIA","CUP - ION PMC","CUP - NAPA Chernarus","CUP - Royal Army Corp Of Sahrani","CUP - Takistani Military","Mixed","Syndikat Paramilitary","AAF/Swedish Winter","IF3 Polish"};
-		default = 10;
+		default = 9;
 	};
 	class CTI_TOWNS_OCCUPATION_WEST {
 		title = "TOWNS: Blufor Occupation Forces";

@@ -1,5 +1,10 @@
 with missionNamespace do {
-	EAST_TOWNS_FLAG_TEXTURE = "\A3\Data_F\Flags\Flag_red_CO.paa";
+	if (CTI_TOWNS_OCCUPATION_WEST == 5) then { 
+	//--- Iron Front 3 sov/USA
+		EAST_TOWNS_FLAG_TEXTURE = "\WW2\Core_t\Decals_t\Ussr\flag_SU_co.paa";
+	} else {
+		EAST_TOWNS_FLAG_TEXTURE = "\A3\Data_F\Flags\Flag_red_CO.paa";
+	};
 	
 if (CTI_TOWNS_OCCUPATION_EAST == 0) then { 
 //--- VANILLA TOWN OCCUPATION
