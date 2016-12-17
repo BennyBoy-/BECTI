@@ -464,7 +464,7 @@ switch (toLower(worldName)) do {
 		Sielec setVariable ["cti_town_neighbors",[Grzybow,Zaraz,Pacanowka,StaszowAirport]];
 		Grzybow setVariable ["cti_town_neighbors",[Sielec,Nizny,Dobrow,Pacanowka,Zaraz]];
 		Dobrow setVariable ["cti_town_neighbors",[Grzybow,Nizny,NiecieslawiceAirfield,Tuczepy,ForestAirport]];
-		ForestAirport setVariable ["cti_town_neighbors",[Zyzna,Dobrow,Mokre,RadioControl]];
+		ForestAirport setVariable ["cti_town_neighbors",[Zyzna,Dobrow,Mokre]];
 		Zyzna setVariable ["cti_town_neighbors",[ForestAirport,Szydlow,Mokre]];
 		Szydlow setVariable ["cti_town_neighbors",[Zyzna,Mokre]];
 		Mokre setVariable ["cti_town_neighbors",[ForestAirport,Zyzna,Szydlow,Zaraz,Kotuszow]];
