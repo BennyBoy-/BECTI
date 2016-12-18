@@ -1,15 +1,15 @@
 class Params {
 	class CTI_FACTION_WEST {
 		title = "FACTION: West Forces";
-		values[] = {0,1,2};
-		texts[] = {"NATO Arid","NATO Tropic","NATO Winter"};
-		default = 0;
+		values[] = {0,1,2,3};
+		texts[] = {"NATO Arid","NATO Tropic","NATO Winter","IF3 Germans"};
+		default = 3;
 	};
 	class CTI_FACTION_EAST {
 		title = "FACTION: East Forces";
-		values[] = {0,1,2};
-		texts[] = {"CSAT Arid","CSAT Tropic","CSAT Winter"};
-		default = 0;
+		values[] = {0,1,2,3};
+		texts[] = {"CSAT Arid","CSAT Tropic","CSAT Winter","IF3 SOV/USA"};
+		default = 3;
 	};
 	class SEPARATOR0 {
 		title = "========================== INCOME ============================";
@@ -21,7 +21,7 @@ class Params {
 		title = "BASE: Areas";
 		values[] = {1,2,3,4,5};
 		texts[] = {"1","2","3","4","5"};
-		default = 2;
+		default = 1;
 	};
 	class CTI_BASE_HQ_REPAIR {
 		title = "BASE: HQ Repairable";
@@ -39,7 +39,7 @@ class Params {
 		title = "BASE: Startup Placement";
 		values[] = {2000,3000,4000,5000,6000,7000,8000,9000,10000,12000,15000,20000};
 		texts[] = {"2 KM","3 KM","4 KM","5 KM","6 KM","7 KM","8 KM","9 KM","10 KM","12 KM","15 KM","20 KM"};
-		default = 10000;
+		default = 15000;
 	};
 	class SEPARATOR1 {
 		title = "========================== INCOME ============================";
@@ -51,7 +51,7 @@ class Params {
 		title = "INCOME: Delay";
 		values[] = {30,35,40,45,50,55,60,65,70,75,80};
 		texts[] = {"30 Seconds","35 Seconds","40 Seconds","45 Seconds","50 Seconds","55 Seconds","01:00 Minutes","01:05 Minutes","01:10 Minutes","01:15 Minutes"};
-		default = 55;
+		default = 60;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER {
 		title = "INCOME: Starting Funds (East Commander)";
@@ -121,33 +121,33 @@ class Params {
 	};
 	class CTI_TOWNS_OCCUPATION_RESISTANCE {
 		title = "TOWNS: Resistance Occupation Forces";
-		values[] = {0,1,2,3,4,5,6,7,8};
-		texts[] = {"Vanilla - AAF","Vanilla - FIA","CUP - ION PMC","CUP - NAPA Chernarus","CUP - Royal Army Corp Of Sahrani","CUP - Takistani Military","Mixed","Syndikat Paramilitary","AAF/Swedish Winter"};
-		default = 6;
+		values[] = {0,1,2,3,4,5,6,7,8,9};
+		texts[] = {"Vanilla - AAF","Vanilla - FIA","CUP - ION PMC","CUP - NAPA Chernarus","CUP - Royal Army Corp Of Sahrani","CUP - Takistani Military","Mixed","Syndikat Paramilitary","AAF/Swedish Winter","IF3 Polish"};
+		default = 9;
 	};
 	class CTI_TOWNS_OCCUPATION_WEST {
 		title = "TOWNS: Blufor Occupation Forces";
-		values[] = {0,1,2,3,4};
-		texts[] = {"Vanilla","CUP - US Army","Mixed","Pacific Special Forces","Winter"};
-		default = 2;
+		values[] = {0,1,2,3,4,5};
+		texts[] = {"Vanilla","CUP - US Army","Mixed","Pacific Special Forces","Winter","IF3 Germany"};
+		default = 5;
 	};
 	class CTI_TOWNS_OCCUPATION_EAST {
 		title = "TOWNS: Opfor Occupation Forces";
-		values[] = {0,1,2,3,4};
-		texts[] = {"Vanilla","CUP - Russians","Mixed","Pacific Special Forces","Winter"};
-		default = 2;
+		values[] = {0,1,2,3,4,5};
+		texts[] = {"Vanilla","CUP - Russians","Mixed","Pacific Special Forces","Winter","IF3 SOV/USA"};
+		default = 5;
 	};
 	class CTI_TOWNS_PEACE {
 		title = "TOWNS: Peace";
-		values[] = {0,60,120,180,300,600};
-		texts[] = {"Disabled","1 Minute","2 Minutes","3 Minutes","5 Minutes","10 Minutes"};
-		default = 300;
+		values[] = {0,60,120,180,300,600,1200};
+		texts[] = {"Disabled","1 Minute","2 Minutes","3 Minutes","5 Minutes","10 Minutes","20 Minutes"};
+		default = 1200;
 	};
 	class CTI_TOWNS_OCCUPATION_LIMIT_AI {
 		title = "TOWNS: Occupation Soft max AI Limit";
 		values[] = {50,100,150,200,250,300,350,400};
 		texts[] = {"50","100","150","200","250","300","350","400"};
-		default = 300;
+		default = 200;
 	};
 	class CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO {
 		title = "TOWNS: Occupation Squad Queue Ratio";
@@ -159,7 +159,7 @@ class Params {
 		title = "TOWNS: Resistance Soft max AI Limit";
 		values[] = {50,100,150,200,250,300,350,400};
 		texts[] = {"50","100","150","200","250","300","350","400"};
-		default = 300;
+		default = 200;
 	};
 	class CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO {
 		title = "TOWNS: Resistance Squad Queue Ratio";
@@ -213,7 +213,7 @@ class Params {
 		title = "RESPAWN: Delay";
 		values[] = {15,20,25,30,35,40,45,50,55,60};
 		texts[] = {"15 Seconds","20 Seconds","25 Seconds","30 Seconds","35 Seconds","40 Seconds","45 Seconds","50 Seconds","55 Seconds","60 Seconds"};
-		default = 15;
+		default = 30;
 	};
 	class SEPARATOR4 {
 		title = "============================ AI ==============================";
@@ -243,31 +243,31 @@ class Params {
 		title = "UNITS: Aircraft FFAR";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_VEHICLES_AIR_DAR {
 		title = "UNITS: Aircraft DAR";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_VEHICLES_AIR_AA {
 		title = "UNITS: Aircraft AA Missiles";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_VEHICLES_AIR_AT {
 		title = "UNITS: Aircraft AT Missiles";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_VEHICLES_AIR_CM {
 		title = "UNITS: Aircraft Countermeasures";
 		values[] = {0,1,2};
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_MARKERS_INFANTRY {
 		title = "UNITS: Show Map Infantry";
@@ -285,7 +285,7 @@ class Params {
 		title = "UNITS: Vehicles Reycling Delay";
 		values[] = {60,120,180,240,300,600,1200,1800,2400,3000,3600};
 		texts[] = {"1 Minute","2 Minutes","3 Minutes","4 Minutes","5 Minutes","10 Minutes","20 Minutes","30 Minutes","40 Minutes","50 Minutes","1 Hour"};
-		default = 1200;
+		default = 3600;
 	};
 	class CTI_ARTILLERY_SETUP {
 		title = "ARTILLERY: Setup";
@@ -315,13 +315,13 @@ class Params {
 		title = "GAMEPLAY: Disable NVs, Thermal on Players";
 		values[] = {0,1,2,3};
 		texts[] = {"Default","Disable NV", "Disable Thermals","Disable NV/THERMALS"};
-		default = 0;
+		default = 3;
 	};
 	class CTI_SM_NV_THER_VEH {
 		title = "GAMEPLAY: Disable NVs, Thermal on Vehicles, Statics";
 		values[] = {0,1,2,3};
 		texts[] = {"Default","Disable NV", "Disable Thermals","Disable NV/THERMALS"};
-		default = 0;
+		default = 3;
 	};
 	class SEPARATOR7 {
 		title = "========================== TEAMPLAY ===========================";
@@ -351,13 +351,13 @@ class Params {
 		title = "VISUAL: Terrain Grid";
 		values[] = {10,20,30,40,50};
 		texts[] = {"Far","Medium","Short","Shorter","Free"};
-		default = 50;
+		default = 10;
 	};
 	class CTI_GRAPHICS_VD_MAX {
 		title = "VISUAL: View Distance";
 		values[] = {1000,1500,2000,2500,3000,3500,4000};
 		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM"};
-		default = 4000;
+		default = 3500;
 	};
 	class CTI_WEATHER_INITIAL {
 		title = "WEATHER: Inital Time";
@@ -425,25 +425,37 @@ class Params {
 		texts[] = {""};
 		default = 1;
 	};
+	class CTI_VANILLA_ADDON {
+		title = "Vanilla Gear";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};	
 	class CTI_APEX_ADDON {
 		title = "ADDON: APEX DLC Support";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_CUP_ADDON {
 		title = "ADDON: CUP Support, Units, Vehicles, Weapons";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_CUP_CORE_ADDON {
 		title = "ADDON: CUP CORE and CUP Terrains";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_OFPS_ADDON {
+		title = "ADDON: OFPS MOD Pack Support";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};
+	class CTI_IF3_ADDON {
 		title = "ADDON: OFPS MOD Pack Support";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};

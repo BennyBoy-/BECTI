@@ -397,6 +397,7 @@ switch (toLower(worldName)) do {
 
 	};
 	case "napfwinter": {
+	
 		Bernerplatte setVariable ["cti_town_neighbors",[Airbase,Feldmoos]];
 		Feldmoos setVariable ["cti_town_neighbors",[Bernerplatte,Worb]];
 		Worb setVariable ["cti_town_neighbors",[Feldmoos,Airbase,Hindelbank,Signau,Ittingen]];
@@ -452,4 +453,25 @@ switch (toLower(worldName)) do {
 		Nordstern setVariable ["cti_town_neighbors",[Olten]];
 		Mayak setVariable ["cti_town_neighbors",[Lausen,InternationalAir]];
 	};
+	case "staszow": {
+		Tuczepy setVariable ["cti_town_neighbors",[Dobrow,NiecieslawiceAirfield]];
+		NiecieslawiceAirfield setVariable ["cti_town_neighbors",[Tuczepy,Dobrow,Nizny]];
+		Nizny setVariable ["cti_town_neighbors",[NiecieslawiceAirfield,Pacanowka,Grzybow,Dobrow]];
+		Pacanowka setVariable ["cti_town_neighbors",[Grzybow,Nizny,Tuklecz,Sielec]];
+		Tuklecz setVariable ["cti_town_neighbors",[Pacanowka,Sielec,StaszowAirport]];
+		StaszowAirport setVariable ["cti_town_neighbors",[Sielec,Pacanowka,Tuklecz,Staszow]];
+		Staszow setVariable ["cti_town_neighbors",[StaszowAirport,Zaraz,Kurozweki,KopaninaAirfield]];
+		Sielec setVariable ["cti_town_neighbors",[Grzybow,Zaraz,Pacanowka,StaszowAirport]];
+		Grzybow setVariable ["cti_town_neighbors",[Sielec,Nizny,Dobrow,Pacanowka,Zaraz]];
+		Dobrow setVariable ["cti_town_neighbors",[Grzybow,Nizny,NiecieslawiceAirfield,Tuczepy,ForestAirport]];
+		ForestAirport setVariable ["cti_town_neighbors",[Zyzna,Dobrow,Mokre]];
+		Zyzna setVariable ["cti_town_neighbors",[ForestAirport,Szydlow,Mokre]];
+		Szydlow setVariable ["cti_town_neighbors",[Zyzna,Mokre]];
+		Mokre setVariable ["cti_town_neighbors",[ForestAirport,Zyzna,Szydlow,Zaraz,Kotuszow]];
+		Zaraz setVariable ["cti_town_neighbors",[Mokre,Kurozweki,Sielec]];
+		Kurozweki setVariable ["cti_town_neighbors",[Zaraz,Kotuszow,KopaninaAirfield]];
+		KopaninaAirfield setVariable ["cti_town_neighbors",[Kurozweki,Zaraz,Staszow]];
+		Kotuszow setVariable ["cti_town_neighbors",[Szydlow,Mokre,Kurozweki]];
+
+	}
 };
