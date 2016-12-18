@@ -38,4 +38,21 @@ if (typeName _value != "SCALAR") exitWith {"error CTI_CO_FNC_ChangeSideSupply: a
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _supply = (_side) call CTI_CO_FNC_GetSideSupply;
-_logic setVariable ["cti_supply", _supply + _value, true];
+
+_structures = (_side) call CTI_CO_FNC_GetSideStructures;
+_supply_depots = [CTI_SUPPLY_DEPOT, _structures] call CTI_CO_FNC_GetSideStructuresByType;
+_supply_depots_count = count _supply_depots;
+_supply_limit = CTI_BASE_SUPPLY_BASE_VALUE + (_supply_depots_count * CTI_BASE_SUPPLY_DEPOT_VALUE);
+
+if (_value > 0) then {
+	if (_supply <= _supply_limit) then {
+		_logic setVariable ["cti_supply", _supply + _value, true];
+	} else {
+		_commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;
+		if (isPlayer leader _commander) then {
+			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Max supply reached, build more depots.";
+		};
+	};
+} else {
+	_logic setVariable ["cti_supply", _supply + _value, true];
+};

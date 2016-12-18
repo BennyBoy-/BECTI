@@ -178,6 +178,14 @@ if (CTI_CUP_ADDON > 0) then {
 	_conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
 };
 
+_headers pushBack 		[CTI_SUPPLY_DEPOT, "Supply Depot", "Supply Depot"];
+_classes pushBack 		["Land_dp_smallTank_F", "Land_dp_smallTank_ruins_F"];
+_prices pushBack 		2500;
+_times pushBack 		30;
+_placements pushBack 	[180, 15];
+_specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 8]];
+_conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+
 [_side, _headers, _classes, _prices, _times, _placements, _specials, _conditions] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Structures.sqf";
 
 

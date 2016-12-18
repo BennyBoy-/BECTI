@@ -27,8 +27,9 @@ CTI_RADAR = "Radar";
 CTI_RADAR_ART = "RadarArt";
 CTI_HQ_DEPLOY = "HQDeployed";
 CTI_HQ_MOBILIZE = "HQMobilized";
+CTI_SUPPLY_DEPOT = "SupplyDepot";
 
-CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL,CTI_RADAR,CTI_RADAR_ART];
+CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL,CTI_RADAR,CTI_RADAR_ART,CTI_SUPPLY_DEPOT];
 
 CTI_WEST_COLOR = "ColorBlue";
 CTI_EAST_COLOR = "ColorRed";
@@ -475,6 +476,10 @@ CTI_BASE_HQ_BOUNTY = 2.50; //--- The bounty awarded upon HQ destruction
 CTI_BASE_HQ_REPAIR_PRICE = 40000; //--- The cost needed to repair the HQ
 CTI_BASE_HQ_REPAIR_RANGE = 100; //--- The range needed between the HQ wreck and the Repair Truck
 CTI_BASE_HQ_REPAIR_TIME = 60; //--- The time needed to repair the HQ
+
+//--- Base: Supply depots
+CTI_BASE_SUPPLY_BASE_VALUE = 20000; //--- Max supply base value
+CTI_BASE_SUPPLY_DEPOT_VALUE = 5000; //--- Supply depot supply value
 
 //--- Base: Misc
 CTI_BASE_NOOBPROTECTION = 1; //--- Make structures invulnerable to friendly fire
