@@ -469,7 +469,7 @@ switch (toLower(worldName)) do {
 		Szydlow setVariable ["cti_town_neighbors",[Zyzna,Mokre]];
 		Mokre setVariable ["cti_town_neighbors",[ForestAirport,Zyzna,Szydlow,Zaraz,Kotuszow]];
 		Zaraz setVariable ["cti_town_neighbors",[Mokre,Kurozweki,Sielec]];
-		Kurozweki setVariable ["cti_town_neighbors",[Zaraz,Kotuszow,Girna,KopaninaAirfield]];
+		Kurozweki setVariable ["cti_town_neighbors",[Zaraz,Kotuszow,KopaninaAirfield]];
 		KopaninaAirfield setVariable ["cti_town_neighbors",[Kurozweki,Zaraz,Staszow]];
 		Kotuszow setVariable ["cti_town_neighbors",[Szydlow,Mokre,Kurozweki]];
 

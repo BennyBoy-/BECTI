@@ -224,8 +224,8 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 
 
 
-if (CTI_DEV_MODE > 0) then { 
-	missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
+if (CTI_DEV_MODE > 0) then {
+		missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[1, 1, 1, 1], //--- Gear
 		[1, 1, 1], //--- Barracks
 		[1, 1, 1, 1, 1], //--- Light
@@ -247,9 +247,33 @@ if (CTI_DEV_MODE > 0) then {
 		[1], //--- Nuke
 		[1,1,1] //--- Supply Rate
 	]];
-}else {
-	if (CTI_GUERILLA_MODE == 1 || CTI_ZOMBIE_MODE == 1) then {
+} else {
+	if (CTI_IF3_ADDON > 0) then { 
 		missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
+		[60,120,360,480], //--- Gear
+		[60,120,180], //--- Barracks
+		[120,360,480,600,720], //--- Light
+		[240,480,600,720], //--- Heavy
+		[1, 1, 1], //--- Naval
+		[120,360,480,560,720], //--- Air
+		[1], //--- Air FFAR
+		[1], //--- Air DAR
+		[1], //--- Air AT
+		[1], //--- Air AA
+		[1], //--- Air CM
+		[60,120,180], //--- Towns Depots
+		[60, 60], //--- Halo
+		[60, 60, 60], //--- Air Radar
+		[60, 60, 60], //--- Art Radar
+		[60, 60, 60], //--- Respawn Range
+		[60], //--- IR Smoke
+		[600], //--- Satellite
+		[300], //--- Nuke
+		[60,75,90] //--- Supply Rate
+		]];
+	}else {
+		if (CTI_GUERILLA_MODE == 1 || CTI_ZOMBIE_MODE == 1) then {
+			missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 			[60,120,360,480], //--- Gear
 			[60,120,180], //--- Barracks
 			[120,360,480,600,720], //--- Light
@@ -270,9 +294,9 @@ if (CTI_DEV_MODE > 0) then {
 			[600], //--- Satellite
 			[300], //--- Nuke
 			[60,75,90] //--- Supply Rate
-		]];
-	} else {
-		missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
+			]];
+		} else {
+			missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 			[60,120,360,480], //--- Gear
 			[60,120,180], //--- Barracks
 			[120,360,480,600,720], //--- Light
@@ -293,7 +317,9 @@ if (CTI_DEV_MODE > 0) then {
 			[600], //--- Satellite
 			[300], //--- Nuke
 			[60,75,90] //--- Supply Rate
-		]];
+			]];
+			
+			};
 	};
 };
 

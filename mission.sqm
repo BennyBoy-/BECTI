@@ -2274,6 +2274,7 @@ class Mission
 			};
 			id=180;
 			type="Land_BagBunker_Tower_F";
+			atlOffset=-1.9073486e-006;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2808,6 +2809,7 @@ class Mission
 			};
 			id=201;
 			type="Land_BagBunker_Tower_F";
+			atlOffset=-3.8146973e-006;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -3136,6 +3138,7 @@ class Mission
 			};
 			id=216;
 			type="Land_BagBunker_Tower_F";
+			atlOffset=-1.9073486e-006;
 			class CustomAttributes
 			{
 				class Attribute0
