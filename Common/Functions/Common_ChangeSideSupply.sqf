@@ -54,5 +54,9 @@ if (_value > 0) then {
 		};
 	};
 } else {
-	_logic setVariable ["cti_supply", _supply + _value, true];
+	if ((_supply + _value) < 0) then {
+		_logic setVariable ["cti_supply", 0, true];
+	} else {
+		_logic setVariable ["cti_supply", _supply + _value, true];
+	};
 };
