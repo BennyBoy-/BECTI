@@ -1,3 +1,4 @@
+private ["_campos1", "_campos2", "_targetcam","_camera_duration", "_zoom_level1", "_zoom_level2", "_cam_attached", "_x_coord", "_y_coord", "_z_coord", "_dist", "_distclose", "_dir", "_dir2", "_campos1_random", "_campos2_random", "_camera", "_nvgstate"];
 // 
 // _camera_shot= [position_1_name, position_2_name, target_name, duration, zoom_level1, zoom_level_2, attached, x_rel_coord, y_rel_coord, z_rel_coord] execVM "camera_work.sqf";
 /* 

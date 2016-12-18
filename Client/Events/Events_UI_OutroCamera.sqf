@@ -1,4 +1,4 @@
-// 
+private ["_campos1", "_campos2", "_targetcam","_camera_duration", "_zoom_level1", "_zoom_level2", "_cam_attached", "_x_coord", "_y_coord", "_z_coord", "_cameratext", "_cameratextscore", "_dist", "_distclose", "_dir", "_campos1_random", "_campos2_random", "_camera", "_nvgstate"];
 // _camera_shot= [position_1_name, position_2_name, target_name, duration, zoom_level1, zoom_level_2, attached, x_rel_coord, y_rel_coord, z_rel_coord] execVM "camera_work.sqf";
 /* 
 example
@@ -11,7 +11,6 @@ waitUntil {scriptDone _secondshot};
 _thirdshot = [cam4, cam4, target3, 5, 1, 1, true, 0,-6,3] execVM "camera_work.sqf";
 waitUntil {scriptDone _thirdshot};
 */
-
 
 _campos1= _this select 0;
 _campos2= _this select 1;
@@ -66,7 +65,7 @@ if (_cam_attached) then {
 
 // initial/start position where camera is created
 _camera = "camera" camCreate (_campos1_random);
-		showCinemaBorder true;
+showCinemaBorder true;
 titleCut ["", "BLACK IN", 2];
 _camera cameraEffect ["internal", "BACK"];
 _camera camCommand "inertia on";
