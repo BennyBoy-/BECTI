@@ -62,121 +62,6 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 
-//--IF3 Infantry
-_c pushBack 'LIB_FFI_Soldier_1'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 200; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_BARRACKS;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-_c pushBack 'LIB_WP_Medic'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 100; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_BARRACKS;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-_c pushBack 'LIB_WP_Starszy_saper'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 250; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_BARRACKS;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-_c pushBack 'LIB_DAK_AT_soldier'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 400; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_BARRACKS;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-_c pushBack 'LIB_WP_AT_grenadier'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 200; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_BARRACKS;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-_c pushBack 'LIB_WP_saper'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 100; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_BARRACKS;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-_c pushBack 'LIB_WP_Porucznic'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 150; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_BARRACKS;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-_c pushBack 'LIB_WP_Mgunner'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 600; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_BARRACKS;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-_c pushBack 'LIB_WP_Stggunner'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 350; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_BARRACKS;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-_c pushBack 'LIB_WP_Sniper'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 500; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_BARRACKS;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-_c pushBack 'LIB_FFI_Soldier_3'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 250; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_BARRACKS;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-
-
-
-
 //-------------- AAF
 //--- Infantry
 _c pushBack 'I_soldier_F';
@@ -1503,51 +1388,6 @@ _s pushBack "";
 _d pushBack 0;
 
 //--- Light
-
-//IF3 units
-
-_c pushBack 'LIB_CIV_FFI_CitC4'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 400; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_LIGHT;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-_c pushBack 'LIB_CIV_FFI_CitC4_4'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 400; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_LIGHT;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-_c pushBack 'LIB_CIV_FFI_CitC4_3'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 400; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_LIGHT;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-_c pushBack 'LIB_SdKfz251_captured_FFV'; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 5000; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_LIGHT;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-
-
 _c pushBack 'CUP_O_UAZ_MG_TKA';
 _p pushBack '';
 _n pushBack '';
@@ -1650,20 +1490,6 @@ _s pushBack "";
 _d pushBack 0;
 
 //--- Tanks
-
-//IF3 unit
-_c pushBack ''; //classname
-_p pushBack ''; //picture
-_n pushBack ''; //name
-_o pushBack 20000; //price
-_t pushBack 5; //build time
-_u pushBack 0;  //upgrade
-_f pushBack CTI_FACTORY_HEAVY;  //factory
-_s pushBack "";  //special scripts?
-_d pushBack 0;  //distance from factory
-
-
-
 _c pushBack 'CUP_O_T34_TKA';
 _p pushBack '';
 _n pushBack '';

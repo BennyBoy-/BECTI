@@ -1,10 +1,5 @@
 with missionNamespace do {
-	if (CTI_TOWNS_OCCUPATION_WEST == 5) then { 
-	//--- Iron Front 3 Nazi Germany
-		WEST_TOWNS_FLAG_TEXTURE = "\WW2\Core_t\Decals_t\German\flag_GER_co.paa";
-	} else {
-		WEST_TOWNS_FLAG_TEXTURE = "\A3\Data_F\Flags\Flag_blue_CO.paa";
-	};
+	WEST_TOWNS_FLAG_TEXTURE = "\A3\Data_F\Flags\Flag_blue_CO.paa";
 
 if (CTI_TOWNS_OCCUPATION_WEST == 0) then { 
 //--- VANILLA TOWN OCCUPATION
@@ -275,61 +270,6 @@ if (CTI_TOWNS_OCCUPATION_WEST == 4) then {
 	WEST_NAVAL_ASSAULT_BOAT2 = ["B_Boat_Armed_01_minigun_F"];
 	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = ["B_Boat_Armed_01_minigun_F"];
 	WEST_NAVAL_LARGE_ASSAULT_BOAT = ["B_Boat_Armed_01_minigun_F"];
-};
-
-if (CTI_TOWNS_OCCUPATION_WEST == 5) then { 
-//--- Iron Front 3 Nazi Germany
-//--- Infantry
-	WEST_SOLDIER = "LIB_GER_rifleman";
-	WEST_SOLDIER_AA = "LIB_GER_rifleman";
-	WEST_SOLDIER_AR = "LIB_GER_stggunner";
-	WEST_SOLDIER_AT = "LIB_GER_AT_soldier";
-	WEST_SOLDIER_CREW = "LIB_GER_tank_crew";
-	WEST_SOLDIER_LAT = "LIB_GER_AT_grenadier";
-	WEST_SOLDIER_HAT = "LIB_GER_AT_soldier";
-	WEST_SOLDIER_ENGINEER = "LIB_GER_sapper";
-	WEST_SOLDIER_EXP = "LIB_GER_stggunner";
-	WEST_SOLDIER_GL = "LIB_GER_AT_grenadier";
-	WEST_SOLDIER_MEDIC = "LIB_GER_medic";
-	WEST_SOLDIER_MG = "LIB_GER_mgunner";
-	WEST_SOLDIER_PILOT = "LIB_GER_pilot";
-	WEST_SOLDIER_SNIPER = "LIB_GER_scout_sniper";
-	WEST_SOLDIER_TEAMLEADER = "LIB_GER_lieutenant";
-	WEST_SOLDIER_SQUADLEADER = "LIB_GER_lieutenant";
-	//--- Naval Infantry
-	WEST_SOLDIER_NAVAL_INFANTRY = "";
-	WEST_SOLDIER_NAVAL_SQUADLEADER = "";
-	//--- Light Vehicles
-	WEST_VEHICLE_LIGHT1 = ["LIB_kfz1_MG42"];
-	WEST_VEHICLE_LIGHT2 = ["LIB_kfz1"];
-	WEST_VEHICLE_LIGHT3 = ["LIB_kfz1_MG42"];
-	WEST_VEHICLE_LIGHT4 = ["LIB_kfz1_MG42"];
-	WEST_VEHICLE_LIGHT5 = [""];
-	WEST_VEHICLE_LIGHT6 = [""];
-	WEST_VEHICLE_LIGHT7 = [""];
-	//--- APCs
-	WEST_VEHICLE_APC1 = ["LIB_SdKfz251_FFV"];
-	WEST_VEHICLE_APC2 = ["LIB_SdKfz251_FFV"];
-	WEST_VEHICLE_APC3 = ["LIB_SdKfz251_FFV"];
-	//--- Tanks
-	WEST_VEHICLE_ARMORED1 = ["LIB_StuG_III_G"];	
-	WEST_VEHICLE_ARMORED2 = ["LIB_PzKpfwIV_H"];
-	WEST_VEHICLE_ARMORED3 = ["LIB_StuG_III_G"];
-	//--- AA Vehicles
-	WEST_VEHICLE_AA1 = ["LIB_SdKfz_7_AA"];
-	WEST_VEHICLE_AA2 = [""];
-	WEST_VEHICLE_AA3 = [""];
-	//--- Air
-	WEST_AIR_HELI1 = [""]; //pawnee
-	WEST_AIR_HELI2 = [""]; //ghosthawk
-	WEST_AIR_HELI_ATTACK = [""];
-	WEST_AIR_AA = [""];
-	WEST_AIR_CAS = [""];
-	//--- Boats
-	WEST_NAVAL_ASSAULT_BOAT1 = [""];
-	WEST_NAVAL_ASSAULT_BOAT2 = [""];
-	WEST_NAVAL_MEDIUM_ASSAULT_BOAT = [""];
-	WEST_NAVAL_LARGE_ASSAULT_BOAT = [""];
 };
 //--- Town Teams Templates
 //--- Infantry Squads

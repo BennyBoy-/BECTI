@@ -1,10 +1,5 @@
 with missionNamespace do {
-	if (CTI_TOWNS_OCCUPATION_WEST == 5) then { 
-	//--- Iron Front 3 sov/USA
-		EAST_TOWNS_FLAG_TEXTURE = "\WW2\Core_t\Decals_t\Ussr\flag_SU_co.paa";
-	} else {
-		EAST_TOWNS_FLAG_TEXTURE = "\A3\Data_F\Flags\Flag_red_CO.paa";
-	};
+	EAST_TOWNS_FLAG_TEXTURE = "\A3\Data_F\Flags\Flag_red_CO.paa";
 	
 if (CTI_TOWNS_OCCUPATION_EAST == 0) then { 
 //--- VANILLA TOWN OCCUPATION
@@ -276,62 +271,6 @@ if (CTI_TOWNS_OCCUPATION_EAST == 4) then {
 	EAST_NAVAL_MEDIUM_ASSAULT_BOAT = ["O_Boat_Armed_01_hmg_F"];
 	EAST_NAVAL_LARGE_ASSAULT_BOAT = ["O_Boat_Armed_01_hmg_F"];
 };
-
-if (CTI_TOWNS_OCCUPATION_WEST == 5) then { 
-//--- Iron Front 3 Soviet/USA
-//--- Infantry
-	EAST_SOLDIER = "LIB_SOV_rifleman";
-	EAST_SOLDIER_AA = "LIB_SOV_rifleman";
-	EAST_SOLDIER_AR = "LIB_SOV_smgunner";
-	EAST_SOLDIER_AT = "LIB_SOV_AT_soldier";
-	EAST_SOLDIER_CREW = "LIB_SOV_tank_crew";
-	EAST_SOLDIER_LAT = "LIB_SOV_AT_grenadier";
-	EAST_SOLDIER_HAT = "LIB_SOV_AT_soldier";
-	EAST_SOLDIER_ENGINEER = "LIB_SOV_sapper";
-	EAST_SOLDIER_EXP = "LIB_SOV_assault_smgunner";
-	EAST_SOLDIER_GL = "LIB_SOV_AT_grenadier";
-	EAST_SOLDIER_MEDIC = "LIB_SOV_medic";
-	EAST_SOLDIER_MG = "LIB_SOV_scout_mgunner";
-	EAST_SOLDIER_PILOT = "LIB_SOV_pilot";
-	EAST_SOLDIER_SNIPER = "LIB_SOV_scout_sniper";
-	EAST_SOLDIER_TEAMLEADER = "LIB_SOV_captain";
-	EAST_SOLDIER_SQUADLEADER = "LIB_SOV_captain";
-	//--- Naval Infantry
-	EAST_SOLDIER_NAVAL_INFANTRY = "";
-	EAST_SOLDIER_NAVAL_SQUADLEADER = "";
-	//--- Light Vehicles
-	EAST_VEHICLE_LIGHT1 = ["LIB_US_Willys_MB"];
-	EAST_VEHICLE_LIGHT2 = [""];
-	EAST_VEHICLE_LIGHT3 = ["LIB_US_Willys_MB"];
-	EAST_VEHICLE_LIGHT4 = [""];
-	EAST_VEHICLE_LIGHT5 = [""];
-	EAST_VEHICLE_LIGHT6 = [""];
-	EAST_VEHICLE_LIGHT7 = [""];
-	//--- APCs
-	EAST_VEHICLE_APC1 = ["LIB_US_Scout_m3"];
-	EAST_VEHICLE_APC2 = ["LIB_US_Scout_m3"];
-	EAST_VEHICLE_APC3 = ["LIB_US_Scout_m3"];
-	//--- Tanks
-	EAST_VEHICLE_ARMORED1 = ["LIB_T34_85"];	
-	EAST_VEHICLE_ARMORED2 = ["LIB_M4A2_SOV"];
-	EAST_VEHICLE_ARMORED3 = ["LIB_SU85"];
-	//--- AA Vehicles
-	EAST_VEHICLE_AA1 = ["LIB_US_Scout_m3"];
-	EAST_VEHICLE_AA2 = [""];
-	EAST_VEHICLE_AA3 = ["LIB_US_Scout_m3"];
-	//--- Air
-	EAST_AIR_HELI1 = [""]; //pawnee
-	EAST_AIR_HELI2 = [""]; //ghosthawk
-	EAST_AIR_HELI_ATTACK = [""];
-	EAST_AIR_AA = [""];
-	EAST_AIR_CAS = [""];
-	//--- Boats
-	EAST_NAVAL_ASSAULT_BOAT1 = [""];
-	EAST_NAVAL_ASSAULT_BOAT2 = [""];
-	EAST_NAVAL_MEDIUM_ASSAULT_BOAT = [""];
-	EAST_NAVAL_LARGE_ASSAULT_BOAT = [""];
-};
-
 //--- Town Teams Templates
 //--- Infantry Squads
 EAST_TOWNS_SQUAD_RIFLEMEN1 = [EAST_SOLDIER_SQUADLEADER, EAST_SOLDIER_AR, EAST_SOLDIER, EAST_SOLDIER, EAST_SOLDIER_MEDIC];

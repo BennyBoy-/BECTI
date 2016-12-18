@@ -30,16 +30,6 @@ if (CTI_FACTION_WEST == 2) then {
 	missionNamespace setVariable [format["CTI_%1_Pilot", _side], "sfp_m90s_pilot"];
 	missionNamespace setVariable [format["CTI_%1_Static", _side], "sfp_m90s_rifleman_ag90"];
 };
-if (CTI_FACTION_WEST == 3) then {
-	//IF3 Nazi Germany
-	missionNamespace setVariable [format["CTI_%1_Commander", _side], "LIB_GER_lieutenant"];
-	missionNamespace setVariable [format["CTI_%1_Worker", _side], "LIB_GER_rifleman"];
-	missionNamespace setVariable [format["CTI_%1_Diver", _side], "LIB_GER_rifleman"];
-	missionNamespace setVariable [format["CTI_%1_Soldier", _side], "LIB_GER_rifleman"];
-	missionNamespace setVariable [format["CTI_%1_Crew", _side], "LIB_GER_tank_crew"];
-	missionNamespace setVariable [format["CTI_%1_Pilot", _side], "LIB_GER_pilot"];
-	missionNamespace setVariable [format["CTI_%1_Static", _side], "LIB_GER_rifleman"];
-};
 if (CTI_CUP_ADDON > 0) then {
 	if (CTI_OFPS_ADDON > 0) then {
 		if (CTI_FACTION_WEST == 0) then {
@@ -205,25 +195,25 @@ if (CTI_CUP_ADDON > 0) then {
 	};
 } else {
 missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
-	["LIB_DAK_opelblitz_ambulance", [
-		["LIB_MP40", 2], ["LIB_32Rnd_9x19", 20],
-		["LIB_G43", 2],
-		["lib_10Rnd_792x57", 10], ["", 0],
-		["LIB_1Rnd_RPzB", 20],
-		["LIB_RPzB", 5],
+	["B_Truck_01_medical_F", [
+		["arifle_mx_gl_f", 2], ["30Rnd_65x39_caseless_mag", 50],
+		["arifle_MXM_F", 1],
+		["launch_NLAW_F", 5], ["NLAW_F", 20],
+		["HandGrenade", 20],
+		["30Rnd_556x45_Stanag", 15],
 		["30Rnd_65x39_caseless_mag_Tracer", 6],
-		["LIB_US_M18", 8],
+		["3rnd_he_grenade_shell", 8],
 		["firstaidkit", 20],
-		["LIB_shg24", 15],
-		["U_LIB_GER_Funker", 10],
-		["Toolkit", 2]
+		["optic_ACO_grn", 3],
+		["acc_flashlight", 10],
+		["Toolkit", 1]
 	]],
-	["LIB_SdKfz251_FFV", [
+	["B_MRAP_01_hmg_F", [
 		["Toolkit", 1],["firstaidkit", 10],
-		["lib_5Rnd_792x57", 15],
-		["LIB_RPzB", 5], 
-		["LIB_1Rnd_RPzB", 10],
-		["LIB_shg24", 20]]]
+		["30Rnd_556x45_Stanag", 15],
+		["launch_NLAW_F", 5], 
+		["acc_flashlight", 10],
+		["NLAW_F", 20]]]
 ]];
 };
 
@@ -412,26 +402,9 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 };
 
-if (CTI_IF3_ADDON > 0) then { 
-//-- IF3 UNITS
-  _u pushBack 'LIB_GER_riflemaN';
-  _u pushBack 'LIB_GER_stggunner';
-  _u pushBack 'LIB_GER_AT_soldier';
-  _u pushBack 'LIB_GER_tank_crew';
-  _u pushBack 'LIB_GER_AT_grenadier';
-  _u pushBack 'LIB_GER_sapper';
-  _u pushBack 'LIB_GER_medic';
-  _u pushBack 'LIB_GER_mgunner';
-  _u pushBack 'LIB_GER_pilot';
-  _u pushBack 'LIB_GER_scout_sniper';
-  _u pushBack 'LIB_GER_lieutenant';
-  
-};
-
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u];
 _u = [];
 
-if (CTI_VANILLA_ADDON > 0) then {
 //Universal Vanilla
 _u pushBack 'B_G_Offroad_01_F';		
 _u pushBack 'C_Quadbike_01_F';			
@@ -446,7 +419,6 @@ _u pushBack 'O_Truck_03_device_F';
 _u pushBack "B_UGV_01_F";
 _u pushBack "B_UGV_01_rcws_F";
 _u pushback 'I_C_Offroad_02_unarmed_F';
-};
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
@@ -584,17 +556,6 @@ if (CTI_OFPS_ADDON > 0) then {
 		_u pushBack 'Meaty_HunterHMG_Sn';	
 		_u pushBack 'Meaty_HunterGMG_Sn';
 	};
-};
-
-if (CTI_IF3_ADDON > 0) then { 
-//-- IF3 UNITS
- 
-  _u pushBack 'LIB_kfz1';
-  _u pushBack 'LIB_opelblitz_open_y_camo';
-  _u pushBack 'LIB_kfz1_MG42';
-  _u pushBack 'LIB_SdKfz251_FFV';
- // _u pushBack 'LIB_SdKfz_7_AA';
-
 };
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _u];
@@ -756,21 +717,9 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 };
 
-if (CTI_IF3_ADDON > 0) then { 
-//-- IF3 UNITS
- 
-  _u pushBack 'LIB_StuG_III_G';
-  _u pushBack 'LIB_PzKpfwIV_H';
-  _u pushBack 'LIB_PzKpfwV';
-  _u pushBack 'LIB_PzKpfwVI_E_1';
-  _u pushBack 'LIB_PzKpfwVI_B';
-
-};
-
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
 _u = [];
 
-if (CTI_VANILLA_ADDON > 0) then {
 //Universal Vanilla
 _u pushBack "B_Heli_Light_01_F";
 _u pushBack "B_Heli_Transport_01_F";
@@ -780,7 +729,6 @@ _u pushBack "B_Heli_Attack_01_F";
 _u pushBack "B_UAV_02_CAS_F";
 _u pushBack "B_UAV_02_F";
 _u pushBack "B_Plane_CAS_01_F";
-};
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
@@ -941,25 +889,15 @@ _u pushBack "AAF_D_Heli_light_03_unarmed_F";
 	};
 };
 
-if (CTI_IF3_ADDON > 0) then { 
-//-- IF3 UNITS
- 
-  _u pushBack 'LIB_Ju87_Italy';
-  _u pushBack 'LIB_FW190F8_2';
-
-};
-
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _u];
 _u = [];
 
-if (CTI_VANILLA_ADDON > 0) then {
 //Universal Vanilla
 _u pushBack "B_Truck_01_Repair_F";
 _u pushBack "CTI_Salvager_West";
 _u pushBack 'B_Slingload_01_Repair_F';
 _u pushBack "B_Truck_01_fuel_F";
 _u pushBack 'B_Slingload_01_Fuel_F';
-};
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
@@ -1030,26 +968,16 @@ if (CTI_OFPS_ADDON > 0) then {
 		//NATO Winter OFPS
 		
 	};
-};
-
-if (CTI_IF3_ADDON > 0) then { 
-//-- IF3 UNITS
- 
-  _u pushBack 'LIB_opelblitz_parm';
-  _u pushBack 'LIB_opelblitz_fuel';
-
 };
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_REPAIR], _u];
 _u = [];
 
-if (CTI_VANILLA_ADDON > 0) then {
 //Universal Vanilla
 _u pushBack "B_Truck_01_ammo_F";
 _u pushBack 'B_Slingload_01_Ammo_F';
 _u pushBack "Box_NATO_Wps_F";
 _u pushBack "B_supplyCrate_F";
-};
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
@@ -1120,25 +1048,16 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 };
 
-if (CTI_IF3_ADDON > 0) then { 
-//-- IF3 UNITS
- 
-  _u pushBack 'LIB_opelblitz_ammo';
-  
-
-};
-
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _u];
 _u = [];
 
-if (CTI_VANILLA_ADDON > 0) then {
 //Universal Vanilla
 _u pushBack "C_Boat_Civil_01_F";
 _u pushBack "B_Boat_Transport_01_F";
 _u pushBack "B_Boat_Armed_01_minigun_F";
 _u pushBack 'C_Boat_Civil_01_police_F';
 _u pushBack "B_SDV_01_F";
-};
+
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
@@ -1221,7 +1140,6 @@ if (CTI_OFPS_ADDON > 0) then {
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
 _u = [];
 
-if (CTI_VANILLA_ADDON > 0) then {
 //Universal Vanilla
 _u pushBack "B_Quadbike_01_F";
 _u pushBack "B_G_Offroad_01_F";
@@ -1230,7 +1148,6 @@ _u pushBack "C_Van_01_transport_F";
 _u pushBack "B_Truck_01_transport_F";
 _u pushBack "C_Boat_Civil_01_F";
 _u pushBack "B_Boat_Transport_01_F";
-};
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
@@ -1323,27 +1240,15 @@ if (CTI_OFPS_ADDON > 0) then {
 	};
 };
 
-if (CTI_IF3_ADDON > 0) then { 
-//-- IF3 UNITS
- 
-  _u pushBack 'LIB_GER_rifleman';
-  _u pushBack 'LIB_kfz1';
-  _u pushBack 'LIB_opelblitz_open_y_camo';
- 
-
-};
-
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_DEPOT], _u];
 _u = [];
 
-if (CTI_VANILLA_ADDON > 0) then {
 //Universal Vanilla
 _u pushBack "C_Boat_Civil_01_F";
 _u pushBack "B_Boat_Transport_01_F";
 _u pushBack "B_Boat_Armed_01_minigun_F";
 _u pushBack 'C_Boat_Civil_01_police_F';
 _u pushBack "B_SDV_01_F";
-};
 
 if (CTI_FACTION_WEST == 0) then {
 	//NATO Arid Vanilla
