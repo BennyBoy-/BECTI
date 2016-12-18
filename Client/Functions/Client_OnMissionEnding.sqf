@@ -95,8 +95,6 @@ sleep 30;
 _endtext spawn BIS_fnc_typeText;
 sleep 5;
 
-if (!isNil "_camera_run") exitWith {};
-_camera_run = true;
 _enemyhq = (_loserside) call CTI_CO_FNC_GetSideHQ;
 _firstshot = [_enemyhq, _enemyhq, _enemyhq, 40, 0.5, 0.4, false, 0, 0, 1, _cameratext1, _loserscoretext] execVM "Client\Events\Events_UI_OutroCamera.sqf";
 waitUntil {scriptdone _firstshot};
