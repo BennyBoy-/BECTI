@@ -550,7 +550,7 @@ _coinblacklist pushBack [];
 
 _headers pushBack 		"Mortar";
 _classes pushBack 		"B_Mortar_01_F";
-_prices pushBack 		15000;
+_prices pushBack 		5000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
@@ -586,12 +586,12 @@ _classes pushBack 		"CUP_B_D30_AT_CDF";
 _prices pushBack 		6000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
-_coinmenus pushBack 	["HQ"];
+_coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
 
 _headers pushBack 		"M252 81mm mortar";
 _classes pushBack 		"CUP_B_M252_USMC";
-_prices pushBack 		15000;
+_prices pushBack 		5000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
@@ -701,7 +701,7 @@ _coinblacklist pushBack [];
 if (CTI_OFPS_ADDON > 0) then {
 _headers pushBack 		"Granatkastare m/84 Mortar";
 _classes pushBack 		"sfp_grk84";
-_prices pushBack 		15000;
+_prices pushBack 		5000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ"];
