@@ -28,7 +28,7 @@
 	  -> Assuming west had 1000 before: 950
 */
 
-private ["_side", "_supply", "_value"];
+private ["_side", "_supply", "_value", "_structures", "_supply_depots", "_supply_depots_count", "_supply_limit", "_commander"];
 
 _side = _this select 0;
 _value = _this select 1;
