@@ -142,13 +142,14 @@ with missionNamespace do {
 	
 	//--- The client request a Joining ticket
 	CTI_PVF_SRV_RequestJoin = {
-		private ["_client", "_join", "_side"];
+		private ["_client", "_join", "_side", "_special"];
 		_client = _this select 0;
 		_side = _this select 1;
 		
 		_name = name _client;
 		_uid = getPlayerUID _client;
 		_join = true;
+		_special = "";
 		
 		_get = missionNamespace getVariable Format["CTI_SERVER_CLIENT_%1",_uid];
 		
@@ -165,12 +166,32 @@ with missionNamespace do {
 			if (CTI_Log_Level >= CTI_Log_Warning) then {["WARNING", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] doesn't have any JIP information yet. If this is the start of the mission then this message can be safely ignored.", _name, _uid]] call CTI_CO_FNC_Log};
 		};
 		
+		//--- Apply the team stack system if enabled
+		if ((missionNamespace getVariable "CTI_TEAMSTACK") > 0 && _join) then {
+			//--- Retrieve the player count for each given side (minus the connecting client)
+			_west_players = {side _x == west && isPlayer _x} count (playableUnits - [_client]);
+			_east_players = {side _x == east && isPlayer _x} count (playableUnits - [_client]);
+			
+			if (CTI_Log_Level >= CTI_Log_Information) then {["FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)];
+			
+			if (abs(_west_players - _east_players) <= (missionNamespace getVariable "CTI_TEAMSTACK")) then {
+				//--- Team stacking is ok so far
+				if (CTI_Log_Level >= CTI_Log_Information) then {["FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] can join, the teams are still balanced", _name, _uid]] call CTI_CO_FNC_Log};
+			} else {
+				//--- The team stack limit has been reached, send this player back to the lobby
+			//--- Todo check if the client is present in the "premium" UID array
+				if (CTI_Log_Level >= CTI_Log_Information) then {["FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] cannot join, the teams are no longer balanced", _name, _uid]] call CTI_CO_FNC_Log};
+				_special = "teamstack";
+				_join = false;
+			};
+		};
+		
 		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] can join? -> [%3].", _name, _uid, _join]] call CTI_CO_FNC_Log};
 		
-		_was_jailed = false;
+		
 		_get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
-		if !(isNil '_get') then {if (_get select 1 == 1) then {_was_jailed = true}};
-		[_join, _was_jailed] remoteExec ["CTI_PVF_CLT_JoinRequestAnswer", owner _client];
+		if !(isNil '_get') then {if (_get select 1 == 1) then {_special = "jailed"}};
+		[_join, _special] remoteExec ["CTI_PVF_CLT_JoinRequestAnswer", owner _client];
 	};
 	
 	//--- The client request a noob logging

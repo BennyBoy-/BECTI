@@ -34,11 +34,11 @@ if (_name == '__SERVER__' || _uid == '') exitWith {}; //--- We don't care about 
 
 waitUntil {!isNil 'CTI_Init_Common'};
 
-//--- We try to get the player and it's group from the playableUnits.
+//--- We try to get the player and it's group from the allPlayers array.
 _max = 10;
 _team = grpNull;
 
-while {_max > 0 && isNull _team} do { { if ((getPlayerUID _x) == _uid) exitWith {_team = group _x};	} forEach playableUnits; if (isNull _team) then {sleep 0.5}; _max = _max - 1 };
+while {_max > 0 && isNull _team} do { { if ((getPlayerUID _x) == _uid) exitWith {_team = group _x};	} forEach (allPlayers - entities "HeadlessClient_F"); if (isNull _team) then {sleep 0.5}; _max = _max - 1 };
 
 //--- Make sure that we've found a team, otherwise we simply exit.
 if (isNull _team) exitWith {if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] couldn't be found among the current playable units", _name, _uid]] call CTI_CO_FNC_Log}};
@@ -80,26 +80,26 @@ if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
 
 if (isNil '_get') then { //--- The player has joined for the first time.
 	//--- Check if the teamstack protection is enabled or not
-	if ((missionNamespace getVariable "CTI_TEAMSTACK") > 0) then {
+	/*if ((missionNamespace getVariable "CTI_TEAMSTACK") > 0) then {
 		//--- Retrieve the player count for each given side (minus the connecting client)
 		_west_players = {side _x == west && isPlayer _x} count (playableUnits - [_leader]);
 		_east_players = {side _x == east && isPlayer _x} count (playableUnits - [_leader]);
 		
 		diag_log format["DEBUG:: STACKING: Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)];
 		
-		if (abs(_west_players - _east_players) <= (missionNamespace getVariable "CTI_TEAMSTACK")) then {
-			//--- Team stacking is ok so far
-			
-			diag_log format["DEBUG:: STACKING: Player [%1] [%2] on side [%3] is allowed to join!", _name, _uid, _side, _west_players, _east_players];
-			
-			// store info + diag
-		} else {
-			//--- The team stack limit has been reached, send this player back to the lobby
-			diag_log format["DEBUG:: STACKING: Player [%1] [%2] on side [%3] is not allowed to join!", _name, _uid, _side, _west_players, _east_players];
-			
-			// throw the player back to the lobby (rexec) + diag
-		};
-	};
+			if (abs(_west_players - _east_players) <= (missionNamespace getVariable "CTI_TEAMSTACK")) then {
+				//--- Team stacking is ok so far
+				
+				diag_log format["DEBUG:: STACKING: Player [%1] [%2] on side [%3] is allowed to join!", _name, _uid, _side, _west_players, _east_players];
+				
+				// store info + diag
+			} else {
+				//--- The team stack limit has been reached, send this player back to the lobby
+				diag_log format["DEBUG:: STACKING: Player [%1] [%2] on side [%3] is not allowed to join!", _name, _uid, _side, _west_players, _east_players];
+				
+				// throw the player back to the lobby (rexec) + diag
+			};
+	};*/
 
 	//--- Format is [UID, Funds, First Joined side, Last Joined side (current one)]
 	missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], [_uid, 0, _side, _side, []]];
