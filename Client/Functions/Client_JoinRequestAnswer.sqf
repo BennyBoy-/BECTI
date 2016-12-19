@@ -18,24 +18,32 @@
 	None
 	
   # SYNTAX #
-	[JIP ANSWER, JAILED] call CTI_CL_FNC_JoinRequestAnswer
+	[JIP ANSWER, JAILED] spawn CTI_CL_FNC_JoinRequestAnswer
 	
   # EXAMPLE #
-    [true, false] call CTI_CL_FNC_JoinRequestAnswer
+    [true, ""] spawn CTI_CL_FNC_JoinRequestAnswer
 	  -> The client can join, he wasn't jailed
-	[true, true] call CTI_CL_FNC_JoinRequestAnswer
+	[true, "jailed"] spawn CTI_CL_FNC_JoinRequestAnswer
 	  -> The client can join, he was jailed
-	[false, false] call CTI_CL_FNC_JoinRequestAnswer
+	[false, ""] spawn CTI_CL_FNC_JoinRequestAnswer
 	  -> The client cannot join
 */
 
-_can_join = _this select 0;
-_was_jailed = _this select 1;
+private ["_can_join", "_special"];
 
-if (_was_jailed) then { //--- The player left while removing kebab? remove more kebab!
-	CTI_P_Jailed = true;
+_can_join = _this select 0;
+_special = _this select 1;
+
+switch (_special) do {
+	case "jailed": {CTI_P_Jailed = true}; //--- The player left while removing kebab? remove more kebab!
+	case "teamstack": {
+		12452 cutText ["Receiving mission intel...", "BLACK IN", 5];
+		12453 cutText ["\n\nTEAMSTACK SYSTEM: Teams are not balanced, you will be sent back to the lobby...", "BLACK FADED", 50000];
+		sleep 2;
+	};
 };
 
+//--- Ultimately, check whether we allow the player to join or not
 if (_can_join) then {
 	CTI_P_CanJoin = true;
 } else {
