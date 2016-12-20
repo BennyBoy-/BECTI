@@ -7,8 +7,8 @@
 					which is defined in:
 					 - Client\Init\Init_Client.sqf
 	Author: 		Benny
-	Creation Date:	19-09-2013
-	Revision Date:	19-09-2013
+	Creation Date:	20-12-2017
+	Revision Date:	20-12-2017
 	
   # PARAMETERS #
     0	[Boolean]: This is the server answer about the JIP validity
@@ -34,10 +34,11 @@ private ["_can_join", "_special"];
 _can_join = _this select 0;
 _special = _this select 1;
 
+if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Client\Functions\Client_JoinRequestAnswer.sqf", format["The join request has been answered with the following settings: can join [%1], special [%2]", _can_join, _special]] call CTI_CO_FNC_Log};
+
 switch (_special) do {
 	case "jailed": {CTI_P_Jailed = true}; //--- The player left while removing kebab? remove more kebab!
 	case "teamstack": {
-		12452 cutText ["Receiving mission intel...", "BLACK IN", 5];
 		12453 cutText ["\n\nTEAMSTACK SYSTEM: Teams are not balanced, you will be sent back to the lobby...", "BLACK FADED", 50000];
 		sleep 2;
 	};
