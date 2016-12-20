@@ -98,7 +98,7 @@ while {true} do {
 		_group setSpeedMode "FULL";
 		_group enableAttack true;
 		_group allowFleeing 0;
-		
+
 		//--- Patrol the town
 		[_town, _group, _sideID] execFSM "Server\FSM\town_patrol.fsm";
 		

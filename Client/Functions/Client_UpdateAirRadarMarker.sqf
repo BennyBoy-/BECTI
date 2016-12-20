@@ -27,9 +27,9 @@ _vehicle = _this;
 
 _marker = createMarkerLocal [format ["cti_airradar_hostile_%1", CTI_P_MarkerIterator], [-60000, -60000, 0]];
 CTI_P_MarkerIterator = CTI_P_MarkerIterator + 1;
-_marker setMarkerTypeLocal "mil_triangle";
-_marker setMarkerColorLocal "ColorBrown";
-_marker setMarkerSizeLocal [0.5, 0.5];
+_marker setMarkerTypeLocal "mil_dot";
+_marker setMarkerColorLocal "ColorYellow";
+_marker setMarkerSizeLocal [1.2, 1.2];
 
 _hint = false;
 

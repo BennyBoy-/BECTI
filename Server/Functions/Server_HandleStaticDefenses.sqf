@@ -115,7 +115,7 @@ while {alive _structure} do {
 					};
 					
 					//--- The arguments used to create the AI
-					_ai_args = [missionNamespace getVariable format["CTI_%1_Soldier", _side], _defense_team, _position, _sideID, _net];
+					_ai_args = [missionNamespace getVariable format["CTI_%1_Static", _side], _defense_team, _position, _sideID, _net];
 					
 					//--- No delegation possible, create on the server
 					if !(_delegate) then {
@@ -132,9 +132,30 @@ while {alive _structure} do {
 						[_ai] orderGetIn true;
 						_ai moveInGunner _x;
 						
-						//--- Update the gunner's properties
-						_ai setBehaviour "AWARE";
-						_ai setCombatMode "RED";
+						// TODO: deduplicate code (Init_Client_Headless.sqf)
+						
+						//--- Configure the weapon / gunner
+						if (typeOf(_x) find "POOK_ANMPQ53" == 0 || typeOf(_x) find "pook_SNR75_radar" == 0 || typeOf(_x) find "pook_MIM104_PAC2" == 0 || typeOf(_x) find "pook_MIM104_PAC2Battery" == 0) then {
+							_ai disableAI "AUTOTARGET";
+							_ai disableAI "TARGET";
+						} else {
+							//--- Change Skill
+							_ai setSkill ["aimingAccuracy", 1]; // Set accuracy
+							_ai setSkill ["aimingShake", 1]; // Set weapon sway handling
+							_ai setSkill ["aimingSpeed", 1]; // Set aiming speed
+							_ai setSkill ["reloadSpeed", 1]; // Max out reload speed
+							_ai setSkill ["spotDistance", 1]; // Set detection distance
+							_ai setSkill ["spotTime", 1]; // Set detection time
+							_ai setSkill ["courage", 1]; // Never retreat
+							_ai setSkill ["commanding", 1]; // Communication skills
+							_ai setSkill ["general", 1]; //Sets all above
+
+							//--- Set to Combat
+							_ai setBehaviour "AWARE";
+							_ai setCombatMode "RED";
+							_ai setSpeedMode "FULL";
+							_ai enableAttack true;
+						};
 					} else {
 						//--- At least one HC is available
 						[_x, _defense_team, _side, _ai_args] Call CTI_SE_FNC_AttemptDefenseDelegation;

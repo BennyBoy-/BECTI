@@ -1,5 +1,5 @@
 CTI_UI_Respawn_GetAvailableLocations = {
-	private ["_fobs", "_hq", "_ignore_mobile_crew", "_list", "_mobile", "_structures"];
+	private ["_fobs", "_hq", "_ignore_mobile_crew", "_list", "_mobile", "_structures","_up","_respawnrangefob"];
 	
 	_list = [];
 	
@@ -12,7 +12,9 @@ CTI_UI_Respawn_GetAvailableLocations = {
 	//--- Add FOBs if available.
 	if (CTI_BASE_FOB_MAX > 0) then {
 		_fobs = CTI_P_SideLogic getVariable ["cti_fobs", []];
-		{if (alive _x && _x distance CTI_DeathPosition <= CTI_RESPAWN_FOB_RANGE) then {_list pushBack _x}} forEach _fobs;
+		_up=if (!( count ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) == 0)) then {((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_REST} else {0};
+		_respawnrangefob=CTI_RESPAWN_FOB_RANGE+500*_up;
+		{if (alive _x && _x distance CTI_DeathPosition <= _respawnrangefob) then {_list pushBack _x}} forEach _fobs;
 	};
 	
 	//--- Add camps if camp respawn is enabled
@@ -41,13 +43,13 @@ CTI_UI_Respawn_GetAvailableLocations = {
 CTI_UI_Respawn_GetMobileRespawn = {
 	private ["_available", "_center"];
 	_center = _this;
-	
+	_up=if (!( count ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) == 0)) then {((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_REST} else {0};
+	_range=500+500*_up;
 	_available = [];
-	
+
 	{
 		if ((_x getVariable ["cti_spec", -1]) == CTI_SPECIAL_MEDICALVEHICLE && (_x getVariable ["cti_net", -1]) == CTI_P_SideID) then {_available pushBack _x};
-	} forEach (_center nearEntities [["Car","Air","Tank","Ship"], CTI_RESPAWN_MOBILE_RANGE]);
-	
+	} forEach (_center nearEntities [["Car","Air","Tank","Ship","Thing","StaticWeapon"], _range]);
 	_available
 };
 
@@ -291,5 +293,12 @@ CTI_UI_Respawn_OnRespawnReady = {
 	};
 	
 	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
+	
+	//Earplugs
+	player spawn {call CTI_CL_FNC_EarPlugsSpawn; };
+	
+	//Spawn Init for Tablet
+	player spawn {call CTI_CL_FNC_Spawn; };
+	
 	CTI_P_Respawning = false;
 };

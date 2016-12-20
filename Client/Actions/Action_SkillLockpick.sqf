@@ -16,12 +16,12 @@ if (locked _vehicle in [-1, 0, 1]) exitWith {};
 
 if (alive player && vehicle player == player && alive _vehicle && _vehicle distance player <= 5) then {
 	_min = switch (typeOf _vehicle) do {
-		case "Motorcycle": {45};
-		case "Car": {35};
-		case "Tank": {20};
-		case "Ship": {25};
-		case "Air": {15};
-		default {30};
+		case "Motorcycle": {85};
+		case "Car": {80};
+		case "Tank": {75};
+		case "Ship": {70};
+		case "Air": {60};
+		default {60};
 	};
 	if (((random 100)-CTI_P_ActionLockPickChance) <= _min) then {
 		//--- Unlocked, gain experience.

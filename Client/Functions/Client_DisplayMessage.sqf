@@ -41,7 +41,13 @@ _parameters = if (count _this > 1) then {_this select 1} else {[]};
 switch (_message_var) do {
 	case "award-bounty": {player groupChat format ["$%1 awarded for the neutralization of a %2", _parameters select 0, _parameters select 1]};
 	case "award-bounty-pvp": {player groupChat format ["$%1 awarded for the neutralization of %2 (%3)", _parameters select 0, _parameters select 1, _parameters select 2]};
-	case "award-bounty-structure": {player groupChat format ["$%1 awarded for the neutralization of %2 structure", _parameters select 0, _parameters select 1]};
+	case "award-bounty-basedefense": {CTI_P_ChatID commandChat format ["$%1 awarded for the neutralization of a %2 by our base defenses", _parameters select 0, _parameters select 1]};
+	case "award-bounty-basedefense-player": {CTI_P_ChatID commandChat format ["$%1 awarded for the neutralization of %2 (%3) by our base defenses", _parameters select 0, _parameters select 1, _parameters select 2]};
+	case "basedefense-kill": {CTI_P_ChatID commandChat format ["Our base defenses have neutralized a %1", _parameters select 0]};
+	case "basedefense-kill-player": {CTI_P_ChatID commandChat format ["Our base defenses have neutralized %1 (%2)", _parameters select 0, _parameters select 1]};
+	case "award-bounty-structure": {
+		player groupChat format ["$%1 awarded for the neutralization of %2 structure", _parameters select 0, _parameters select 1];
+	};
 	case "build-by": {
 		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _parameters select 1];
 		(_parameters select 0) groupChat format ["Constructing %1... %2%3", (_var select 0) select 1, _parameters select 2, "%"];
@@ -63,10 +69,20 @@ switch (_message_var) do {
 		};
 	};
 	case "commander-vote-start": {CTI_P_ChatID commandChat format["%1 has initiated a commander vote!", _parameters]};//--- Todo, popup system with helper on/off
-	case "hq-destroyed": {CTI_P_ChatID commandChat "The HQ has been destroyed!"};
-	case "hq-repair": {CTI_P_ChatID commandChat "The HQ has been repaired"};
+	case "hq-destroyed": {
+		CTI_P_ChatID commandChat "The HQ has been destroyed!";
+		playMusic "EventTrack02_F_Curator";
+	};
+	case "hq-repair": {
+		CTI_P_ChatID commandChat "The HQ has been repaired";
+		playsound "bobcat_engine_start";
+	};
 	case "fob-sold": {CTI_P_ChatID commandChat format ["A FOB has been sold at Grid %1", _parameters]};
-	case "funds-transfer": {player groupChat format ["%2 has transfered you $%1", _parameters select 0, (_parameters select 1) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]]};
+	case "funds-transfer": {
+		player groupChat format ["%2 has transfered you $%1", _parameters select 0, name (_parameters select 1) ];
+		hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t color='#55bcfc'>%3</t> transfered <t color='%1'>$%2</t> to you.", CTI_P_Coloration_Money, _parameters select 0, name (_parameters select 1)];
+				uiNamespace setVariable ["cti_dialog_ui_transferresourcesmenu_forceupdate", true];
+	};
 	case "order-taketowns": {_parameters sideChat "Acknowledged.  Advancing on neutral or enemy towns"};
 	case "order-takeholdtowns": {_parameters sideChat "Acknowledged.  Advancing on neutral or enemy towns with guard duty"};
 	case "order-holdtowns": {_parameters sideChat "Acknowledged.  Proceeding to nearest base or friendly town for guard duty"};
@@ -102,18 +118,32 @@ switch (_message_var) do {
 	case "structure-attacked": {
 		_var = missionNamespace getVariable (_parameters select 0);
 		CTI_P_ChatID commandChat format ["%1 is under attack at grid %2!", (_var select 0) select 1, mapGridPosition (_parameters select 1)];
+		playsound "air_raid";
 	};
-	case "structure-destroyed": {player globalChat format ["%1 has destroyed a %2 structure", _parameters select 0, _parameters select 1]};
-	case "structure-sold": {CTI_P_ChatID commandChat format ["A %1 structure has been sold at Grid %2", _parameters select 0, _parameters select 1]};
+	case "structure-destroyed": {
+		player globalChat format ["%1 has destroyed a %2 structure", _parameters select 0, _parameters select 1];
+		playsound "vr_shutdown";
+	};
+	case "structure-sold": {
+		CTI_P_ChatID commandChat format ["A %1 structure has been sold at Grid %2", _parameters select 0, _parameters select 1];
+		playsound "Simulation_Fatal";
+	};
 	case "structure-sold-refund": {CTI_P_ChatID commandChat format ["S%1 were received from selling a %2 structure", _parameters select 0, _parameters select 1]};
 	case "structure-teamkill-attempt": {
 		CTI_P_ChatID commandChat format ["Player %1 from group %2 tried to place an explosive near a friendly %3! (the explosive was removed)", _parameters select 0, _parameters select 1, _parameters select 2];
 	};
 	case "teamkill": {CTI_P_ChatID sideChat "Watch your fire! you're shooting on friendly!"};
 	case "teamswap": {CTI_P_ChatID commandChat format ["Player %1 has been sent back to the lobby after teamswaping", _parameters]};
-	case "town-capture": {player groupChat format ["$%1 awarded for the capture of %2", _parameters select 1, (_parameters select 0) getVariable "cti_town_name"]};
-	case "town-hostilenear": {CTI_P_ChatID commandChat format ["Hostile detected near %1", _parameters getVariable "cti_town_name"]};
+	case "town-capture": {
+		player groupChat format ["$%1 awarded for the capture of %2", _parameters select 1, (_parameters select 0) getVariable "cti_town_name"];
+		playMusic "EventTrack03_F_Curator";
+	};
+	case "town-hostilenear": {
+		CTI_P_ChatID commandChat format ["Hostile detected near %1", _parameters getVariable "cti_town_name"];
+		playsound "Alarm";
+	};
 	case "upgrade-ended": {
 		CTI_P_ChatID commandChat format ["%1 has been upgraded to level %2", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select (_parameters select 0)) select 0, (_parameters select 1)];
+		playMusic "LeadTrack03a_F_EPA";
 	};
 };

@@ -53,7 +53,6 @@ if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
 
 _unit = _team createUnit [_classname, _position, [], 0, _special];
-_unit setSkill (0.3 + (random 0.5));//tbd tweak
 
 if (_net) then {_unit setVariable ["cti_net", _sideID, true]};
 

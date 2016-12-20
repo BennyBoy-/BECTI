@@ -37,10 +37,10 @@ with missionNamespace do {
 		
 		_marker = createMarkerLocal [format ["cti_artradar_hostile_%1", CTI_P_MarkerIterator], _position]; //todo randomize
 		CTI_P_MarkerIterator = CTI_P_MarkerIterator + 1;
-		_marker setMarkerTypeLocal "mil_arrow";
-		_marker setMarkerColorLocal "ColorBrown";
+		_marker setMarkerTypeLocal "mil_arrow2";
+		_marker setMarkerColorLocal "ColorYellow";
 		_marker setMarkerDirLocal _direction;
-		_marker setMarkerSizeLocal [0.5, 0.5];
+		_marker setMarkerSizeLocal [1, 1];
 		
 		_marker spawn {sleep CTI_BASE_ARTRADAR_MARKER_TIMEOUT; deleteMarkerLocal _this};
 	};
@@ -74,6 +74,33 @@ with missionNamespace do {
 		};
 	};
 	
+	//--- The client (side commander) receives a bounty for base defense kills
+	CTI_PVF_CLT_OnBaseDefensesKill = {
+		_type_killed = _this select 0;
+		_award = _this select 1;
+		_killed_pname = _this select 2;
+		
+		_var = missionNamespace getVariable _type_killed;
+		_label = _var select CTI_UNIT_LABEL;
+		
+		diag_log "killbounty-debug: EH";
+		
+		if (call CTI_CL_FNC_IsPlayerCommander) then {
+			(_award) call CTI_CL_FNC_ChangePlayerFunds;
+			if (_killed_pname == "") then {
+				["award-bounty-basedefense", [_award, _label]] call CTI_CL_FNC_DisplayMessage;
+			} else {
+				["award-bounty-basedefense-player", [_award, _killed_pname, _label]] call CTI_CL_FNC_DisplayMessage;
+			};
+		} else {	// Notification to players
+			if (_killed_pname == "") then {
+				["basedefense-kill", [_label]] call CTI_CL_FNC_DisplayMessage;
+			} else {
+				["basedefense-kill-player", [_killed_pname, _label]] call CTI_CL_FNC_DisplayMessage;
+			};
+		}
+	};
+	
 	//--- The client receives a Camp Capture notification
 	CTI_PVF_CLT_OnCampCaptured = { _this spawn CTI_CL_FNC_OnCampCaptured };
 	
@@ -89,6 +116,11 @@ with missionNamespace do {
 		_marker setMarkerColorLocal CTI_P_SideColor;
 		_marker setMarkerSizeLocal [0.75, 0.75]; 
 		_marker setMarkerTextLocal "FOB";
+		_fob addAction ["<t color='#e67b09'>FOB: Buy Bike (50$)</t>","Client\Actions\Action_Buy_Town.sqf", ["dbo_CIV_new_bike",50,true], 99, false, true, "", " !CTI_P_PreBuilding && vehicle player == player"];
+		//_fob addAction ["<t color='#e67b09'>FOB: Buy Motorcycle (150$)</t>","Client\Actions\Action_Buy_Town.sqf", ["CUP_M1030",150,true], 99, false, true, "", " !CTI_P_PreBuilding && vehicle player == player"];
+		_fob addAction ["<t color='#e67b09'>FOB: Buy Quadbike (250$)</t>","Client\Actions\Action_Buy_Town.sqf", ["C_Quadbike_01_F",250,true], 99, false, true, "", " !CTI_P_PreBuilding && vehicle player == player"];
+		_fob addAction ["<t color='#e67b09'>FOB: Buy Scooter (150$)</t>","Client\Actions\Action_Buy_Town.sqf", ["sfp_dakota",150,true], 99, false, true, "", " !CTI_P_PreBuilding && vehicle player == player"];
+		//_fob addAction ["<t color='#e67b09'>FOB: Buy Mercedes Benz (500$)</t>","Client\Actions\Action_Buy_Town.sqf", ["sfp_mercedes",500,true], 99, false, true, "", " !CTI_P_PreBuilding && vehicle player == player"];
 		
 		[_fob, _marker] spawn {
 			_structure = _this select 0;
@@ -119,9 +151,13 @@ with missionNamespace do {
 		["commander-vote-start", _name] call CTI_CL_FNC_DisplayMessage;
 		
 		waitUntil{CTI_P_SideLogic getVariable "cti_votetime" > -1 || !alive player};
-		
+
 		if (alive player) then {
 			closeDialog 0;
+			if (CTI_DEV_MODE == 0) then {
+				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Commander vote will start in 15 seconds.";
+				sleep 15;
+			};
 			createDialog "CTI_RscVoteMenu";
 		};
 	};

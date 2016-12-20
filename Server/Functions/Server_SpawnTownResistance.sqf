@@ -61,195 +61,436 @@ _tries = 400;
 
 //--- Pool data: [<GROUP>, <PRESENCE>, {<SPAWN PROBABILITY>}], nesting is possible to narrow down some choices
 if (isNil {_town getVariable "cti_naval"}) then {
-	switch (true) do {
-		case (_value < 50) : { 
-			_pool_units = [
-				["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 99],
-				["GUER_TOWNS_SQUAD_AT1", 1, 99],			
-				[
-					["GUER_TOWNS_SQUAD_LIGHT1_MIXED", 2, 75],
-					["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 25]
-				]
-			];
+	if (CTI_ZOMBIE_MODE == 0 && isNil {_town getVariable "cti_zombie"}) then {
+		if (CTI_GUERILLA_MODE == 0 && isNil {_town getVariable "cti_infantry"}) then {
+			switch (true) do {
+				case (_value < 70) : { 
+					_pool_units = [
+						["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 99],
+						["GUER_TOWNS_SQUAD_AT1", 1, 99],	
+						["GUER_TOWNS_SQUAD_AA", 1, 40],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT1_MIXED", 2, 75],
+							["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 25]
+						]
+					];
+				};
+				case (_value >= 70 && _value < 80) : { 
+					_pool_units = [
+						["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 99],
+						["GUER_TOWNS_SQUAD_AT1", 1, 99],
+						["GUER_TOWNS_SQUAD_AA", 1, 40],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT1_MIXED", 2, 75],
+							["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 25]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC1_MIXED", 2, 80]
+						]
+					];
+				};
+				case (_value >= 80 && _value < 90) : { 
+					_pool_units = [
+						["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 75],
+						["GUER_TOWNS_SQUAD_SNIPER", 1, 75],
+						["GUER_TOWNS_SQUAD_AT1", 1, 75],
+						["GUER_TOWNS_SQUAD_AA", 2, 40],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 25],
+							["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 3, 75],
+							["GUER_TOWNS_SQUAD_LIGHT4_MIXED", 1, 25]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC1_MIXED", 3, 80],
+							["GUER_TOWNS_SQUAD_APC2_MIXED", 1, 20]
+						],
+						[
+							["GUER_TOWNS_SQUAD_VEHICLE_AA1", 1, 30]
+						]
+					];
+				};
+				case (_value >= 90 && _value < 100) : { 
+					_pool_units = [
+						[
+							["GUER_TOWNS_SQUAD_RIFLEMEN3", 1, 50], 
+							["GUER_TOWNS_SQUAD_SNIPER", 1, 20], 
+							["GUER_TOWNS_SQUAD_AT2", 2, 75], 
+							["GUER_TOWNS_SQUAD_AA", 2, 40]				
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 1, 20],
+							["GUER_TOWNS_SQUAD_LIGHT4_MIXED", 3, 50],
+							["GUER_TOWNS_SQUAD_LIGHT5_MIXED", 2, 30]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC1_MIXED", 2, 40],
+							["GUER_TOWNS_SQUAD_APC2_MIXED", 3, 70]
+						],
+						[
+							["GUER_TOWNS_SQUAD_VEHICLE_AA1", 1, 30]
+						]
+					];
+				};
+				case (_value >= 100 && _value < 110) : { 
+					_pool_units = [
+						[
+							["GUER_TOWNS_SQUAD_RIFLEMEN3", 2, 50],
+							["GUER_TOWNS_SQUAD_SNIPER", 1, 10], 
+							["GUER_TOWNS_SQUAD_AT2", 2, 75], 
+							["GUER_TOWNS_SQUAD_AA", 2, 65]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT4_MIXED", 1, 20],
+							["GUER_TOWNS_SQUAD_LIGHT5_MIXED", 1, 50],
+							["GUER_TOWNS_SQUAD_LIGHT6_MIXED", 1, 30]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC2_MIXED", 2, 70],
+							["GUER_TOWNS_SQUAD_APC3_MIXED", 3, 70]
+						],
+						[
+							["GUER_TOWNS_SQUAD_ARMORED1_MIXED", 1, 40]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT4", 1, 10],
+							["GUER_TOWNS_SQUAD_LIGHT5", 2, 40],
+							["GUER_TOWNS_SQUAD_LIGHT6", 1, 20]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC2", 2, 50],
+							["GUER_TOWNS_SQUAD_APC3", 2, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_ARMORED1", 1, 20]
+						],
+						[
+							["GUER_TOWNS_SQUAD_VEHICLE_AA1", 2, 50],
+							["GUER_TOWNS_SQUAD_VEHICLE_AA2", 1, 20]
+						]
+					];
+				};
+				case (_value >= 110 && _value < 120) : { 
+					_pool_units = [
+						[
+							["GUER_TOWNS_SQUAD_RIFLEMEN3", 1, 50],
+							["GUER_TOWNS_SQUAD_SNIPER", 1, 50], 
+							["GUER_TOWNS_SQUAD_AT2", 3, 75], 
+							["GUER_TOWNS_SQUAD_AA", 3, 65]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT5_MIXED", 1, 50],
+							["GUER_TOWNS_SQUAD_LIGHT6_MIXED", 2, 50],
+							["GUER_TOWNS_SQUAD_LIGHT7_MIXED", 2, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC2_MIXED", 2, 30],
+							["GUER_TOWNS_SQUAD_APC3_MIXED", 3, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 1, 60],
+							["GUER_TOWNS_SQUAD_ARMORED3_MIXED", 1, 40]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT5", 2, 50],
+							["GUER_TOWNS_SQUAD_LIGHT6", 1, 30],
+							["GUER_TOWNS_SQUAD_LIGHT7", 1, 30]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC2", 2, 30],
+							["GUER_TOWNS_SQUAD_APC3", 3, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_ARMORED2", 1, 10],
+							["GUER_TOWNS_SQUAD_ARMORED3", 1, 20]
+						],
+						[
+							["GUER_TOWNS_SQUAD_VEHICLE_AA2", 1, 20],
+							["GUER_TOWNS_SQUAD_VEHICLE_AA3", 2, 60]
+						]
+					];
+				};
+				case (_value >= 120) : { 
+					_pool_units = [
+						[
+							["GUER_TOWNS_SQUAD_RIFLEMEN3", 1, 50],
+							["GUER_TOWNS_SQUAD_SNIPER", 1, 50], 
+							["GUER_TOWNS_SQUAD_AT2", 4, 75], 
+							["GUER_TOWNS_SQUAD_AA", 4, 65]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT6_MIXED", 1, 30],
+							["GUER_TOWNS_SQUAD_LIGHT7_MIXED", 2, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC2_MIXED", 2, 30],
+							["GUER_TOWNS_SQUAD_APC3_MIXED", 3, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 1, 20],
+							["GUER_TOWNS_SQUAD_ARMORED3_MIXED", 1, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT6", 1, 30],
+							["GUER_TOWNS_SQUAD_LIGHT7", 1, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC2", 2, 30],
+							["GUER_TOWNS_SQUAD_APC3", 3, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_ARMORED2", 1, 20],
+							["GUER_TOWNS_SQUAD_ARMORED3", 1, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_VEHICLE_AA2", 1, 20],
+							["GUER_TOWNS_SQUAD_VEHICLE_AA3", 2, 60]
+						]
+					];
+				};
+			};
+		} else {
+				switch (true) do {
+					case (_value < 80) : { 
+						_pool_units = [
+						["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 99],
+						["GUER_TOWNS_SQUAD_AT1", 1, 99],			
+						[
+							["GUER_TOWNS_SQUAD_LIGHT1_MIXED", 2, 75],
+							["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 25]
+						]
+						];
+					};
+					case (_value >= 80 && _value < 90) : {  
+						_pool_units = [
+						[	
+							["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 50],
+							["GUER_TOWNS_SQUAD_SNIPER", 1, 50], 
+							["GUER_TOWNS_SQUAD_AT1", 4, 75], 
+							["GUER_TOWNS_SQUAD_AA", 4, 65]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT1_MIXED", 1, 30],
+							["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC1_MIXED", 2, 30]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT1", 1, 30],
+							["GUER_TOWNS_SQUAD_LIGHT2", 1, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC1", 2, 30]
+						],
+						[
+							["GUER_TOWNS_SQUAD_VEHICLE_AA1", 1, 50]
+						]
+						];
+					};
+					case (_value >= 90 && _value < 100) : {
+						_pool_units = [
+						[	
+							["GUER_TOWNS_SQUAD_RIFLEMEN2", 1, 50],
+							["GUER_TOWNS_SQUAD_SNIPER", 1, 50], 
+							["GUER_TOWNS_SQUAD_AT1", 4, 75], 
+							["GUER_TOWNS_SQUAD_AA", 4, 65]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 1, 30],
+							["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 2, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC1_MIXED", 2, 30],
+							["GUER_TOWNS_SQUAD_APC2_MIXED", 4, 70]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT2", 1, 30],
+							["GUER_TOWNS_SQUAD_LIGHT3", 1, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC1", 2, 30],
+							["GUER_TOWNS_SQUAD_APC2", 3, 70]
+						],
+						[
+							["GUER_TOWNS_SQUAD_VEHICLE_AA1", 1, 20]
+						]
+						];
+					};
+					case (_value >= 100 && _value < 110) : { 
+						_pool_units = [
+						[	
+							["GUER_TOWNS_SQUAD_RIFLEMEN2", 1, 50],
+							["GUER_TOWNS_SQUAD_SNIPER", 1, 50], 
+							["GUER_TOWNS_SQUAD_AT1", 4, 75], 
+							["GUER_TOWNS_SQUAD_AA", 4, 65]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 1, 30],
+							["GUER_TOWNS_SQUAD_LIGHT4_MIXED", 2, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC1_MIXED", 2, 30],
+							["GUER_TOWNS_SQUAD_APC2_MIXED", 4, 70]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT3", 1, 30],
+							["GUER_TOWNS_SQUAD_LIGHT4", 1, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC1", 2, 30],
+							["GUER_TOWNS_SQUAD_APC2", 3, 70]
+						],
+						[
+							["GUER_TOWNS_SQUAD_VEHICLE_AA1", 1, 20],
+							["GUER_TOWNS_SQUAD_VEHICLE_AA2", 2, 60]
+						]
+						];
+					};
+					case (_value >= 110 && _value < 120) : { 
+						_pool_units = [
+						[	
+							["GUER_TOWNS_SQUAD_RIFLEMEN2", 1, 50],
+							["GUER_TOWNS_SQUAD_SNIPER", 1, 50], 
+							["GUER_TOWNS_SQUAD_AT1", 4, 75], 
+							["GUER_TOWNS_SQUAD_AA", 4, 65]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 1, 30],
+							["GUER_TOWNS_SQUAD_LIGHT4_MIXED", 2, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC1_MIXED", 2, 30],
+							["GUER_TOWNS_SQUAD_APC2_MIXED", 4, 70]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT3", 1, 30],
+							["GUER_TOWNS_SQUAD_LIGHT4", 1, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC1", 2, 30],
+							["GUER_TOWNS_SQUAD_APC2", 3, 70]
+						],
+						[
+							["GUER_TOWNS_SQUAD_VEHICLE_AA1", 1, 20],
+							["GUER_TOWNS_SQUAD_VEHICLE_AA2", 2, 60]
+						]
+						];
+					};
+					case (_value >= 120) : { 
+						_pool_units = [
+						[	
+							["GUER_TOWNS_SQUAD_RIFLEMEN2", 1, 50],
+							["GUER_TOWNS_SQUAD_SNIPER", 1, 50], 
+							["GUER_TOWNS_SQUAD_AT1", 4, 75], 
+							["GUER_TOWNS_SQUAD_AA", 4, 65]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 1, 30],
+							["GUER_TOWNS_SQUAD_LIGHT4_MIXED", 2, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC1_MIXED", 2, 30],
+							["GUER_TOWNS_SQUAD_APC2_MIXED", 4, 70]
+						],
+						[
+							["GUER_TOWNS_SQUAD_LIGHT3", 1, 30],
+							["GUER_TOWNS_SQUAD_LIGHT4", 1, 50]
+						],
+						[
+							["GUER_TOWNS_SQUAD_APC1", 2, 30],
+							["GUER_TOWNS_SQUAD_APC2", 3, 70]
+						],
+						[
+							["GUER_TOWNS_SQUAD_VEHICLE_AA1", 1, 20],
+							["GUER_TOWNS_SQUAD_VEHICLE_AA2", 2, 60]
+						]
+						];
+					};
+				};	
 		};
-		case (_value >= 50 && _value <= 60) : { 
-			_pool_units = [
-				["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 75],
-				["GUER_TOWNS_SQUAD_SNIPER", 1, 75],
-				["GUER_TOWNS_SQUAD_AT1", 1, 75],				
-				[
-					["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 25],
-					["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 3, 75],
-					["GUER_TOWNS_SQUAD_LIGHT4_MIXED", 1, 25]
-				],
-				[
-					["GUER_TOWNS_SQUAD_APC1_MIXED", 3, 80],
-					["GUER_TOWNS_SQUAD_APC2_MIXED", 1, 50]
-				]
-			];
-		};
-		case (_value > 60 && _value <= 80) : { 
-			_pool_units = [
-				[
-					["GUER_TOWNS_SQUAD_RIFLEMEN3", 1, 50], 
-					["GUER_TOWNS_SQUAD_SNIPER", 1, 20], 
-					["GUER_TOWNS_SQUAD_AT2", 2, 75] 				
-				],
-				[
-					["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 1, 20],
-					["GUER_TOWNS_SQUAD_LIGHT4_MIXED", 3, 50],
-					["GUER_TOWNS_SQUAD_LIGHT5_MIXED", 2, 30]
-				],
-				[
-					["GUER_TOWNS_SQUAD_APC1_MIXED", 2, 40],
-					["GUER_TOWNS_SQUAD_APC2_MIXED", 3, 70]
-				],
-				[
-					["GUER_TOWNS_SQUAD_VEHICLE_AA1", 1, 20]
-				]
-			];
-		};
-		case (_value > 80 && _value <= 100) : { 
-			_pool_units = [
-				[
-					["GUER_TOWNS_SQUAD_RIFLEMEN3", 2, 50],
-					["GUER_TOWNS_SQUAD_SNIPER", 1, 10], 
-					["GUER_TOWNS_SQUAD_AT2", 2, 75], 
-					["GUER_TOWNS_SQUAD_AA", 2, 65]
-				],
-				[
-					["GUER_TOWNS_SQUAD_LIGHT4_MIXED", 1, 20],
-					["GUER_TOWNS_SQUAD_LIGHT5_MIXED", 1, 50],
-					["GUER_TOWNS_SQUAD_LIGHT6_MIXED", 1, 30]
-				],
-				[
-					["GUER_TOWNS_SQUAD_APC2_MIXED", 2, 70],
-					["GUER_TOWNS_SQUAD_APC3_MIXED", 3, 70]
-				],
-				[
-					["GUER_TOWNS_SQUAD_ARMORED1_MIXED", 1, 50]
-				],
-				[
-					["GUER_TOWNS_SQUAD_LIGHT4", 1, 10],
-					["GUER_TOWNS_SQUAD_LIGHT5", 2, 40],
-					["GUER_TOWNS_SQUAD_LIGHT6", 1, 20]
-				],
-				[
-					["GUER_TOWNS_SQUAD_APC2", 2, 50],
-					["GUER_TOWNS_SQUAD_APC3", 2, 50]
-				],
-				[
-					["GUER_TOWNS_SQUAD_ARMORED1", 1, 5],
-					["GUER_TOWNS_SQUAD_ARMORED2", 1, 30]
-				],
-				[
-					["GUER_TOWNS_SQUAD_VEHICLE_AA1", 2, 50],
-					["GUER_TOWNS_SQUAD_VEHICLE_AA2", 1, 20]
-				]
-			];
-		};
-		case (_value > 100 && _value <= 120) : { 
-			_pool_units = [
-				[
-					["GUER_TOWNS_SQUAD_RIFLEMEN3", 1, 50],
-					["GUER_TOWNS_SQUAD_SNIPER", 1, 50], 
-					["GUER_TOWNS_SQUAD_AT2", 3, 75], 
-					["GUER_TOWNS_SQUAD_AA", 3, 65]
-				],
-				[
-					["GUER_TOWNS_SQUAD_LIGHT5_MIXED", 1, 50],
-					["GUER_TOWNS_SQUAD_LIGHT6_MIXED", 2, 50],
-					["GUER_TOWNS_SQUAD_LIGHT7_MIXED", 2, 50]
-				],
-				[
-					["GUER_TOWNS_SQUAD_APC2_MIXED", 2, 30],
-					["GUER_TOWNS_SQUAD_APC3_MIXED", 4, 80]
-				],
-				[
-					["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 2, 70],
-					["GUER_TOWNS_SQUAD_ARMORED3_MIXED", 1, 50]
-				],
-				[
-					["GUER_TOWNS_SQUAD_LIGHT5", 2, 50],
-					["GUER_TOWNS_SQUAD_LIGHT6", 1, 30],
-					["GUER_TOWNS_SQUAD_LIGHT7", 1, 30]
-				],
-				[
-					["GUER_TOWNS_SQUAD_APC2", 2, 30],
-					["GUER_TOWNS_SQUAD_APC3", 3, 70]
-				],
-				[
-					["GUER_TOWNS_SQUAD_ARMORED2", 1, 10],
-					["GUER_TOWNS_SQUAD_ARMORED3", 1, 30]
-				],
-				[
-					["GUER_TOWNS_SQUAD_VEHICLE_AA2", 1, 20],
-					["GUER_TOWNS_SQUAD_VEHICLE_AA3", 2, 60]
-				]
-			];
-		};
-		case (_value > 120) : { 
-			_pool_units = [
-				[
-					["GUER_TOWNS_SQUAD_RIFLEMEN3", 1, 50],
-					["GUER_TOWNS_SQUAD_SNIPER", 1, 50], 
-					["GUER_TOWNS_SQUAD_AT2", 4, 75], 
-					["GUER_TOWNS_SQUAD_AA", 4, 65]
-				],
-				[
-					["GUER_TOWNS_SQUAD_LIGHT6_MIXED", 1, 30],
-					["GUER_TOWNS_SQUAD_LIGHT7_MIXED", 2, 50]
-				],
-				[
-					["GUER_TOWNS_SQUAD_APC2_MIXED", 2, 30],
-					["GUER_TOWNS_SQUAD_APC3_MIXED", 4, 70]
-				],
-				[
-					["GUER_TOWNS_SQUAD_ARMORED2_MIXED", 2, 30],
-					["GUER_TOWNS_SQUAD_ARMORED3_MIXED", 3, 60]
-				],
-				[
-					["GUER_TOWNS_SQUAD_LIGHT6", 1, 30],
-					["GUER_TOWNS_SQUAD_LIGHT7", 1, 50]
-				],
-				[
-					["GUER_TOWNS_SQUAD_APC2", 2, 30],
-					["GUER_TOWNS_SQUAD_APC3", 3, 70]
-				],
-				[
-					["GUER_TOWNS_SQUAD_ARMORED2", 1, 30],
-					["GUER_TOWNS_SQUAD_ARMORED3", 1, 60]
-				],
-				[
-					["GUER_TOWNS_SQUAD_VEHICLE_AA2", 1, 20],
-					["GUER_TOWNS_SQUAD_VEHICLE_AA3", 2, 60]
-				]
-			];
+	} else {
+		switch (true) do {
+			case (_value < 70) : { 
+				_pool_units = [
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 8, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 2, 99]
+				];
+			};
+			case (_value >= 70 && _value < 80) : {  
+				_pool_units = [
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 6, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 2, 99]
+				];
+			};
+			case (_value >= 80 && _value < 90) : {
+				_pool_units = [
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99]
+				];
+			};
+			case (_value >= 90 && _value < 100) : { 
+				_pool_units = [
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99]
+				];
+			};
+			case (_value >= 100 && _value < 110) : { 
+				_pool_units = [
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 2, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 6, 99]
+				];
+			};
+			case (_value >= 110 && _value < 120) : {
+				_pool_units = [ 
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 2, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 8, 99]
+				];
+			};
+			case (_value >= 120) : { 
+				_pool_units = [
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 2, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 4, 99],
+					["GUER_TOWNS_SQUAD_ZOMBIE1", 8, 99]
+				];
+			};
 		};
 	};
 } else {
 	switch (true) do {
-		case (_value < 50) : { 
+		case (_value < 70) : { 
 			_pool_units = [
 				["GUER_TOWNS_SQUAD_NAVAL1", 1, 99],
 				["GUER_TOWNS_SQUAD_ASSAULT_BOAT1", 4, 99]
 			];
 		};
-		case (_value >= 50 && _value <= 60) : { 
+		case (_value >= 70 && _value < 80) : { 
+			_pool_units = [
+				["GUER_TOWNS_SQUAD_NAVAL1", 1, 99],
+				["GUER_TOWNS_SQUAD_ASSAULT_BOAT1", 4, 99],
+				["GUER_TOWNS_SQUAD_ASSAULT_BOAT2", 1, 30]
+			];
+		};
+		case (_value >= 80 && _value < 90) : {
 			_pool_units = [
 				["GUER_TOWNS_SQUAD_NAVAL2", 1, 99],
 				["GUER_TOWNS_SQUAD_ASSAULT_BOAT1", 2, 40],
 				["GUER_TOWNS_SQUAD_ASSAULT_BOAT2", 2, 60]
 			];
 		};
-		case (_value > 60 && _value <= 80) : { 
+		case (_value >= 90 && _value < 100) : {  
 			_pool_units = [
 				["GUER_TOWNS_SQUAD_NAVAL2", 1, 99],
 				["GUER_TOWNS_SQUAD_ASSAULT_BOAT1", 2, 30],
 				["GUER_TOWNS_SQUAD_ASSAULT_BOAT2", 2, 70]
 			];
 		};
-		case (_value > 80 && _value <= 100) : { 
+		case (_value >= 100 && _value < 110) : { 
 			_pool_units = [
 				["GUER_TOWNS_SQUAD_NAVAL3", 1, 99],
 				["GUER_TOWNS_SQUAD_ASSAULT_BOAT1", 3, 30],
@@ -257,7 +498,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				["GUER_TOWNS_SQUAD_MEDIUM_ASSAULT_BOAT", 1, 50]
 			];
 		};
-		case (_value > 100 && _value <= 120) : { 
+		case (_value >= 110 && _value < 120) : { 
 			_pool_units = [ 
 				["GUER_TOWNS_SQUAD_NAVAL3", 1, 99],
 				["GUER_TOWNS_SQUAD_ASSAULT_BOAT1", 3, 20],
@@ -265,7 +506,7 @@ if (isNil {_town getVariable "cti_naval"}) then {
 				["GUER_TOWNS_SQUAD_MEDIUM_ASSAULT_BOAT", 2, 90]
 			];
 		};
-		case (_value > 120) : { 
+		case (_value >= 120) : { 
 			_pool_units = [
 				["GUER_TOWNS_SQUAD_NAVAL3", 1, 99],
 				["GUER_TOWNS_SQUAD_ASSAULT_BOAT1", 3, 10],
@@ -368,7 +609,7 @@ _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 	
 	//--- A group may spawn close to a camp or somewhere in the town
 	if (isNil {_town getVariable "cti_naval"}) then {
-		if (count _camps > 0 && random 100 > 50) then {
+		if (count _camps > 0 && random 100 > 30) then {
 			_camp_index = floor(random count _camps);
 			_position = [ASLToAGL getPosASL(_camps select _camp_index), 10, CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS, _tries] call CTI_CO_FNC_GetRandomPosition;
 			_position = [_position, 30, "meadow", 8, 5, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
@@ -387,6 +628,13 @@ _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 	_group setGroupIdGlobal [format["(%1) %2", _town, _group]];
 	_groups pushBack _group;
 	
+	//--- Set AI to Combat mode
+	_group setBehaviour "AWARE";
+	_group setCombatMode "RED";
+	_group setSpeedMode "FULL";
+	_group enableAttack true;
+
+
 	if (CTI_Log_Level >= CTI_Log_Information) then {
 		["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format["Composing Resistance Team for town [%1] using group [%2] at position [%3] with units [%4]", _town getVariable "cti_town_name", _group, _position, _x]] call CTI_CO_FNC_Log;
 	};

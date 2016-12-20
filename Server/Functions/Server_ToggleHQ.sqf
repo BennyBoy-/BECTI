@@ -77,7 +77,7 @@ if (((_var select 0) select 0) == CTI_HQ_DEPLOY) then { //--- Attempt to deploy 
 		_logic setVariable ["cti_hq_deployed", false, true];
 		
 		//--- Get a safe position
-		_position = [_position, 20] call CTI_CO_FNC_GetEmptyPosition;
+		_position = [_position, 90] call CTI_CO_FNC_GetEmptyPosition;
 		
 		//--- Mobilize the HQ
 		_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _position, 0, _side, true, false] call CTI_CO_FNC_CreateVehicle;

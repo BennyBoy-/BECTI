@@ -154,7 +154,7 @@ CTI_UI_Gear_DisplayInventory = {
 	
 	//--- Weapons
 	_startidc = 70013;
-	// _startidc_current_mag = 70901;
+	_startidc_current_mag = 70901;
 	
 	_default_weapons = ["\A3\Ui_f\data\GUI\Rsc\RscDisplayGear\ui_gear_primary_gs.paa", "\A3\Ui_f\data\GUI\Rsc\RscDisplayGear\ui_gear_secondary_gs.paa", "\A3\Ui_f\data\GUI\Rsc\RscDisplayGear\ui_gear_hgun_gs.paa"];
 	_default_accs = ["\A3\Ui_f\data\GUI\Rsc\RscDisplayGear\ui_gear_muzzle_gs.paa", "\A3\Ui_f\data\GUI\Rsc\RscDisplayGear\ui_gear_side_gs.paa", "\A3\Ui_f\data\GUI\Rsc\RscDisplayGear\ui_gear_top_gs.paa", "\A3\ui_f\data\gui\Rsc\RscDisplayGear\ui_gear_bipod_gs.paa"];
@@ -191,13 +191,13 @@ CTI_UI_Gear_DisplayInventory = {
 			};
 		};
 		
-		/*if (count(_x select 2) > 0) then {
+		if (count(_x select 2) > 0) then {
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc_current_mag+_forEachindex) ctrlSetText getText(configFile >> 'CfgMagazines' >> ((_x select 2) select 0) >> 'picture');
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc_current_mag+_forEachindex) ctrlSetTooltip getText(configFile >> 'CfgMagazines' >> ((_x select 2) select 0) >> 'displayName');
 		} else {
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc_current_mag+_forEachindex) ctrlSetText "\A3\Ui_f\data\GUI\Rsc\RscDisplayGear\ui_gear_magazine_gs.paa";
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _startidc_current_mag+_forEachindex) ctrlSetTooltip "";
-		};*/
+		};
 	} forEach (_gear select 0);
 	
 	//--- Uniform, Vest and backpack
@@ -411,7 +411,7 @@ CTI_UI_Gear_ReplaceWeapon = {
 		((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _idc) ctrlSetText (_defaults select _index);
 		((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _idc) ctrlSetTooltip "";
 		
-		// ["", _index, 70901+_index] call CTI_UI_Gear_ChangeCurrentMagazine;
+		["", _index, 70901+_index] call CTI_UI_Gear_ChangeCurrentMagazine;
 	};
 	
 	if (_changed) then { [_item, _index, [_idc+1, _idc+2, _idc+3, _idc+4]] call CTI_UI_Gear_CheckAccessories }; //--- Do we keep the accessories?
@@ -792,7 +792,7 @@ CTI_UI_Gear_CheckMagazines = {
 			_current_magazine = ((_gear select 0) select _i) select 2;
 			if (count _current_magazine > 0) then {
 				if ((_current_magazine select 0) in _replace) then {
-					// [_magazine_new, _i, 70901+_i] call CTI_UI_Gear_ChangeCurrentMagazine;
+					[_magazine_new, _i, 70901+_i] call CTI_UI_Gear_ChangeCurrentMagazine;
 				};
 			};
 		};
@@ -1037,15 +1037,15 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 				
 				// current magazine
 				//--- Is there a primary weapon?
-				/*for '_i' from 0 to 2 do {
+				for '_i' from 0 to 2 do {
 					_gear_sub = (_gear select 0) select _i;
-					
+
 					if (_gear_sub select 0 != "") then { //--- There is a weapon
 						_magazines = (getArray(configFile >> 'CfgWeapons' >> (_gear_sub select 0) >> 'magazines')) call CTI_CO_FNC_ArrayToLower;
-						
+
 						if (_item in _magazines) then {	_idcs = _idcs + [77901+_i] };
 					};
-				};*/
+				};
 			};
 			case "CfgGlasses": {
 				_idcs = [77005];
@@ -1198,7 +1198,7 @@ CTI_UI_Gear_OnShoppingItemDrop = {
 				};
 				case "Accessory": {
 					_current = ((_gear select (_path select 0)) select (_path select 1)) select (_path select 2);
-					if (count _current == 0) then {_current = ["","",""];((_gear select (_path select 0)) select (_path select 1)) set [_path select 2, ["","",""]]};
+					if (count _current == 0) then {_current = ["","","",""];((_gear select (_path select 0)) select (_path select 1)) set [_path select 2, ["","","",""]]};
 					_current = _current select (_path select 3);
 					_gear_set = ((_gear select (_path select 0)) select (_path select 1)) select (_path select 2);
 					_gear_index = _path select 3;
@@ -1215,7 +1215,7 @@ CTI_UI_Gear_OnShoppingItemDrop = {
 					};
 				};
 				case "ListItems": { _updated = [_item] call CTI_UI_Gear_TryContainerAddItem };
-				// case "CurrentMagazine": { _updated = [_item, _path, _idc-7000] call CTI_UI_Gear_ChangeCurrentMagazine };
+				case "CurrentMagazine": { _updated = [_item, _path, _idc-7000] call CTI_UI_Gear_ChangeCurrentMagazine };
 			};
 			
 			if (_current != _item && _gear_index != -1) then {

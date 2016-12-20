@@ -1,6 +1,8 @@
+#define HUD_IDC	1500000
+
 class RscTitles {
 	
-	titles[] = {CTI_CaptureBar, CTI_ConstructionInterface};
+	titles[] = {CTI_CaptureBar, CTI_ConstructionInterface, CTI_HUD_RSC};
 	
 	class CTI_CaptureBar {
 		idd = 600100;
@@ -10,53 +12,76 @@ class RscTitles {
 		onUnload = "uiNamespace setVariable ['cti_title_capture', displayNull]";
 		
 		class controls {
-			class CTI_Progress : RscProgress {
+			class CTI_Progress: RscProgress
+			{
 				idc = 601000;
-				x = "SafeZoneX + (SafeZoneW * 0.55)";
-				y = "((SafeZoneH + SafeZoneY) - (1 + 0.07))*-1";
-				w = 0.4;
-				h = 0.06;
+
+				x = 0.557283 * safezoneW + safezoneX;
+				y = 0.016 * safezoneH + safezoneY;
+				w = 0.183305 * safezoneW;
+				h = 0.0055 * safezoneH;
+				//colorBackground[] = {0.063,0.063,0.063,0.5};
 			};
-			
-			class CTI_Progress_Label : RscText {
+			class CTI_Progress_Label: RscText
+			{
 				idc = 601001;
-				style = ST_CENTER;
-				colorText[] = {0.258823529, 0.713725490, 1, 1};
 				shadow = 2;
-				x = "SafeZoneX + (SafeZoneW * 0.55)";
-				w = 0.4;
-				y = "((SafeZoneH + SafeZoneY) - (1 + 0.079))*-1";
-			};	
-			
-			class CTI_Intel_Label : RscText {
+				style = ST_RIGHT;
+				SizeEx = "(			(			(			((safezoneW / safezoneH) min 1.5) / 1.5) / 25) * 0.95)";
+				x = 0.557283 * safezoneW + safezoneX;
+				y = 0.027 * safezoneH + safezoneY;
+				w = 0.183305 * safezoneW;
+				h = 0.022 * safezoneH;
+				colorText[] = {0.258824,0.713726,1,1};
+				//colorBackground[] = {0.063,0.063,0.063,0.5};
+			};
+			class CTI_Intel_Label: RscText
+			{
 				idc = 601002;
 				style = ST_RIGHT;
 				colorText[] = {1,1,1,1};
 				shadow = 2;
-				
-				SizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.65)";
-				
-				x = "SafeZoneX + (SafeZoneW * 0.55)";
-				w = 0.4;
-				y = "((SafeZoneH + SafeZoneY) - (1 + 0.129))*-1";
+				SizeEx = "(			(			(			((safezoneW / safezoneH) min 1.1) / 1.1) / 25) * 0.65)";
+				x = 0.557283 * safezoneW + safezoneX;
+				y = 0.049 * safezoneH + safezoneY;
+				w = 0.183305 * safezoneW;
+				h = 0.011 * safezoneH;
+				//colorBackground[] = {0.063,0.063,0.063,0.5};
 			};
-			
-			class CTI_Com_Label : CTI_Intel_Label {
+			class CTI_Com_Label: CTI_Intel_Label
+			{
 				idc = 601003;
 
-				y = "((SafeZoneH + SafeZoneY) - (1 + 0.155))*-1";
+				x = 0.557283 * safezoneW + safezoneX;
+				y = 0.06 * safezoneH + safezoneY;
+				w = 0.183305 * safezoneW;
+				h = 0.011 * safezoneH;
+				//colorBackground[] = {0.063,0.063,0.063,0.5};
+				//sizeEx = (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.65) * GUI_GRID_H;
 			};
-			
-			class CTI_Upgrade_Label : CTI_Intel_Label {
+			class CTI_Upgrade_Label: CTI_Intel_Label
+			{
 				idc = 601004;
 
-				y = "((SafeZoneH + SafeZoneY) - (1 + 0.181))*-1";
+				x = 0.557283 * safezoneW + safezoneX;
+				y = 0.071 * safezoneH + safezoneY;
+				w = 0.183305 * safezoneW;
+				h = 0.011 * safezoneH;
+				//colorBackground[] = {0.063,0.063,0.063,0.5};
+				//sizeEx = (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.65) * GUI_GRID_H;
 			};
-			
-			class CTI_FPS_Label : CTI_Intel_Label {
+			class CTI_FPS_Label: CTI_Intel_Label
+			{
 				idc = 601005;
 
-				y = "((SafeZoneH + SafeZoneY) - (1 + 0.207))*-1";
+				x = 0.557283 * safezoneW + safezoneX;
+				y = 0.082 * safezoneH + safezoneY;
+				w = 0.183305 * safezoneW;
+				h = 0.011 * safezoneH;
+				//colorBackground[] = {0.063,0.063,0.063,0.5};
+				//sizeEx = (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.65) * GUI_GRID_H;
+				//colorText[] = {0,0.35,0.04,1};
+				sizeEx = 0.023;
 			};
 		};
 	};
@@ -144,4 +169,22 @@ class RscTitles {
 			};
 		};
 	};
+		class CTI_HUD_RSC {
+			idd=-1;
+			duration=1e+011;
+			name="HUD_RSC";
+			movingEnable = false;
+			onLoad="uiNamespace setVariable ['HUD', _this select 0];";
+			objects[]={};
+			class controls {
+				class HUD_Vehicle: RscStructuredText {
+					idc = HUD_IDC+2;
+					x = 0.80 * safezoneW + safezoneX;
+					y = 0.60 * safezoneH + safezoneY;
+					w = 0.2 * safezoneW;
+					h = 0.20 * safezoneH;
+					colorBackground[] = {0, 0, 0, 0};
+				};
+			};
+		};
 };

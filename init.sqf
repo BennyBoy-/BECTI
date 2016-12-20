@@ -1,6 +1,6 @@
 //--- Initial View Distance and Object View Distance for both clients and server
-setViewDistance 1750;
-setObjectViewDistance 1750;
+setViewDistance 1000;
+setObjectViewDistance 1000;
 
 //--- Early definition, will be override later on in the init files.
 CTI_P_SideJoined = civilian;
@@ -77,7 +77,7 @@ if ((missionNamespace getVariable "CTI_TOWNS_TERRITORIAL") > 0) then {
 };
 
 //--- Common Part is over
-CTI_Init_Common = true; 
+CTI_Init_Common = true;
 
 //--- Server execution
 if (CTI_IsServer) then {
@@ -86,20 +86,204 @@ if (CTI_IsServer) then {
 };
 
 //--- Pure client execution
-if (CTI_IsClient && !CTI_IsHeadless) then {	
+if (CTI_IsClient && !CTI_IsHeadless) then {
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: init.sqf", "Running client initialization"] call CTI_CO_FNC_Log	};
-	
+
 	waitUntil {!(isNull player)};
-	
+
 	execVM "Client\Init\Init_Client.sqf";
 };
 
 //--- Headless client execution
 if (CTI_IsHeadless) then {
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: init.sqf", "Running headless client initialization"] call CTI_CO_FNC_Log };
-	
+
 	execVM "Client\Init\Init_Client_Headless.sqf";
 };
 
 //--- Set the group ID
 execVM "Common\Init\Init_GroupsID.sqf";
+
+//---Igiload script
+_igiload = execVM "Client\Functions\Externals\IgiLoad\IgiLoadInit.sqf";
+
+//--Drag and drop
+attached = false;
+0 = execVM "Client\Functions\Externals\BDD\Greifer.sqf";
+
+//--Advanced Towing
+execVM "Client\Functions\Externals\AdvancedTowing\fn_advancedTowingInit.sqf";
+
+//--Advanced Sling Loading
+execVM "Client\Functions\Externals\AdvancedSlingLoad\fn_advancedSlingLoadingInit.sqf";
+
+//--Advanced Rapel
+execVM "Client\Functions\Externals\AdvancedRappel\fn_advancedRappellingInit.sqf";
+
+//--Advanced Urban Rapel
+execVM "Client\Functions\Externals\AdvancedUrbanRapel\functions\fn_advancedUrbanRappellingInit.sqf";
+
+//cmEARPLUGS
+call compile preProcessFileLineNumbers "Client\Functions\Externals\cmEarplugs\config.sqf";
+
+//Vehicle HUD
+0 execVM	 "Client\Functions\Externals\Veh_Hud\HUD_init.sqf";
+
+//-- Explosives on Vehicles Script
+waitUntil {time > 0};
+execVM "Client\Functions\Externals\Attach_Charge\Action_Attach_charge.sqf";
+waitUntil {!isNil "EtVInitialized"};
+
+//-- disable ambient life
+waitUntil {time > 0};
+enableEnvironment false;
+
+//--- No more weapon sway
+if (local player) then {
+	_swayamount = CTI_WEAPON_SWAY / 100;
+	player setCustomAimCoef _swayamount;
+	player addMPEventhandler ["MPRespawn", {player setCustomAimCoef _swayamount;}];
+};
+
+//Default Video Settings
+CHVD_allowNoGrass = false; // Set 'false' if you want to disable "None" option for terrain (default: true)
+CHVD_maxView = 3500; // Set maximum Foot view distance (default: 12000) 
+CHVD_maxViewVeh = 3500; // Set maximum Vehicle view distance (default: 12000)
+CHVD_maxViewAir = 3500; // Set maximum Air view distance (default: 12000)
+CHVD_maxObj = 3500; // Set maximimum object view distance (default: 12000)
+CHVD_maxTerrain = true; //hardsets terrain grid to max (default: 3.125)
+
+//Briefing Entries
+0 execVM "Briefing.sqf";
+
+//Keybinds
+/*
+keyspressed = compile preprocessFile "Client\Events\Events_UI_Keybinds.sqf";
+0 spawn {
+	while {!CTI_GameOver} do {
+		_display = findDisplay 46;
+		_display displaySetEventHandler ["KeyDown","_this call keyspressed"];
+		sleep 2;
+	};
+};
+player removeEventHandler ["RscDisplayMPScoreTable",0];
+
+(findDisplay 46) displayAddEventHandler
+[
+	"KeyDown",
+	{
+		_handled = false;
+		if ((_this select 1) in actionKeys "networkStats") then
+		{
+			_handled = true;
+		};
+		_handled;
+	}
+];
+*/
+//Disable Scoreboard
+showScoretable 0;
+//hide score on HUD
+disableSerialization;
+_displayscorehud = uiNamespace getVariable [ "RscMissionStatus_display", displayNull ];
+if ( !isNull _displayscorehud ) then {
+	_statusscorehud = _displayscorehud displayCtrl 15283;
+	_statusscorehud ctrlShow false;	
+};
+
+///Snow and Sand Weather
+if (CTI_WEATHER_SNOW > 0) then { 		
+    MKY_arSnowEFX = [];
+	// snow - [[fog data],int Overcast,ppEfx,allow rain, vary fog, use audio]
+	if (CTI_WEATHER_SNOW == 1) then { 
+		MKY_arSnowEFX = [[0.23,0.020,100],1,true,false,true,true];
+	};
+	if (CTI_WEATHER_SNOW == 2) then { 
+		MKY_arSnowEFX = [[0.35,0.015,200],1,true,false,true,true];
+	};
+	if (CTI_WEATHER_SNOW == 3) then { 
+		MKY_arSnowEFX = [[0.50,0.010,300],1,true,false,true,true];
+	};
+	if (CTI_WEATHER_SNOW == 4) then { 
+		MKY_arSnowEFX = [[0.75,0.005,400],1,true,false,false,true];
+	};
+	
+	// suggested to disable environment so butterflies and snakes aren't seen during snow lol
+	[] spawn {enableEnvironment false;};
+	// handle JIP with this
+	if (!isServer && isNull player) then {
+		waitUntil {sleep 1;!(isNull player)};
+		JIP_varSnowData = [player];
+		publicVariableServer "JIP_varSnowData";
+	};
+	// wait for snow data to exist before starting snow
+	if (hasInterface) then {
+		0 = [] spawn {
+			// wait for variable to exist
+			waitUntil {sleep 5;!(isNil "varEnableSnow")};
+			0 = MKY_arSnowEFX execVM "Client\Functions\Externals\MKY_Snow_Client.sqf";
+		};
+	};
+	// when the rest of mission is ready, start the snow server script
+	if (isServer) then {
+		if (CTI_WEATHER_SNOW == 1) then { 
+			nul = [1,false] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		};
+		if (CTI_WEATHER_SNOW == 2) then { 
+			nul = [2,false] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		};
+		if (CTI_WEATHER_SNOW == 3) then { 
+			nul = [3,false] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		};
+		if (CTI_WEATHER_SNOW == 4) then { 
+			nul = [3,false] execVM "Server\Functions\Externals\MKY_Snow_Server.sqf";
+		};
+	};
+};
+if (CTI_WEATHER_SAND > 0) then { 
+	MKY_arSandEFX = [];				
+	//sand - [fog,overcast,use ppEfx,allow rain,force wind,vary fog,use wind audio,EFX strength]
+	if (CTI_WEATHER_SAND == 1) then { 
+		MKY_arSandEFX = [[0.10,0.020,100],"",true,false,true,true,true,1];
+	};
+	if (CTI_WEATHER_SAND == 2) then { 
+		MKY_arSandEFX = [[0.30,0.015,200],"",true,false,true,true,true,2];
+	};
+	if (CTI_WEATHER_SAND == 3) then { 
+		MKY_arSandEFX = [[0.50,0.010,300],"",true,false,true,true,true,3];
+	};
+	if (CTI_WEATHER_SAND == 4) then { 
+		MKY_arSandEFX = [[0.75,0.005,400],"",true,false,true,true,true,3];
+	};
+	
+	// suggested to disable environment so butterflies and snakes aren't seen during snow lol
+	[] spawn {enableEnvironment false;};
+	// handle JIP with this
+	if (!isServer && isNull player) then {
+		waitUntil {sleep 1;!(isNull player)};
+		JIP_varSandData = [player];
+		publicVariableServer "JIP_varSandData";
+	};
+	// wait for snow data to exist before starting snow
+	if (hasInterface) then {
+		0 = [] spawn {
+			// wait for variable to exist
+			waitUntil {sleep 5;!(isNil "varEnableSand")};
+			0 = MKY_arSandEFX execVM "Client\Functions\Externals\MKY_Sand_Client.sqf";
+		};
+	};
+	// when the rest of mission is ready, start the snow server script
+	if (isServer) then {
+		nul = [] execVM "Server\Functions\Externals\MKY_Sand_Server.sqf";
+	};
+};
+//Radio
+Common_Say3D = compile preprocessFileLineNumbers "Common\Functions\Common_Say3D.sqf";
+if (isNil "Radio_Say3D") then {
+    Radio_Say3D = [objNull,0];
+};
+"Radio_Say3D" addPublicVariableEventHandler {
+      private["_array"];
+      _array = _this select 1;
+     (_array select 0) say3D (_array select 1);
+};

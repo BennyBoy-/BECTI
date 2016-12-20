@@ -1,0 +1,15 @@
+//Static Line Paradrop Script based on Ninja970&Y's Parachute Script for Helicopters
+* This script allows Infantry to parachute out of a helicopter, without having to pick up an ingame parachute,
+* thereby allowing them to keep their backpacks. This functionality was previously available with HALO-from-flag
+* scripts, but not in a Static Line Paradrop. Hence, this modification.
+//
+player allowdamage false;
+~1
+player action ["eject",vehicle player];
+~3
+_para = "Steerable_Parachute_F" createVehicle (position player);
+_para setPos (getPos player);
+~1
+player moveindriver _para;
+~1
+player allowdamage true;

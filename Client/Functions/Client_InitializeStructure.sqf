@@ -50,3 +50,15 @@ if (isNil {_structure getVariable "cti_structure_type"}) then {_structure setVar
 	waitUntil { sleep 5; !alive _structure };
 	deleteMarkerLocal _marker;
 };
+
+// additionnal marker for radars
+if ((_var select 0) select 0 == CTI_RADAR) then {
+	(_structure) spawn {
+		(_this) spawn CTI_CL_FNC_UpdateRadarMarkerAir;
+	};
+};
+if ((_var select 0) select 0 == CTI_RADAR_ART) then {
+	(_structure) spawn {
+		(_this) spawn CTI_CL_FNC_UpdateRadarMarkerArt;
+	};
+};

@@ -33,8 +33,8 @@ _available = [];
 	if !(isNil {_x getVariable "cti_spec"}) then {
 		_spec = _x getVariable "cti_spec";
 		if (typeName _spec != "ARRAY") then {_spec = [_spec]};
-		if (_type in _spec && getPos _x select 2 < 5) then {_available pushBack _x};
+		if (_type in _spec && getPos _x select 2 < 5 && CTI_P_SideJoined == side _x) then {_available pushBack _x};
 	};
-} forEach (_unit nearEntities [["Car", "Ship", "Motorcycle", "Tank", "Air"], _range]);
+} forEach (_unit nearEntities [["Car", "Ship", "Motorcycle", "Tank", "Air","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"], _range]);
 
 _available

@@ -1,8 +1,7 @@
-//--- Credits: Zerty
 private ["_damage", "_v", "_wheels"];
 
 _v = _this select 0;
-_damage = _this select 2;
+_damage = (_this select 2);
 
 _wheels = ["wheel_1_1_steering","wheel_1_2_steering","wheel_1_3_steering","wheel_1_4_steering","wheel_2_1_steering","wheel_2_2_steering","wheel_2_3_steering","wheel_2_4_steering"];
 
