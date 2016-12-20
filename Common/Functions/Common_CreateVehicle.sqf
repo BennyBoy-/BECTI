@@ -54,7 +54,6 @@ _locked = if (count _this > 4) then {_this select 4} else {false};
 _net = if (count _this > 5) then {_this select 5} else {false};
 _handle = if (count _this > 6) then {_this select 6} else {false};
 _special = if (count _this > 7) then {_this select 7} else {"FORM"};
-_created = if (count _this > 8) then {_this select 8} else {objNull};
 
 if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
@@ -65,20 +64,11 @@ _vehicle = createVehicle [_type, _position, [], 7, _special];
 _velocity = velocity _vehicle;
 _vehicle setDir _direction;
 _vehicle setVectorUp surfaceNormal position _vehicle;
-//--- Adding 2 second god mode to vehicles on spawn to prevent damage
-_vehicle  spawn {_this allowDamage false; sleep 2; _this allowDamage true};
 
-if (isNull _created) then {
-	_vehicle setDir _direction;
-	//Unmanned Unit fix
-	if (_type isKindOf "UAV" || _type isKindOf "UGV_01_base_F" || _type isKindOf "O_UCSV_01" || _type isKindOf "B_UCSV_01" || _type isKindOf "B_UCSV_02" || _type isKindOf "B_T_UAV_03_F" || _type isKindOf "O_T_UAV_04_CAS_F") then {createVehicleCrew _vehicle};
-
-	if (_special != "FLY") then {
-		_vehicle setVelocity [0,0,1];
-	} else {
-		_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
-	};
+if (_special == "FLY") then {
+	_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
 };
+
 if (_locked) then {_vehicle lock 2};
 if (_net) then {_vehicle setVariable ["cti_net", _sideID, true]};
 if (_handle) then {
@@ -106,19 +96,6 @@ if (getNumber(configFile >> "CfgVehicles" >> _type >> "artilleryScanner") > 0 &&
 	(_vehicle) remoteExec ["CTI_PVF_CLT_OnArtilleryPieceTracked", CTI_PV_CLIENTS];
 };
 
-if (getAmmoCargo _vehicle > 0) then {_vehicle setAmmoCargo  0};
-//Clear out the cargo of the vehicle
-clearItemCargoGlobal _vehicle;
-clearMagazineCargoGlobal _vehicle;
-clearWeaponCargoGlobal _vehicle;
-clearBackpackCargoGlobal _vehicle;
-
-//slingload modification
-if (_type isKindOf 'Slingload_01_Base_F') then {_vehicle setmass [4000,0]};
-if (_type isKindOf "Pod_Heli_Transport_04_base_F") then {_vehicle setmass [2000,0]};
-// weight fix
-if ((_vehicle isKindOf "Pod_Heli_Transport_04_base_F") || (_vehicle isKindOf "Slingload_01_Base_F")  ) then { _vehicle setmass [2000,0];};
-		
 //--- ZEUS Curator Editable
 if !(isNil "ADMIN_ZEUS") then {
 	if (CTI_IsServer) then {

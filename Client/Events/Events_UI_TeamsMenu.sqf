@@ -100,7 +100,7 @@ switch (_action) do {
 			if (_funds >= _amount && _who != group player) then {
 				[_who, _amount] call CTI_CO_FNC_ChangeFunds;
 				-(_amount) call CTI_CL_FNC_ChangePlayerFunds;
-				hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Transfered <t color='%1'>$%2</t> to group <t color='#55bcfc'>%3 (%4)</t>.", CTI_P_Coloration_Money, _amount, _who getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], name leader _who];
+				hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Transfered <t color='%1'>$%2</t> to group <t color='#55bcfc'>%3</t>.", CTI_P_Coloration_Money, _amount, _who getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]];
 			};
 		};
 	};

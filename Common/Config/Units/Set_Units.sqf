@@ -1,4 +1,4 @@
-private ["_c", "_cpt", "_custom", "_d", "_f", "_faction", "_label", "_n", "_o", "_p", "_picture", "_s", "_scripts", "_stored", "_t", "_turrets", "_u", "_var_name","_ifinarray"];
+private ["_c", "_cpt", "_custom", "_d", "_f", "_faction", "_label", "_n", "_o", "_p", "_picture", "_s", "_scripts", "_stored", "_t", "_turrets", "_u", "_var_name"];
 
 _side = _this select 0;
 _faction = _this select 1;
@@ -16,7 +16,6 @@ _cpt = 0;
 
 for '_i' from 0 to (count _c)-1 do {
 	_classname = _c select _i;
-	_ifinarray = _n select _i;
 	_var_name = _classname;
 	
 	//--- Is it a custom unit?
@@ -33,7 +32,7 @@ for '_i' from 0 to (count _c)-1 do {
 				_picture = if (_classname isKindOf "Man") then { getText(configFile >> "CfgVehicles" >> _classname >> "portrait") } else { getText(configFile >> "CfgVehicles" >> _classname >> "picture") }
 			};
 			_label = switch (typeName (_n select _i)) do {
-				case "ARRAY": {format[_ifinarray select 0, getText(configFile >> "CfgVehicles" >> _classname >> "displayName")]};
+				case "ARRAY": {format[_n select _i, getText(configFile >> "CfgVehicles" >> _classname >> "displayName")]};
 				case "STRING": {if ((_n select _i) == "") then { getText(configFile >> "CfgVehicles" >> _classname >> "displayName") } else { _n select _i }};
 				default {""};
 			};

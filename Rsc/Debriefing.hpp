@@ -2,13 +2,13 @@ class CfgDebriefing {
 	class End1 {
 		title = "Mission Completed";
 		subtitle = "";
-		description = "We won! You have dominated your enemy, FREEDOM has won yet again!";
+		description = "We won! (they lost)";
 		pictureBackground = "";
 	};
 	class End2 {
 		title = "Mission Failed";
 		subtitle = "";
-		description = "We lost! You have failed your country and yourselves, you are officially a noob!";
+		description = "We lost!";
 		pictureBackground = "";
 	};
 	class End6 {

@@ -143,5 +143,3 @@ if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Common\C
 ["cti_gear_list_accessories", _gear_accessories],["cti_gear_list_misc", _gear_misc],["cti_gear_list_special", _gear_special],["cti_gear_list_uniforms", _gear_uniforms],
 ["cti_gear_list_vests", _gear_vests],["cti_gear_list_backpacks", _gear_backpacks],["cti_gear_list_headgear", _gear_headgear],["cti_gear_list_glasses", _gear_glasses],
 ["cti_gear_list_explosives", _gear_explosives]];
-
-missionNamespace setVariable ["cti_gear_all", (_gear_primary + _gear_secondary + _gear_pistol + _gear_magazines + _gear_accessories + _gear_misc + _gear_special + _gear_uniforms + _gear_vests + _gear_backpacks + cti_gear_list_headgear + _gear_glasses + cti_gear_list_explosives)];

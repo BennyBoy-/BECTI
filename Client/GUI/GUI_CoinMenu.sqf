@@ -105,7 +105,6 @@ _last_collision_update = -100;
 _last_menu = "";
 _last_wallalign = false;
 _last_autodefense = false;
-_last_defense_count = "";
 
 with missionNamespace do {
 	CTI_COIN_CATEGORIES = _categories;
@@ -189,8 +188,6 @@ with missionNamespace do {
 			if ((call CTI_CL_FNC_GetPlayerFunds) != (CTI_COIN_LASTFUNDS select 1)) then {_update = true};
 			CTI_COIN_LASTFUNDS set [0, CTI_P_SideJoined call CTI_CO_FNC_GetSideSupply];
 			CTI_COIN_LASTFUNDS set [1, call CTI_CL_FNC_GetPlayerFunds];
-			
-			if ((call CTI_CL_FNC_GetPlayerFunds) != (CTI_COIN_LASTFUNDS select 1)) then {_update = true};
 		} else {
 			if ((call CTI_CL_FNC_GetPlayerFunds) != (CTI_COIN_LASTFUNDS select 1)) then {_update = true};
 			CTI_COIN_LASTFUNDS set [1, call CTI_CL_FNC_GetPlayerFunds];
@@ -216,16 +213,6 @@ with missionNamespace do {
 			_cashText = format ["<t color='#42b6ff' shadow='2' size='%1' align='left' valign='middle'>%2</t>", _cashSize, _cashValues];
 			((uiNamespace getVariable "cti_title_coin") displayCtrl 112224) ctrlSetStructuredText (parseText _cashText);
 			((uiNamespace getVariable "cti_title_coin") displayCtrl 112224) ctrlCommit 0;
-		};
-		
-		//--- Update the defense team count
-		_defense_team = CTI_P_SideLogic getVariable "cti_defensive_team";
-		_defense_count = count(_defense_team call CTI_CO_FNC_GetLiveUnits);
-		if (!(_last_defense_count isEqualTo _defense_count) || commandingMenu != _last_menu) then {
-			_defensecountText = format ["<t color='#42b6ff' shadow='2' size='1' align='right' valign='top'>Defensive Team Count: %1 / %2</t>", _defense_count, CTI_BASE_DEFENSES_AUTO_LIMIT];
-			((uiNamespace getVariable "cti_title_coin") displayCtrl 112214) ctrlSetStructuredText (parseText _defensecountText);
-			((uiNamespace getVariable "cti_title_coin") displayCtrl 112214) ctrlCommit 0;
-			_last_defense_count = _defense_count;
 		};
 		
 		//--- Update the controls if the menu differs from the last

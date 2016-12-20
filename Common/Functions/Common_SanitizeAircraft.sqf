@@ -37,16 +37,7 @@ _side = _this select 1;
 _upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
 
 //--- We check the FFAR loadout
-switch (missionNamespace getVariable "CTI_VEHICLES_AIR_FFAR") do {
-	case 0: {_vehicle call CTI_CO_FNC_SanitizeAircraftFFAR};//--- Remove
-	case 1: {if (_upgrades select CTI_UPGRADE_AIR_FFAR < 1) then {_vehicle call CTI_CO_FNC_SanitizeAircraftFFAR}};//--- Remove if not yet ugpraded
-};
-
-//--- We check the DAR loadout
-switch (missionNamespace getVariable "CTI_VEHICLES_AIR_DAR") do {
-	case 0: {_vehicle call CTI_CO_FNC_SanitizeAircraftDAR};//--- Remove
-	case 1: {if (_upgrades select CTI_UPGRADE_AIR_DAR < 1) then {_vehicle call CTI_CO_FNC_SanitizeAircraftDAR}};//--- Remove if not yet ugpraded
-};
+if (_upgrades select CTI_UPGRADE_AIR_FFAR < 1) then {_vehicle call CTI_CO_FNC_SanitizeAircraftFFAR};
 
 //--- We check the AT Loadout
 switch (missionNamespace getVariable "CTI_VEHICLES_AIR_AT") do {

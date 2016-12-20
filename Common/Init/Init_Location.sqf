@@ -56,13 +56,4 @@ if (CTI_IsClient) then {
 	_marker setMarkerTypeLocal "mil_flag";
 	_marker setMarkerColorLocal _coloration;
 	_marker setMarkerSizeLocal [0.5, 0.5]; 
-	
-	//--- Capture marker
-	//_marker = createMarkerLocal [format ["cti_town_marker_%1_capture", _town], getPos _town];
-	//_marker setMarkerAlphaLocal .2;
-	//_marker setMarkerColorLocal "ColorBlack";
-	//_marker setMarkerShapeLocal "ELLIPSE";
-	//_marker setMarkerBrushLocal "SolidBorder";
-	//_marker setMarkerSizeLocal [CTI_TOWNS_CAPTURE_RANGE, CTI_TOWNS_CAPTURE_RANGE]; 
-
 };

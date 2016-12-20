@@ -72,11 +72,6 @@ if !(_sell) then {
 	[_side, _structure, _variable, _position, _direction, true] spawn CTI_SE_FNC_HandleStructureConstruction;
 
 	_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull]];
-
-	//--- Remove supply if supply depot
-	if (((_var select 0) select 0) == CTI_SUPPLY_DEPOT) then {
-		[_side, -CTI_BASE_SUPPLY_DEPOT_VALUE] call CTI_CO_FNC_ChangeSideSupply; 
-	};
 	
 	//--- Bounty
 	if !(isNull _killer) then {

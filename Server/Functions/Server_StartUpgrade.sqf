@@ -34,21 +34,12 @@ _side = _this select 0;
 _upgrade = _this select 1;
 _level = _this select 2;
 
-_logic = (_side) call CTI_CO_FNC_GetSideLogic;
-_upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
-
 _upgrade_time = ((missionNamespace getVariable Format["CTI_%1_UPGRADES_TIMES", _side]) select _upgrade) select _level;
 
-if ((_logic getVariable ["cti_upgrade_lt",-1]) <0) then {_logic setVariable ["cti_upgrade_lt",_upgrade_time,true];};
-_logic  setVariable ["cti_upgrade", _upgrade,true];
-_logic  setVariable ["cti_upgrade_level", _level];
+sleep _upgrade_time;
 
-while {(_logic getVariable "cti_upgrade_lt") >0 } do{
-	sleep 10;
-	_logic setVariable ["cti_upgrade_lt", (_logic getVariable "cti_upgrade_lt") -10 , true];
-};
-_logic setVariable ["cti_upgrade_lt",-1, true];
-
+_logic = (_side) call CTI_CO_FNC_GetSideLogic;
+_upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
 _upgrades set [_upgrade, (_upgrades select _upgrade) + 1];
 
 _logic setVariable ["cti_upgrades", _upgrades, true];

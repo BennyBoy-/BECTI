@@ -37,6 +37,7 @@ CTI_SE_FNC_ToggleHQ = compileFinal preprocessFileLineNumbers "Server\Functions\S
 CTI_SE_FNC_TrashObject = compileFinal preprocessFileLineNumbers "Server\Functions\Server_TrashObject.sqf";
 CTI_SE_FNC_UpdateBaseAreas = compileFinal preprocessFileLineNumbers "Server\Functions\Server_UpdateBaseAreas.sqf";
 CTI_SE_FNC_VoteForCommander = compileFinal preprocessFileLineNumbers "Server\Functions\Server_VoteForCommander.sqf";
+CTI_SE_FNC_Weather_Hook= compileFinal preprocessFileLineNumbers "Server\Functions\Server_Weather_Hook.sqf";
 
 funcCalcAlignPosDir = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fCalcAlignPosDir.sqf";
 funcVectorAdd = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorAdd.sqf";
@@ -45,18 +46,8 @@ funcVectorDot = compileFinal preprocessFileLineNumbers "Server\Functions\Externa
 funcVectorScale = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorScale.sqf";
 funcVectorSub = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorSub.sqf";
 
-switch (toLower(worldName)) do {
-	case "altis": {
-		//--- Load Naval Town Structures
-		call compile preprocessFileLineNumbers "Server\Init\initTownStructuresAltis.sqf";
-		//--- Load Map Structures
-		call compile preprocessFileLineNumbers "Server\Init\initMapStructuresAltis.sqf";
-	};
-	case "stratis": {
-		//--- Load Naval Town Structures
-		call compile preprocessFileLineNumbers "Server\Init\initTownStructuresStratis.sqf";
-	};
-};
+//--- Load Naval Town Structures
+call compile preprocessFileLineNumbers "Server\Init\initTownStructures.sqf";
 
 call compile preprocessFileLineNumbers "Server\Init\Init_PublicVariables.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_RepairTruck.sqf";
@@ -129,7 +120,6 @@ if (_attempts >= 500) then {
 	// for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { _upgrades pushBack 1 };
 	_logic setVariable ["cti_upgrades", _upgrades, true];
 	_logic setVariable ["cti_upgrade", -1, true];
-	_logic setVariable ["cti_upgrade_lt", -1, true];
 	
 	//--- Create the defensive teams if needed
 	if (CTI_BASE_DEFENSES_AUTO_LIMIT > 0) then {
@@ -138,7 +128,7 @@ if (_attempts >= 500) then {
 		_defense_team setBehaviour "COMBAT";
 		_defense_team setCombatMode "RED";
 		_defense_team enableAttack true;
-		_logic setVariable ["cti_defensive_team", _defense_team, true];
+		_logic setVariable ["cti_defensive_team", _defense_team];
 	};
 	
 	//--- Add FOB if needed
@@ -153,7 +143,6 @@ if (_attempts >= 500) then {
 		[_vehicle, getPos _hq, 45, 60, true, false, true] call CTI_CO_FNC_PlaceNear;
 		[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
 		if (count _equipment > 0) then {[_vehicle, _equipment] call CTI_CO_FNC_EquipVehicleCargoSpace};
-		if ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7 != "") then {[_vehicle, _side, ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7)] call CTI_CO_FNC_InitializeCustomVehicle;};
 	} forEach (missionNamespace getVariable format["CTI_%1_Vehicles_Startup", _side]);
 	
 	//--- Handle the Team
@@ -195,20 +184,6 @@ if (_attempts >= 500) then {
 		};
 	} forEach (synchronizedObjects _logic);
 	
-	//--- Disable Thermals and Statics
-	if ( (missionNamespace getVariable 'CTI_SM_NV_THER_VEH') > 0 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {
-		0 spawn {
-			while {! CTi_GameOver} do {
-				{
-					if ((missionNamespace getVariable 'CTI_SM_NV_THER_VEH')== 1) then {_x disableNVGEquipment true;};
-					if ((missionNamespace getVariable 'CTI_SM_NV_THER_VEH')== 2) then {_x disableTIEquipment true;};
-					if ((missionNamespace getVariable 'CTI_SM_NV_THER_VEH')== 3 || (missionNamespace getVariable 'CTI_ZOMBIE_MODE')==1 || (missionNamespace getVariable 'CTI_GUERILLA_MODE')==1) then {_x disableTIEquipment true;_x disableNVGEquipment true;};
-				}
-				forEach vehicles;
-				sleep 10;
-			};
-		};
-	};
 	_logic setVariable ["cti_teams", _teams, true];
 } forEach [[west, CTI_WEST, _westLocation], [east, CTI_EAST, _eastLocation]];
 
@@ -226,27 +201,21 @@ if (_attempts >= 500) then {
 	{_x Spawn CTI_SE_FNC_VoteForCommander} forEach CTI_PLAYABLE_SIDES;
 };
 
-// Date init
-if (CTI_ZOMBIE_MODE == 0) then {
+if (missionNamespace getVariable "CTI_DEV_MODE" < 1) then {
+	// Date init
 	_it=0;
 	_possible_it_off=[0,0,0,0,0,0,6,6,6,12,12,12,18];
-	if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 18) then {
-		_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL");
+	if ((missionNamespace getVariable "CTI_WEATHER_INITIAL") < 10) then {
+		_it=(missionNamespace getVariable "CTI_WEATHER_INITIAL")*6;
 	} else {
 		_it= _possible_it_off select floor random (count _possible_it_off);
 	};
-	//Default Time Starts at 0600am
 	skipTime _it;
-} else {
-	// set time to dusk 6pm
-	skipTime 12;
-};
 
-// dynamic weather
-execVM "Server\Functions\Server_Weather_Hook.sqf";	
-
-// Fast time compression
-if (CTI_ZOMBIE_MODE == 0) then {
+	// dynamic wheather
+	0 spawn CTI_SE_FNC_Weather_Hook;
+			
+	// Fast time compression
 	0 spawn {
 		_day_ratio = 14/CTI_WEATHER_FAST;
 		_night_ratio = 10/CTI_WEATHER_FAST_NIGHT;
@@ -261,6 +230,9 @@ if (CTI_ZOMBIE_MODE == 0) then {
 	};
 };
 
+//TeamStack
+// 0 execFSM "Server\FSM\TEAMSTACK_count.fsm";
+
 // Zeus admin for players
 if !( isNil "ADMIN_ZEUS") then {
 	0 spawn {
@@ -268,29 +240,5 @@ if !( isNil "ADMIN_ZEUS") then {
 			ADMIN_ZEUS addCuratorEditableObjects [playableUnits+switchableUnits,true];
 			sleep 5;
 		};
-	};
-};
-
-
-// Initialize control scripts for Pook SAM Site
-// Must have exactly 1 instance per side, running on HC if possible
-0 spawn {
-	// Give HCs some init time
-	sleep 30;
-	
-	_hcs = missionNamespace getVariable "CTI_HEADLESS_CLIENTS";
-	
-	// Run on server or HC
-	if ( !isNil '_hcs' && {count _hcs > 0} ) then {
-		_hc = (_hcs select 0) select 0;
-		{
-			FNC_HandleSAMSite = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\HandleSAMSite.sqf";
-			[east] spawn FNC_HandleSAMSite;
-			[west] spawn FNC_HandleSAMSite;
-		} remoteExec ["bis_fnc_call", _hc];
-	} else {
-		FNC_HandleSAMSite = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\HandleSAMSite.sqf";
-		[east] spawn FNC_HandleSAMSite;
-		[west] spawn FNC_HandleSAMSite;
 	};
 };
