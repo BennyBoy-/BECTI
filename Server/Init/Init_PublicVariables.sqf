@@ -175,7 +175,7 @@ with missionNamespace do {
 			_west_players = {side _x == west && isPlayer _x} count (playableUnits - [_client]);
 			_east_players = {side _x == east && isPlayer _x} count (playableUnits - [_client]);
 			
-			if (CTI_Log_Level >= CTI_Log_Information) then {["FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)]};
+			if (CTI_Log_Level >= CTI_Log_Information) then {["FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)]]};
 			
 			if ((abs(_west_players - _east_players) <= (missionNamespace getVariable "CTI_TEAMSTACK")) || _original_side) then {
 				//--- Team stacking is ok so far
