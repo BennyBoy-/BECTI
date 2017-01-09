@@ -177,7 +177,7 @@ with missionNamespace do {
 			
 			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)]] call CTI_CO_FNC_Log};
 			
-			if ((abs(_west_players - _east_players) <= (missionNamespace getVariable "CTI_TEAMSTACK")) || _original_side) then {
+			if ((abs(_west_players - _east_players) < (missionNamespace getVariable "CTI_TEAMSTACK")) || _original_side) then {
 				//--- Team stacking is ok so far
 				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] can join, the teams are still balanced or the player joined back it's original side [%3]", _name, _uid, _original_side]] call CTI_CO_FNC_Log};
 			} else {
