@@ -127,16 +127,27 @@ with missionNamespace do {
 	
 	//--- The client request his Join in Progress gear if possible
 	CTI_PVF_SRV_RequestJIPGear = {
-		private ["_get", "_loadout"];
+		private ["_get", "_loadout", "_name", "_puid"];
 		
-		_get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", getPlayerUID _this], []];
+		_puid = getPlayerUID _this;
+		_name = name _this;
+		
+		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJIPGear", format["Player [%1] [%2] did request his previous loadout", _name, _puid]] call CTI_CO_FNC_Log};
+		
+		_get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", _puid], []];
 		
 		if (count _get > 0) then {
 			_loadout = _get select 4;
 			
 			if (count _loadout > 0) then { //--- Make sure that there is a valid loadout in there
+				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJIPGear", format["Player [%1] [%2] previous loadout will be sent back to him [%3]", _name, _puid, _loadout]] call CTI_CO_FNC_Log};
+				
 				(_loadout) remoteExec ["CTI_PVF_CLT_OnJIPGearReceived", owner _this];
+			} else {
+				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJIPGear", format["Player [%1] [%2] previous loadout is empty, nothing will be sent", _name, _puid]] call CTI_CO_FNC_Log};
 			};
+		} else {
+			if (CTI_Log_Level >= CTI_Log_Information) then {["WARNING", "FUNCTION: CTI_PVF_SRV_RequestJIPGear", format["Player [%1] [%2] has no JIP information stored on the server", _name, _puid]] call CTI_CO_FNC_Log};
 		};
 	};
 	
@@ -152,7 +163,7 @@ with missionNamespace do {
 		_original_side = false;
 		_special = "";
 		
-		_get = missionNamespace getVariable Format["CTI_SERVER_CLIENT_%1",_uid];
+		_get = missionNamespace getVariable Format["CTI_SERVER_CLIENT_%1", _uid];
 		
 		if !(isNil '_get') then { //--- Retrieve JIP Information if there's any.
 			_side_origin = _get select 2; //--- Get the original side.
