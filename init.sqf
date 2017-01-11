@@ -58,7 +58,7 @@ if (isMultiplayer && CTI_IsServer) then {
 	// onPlayerConnected {[_uid, _name, _id] spawn CTI_SE_FNC_OnPlayerConnected};
 	// onPlayerDisconnected {[_uid, _name, _id] call CTI_SE_FNC_OnPlayerDisconnected};
 	addMissionEventHandler ["HandleDisconnect",{_this spawn CTI_SE_FNC_OnPlayerDisconnected}];
-	["CTI_Join", "onPlayerConnected", {[_uid, _name, _id] spawn CTI_SE_FNC_OnPlayerConnected}] call BIS_fnc_addStackedEventHandler;
+	["CTI_Join", "onPlayerConnected", {[_uid, _name, _id, _jip, _owner] spawn CTI_SE_FNC_OnPlayerConnected}] call BIS_fnc_addStackedEventHandler;
 };
 
 //--- JIP Part is over
