@@ -1,7 +1,6 @@
 /*
   # HEADER #
 	Script: 		Client\Functions\Client_JoinRequestAnswer.sqf
-	Alias:			CTI_CL_FNC_JoinRequestAnswer
 	Description:	Determine whether the client can join a game in progress
 					Note that this function is called by a PVF "CTI_PVF_CLT_JoinRequestAnswer"
 					which is defined in:
@@ -18,14 +17,14 @@
 	None
 	
   # SYNTAX #
-	[JIP ANSWER, JAILED] spawn CTI_CL_FNC_JoinRequestAnswer
+	[JIP ANSWER, JAILED] execVM "Client\Functions\Client_JoinRequestAnswer.sqf"
 	
   # EXAMPLE #
-    [true, ""] spawn CTI_CL_FNC_JoinRequestAnswer
+    [true, ""] execVM "Client\Functions\Client_JoinRequestAnswer.sqf"
 	  -> The client can join, he wasn't jailed
-	[true, "jailed"] spawn CTI_CL_FNC_JoinRequestAnswer
+	[true, "jailed"] execVM "Client\Functions\Client_JoinRequestAnswer.sqf"
 	  -> The client can join, he was jailed
-	[false, ""] spawn CTI_CL_FNC_JoinRequestAnswer
+	[false, ""] spawn execVM "Client\Functions\Client_JoinRequestAnswer.sqf"
 	  -> The client cannot join
 */
 

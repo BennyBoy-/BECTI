@@ -107,8 +107,9 @@ if (isNil '_get') then { //--- The player has joined for the first time (or afte
 	};
 	
 	//--- Check if the player is still jailed
-	_get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
-	if !(isNil '_get') then {if (_get select 1 == 1) then {_special = "jailed"}};
+	// _get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
+	// if !(isNil '_get') then {if (_get select 1 == 1) then {_special = "jailed"}};
+	if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) == 1) then {_special = "jailed"};
 	
 	//--- Determine whether the client is allowed to join or not
 	if (_join) then {
@@ -156,8 +157,9 @@ if (isNil '_get') then { //--- The player has joined for the first time (or afte
 	};
 	
 	//--- Check if the player is still jailed
-	_get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
-	if !(isNil '_get') then {if (_get select 1 == 1) then {_special = "jailed"}};
+	// _get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
+	// if !(isNil '_get') then {if (_get select 1 == 1) then {_special = "jailed"}};
+	if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) == 1) then {_special = "jailed"};
 	
 	//--- Determine whether the client is allowed to join or not
 	if (_join) then {
