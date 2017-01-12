@@ -85,7 +85,7 @@ if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") != -1) then {enableEngi
 
 if (isMultiplayer) then {
 	//--- Can I join?
-	missionNamespace setVariable ["CTI_PVF_CLT_JoinRequestAnswer", {_this spawn CTI_CL_FNC_JoinRequestAnswer}]; //--- Early PVF, do not spoil the game with the others.
+	// missionNamespace setVariable ["CTI_PVF_CLT_JoinRequestAnswer", {_this spawn CTI_CL_FNC_JoinRequestAnswer}]; //--- Early PVF, do not spoil the game with the others.
 
 	//--- Enable the player again (sim + visu) in case of no-ai settings
 	/*if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
@@ -93,11 +93,15 @@ if (isMultiplayer) then {
 		player hideObjectGlobal false;
 	};*/
 	
-	_last_req = -100;
+	//--- Delay the client start for the server to complete it's part
+	//sleep 1;
+	waitUntil {sleep .5; CTI_P_CanJoin};
+	
+	/*_last_req = -100;
 	while {!CTI_P_CanJoin} do {
 		if (time - _last_req > 15) then { _last_req = time; [player, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestJoin", CTI_PV_SERVER]};
 		sleep 1;
-	};
+	};*/
 	
 	12452 cutText ["Receiving mission intel...", "BLACK IN", 5];
 	
