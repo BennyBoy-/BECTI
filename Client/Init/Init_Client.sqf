@@ -85,10 +85,10 @@ if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") != -1) then {enableEngi
 
 if (isMultiplayer) then {
 	//--- Can I join?
-	// missionNamespace setVariable ["CTI_PVF_CLT_JoinRequestAnswer", {_this spawn CTI_CL_FNC_JoinRequestAnswer}]; //--- Early PVF, do not spoil the game with the others.
+	/* missionNamespace setVariable ["CTI_PVF_CLT_JoinRequestAnswer", {_this spawn CTI_CL_FNC_JoinRequestAnswer}]; //--- Early PVF, do not spoil the game with the others.
 
 	//--- Enable the player again (sim + visu) in case of no-ai settings
-	/*if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
+	if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
 		player enableSimulationGlobal true;
 		player hideObjectGlobal false;
 	};*/
