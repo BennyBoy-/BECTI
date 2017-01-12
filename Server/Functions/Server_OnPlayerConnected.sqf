@@ -94,7 +94,13 @@ if (isNil '_get') then { //--- The player has joined for the first time (or afte
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)]] call CTI_CO_FNC_Log};
 		
-		if (abs(_west_players - _east_players) < (missionNamespace getVariable "CTI_TEAMSTACK")) then {
+		_teamstacking = switch (_side) do {
+			case west: {if ((_west_players - _east_players) >= (missionNamespace getVariable "CTI_TEAMSTACK")) then {true} else {false}};
+			case east: {if ((_east_players - _west_players) >= (missionNamespace getVariable "CTI_TEAMSTACK")) then {true} else {false}};
+			default {false}
+		};
+		
+		if !(_teamstacking) then {
 			//--- Team stacking is ok so far
 			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] can join side [%3], the teams are balanced", _name, _uid, _side]] call CTI_CO_FNC_Log};
 		} else {
@@ -107,8 +113,6 @@ if (isNil '_get') then { //--- The player has joined for the first time (or afte
 	};
 	
 	//--- Check if the player is still jailed
-	// _get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
-	// if !(isNil '_get') then {if (_get select 1 == 1) then {_special = "jailed"}};
 	if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) == 1) then {_special = "jailed"};
 	
 	//--- Determine whether the client is allowed to join or not
@@ -118,7 +122,7 @@ if (isNil '_get') then { //--- The player has joined for the first time (or afte
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] information were stored for the first time", _name, _uid]] call CTI_CO_FNC_Log};
 	} else {
-		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] information were not stored since he is not allowed to join", _name, _uid]] call CTI_CO_FNC_Log};
+		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] information were not initially stored since he is not allowed to join", _name, _uid]] call CTI_CO_FNC_Log};
 	};
 } else { //--- The player has joined before.
 	if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] information are [%3]", _name, _uid, _get]] call CTI_CO_FNC_Log};
@@ -144,7 +148,13 @@ if (isNil '_get') then { //--- The player has joined for the first time (or afte
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)]] call CTI_CO_FNC_Log};
 		
-		if ((abs(_west_players - _east_players) < (missionNamespace getVariable "CTI_TEAMSTACK")) || _original_side) then {
+		_teamstacking = switch (_side) do {
+			case west: {if ((_west_players - _east_players) >= (missionNamespace getVariable "CTI_TEAMSTACK")) then {true} else {false}};
+			case east: {if ((_east_players - _west_players) >= (missionNamespace getVariable "CTI_TEAMSTACK")) then {true} else {false}};
+			default {false}
+		};
+		
+		if (!(_teamstacking) || _original_side) then {
 			//--- Team stacking is ok so far
 			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] can join, the teams are still balanced or the player joined back it's original side [%3]", _name, _uid, _original_side]] call CTI_CO_FNC_Log};
 		} else {
@@ -157,8 +167,6 @@ if (isNil '_get') then { //--- The player has joined for the first time (or afte
 	};
 	
 	//--- Check if the player is still jailed
-	// _get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
-	// if !(isNil '_get') then {if (_get select 1 == 1) then {_special = "jailed"}};
 	if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) == 1) then {_special = "jailed"};
 	
 	//--- Determine whether the client is allowed to join or not
