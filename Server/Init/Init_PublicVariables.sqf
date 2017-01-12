@@ -205,7 +205,7 @@ with missionNamespace do {
 		_get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
 		if !(isNil '_get') then {if (_get select 1 == 1) then {_special = "jailed"}};
 		[_join, _special] remoteExec ["CTI_PVF_CLT_JoinRequestAnswer", owner _client];
-	};*/
+	}; */
 	
 	//--- The client request a noob logging
 	CTI_PVF_SRV_RequestNoobLogger = { _this spawn CTI_SE_FNC_NoobLogger };
