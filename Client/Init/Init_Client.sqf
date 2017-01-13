@@ -84,6 +84,7 @@ if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") != -1) then {enableEngi
 
 if (isMultiplayer) then {
 	//--- Can I join?
+	missionNamespace setVariable ["CTI_PVF_CLT_JoinRequestAnswer", {_this execVM "Client\Functions\Client_JoinRequestAnswer.sqf"}]; //--- Early PVF, do not spoil the game with the others.
 	/* missionNamespace setVariable ["CTI_PVF_CLT_JoinRequestAnswer", {_this spawn CTI_CL_FNC_JoinRequestAnswer}]; //--- Early PVF, do not spoil the game with the others.
 
 	//--- Enable the player again (sim + visu) in case of no-ai settings
@@ -94,7 +95,20 @@ if (isMultiplayer) then {
 	
 	//--- Delay the client start for the server to complete it's part
 	//sleep 1;
-	waitUntil {sleep .5; CTI_P_CanJoin};
+	
+	player setDammage 0;
+	
+	//--- Wait for the server to be initialized before requesting a Join ticket
+	waitUntil {sleep .5; !(isNil 'CTI_InitServer')};
+	
+	//--- Request a join ticket
+	[player, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestJoin", CTI_PV_SERVER]
+	
+	waitUntil {
+		sleep 1; 
+		if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Client\Init\Init_Client.sqf", "Awaiting for the Join ticket answer from the server..."] call CTI_CO_FNC_Log};
+		CTI_P_CanJoin
+	};
 	
 	/*_last_req = -100;
 	while {!CTI_P_CanJoin} do {

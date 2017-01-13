@@ -152,23 +152,92 @@ with missionNamespace do {
 	};
 	
 	//--- The client request a Joining ticket
-/*	CTI_PVF_SRV_RequestJoin = {
-		private ["_client", "_join", "_original_side", "_side", "_special"];
-		_client = _this select 0;
+	CTI_PVF_SRV_RequestJoin = {
+		private ["_join", "_leader", "_logic", "_original_side", "_ownerID", "_side", "_special", "_team", "_teams"];
+		_leader = _this select 0;
 		_side = _this select 1;
 		
-		_name = name _client;
-		_uid = getPlayerUID _client;
+		_name = name _leader;
+		_uid = getPlayerUID _leader;
+		_team = group _leader;
+		_ownerID = owner _leader;
+		
+		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] with owner ID [%3] has joined the current session on side [%4] and sent a join request", _name, _uid, _ownerID, _side]] call CTI_CO_FNC_Log};
+		
+		if !(_side in [west, east, resistance]) exitWith {if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] side [%3] is not within the expected valid values", _name, _uid, _side]] call CTI_CO_FNC_Log}};
+		
+		//--- Make sure that the group belong to the CTI teams
+		_logic = (_side) call CTI_CO_FNC_GetSideLogic;
+		_teams = _logic getVariable "cti_teams";
+		if !(_team in _teams) then {
+			[_team, _side] call CTI_SE_FNC_InitializeGroup;
+			
+			//--- The leader may had a disabled slot
+			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] does not belong to any CTI Groups on [%3]. Performed late-initialization and updated the Global Teams", _name, _uid, _side]] call CTI_CO_FNC_Log};
+			
+			//--- Update the global teams
+			_logic setVariable ["cti_teams", _teams - [objNull] + [_team], true];
+		};
+		
+		//--- We attempt to get the player information in case that he had joined before.
+		_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid];
+		
+		//--- Enable the leader again (sim + visu) in case of no-ai settings
+		if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
+			_leader enableSimulationGlobal true;
+			_leader hideObjectGlobal false;
+		};
+		
 		_join = true;
-		_original_side = false;
 		_special = "";
 		
-		_get = missionNamespace getVariable Format["CTI_SERVER_CLIENT_%1", _uid];
-		
-		if !(isNil '_get') then { //--- Retrieve JIP Information if there's any.
+		if (isNil '_get') then { //--- The player has joined for the first time (or after being booted off for teamstacking)
+			//--- Check if the teamstack protection is enabled or not	
+			if ((missionNamespace getVariable "CTI_TEAMSTACK") > 0) then {
+				//--- Retrieve the player count for each given side (minus the connecting client)
+				_west_players = {side _x == west && isPlayer _x} count (playableUnits - [_leader]);
+				_east_players = {side _x == east && isPlayer _x} count (playableUnits - [_leader]);
+				
+				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)]] call CTI_CO_FNC_Log};
+				
+				_teamstacking = switch (_side) do {
+					case west: {if ((_west_players - _east_players) >= (missionNamespace getVariable "CTI_TEAMSTACK")) then {true} else {false}};
+					case east: {if ((_east_players - _west_players) >= (missionNamespace getVariable "CTI_TEAMSTACK")) then {true} else {false}};
+					default {false}
+				};
+				
+				if !(_teamstacking) then {
+					//--- Team stacking is ok so far
+					if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] can join side [%3], the teams are balanced", _name, _uid, _side]] call CTI_CO_FNC_Log};
+				} else {
+					//--- The team stack limit has been reached, send this player back to the lobby
+				//--- Todo check if the client is present in the "premium" UID array
+					if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] cannot join, the teams are no longer balanced", _name, _uid]] call CTI_CO_FNC_Log};
+					_special = "teamstack";
+					_join = false;
+				};
+			};
+			
+			//--- Check if the player is still jailed
+			if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) == 1) then {_special = "jailed"};
+			
+			//--- Determine whether the client is allowed to join or not
+			if (_join) then {
+				//--- Format is [UID, Funds, Original side, Last Joined side, Last known loadout]
+				missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], [_uid, 0, _side, _side, []]];
+				
+				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] information were stored for the first time", _name, _uid]] call CTI_CO_FNC_Log};
+			} else {
+				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] information were not initially stored since he is not allowed to join", _name, _uid]] call CTI_CO_FNC_Log};
+			};
+		} else { //--- The player has joined before.
+			if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] information are [%3]", _name, _uid, _get]] call CTI_CO_FNC_Log};
+			
+			_original_side = false;
+
 			_side_origin = _get select 2; //--- Get the original side.
 			
-			if (_side_origin != _side) then { //--- The joined side differs from the original one.
+			if (_side_origin != _side) then { //--- Teamswapping, the joined side differs from the original one.
 				_join = false;
 				["teamswap", _name] remoteExec ["CTI_PVF_CLT_OnMessageReceived", CTI_PV_CLIENTS];
 				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] tried to teamswap from it's original side [%3] to side [%4]. The server explicitely answered that he should be sent back to the lobby.", _name, _uid, _side_origin, _side]] call CTI_CO_FNC_Log};
@@ -176,36 +245,54 @@ with missionNamespace do {
 				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] joined back it's original side [%3].", _name, _uid, _side_origin]] call CTI_CO_FNC_Log};
 				_original_side = true;
 			};
-		} else {
-			if (CTI_Log_Level >= CTI_Log_Warning) then {["WARNING", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] doesn't have any JIP information yet. If this is the start of the mission then this message can be safely ignored.", _name, _uid]] call CTI_CO_FNC_Log};
-		};
-		
-		//--- Apply the team stack system if enabled
-		if ((missionNamespace getVariable "CTI_TEAMSTACK") > 0 && _join) then {
-			//--- Retrieve the player count for each given side (minus the connecting client)
-			_west_players = {side _x == west && isPlayer _x} count (playableUnits - [_client]);
-			_east_players = {side _x == east && isPlayer _x} count (playableUnits - [_client]);
 			
-			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)]] call CTI_CO_FNC_Log};
+			//--- Apply the team stack system if enabled
+			if ((missionNamespace getVariable "CTI_TEAMSTACK") > 0 && _join) then {
+				//--- Retrieve the player count for each given side (minus the connecting client)
+				_west_players = {side _x == west && isPlayer _x} count (playableUnits - [_leader]);
+				_east_players = {side _x == east && isPlayer _x} count (playableUnits - [_leader]);
+				
+				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)]] call CTI_CO_FNC_Log};
+				
+				_teamstacking = switch (_side) do {
+					case west: {if ((_west_players - _east_players) >= (missionNamespace getVariable "CTI_TEAMSTACK")) then {true} else {false}};
+					case east: {if ((_east_players - _west_players) >= (missionNamespace getVariable "CTI_TEAMSTACK")) then {true} else {false}};
+					default {false}
+				};
+				
+				if (!(_teamstacking) || _original_side) then {
+					//--- Team stacking is ok so far
+					if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] can join, the teams are still balanced or the player joined back it's original side [%3]", _name, _uid, _original_side]] call CTI_CO_FNC_Log};
+				} else {
+					//--- The team stack limit has been reached, send this player back to the lobby
+				//--- Todo check if the client is present in the "premium" UID array
+					if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] cannot join, the teams are no longer balanced", _name, _uid]] call CTI_CO_FNC_Log};
+					_special = "teamstack";
+					_join = false;
+				};
+			};
 			
-			if ((abs(_west_players - _east_players) < (missionNamespace getVariable "CTI_TEAMSTACK")) || _original_side) then {
-				//--- Team stacking is ok so far
-				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] can join, the teams are still balanced or the player joined back it's original side [%3]", _name, _uid, _original_side]] call CTI_CO_FNC_Log};
+			//--- Check if the player is still jailed
+			if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) == 1) then {_special = "jailed"};
+			
+			//--- Determine whether the client is allowed to join or not
+			if (_join) then {
+				_get set [3, _side];
+				
+				_funds = _get select 1;
+				
+				//--- Make sure that the player didn't teamswap.
+				if (_side_origin != _side || isNil '_funds') then { _funds = missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", _side] };
+				
+				_team setVariable ["cti_funds", _funds, true];
+				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] information were updated. Joined side is [%3], Teamswap? [%4]", _name, _uid, _side, (_side_origin != _side)]] call CTI_CO_FNC_Log};
 			} else {
-				//--- The team stack limit has been reached, send this player back to the lobby
-			//--- Todo check if the client is present in the "premium" UID array
-				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] cannot join, the teams are no longer balanced", _name, _uid]] call CTI_CO_FNC_Log};
-				_special = "teamstack";
-				_join = false;
+				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] information were not stored since he is not allowed to join", _name, _uid]] call CTI_CO_FNC_Log};
 			};
 		};
 		
-		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] can join? -> [%3].", _name, _uid, _join]] call CTI_CO_FNC_Log};
-		
-		_get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
-		if !(isNil '_get') then {if (_get select 1 == 1) then {_special = "jailed"}};
-		[_join, _special] remoteExec ["CTI_PVF_CLT_JoinRequestAnswer", owner _client];
-	}; */
+		[_join, _special] remoteExec ["CTI_PVF_CLT_JoinRequestAnswer", _ownerID];
+	};
 	
 	//--- The client request a noob logging
 	CTI_PVF_SRV_RequestNoobLogger = { _this spawn CTI_SE_FNC_NoobLogger };

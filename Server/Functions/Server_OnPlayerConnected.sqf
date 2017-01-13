@@ -33,7 +33,7 @@ _jip = _this select 3;
 _ownerID = _this select 4;
 
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] has joined the current session, jip? [%3]", _name, _uid, _jip]] call CTI_CO_FNC_Log};
-
+/*
 if (_name == '__SERVER__' || _uid == '') exitWith {}; //--- We don't care about the server!
 
 waitUntil {!isNil 'CTI_Init_Common'};
@@ -186,4 +186,4 @@ if (isNil '_get') then { //--- The player has joined for the first time (or afte
 };
 
 //--- Notify the client
-[_join, _special] remoteExec ["CTI_PVF_CLT_JoinRequestAnswer", _ownerID];
+[_join, _special] remoteExec ["CTI_PVF_CLT_JoinRequestAnswer", _ownerID];*/

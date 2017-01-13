@@ -41,8 +41,6 @@ if (CTI_Log_Level >= CTI_Log_Information) then { //--- Information
 
 //--- Hide first to prevent spoils
 if (CTI_IsClient && isMultiplayer) then {
-	missionNamespace setVariable ["CTI_PVF_CLT_JoinRequestAnswer", {_this execVM "Client\Functions\Client_JoinRequestAnswer.sqf"}]; //--- Early PVF, do not spoil the game with the others.
-	
 	0 spawn {
 		waitUntil {!(isNull player)};
 		12452 cutText ["Receiving mission intel...", "BLACK FADED", 50000];

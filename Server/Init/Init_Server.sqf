@@ -230,8 +230,9 @@ if (missionNamespace getVariable "CTI_DEV_MODE" < 1) then {
 	};
 };
 
-//TeamStack
-// 0 execFSM "Server\FSM\TEAMSTACK_count.fsm";
+//--- The server is initialized, notify everyone
+CTI_InitServer = true;
+publicVariable "CTI_InitServer";
 
 // Zeus admin for players
 if !( isNil "ADMIN_ZEUS") then {
