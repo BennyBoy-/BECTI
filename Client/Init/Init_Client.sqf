@@ -102,7 +102,7 @@ if (isMultiplayer) then {
 	waitUntil {sleep .5; !(isNil 'CTI_InitServer')};
 	
 	//--- Request a join ticket
-	[player, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestJoin", CTI_PV_SERVER]
+	[player, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestJoin", CTI_PV_SERVER];
 	
 	waitUntil {
 		sleep 1; 
