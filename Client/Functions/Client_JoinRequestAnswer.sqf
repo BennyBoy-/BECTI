@@ -28,10 +28,11 @@
 	  -> The client cannot join
 */
 
-private ["_can_join", "_special"];
+private ["_can_join", "_loadout", "_special"];
 
 _can_join = _this select 0;
 _special = _this select 1;
+_loadout = _this select 2;
 
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Client\Functions\Client_JoinRequestAnswer.sqf", format["The join request has been answered with the following settings: can join [%1], special [%2]", _can_join, _special]] call CTI_CO_FNC_Log};
 
@@ -40,6 +41,15 @@ switch (_special) do {
 	case "teamstack": {
 		12453 cutText ["\n\nTEAMSTACK SYSTEM: Teams are not balanced, you will be sent back to the lobby...", "BLACK FADED", 50000];
 		sleep 2;
+	};
+	default {
+		if (count _loadout > 0) then {
+			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Client\Functions\Client_JoinRequestAnswer.sqf", "The previous loadout has been received and will be equipped"] call CTI_CO_FNC_Log};
+			[player, _this] call CTI_CO_FNC_EquipUnit;
+		} else {
+			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Client\Functions\Client_JoinRequestAnswer.sqf", "The default loadout has been equipped"] call CTI_CO_FNC_Log};
+			[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit;
+		};
 	};
 };
 

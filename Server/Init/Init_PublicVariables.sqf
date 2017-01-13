@@ -126,7 +126,7 @@ with missionNamespace do {
 	CTI_PVF_SRV_RequestHQToggle = { _this spawn CTI_SE_FNC_ToggleHQ };
 	
 	//--- The client request his Join in Progress gear if possible
-	CTI_PVF_SRV_RequestJIPGear = {
+	/*CTI_PVF_SRV_RequestJIPGear = {
 		private ["_get", "_loadout", "_name", "_puid"];
 		
 		_puid = getPlayerUID _this;
@@ -149,7 +149,7 @@ with missionNamespace do {
 		} else {
 			if (CTI_Log_Level >= CTI_Log_Information) then {["WARNING", "FUNCTION: CTI_PVF_SRV_RequestJIPGear", format["Player [%1] [%2] has no JIP information stored on the server", _name, _puid]] call CTI_CO_FNC_Log};
 		};
-	};
+	};*/
 	
 	//--- The client request a Joining ticket
 	CTI_PVF_SRV_RequestJoin = {
@@ -190,6 +190,7 @@ with missionNamespace do {
 		
 		_join = true;
 		_special = "";
+		_loadout = [];
 		
 		if (isNil '_get') then { //--- The player has joined for the first time (or after being booted off for teamstacking)
 			//--- Check if the teamstack protection is enabled or not	
@@ -281,6 +282,15 @@ with missionNamespace do {
 				
 				_funds = _get select 1;
 				
+				//--- Attempt to retrieve the player last known gear
+				_loadout = _get select 4;
+				
+				if (count _loadout > 0) then { //--- Make sure that there is a valid loadout in there
+					if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJIPGear", format["Player [%1] [%2] previous loadout has been retrieved [%3]", _name, _uid, _loadout]] call CTI_CO_FNC_Log};
+				} else {
+					if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJIPGear", format["Player [%1] [%2] previous loadout is empty", _name, _uid]] call CTI_CO_FNC_Log};
+				};
+				
 				//--- Make sure that the player didn't teamswap.
 				if (_side_origin != _side || isNil '_funds') then { _funds = missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", _side] };
 				
@@ -291,7 +301,7 @@ with missionNamespace do {
 			};
 		};
 		
-		[_join, _special] remoteExec ["CTI_PVF_CLT_JoinRequestAnswer", _ownerID];
+		[_join, _special, _loadout] remoteExec ["CTI_PVF_CLT_JoinRequestAnswer", _ownerID];
 	};
 	
 	//--- The client request a noob logging
