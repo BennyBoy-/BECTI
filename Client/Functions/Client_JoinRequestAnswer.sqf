@@ -45,7 +45,7 @@ switch (_special) do {
 	default {
 		if (count _loadout > 0) then {
 			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Client\Functions\Client_JoinRequestAnswer.sqf", "The previous loadout has been received and will be equipped"] call CTI_CO_FNC_Log};
-			[player, _this] call CTI_CO_FNC_EquipUnit;
+			[player, _loadout] call CTI_CO_FNC_EquipUnit;
 		} else {
 			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Client\Functions\Client_JoinRequestAnswer.sqf", "The default loadout has been equipped"] call CTI_CO_FNC_Log};
 			[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit;
