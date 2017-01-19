@@ -1474,14 +1474,14 @@ CTI_UI_Gear_InitializeProfileTemplates = {
 		_x set [5, round(time + random 10000 - random 5000 + diag_frameno)];
 	} forEach _templates;
 	
-	profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined], _templates];
+	profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined], _templates];
 	saveProfileNamespace;
 };
 
 CTI_UI_Gear_RemoveProfileTemplate = {
 	_seed = _this;
 	
-	_templates = profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined];
+	_templates = profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined];
 	_index = -1;
 	{if ((_x select 5) == _seed) exitWith {_index = _forEachIndex}} forEach _templates;
 	
@@ -1489,7 +1489,7 @@ CTI_UI_Gear_RemoveProfileTemplate = {
 		// _templates set [_index, "!nil!"];
 		// _templates = _templates - ["!nil!"];
 		_templates deleteAt _index;
-		profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined], _templates];
+		profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined], _templates];
 		saveProfileNamespace;
 	};
 };

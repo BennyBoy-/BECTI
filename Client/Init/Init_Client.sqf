@@ -242,10 +242,10 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 };
 
 //--- Gear templates (persitent)
-if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
-// profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined], nil];
+if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
+// profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined], nil];
 // saveProfileNamespace;
-if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined]}) then {execVM "Client\Init\Init_Persistent_Gear.sqf"};
+if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {execVM "Client\Init\Init_Persistent_Gear.sqf"};
 
 //--- Graphics/video thread (persistent)
 0 spawn {

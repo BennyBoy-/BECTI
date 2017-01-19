@@ -398,10 +398,10 @@ switch (_action) do {
 			//todo: get the upgrade level
 			//--- Persistent!
 			//todo: template is nil? add a seed.
-			// if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
-			_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
+			// if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
+			_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
 			_templates pushBack [_label, _picture, _cost, _gear, _upgrade, _seed]; 
-			profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined], _templates];
+			profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined], _templates];
 			saveProfileNamespace;
 			
 			if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" == CTI_GEAR_TAB_TEMPLATES) then { //--- Reload the template tab if needed
@@ -426,12 +426,12 @@ switch (_action) do {
 				
 				//--- Persistent!
 				//todo: finds the ID that matches
-				// if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
-				// _templates = profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined];
+				// if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
+				// _templates = profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined];
 				(_seed) call CTI_UI_Gear_RemoveProfileTemplate;
 				// _templates set [_index, "!nil!"];
 				// _templates = _templates - ["!nil!"];
-				// profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined], _templates];
+				// profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined], _templates];
 				// saveProfileNamespace;
 				
 				if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" == CTI_GEAR_TAB_TEMPLATES) then { //--- Reload the template tab if needed

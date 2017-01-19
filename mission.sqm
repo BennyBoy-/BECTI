@@ -85,14 +85,14 @@ class AddonsMetaData
 randomSeed=13186954;
 class ScenarioData
 {
-	author="Omon [OFPS]";
+	author="Benny";
 };
 class Mission
 {
 	class Intel
 	{
-		briefingName="OFPS Benny Warfare - Stratis - HC";
-		overviewText="Crafted by Benny for OFPS";
+		briefingName="BECTI - Stratis - HC";
+		overviewText="By Benny";
 		resistanceWest=0;
 		startWeather=0;
 		startWind=0;
@@ -5365,7 +5365,7 @@ class Mission
 			dataType="Marker";
 			position[]={4292.0513,-21.130127,1416.9023};
 			name="alpha_test";
-			text=" BECTI BENNY OFPS ALPHA TEST";
+			text=" BECTI BENNY WIP";
 			type="mil_warning";
 			alpha=0.29548854;
 			id=166;
@@ -5376,7 +5376,7 @@ class Mission
 			dataType="Marker";
 			position[]={5404.6006,-68.890099,7673.8784};
 			name="alpha_test_1";
-			text=" BECTI BENNY OFPS ALPHA TEST";
+			text=" BECTI BENNY WIP";
 			type="mil_warning";
 			alpha=0.29548854;
 			id=167;
@@ -5386,7 +5386,7 @@ class Mission
 			dataType="Marker";
 			position[]={398.63721,-106.56055,6717.0981};
 			name="alpha_test_2";
-			text=" BECTI BENNY OFPS ALPHA TEST";
+			text=" BECTI BENNY WIP";
 			type="mil_warning";
 			alpha=0.29548854;
 			id=168;

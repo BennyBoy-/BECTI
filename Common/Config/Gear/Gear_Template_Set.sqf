@@ -10,9 +10,12 @@ _formated = [];
 	_picture = "";
 	_label = "";
 	_haspic = false;
+	_upgrade_max = 0;
 	
 	{
 		_cost = _cost + (_x call CTI_CO_FNC_GetGearItemCost);
+		_upgrade = ((missionNamespace getVariable [format["cti_%1", _x], [[0, 0]]]) select 0) select 0; //--- Retrieve the item current upgrade level
+		if (_upgrade > _upgrade_max) then {_upgrade_max = _upgrade}; //--- We retrieve the highest upgrade level needed for the template
 	} forEach (_x call CTI_CO_FNC_ConvertGearToFlat);
 	
 	{
@@ -23,7 +26,7 @@ _formated = [];
 		};
 	} forEach (_x select 0);
 	
-	_formated pushBack [_label, _picture, _cost, _x, 0/* todo Gear Upgrade */];
+	_formated pushBack [_label, _picture, _cost, _x, _upgrade_max];
 } forEach _templates;
 
 missionNamespace setVariable ["cti_gear_list_templates", _formated];

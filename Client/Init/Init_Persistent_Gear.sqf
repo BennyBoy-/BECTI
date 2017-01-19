@@ -1,5 +1,4 @@
 _templates = profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined];
-_templates = [];
 
 _side_gear = [];
 {
@@ -32,7 +31,7 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 										if ((!isClass (configFile >> "CfgWeapons" >> _weapon) || !(_weapon in _side_gear)) && _weapon != "") exitWith {_flag_load = false}; //--- Abort if: the weapon is invalid or if it's not within the side's owned templates
 										if (!(getNumber(configFile >> "CfgWeapons" >> _weapon >> "type") in [CTI_TYPE_RIFLE,CTI_TYPE_PISTOL,CTI_TYPE_LAUNCHER,CTI_TYPE_RIFLE2H]) && _weapon != "") exitWith {_flag_load = false}; //--- Make sure that the weapon is a weapon
 										
-										if !(count _accessories in [0,3]) exitWith {_flag_load = false}; //--- The data format is invalid for the accesories
+										if !(count _accessories in [0,4]) exitWith {_flag_load = false}; //--- The data format is invalid for the accesories
 										{
 											if (typeName _x == "STRING") then { //--- The accessory is a string
 												if (_x != "") then { //--- Empty accessories are skipped
@@ -195,13 +194,16 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 							};
 							
 							if (_flag_load) then {
-								//todo, get cost & upgrade
 								_flat = (_x select 3) call CTI_CO_FNC_ConvertGearToFlat;
 								_cost = 0;
+								_upgrade_max = 0;
 								{
-									_cost = _cost + (_x call CTI_CO_FNC_GetGearItemCost);
+									_cost = _cost + (_x call CTI_CO_FNC_GetGearItemCost); //--- Retrieve the item current cost
+									_upgrade = ((missionNamespace getVariable [format["cti_%1", _item], [[0, 0]]]) select 0) select 0; //--- Retrieve the item current upgrade level
+									if (_upgrade > _upgrade_max) then {_upgrade_max = _upgrade}; //--- We retrieve the highest upgrade level needed for the template
 								} forEach _flat;
 								_x set [2, _cost];
+								_x set [4, _upgrade_max];
 								
 								_list pushBack _x;
 							};
