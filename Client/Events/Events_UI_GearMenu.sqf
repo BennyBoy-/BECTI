@@ -376,10 +376,12 @@ switch (_action) do {
 			_picture = "";
 			_label = "";
 			_haspic = false;
-			_upgrade = 0;
+			_upgrade_max = 0;
 			
 			{
 				_cost = _cost + (_x call CTI_CO_FNC_GetGearItemCost);
+				_upgrade = ((missionNamespace getVariable [format["cti_%1", _x], [[0, 0]]]) select 0) select 0; //--- Retrieve the item current upgrade level
+				if (_upgrade > _upgrade_max) then {_upgrade_max = _upgrade}; //--- We retrieve the highest upgrade level needed for the template
 			} forEach (_gear call CTI_CO_FNC_ConvertGearToFlat);
 			
 			if (_cost != 0) then {
@@ -400,7 +402,7 @@ switch (_action) do {
 			//todo: template is nil? add a seed.
 			// if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
 			_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
-			_templates pushBack [_label, _picture, _cost, _gear, _upgrade, _seed]; 
+			_templates pushBack [_label, _picture, _cost, _gear, _upgrade_max, _seed]; 
 			profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined], _templates];
 			saveProfileNamespace;
 			
