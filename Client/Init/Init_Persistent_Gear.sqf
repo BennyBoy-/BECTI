@@ -1,4 +1,4 @@
-_templates = profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV2_%1", CTI_P_SideJoined];
+_templates = profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined];
 
 _side_gear = [];
 {
@@ -199,7 +199,7 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 								_upgrade_max = 0;
 								{
 									_cost = _cost + (_x call CTI_CO_FNC_GetGearItemCost); //--- Retrieve the item current cost
-									_upgrade = ((missionNamespace getVariable [format["cti_%1", _item], [[0, 0]]]) select 0) select 0; //--- Retrieve the item current upgrade level
+									_upgrade = ((missionNamespace getVariable [format["cti_%1", _x], [[0, 0]]]) select 0) select 0; //--- Retrieve the item current upgrade level
 									if (_upgrade > _upgrade_max) then {_upgrade_max = _upgrade}; //--- We retrieve the highest upgrade level needed for the template
 								} forEach _flat;
 								_x set [2, _cost];
