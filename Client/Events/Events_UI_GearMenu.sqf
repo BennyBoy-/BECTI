@@ -395,12 +395,17 @@ switch (_action) do {
 			};
 			
 			_seed = round(time + random 10000 - random 500 + diag_frameno);
-			(missionNamespace getVariable "cti_gear_list_templates") pushBack [_label, _picture, _cost, _gear, _upgrade, _seed];
+			(missionNamespace getVariable "cti_gear_list_templates") pushBack [_label, _picture, _cost, _gear, _upgrade_max, _seed];
 			
 			//todo: get the upgrade level
 			//--- Persistent!
 			//todo: template is nil? add a seed.
 			// if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
+			
+			if (CTI_Log_Level >= CTI_Log_Debug) then {
+				["DEBUG", "FILE: Client\Events\Events_UI_GearMenu.sqf", format["A new template has been created with label [%0], cost of [%1], upgrade level of [%2] and gear [%3]", _label, _cost, _upgrade_max, _gear]] call CTI_CO_FNC_Log;
+			};
+			
 			_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
 			_templates pushBack [_label, _picture, _cost, _gear, _upgrade_max, _seed]; 
 			profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined], _templates];
