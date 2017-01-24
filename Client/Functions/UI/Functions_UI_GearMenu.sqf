@@ -23,7 +23,8 @@ CTI_UI_Gear_DisplayInventoryVehicle = {
 	
 	{
 		_item = _x;
-		if !(_item in _list) then {
+		// if !(_item in _list) then {
+		if (({_x == _item} count _list) < 1) then {
 			_count = {_x == _item} count _gear;
 			_config = (_item) call CTI_UI_Gear_GetItemBaseConfig;
 			lnbAddRow [70109, [format ["x%1", _count], format ["%1", getText(configFile >> _config >> _item >> 'displayName')]]];
