@@ -8,6 +8,10 @@ _side_gear = [];
 //--- Attempt to load the "proper" templates
 _list = [];
 if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
+	if (CTI_Log_Level >= CTI_Log_Information) then {
+		["INFORMATION", "FILE: Client\Init\Init_Persistent_Gear.sqf", format["The client has [%1] templates in it's profile", count _templates]] call CTI_CO_FNC_Log;
+	};
+
 	{
 		// [_label, _picture, _cost, _x]
 		
@@ -244,10 +248,14 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 		
 		if (_err_reason != "") then {
 			if (CTI_Log_Level >= CTI_Log_Error) then {
-				["ERROR", "FILE: Client\Init\Init_Persistent_Gear.sqf", format["The persistent template number [%1] could not be loaded due to the following error [%2]", _forEachIndex, _err_reason]] call CTI_CO_FNC_Log
+				["ERROR", "FILE: Client\Init\Init_Persistent_Gear.sqf", format["The persistent template number [%1] could not be loaded due to the following error [%2]", _forEachIndex, _err_reason]] call CTI_CO_FNC_Log;
 			};
 		};
 	} forEach _templates;
+} else {
+	if (CTI_Log_Level >= CTI_Log_Error) then {
+		["ERROR", "FILE: Client\Init\Init_Persistent_Gear.sqf", "The persistent gear variable type does not match the expected ARRAY type, the persistent gear will not be loaded."] call CTI_CO_FNC_Log;
+	};
 };
 
 if (count _list > 0) then { //--- If we have more than one template then we overwrite the existing one

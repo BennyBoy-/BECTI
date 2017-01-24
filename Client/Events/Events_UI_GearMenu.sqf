@@ -403,7 +403,7 @@ switch (_action) do {
 			// if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
 			
 			if (CTI_Log_Level >= CTI_Log_Debug) then {
-				["DEBUG", "FILE: Client\Events\Events_UI_GearMenu.sqf", format["A new template has been created with label [%0], cost of [%1], upgrade level of [%2] and gear [%3]", _label, _cost, _upgrade_max, _gear]] call CTI_CO_FNC_Log;
+				["DEBUG", "FILE: Client\Events\Events_UI_GearMenu.sqf", format["A new template has been created with label [%1], cost of [%2], upgrade level of [%3] and gear [%4]", _label, _cost, _upgrade_max, _gear]] call CTI_CO_FNC_Log;
 			};
 			
 			_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
