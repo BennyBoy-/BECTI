@@ -377,11 +377,20 @@ switch (_action) do {
 			_label = "";
 			_haspic = false;
 			_upgrade_max = 0;
+			_side_template = true;
+			
+			//--- Retrieve the side gear, if a gear piece does not belong to the player side, it will not be persistent
+			_side_gear = [];
+			{
+				_side_gear = _side_gear + ((missionNamespace getVariable _x) call CTI_CO_FNC_ArrayToLower);
+			} forEach ["cti_gear_list_primary","cti_gear_list_secondary","cti_gear_list_pistol","cti_gear_list_magazines","cti_gear_list_accessories","cti_gear_list_misc","cti_gear_list_special","cti_gear_list_uniforms","cti_gear_list_vests","cti_gear_list_backpacks","cti_gear_list_headgear","cti_gear_list_glasses","cti_gear_list_explosives"];
+
 			
 			{
 				_cost = _cost + (_x call CTI_CO_FNC_GetGearItemCost);
 				_upgrade = ((missionNamespace getVariable [format["cti_%1", _x], [[0, 0]]]) select 0) select 0; //--- Retrieve the item current upgrade level
 				if (_upgrade > _upgrade_max) then {_upgrade_max = _upgrade}; //--- We retrieve the highest upgrade level needed for the template
+				if (_side_template) then {if !((toLower _x) in _side_gear) then {_side_template = false}}; //--- Check whether or not the item belong to the player's side
 			} forEach (_gear call CTI_CO_FNC_ConvertGearToFlat);
 			
 			if (_cost != 0) then {
@@ -395,51 +404,64 @@ switch (_action) do {
 			};
 			
 			_seed = round(time + random 10000 - random 500 + diag_frameno);
-			(missionNamespace getVariable "cti_gear_list_templates") pushBack [_label, _picture, _cost, _gear, _upgrade_max, _seed];
 			
-			//todo: get the upgrade level
 			//--- Persistent!
 			//todo: template is nil? add a seed.
-			// if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
 			
-			if (CTI_Log_Level >= CTI_Log_Debug) then {
-				["DEBUG", "FILE: Client\Events\Events_UI_GearMenu.sqf", format["A new template has been created with label [%1], cost of [%2], upgrade level of [%3] and gear [%4]", _label, _cost, _upgrade_max, _gear]] call CTI_CO_FNC_Log;
+			_upgrade_gear = (CTI_P_SideJoined call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_GEAR;
+			
+			if (_upgrade_max <= _upgrade_gear) then {
+				if (CTI_Log_Level >= CTI_Log_Debug) then {
+					["DEBUG", "FILE: Client\Events\Events_UI_GearMenu.sqf", format["A new template has been created with label [%1], cost of [%2], upgrade level of [%3], seed of [%4] and gear [%5]. Belongs to the client side? [%6]", _label, _cost, _upgrade_max, _seed, _gear, _side_template]] call CTI_CO_FNC_Log;
+				};
+				
+				(missionNamespace getVariable "cti_gear_list_templates") pushBack [_label, _picture, _cost, _gear, _upgrade_max, _seed];
+				
+				if (_side_template) then { //--- The template match the player side
+					_templates = [];
+					
+					if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then { //--- Append to the persistent gear array if existing
+						_templates = profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined];
+						_templates pushBack [_label, _picture, _cost, _gear, _upgrade_max, _seed];
+					} else { //--- Initialize with the default templates if new
+						_templates = +(missionNamespace getVariable "cti_gear_list_templates");
+					};
+					
+					profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined], _templates];
+					saveProfileNamespace;
+					
+					hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>A new persistent template has been created with the name <t color='#bcff70'>%1</t>.<br /><br />You may find it in the <t color='#eaff96'>Template</t> tab</t><br /><br /><img image='Rsc\Pictures\icon_wf_building_barracks.paa' size='2.5'/>", _label];
+				} else { //--- The template has foreign items in it, thus, we save it for the session.
+					hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>A new temporary template has been created with the name <t color='#bcff70'>%1</t>.<br /><br />You may find it in the <t color='#eaff96'>Template</t> tab</t><br /><br /><img image='Rsc\Pictures\icon_wf_building_barracks.paa' size='2.5'/>", _label];
+				};
+				
+				if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" == CTI_GEAR_TAB_TEMPLATES) then { //--- Reload the template tab if needed
+					(CTI_GEAR_TAB_TEMPLATES) call CTI_UI_Gear_DisplayShoppingItems;
+				};
+			} else {
+				hint parseText format ["<t size='1.3' color='#eded23'>Warning</t><br /><br /><t align='left'>The template labeled <t color='#bcff70'>%1</t> could not be created since the current <t color='#F5D363'>Gear</t> Upgrade level (<t color='#F5D363'>%2</t>) is lower than the current template level (<t color='#F5D363'>%3</t>).<br /><br />", _label, _upgrade_gear, _upgrade_max];
 			};
-			
-			_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
-			_templates pushBack [_label, _picture, _cost, _gear, _upgrade_max, _seed]; 
-			profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined], _templates];
-			saveProfileNamespace;
-			
-			if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" == CTI_GEAR_TAB_TEMPLATES) then { //--- Reload the template tab if needed
-				(CTI_GEAR_TAB_TEMPLATES) call CTI_UI_Gear_DisplayShoppingItems;
-			};
-			
-			hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>A new template has been created with the name <t color='#bcff70'>%1</t>.<br /><br />You may find it in the <t color='#eaff96'>Template</t> tab</t><br /><br /><img image='Rsc\Pictures\icon_wf_building_barracks.paa' size='2.5'/>", _label];
 		};
 	};
 	
 	case "onTemplateDeletion": {
 		//todo: lnbvalue later when they're hidden
 		_index = _this select 1;
+		
 		if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" == CTI_GEAR_TAB_TEMPLATES) then {
 			_seed = lnbValue[70108, [_index,0]];
+			
+			if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Client\Events\Events_UI_GearMenu.sqf", format["Attempting to remove the template at index [%1] which has a seed value of [%2]", _index, _seed]] call CTI_CO_FNC_Log};
+			
 			if (_index > -1 && _index < ((lnbSize((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70108)) select 0)) then {
+				if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Client\Events\Events_UI_GearMenu.sqf", format["Removing the template at index [%1] which has a seed value of [%2] from the template list and from the client profile", _index, _seed]] call CTI_CO_FNC_Log};
+				
 				_templates = missionNamespace getVariable "cti_gear_list_templates";
-				// _templates set [_index, "!nil!"];
-				// _templates = _templates - ["!nil!"];
 				_templates deleteAt _index;
 				missionNamespace setVariable ["cti_gear_list_templates", _templates];
 				
 				//--- Persistent!
-				//todo: finds the ID that matches
-				// if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
-				// _templates = profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined];
 				(_seed) call CTI_UI_Gear_RemoveProfileTemplate;
-				// _templates set [_index, "!nil!"];
-				// _templates = _templates - ["!nil!"];
-				// profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined], _templates];
-				// saveProfileNamespace;
 				
 				if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" == CTI_GEAR_TAB_TEMPLATES) then { //--- Reload the template tab if needed
 					(CTI_GEAR_TAB_TEMPLATES) call CTI_UI_Gear_DisplayShoppingItems;

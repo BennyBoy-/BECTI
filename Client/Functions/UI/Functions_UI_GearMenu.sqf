@@ -342,7 +342,8 @@ CTI_UI_Gear_DisplayShoppingItems = {
 			if ((_x select 4) <= _upgrade_gear) then { //--- Add the template if it's equal or below the upgrade level
 				_row = lnbAddRow [70108, [_x select 0, format ["$%1", _x select 2]]];
 				if (_x select 1 != "") then {lnbSetPicture [70108, [_row, 1], _x select 1]};
-				lnbSetValue [70108, [_row, 0], _x select 4];
+				_seed = if (count _x > 5) then {_x select 5} else {-1};
+				lnbSetValue [70108, [_row, 0], _seed];
 			};
 		} forEach _list;
 	};
@@ -1480,6 +1481,7 @@ CTI_UI_Gear_InitializeProfileTemplates = {
 };
 
 CTI_UI_Gear_RemoveProfileTemplate = {
+	private ["_index", "_seed", "_templates"];
 	_seed = _this;
 	
 	_templates = profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined];
@@ -1487,8 +1489,8 @@ CTI_UI_Gear_RemoveProfileTemplate = {
 	{if ((_x select 5) == _seed) exitWith {_index = _forEachIndex}} forEach _templates;
 	
 	if (_index > -1) then {
-		// _templates set [_index, "!nil!"];
-		// _templates = _templates - ["!nil!"];
+		if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FUNCTION: CTI_UI_Gear_RemoveProfileTemplate", format["Removed the persistent gear template located at position [%1] in the persistent gear profile which had a seed value of [%2]", _index, _seed]] call CTI_CO_FNC_Log};
+		
 		_templates deleteAt _index;
 		profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATEV3_%1", CTI_P_SideJoined], _templates];
 		saveProfileNamespace;
