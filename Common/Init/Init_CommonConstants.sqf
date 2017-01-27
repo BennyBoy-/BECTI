@@ -356,7 +356,6 @@ CTI_TOWNS_PATROL_HOPS = 7; //--- Towns patrol hops (non-waypoint)
 CTI_TOWNS_PATROL_RANGE = 375; //--- Patrol range in a town
 
 //--- Towns: Occupation
-//CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered
@@ -368,7 +367,6 @@ CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS = 50; //--- Determine how far the units m
 CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE = 75; //--- Determine the "safe" range for spawning units (no enemy units have to be present within this area)
 
 //--- Towns: Resistance
-//CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered
@@ -395,6 +393,7 @@ CTI_TOWNS_FLAG_TEXTURE_PEACE = "\A3\Data_F\Flags\Flag_white_CO.paa"; //--- Deter
 
 //--- Towns: Parameters
 with missionNamespace do {
+	if (isNil 'CTI_TOWNS_CAPTURE_MODE') then {CTI_TOWNS_CAPTURE_MODE = 0}; //--- Set the town capture mode (0: Default, 1: All camps)
 	if (isNil 'CTI_TOWNS_OCCUPATION') then {CTI_TOWNS_OCCUPATION = 1}; //--- Determine whether occupation is enabled or not
 	if (isNil 'CTI_TOWNS_OCCUPATION_LIMIT_AI') then {CTI_TOWNS_OCCUPATION_LIMIT_AI = 150}; //--- Determine the soft limit for overall occupation Town AI
 	if (isNil 'CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO') then {CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO = 40}; //--- Determine the AI queue ratio (Queued unit = Groups * ratio/100)
