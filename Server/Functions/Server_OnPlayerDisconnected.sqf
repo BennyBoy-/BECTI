@@ -80,7 +80,10 @@ if !(isNull assignedVehicle _unit) then { unassignVehicle _unit; [_unit] orderGe
 if (vehicle _unit == _hq) then { _unit action ["EJECT", vehicle _unit] }; //--- Is it the HQ?
 
 _get set [1, _funds];
-_get set [4, (_unit) call CTI_CO_FNC_GetUnitLoadout];
+
+//-- Only store the client's gear if he didn't teamswap and if teamswaping is prohibed
+if ((_side isEqualTo (_get select 2)) && (missionNamespace getVariable "CTI_TEAMSWAP") > 0) then {_get set [4, (_unit) call CTI_CO_FNC_GetUnitLoadout]};
+
 missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], _get];
 	
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Updated Player [%1] [%2] funds to [%3]", _name, _uid, _funds]] call CTI_CO_FNC_Log};
