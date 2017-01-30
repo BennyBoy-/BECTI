@@ -73,8 +73,10 @@ switch (_action) do {
 			//--- Request a new vote
 			[CTI_P_SideJoined, name player] remoteExec ["CTI_PVF_SRV_RequestCommanderVote", CTI_PV_SERVER];
 			
+			//--- Close this menu and let the server-to-client PVF open the Vote menu
+			closeDialog 0;
 			//--- Don't lock this script
-			0 spawn {
+			/*0 spawn {
 				(name player) remoteExec ["CTI_PVF_CLT_OnNewCommanderVote", CTI_P_SideJoined];
 				
 			
@@ -84,7 +86,7 @@ switch (_action) do {
 					closeDialog 0;
 					createDialog "CTI_RscVoteMenu";
 				};
-			};
+			};*/
 		} else {
 			closeDialog 0;
 			createDialog "CTI_RscVoteMenu";
