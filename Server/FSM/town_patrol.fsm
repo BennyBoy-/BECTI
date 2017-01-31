@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_patrol.fsm">*/
+/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, town_patrol.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,-300.000000,-475.000000,-200.000000,-425.000000,0.000000,"Init"};
@@ -9,7 +9,7 @@ item4[] = {"Alive",4,218,275.000000,-375.000000,375.000000,-325.000000,1.000000,
 item5[] = {"Done",8,218,425.000000,-475.000000,525.000000,-425.000000,0.000000,"Done"};
 item6[] = {"End",1,250,575.000000,-475.000000,675.000000,-425.000000,0.000000,"End"};
 item7[] = {"Renewal",2,250,-150.000000,-575.000000,-50.000000,-525.000000,0.000000,"Renewal"};
-item8[] = {"Determine_Action",2,4346,275.000000,-275.000000,375.000000,-225.000000,0.000000,"Determine" \n "Action"};
+item8[] = {"Determine_Action",2,250,275.000000,-275.000000,375.000000,-225.000000,0.000000,"Determine" \n "Action"};
 item9[] = {"Patrol",4,218,125.000000,-275.000000,225.000000,-225.000000,2.000000,"Patrol"};
 item10[] = {"Town_Defense",4,218,125.000000,-125.000000,225.000000,-75.000000,0.000000,"Town" \n "Defense"};
 item11[] = {"Town_Defense",2,250,-25.000000,-125.000000,75.000000,-75.000000,0.000000,"Town" \n "Defense"};
@@ -17,7 +17,7 @@ item12[] = {"Patrol",2,250,-25.000000,-275.000000,75.000000,-225.000000,0.000000
 item13[] = {"",7,210,-104.000000,-254.000000,-96.000008,-246.000000,0.000000,""};
 item14[] = {"",7,210,-104.000000,-103.999977,-96.000000,-96.000023,0.000000,""};
 item15[] = {"Camp_Defense",4,218,125.000000,-200.000000,225.000000,-150.000000,1.000000,"Camp" \n "Defense"};
-item16[] = {"Camp_Defense",2,250,-25.000000,-200.000000,75.000000,-150.000000,0.000000,"Camp" \n "Defense"};
+item16[] = {"Camp_Defense",2,4346,-25.000000,-200.000000,75.000000,-150.000000,0.000000,"Camp" \n "Defense"};
 item17[] = {"",7,210,-104.000000,-179.000000,-96.000008,-171.000015,0.000000,""};
 link0[] = {0,1};
 link1[] = {1,2};
@@ -40,8 +40,8 @@ link17[] = {14,17};
 link18[] = {15,16};
 link19[] = {16,17};
 link20[] = {17,13};
-globals[] = {25.000000,1,0,0,0,640,480,1,56,6316128,1,-225.342728,398.007233,97.606049,-599.483582,852,911,1};
-window[] = {2,-1,-1,-1,-1,879,25,1485,25,3,870};
+globals[] = {25.000000,1,0,0,0,640,480,1,56,6316128,1,-251.681366,371.668579,63.219513,-633.870117,852,911,1};
+window[] = {2,-1,-1,-1,-1,1079,225,1685,225,3,870};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -62,7 +62,7 @@ class FSM
        "_move_defend_last = 0;" \n
        "_move_patrol_reload = false;" \n
        "_camp_target = objNull;" \n
-       "_camp_move_last = 0;" \n
+       "_camp_move_last = -50;" \n
        "" \n
        "_action = """";" \n
        "_last_action = """";" \n
@@ -226,6 +226,8 @@ class FSM
        "		if ((_camp_target getVariable ""cti_camp_sideID"") == _sideID) then {" \n
        "			_camp_target setVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], (_camp_target getVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], []]) - [objNull, _team]];" \n
        "			_camp_target = objNull;" \n
+       "		} else {" \n
+       "			_action = ""defense_camp"";" \n
        "		};" \n
        "	};" \n
        "	" \n
@@ -244,7 +246,7 @@ class FSM
        "		//--- We found one camp to defend" \n
        "		if !(isNull _camp_target) then {" \n
        "			_action = ""defense_camp"";" \n
-       "			_camp_target setVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], (_camp_target getVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], []]) pushBack _team];" \n
+       "			_camp_target setVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], (_camp_target getVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], []]) + [_team]];" \n
        "		};" \n
        "	};" \n
        "};" \n

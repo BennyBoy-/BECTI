@@ -4,11 +4,11 @@ respawnDelay = 3;
 respawnDialog = false;
 
 //--- Require briefing.html to show up.
-onLoadMission = "OFPS Benny Warfare";
+onLoadMission = "BECTI";
 onLoadMissionTime = false;
-onLoadName = "OFPS Benny Warfare";
+onLoadName = "BECTI";
 
-briefingName = "OFPS Benny Warfare";
+briefingName = "BECTI";
 
 //--- ArmA 3 Specifics
 dev = "Benny";
