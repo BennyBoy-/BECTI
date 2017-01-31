@@ -352,7 +352,7 @@ CTI_TOWNS_MARKERS_MAP_RANGE = 600; //--- Distance required to show the town SV o
 CTI_TOWNS_MARKERS_PEACE_COLOR = "ColorYellow"; //--- The color used for peace-mode towns
 
 //--- Towns: Patrol
-CTI_TOWNS_PATROL_CAMPS_AI_DEFENSE_MAX = 1; //--- Determine how many Town AI groups may try to capture back one hostile camp
+CTI_TOWNS_PATROL_CAMPS_AI_DEFENSE_MAX = 1; //--- Determine how many Town AI groups (alive) may try to capture back one hostile camp
 CTI_TOWNS_PATROL_HOPS = 7; //--- Towns patrol hops (non-waypoint)
 CTI_TOWNS_PATROL_RANGE = 375; //--- Patrol range in a town
 
