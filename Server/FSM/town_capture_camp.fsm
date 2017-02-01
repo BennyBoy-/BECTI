@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, town_capture_camp.fsm">*/
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_capture_camp.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
@@ -31,8 +31,8 @@ link12[] = {10,11};
 link13[] = {11,12};
 link14[] = {12,7};
 link15[] = {13,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-553.124695,344.934753,133.816055,-562.199219,947,881,1};
-window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,965};
+globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-641.318481,256.740845,125.281189,-570.734009,947,911,1};
+window[] = {2,-1,-1,-1,-1,856,75,1330,75,3,965};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -69,6 +69,7 @@ class FSM
       name = "Units_near_Camp";
       init = /*%FSM<STATEINIT""">*/"_sideID = _camp getVariable ""cti_camp_sideID"";" \n
        "_side = (_sideID) Call CTI_CO_FNC_GetSideFromID;" \n
+       "_town_local = (_town getVariable [""cti_town_occupation_groups"", []]) + (_town getVariable [""cti_town_resistance_groups"", []]);" \n
        "// _objects = _camp nearEntities [""Man"", CTI_TOWNS_CAMPS_CAPTURE_RANGE];" \n
        "" \n
        "_objects = [];" \n
@@ -78,11 +79,8 @@ class FSM
        "	default {_objects = _camp nearEntities [""Man"", CTI_TOWNS_CAMPS_CAPTURE_RANGE]};" \n
        "};" \n
        "" \n
-       "//--- Add the town's local AI if needed" \n
-       "if (CTI_TOWNS_CAPTURE_DETECTION_MODE != 0) then {" \n
-       "	_town_local = (_town getVariable [""cti_town_occupation_groups"", []]) + (_town getVariable [""cti_town_resistance_groups"", []]);" \n
-       "	{if (((ASLToAGL getPosASL _x) select 2) <= 30 && group _x in _town_local) then {_objects pushBack _x}} forEach (_camp nearEntities [""Man"", CTI_TOWNS_CAMPS_CAPTURE_RANGE]);" \n
-       "};" \n
+       "//--- Add the town's local AI if needed." \n
+       "{if (((ASLToAGL getPosASL _x) select 2) <= 30 && group _x in _town_local && !(_x in _objects)) then {_objects pushBack _x}} forEach (_camp nearEntities [""AllVehicles"", CTI_TOWNS_CAMPS_CAPTURE_RANGE_TOWN_AI]);" \n
        "" \n
        "_west = west countSide _objects;" \n
        "_east = east countSide _objects;" \n

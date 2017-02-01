@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, town_patrol.fsm">*/
+/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_patrol.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,-300.000000,-475.000000,-200.000000,-425.000000,0.000000,"Init"};
@@ -17,7 +17,7 @@ item12[] = {"Patrol",2,250,-25.000000,-275.000000,75.000000,-225.000000,0.000000
 item13[] = {"",7,210,-104.000000,-254.000000,-96.000008,-246.000000,0.000000,""};
 item14[] = {"",7,210,-104.000000,-103.999977,-96.000000,-96.000023,0.000000,""};
 item15[] = {"Camp_Defense",4,218,125.000000,-200.000000,225.000000,-150.000000,1.000000,"Camp" \n "Defense"};
-item16[] = {"Camp_Defense",2,4346,-25.000000,-200.000000,75.000000,-150.000000,0.000000,"Camp" \n "Defense"};
+item16[] = {"Camp_Defense",2,250,-25.000000,-200.000000,75.000000,-150.000000,0.000000,"Camp" \n "Defense"};
 item17[] = {"",7,210,-104.000000,-179.000000,-96.000008,-171.000015,0.000000,""};
 link0[] = {0,1};
 link1[] = {1,2};
@@ -40,8 +40,8 @@ link17[] = {14,17};
 link18[] = {15,16};
 link19[] = {16,17};
 link20[] = {17,13};
-globals[] = {25.000000,1,0,0,0,640,480,1,56,6316128,1,-251.681366,371.668579,63.219513,-633.870117,852,911,1};
-window[] = {2,-1,-1,-1,-1,1079,225,1685,225,3,870};
+globals[] = {25.000000,1,0,0,0,640,480,1,56,6316128,1,-212.172974,411.176941,70.535797,-626.553894,852,911,1};
+window[] = {2,-1,-1,-1,-1,879,25,1485,25,3,870};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -68,6 +68,7 @@ class FSM
        "_last_action = """";" \n
        "_patrol_hop = [];" \n
        "_patrol_hop_idlefor = -1;" \n
+       "_capture_mode = missionNamespace getVariable ""CTI_TOWNS_CAPTURE_MODE"";" \n
        "_capture_range = CTI_TOWNS_CAPTURE_RANGE;" \n
        "_is_naval = _town getVariable [""cti_naval"", false];" \n
        "if (_is_naval) then {_capture_range = _capture_range * 2};" \n
@@ -210,9 +211,23 @@ class FSM
     {
       name = "Determine_Action";
       init = /*%FSM<STATEINIT""">*/"if ((((_town getVariable 'cti_town_sv') < _last_SV || (_town getVariable 'cti_town_sv') < (_town getVariable 'cti_town_sv_default')) && _sideID == (_town getVariable 'cti_town_sideID')) || _sideID != (_town getVariable 'cti_town_sideID')) then {" \n
-       "	_action = ""defense"";" \n
-       "	if (_action != _last_action) then {_move_defend_last = -120};" \n
+       "	_capturable = true;" \n
+       "	" \n
+       "	//--- If we need all camps to capture the town, make sure that they belong to the team's before capturing the depot, skip naval towns" \n
+       "	if (_capture_mode == 1 && !_is_naval) then { " \n
+       "		if (count(_town call CTI_CO_FNC_GetTownCamps) != count([_town, _sideID] call CTI_CO_FNC_GetTownCampsOnSide)) then {_capturable = false};" \n
+       "	};" \n
+       "	" \n
+       "	//--- Make sure that the depot can be captured before proceeding there, if not, the team will either patrol or defend camps" \n
+       "	if (_capturable) then {" \n
+       "		_action = ""defense"";" \n
+       "		if (_action != _last_action) then {_move_defend_last = -120};" \n
+       "	} else {" \n
+       "		_action = ""patrol"";" \n
+       "		if (_action != _last_action) then {_move_patrol_reload = true};" \n
+       "	};" \n
        "} else {" \n
+       "	//--- Default action, patrol" \n
        "	_action = ""patrol"";" \n
        "	if (_action != _last_action) then {_move_patrol_reload = true};" \n
        "};" \n
