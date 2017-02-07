@@ -11,6 +11,12 @@ class CfgDebriefing {
 		description = "We lost!";
 		pictureBackground = "";
 	};
+	class End5 {
+		title = "WARNING";
+		subtitle = "";
+		description = "Joining this side will make the teams unbalanced, please keep the teams balanced";
+		pictureBackground = "";
+	};
 	class End6 {
 		title = "WARNING";
 		subtitle = "";
