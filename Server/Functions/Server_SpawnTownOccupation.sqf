@@ -52,6 +52,26 @@ _max_squad = CTI_TOWNS_OCCUPATION_LEVEL;
 _max_squad_random = 4;
 _max_sv = 120;
 
+//--- If the dynamic mode is enabled, the server FPS are then used to determine the amount of spawning groups
+if (CTI_TOWNS_OCCUPATION_LEVEL_DYNAMIC > 0) then {
+	_fps = diag_fps;
+	
+	//--- Only proc if the overall FPS are below 30
+	if (_fps <= 30) then {
+		_coef = switch (true) do {
+			case (_fps > 25): {.85};
+			case (_fps > 20): {.70};
+			case (_fps > 15): {.50};
+			case (_fps > 10): {.25};
+			case (_fps > 5): {.20};
+			default {.20};
+		};
+		
+		_max_squad = ceil(_max_squad * _coef);
+		_max_squad_random = ceil(_max_squad_random * _coef);
+	};
+};
+
 _randomGroups = (_value / _max_sv) * _max_squad_random;
 _fixedGroups = (_value / _max_sv) * _max_squad;
 _totalGroups = round(_fixedGroups + random _randomGroups - random _randomGroups);
