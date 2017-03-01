@@ -82,7 +82,12 @@ if (vehicle _unit == _hq) then { _unit action ["EJECT", vehicle _unit] }; //--- 
 _get set [1, _funds];
 
 //-- Only store the client's gear if he didn't teamswap and if teamswaping is prohibed
-if ((_side isEqualTo (_get select 2)) && (missionNamespace getVariable "CTI_TEAMSWAP") > 0) then {_get set [4, (_unit) call CTI_CO_FNC_GetUnitLoadout]};
+if ((_side isEqualTo (_get select 2)) && (missionNamespace getVariable "CTI_TEAMSWAP") > 0) then {
+	_loadout = (_unit) call CTI_CO_FNC_GetUnitLoadout;
+	_get set [4, _loadout];
+	
+	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Player [%1] [%2] loadout has been retrieved upon disconnect [%3]", _name, _uid, _loadout]] call CTI_CO_FNC_Log};
+};
 
 missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], _get];
 	
