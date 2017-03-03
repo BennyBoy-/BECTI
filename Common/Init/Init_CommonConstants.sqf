@@ -340,6 +340,7 @@ CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
 
 //--- Towns: Depot
+CTI_TOWNS_DEPOT_ACCESS_MODE = 1; //--- Determine how depots can be accessed for purchases (0: Town belong to side, 1: Town belong to side + all camps)
 CTI_TOWNS_DEPOT_BUILD_DIRECTION = 0; //--- Determine the direction a vehicle will use while being spawned from the depot
 CTI_TOWNS_DEPOT_BUILD_DISTANCE = 25; //--- Determine how far a unit/vehicle will spawn from the depot
 CTI_TOWNS_DEPOT_CLASSNAME = ["Land_BagBunker_Large_F"]; //--- The classname(s) used for town depots in editor

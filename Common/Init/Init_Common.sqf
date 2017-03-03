@@ -65,6 +65,7 @@ CTI_CO_FNC_GetUnitsScore = compileFinal preprocessFileLineNumbers "Common\Functi
 CTI_CO_FNC_GetUpgrade = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetUpgrade.sqf";
 CTI_CO_FNC_GetVehicleCargo = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetVehicleCargo.sqf";
 CTI_CO_FNC_GetVehicleTurrets = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetVehicleTurrets.sqf";
+CTI_CO_FNC_HasAllCamps = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasAllCamps.sqf";
 CTI_CO_FNC_HasOrderedChanged = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasOrderedChanged.sqf";
 CTI_CO_FNC_HasStructure = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasStructure.sqf";
 CTI_CO_FNC_HasUpgrade = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasUpgrade.sqf";

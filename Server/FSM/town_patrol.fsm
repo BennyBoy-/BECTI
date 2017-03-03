@@ -9,7 +9,7 @@ item4[] = {"Alive",4,218,275.000000,-375.000000,375.000000,-325.000000,1.000000,
 item5[] = {"Done",8,218,425.000000,-475.000000,525.000000,-425.000000,0.000000,"Done"};
 item6[] = {"End",1,250,575.000000,-475.000000,675.000000,-425.000000,0.000000,"End"};
 item7[] = {"Renewal",2,250,-150.000000,-575.000000,-50.000000,-525.000000,0.000000,"Renewal"};
-item8[] = {"Determine_Action",2,250,275.000000,-275.000000,375.000000,-225.000000,0.000000,"Determine" \n "Action"};
+item8[] = {"Determine_Action",2,4346,275.000000,-275.000000,375.000000,-225.000000,0.000000,"Determine" \n "Action"};
 item9[] = {"Patrol",4,218,125.000000,-275.000000,225.000000,-225.000000,2.000000,"Patrol"};
 item10[] = {"Town_Defense",4,218,125.000000,-125.000000,225.000000,-75.000000,0.000000,"Town" \n "Defense"};
 item11[] = {"Town_Defense",2,250,-25.000000,-125.000000,75.000000,-75.000000,0.000000,"Town" \n "Defense"};
@@ -40,8 +40,8 @@ link17[] = {14,17};
 link18[] = {15,16};
 link19[] = {16,17};
 link20[] = {17,13};
-globals[] = {25.000000,1,0,0,0,640,480,1,56,6316128,1,-212.172974,411.176941,70.535797,-626.553894,852,911,1};
-window[] = {2,-1,-1,-1,-1,879,25,1485,25,3,870};
+globals[] = {25.000000,1,0,0,0,640,480,1,56,6316128,1,-193.882141,429.467712,87.363922,-609.725464,852,910,1};
+window[] = {2,-1,-1,-1,-1,880,26,1486,26,3,870};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -215,7 +215,7 @@ class FSM
        "	" \n
        "	//--- If we need all camps to capture the town, make sure that they belong to the team's before capturing the depot, skip naval towns" \n
        "	if (_capture_mode == 1 && !_is_naval) then { " \n
-       "		if (count(_town call CTI_CO_FNC_GetTownCamps) != count([_town, _sideID] call CTI_CO_FNC_GetTownCampsOnSide)) then {_capturable = false};" \n
+       "		if !([_town, _sideID] call CTI_CO_FNC_HasAllCamps) then {_capturable = false};" \n
        "	};" \n
        "	" \n
        "	//--- Make sure that the depot can be captured before proceeding there, if not, the team will either patrol or defend camps" \n

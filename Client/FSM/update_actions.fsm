@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, update_actions.fsm">*/
+/*%FSM<COMPILE "D:\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, update_actions.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-457.107819,165.700150,575.219543,-317.919952,417,598,1};
-window[] = {2,-1,-1,-1,-1,807,-998,257,26,3,435};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-457.107819,165.700150,575.219543,-317.919952,417,910,1};
+window[] = {2,-1,-1,-1,-1,807,26,1281,26,3,435};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -101,7 +101,17 @@ class FSM
        "" \n
        "//--- Depot check" \n
        "_depot = [player, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;" \n
-       "CTI_Base_DepotInRange = if (isNull _depot) then {false} else {true};" \n
+       "if !(isNull _depot) then {" \n
+       "	_available = false;" \n
+       "	switch (CTI_TOWNS_DEPOT_ACCESS_MODE) do {" \n
+       "		case 1: {if ([_depot getVariable ""cti_depot"", CTI_P_SideID] call CTI_CO_FNC_HasAllCamps) then {_available = true}}; //--- Check if the camps belong to the player's side" \n
+       "		default {_available = true}; //--- Default, The depot belongs to the player's side" \n
+       "	};" \n
+       "	" \n
+       "	CTI_Base_DepotInRange = _available;" \n
+       "} else {" \n
+       "	CTI_Base_DepotInRange = false;" \n
+       "};" \n
        "CTI_Base_GearInRange_Depot = CTI_Base_DepotInRange;" \n
        "" \n
        "//--- FOB Check" \n
