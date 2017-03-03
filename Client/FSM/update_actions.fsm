@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-457.107819,165.700150,575.219543,-317.919952,417,910,1};
-window[] = {2,-1,-1,-1,-1,807,26,1281,26,3,435};
+window[] = {2,-1,-1,-1,-1,833,52,1307,52,3,435};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -54,30 +54,19 @@ class FSM
        "" \n
        "//--- Commander checks" \n
        "_commander = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommanderTeam;" \n
-       "if (isNull _commander && !isNull _commander_last) then {_commander_update = true};" \n
-       "if (!isNull _commander && isNull _commander_last) then {_commander_update = true};" \n
-       "if (!isNull _commander && !isNull _commander_last) then {" \n
-       "	if (_commander != _commander_last) then {_commander_update = true};" \n
-       "};" \n
-       "" \n
-       "if (_commander_update) then {" \n
-       "	_commander_update = false;" \n
+       "if !(_commander isEqualTo _commander_last) then {" \n
        "	_commander_last = _commander;" \n
-       "	//--- AI/Null Com or different commander" \n
-       "	if (isNull _commander || _commander != group player) then {" \n
+       "	//--- If the player is not the commander, we remove the hq actions if necessary (otherwise we add it)" \n
+       "	if !(_commander isEqualTo group player) then {" \n
        "		if (alive _hq) then {" \n
        "			for '_i' from 0 to 3 do {_hq removeAction _i};" \n
        "		};" \n
        "		if !(isNil ""CTI_HQ_BuildAction"") then {player removeAction CTI_HQ_BuildAction};" \n
-       "	};" \n
-       "	if (!isNull _commander) then {" \n
-       "		if (_commander == group player) then {" \n
-       "			CTI_HQ_BuildAction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_CoinBuild.sqf"", ""HQ"", 93, false, true, """", ""_target == player && CTI_Base_HQInRange""];" \n
-       "			(_hq) spawn (missionNamespace getVariable ""CTI_PVF_CLT_AddHQActions"");" \n
-       "		};" \n
+       "	} else {" \n
+       "		CTI_HQ_BuildAction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_CoinBuild.sqf"", ""HQ"", 93, false, true, """", ""_target == player && CTI_Base_HQInRange""];" \n
+       "		(_hq) spawn (missionNamespace getVariable ""CTI_PVF_CLT_AddHQActions"");" \n
        "	};" \n
        "};" \n
-       "" \n
        "" \n
        "//--- Generic base checks" \n
        "_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;" \n
@@ -148,8 +137,7 @@ class FSM
        "CTI_Base_HeavyInRange = true;" \n
        "CTI_Base_AirInRange = true;" \n
        "CTI_Base_AmmoInRange = true;" \n
-       "CTI_Base_RepairInRange = true;*/" \n
-       ""/*%FSM</STATEINIT""">*/;
+       "CTI_Base_RepairInRange = true;*/"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
