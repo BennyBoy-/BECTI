@@ -206,8 +206,9 @@ CTI_UI_Purchase_OnUnitListLoad = {
 };
 
 CTI_UI_Purchase_LoadFactories = {
-	private ["_closest", "_fetched", "_structures", "_structure_text", "_type", "_var"];
-	_type = _this;
+	private ["_closest", "_fetched", "_index", "_structures", "_structure_text", "_type", "_var"];
+	_type = _this select 0;
+	_index = if (count _this > 1) then {_this select 1} else {uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_index"};
 	
 	_fetched = [];
 	
@@ -234,6 +235,7 @@ CTI_UI_Purchase_LoadFactories = {
 	};
 	
 	uiNamespace setVariable ["cti_dialog_ui_purchasemenu_factory", _fetched select 0];
+	uiNamespace setVariable ["cti_dialog_ui_purchasemenu_factory_index", _index];
 	uiNamespace setVariable ["cti_dialog_ui_purchasemenu_factory_type", _type];
 	uiNamespace setVariable ["cti_dialog_ui_purchasemenu_factories", _fetched];
 	

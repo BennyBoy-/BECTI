@@ -7,16 +7,44 @@ _lb_queued_content = [];
 while { true } do {
 	if (isNil {uiNamespace getVariable "cti_dialog_ui_purchasemenu"}) exitWith {}; //--- Menu is closed.
 	
-	_factory = uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory";
-	if !(isNil '_factory') then {
-		_in_use = _factory getVariable "cti_inuse";
-		if (isNil '_in_use') then { _in_use = false };
-		if !(_in_use) then {
+	//--- If the factory source (tab) is no longer available, we simply try to find a new one. If none are found then we simply exit
+	if !([CTI_Base_BarracksInRange, CTI_Base_LightInRange, CTI_Base_HeavyInRange, CTI_Base_AirInRange, CTI_Base_RepairInRange, CTI_Base_AmmoInRange, CTI_Base_NavalInRange, CTI_Base_DepotInRange] select (uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_index")) then {
+		_get = call CTI_UI_Purchase_GetFirstAvailableFactories;
+		_factory = _get select 0;
+		_factory_index = _get select 1;
+		_factory_type = _get select 2;
+		
+		if (isNull _factory) exitWith { closeDialog 0; };
+		
+		//--- Simulate a tab click with the new properties
+		["onIconSet", _factory_index, _factory_type] call compile preprocessFileLineNumbers "Client\Events\Events_UI_PurchaseMenu.sqf";
+	};
+	
+	//--- Make sure that the menu is still opened
+	if !(dialog) exitWith {};
+	
+	//--- Check if the factory is still alive and kicking
+	_factory = uiNamespace getVariable ["cti_dialog_ui_purchasemenu_factory", objNull];
+	if (alive _factory) then {
+		//--- Update the factory UI (In use or not)
+		if !(_factory getVariable ["cti_inuse", false]) then {
 			if (_show_inuse) then {	_show_inuse = false; ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110901) ctrlSetStructuredText parseText "" };
 		} else {
 			if !(_show_inuse) then { _show_inuse = true; ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110901) ctrlSetStructuredText parseText "Factory in use" };
 		};
 	} else {
+		//--- The factory is destroyed, attempt to pick a new one from the same tab if possible. If none are available, we do nothing since the first check handles that
+		if ([CTI_Base_BarracksInRange, CTI_Base_LightInRange, CTI_Base_HeavyInRange, CTI_Base_AirInRange, CTI_Base_RepairInRange, CTI_Base_AmmoInRange, CTI_Base_NavalInRange, CTI_Base_DepotInRange] select (uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_index")) then {
+			//--- Update the factory list if needed
+			if ((uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type") != CTI_DEPOT) then {
+				_fetched = [uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type", (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType;
+				
+				//--- Make sure that we have at least 1 available factory
+				if ({alive _x} count _fetched > 0) then { [uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type"] call CTI_UI_Purchase_LoadFactories };
+			};
+		};
+		
+		//--- Hide the factory UI if null or destroyed
 		if (_show_inuse) then {	_show_inuse = false; ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110901) ctrlSetStructuredText parseText "" };
 	};
 	

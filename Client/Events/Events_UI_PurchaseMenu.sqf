@@ -32,7 +32,7 @@ switch (_action) do {
 
 		uiNamespace setVariable ["cti_dialog_ui_purchasemenu_team", group player];
 		
-		(_factory_type) call CTI_UI_Purchase_LoadFactories;
+		[_factory_type, _factory_index] call CTI_UI_Purchase_LoadFactories;
 		call CTI_UI_Purchase_SetVehicleIconsColor;
 		(_factory_index) call CTI_UI_Purchase_SetIcons;
 		(_factory_type) call CTI_UI_Purchase_FillUnitsList;
@@ -64,7 +64,7 @@ switch (_action) do {
 			uiNamespace setVariable ["cti_dialog_ui_purchasemenu_factory", _factory];
 		} else {
 			if ({alive _x} count (uiNamespace getVariable "cti_dialog_ui_purchasemenu_factories") > 0) then {
-				(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type") call CTI_UI_Purchase_LoadFactories;//reload.
+				[uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type"] call CTI_UI_Purchase_LoadFactories;//reload.
 			} else {
 				['onLoad'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'
 			};
@@ -77,7 +77,7 @@ switch (_action) do {
 		_available = [CTI_Base_BarracksInRange, CTI_Base_LightInRange, CTI_Base_HeavyInRange, CTI_Base_AirInRange, CTI_Base_RepairInRange, CTI_Base_AmmoInRange, CTI_Base_NavalInRange, CTI_Base_DepotInRange];
 		
 		if (_available select _factory_index) then {
-			(_factory_type) call CTI_UI_Purchase_LoadFactories;
+			[_factory_type, _factory_index] call CTI_UI_Purchase_LoadFactories;
 			(_factory_index) call CTI_UI_Purchase_SetIcons;
 			(_factory_type) call CTI_UI_Purchase_FillUnitsList;
 			call CTI_UI_Purchase_OnUnitListLoad;
