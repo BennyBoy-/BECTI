@@ -55,8 +55,7 @@ if (CTI_BASE_NOOBPROTECTION == 1 && side _shooter in [_side, sideEnemy]) exitWit
 //--- Do we have to reduce the damages?
 if (_reduce_damages > 0) then {_damage = _damage / _reduce_damages};
 
-_virtual_damages = _damaged getVariable "cti_altdmg";
-if (isNil '_virtual_damages') then {_virtual_damages = 0};
+_virtual_damages = _damaged getVariable ["cti_altdmg", 0];
 _virtual_damages = _virtual_damages + _damage;
 if (_virtual_damages > 1) then { _virtual_damages = 1 };
 

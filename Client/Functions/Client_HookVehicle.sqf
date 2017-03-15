@@ -40,8 +40,7 @@ _hooked attachTo [_hooker, _mpos];
 while {true} do {
 	sleep 1;
 	
-	_current_hooked = _hooker getVariable "cti_hooked";
-	if (isNil '_current_hooked') then {_current_hooked = objNull};
+	_current_hooked = _hooker getVariable ["cti_hooked", objNull];
 	
 	if (!canMove _hooker || getDammage _hooker > 0.3 || count crew _current_hooked > 0 || _hooked != _current_hooked) exitWith {
 		if (_current_hooked == _hooked) then {

@@ -34,8 +34,8 @@ private ["_funds", "_side", "_value"];
 _side = _this select 0;
 _value = _this select 1;
 
-if (isNil '_value') exitWith {"error CTI_CO_FNC_ChangeFundsCommander: attempted to set nil value"};
-if (typeName _value != "SCALAR") exitWith {"error CTI_CO_FNC_ChangeFundsCommander: attempted to set non scalar value"};
+if (isNil '_value') exitWith {["ERROR", "FILE: Common\Functions\Common_ChangeFundsCommander.sqf", format["A nil funds value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
+if (typeName _value != "SCALAR") exitWith {["ERROR", "FILE: Common\Functions\Common_ChangeFundsCommander.sqf", format["A non-scalar funds value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _funds = (_side) call CTI_CO_FNC_GetFundsCommander;

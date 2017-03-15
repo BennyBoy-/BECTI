@@ -20,8 +20,7 @@ CTI_FSM_RepairTruck_Repair = {
 	_vehicle = _this select 0;
 	_target = _this select 1;
 	
-	_virtual_damages = _target getVariable "cti_altdmg";
-	if (isNil '_virtual_damages') then {_virtual_damages = -1};
+	_virtual_damages = _target getVariable ["cti_altdmg", -1];
 	
 	_addin = 0;
 	if (_virtual_damages < 0) then {

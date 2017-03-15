@@ -37,8 +37,8 @@ private ["_commander", "_funds", "_groups", "_logic", "_side", "_total_groups", 
 _side = _this select 0;
 _value = _this select 1;
 
-if (isNil '_value') exitWith {};
-if (typeName _value != "SCALAR") exitWith {};
+if (isNil '_value') exitWith {["ERROR", "FILE: Common\Functions\Common_AddSideFunds.sqf", format["A nil funds value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
+if (typeName _value != "SCALAR") exitWith {["ERROR", "FILE: Common\Functions\Common_AddSideFunds.sqf", format["A non-scalar funds value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _commander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;

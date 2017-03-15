@@ -33,8 +33,8 @@ private ["_side", "_supply", "_value"];
 _side = _this select 0;
 _value = _this select 1;
 
-if (isNil '_value') exitWith {"error CTI_CO_FNC_ChangeSideSupply: attempted to set nil value"};
-if (typeName _value != "SCALAR") exitWith {"error CTI_CO_FNC_ChangeSideSupply: attempted to set non scalar value"};
+if (isNil '_value') exitWith {["ERROR", "FILE: Common\Functions\Common_ChangeSideSupply.sqf", format["A nil supply value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
+if (typeName _value != "SCALAR") exitWith {["ERROR", "FILE: Common\Functions\Common_ChangeSideSupply.sqf", format["A non-scalar value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _supply = (_side) call CTI_CO_FNC_GetSideSupply;

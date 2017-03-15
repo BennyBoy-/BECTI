@@ -42,8 +42,6 @@ _index = -1;
 } forEach _list;
 
 if (_index != -1) then {
-	// _list set [_index, "!REMOVE!"];
-	// _list = _list - ["!REMOVE!"];
 	_list deleteAt _index;
 	_factory setVariable ["cti_queue_processing", _list];
 };

@@ -29,7 +29,7 @@
 	  -> Town0 is now captured by West
 */
 
-private ["_award_teams", "_currentSideID", "_flagTexture", "_last_capture", "_newSide", "_newSideID", "_town", "_town_camps"];
+private ["_award_teams", "_currentSideID", "_flagTexture", "_last_capture", "_newSide", "_newSideID", "_town"];
 
 _town = _this select 0;
 _newSide = _this select 1;
@@ -74,14 +74,11 @@ if (missionNamespace getVariable "CTI_TOWNS_PEACE" > 0) then {
 if (typeOf _town == "FlagPole_F") then {_town setFlagTexture _flagTexture};
 
 //--- Update the camps if needed
-_town_camps = _town getVariable "cti_town_camps";
-if !(isNil "_town_camps") then {
-	{
-		_x setVariable ["cti_camp_lastSideID", (_x getVariable "cti_camp_sideID"), true];
-		_x setVariable ["cti_camp_sideID", _newSideID, true];
-		_x setVariable ["cti_camp_sv", _town getVariable "cti_town_sv_default", true];
-	} forEach _town_camps;
-};
+{
+	_x setVariable ["cti_camp_lastSideID", (_x getVariable "cti_camp_sideID"), true];
+	_x setVariable ["cti_camp_sideID", _newSideID, true];
+	_x setVariable ["cti_camp_sv", _town getVariable "cti_town_sv_default", true];
+} forEach (_town getVariable ["cti_town_camps", []]);
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Server\Functions\Server_OnTownCaptured.sqf", format["Town [%1] has been captured, from [%2] to [%3]", _town getVariable "cti_town_name", (_currentSideID) Call CTI_CO_FNC_GetSideFromID, _newSide]] call CTI_CO_FNC_Log;

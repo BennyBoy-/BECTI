@@ -43,7 +43,7 @@ _distance = if (count _this > 3) then {_this select 3} else {-1};
 
 _found = [];
 {
-	_structure_type = if (isNil{_x getVariable "cti_structure_type"}) then {""} else {_x getVariable "cti_structure_type"};
+	_structure_type = _x getVariable ["cti_structure_type", ""];
 	if (_structure_type == _type) then { _found pushBack _x };
 } forEach _structures;
 

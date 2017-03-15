@@ -28,11 +28,10 @@ _score = _this select 1;
 
 //--- Try to get the score of that marvelous players.
 _uid = getPlayerUID _proplayer;
-_get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
-if (isNil '_get') then {_get = [0, 0]};
+_get = missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]];
 _get set [0, (_get select 0) + _score];
 
-//--- Did the pro player reached the top?
+//--- Did the pro player reach the top?
 if ((_get select 0) > 3) then {
 	//--- Send to mcfly dungeon
 	remoteExec ["CTI_PVF_CLT_OnUbernessReached", _proplayer];

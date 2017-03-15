@@ -25,8 +25,7 @@ _proplayer = _this;
 
 //--- Try to get the score of that marvelous players.
 _uid = getPlayerUID _proplayer;
-_get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
-if (isNil '_get') then {_get = [0, 0]};
+_get = missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]];
 _get set [1, 0];
 
 missionNamespace setVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], _get];

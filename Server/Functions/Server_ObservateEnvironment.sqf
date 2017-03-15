@@ -41,14 +41,10 @@ _groupisplayable = _group call CTI_CO_FNC_IsGroupPlayable;
 
 //--- Sanitize a bit to avoid ending up with a thousand crap in the array
 _spotted_units = _side_logic getVariable "cti_spotted_units";
-// {if !(alive _x) then {_spotted_units set [_forEachIndex, objNull]}} forEach +_spotted_units;
-// _spotted_units = _spotted_units - [objNull];
 {if !(alive _x) then {_spotted_units deleteAt _forEachIndex}} forEach +_spotted_units;
 _side_logic setVariable ["cti_spotted_units", _spotted_units];
 
 _spotted_base = _side_logic getVariable "cti_spotted_structures";
-// {if !(alive _x) then {_spotted_base set [_forEachIndex, objNull]}} forEach +_spotted_base;
-// _spotted_base = _spotted_base - [objNull];
 {if !(alive _x) then {_spotted_base deleteAt _forEachIndex}} forEach +_spotted_base;
 _side_logic setVariable ["cti_spotted_structures", _spotted_base];
 
@@ -82,8 +78,7 @@ _spotted_structure = objNull;
 {
 	_what = _x select 0;
 	if (alive _what) then {
-		_last_report = _group getVariable (_x select 2);
-		if (isNil '_last_report') then {_last_report = -1000};
+		_last_report = _group getVariable [_x select 2, -1000];
 
 		if (time - _last_report > (_x select 1)) then {
 			[getPos _what, _x select 3, leader _group] remoteExec ["CTI_PVF_CLT_OnSpottedTargetReceived", _side];

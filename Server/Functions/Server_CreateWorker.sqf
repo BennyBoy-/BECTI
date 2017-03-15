@@ -47,8 +47,7 @@ if (_index < 0 && !_ai_order) exitWith {diag_log "couldn't find a value to set a
 _group = createGroup _side;
 _group setSpeedMode "LIMITED";
 
-_model = missionNamespace getVariable format["CTI_%1_Worker", _side];
-if (isNil '_model') then {_model = "C_man_1"};
+_model = missionNamespace getVariable [format["CTI_%1_Worker", _side], "C_man_1"];
 if (typeName _model == "ARRAY") then {_model = _model select floor(random count _model)};
 
 _worker = _group createUnit [_model, [_hq, 5, 20] call CTI_CO_FNC_GetRandomPosition, [], 0, "FORM"];

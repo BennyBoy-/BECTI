@@ -32,10 +32,10 @@ if (typeName _sideCapturing == "SIDE") then {_sideCapturing = (_sideCapturing) c
 
 //--- Check if the capturing side is holding at least 1 town, if not, the HQ's closest town is capturable.
 _hq_closest_town = objNull;
-if ((_sideCapturing Call CTI_CO_FNC_GetSideTownCount) < 1) then {
-	_hq = (_sideCapturing) Call CTI_CO_FNC_GetSideHQ;
+if ((_sideCapturing call CTI_CO_FNC_GetSideTownCount) < 1) then {
+	_hq = (_sideCapturing) call CTI_CO_FNC_GetSideHQ;
 	if !(isNull _hq) then { //--- Resistance has no HQ by default
-		_hq_closest_town = [_hq, _sideCapturing] Call CTI_CO_FNC_GetClosestEnemyTown;
+		_hq_closest_town = [_hq, _sideCapturing] call CTI_CO_FNC_GetClosestEnemyTown;
 	};
 };
 

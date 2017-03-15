@@ -31,7 +31,7 @@ for '_i' from 0 to (count _v)-1 do {
 		missionNamespace setVariable [format ["CTI_SQUAD_%1_%2", _side, _v select _i], [_t select _i, _m select _i, _pool, _f select _i, _s select _i]];
 		_squads pushBack (_v select _i);
 		
-		if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Common\Config\Squads\Squads_Set.sqf", format ["[%1] Set Squad [%2] ", _side, _v select _i]] call CTI_CO_FNC_Log };
+		if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Common\Config\Squads\Squads_Set.sqf", format ["[%1] Set Squad [%2]", _side, _v select _i]] call CTI_CO_FNC_Log };
 	};
 };
 

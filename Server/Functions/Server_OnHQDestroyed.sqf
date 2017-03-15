@@ -49,7 +49,7 @@ if (_was_deployed) then {
 	_logic setVariable ["cti_hq_deployed", false, true];
 	
 	//--- Mobilize the HQ and destroy it
-	_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], position _killed, direction _killed, _side, true, false] call CTI_CO_FNC_CreateVehicle;
+	_hq = [missionNamespace getVariable format["CTI_%1_HQ", _side], position _killed, direction _killed, _side, true, false] call CTI_CO_FNC_CreateVehicle;
 	_hq setVariable ["cti_gc_noremove", true]; //--- HQ wreck cannot be removed nor salvaged
 	
 	_hq setDamage 1;
