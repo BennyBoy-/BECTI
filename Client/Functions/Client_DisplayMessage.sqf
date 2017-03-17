@@ -63,6 +63,7 @@ switch (_message_var) do {
 		};
 	};
 	case "commander-vote-start": {CTI_P_ChatID commandChat format["%1 has initiated a commander vote!", _parameters]};//--- Todo, popup system with helper on/off
+	case "defense-sold": {CTI_P_ChatID commandChat format ["A %1 defense has been sold for $%2", _parameters select 0, _parameters select 1]};
 	case "hq-destroyed": {CTI_P_ChatID commandChat "The HQ has been destroyed!"};
 	case "hq-repair": {CTI_P_ChatID commandChat "The HQ has been repaired"};
 	case "fob-sold": {CTI_P_ChatID commandChat format ["A FOB has been sold at Grid %1", _parameters]};

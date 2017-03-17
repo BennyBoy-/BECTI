@@ -109,6 +109,7 @@ CTI_Coin_UpdateItemLabel = {
 	};
 };
 
+//--- Check if a defense may be placed at it's given position
 CTI_Coin_DefenseCanBePlaced = {
 	_preview = _this;
 	
@@ -170,6 +171,7 @@ CTI_Coin_UpdatePreview = {
 	};
 };
 
+//--- Check if the preview's surface is valid
 CTI_Coin_PreviewSurfaceIsValid = {
 	private ["_isValid", "_preview"];
 	
@@ -264,6 +266,7 @@ CTI_Coin_OnMouseButtonDown = {
 	};
 };
 
+//--- Update the base area limits for CoIn menu
 CTI_Coin_UpdateBaseAreaLimits = {
 	private ["_position", "_valid"];
 	_position = _this;
@@ -433,6 +436,33 @@ CTI_Coin_OnPreviewCanceled = {
 	};
 };
 
+//--- Called whenever building (structure or defense) is about to be sold
+CTI_Coin_OnBuildingSold = {
+	if (call CTI_CL_FNC_IsPlayerCommander) then {
+		_list = [];
+		_position = screenToWorld [0.5,0.5];
+		{if ((_x getVariable ["cti_defense_sideID", -1]) isEqualTo CTI_P_SideID) then {_list pushBack _x}} forEach (nearestObjects [_position, ["StaticWeapon", "Static"], 15]);
+		
+		if (count _list > 0) then {
+			_nearest = [_position, _list] call CTI_CO_FNC_GetClosestEntity;
+			
+			if (isNil {_nearest getVariable "cti_building_sold"}) then {
+				_nearest setVariable ["cti_building_sold", true];
+
+				_var = missionNamespace getVariable [format["CTI_%1_%2", CTI_P_SideJoined, typeOf _nearest], ""];
+				if (_var != "") then {
+					_refund = round((_var select 2) * CTI_BASE_DEFENSES_SOLD_COEF);
+					(_refund) call CTI_CL_FNC_ChangePlayerFunds;
+					["defense-sold", [_var select 0, _refund]] call CTI_CL_FNC_DisplayMessage
+				};
+				
+				//--- TODO: if !local, delete where the owner matches
+				deleteVehicle _nearest;
+			};
+		};
+	};
+};
+
 //--- Display EH: KeyDown, a key has been pressed (and is still being pressed)
 CTI_Coin_OnKeyDown = {
 	_key = _this select 1;
@@ -461,6 +491,7 @@ CTI_Coin_OnKeyDown = {
 			case (_key in actionKeys "Diary"): {profileNamespace setVariable ["CTI_COIN_WALLALIGN", !(profileNamespace getVariable ["CTI_COIN_WALLALIGN", true])]};
 			case (_key in actionKeys "Gear"): {profileNamespace setVariable ["CTI_COIN_AUTODEFENSE", !(profileNamespace getVariable ["CTI_COIN_AUTODEFENSE", true])]};
 			case (_key in actionKeys "NightVision"): {if !(isNil 'CTI_COIN_CAMCONSTRUCT') then {camUseNVG !CTI_COIN_CAMUSENVG; CTI_COIN_CAMUSENVG = !CTI_COIN_CAMUSENVG}};
+			case (_key in actionKeys "Watch"): {call CTI_Coin_OnBuildingSold}};
 		};
 	};
 	

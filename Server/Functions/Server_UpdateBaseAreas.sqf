@@ -53,7 +53,7 @@ if (_need_update) then {
 	//--- Wipe the defense/structures upon area expiration
 	{
 		{
-			if !(isNil {_x getVariable "cti_managed"}) then {deleteVehicle _x};
+			if !(isNil {_x getVariable "cti_defense_sideID"}) then {deleteVehicle _x};
 		} forEach (nearestObjects [_x, missionNamespace getVariable format ["CTI_%1_DEFENSES_NAMES", _side], CTI_BASE_AREA_RANGE]);
 	} forEach _delete_pos;
 };

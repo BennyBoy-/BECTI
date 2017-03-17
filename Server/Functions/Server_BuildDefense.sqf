@@ -59,7 +59,7 @@ if (_limit) exitWith {};
 _position set [2, 0];
 
 _defense = (_var select 1) createVehicle _position;
-_defense setVariable ["cti_managed", true];
+_defense setVariable ["cti_defense_sideID", _sideID, true]; //--- Track the defense by giving it a sideID
 
 _direction_structure = (_var select 4) select 0;
 
