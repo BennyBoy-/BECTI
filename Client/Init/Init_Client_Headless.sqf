@@ -42,7 +42,7 @@ with missionNamespace do {
 		_gunner = gunner _static;
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FUNCTION: CTI_PVF_HC_OnDefenseDelegationReceived", format["A Delegation request was received from the server for the static [%1] (%2) with AI arguments [%3]", _static, typeOf _static, _ai_args]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FUNCTION: CTI_PVF_HC_OnDefenseDelegationReceived", format["A Delegation request was received from the server for the static [%1] (%2) with AI arguments [%3], local [%4]", _static, typeOf _static, _ai_args, local _static]] call CTI_CO_FNC_Log;
 		};
 		
 		// diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - START] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
@@ -78,6 +78,10 @@ with missionNamespace do {
 		//--- Update the gunner's properties
 		_ai setBehaviour "AWARE";
 		_ai setCombatMode "RED";
+		
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FUNCTION: CTI_PVF_HC_OnDefenseDelegationReceived", format["An AI [%1] has been created on the HC to man static [%2 (%3)]", _ai, _static, typeOf _static]] call CTI_CO_FNC_Log;
+		};
 		
 		// diag_log format ["[CTI_PVF_HC_OnDefenseDelegationReceived - benny DEBUG - END] - Defense->%1, is local?->%2 | assignedGunner->%3, is local?->%4 | gunner ->%5 is local?->%6", _static, local _static, assignedGunner _static, local(assignedGunner _static), gunner _static, local gunner _static];
 	};

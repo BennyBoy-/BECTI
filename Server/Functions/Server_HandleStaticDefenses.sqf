@@ -137,7 +137,7 @@ while {alive _structure} do {
 						_ai setCombatMode "RED";
 					} else {
 						//--- At least one HC is available
-						[_x, _defense_team, _side, _ai_args] Call CTI_SE_FNC_AttemptDefenseDelegation;
+						[_x, _defense_team, _side, _ai_args] call CTI_SE_FNC_AttemptDefenseDelegation;
 					};
 					
 				};

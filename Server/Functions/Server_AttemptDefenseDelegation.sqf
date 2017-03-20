@@ -80,6 +80,10 @@ if !(isNil {_static getVariable "cti_delegated"}) then {
 	[_static, CTI_BASE_DEFENSES_EMPTY_TIMEOUT] spawn CTI_SE_FNC_HandleEmptyVehicle; //--- Track the defense lifespan
 	
 	if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_static], true]};
+	
+	if (CTI_Log_Level >= CTI_Log_Information) then {
+		["INFORMATION", "FILE: Server\Functions\Server_AttemptDefenseDelegation.sqf", format["A static [%1 (%2)] has been created again for delegation of group [%3] to HC [%4]", _static, _var select 1, _group, _hc]] call CTI_CO_FNC_Log;
+	};
 };
 
 _static setVariable ["cti_delegated", true];
