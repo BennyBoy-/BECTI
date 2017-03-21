@@ -27,7 +27,7 @@
 	  -> Will search for manable statics around _structure
 */
 
-private ["_ai", "_defense_team", "_delegate", "_direction", "_distance", "_last_scan", "_logic", "_manned", "_net", "_position", "_side", "_sideID", "_statics", "_structure", "_var"];
+private ["_ai", "_defense_team", "_delegate", "_direction", "_distance", "_logic", "_manned", "_net", "_position", "_side", "_sideID", "_structure", "_var"];
 
 _structure = _this select 0;
 _side = _this select 1;
@@ -41,23 +41,14 @@ _direction = 360 - ((_var select 4) select 0);
 _distance = (_var select 4) select 1;
 _position = _structure modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
 
-_last_scan = -5000;
-_statics = [];
-
 _net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then {true} else {false};
 
 //--- Perform a defense manning routine while we can
 while {alive _structure} do {
-	
-	if (time - _last_scan > 30) then {
-		_last_scan = time;
-		_statics = _structure nearEntities [["StaticWeapon"], CTI_BASE_DEFENSES_AUTO_RANGE];
-	};
-	
 	//--- We man only one defense per loop as we skip the usual queue
 	_manned = false;
 	{
-		if !(isNil {_x getVariable "cti_aman_enabled"}) then {
+		if (!(isNil {_x getVariable "cti_aman_enabled"}) && ((_x getVariable ["cti_defense_sideID", -1]) isEqualTo _sideID)) then {
 			_last_occupied = _x getVariable ["cti_aman_time_occupied", -6000];
 			
 			//--- Check if our defense has run out of ammo
@@ -68,7 +59,7 @@ while {alive _structure} do {
 				
 				if (count _ammo_trucks > 0 || !isNull _nearest) then {
 					if (CTI_Log_Level >= CTI_Log_Information) then {
-						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming Static Defense [%1] (%2) from Ammo Truck [%3] (%4), defense is local [%5]? gunner is local [%6]?", _x, typeOf _x, _nearest, typeOf _nearest, local _x, local gunner _x]] call CTI_CO_FNC_Log;
+						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Rearming [%1] Static Defense [%2] (%3) from Ammo Truck [%4] (%5), defense is local [%6]? gunner is local [%7]?", _side, _x, typeOf _x, _nearest, typeOf _nearest, local _x, local gunner _x]] call CTI_CO_FNC_Log;
 					};
 					
 					if (local gunner _x) then {
@@ -89,13 +80,13 @@ while {alive _structure} do {
 					_manned = true;
 					
 					if (CTI_Log_Level >= CTI_Log_Information) then {
-						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Creating a unit to man the defense [%1] (%2)", _x, typeOf _x]] call CTI_CO_FNC_Log;
+						["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Creating a unit to man the defense [%1] (%2) for side [%3]", _x, typeOf _x, _side]] call CTI_CO_FNC_Log;
 					};
 					
 					//--- Was there an AI assigned in there previously?
 					if !(isNull assignedGunner _x) then {
 						if (CTI_Log_Level >= CTI_Log_Debug) then {
-							["DEBUG", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Defense [%1] (%2) has an assigned gunner (%3), attempting to unassign him", _x, typeOf _x, assignedGunner _x]] call CTI_CO_FNC_Log;
+							["DEBUG", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Defense [%1] (%2) from side [%3] has an assigned gunner (%4), attempting to unassign him", _x, typeOf _x, _side, assignedGunner _x]] call CTI_CO_FNC_Log;
 						};
 						unassignVehicle (assignedGunner _x);
 					};
@@ -103,7 +94,7 @@ while {alive _structure} do {
 					//--- Check if the AI is still the gunner
 					if !(isNull gunner _x) then {
 						if (CTI_Log_Level >= CTI_Log_Debug) then {
-							["DEBUG", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Defense [%1] (%2) has a gunner (%3), attempting to delete him", _x, typeOf _x, gunner _x]] call CTI_CO_FNC_Log;
+							["DEBUG", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Defense [%1] (%2) from side [%3] has a gunner (%4), attempting to delete him", _x, typeOf _x, _side, gunner _x]] call CTI_CO_FNC_Log;
 						};
 						_x deleteVehicleCrew gunner _x;
 					};
@@ -120,7 +111,7 @@ while {alive _structure} do {
 					//--- No delegation possible, create on the server
 					if !(_delegate) then {
 						if (CTI_Log_Level >= CTI_Log_Information) then {
-							["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["No HC were detected, defense [%1] (%2) will be server-managed", _x, typeOf _x]] call CTI_CO_FNC_Log;
+							["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["No HC were detected, defense [%1] (%2) from side [%3] will be server-managed", _x, typeOf _x, _side]] call CTI_CO_FNC_Log;
 						};
 						
 						//--- Create the unit
@@ -137,13 +128,17 @@ while {alive _structure} do {
 						_ai setCombatMode "RED";
 					} else {
 						//--- At least one HC is available
+						if (CTI_Log_Level >= CTI_Log_Information) then {
+							["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["At least one HC is present, defense [%1] (%2) from side [%3] will be managed by an HC", _x, typeOf _x, _side]] call CTI_CO_FNC_Log;
+						};
+						
 						[_x, _defense_team, _side, _ai_args] call CTI_SE_FNC_AttemptDefenseDelegation;
 					};
 					
 				};
 			};
 		};
-	} forEach _statics;
+	} forEach (_structure nearEntities [["StaticWeapon"], CTI_BASE_DEFENSES_AUTO_RANGE]);
 	
 	sleep 15;
 };
