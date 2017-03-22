@@ -83,6 +83,7 @@ if !(isNil {_static getVariable "cti_delegated"}) then {
 	
 	_static = (_var select 1) createVehicle _position;
 	_static setVariable ["cti_defense_sideID", _sideID, true];
+	_static setVariable ["cti_aman_enabled", true];
 	_static setDir _direction;
 	_static setPos _position;
 	
