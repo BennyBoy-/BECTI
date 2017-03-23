@@ -171,30 +171,28 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_AI_ORDER", _side], [
 	[CTI_UPGRADE_NUKE, 1]
 ]];
 
-if (CTI_IsClient) then {
-	missionNamespace setVariable [Format["CTI_%1_UPGRADES_LABELS", _side], [
-		["Gear", "Unlock better gear"], //--- Gear
-		["Barracks", "Unlock better infantry units"], //--- Barracks
-		["Light Factory", "Unlock better motorized units"], //--- Light
-		["Heavy Factory", "Unlock better armored units"], //--- Heavy
-		["Naval Factory", "Unlock better naval units"], //--- Naval
-		["Aircraft Factory", "Unlock better aircraft units"], //--- Air
-		["(DISABLED) Aircraft FFAR", "Unlocks the FFAR Rockets for Aircrafts"], //--- Air FFAR
-		["(DISABLED) Aircraft DAR", "Unlocks the DAR Rockets for Aircrafts"], //--- Air DAR
-		["Aircraft AT", "Unlocks the Anti Tank Missiles for Aircrafts"], //--- Air AT
-		["Aircraft AA", "Unlocks the Anti Air Missiles for Aircrafts"], //--- Air AA
-		["Aircraft Countermeasures", "Allows Aircraft to deploy countermeasures"], //--- Air CM
-		["Towns Depot", "Improves Vehicles available at Depots"], //--- Towns Depot
-		["(DISABLED) Halo", "Enable HALO Jumping from the Air factory"], //--- Halo
-		["(DISABLED) Air Radar", "Enable Air Radars"], //--- Air Radar
-		["(DISABLED) Artillery Radar", "Enable Artillery radar on Air Radars"], //--- Art Radar
-		["(DISABLED) Respawn Range", "Increase the max range of the respawn truck."], //--- Respawn Range
-		["(DISABLED) IR Smoke", "Enable IR Smoke Deployment from Vehicles"], //--- IR Smoke
-		["(DISABLED) Satellite", "Allows the use of the satellite camera"], //--- Satellite
-		["(DISABLED) Nuclear Arms Deal", "Unlock Nuke Truck in Light Factory"], //--- Nuke
-		["Supply Rate", "Improves the Supply delivery rate"] //--- Supply Rate
-	]];
-};
+missionNamespace setVariable [Format["CTI_%1_UPGRADES_LABELS", _side], [
+	["Gear", "Unlock better gear"], //--- Gear
+	["Barracks", "Unlock better infantry units"], //--- Barracks
+	["Light Factory", "Unlock better motorized units"], //--- Light
+	["Heavy Factory", "Unlock better armored units"], //--- Heavy
+	["Naval Factory", "Unlock better naval units"], //--- Naval
+	["Aircraft Factory", "Unlock better aircraft units"], //--- Air
+	["(DISABLED) Aircraft FFAR", "Unlocks the FFAR Rockets for Aircrafts"], //--- Air FFAR
+	["(DISABLED) Aircraft DAR", "Unlocks the DAR Rockets for Aircrafts"], //--- Air DAR
+	["Aircraft AT", "Unlocks the Anti Tank Missiles for Aircrafts"], //--- Air AT
+	["Aircraft AA", "Unlocks the Anti Air Missiles for Aircrafts"], //--- Air AA
+	["Aircraft Countermeasures", "Allows Aircraft to deploy countermeasures"], //--- Air CM
+	["Towns Depot", "Improves Vehicles available at Depots"], //--- Towns Depot
+	["(DISABLED) Halo", "Enable HALO Jumping from the Air factory"], //--- Halo
+	["(DISABLED) Air Radar", "Enable Air Radars"], //--- Air Radar
+	["(DISABLED) Artillery Radar", "Enable Artillery radar on Air Radars"], //--- Art Radar
+	["(DISABLED) Respawn Range", "Increase the max range of the respawn truck."], //--- Respawn Range
+	["(DISABLED) IR Smoke", "Enable IR Smoke Deployment from Vehicles"], //--- IR Smoke
+	["(DISABLED) Satellite", "Allows the use of the satellite camera"], //--- Satellite
+	["(DISABLED) Nuclear Arms Deal", "Unlock Nuke Truck in Light Factory"], //--- Nuke
+	["Supply Rate", "Improves the Supply delivery rate"] //--- Supply Rate
+]];
 
 //--- Check potential missing definition.
 (_side) Call Compile preprocessFileLineNumbers "Common\Config\Upgrades\Check_Upgrades.sqf";

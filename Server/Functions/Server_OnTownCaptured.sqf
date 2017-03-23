@@ -53,6 +53,10 @@ if (missionNamespace getVariable "CTI_TOWNS_PEACE" > 0) then {
 		_town setVariable ["cti_town_peace", time + (missionNamespace getVariable "CTI_TOWNS_PEACE"), true];
 		_flagTexture = CTI_TOWNS_FLAG_TEXTURE_PEACE;
 		
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FILE: Server\Functions\Server_OnTownCaptured.sqf", format["Peace time is triggered for Town [%1] since there are no hostiles within [%2] meters", _town getVariable "cti_town_name", CTI_TOWNS_CAPTURE_PEACE_SCAN_RANGE]] call CTI_CO_FNC_Log;
+		};
+		
 		//--- Thread spawn, Update the flag textures upon peace mode expiration if applicable
 		if (typeOf _town == "FlagPole_F") then {
 			[_town, _newSide] spawn {
@@ -78,10 +82,14 @@ if (typeOf _town == "FlagPole_F") then {_town setFlagTexture _flagTexture};
 	_x setVariable ["cti_camp_lastSideID", (_x getVariable "cti_camp_sideID"), true];
 	_x setVariable ["cti_camp_sideID", _newSideID, true];
 	_x setVariable ["cti_camp_sv", _town getVariable "cti_town_sv_default", true];
+	
+	if (CTI_Log_Level >= CTI_Log_Debug) then {
+		["DEBUG", "FILE: Server\Functions\Server_OnTownCaptured.sqf", format ["Town [%1] camp [%2] has changed from side [%3] to side [%4]", _town getVariable "cti_town_name", _x, (_x getVariable "cti_camp_lastSideID") call CTI_CO_FNC_GetSideFromID, _newSide]] call CTI_CO_FNC_Log;
+	};
 } forEach (_town getVariable ["cti_town_camps", []]);
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
-	["INFORMATION", "FILE: Server\Functions\Server_OnTownCaptured.sqf", format["Town [%1] has been captured, from [%2] to [%3]", _town getVariable "cti_town_name", (_currentSideID) Call CTI_CO_FNC_GetSideFromID, _newSide]] call CTI_CO_FNC_Log;
+	["INFORMATION", "FILE: Server\Functions\Server_OnTownCaptured.sqf", format["Town [%1] has been captured, from [%2] to [%3]", _town getVariable "cti_town_name", (_currentSideID) call CTI_CO_FNC_GetSideFromID, _newSide]] call CTI_CO_FNC_Log;
 };
 
 [_town, _newSideID, _currentSideID] remoteExec ["CTI_PVF_CLT_OnTownCaptured", CTI_PV_CLIENTS];
@@ -107,6 +115,10 @@ if (_newSide != resistance && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLE
 		
 		_score = round(_value / CTI_SCORE_TOWN_VALUE_PERPOINT);
 		{ 
+			if (CTI_Log_Level >= CTI_Log_Debug) then {
+				["DEBUG", "FILE: Server\Functions\Server_OnTownCaptured.sqf", format ["Town [%1] capture did award the AI team [%2] with [$%3]", _town getVariable "cti_town_name", _x, _value]] call CTI_CO_FNC_Log;
+			};
+			
 			if (_score > 0) then {[leader _x, _score] spawn CTI_SE_FNC_AddScore};
 			[_x, _value] call CTI_CO_FNC_ChangeFunds;
 		} forEach _award_teams;

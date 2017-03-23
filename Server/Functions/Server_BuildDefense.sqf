@@ -31,7 +31,7 @@
     _defense = [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, CTI_P_WallsAutoAlign, CTI_P_DefensesAutoManning] call CTI_SE_FNC_BuildDefense;
 */
 
-private ["_autoalign", "_defense", "_direction", "_direction_structure", "_fob", "_limit", "_logic", "_manned", "_origin", "_position", "_ruins", "_side", "_sideID", "_stronger", "_var", "_varname"];
+private ["_autoalign", "_defense", "_direction", "_direction_structure", "_fob", "_limit", "_logic", "_manned", "_origin", "_position", "_ruins", "_seed", "_side", "_sideID", "_stronger", "_var", "_varname"];
 
 _varname = _this select 0;
 _var = missionNamespace getVariable _varname;
@@ -41,12 +41,13 @@ _direction = _this select 3;
 _origin = _this select 4;
 _autoalign = _this select 5;
 _manned = if (count _this > 6) then {_this select 6} else {false};
+_seed = time + random 10000 - random 500 + diag_frameno;
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
-	["INFORMATION", "FILE: Server\Functions\Server_BuildDefense.sqf", format["Received a Defense build request from side [%1] for a [%2] structure at position [%3], manned? [%4]", _side, _var select 1, _position, _manned]] call CTI_CO_FNC_Log;
+	["INFORMATION", "FILE: Server\Functions\Server_BuildDefense.sqf", format["Received Defense build request [%1] from side [%2] for a [%3] structure at position [%4], manned? [%5]", _seed, _side, _var select 1, _position, _manned]] call CTI_CO_FNC_Log;
 };
 
 //--- Is it a fob?
@@ -80,6 +81,10 @@ if (_defense isKindOf "Building") then {
 };
 
 if (_fob) then {
+	if (CTI_Log_Level >= CTI_Log_Information) then {
+		["INFORMATION", "FILE: Server\Functions\Server_BuildDefense.sqf", format["A FOB [%1] has been added to side [%2] following defense request [%3]", _var select 1, _side, _seed]] call CTI_CO_FNC_Log;
+	};
+	
 	(_defense) remoteExec ["CTI_PVF_CLT_OnFOBDeployment", _side];
 	_logic setVariable ["cti_fobs", (_logic getVariable "cti_fobs") + [_defense], true];
 };

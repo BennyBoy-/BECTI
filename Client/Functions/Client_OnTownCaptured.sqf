@@ -55,6 +55,11 @@ if (_side_new == CTI_P_SideJoined) then { //--- The player's side has captured i
 		};
 		
 		_score = round(_value / CTI_SCORE_TOWN_VALUE_PERPOINT);
+		
+		if (CTI_Log_Level >= CTI_Log_Debug) then {
+			["DEBUG", "FILE: Client\Functions\Client_OnTownCaptured.sqf", format ["Town [%1] capture did award the player's [%2] with [$%3] along with a score bonus of [%4]", _town getVariable "cti_town_name", group player, _value, _score]] call CTI_CO_FNC_Log;
+		};
+		
 		if (_score > 0) then {[player, _score] remoteExec ["CTI_PVF_SRV_RequestAddScore", CTI_PV_SERVER]}; //--- Award some score
 		(_value) call CTI_CL_FNC_ChangePlayerFunds; //--- Award some money
 		["town-capture", [_town, _value]] call CTI_CL_FNC_DisplayMessage;

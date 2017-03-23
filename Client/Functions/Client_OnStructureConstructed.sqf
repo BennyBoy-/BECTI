@@ -32,9 +32,18 @@ _var = missionNamespace getVariable _variable;
 //todo move to displaymessage
 CTI_P_ChatID commandChat format ["%1 is now available at grid %2.", (_var select 0) select 1, mapGridPosition getPos _structure];
 
+if (CTI_Log_Level >= CTI_Log_Information) then {
+	["INFORMATION", "FILE: Client\Functions\Client_OnStructureConstructed.sqf", format["Base Structure [%1 (%2)] construction is now available at position [%3]", _structure, (_var select 0) select 1, getPos _structure]] call CTI_CO_FNC_Log;
+};
+
 //--- Add score for the commander
 if (call CTI_CL_FNC_IsPlayerCommander) then {
 	_score = round((_var select 2) / CTI_SCORE_BUILD_VALUE_PERPOINT);
+	
+	if (CTI_Log_Level >= CTI_Log_Debug) then {
+		["DEBUG", "FILE: Client\Functions\Client_OnStructureConstructed.sqf", format ["Base Structure [%1 (%2)] construction did reward the player's with a score bonus of [%3]", _structure, (_var select 0) select 1, _score]] call CTI_CO_FNC_Log;
+	};
+	
 	if (_score > 0) then {[player, _score] remoteExec ["CTI_PVF_SRV_RequestAddScore", CTI_PV_SERVER]}; //--- Award some score
 };
 
