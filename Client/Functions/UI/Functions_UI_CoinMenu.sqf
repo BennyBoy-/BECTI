@@ -449,8 +449,8 @@ CTI_Coin_OnBuildingSold = {
 			if (isNil {_nearest getVariable "cti_building_sold"}) then {
 				_nearest setVariable ["cti_building_sold", true];
 
-				_var = missionNamespace getVariable [format["CTI_%1_%2", CTI_P_SideJoined, typeOf _nearest], ""];
-				if (_var != "") then {
+				_var = missionNamespace getVariable [format["CTI_%1_%2", CTI_P_SideJoined, typeOf _nearest], []];
+				if !(_var isEqualTo []) then {
 					_refund = round((_var select 2) * CTI_BASE_DEFENSES_SOLD_COEF);
 					(_refund) call CTI_CL_FNC_ChangePlayerFunds;
 					["defense-sold", [_var select 0, _refund]] call CTI_CL_FNC_DisplayMessage;
