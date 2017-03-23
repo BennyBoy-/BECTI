@@ -71,6 +71,10 @@ if (missionNamespace getVariable "CTI_TOWNS_PEACE" > 0) then {
 				};
 			};
 		};
+	} else {
+		if (CTI_Log_Level >= CTI_Log_Information) then {
+			["INFORMATION", "FILE: Server\Functions\Server_OnTownCaptured.sqf", format["Peace time will not be triggered for Town [%1] since there are [%2] hostiles within [%3] meters", _town getVariable "cti_town_name", _hostiles, CTI_TOWNS_CAPTURE_PEACE_SCAN_RANGE]] call CTI_CO_FNC_Log;
+		};
 	};
 };
 
