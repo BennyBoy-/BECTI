@@ -130,3 +130,11 @@ if (_newSide != resistance && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLE
 	
 	_town setVariable [format["cti_town_lastcap_%1", _newSide], time];
 };
+
+//--- Determine whether to remove the town forces or not
+switch (CTI_TOWNS_CAPTURE_DELETE_FORCES) do {
+	case 1: { //--- West & East
+		if (_currentSideID != CTI_RESISTANCE_ID) then {[_town, (_currentSideID) call CTI_CO_FNC_GetSideFromID] call CTI_SE_FNC_OnTownDeactivation};
+	}; 
+	case 2: {[_town, (_currentSideID) call CTI_CO_FNC_GetSideFromID] call CTI_SE_FNC_OnTownDeactivation}; //--- All
+};
