@@ -1,4 +1,4 @@
-private ["_classes", "_conditions", "_headers", "_placements", "_prices", "_side", "_specials", "_structures", "_times"];
+private ["_classes", "_conditions", "_headers", "_placements", "_prices", "_respawnBPos", "_side", "_specials", "_structures", "_times"];
 
 _side = _this select 0;
 _headers = _this select 1;
@@ -8,6 +8,7 @@ _times = _this select 4;
 _placements = _this select 5;
 _specials = _this select 6;
 _conditions = _this select 7;
+_respawnBPos = _this select 8;
 
 _structures = [];
 for '_i' from 0 to (count _headers) -1 do {
@@ -20,7 +21,8 @@ for '_i' from 0 to (count _headers) -1 do {
 		_times select _i,
 		_placements select _i,
 		_specials select _i,
-		_conditions select _i
+		_conditions select _i,
+		_respawnBPos select _i
 	];
 	
 	missionNamespace setVariable [format ["CTI_%1_%2", _side, _head select 0], _stored];

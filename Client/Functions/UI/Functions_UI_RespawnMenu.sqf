@@ -229,16 +229,16 @@ CTI_UI_Respawn_OnRespawnReady = {
 	_respawn_ai_gear = [];
 	if (_where isKindOf "Man") then { //--- The location is an AI?
 		if (_where in units player) then { //--- The AI is in the player group?
-			_pos = getPos _where; //--- Get the AI position (todo: copy the stance)
+			_pos = getPosATL _where; //--- Get the AI position (todo: copy the stance)
 			_respawn_ai_gear = (_where) call CTI_CO_FNC_GetUnitLoadout; //--- Get the AI current equipment using the Gear UI function
 			deleteVehicle _where; //--- Remove the AI
-			player setPos _pos; //--- Place the player where the AI was
+			player setPosATL _pos; //--- Place the player where the AI was
 			_respawn_ai = true;
 		};
 	};
 	
 	if !(_respawn_ai) then { //--- Stock respawn
-		_spawn_args = [_where, 8, 30];
+		_spawn_args = [getPosATL _where, 8, 30];
 		_spawn_in = false;
 		
 		//--- Camp respawn, check for conditions
@@ -262,14 +262,45 @@ CTI_UI_Respawn_OnRespawnReady = {
 				player moveInCargo _where;
 			} else {
 				if (_where isKindOf "Ship") then {
-					_spawn_args = [_where, 5, 15, 0];
+					_spawn_args = [getPosATL _where, 5, 15, 0];
 				};
 			};
 		};
 		
 		if !(_spawn_in) then { //--- If the unit did not respawn in a vehicle, we place it near
-			_spawn_at = _spawn_args call CTI_CO_FNC_GetRandomPosition;
-			player setPos _spawn_at;
+			_spawn_at = [];
+			
+			switch (CTI_RESPAWN_BASE_MODE) do { //--- Determine the spawn properties
+				case 1: { //--- The player should use the given structure position if we're dealing with a base structure
+					if (_where in (CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures)) then {
+						_bposlist = (missionNamespace getVariable format["CTI_%1_%2", CTI_P_SideJoined, typeOf _where]) select CTI_STRUCTURE_RESPAWNBPOS;
+						
+						_bpos = [0,0,0];
+						switch (typeName _bposlist) do { //--- TODO: Check if a spot is already occupied by another player/ai
+							case "ARRAY": {_bpos = _where buildingPos (_bposlist select floor(random count _bposlist))};
+							case "SCALAR": {
+								if (_bposlist isEqualTo -1) then {
+									_list = _where buildingPos _bposlist;
+									_bpos = _list select floor(random count _list);
+								} else {
+									_bpos = _where buildingPos _bposlist;
+								};
+							};
+						};
+						
+						//--- Make sure that a position was found
+						if !(_bpos isEqualTo [0,0,0]) then {
+							_spawn_at = _bpos;
+						};
+					};
+				};
+			};
+			
+			if (count _spawn_at < 1) then { //--- Nothing specific is selected, use a random position
+				_spawn_at = _spawn_args call CTI_CO_FNC_GetRandomPosition;
+			};
+			
+			player setPosATL _spawn_at;
 		};
 	};
 	

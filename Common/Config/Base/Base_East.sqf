@@ -46,6 +46,7 @@ _times = [];
 _placements = [];
 _specials = [];
 _conditions = [];
+_respawnBPos = [];
 
 /*
 	Specials:
@@ -61,6 +62,8 @@ _times pushBack			0;
 _placements pushBack 	[0, 15, false];
 _specials pushBack 		[];
 _conditions pushBack 	(compile format["%1 call CTI_CO_FNC_IsHQDeployed", _side]);
+_respawnBPos pushBack	[];
+
 
 _headers pushBack 		[CTI_HQ_DEPLOY, "Headquarters (Deploy)", "HQ"];
 _classes pushBack		["Land_Research_house_V1_F", "Land_Research_house_V1_ruins_F"];
@@ -69,6 +72,7 @@ _times pushBack			0;
 _placements pushBack 	[180, 15, false];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 6]];
 _conditions pushBack 	(compile format["!(%1 call CTI_CO_FNC_IsHQDeployed)", _side]);
+_respawnBPos pushBack	[];
 
 _headers pushBack		[CTI_BARRACKS, "Barracks", "Barracks"];
 _classes pushBack		["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"];
@@ -77,6 +81,7 @@ _times pushBack			60;
 _placements pushBack 	[180, 15];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 1.5]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+_respawnBPos pushBack	[];
 
 _headers pushBack		[CTI_LIGHT, "Light Vehicle Factory", "Light"];
 _classes pushBack		["Land_Medevac_HQ_V1_F", "Land_Medevac_HQ_V1_ruins_F"];
@@ -85,6 +90,7 @@ _times pushBack 		80;
 _placements pushBack 	[90, 25];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 25]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+_respawnBPos pushBack	[];
 
 _headers pushBack 		[CTI_CONTROLCENTER, "Control Center", "CC"];
 _classes pushBack 		["Land_Research_HQ_F", "Land_Research_HQ_ruins_F", ["Land_Research_HQ_F"]];							  
@@ -93,6 +99,7 @@ _times pushBack 		90;
 _placements pushBack 	[90, 25, false];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 4.3]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+_respawnBPos pushBack	[];
 
 _headers pushBack 		[CTI_HEAVY, "Heavy Vehicle Factory", "Heavy"];
 _classes pushBack 		["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"];
@@ -101,6 +108,7 @@ _times pushBack 		120;
 _placements pushBack 	[90, 25];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 25]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+_respawnBPos pushBack	[];
 
 _headers pushBack 		[CTI_AIR, "Aircraft Factory", "Air"];
 _classes pushBack 		["Land_Airport_Tower_F", "Land_Airport_Tower_ruins_F"];
@@ -109,6 +117,7 @@ _times pushBack 		140;
 _placements pushBack 	[180, 40];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 20000]]; 
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+_respawnBPos pushBack	[];
 
 _headers pushBack 		[CTI_AMMO, "Ammo Depot", "Ammo"];
 _classes pushBack 		["Land_Cargo_HQ_V2_F", "Land_Cargo_HQ_V2_ruins_F"];
@@ -117,6 +126,7 @@ _times pushBack 		40;
 _placements pushBack 	[90, 25];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 25]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+_respawnBPos pushBack	[];
 
 _headers pushBack 		[CTI_REPAIR, "Repair Depot", "Repair"];
 _classes pushBack 		["Land_Cargo_HQ_V3_F", "Land_Cargo_HQ_V3_ruins_F"];
@@ -125,6 +135,7 @@ _times pushBack 		35;
 _placements pushBack 	[90, 25];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 25]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+_respawnBPos pushBack	[];
 
 _headers pushBack 		[CTI_NAVAL, "Naval Yard", "Naval"];
 _classes pushBack 		["Land_Lighthouse_small_F", "Land_Lighthouse_small_ruins_F"];
@@ -133,6 +144,7 @@ _times pushBack 		35;
 _placements pushBack 	[180, 60];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 4]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+_respawnBPos pushBack	[];
 
 _headers pushBack 		[CTI_RADAR, "Air Radar", "Air Radar"];
 _classes pushBack 		["Land_TTowerBig_2_F", "Land_TTowerBig_2_ruins_F"];
@@ -141,6 +153,7 @@ _times pushBack 		120;
 _placements pushBack 	[180, 30, false];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 2]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+_respawnBPos pushBack	[];
 
 _headers pushBack 		[CTI_RADAR_ART, "Artillery Radar", "Artillery Radar"];
 _classes pushBack 		["Land_TTowerBig_2_F", "Land_TTowerBig_2_ruins_F"];
@@ -149,8 +162,9 @@ _times pushBack 		120;
 _placements pushBack 	[180, 30, false];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 2]];
 _conditions pushBack 	(compile format["(%1) call CTI_CO_FNC_IsHQDeployed", _side]);
+_respawnBPos pushBack	[];
 
-[_side, _headers, _classes, _prices, _times, _placements, _specials, _conditions] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Structures.sqf";
+[_side, _headers, _classes, _prices, _times, _placements, _specials, _conditions, _respawnBPos] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Structures.sqf";
 
 
 //--- Defenses
