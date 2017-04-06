@@ -302,8 +302,25 @@ CTI_UI_Respawn_OnRespawnReady = {
 				switch (CTI_RESPAWN_CAMPS_MODE) do {
 					case 1: {
 						if (!isNil {_where getVariable "cti_camp_town"} && !isNil {(missionNamespace getVariable format["CTI_CAMPS_VAR_%1", typeOf _where])}) then { //--- Make sure that we're dealing with a defined camp
-							(missionNamespace getVariable format["CTI_CAMPS_VAR_%1", typeOf _where])
 							_bposlist = (missionNamespace getVariable format["CTI_CAMPS_VAR_%1", typeOf _where]) select CTI_CAMP_RESPAWNBPOS;
+							
+							_bpos = [0,0,0];
+							switch (typeName _bposlist) do { //--- TODO: Check if a spot is already occupied by another player/ai
+								case "ARRAY": {_bpos = _where buildingPos (_bposlist select floor(random count _bposlist))};
+								case "SCALAR": {
+									if (_bposlist isEqualTo -1) then {
+										_list = _where buildingPos _bposlist;
+										_bpos = _list select floor(random count _list);
+									} else {
+										_bpos = _where buildingPos _bposlist;
+									};
+								};
+							};
+							
+							//--- Make sure that a position was found
+							if !(_bpos isEqualTo [0,0,0]) then {
+								_spawn_at = _bpos;
+							};
 						};
 					};
 				};
