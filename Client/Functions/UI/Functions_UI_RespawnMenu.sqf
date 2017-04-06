@@ -270,7 +270,8 @@ CTI_UI_Respawn_OnRespawnReady = {
 		if !(_spawn_in) then { //--- If the unit did not respawn in a vehicle, we place it near
 			_spawn_at = [];
 			
-			switch (CTI_RESPAWN_BASE_MODE) do { //--- Determine the spawn properties
+			//--- Pick a base respawn method if needed
+			switch (CTI_RESPAWN_BASE_MODE) do {
 				case 1: { //--- The player should use the given structure position if we're dealing with a base structure
 					if (_where in (CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures)) then {
 						_bposlist = (missionNamespace getVariable format["CTI_%1_%2", CTI_P_SideJoined, typeOf _where]) select CTI_STRUCTURE_RESPAWNBPOS;
@@ -291,6 +292,18 @@ CTI_UI_Respawn_OnRespawnReady = {
 						//--- Make sure that a position was found
 						if !(_bpos isEqualTo [0,0,0]) then {
 							_spawn_at = _bpos;
+						};
+					};
+				};
+			};
+			
+			//--- Pick a camp respawn method if needed
+			if (count _spawn_at < 1) then {
+				switch (CTI_RESPAWN_CAMPS_MODE) do {
+					case 1: {
+						if (!isNil {_where getVariable "cti_camp_town"} && !isNil {(missionNamespace getVariable format["CTI_CAMPS_VAR_%1", typeOf _where])}) then { //--- Make sure that we're dealing with a defined camp
+							(missionNamespace getVariable format["CTI_CAMPS_VAR_%1", typeOf _where])
+							_bposlist = (missionNamespace getVariable format["CTI_CAMPS_VAR_%1", typeOf _where]) select CTI_CAMP_RESPAWNBPOS;
 						};
 					};
 				};
