@@ -41,7 +41,7 @@ CTI_UI_Purchase_GetFirstAvailableFactories = {
 		_var = _fetched getVariable "cti_structure_type";
 		if !(isNil '_var') then {
 			_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _var];
-			_type = (_var select 0) select 0;
+			_type = (_var select CTI_STRUCTURE_LABELS) select 0;
 			_index = switch (_type) do {
 				case CTI_BARRACKS: {CTI_FACTORY_BARRACKS};
 				case CTI_LIGHT: {CTI_FACTORY_LIGHT};
@@ -157,7 +157,7 @@ CTI_UI_Purchase_UpdateCost = {
 	
 	if (_classname != "") then {
 		_var = missionNamespace getVariable _classname;
-		_cost = _var select 2;
+		_cost = _var select CTI_UNIT_PRICE;
 		if !(_classname isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 			_crew = switch (true) do { case (_classname isKindOf "Tank"): {"Crew"}; case (_classname isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
 			_crew = missionNamespace getVariable format["CTI_%1_%2", CTI_P_SideJoined, _crew];
@@ -170,7 +170,7 @@ CTI_UI_Purchase_UpdateCost = {
 			_var_crew_classname = missionNamespace getVariable _crew;
 			if !(isNil '_var_crew_classname') then {
 				_veh_infos = call CTI_UI_Purchase_GetVehicleInfo;
-				for '_i' from 0 to 2 do { if (_veh_infos select _i) then { _cost = _cost + (_var_crew_classname select 2) } };
+				for '_i' from 0 to 2 do { if (_veh_infos select _i) then { _cost = _cost + (_var_crew_classname select CTI_UNIT_PRICE) } };
 				
 				if (_veh_infos select 3) then { //--- Turrets
 					{ if (count _x == 1) then { _cost = _cost + (_var_crew_classname select 2) } } forEach (_var select CTI_UNIT_TURRETS);
@@ -219,7 +219,7 @@ CTI_UI_Purchase_LoadFactories = {
 		_fetched = [_type, _structures, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType;
 		
 		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _type];
-		_structure_text = (_var select 0) select 1;
+		_structure_text = (_var select CTI_STRUCTURE_LABELS) select 1;
 		
 		{
 			_closest = _x call CTI_CO_FNC_GetClosestTown;

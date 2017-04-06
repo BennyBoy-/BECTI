@@ -66,8 +66,8 @@ switch (_action) do {
 						_nearest setVariable ["cti_sell", true, true];
 						_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _nearest getVariable "cti_structure_type"];
 						
-						_label = ((_var select 0) select 1);
-						_refund = round((_var select 2) * CTI_BASE_CONSTRUCTION_REFUNDS);
+						_label = ((_var select CTI_STRUCTURE_LABELS) select 1);
+						_refund = round((_var select CTI_STRUCTURE_PRICE) * CTI_BASE_CONSTRUCTION_REFUNDS);
 						_coords = mapGridPosition _nearest;
 						[CTI_P_SideJoined, _refund] call CTI_CO_FNC_ChangeSideSupply;
 						

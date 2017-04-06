@@ -86,10 +86,10 @@ if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	
 	_var_crew_classname = missionNamespace getVariable _crew;
 	if !(isNil '_var_crew_classname') then {
-		for '_i' from 0 to 2 do { if (_veh_infos select _i) then { _cost = _cost + (_var_crew_classname select 2) } };
+		for '_i' from 0 to 2 do { if (_veh_infos select _i) then { _cost = _cost + (_var_crew_classname select CTI_UNIT_PRICE) } };
 		
 		if (_veh_infos select 3) then { //--- Turrets
-			{ if (count _x == 1) then { _cost = _cost + (_var_crew_classname select 2) } } forEach (_var_classname select CTI_UNIT_TURRETS);
+			{ if (count _x == 1) then { _cost = _cost + (_var_crew_classname select CTI_UNIT_PRICE) } } forEach (_var_classname select CTI_UNIT_TURRETS);
 		};
 	};
 };
@@ -119,9 +119,9 @@ _factory_label = "Depot";
 
 _var = missionNamespace getVariable [format ["CTI_%1_%2", CTI_P_SideJoined, _factory getVariable ["cti_structure_type", ""]], []];
 if (count _var > 0) then {
-	_direction = 360 - ((_var select 4) select 0);
-	_distance = ((_var select 4) select 1) + (_var_classname select CTI_UNIT_DISTANCE);
-	_factory_label = (_var select 0) select 1;
+	_direction = 360 - ((_var select CTI_STRUCTURE_PLACEMENT) select 0);
+	_distance = ((_var select CTI_STRUCTURE_PLACEMENT) select 1) + (_var_classname select CTI_UNIT_DISTANCE);
+	_factory_label = (_var select CTI_STRUCTURE_LABELS) select 1;
 };
 
 _position = _factory modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];

@@ -57,7 +57,7 @@ if (_was_deployed) then {
 	_logic setVariable ["cti_hq", _hq, true];
 	
 	//--- Delete the potential ruins	
-	_classnames = _var select 1;
+	_classnames = _var select CTI_STRUCTURE_CLASSES;
 	_classnames = if (count _classnames > 2) then {[_classnames select 1] + (_classnames select 2)} else {[_classnames select 1]};
 
 	{if (isNil {_x getVariable "cti_completion"}) then { deleteVehicle _x }} forEach (nearestObjects [position _killed, _classnames, 25]);
@@ -73,8 +73,8 @@ if (_was_deployed) then {
 if !(isNull _killer) then {
 	if (side _killer != sideEnemy && side _killer != _side && (group _killer) call CTI_CO_FNC_IsGroupPlayable) then {
 		if (isPlayer _killer) then {
-			_label = ((_var select 0) select 1);
-			_award = round((_var select 2) * CTI_BASE_HQ_BOUNTY);
+			_label = ((_var select CTI_STRUCTURE_LABELS) select 1);
+			_award = round((_var select CTI_STRUCTURE_PRICE) * CTI_BASE_HQ_BOUNTY);
 			
 			[_label, _award] remoteExec ["CTI_PVF_CLT_OnBountyStructure", _killer];
 			["structure-destroyed", [name _killer, _label]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];

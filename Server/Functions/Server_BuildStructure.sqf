@@ -40,10 +40,10 @@ _var = missionNamespace getVariable _classname;
 _position set [2, 0];
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
-	["INFORMATION", "FILE: Server\Functions\Server_BuildStructure.sqf", format["Received a Structure build request from side [%1] for a [%2] at position [%3]", _side, (_var select 0) select 1, _position]] call CTI_CO_FNC_Log;
+	["INFORMATION", "FILE: Server\Functions\Server_BuildStructure.sqf", format["Received a Structure build request from side [%1] for a [%2] at position [%3]", _side, (_var select CTI_STRUCTURE_LABELS) select 1, _position]] call CTI_CO_FNC_Log;
 };
 
-_structure = ((_var select 1) select 1) createVehicle _position;
+_structure = ((_var select CTI_STRUCTURE_CLASSES) select 1) createVehicle _position;
 _structure setDir _direction;
 _structure setPos _position;
 _structure setDir _direction;
@@ -52,8 +52,8 @@ _structure setVectorUp [0,0,0];
 _structure setVariable ["cti_completion", 10];
 _structure setVariable ["cti_completion_ratio", CTI_BASE_CONSTRUCTION_RATIO_INIT];
 // _structure setVariable ["cti_structures_iteration", round(CTI_BASE_WORKERS_BUILD_COEFFICIENT / ((_var select 3)/100))];
-_structure setVariable ["cti_structures_iteration", (_var select 3)/100];
-_structure setVariable ["cti_structure_type", ((_var select 0) select 0)];
+_structure setVariable ["cti_structures_iteration", (_var select CTI_STRUCTURE_TIME)/100];
+_structure setVariable ["cti_structure_type", ((_var select CTI_STRUCTURE_LABELS) select 0)];
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull]];

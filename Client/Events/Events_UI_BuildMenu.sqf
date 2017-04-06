@@ -10,7 +10,7 @@ switch (_action) do {
 		//--- Structures
 		{
 			_var = missionNamespace getVariable _x;
-			if (call (_var select 6)) then { //--- If the item's condition is met, we can append it to the listbox
+			if (call (_var select CTI_STRUCTURE_CONDITION)) then { //--- If the item's condition is met, we can append it to the listbox
 				_row = ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100006) lnbAddRow [format ["S%1", _var select 2], (_var select 0) select 1];
 				((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100006) lnbSetData [[_row, 0], _x];
 			};

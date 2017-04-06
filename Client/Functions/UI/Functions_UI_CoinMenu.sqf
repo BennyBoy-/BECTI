@@ -43,9 +43,9 @@ CTI_Coin_LoadSubMenu = {
 		
 		{
 			_info = missionNamespace getVariable _x;
-			if (call (_info select 6)) then { //--- Make sure that the structure match it's present condition
-				_items pushBack format["%1  -  S%2", (_info select 0) select 1, _info select 2];
-				_itemEnabled pushBack (if (_supply >= _info select 2) then {1} else {0});
+			if (call (_info select CTI_STRUCTURE_CONDITION)) then { //--- Make sure that the structure match it's present condition
+				_items pushBack format["%1  -  S%2", (_info select CTI_STRUCTURE_LABELS) select 1, _info select CTI_STRUCTURE_PRICE];
+				_itemEnabled pushBack (if (_supply >= _info select CTI_STRUCTURE_PRICE) then {1} else {0});
 				_itemVariable pushBack _x;
 			};
 		} forEach (missionNamespace getVariable format ["CTI_%1_STRUCTURES", CTI_P_SideJoined]);
@@ -74,9 +74,9 @@ CTI_Coin_LoadSubMenu = {
 			_sub_itemVariable = [];
 			{
 				_info = missionNamespace getVariable _x;
-				if ((missionNamespace getVariable "CTI_COIN_SOURCE") in (_info select 6)) then {
-					_sub_items pushBack format["%1  -  $%2", _info select 0, _info select 2];
-					_sub_itemEnabled pushBack (if (_funds >= _info select 2) then {1} else {0});
+				if ((missionNamespace getVariable "CTI_COIN_SOURCE") in (_info select CTI_DEFENSE_COINMENU)) then {
+					_sub_items pushBack format["%1  -  $%2", _info select CTI_DEFENSE_LABEL, _info select CTI_DEFENSE_PRICE];
+					_sub_itemEnabled pushBack (if (_funds >= _info select CTI_DEFENSE_PRICE) then {1} else {0});
 					_sub_itemVariable pushBack _x;
 				};
 			} forEach (missionNamespace getVariable format["CTI_COIN_%1_DEFENSE_CATEGORY_%2", CTI_P_SideJoined, _x]);
@@ -115,10 +115,10 @@ CTI_Coin_DefenseCanBePlaced = {
 	
 	_valid = true;
 	
-	if !((CTI_COIN_PARAM select 7) isEqualTo []) then { //--- Check if the defense can be placed according to the blacklist
+	if !((CTI_COIN_PARAM select CTI_DEFENSE_COINBLACKLIST) isEqualTo []) then { //--- Check if the defense can be placed according to the blacklist
 		{
 			if !(((_preview nearObjects _x) - [_preview]) isEqualTo []) exitWith {_valid = false};
-		} forEach (CTI_COIN_PARAM select 7);
+		} forEach (CTI_COIN_PARAM select CTI_DEFENSE_COINBLACKLIST);
 	};
 	
 	_valid
@@ -140,8 +140,8 @@ CTI_Coin_UpdatePreview = {
 				_color = CTI_COIN_COLOR_INVALID;
 			} else {
 				if (CTI_COIN_PARAM_KIND == "DEFENSES") then {
-					if !((CTI_COIN_PARAM select 7) isEqualTo []) then { //--- A blacklist is specified
-						if ((CTI_COIN_PARAM select 7) isEqualTo ["*"]) then { //--- If a wildcard is specified, treat the defense as a structure
+					if !((CTI_COIN_PARAM select CTI_DEFENSE_COINBLACKLIST) isEqualTo []) then { //--- A blacklist is specified
+						if ((CTI_COIN_PARAM select CTI_DEFENSE_COINBLACKLIST) isEqualTo ["*"]) then { //--- If a wildcard is specified, treat the defense as a structure
 							if !(_preview call CTI_Coin_PreviewSurfaceIsValid) then {_color = CTI_COIN_COLOR_INVALID};
 						} else { //--- A Grain-based blacklist is specified
 							if !(_preview call CTI_Coin_DefenseCanBePlaced) then {_color = CTI_COIN_COLOR_INVALID};

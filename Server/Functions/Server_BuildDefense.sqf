@@ -47,28 +47,28 @@ _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
-	["INFORMATION", "FILE: Server\Functions\Server_BuildDefense.sqf", format["Received Defense build request [%1] from side [%2] for a [%3] structure at position [%4], manned? [%5]", _seed, _side, _var select 1, _position, _manned]] call CTI_CO_FNC_Log;
+	["INFORMATION", "FILE: Server\Functions\Server_BuildDefense.sqf", format["Received Defense build request [%1] from side [%2] for a [%3] structure at position [%4], manned? [%5]", _seed, _side, _var select CTI_DEFENSE_CLASS, _position, _manned]] call CTI_CO_FNC_Log;
 };
 
 //--- Is it a fob?
 _fob = false;
 _limit = false;
-{if (_x select 0 == "FOB") exitWith {_fob = true}} forEach (_var select 5);
+{if (_x select 0 == "FOB") exitWith {_fob = true}} forEach (_var select CTI_DEFENSE_SPECIALS);
 if (_fob) then {if (count(_logic getVariable "cti_fobs") >= CTI_BASE_FOB_MAX) then {_limit = true}};
 if (_limit) exitWith {};
 
 _position set [2, 0];
 
-_defense = (_var select 1) createVehicle _position;
+_defense = (_var select CTI_DEFENSE_CLASS) createVehicle _position;
 _defense setVariable ["cti_defense_sideID", _sideID, true]; //--- Track the defense by giving it a sideID
 
-_direction_structure = (_var select 4) select 0;
+_direction_structure = (_var select CTI_DEFENSE_PLACEMENT) select 0;
 
 if (_defense isKindOf "Building") then {
 	if (_autoalign) then {
 		private ["_autoSupport", "_correction", "_offsetZ", "_width"];
 		_autoSupport = [];
-		{if (_x select 0 == "CanAutoAlign") exitWith {_autoSupport = _x}} forEach (_var select 5);
+		{if (_x select 0 == "CanAutoAlign") exitWith {_autoSupport = _x}} forEach (_var select CTI_DEFENSE_SPECIALS);
 		
 		if (count _autoSupport > 0) then {
 			_width = _autoSupport select 1;
@@ -82,7 +82,7 @@ if (_defense isKindOf "Building") then {
 
 if (_fob) then {
 	if (CTI_Log_Level >= CTI_Log_Information) then {
-		["INFORMATION", "FILE: Server\Functions\Server_BuildDefense.sqf", format["A FOB [%1] has been added to side [%2] following defense request [%3]", _var select 1, _side, _seed]] call CTI_CO_FNC_Log;
+		["INFORMATION", "FILE: Server\Functions\Server_BuildDefense.sqf", format["A FOB [%1] has been added to side [%2] following defense request [%3]", _var select CTI_DEFENSE_CLASS, _side, _seed]] call CTI_CO_FNC_Log;
 	};
 	
 	(_defense) remoteExec ["CTI_PVF_CLT_OnFOBDeployment", _side];
@@ -99,12 +99,12 @@ if (_defense emptyPositions "gunner" < 1 && !_fob) then { //--- Soft defense
 
 //--- Make the defense stronger?
 _stronger = -1;
-{if (_x select 0 == "DMG_Reduce") exitWith {_stronger = _x select 1}} forEach (_var select 5);
+{if (_x select 0 == "DMG_Reduce") exitWith {_stronger = _x select 1}} forEach (_var select CTI_DEFENSE_SPECIALS);
 if (_stronger != -1) then {_defense addEventHandler ["handleDamage", format["getDammage (_this select 0)+(_this select 2)/%1",_stronger]]};
 
 //--- Check if the defense has a ruin model attached (we don't wana have a cemetery of wrecks)
 _ruins = "";
-{if (_x select 0 == "RuinOnDestroyed") exitWith {_ruins = _x select 1}} forEach (_var select 5);
+{if (_x select 0 == "RuinOnDestroyed") exitWith {_ruins = _x select 1}} forEach (_var select CTI_DEFENSE_SPECIALS);
 
 _defense addEventHandler ["killed", format["[_this select 0, _this select 1, %1, '%2', '%3'] spawn CTI_SE_FNC_OnDefenseDestroyed", _sideID, _ruins, _varname]];
 
@@ -116,7 +116,7 @@ if (_defense emptyPositions "gunner" > 0) then { //--- Hard defense
 	if (_manned && CTI_BASE_DEFENSES_AUTO_LIMIT > 0) then {_defense setVariable ["cti_aman_enabled", true]};
 	
 	//--- The defense may be an artillery piece, if so we track it
-	if (CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1 && getNumber(configFile >> "CfgVehicles" >> (_var select 1) >> "artilleryScanner") > 0) then {
+	if (CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1 && getNumber(configFile >> "CfgVehicles" >> (_var select CTI_DEFENSE_CLASS) >> "artilleryScanner") > 0) then {
 		(_defense) remoteExec ["CTI_PVF_CLT_OnArtilleryPieceTracked", CTI_PV_CLIENTS];
 	};
 };

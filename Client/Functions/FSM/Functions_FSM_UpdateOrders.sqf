@@ -155,7 +155,7 @@ CTI_FSM_UpdateOrders_HoldTownsBase = {
 	if !(isNil {_defend getVariable "cti_town_name"}) then {_name = _defend getVariable "cti_town_name"};
 	if !(isNil {_defend getVariable "cti_structure_type"}) then {
 		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _defend getVariable "cti_structure_type"];
-		_name = (_var select 0) select 1;
+		_name = (_var select CTI_STRUCTURE_LABELS) select 1;
 	};
 	
 	_task_title = format["Hold %1", _name];

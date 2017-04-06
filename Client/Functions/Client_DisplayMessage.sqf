@@ -44,7 +44,7 @@ switch (_message_var) do {
 	case "award-bounty-structure": {player groupChat format ["$%1 awarded for the neutralization of %2 structure", _parameters select 0, _parameters select 1]};
 	case "build-by": {
 		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _parameters select 1];
-		(_parameters select 0) groupChat format ["Constructing %1... %2%3", (_var select 0) select 1, _parameters select 2, "%"];
+		(_parameters select 0) groupChat format ["Constructing %1... %2%3", (_var select CTI_STRUCTURE_LABELS) select 1, _parameters select 2, "%"];
 	};
 	case "commander-disconnected": {CTI_P_ChatID sideChat "The current commander has left the game"};
 	case "commander-vote-end": {
@@ -83,7 +83,7 @@ switch (_message_var) do {
 	};
 	case "repair-by": {
 		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _parameters select 1];
-		(_parameters select 0) groupChat format ["Repairing %1... %2%3", (_var select 0) select 1, _parameters select 2, "%"];
+		(_parameters select 0) groupChat format ["Repairing %1... %2%3", (_var select CTI_STRUCTURE_LABELS) select 1, _parameters select 2, "%"];
 	};
 	case "salvage": {
 		_value = if (call CTI_CL_FNC_IsPlayerCommander) then {_parameters select 2} else {_parameters select 1};
@@ -98,11 +98,11 @@ switch (_message_var) do {
 	case "spot-unit": {(_parameters select 0) sideChat format ["Enemy presence spotted near %1", mapGridPosition(_parameters select 1)]};
 	case "structure-preplaced": {
 		_var = missionNamespace getVariable (_parameters select 0);
-		CTI_P_ChatID commandChat format ["%1 is ready for construction at grid %2", (_var select 0) select 1, mapGridPosition (_parameters select 1)];
+		CTI_P_ChatID commandChat format ["%1 is ready for construction at grid %2", (_var select CTI_STRUCTURE_LABELS) select 1, mapGridPosition (_parameters select 1)];
 	};
 	case "structure-attacked": {
 		_var = missionNamespace getVariable (_parameters select 0);
-		CTI_P_ChatID commandChat format ["%1 is under attack at grid %2!", (_var select 0) select 1, mapGridPosition (_parameters select 1)];
+		CTI_P_ChatID commandChat format ["%1 is under attack at grid %2!", (_var select CTI_STRUCTURE_LABELS) select 1, mapGridPosition (_parameters select 1)];
 	};
 	case "structure-destroyed": {player globalChat format ["%1 has destroyed a %2 structure", _parameters select 0, _parameters select 1]};
 	case "structure-sold": {CTI_P_ChatID commandChat format ["A %1 structure has been sold at Grid %2", _parameters select 0, _parameters select 1]};

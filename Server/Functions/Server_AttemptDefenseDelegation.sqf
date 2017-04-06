@@ -81,7 +81,7 @@ if !(isNil {_static getVariable "cti_delegated"}) then {
 	
 	deleteVehicle _static;
 	
-	_static = (_var select 1) createVehicle _position;
+	_static = (_var select CTI_DEFENSE_CLASS) createVehicle _position;
 	_static setVariable ["cti_defense_sideID", _sideID, true];
 	_static setVariable ["cti_aman_enabled", true];
 	_static setDir _direction;
@@ -93,7 +93,7 @@ if !(isNil {_static getVariable "cti_delegated"}) then {
 	if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_static], true]};
 	
 	if (CTI_Log_Level >= CTI_Log_Information) then {
-		["INFORMATION", "FILE: Server\Functions\Server_AttemptDefenseDelegation.sqf", format["A [%1] static [%2] (%3) has been created again for delegation of group [%4] to HC [%5]", _side, _static, _var select 1, _group, _hc]] call CTI_CO_FNC_Log;
+		["INFORMATION", "FILE: Server\Functions\Server_AttemptDefenseDelegation.sqf", format["A [%1] static [%2] (%3) has been created again for delegation of group [%4] to HC [%5]", _side, _static, _var select CTI_DEFENSE_CLASS, _group, _hc]] call CTI_CO_FNC_Log;
 	};
 };
 

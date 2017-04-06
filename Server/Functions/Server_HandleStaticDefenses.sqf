@@ -37,8 +37,8 @@ _sideID = (_side) call CTI_CO_FNC_GetSideID;
 _defense_team = _logic getVariable "cti_defensive_team";
 
 _var = missionNamespace getVariable format ["CTI_%1_%2", _side, _structure getVariable "cti_structure_type"];
-_direction = 360 - ((_var select 4) select 0);
-_distance = (_var select 4) select 1;
+_direction = 360 - ((_var select CTI_DEFENSE_PLACEMENT) select 0);
+_distance = (_var select CTI_DEFENSE_PLACEMENT) select 1;
 _position = _structure modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
 
 _net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then {true} else {false};

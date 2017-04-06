@@ -40,7 +40,7 @@ if (_closest distance _unit < 30) then {
 	_label = "Headquarters";
 	if !(isNil {_closest getVariable "cti_structure_type"}) then {
 		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _closest getVariable "cti_structure_type"];
-		_label = (_var select 0) select 1;
+		_label = (_var select CTI_STRUCTURE_LABELS) select 1;
 	};
 	
 	["structure-teamkill-attempt", [name _unit, (group _unit) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], _label]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", CTI_P_SideJoined];
