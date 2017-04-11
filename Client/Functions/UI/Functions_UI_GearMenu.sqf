@@ -344,6 +344,7 @@ CTI_UI_Gear_DisplayShoppingItems = {
 				if (_x select 1 != "") then {lnbSetPicture [70108, [_row, 1], _x select 1]};
 				_seed = if (count _x > 5) then {_x select 5} else {-1};
 				lnbSetValue [70108, [_row, 0], _seed];
+				lnbSetValue [70108, [_row, 1], _forEachIndex];
 			};
 		} forEach _list;
 	};

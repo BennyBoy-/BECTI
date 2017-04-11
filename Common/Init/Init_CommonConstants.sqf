@@ -351,7 +351,7 @@ CTI_TOWNS_CAMPS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to mat
 CTI_TOWNS_CAPTURE_BOUNTY_COEF = 50; //--- Bounty coefficient upon capture, (max sv * coefficient)
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 300; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
 CTI_TOWNS_CAPTURE_DELETE_FORCES = 0; //--- Determine whether the resistance or occupation forces should be removed upon town capture or not (0: Disabled, 1: West & East, 2: All)
-CTI_TOWNS_CAPTURE_DETECTION_MODE = 1; //--- Determine the towns detection mode (0: All, 1: Players, 2: Playable units)
+CTI_TOWNS_CAPTURE_DETECTION_MODE = 0; //--- Determine the towns detection mode (0: All, 1: Players, 2: Playable units)
 CTI_TOWNS_CAPTURE_FORCE_MAX = 2; //--- The force determine how many units may try to capture a town (caoture rate = SV - round((units force + camp rate) * town rate))
 CTI_TOWNS_CAPTURE_PEACE_SCAN_RANGE = 150; //--- This range is used upon town capture to search for enemies around the depot, if none are found peace mode will be triggered
 CTI_TOWNS_CAPTURE_RANGE = 50; //--- The range which a unit/vehicle has to be from a town center to capture it
