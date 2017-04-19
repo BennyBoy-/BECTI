@@ -401,6 +401,9 @@ _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 	_group setGroupIdGlobal [format["(%1) %2", _town, _group]];
 	_groups pushBack _group;
 	
+	//--- Set the group to be using the dynamic simulation if enabled
+	if (CTI_DYNAMIC_SIMULATION > 0) then { _group enableDynamicSimulation true };
+	
 	if (CTI_Log_Level >= CTI_Log_Information) then {
 		["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format["Composing Occupation Team for town [%1] on side [%2] using group [%3] at position [%4] with units [%5]", _town getVariable "cti_town_name", _side, _group, _position, _x]] call CTI_CO_FNC_Log;
 	};

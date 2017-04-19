@@ -584,6 +584,8 @@ CTI_COIN_AREA_HQ_DEPLOYED = [CTI_BASE_AREA_RANGE, 25];
 CTI_COIN_AREA_HQ_MOBILIZED = [20, 10];
 CTI_COIN_AREA_REPAIR = [45, 10];
 
+CTI_DYNAMIC_SIMULATION = 0; //--- Determine whether dynamic simulation should be enabled or not overall (https://community.bistudio.com/wiki/Arma_3_Dynamic_Simulation)
+
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 30; //--- Keep values of 10
 
 CTI_MARKERS_OPACITY = 0.5;
@@ -709,6 +711,6 @@ with missionNamespace do {
 	if (isNil 'CTI_WEATHER_INITIAL') then {CTI_WEATHER_INITIAL = 10};
 	if (isNil 'CTI_WEATHER_ALLOWRAIN') then {CTI_WEATHER_ALLOWRAIN = 0};
 	
-	if (isNil 'CTI_CUP_ADDON') then {CTI_CUP_ADDON = 1};
-	if (isNil 'CTI_OFPS_ADDON') then {CTI_OFPS_ADDON = 1};
+	if (isNil 'CTI_CUP_ADDON') then {CTI_CUP_ADDON = 0};
+	if (isNil 'CTI_OFPS_ADDON') then {CTI_OFPS_ADDON = 0};
 };
