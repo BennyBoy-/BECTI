@@ -387,9 +387,6 @@ _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
 	_group setGroupIdGlobal [format["(%1) %2", _town, _group]];
 	_groups pushBack _group;
 	
-	//--- Set the group to be using the dynamic simulation if enabled
-	if (CTI_DYNAMIC_SIMULATION > 0) then { _group enableDynamicSimulation true };
-	
 	if (CTI_Log_Level >= CTI_Log_Information) then {
 		["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format["Composing Resistance Team for town [%1] using group [%2] at position [%3] with units [%4]", _town getVariable "cti_town_name", _group, _position, _x]] call CTI_CO_FNC_Log;
 	};
