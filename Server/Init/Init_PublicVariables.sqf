@@ -278,9 +278,11 @@ with missionNamespace do {
 			//--- Check if the player is still jailed
 			if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) == 1) then {_special = "jailed"};
 			
+			_get set [3, _side];
+			
 			//--- Determine whether the client is allowed to join or not
 			if (_join) then {
-				_get set [3, _side];
+				// _get set [3, _side];
 				
 				_funds = _get select 1;
 				

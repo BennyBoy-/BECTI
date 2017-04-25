@@ -30,7 +30,7 @@ for '_i' from 0 to (count _headers) -1 do {
 	
 	missionNamespace setVariable [format ["CTI_%1_%2", _side, (_classes select _i) select 0], _stored];
 	
-	if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Common\Config\Base\Set_Structures.sqf", format ["[%1] Set Structure [%2] using variable name [%3]", _side, _classname, format["CTI_%1_%2", _side, _head select 0]]] call CTI_CO_FNC_Log };
+	if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Common\Config\Base\Set_Structures.sqf", format ["[%1] Set Structure [%2] using variable name [%3]", _side, (_classes select _i) select 0, format["CTI_%1_%2", _side, _head select 0]]] call CTI_CO_FNC_Log };
 };
 
 missionNamespace setVariable [format ["CTI_%1_STRUCTURES", _side], _structures];
