@@ -495,6 +495,8 @@ CTI_BASE_HQ_REPAIR_RANGE = 35; //--- The range needed between the HQ wreck and t
 CTI_BASE_HQ_REPAIR_TIME = 15; //--- The time needed to repair the HQ
 
 //--- Base: Misc
+CTI_BASE_MARKER_DESTROYED_COLOR = "ColorBlack"; //--- A destroyed structure will have this color upon destruction
+CTI_BASE_MARKER_DESTROYED_DELAY = 35; //--- A destroyed structure will remain on the map x seconds
 CTI_BASE_NOOBPROTECTION = 1; //--- Make structures invulnerable to friendly fire
 
 //--- Base: Purchase range

@@ -48,5 +48,10 @@ if (isNil {_structure getVariable "cti_structure_type"}) then {_structure setVar
 	_marker = _this select 1;
 	
 	waitUntil { sleep 5; !alive _structure };
+	
+	if !(isNull _structure) then { _marker setMarkerColorLocal CTI_BASE_MARKER_DESTROYED_COLOR };
+	
+	sleep CTI_BASE_MARKER_DESTROYED_DELAY;
+	
 	deleteMarkerLocal _marker;
 };
