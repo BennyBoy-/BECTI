@@ -18,19 +18,25 @@
 	
   # SYNTAX #
 	[CENTER, LIST, RANGE] call CTI_CO_FNC_GetEntitiesInRange
+	[CENTER, LIST, RANGE, USE2D] call CTI_CO_FNC_GetEntitiesInRange
 	
   # EXAMPLE #
-    _closest = [player, [Town1, Town2, Town3]] call CTI_CO_FNC_GetEntitiesInRange;
-    _closest = [player, [Town1, [0,0,0], [50,50]]] call CTI_CO_FNC_GetEntitiesInRange;
+    _closest = [player, [Town1, Town2, Town3], 2500] call CTI_CO_FNC_GetEntitiesInRange;
+    _closest = [player, [Town1, [0,0,0], [50,50]], 5000, true] call CTI_CO_FNC_GetEntitiesInRange;
 */
 
-private ["_distance", "_inrange", "_object", "_objects", "_range"];
+private ["_distance", "_inrange", "_object", "_objects", "_range", "_use_2D"];
 
 _object = _this select 0;
 _objects = _this select 1;
 _range = _this select 2;
+_use_2D = if (count _this > 3) then {_this select 3} else {false};
 
 _inrange = [];
-{if (_x distance _object <= _range) then {_inrange pushBack _x}} forEach _objects;
+if (_use_2D) then {
+	{if (_x distance2D _object <= _range) then {_inrange pushBack _x}} forEach _objects;
+} else {
+	{if (_x distance _object <= _range) then {_inrange pushBack _x}} forEach _objects;
+};
 
 _inrange

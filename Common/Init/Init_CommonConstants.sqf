@@ -520,6 +520,7 @@ CTI_BASE_WORKERS_WANDER_RANGE_MAX = 225; //--- Worker may wander no further than
 //--- Base: Parameters
 with missionNamespace do {
 	if (isNil 'CTI_BASE_AREA_MAX') then {CTI_BASE_AREA_MAX = 2}; //--- Amount of base areas which may be built
+	if (isNil 'CTI_BASE_AREA_STRUCTURES_MAX') then {CTI_BASE_AREA_STRUCTURES_MAX = -1}; //--- Amount of structures which may be present within a base area (-1: Unlimited)
 	if (isNil 'CTI_BASE_CONSTRUCTION_MODE') then {CTI_BASE_CONSTRUCTION_MODE = 2}; //--- Construction mode to use for structures (0: Timed, 1: Workers, 2: Timed + Repairs)
 	if (isNil 'CTI_BASE_FOB_MAX') then {CTI_BASE_FOB_MAX = 2}; //--- Maximum amount of FOBs which a side may place
 	if (isNil 'CTI_BASE_HQ_REPAIR') then {CTI_BASE_HQ_REPAIR = 1}; //--- Determine whether the HQ can be repaired or not

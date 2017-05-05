@@ -22,7 +22,7 @@
 */
 
 switch (_this) do {
-	case west: {+(CTI_WEST getVariable "cti_structures")};
-	case east: {+(CTI_EAST getVariable "cti_structures")};
+	case west: {+(CTI_WEST getVariable ["cti_structures", []])};
+	case east: {+(CTI_EAST getVariable ["cti_structures", []])};
 	default {[]};
 }

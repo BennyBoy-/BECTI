@@ -271,19 +271,29 @@ CTI_Coin_UpdateBaseAreaLimits = {
 	private ["_position", "_valid"];
 	_position = _this;
 	
-	_valid = true;
+	_valid = "";
 	
 	with missionNamespace do {
 		if (CTI_COIN_SOURCE == 'HQ') then {
 			_in_area = false;
 			{if (_position distance2D _x <= CTI_BASE_AREA_RANGE) exitWith {_in_area = true}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
 			
+			//--- If the structure is not within an existing base area, check if we may create a new area
 			if !(_in_area) then {
 				if (count (CTI_P_SideLogic getVariable "cti_structures_areas") < (missionNamespace getVariable "CTI_BASE_AREA_MAX")) then {
 					CTI_P_SideLogic setVariable ["cti_structures_areas", (CTI_P_SideLogic getVariable "cti_structures_areas") + [[_position select 0, _position select 1]], true];
 				} else {
-					_valid = false;
+					_valid = "baseAreaLimit";
 				};
+			};
+			
+			//--- The structure is in a valid area, check about the amount of structures located within that area
+			if (_valid isEqualTo "" && (missionNamespace getVariable "CTI_BASE_AREA_STRUCTURES_MAX") > -1) then {
+				_nearest_area = [_position, CTI_P_SideLogic getVariable "cti_structures_areas"] call CTI_CO_FNC_GetClosestEntity;
+				_structure_count = count([_nearest_area, (CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures), CTI_BASE_AREA_RANGE, true] call CTI_CO_FNC_GetEntitiesInRange);
+				
+				//--- The structure limit has been reached for that base area
+				if (_structure_count >= (missionNamespace getVariable "CTI_BASE_AREA_STRUCTURES_MAX")) then {_valid = "structureLimitInArea"};
 			};
 		};
 	};
@@ -327,7 +337,8 @@ CTI_Coin_OnPreviewPlacement = {
 			_reload_expression = nil;
 			switch (CTI_COIN_PARAM_KIND) do {
 				case 'STRUCTURES': {
-					if (_position call CTI_Coin_UpdateBaseAreaLimits) then {
+					_area_valid = _position call CTI_Coin_UpdateBaseAreaLimits;
+					if (_area_valid isEqualTo "") then {
 						_variable = format ["CTI_%1_%2", CTI_P_SideJoined, (CTI_COIN_PARAM select 0) select 0];
 						[CTI_P_SideJoined, -(CTI_COIN_PARAM select 2)] call CTI_CO_FNC_ChangeSideSupply;
 						
@@ -340,7 +351,10 @@ CTI_Coin_OnPreviewPlacement = {
 							[_variable, CTI_P_SideJoined, _position, _direction] remoteExec ["CTI_PVF_SRV_RequestHQToggle", CTI_PV_SERVER];
 						};
 					} else {
-						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The base area limit has been reached.";
+						switch (_area_valid) do {
+							case "baseAreaLimit": {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The base area limit has been reached.";};
+							case "structureLimitInArea": {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The structure limit has been reached for this base area.";};
+						};
 					};
 				};
 				case 'DEFENSES': {

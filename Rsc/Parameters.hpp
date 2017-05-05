@@ -17,6 +17,12 @@ class Params {
 		texts[] = {"1","2","3","4","5"};
 		default = 2;
 	};
+	class CTI_BASE_AREA_STRUCTURES_MAX {
+		title = "BASE: Areas Max Structures";
+		values[] = {-1,10,15,20,25,30,50};
+		texts[] = {"Unlimited","10","15","20","25","30","50"};
+		default = -1;
+	};
 	class CTI_BASE_HQ_REPAIR {
 		title = "BASE: HQ Repairable";
 		values[] = {0,1};
