@@ -113,7 +113,7 @@ if (_defense emptyPositions "gunner" > 0) then { //--- Hard defense
 	[_defense, CTI_BASE_DEFENSES_EMPTY_TIMEOUT] spawn CTI_SE_FNC_HandleEmptyVehicle; //--- Track the defense lifespan
 	
 	//--- The defense is eligible for auto manning
-	if (_manned && CTI_BASE_DEFENSES_AUTO_LIMIT > 0) then {_defense setVariable ["cti_aman_enabled", true]};
+	if (_manned && CTI_BASE_DEFENSES_AUTO_MODE > 0) then {_defense setVariable ["cti_aman_enabled", true]};
 	
 	//--- The defense may be an artillery piece, if so we track it
 	if (CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1 && getNumber(configFile >> "CfgVehicles" >> (_var select CTI_DEFENSE_CLASS) >> "artilleryScanner") > 0) then {

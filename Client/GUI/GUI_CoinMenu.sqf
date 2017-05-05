@@ -258,7 +258,7 @@ with missionNamespace do {
 		};
 		
 		//--- Update Auto defense icon if needed (and if enabled)
-		if (!(_last_autodefense isEqualTo (profileNamespace getVariable ["CTI_COIN_AUTODEFENSE", true])) && CTI_BASE_DEFENSES_AUTO_LIMIT > 0) then {
+		if (!(_last_autodefense isEqualTo (profileNamespace getVariable ["CTI_COIN_AUTODEFENSE", true])) && CTI_BASE_DEFENSES_AUTO_MODE > 0) then {
 			_last_autodefense = profileNamespace getVariable ["CTI_COIN_AUTODEFENSE", true];
 			
 			_color = CTI_COIN_COLOR_OUTOFRANGE_UI;

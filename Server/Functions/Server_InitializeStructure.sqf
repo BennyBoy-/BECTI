@@ -32,7 +32,7 @@ _side = _this select 2;
 switch ((_var select 0) select 0) do {
 	case CTI_BARRACKS: {
 		//--- Handle the nearby statics
-		if (CTI_BASE_DEFENSES_AUTO_LIMIT > 0) then {
+		if (CTI_BASE_DEFENSES_AUTO_MODE > 0) then {
 			if (CTI_Log_Level >= CTI_Log_Information) then {
 				["INFORMATION", "FILE: Server\Functions\Server_InitializeStructure.sqf", format["Initializing a Static Defenses Management Thread for side [%1] on Barracks Structure [%2] at position [%3]", _side, _structure, position _structure]] call CTI_CO_FNC_Log;
 			};

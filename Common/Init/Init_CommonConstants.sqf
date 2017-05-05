@@ -481,8 +481,10 @@ CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.60; //--- The completion ratio is multi
 CTI_BASE_CONSTRUCTION_REFUNDS = 0.60; //--- The refund value of a structure (structure cost * x)
 
 //--- Base: Defenses
+CTI_BASE_DEFENSES_AUTO_AREA_LIMIT = 12; //--- Amount of defenses which may be manned within a given area
 CTI_BASE_DEFENSES_AUTO_DELAY = 240; //--- Delay after which a new unit will replace a dead one for a defense
 CTI_BASE_DEFENSES_AUTO_LIMIT = 30; //--- Amount of independent units which may man nearby defenses
+CTI_BASE_DEFENSES_AUTO_MODE = 1; //--- AI Base Defenses mode (0: No AI, 1: Global Limit, 2: Limit per Area)
 CTI_BASE_DEFENSES_AUTO_RANGE = 600; //--- Range from the nearest barrack at which AI may auto man a defense
 CTI_BASE_DEFENSES_AUTO_REARM_RANGE = 600; //--- Range needed for a defense to be able to rearm at a service point
 CTI_BASE_DEFENSES_EMPTY_TIMEOUT = 1200; //--- Delay after which an empty defense is considered empty
