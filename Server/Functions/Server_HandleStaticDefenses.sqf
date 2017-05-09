@@ -42,7 +42,7 @@ _distance = (_var select CTI_DEFENSE_PLACEMENT) select 1;
 _position = _structure modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
 
 _net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then {true} else {false};
-_nearest_area = if (CTI_BASE_DEFENSES_AUTO_MODE > 0) then {[_structure, _side getVariable "cti_structures_areas"] call CTI_CO_FNC_GetClosestEntity} else {objNull};
+_nearest_area = if (CTI_BASE_DEFENSES_AUTO_MODE > 0) then {[_structure, _logic getVariable "cti_structures_areas"] call CTI_CO_FNC_GetClosestEntity} else {objNull};
 
 //--- Perform a defense manning routine while we can
 while {alive _structure} do {
