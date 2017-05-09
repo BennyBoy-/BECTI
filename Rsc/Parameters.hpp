@@ -17,10 +17,10 @@ class Params {
 		texts[] = {"1","2","3","4","5"};
 		default = 2;
 	};
-	class CTI_BASE_AREA_STRUCTURES_MAX {
-		title = "BASE: Areas Max Structures";
-		values[] = {-1,10,15,20,25,30,50};
-		texts[] = {"Unlimited","10","15","20","25","30","50"};
+	class CTI_BASE_AREA_STRUCTURES_IDENTICAL_LIMIT {
+		title = "BASE: Areas Identical Structures Limit";
+		values[] = {-1,1,2,3,4,5,10};
+		texts[] = {"Unlimited","1","2","3","4","5","10"};
 		default = -1;
 	};
 	class CTI_BASE_HQ_REPAIR {
