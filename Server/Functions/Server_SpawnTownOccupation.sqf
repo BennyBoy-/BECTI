@@ -331,7 +331,11 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Retrieved an Occupation Pool count of [%1] for town [%2] on side [%3]. Total group is set to [%4]", count _pool, _town getVariable "cti_town_name", _side, _totalGroups]] call CTI_CO_FNC_Log;
 };
 
-if (count _pool < 1) exitWith {[[],[],[]]};
+if (count _pool < 1) exitWith {
+	if (CTI_Log_Level >= CTI_Log_Error) then { ["ERROR", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", Format["There are no Units Pools available for town [%1] on side [%2]. Units will not be spawned", _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log };
+	
+	[[],[],[]]
+};
 
 //--- Shuffle!
 _pool = _pool call CTI_CO_FNC_ArrayShuffle;
