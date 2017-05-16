@@ -150,11 +150,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_Ridgback_GMG_GB_D';
 	_u pushBack 'CUP_B_Ridgback_HMG_GB_D';
 };
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then { 
-	_u pushBack 'dbo_CIV_new_bike';
-	_u pushBack 'dbo_CIV_ol_bike';
-};
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _u];
 
@@ -182,10 +177,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_FV432_Bulldog_GB_D_RWS';
 	_u pushBack 'CUP_B_FV510_GB_D_SLAT';
 	_u pushBack 'CUP_B_MCV80_GB_D_SLAT';
-};
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then { 
-
 };
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
@@ -240,21 +231,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_B_F35B_AA_USMC';
 	_u pushBack 'CUP_B_F35B_LGB_USMC';
 };
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then { 
-	_u pushBack 'B_UCSV_01';
-	_u pushBack 'B_UCSV_02';
-	_u pushBack 'globemaster_c17_NATO';
-	_u pushBack 'LDL_C130J';
-	_u pushBack 'bwi_a3_t6a';
-	_u pushBack 'bwi_a3_t6c';
-	_u pushBack 'bwi_a3_at6b';
-	_u pushBack 'bwi_a3_at6b_3';
-	_u pushBack 'sab_alphajet';
-	_u pushBack 'sab_alphajet2';
-	_u pushBack 'OFPS_BUZZA_B';
-	_u pushBack 'usaf_b1b';
-};
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _u];
 
@@ -269,10 +245,6 @@ _u pushBack 'B_Slingload_01_Fuel_F';
 if (CTI_CUP_ADDON > 0) then { 
 
 };
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then { 
-
-};
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_REPAIR], _u];
 
@@ -284,10 +256,6 @@ _u pushBack "B_supplyCrate_F";
 
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
-
-};
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then { 
 
 };
 
@@ -304,14 +272,6 @@ _u pushBack "B_SDV_01_F";
 if (CTI_CUP_ADDON > 0) then { 
 	_u pushBack "CUP_B_RHIB_USMC";
 	_u pushBack "CUP_B_RHIB2Turret_USMC";
-};
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then { 
-	_u pushBack "Burnes_LCAC_1";
-	_u pushBack "sfp_gruppbat";
-	_u pushBack "rhsusf_mkvsoc";
-	_u pushBack "sfp_rbb_norrkoping";
-	_u pushBack "OFPS_Frigate_Blu";
 };
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];

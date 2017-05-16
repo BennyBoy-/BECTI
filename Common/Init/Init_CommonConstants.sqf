@@ -656,7 +656,7 @@ CTI_GC_DELAY_STATIC = 80;
 CTI_GC_DELAY_BUILDING = 30;
 CTI_GC_GROUND_CLEANUP_KIND = ["WeaponHolder", "GroundWeaponHolder", "WeaponHolderSimulated", "CraterLong_small", "CraterLong"];
 CTI_GC_GROUND_CLEANUP_DISTANCE_UNIT = 30;
-CTI_GC_CLEANUP_MAN = 1;
+CTI_GC_CLEANUP_MAN = 30;
 
 CTI_VOTE_TIME = 60; //--- Commander Vote time
 
@@ -684,7 +684,7 @@ with missionNamespace do {
 	if (isNil 'CTI_ECONOMY_STARTUP_SUPPLY_EAST') then {CTI_ECONOMY_STARTUP_SUPPLY_EAST = 1200};
 	if (isNil 'CTI_ECONOMY_STARTUP_SUPPLY_WEST') then {CTI_ECONOMY_STARTUP_SUPPLY_WEST = 1200};
 	
-	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 1};
+	if (isNil 'CTI_DEV_MODE') then {CTI_DEV_MODE = 0};
 	if (CTI_DEV_MODE > 0) then {
 		CTI_ECONOMY_STARTUP_FUNDS_EAST = 1000000;
 		CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER = 1000000;
@@ -721,5 +721,4 @@ with missionNamespace do {
 	if (isNil 'CTI_WEATHER_ALLOWRAIN') then {CTI_WEATHER_ALLOWRAIN = 0};
 	
 	if (isNil 'CTI_CUP_ADDON') then {CTI_CUP_ADDON = 1};
-	if (isNil 'CTI_OFPS_ADDON') then {CTI_OFPS_ADDON = 1};
 };

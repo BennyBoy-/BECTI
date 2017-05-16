@@ -143,11 +143,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_GAZ_Vodnik_BPPU_RU';
 	_u pushBack 'CUP_O_GAZ_Vodnik_MedEvac_RU';
 };
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then { 
-	_u pushBack 'dbo_CIV_new_bike';
-	_u pushBack 'dbo_CIV_ol_bike';
-};
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _u];
 
@@ -172,10 +167,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_BM21_RU';
 	_u pushBack 'CUP_O_2S6M_RU';
 	_u pushBack 'OFPS_BMP3';
-};
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then { 
-	_u pushBack 'sfp_ikv91';
 };
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
@@ -218,24 +209,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'OFPS_SU34_LGB';
 	_u pushBack 'OFPS_SU34_AGM';
 };
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then { 
-	_u pushBack 'sfp_bo105_unarmed';
-	_u pushBack 'sfp_bo105';
-	_u pushBack 'O_UCSV_01';
-	_u pushBack 'globemaster_c17_Qatar';
-	_u pushBack 'LDL_C130J';
-	_u pushBack 'bwi_a3_t6a_5';
-	_u pushBack 'bwi_a3_at6b_2';
-	_u pushBack 'bwi_a3_at6b_4';
-	_u pushBack 'sab_alphajet8';
-	_u pushBack 'sfp_j12';
-	_u pushBack 'sfp_j12_rb15';
-	_u pushBack 'sfp_j12_cap';
-	_u pushBack 'OFPS_BUZAA_O';
-	_u pushBack 'O_PAKFA_F';
-	_u pushBack 'usaf_b1b';
-};
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _u];
 
@@ -253,10 +226,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack 'CUP_O_Ural_Refuel_RU';
 	_u pushBack 'CUP_O_Ural_Repair_RU';
 };
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then { 
-
-};
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_REPAIR], _u];
 
@@ -270,10 +239,6 @@ _u pushBack "Land_Pod_Heli_Transport_04_ammo_F";
 //--- CUP UNITS
 if (CTI_CUP_ADDON > 0) then { 
 	_u pushBack 'CUP_O_Ural_Reammo_RU';
-};
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then { 
-
 };
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _u];
@@ -290,15 +255,6 @@ if (CTI_CUP_ADDON > 0) then {
 	_u pushBack "CUP_B_RHIB_USMC";
 	_u pushBack "CUP_B_RHIB2Turret_USMC";
 };
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then { 
-	_u pushBack "Burnes_LCAC_1";
-	_u pushBack "sfp_gruppbat";
-	_u pushBack "rhsusf_mkvsoc";
-	_u pushBack "sfp_rbb_norrkoping";
-	_u pushBack "OFPS_Frigate_CSAT";
-};
-
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
 
 _u = [];

@@ -3,7 +3,7 @@ class Params {
 		title = "AI: Teams";
 		values[] = {0,1};
 		texts[] = {"Disabled", "Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_ARTILLERY_SETUP {
 		title = "ARTILLERY: Setup";
@@ -280,17 +280,5 @@ class Params {
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
-	};
-	class CTI_OFPS_ADDON {
-		title = "ADDON: OFPS MOD Pack Support";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 1;
-	};	
-	class CTI_DEV_MODE {
-		title = "DEV: Dev Mode";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
 	};
 };
