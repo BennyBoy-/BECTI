@@ -125,11 +125,6 @@ if (CTI_CUP_ADDON > 0) then {
 	(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_West.sqf";
 	(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_East.sqf";
 };
-//--- OFPS UNITS
-if (CTI_OFPS_ADDON > 0) then { 
-	(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_OFPS_West.sqf";
-	(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_OFPS_East.sqf";
-};
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_East.sqf";

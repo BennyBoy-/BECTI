@@ -10,6 +10,7 @@ _u = []; //--- Upgrade level needed.    0 1 2 3...
 _f = []; //--- Built from Factory.
 _s = []; //--- Script
 _d = []; //--- Extra Distance (From Factory)
+_g = []; //--- Category Filter (UI)
 
 //--- Infantry
 _c pushBack 'I_Soldier_A_F';
@@ -21,6 +22,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_soldier_exp_F';
 _p pushBack '';
@@ -31,6 +33,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_soldier_M_F';
 _p pushBack '';
@@ -41,6 +44,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_officer_F';
 _p pushBack '';
@@ -51,6 +55,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_soldier_repair_F';
 _p pushBack '';
@@ -61,6 +66,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 //-------------- AAF
 //--- Infantry
@@ -73,6 +79,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Soldier_AA_F';
 _p pushBack '';
@@ -83,6 +90,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Soldier_AR_F';
 _p pushBack '';
@@ -93,6 +101,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Soldier_AT_F';
 _p pushBack '';
@@ -103,6 +112,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_crew_F';
 _p pushBack '';
@@ -113,6 +123,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Soldier_LAT_F';
 _p pushBack '';
@@ -123,6 +134,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Soldier_AT_F';
 _p pushBack '';
@@ -133,6 +145,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_engineer_F';
 _p pushBack '';
@@ -143,6 +156,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Soldier_GL_F';
 _p pushBack '';
@@ -153,6 +167,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_medic_F';
 _p pushBack '';
@@ -163,6 +178,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_pilot_F';
 _p pushBack '';
@@ -173,6 +189,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Sniper_F';
 _p pushBack '';
@@ -183,6 +200,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Soldier_TL_F';
 _p pushBack '';
@@ -193,6 +211,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Soldier_SL_F';
 _p pushBack '';
@@ -203,6 +222,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_diver_TL_F';
 _p pushBack '';
@@ -213,6 +233,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_diver_F';
 _p pushBack '';
@@ -223,6 +244,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 
 //-------------- FIA
@@ -236,6 +258,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_G_Soldier_AR_F';
 _p pushBack '';
@@ -246,6 +269,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_G_Soldier_LAT_F';
 _p pushBack '';
@@ -256,6 +280,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Soldier_AT_F';
 _p pushBack '';
@@ -266,6 +291,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_G_engineer_F';
 _p pushBack '';
@@ -276,6 +302,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_G_Soldier_GL_F';
 _p pushBack '';
@@ -286,6 +313,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_G_medic_F';
 _p pushBack '';
@@ -296,6 +324,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_G_officer_F';
 _p pushBack '';
@@ -306,6 +335,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_G_Soldier_M_F';
 _p pushBack '';
@@ -316,6 +346,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_G_Soldier_TL_F';
 _p pushBack '';
@@ -326,6 +357,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_G_Soldier_SL_F';
 _p pushBack '';
@@ -336,6 +368,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 
 //--- Light
@@ -348,6 +381,7 @@ _u pushBack 1;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_MRAP_03_hmg_F';
 _p pushBack '';
@@ -358,6 +392,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_MRAP_03_gmg_F';
 _p pushBack '';
@@ -368,6 +403,7 @@ _u pushBack 1;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 //--- Heavy
 
@@ -380,6 +416,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_APC_tracked_03_cannon_F';
 _p pushBack '';
@@ -390,6 +427,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_MBT_03_cannon_F';
 _p pushBack '';
@@ -400,6 +438,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 //--- Naval
 _c pushBack 'I_Boat_Armed_01_minigun_F';
@@ -411,6 +450,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 //--- Air
 
@@ -426,6 +466,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_LR_MG_AAF';
 _p pushBack '';
@@ -436,6 +477,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_BTR40_MG_TKG';
 _p pushBack '';
@@ -446,6 +488,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_M113_RACS';
 _p pushBack '';
@@ -456,6 +499,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_BRDM2_HQ_NAPA';
 _p pushBack '';
@@ -466,6 +510,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_BRDM2_NAPA';
 _p pushBack '';
@@ -476,6 +521,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_BRDM2_ATGM_NAPA';
 _p pushBack '';
@@ -486,6 +532,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 //--- APCs
 _c pushBack 'CUP_I_BMP1_TK_GUE';
@@ -497,6 +544,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_BMP2_NAPA';
 _p pushBack '';
@@ -507,6 +555,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 //--- Tanks
 _c pushBack 'CUP_I_T34_NAPA';
@@ -518,6 +567,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 	
 _c pushBack 'CUP_I_T55_TK_GUE';
 _p pushBack '';
@@ -528,6 +578,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_T72_NAPA';
 _p pushBack '';
@@ -538,6 +589,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 //--- AA Vehicles
 _c pushBack 'CUP_I_Ural_ZU23_NAPA';
@@ -549,6 +601,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_ZSU23_AAF';
 _p pushBack '';
@@ -559,6 +612,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_M163_AAF';
 _p pushBack '';
@@ -569,6 +623,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 //--- Naval
 _c pushBack 'CUP_B_RHIB2Turret_USMC';
@@ -580,6 +635,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'rhsusf_mkvsoc';
 _p pushBack '';
@@ -590,6 +646,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'sfp_rbb_norrkoping';
 _p pushBack '';
@@ -600,6 +657,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_NAVAL;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 //--- Air
 
@@ -614,6 +672,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_PMC_Soldier_AA';
 _p pushBack '';
@@ -624,6 +683,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Soldier_AA_F';
 _p pushBack '';
@@ -634,6 +694,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_PMC_Soldier_MG';
 _p pushBack '';
@@ -644,6 +705,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_PMC_Soldier_AT';
 _p pushBack '';
@@ -654,6 +716,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_PMC_Crew';
 _p pushBack '';
@@ -664,6 +727,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_PMC_Engineer';
 _p pushBack '';
@@ -674,6 +738,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_PMC_Soldier_GL_M16A2';
 _p pushBack '';
@@ -684,6 +749,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_PMC_Medic';
 _p pushBack '';
@@ -694,6 +760,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_PMC_Soldier_MG_PKM';
 _p pushBack '';
@@ -704,6 +771,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_PMC_Pilot';
 _p pushBack '';
@@ -714,6 +782,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_PMC_Sniper_KSVK';
 _p pushBack '';
@@ -724,6 +793,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_PMC_Soldier_TL';
 _p pushBack '';
@@ -734,6 +804,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 
 //-------------- NAPA Chernarus
@@ -747,6 +818,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_GUE_Soldier_AA';
 _p pushBack '';
@@ -757,6 +829,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Soldier_AA_F';
 _p pushBack '';
@@ -767,6 +840,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_GUE_Soldier_AR';
 _p pushBack '';
@@ -777,6 +851,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_GUE_Soldier_AT';
 _p pushBack '';
@@ -787,6 +862,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_GUE_Crew';
 _p pushBack '';
@@ -797,6 +873,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_GUE_Engineer';
 _p pushBack '';
@@ -807,6 +884,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_GUE_Soldier_GL';
 _p pushBack '';
@@ -817,6 +895,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_GUE_Medic';
 _p pushBack '';
@@ -827,6 +906,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_GUE_Soldier_MG';
 _p pushBack '';
@@ -837,6 +917,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_GUE_Pilot';
 _p pushBack '';
@@ -847,6 +928,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_GUE_Sniper';
 _p pushBack '';
@@ -857,6 +939,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_GUE_Officer';
 _p pushBack '';
@@ -867,6 +950,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_GUE_Commander';
 _p pushBack '';
@@ -877,6 +961,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 
 //-------------- Royal Army Corp Of Sahrani - Desert
@@ -890,6 +975,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_RACS_Soldier_AA';
 _p pushBack '';
@@ -900,6 +986,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Soldier_AA_F';
 _p pushBack '';
@@ -910,6 +997,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_RACS_MMG';
 _p pushBack '';
@@ -920,6 +1008,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_RACS_Soldier_MAT';
 _p pushBack '';
@@ -930,6 +1019,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_RACS_Crew';
 _p pushBack '';
@@ -940,6 +1030,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_RACS_Soldier_HAT';
 _p pushBack '';
@@ -950,6 +1041,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_RACS_Engineer';
 _p pushBack '';
@@ -960,6 +1052,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_RACS_GL';
 _p pushBack '';
@@ -970,6 +1063,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_RACS_Medic';
 _p pushBack '';
@@ -980,6 +1074,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_RACS_MMG';
 _p pushBack '';
@@ -990,6 +1085,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_RACS_Pilot';
 _p pushBack '';
@@ -1000,6 +1096,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_RACS_Sniper';
 _p pushBack '';
@@ -1010,6 +1107,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_RACS_Officer';
 _p pushBack '';
@@ -1020,6 +1118,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_RACS_SL';
 _p pushBack '';
@@ -1030,6 +1129,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 
 //-------------- Takistani Locals
@@ -1043,6 +1143,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_TK_GUE_Soldier_AA';
 _p pushBack '';
@@ -1053,6 +1154,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'I_Soldier_AA_F';
 _p pushBack '';
@@ -1063,6 +1165,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_TK_GUE_Soldier_AR';
 _p pushBack '';
@@ -1073,6 +1176,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_TK_GUE_Soldier_AT';
 _p pushBack '';
@@ -1083,6 +1187,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_TK_GUE_Soldier_AK_47S';
 _p pushBack '';
@@ -1093,6 +1198,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_TK_GUE_Soldier_HAT';
 _p pushBack '';
@@ -1103,6 +1209,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_TK_GUE_Mechanic';
 _p pushBack '';
@@ -1113,6 +1220,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_TK_GUE_Soldier_GL';
 _p pushBack '';
@@ -1123,6 +1231,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_TK_GUE_Guerilla_Medic';
 _p pushBack '';
@@ -1133,6 +1242,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_TK_GUE_Soldier_MG';
 _p pushBack '';
@@ -1143,6 +1253,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_TK_GUE_Soldier_AK_47S';
 _p pushBack '';
@@ -1153,6 +1264,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_TK_GUE_Sniper';
 _p pushBack '';
@@ -1163,6 +1275,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_TK_GUE_Soldier_TL';
 _p pushBack '';
@@ -1173,6 +1286,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 _c pushBack 'CUP_I_TK_GUE_Commander';
 _p pushBack '';
@@ -1183,6 +1297,7 @@ _u pushBack 0;
 _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
+_g pushBack "Khaki";
 
 
-[_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s, _d] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";
+[_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s, _d, _g] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";

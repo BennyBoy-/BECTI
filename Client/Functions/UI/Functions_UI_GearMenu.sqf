@@ -323,18 +323,56 @@ CTI_UI_Gear_DisplayShoppingItems = {
 	if (CTI_Base_GearInRange_Depot && !(CTI_Base_GearInRange || CTI_Base_GearInRange_Mobile || CTI_Base_GearInRange_FOB)) then {
 		_upgrade_gear = _upgrades select CTI_UPGRADE_TOWNS;
 	};
+	/*
+	_filter_use = "all";
 	
-	if (CTI_DEBUG) then {_upgrade_gear=10};
+	//--- Prevent the reloading of the current tab via onLBSelChanged EH
+	uiNamespace setVariable ["cti_dialog_ui_gear_filter_reload", false];
+	
+	_filter_current = lbCurSel((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70202);
+	if (_filter_current != -1) then {_filter_use = ((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70202) lbData _filter_current};
+	
+	lbClear 70202;
+	
+	_lb = ((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70202) lbAdd "All";
+	((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70202) lbSetData [_lb, "all"];
+	
+	//--- Make sure that we don't have any empty filters
+	if (_tab != CTI_GEAR_TAB_TEMPLATES) then {
+		_filters = [];
+		
+		{
+			_get = missionNamespace getVariable format["cti_%1", _x];
+			
+			if !(isNil "_get") then {
+				if (((_get select CTI_GEAR_PROPERTIES) select 0) <= _upgrade_gear && !((_get select CTI_GEAR_FILTERUI) in _filters) && !((_get select CTI_GEAR_FILTERUI) isEqualTo "")) then {_filters pushBack (_get select CTI_GEAR_FILTERUI)};
+			};
+		} forEach _list;
+		
+		//--- Add the filters to the combo rsc
+		{
+			_lb = ((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70202) lbAdd _x;
+			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70202) lbSetData [_lb, _x];
+			
+			if (_filter_use isEqualTo _x) then {((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70202) lbSetCurSel _lb};
+		} forEach _filters;
+	};
+	
+	if (_filter_use isEqualto "all") then {((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70202) lbSetCurSel 0}; //--- No filter specified? select the default one! (all)
+	*/
 	
 	if (_tab != CTI_GEAR_TAB_TEMPLATES) then { //--- Generic items
 		{
 			_get = missionNamespace getVariable format["cti_%1", _x];
 			if !(isNil "_get") then {
-				if (((_get select 0) select 0) <= _upgrade_gear) then { //--- Add the item if it's equal or below the upgrade level
-					_row = lnbAddRow [70108, [getText(configFile >> _get select 2 >> _x >> 'displayName'), format ["$%1", (_get select 0) select 1]]];
-					lnbSetPicture [70108, [_row, 1], getText(configFile >> _get select 2 >> _x >> 'picture')];
+				// if (_filter_use isEqualTo "all" || _filter_use isEqualTo (_get select CTI_GEAR_FILTERUI)) then {
+				
+				if (((_get select CTI_GEAR_PROPERTIES) select 0) <= _upgrade_gear) then { //--- Add the item if it's equal or below the upgrade level
+					_row = lnbAddRow [70108, [getText(configFile >> _get select CTI_GEAR_CONFIG >> _x >> 'displayName'), format ["$%1", (_get select CTI_GEAR_PROPERTIES) select 1]]];
+					lnbSetPicture [70108, [_row, 1], getText(configFile >> _get select CTI_GEAR_CONFIG >> _x >> 'picture')];
 					lnbSetData [70108, [_row, 0], toLower(_x)];
 				};
+				// };
 			};
 		} forEach _list;
 	} else { //--- Templates

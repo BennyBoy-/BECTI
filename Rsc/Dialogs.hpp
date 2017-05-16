@@ -530,6 +530,17 @@ class CTI_RscPurchaseMenu {
 			sizeEx = "0.8 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 			onLBSelChanged = "['onGroupLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
 		};
+		
+		// TODO: Frame n crap, also adjust x/y
+		/*class CTI_Menu_ComboFilter : CTI_Menu_ComboTeam {
+			idc = 110017;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.225)";
+			y = "SafeZoneY + (SafezoneH * 0.380)";
+			
+			sizeEx = "0.8 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+			onLBSelChanged = "['onFilterLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};*/
 		class CTI_Menu_ComboFactory : CTI_Menu_ComboTeam {
 			idc = 110009;
 			
@@ -1244,6 +1255,14 @@ class CTI_RscGearMenu {
 			
 			onLBSelChanged = "['onUnitLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_GearMenu.sqf'";
 		};
+		// TODO: Frame and UI background crap, also better position on y
+		/*class CTI_Gear_Control_Combo_Filter : CTI_Gear_Control_Combo_Target {
+			idc = 70202;
+
+			y = "SafeZoneY + (SafezoneH * 0.221)";
+			
+			onLBSelChanged = "['onFilterLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_GearMenu.sqf'";
+		};*/
 		
 		class CTI_Gear_Uniform_Progress_Load : RscProgress {
 			idc = 70301;

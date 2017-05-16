@@ -87,7 +87,40 @@ CTI_UI_Purchase_FillUnitsList = {
 		default {-1};
 	};
 	_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
+	/*
+	_filter_use = "all";
 	
+	//--- Prevent the reloading of the current tab via onLBSelChanged EH
+	uiNamespace setVariable ["cti_dialog_ui_purchasemenu_filter_reload", false];
+	
+	_filter_current = lbCurSel((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110017);
+	if (_filter_current != -1) then {_filter_use = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110017) lbData _filter_current};
+	
+	lbClear 110017;
+	
+	_lb = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110017) lbAdd "All";
+	((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110017) lbSetData [_lb, "all"];
+	
+	_filters = [];
+	{
+		_var = missionNamespace getVariable _x;
+		
+		if !(isNil "_var") then {
+			if ((_var select CTI_UNIT_UPGRADE) <= (_upgrades select _upgrade) && !((_var select CTI_UNIT_FILTERUI) in _filters) && !((_var select CTI_UNIT_FILTERUI) isEqualTo "")) then {_filters pushBack (_var select CTI_UNIT_FILTERUI)};
+		};
+	} forEach (missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined, _type]);
+	
+	//--- Add the filters to the combo rsc
+	{
+		_lb = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110017) lbAdd _x;
+		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110017) lbSetData [_lb, _x];
+		
+		if (_filter_use isEqualTo _x) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110017) lbSetCurSel _lb};
+	} forEach _filters;
+	
+	if (_filter_use isEqualto "all") then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110017) lbSetCurSel 0}; //--- No filter specified? select the default one! (all)
+	*/
+
 	{
 		_var = missionNamespace getVariable _x;
 		if !(isNil '_var') then {
@@ -98,9 +131,12 @@ CTI_UI_Purchase_FillUnitsList = {
 			};
 			
 			if (_load) then {
+				// if (_filter_use isEqualTo "all" || _filter_use isEqualTo (_var select CTI_UNIT_FILTERUI)) then {
+				
 				_row = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbAddRow [format ["$%1", _var select CTI_UNIT_PRICE], _var select CTI_UNIT_LABEL];
 				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbSetData [[_row, 0], _x];
 				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbSetPicture [[_row, 0], _var select CTI_UNIT_PICTURE];
+				// };
 			};
 		};
 	} forEach (missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined, _type]);

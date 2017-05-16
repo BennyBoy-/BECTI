@@ -66,7 +66,7 @@ switch (_action) do {
 			if ({alive _x} count (uiNamespace getVariable "cti_dialog_ui_purchasemenu_factories") > 0) then {
 				[uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type"] call CTI_UI_Purchase_LoadFactories;//reload.
 			} else {
-				['onLoad'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'
+				['onLoad'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf';
 			};
 		};
 	};
@@ -221,6 +221,20 @@ switch (_action) do {
 				};
 			};
 		};
+	};
+	case "onFilterLBSelChanged": {
+		_selected = _this select 1;
+		
+		if (uiNamespace getVariable ["cti_dialog_ui_purchasemenu_filter_reload", true]) then {
+			_factory_index = uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_index";
+			_factory_type = uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type";
+			[_factory_type, _factory_index] call CTI_UI_Purchase_LoadFactories;
+			(_factory_index) call CTI_UI_Purchase_SetIcons;
+			(_factory_type) call CTI_UI_Purchase_FillUnitsList;
+			call CTI_UI_Purchase_OnUnitListLoad;
+		};
+		
+		uiNamespace setVariable ["cti_dialog_ui_purchasemenu_filter_reload", true];
 	};
 	case "onUnload": {
 		uiNamespace setVariable ["cti_dialog_ui_purchasemenu_action", objNull];

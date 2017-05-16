@@ -1,9 +1,10 @@
-private ["_cpt", "_faction", "_items", "_prices", "_upgrades"];
+private ["_cpt", "_faction", "_filterui", "_items", "_prices", "_upgrades"];
 
 _faction = _this select 0;
 _items = _this select 1;
 _upgrades = _this select 2;
 _prices = _this select 3;
+_filterui = _this select 4;
 
 _gear_accessories = [];
 _gear_primary = [];
@@ -41,14 +42,14 @@ for '_i' from 0 to count(_items)-1 do {
 		if (isNil {missionNamespace getVariable _item}) then {
 			switch (_config_type) do { //--- Each item is handled differently
 				case "CfgGlasses": {
-					missionNamespace setVariable [format["cti_%1", _item], [[_upgrades select _i, _prices select _i], "Goggles", _config_type]];
+					missionNamespace setVariable [format["cti_%1", _item], [[_upgrades select _i, _prices select _i], "Goggles", _config_type, _filterui select _i]];
 					if (_pushtogear) then {_gear_glasses pushBack _item};
 					_cpt = _cpt + 1;
 					
 					if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Common\Config\Gear\Gear_Config_Set.sqf", format ["Set Glasses [%1].", _item]] call CTI_CO_FNC_Log };
 				};
 				case "CfgMagazines": {
-					missionNamespace setVariable [format["cti_%1", _item], [[_upgrades select _i, _prices select _i], "Magazines", _config_type]];
+					missionNamespace setVariable [format["cti_%1", _item], [[_upgrades select _i, _prices select _i], "Magazines", _config_type, _filterui select _i]];
 					
 					if (_pushtogear) then {
 						if (getText(configFile >> 'CfgMagazines' >> _item >> "nameSound") in ["mine", "satchelcharge"]) then {
@@ -63,7 +64,7 @@ for '_i' from 0 to count(_items)-1 do {
 				};
 				case "CfgVehicles": {
 					if (getNumber(configFile >> _config_type >> _item >> 'isbackpack') == 1) then { //--- Make sure that this is a backpack
-						missionNamespace setVariable [format["cti_%1", _item], [[_upgrades select _i, _prices select _i], "Backpack", _config_type]];
+						missionNamespace setVariable [format["cti_%1", _item], [[_upgrades select _i, _prices select _i], "Backpack", _config_type, _filterui select _i]];
 						if (_pushtogear) then {_gear_backpacks pushBack _item};
 						_cpt = _cpt + 1;
 						
@@ -120,7 +121,7 @@ for '_i' from 0 to count(_items)-1 do {
 						_item_type = [_item_type, _item_subtype];
 					};
 					
-					missionNamespace setVariable [format["cti_%1", _item], [[_upgrades select _i, _prices select _i], _item_type, _config_type]];
+					missionNamespace setVariable [format["cti_%1", _item], [[_upgrades select _i, _prices select _i], _item_type, _config_type, _filterui select _i]];
 					_cpt = _cpt + 1;
 					
 					if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Common\Config\Gear\Gear_Config_Set.sqf", format ["Set Item [%1] of nature [%2].", _item, _item_type]] call CTI_CO_FNC_Log };
@@ -138,7 +139,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Common\C
 
 //--- Append to the existing items
 {
-	missionNamespace setVariable [_x select 0, if (isNil {missionNamespace getVariable (_x select 0)}) then {_x select 1} else {(missionNamespace getVariable (_x select 0)) + (_x select 1)}]
+	missionNamespace setVariable [_x select 0, if (isNil {missionNamespace getVariable (_x select 0)}) then {_x select 1} else {(missionNamespace getVariable (_x select 0)) + (_x select 1)}];
 } forEach [["cti_gear_list_primary", _gear_primary],["cti_gear_list_secondary", _gear_secondary],["cti_gear_list_pistol", _gear_pistol],["cti_gear_list_magazines", _gear_magazines],
 ["cti_gear_list_accessories", _gear_accessories],["cti_gear_list_misc", _gear_misc],["cti_gear_list_special", _gear_special],["cti_gear_list_uniforms", _gear_uniforms],
 ["cti_gear_list_vests", _gear_vests],["cti_gear_list_backpacks", _gear_backpacks],["cti_gear_list_headgear", _gear_headgear],["cti_gear_list_glasses", _gear_glasses],

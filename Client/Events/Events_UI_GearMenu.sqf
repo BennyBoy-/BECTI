@@ -490,4 +490,15 @@ switch (_action) do {
 			};
 		};
 	};
+	
+	case "onFilterLBSelChanged": {
+		_selected = _this select 1;
+		
+		//--- Reload the shopping list (skip templates) to apply the new filter
+		if (!((uiNamespace getVariable "cti_dialog_ui_gear_shop_tab") isEqualTo CTI_GEAR_TAB_TEMPLATES) && (uiNamespace getVariable ["cti_dialog_ui_gear_filter_reload", true])) then {
+			(uiNamespace getVariable "cti_dialog_ui_gear_shop_tab") call CTI_UI_Gear_DisplayShoppingItems;
+		};
+		
+		uiNamespace setVariable ["cti_dialog_ui_gear_filter_reload", true];
+	};
 };
