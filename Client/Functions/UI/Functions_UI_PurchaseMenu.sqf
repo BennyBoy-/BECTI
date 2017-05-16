@@ -106,7 +106,8 @@ CTI_UI_Purchase_FillUnitsList = {
 		_var = missionNamespace getVariable _x;
 		
 		if !(isNil "_var") then {
-			if ((_var select CTI_UNIT_UPGRADE) <= (_upgrades select _upgrade) && !((_var select CTI_UNIT_FILTERUI) in _filters) && !((_var select CTI_UNIT_FILTERUI) isEqualTo "")) then {_filters pushBack (_var select CTI_UNIT_FILTERUI)};
+			_upgrade_match = if !(_upgrade isEqualTo -1) then {(_var select CTI_UNIT_UPGRADE) <= (_upgrades select _upgrade)} else {true};
+			if (_upgrade_match && !((_var select CTI_UNIT_FILTERUI) in _filters) && !((_var select CTI_UNIT_FILTERUI) isEqualTo "")) then {_filters pushBack (_var select CTI_UNIT_FILTERUI)};
 		};
 	} forEach (missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined, _type]);
 	
@@ -125,12 +126,9 @@ CTI_UI_Purchase_FillUnitsList = {
 		_var = missionNamespace getVariable _x;
 		if !(isNil '_var') then {
 			//--- Upgradeable?
-			_load = true;
-			if (_upgrade > -1) then {
-				if (_upgrades select _upgrade < _var select CTI_UNIT_UPGRADE) then {_load = false};
-			};
+			_upgrade_match = if !(_upgrade isEqualTo -1) then {(_var select CTI_UNIT_UPGRADE) <= (_upgrades select _upgrade)} else {true};
 			
-			if (_load) then {
+			if (_upgrade_match) then {
 				// if (_filter_use isEqualTo "all" || _filter_use isEqualTo (_var select CTI_UNIT_FILTERUI)) then {
 				
 				_row = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbAddRow [format ["$%1", _var select CTI_UNIT_PRICE], _var select CTI_UNIT_LABEL];
