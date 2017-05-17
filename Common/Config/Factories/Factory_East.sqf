@@ -12,42 +12,35 @@ missionNamespace setVariable [format["CTI_%1_Pilot", _side], "O_Helipilot_F"];
 
 missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
 	["O_Truck_03_medical_F", [
-		["CUP_arifle_AK74_GL", 4], ["CUP_30Rnd_762x39_AK47_M", 50],
-		["CUP_launch_RPG18", 5], ["CUP_RPG18_M", 20],
-		["CUP_HandGrenade_M67", 20],
-		["CUP_30Rnd_545x39_AK_M", 30],
-		["CUP_30Rnd_TE1_Red_Tracer_545x39_AK_M", 10],
-		["CUP_1Rnd_HE_GP25_M", 24],
-		["CUP_FlareRed_GP25_M", 27],
-		["CUP_1Rnd_SmokeRed_GP25_M", 9],
+		["arifle_Katiba_GL_F", 2], ["30rnd_65x39_caseless_green", 50],
+		["arifle_Mk20_F", 2], ["30rnd_556x45_stanag", 25],
+		["srifle_DMR_01_F", 2], ["10Rnd_762x51_Mag", 20], 
+		["LMG_Zafir_F", 1], ["150Rnd_762x51_Box", 5], 
+		["launch_RPG32_F", 3], ["RPG32_F", 12], 
+		["HandGrenade", 20], 
+		["30Rnd_65x39_caseless_green_mag_Tracer", 6], 
+		["1Rnd_HE_Grenade_shell", 24], 
+		["UGL_FlareRed_F", 27], 
+		["1Rnd_SmokeRed_Grenade_shell", 9], 
 		["SmokeShellRed", 8],
 		["firstaidkit", 20],
 		["Chemlight_red", 36],
-		["Toolkit", 4],
-		["B_Kitbag_cbr", 4]
+		["acc_flashlight", 5],
+		["optic_ACO_grn", 3],
+		["optic_Holosight", 2],
+		["optic_MRCO", 1],
+		["optic_DMS", 2],
+		["B_Bergen_sgg_Exp", 4],
+		["O_HMG_01_support_F", 1],
+		["O_HMG_01_support_high_F", 1],
+		["Toolkit", 4]
 	]],
 	["O_MRAP_02_F", [
 		["Toolkit", 2],
 		["firstaidkit", 10],
-		["CUP_30Rnd_762x39_AK47_M", 25],
-		["CUP_launch_RPG18", 5],
-		["CUP_RPG18_M", 10]
-	]],
-	["OFPS_BRDM2", [
-		["Toolkit", 2],
-		["firstaidkit", 10],
-		["CUP_30Rnd_762x39_AK47_M", 25],
-		["CUP_launch_RPG18", 5],
-		["CUP_RPG18_M", 10]
-	]],
-	["OFPS_BTR60", [
-		["Toolkit", 2],
-		["firstaidkit", 10],
-		["CUP_30Rnd_762x39_AK47_M", 25],
-		["CUP_launch_RPG18", 5],
-		["CUP_RPG18_M", 10]
+		["30rnd_65x39_caseless_green", 25],
+		["launch_RPG32_F", 2], ["RPG32_F", 6]
 	]]
-	//,	["O_Heli_Light_02_unarmed_F", []]
 ]];
 
 //--- Units - Barracks
@@ -72,8 +65,9 @@ _u pushBack 'O_Helipilot_F';
 _u pushBack 'O_crew_F';
 _u pushBack 'O_Soldier_TL_F';
 _u pushBack 'O_Soldier_SL_F';
+
 //--- CUP UNITS
-if (CTI_CUP_ADDON > 0) then { 
+if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then { 
 	_u pushBack 'CUP_O_RU_Soldier';
 	_u pushBack 'CUP_O_RU_Soldier_AA';
 	_u pushBack 'CUP_O_RU_Soldier_AR';
@@ -106,7 +100,7 @@ _u pushBack 'O_Truck_03_medical_F';
 _u pushBack 'Land_Pod_Heli_Transport_04_medevac_F';
 
 //--- CUP UNITS
-if (CTI_CUP_ADDON > 0) then { 
+if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then { 
 	_u pushBack 'CUP_M1030';
 	_u pushBack 'CUP_B_TowingTractor_USMC';
 	_u pushBack 'CUP_C_Skoda_White_CIV';
@@ -154,7 +148,7 @@ _u pushBack "O_APC_Tracked_02_AA_F";
 _u pushBack "O_MBT_02_arty_F";
 
 //--- CUP UNITS
-if (CTI_CUP_ADDON > 0) then { 
+if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then { 
 	_u pushBack 'OFPS_BMP1';
 	_u pushBack 'OFPS_BMP1P';
 	_u pushBack 'OFPS_BMP2';
@@ -187,7 +181,7 @@ _u pushBack 'O_UAV_02_F';
 _u pushBack 'O_Plane_CAS_02_F';
 
 //--- CUP UNITS
-if (CTI_CUP_ADDON > 0) then { 
+if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then { 
 	_u pushBack 'CUP_O_UH1H_TKA';
 	_u pushBack 'CUP_O_Mi8_CHDKZ';
 	_u pushBack 'CUP_O_Mi8_SLA_2';
@@ -222,7 +216,7 @@ _u pushBack "Land_Pod_Heli_Transport_04_repair_F";
 _u pushBack "Land_Pod_Heli_Transport_04_fuel_F";
 
 //--- CUP UNITS
-if (CTI_CUP_ADDON > 0) then { 
+if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then { 
 	_u pushBack 'CUP_O_Ural_Refuel_RU';
 	_u pushBack 'CUP_O_Ural_Repair_RU';
 };
@@ -237,7 +231,7 @@ _u pushBack "O_supplyCrate_F";
 _u pushBack "Land_Pod_Heli_Transport_04_ammo_F";
 
 //--- CUP UNITS
-if (CTI_CUP_ADDON > 0) then { 
+if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then { 
 	_u pushBack 'CUP_O_Ural_Reammo_RU';
 };
 
@@ -251,7 +245,7 @@ _u pushBack 'C_Boat_Civil_01_rescue_F';
 _u pushBack 'O_SDV_01_F';
 
 //--- CUP UNITS
-if (CTI_CUP_ADDON > 0) then { 
+if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then { 
 	_u pushBack "CUP_B_RHIB_USMC";
 	_u pushBack "CUP_B_RHIB2Turret_USMC";
 };

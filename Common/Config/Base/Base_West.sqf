@@ -236,7 +236,7 @@ _headers pushBack 		"Gate";
 _classes pushBack 		"Land_Mil_WiredFence_Gate_F";
 _prices pushBack 		5;
 _placements pushBack	[0, 15];
-_categories pushBack 	"Structures_Fences";
+_categories pushBack 	"Fences";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
 
@@ -316,7 +316,7 @@ _headers pushBack 		["Tent Hangar",[["RuinOnDestroyed", "Land_TentHangar_V1_ruin
 _classes pushBack 		"Land_TentHangar_V1_F";
 _prices pushBack 		500;
 _placements pushBack 	[0, 20];
-_categories pushBack 	"Structures_Military";
+_categories pushBack 	"Military";
 _coinmenus pushBack 	["HQ"];
 _coinblacklist pushBack [["Land_TentHangar_V1_F", 20], ["Land_sfp_torebodahangar_alt2", 10]];
 
@@ -324,7 +324,7 @@ _headers pushBack 		"Mil Shed";
 _classes pushBack 		"Land_sfp_mil_shed";
 _prices pushBack 		1000;
 _placements pushBack 	[0, 20];
-_categories pushBack 	"Structures_Military";
+_categories pushBack 	"Military";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
 
@@ -332,7 +332,7 @@ _headers pushBack 		"Hangar Wood";
 _classes pushBack 		"Land_sfp_torebodahangar";
 _prices pushBack 		1000;
 _placements pushBack 	[0, 20];
-_categories pushBack 	"Structures_Military";
+_categories pushBack 	"Military";
 _coinmenus pushBack 	["HQ"];
 _coinblacklist pushBack [["Land_sfp_torebodahangar", 10]];
 
@@ -340,7 +340,7 @@ _headers pushBack 		"Hangar Wood Large";
 _classes pushBack 		"Land_sfp_torebodahangar_alt2";
 _prices pushBack 		1500;
 _placements pushBack 	[0, 20];
-_categories pushBack 	"Structures_Military";
+_categories pushBack 	"Military";
 _coinmenus pushBack 	["HQ"];
 _coinblacklist pushBack [["Land_sfp_torebodahangar_alt2", 10]];
 
@@ -482,61 +482,47 @@ _categories pushBack 	"Defense";
 _coinmenus pushBack 	["HQ", "RepairTruck"];
 _coinblacklist pushBack [];
 
-_headers pushBack 		"M2 Machine Gun";
-_classes pushBack 		"CUP_B_M2StaticMG_USMC";
-_prices pushBack 		150;
-_placements pushBack 	[180, 5];
-_categories pushBack 	"Defense";
-_coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [];
+if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then {
+	_headers pushBack 		"M2 Machine Gun";
+	_classes pushBack 		"CUP_B_M2StaticMG_USMC";
+	_prices pushBack 		150;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"Defense";
+	_coinmenus pushBack 	["HQ", "RepairTruck"];
+	_coinblacklist pushBack [];
 
-_headers pushBack 		"M2 Mini";
-_classes pushBack 		"CUP_B_M2StaticMG_USMC";
-_prices pushBack 		150;
-_placements pushBack 	[180, 5];
-_categories pushBack 	"Defense";
-_coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [];
+	_headers pushBack 		"M2 Mini";
+	_classes pushBack 		"CUP_B_M2StaticMG_USMC";
+	_prices pushBack 		150;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"Defense";
+	_coinmenus pushBack 	["HQ", "RepairTruck"];
+	_coinblacklist pushBack [];
 
-_headers pushBack 		"TOW Tripod";
-_classes pushBack 		"CUP_B_TOW_TriPod_USMC";
-_prices pushBack 		4000;
-_placements pushBack 	[180, 5];
-_categories pushBack 	"Defense";
-_coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [];
+	_headers pushBack 		"TOW Tripod";
+	_classes pushBack 		"CUP_B_TOW_TriPod_USMC";
+	_prices pushBack 		4000;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"Defense";
+	_coinmenus pushBack 	["HQ", "RepairTruck"];
+	_coinblacklist pushBack [];
 
-_headers pushBack 		"D-30 AT";
-_classes pushBack 		"CUP_B_D30_AT_CDF";
-_prices pushBack 		7000;
-_placements pushBack 	[180, 5];
-_categories pushBack 	"Defense";
-_coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [];
+	_headers pushBack 		"D-30 AT";
+	_classes pushBack 		"CUP_B_D30_AT_CDF";
+	_prices pushBack 		7000;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"Defense";
+	_coinmenus pushBack 	["HQ", "RepairTruck"];
+	_coinblacklist pushBack [];
 
-_headers pushBack 		"M252 81mm mortar";
-_classes pushBack 		"CUP_B_M252_USMC";
-_prices pushBack 		15000;
-_placements pushBack 	[180, 5];
-_categories pushBack 	"Defense";
-_coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [];
-
-_headers pushBack 		"C-RAM Phalanx";
-_classes pushBack 		"C_at_phalanx_35AI";
-_prices pushBack 		80000;
-_placements pushBack 	[180, 15];
-_categories pushBack 	"Defense";
-_coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [];
-
-_headers pushBack 		"C-RAM Phalanx Missle";
-_classes pushBack 		"C_at_phalanx_missile_35AI";
-_prices pushBack 		100000;
-_placements pushBack 	[180, 15];
-_categories pushBack 	"Defense";
-_coinmenus pushBack 	["HQ", "RepairTruck"];
-_coinblacklist pushBack [];
+	_headers pushBack 		"M252 81mm mortar";
+	_classes pushBack 		"CUP_B_M252_USMC";
+	_prices pushBack 		15000;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"Defense";
+	_coinmenus pushBack 	["HQ", "RepairTruck"];
+	_coinblacklist pushBack [];
+};
 
 _headers pushBack 		["Heli Pad", [["DMG_Reduce", 1]]];
 _classes pushBack 		"Land_HelipadSquare_F";

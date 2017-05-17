@@ -202,7 +202,7 @@ if (_attempts >= 500) then {
 	{_x Spawn CTI_SE_FNC_VoteForCommander} forEach CTI_PLAYABLE_SIDES;
 };
 
-if (missionNamespace getVariable "CTI_DEV_MODE" < 1) then {
+if !(CTI_DEBUG) then {
 	// Date init
 	_it=0;
 	_possible_it_off=[0,0,0,0,0,0,6,6,6,12,12,12,18];

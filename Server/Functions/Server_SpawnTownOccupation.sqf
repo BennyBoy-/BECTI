@@ -289,6 +289,10 @@ if (isNil {_town getVariable "cti_naval"}) then {
 	if (_totalGroups < 1) then {_totalGroups = 1};
 };
 
+if (CTI_Log_Level >= CTI_Log_Information) then { 
+	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["An Occupation Pool of [%1] squad(s) template is about to be parsed for town [%2] on side [%3] based on the town SV [%4]", count _pool_units, _town getVariable "cti_town_name", _side, _value]] call CTI_CO_FNC_Log;
+};
+
 //--- Flatten the pool
 _pool = [];
 {
@@ -328,7 +332,7 @@ _pool = [];
 } forEach _pool_units;
 
 if (CTI_Log_Level >= CTI_Log_Information) then { 
-	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Retrieved an Occupation Pool count of [%1] for town [%2] on side [%3]. Total group is set to [%4]", count _pool, _town getVariable "cti_town_name", _side, _totalGroups]] call CTI_CO_FNC_Log;
+	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Retrieved an effective Occupation Pool of [%1] squad(s) for town [%2] on side [%3]. Total group is set to [%4]", count _pool, _town getVariable "cti_town_name", _side, _totalGroups]] call CTI_CO_FNC_Log;
 };
 
 if (count _pool < 1) exitWith {

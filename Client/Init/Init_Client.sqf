@@ -85,16 +85,6 @@ if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") != -1) then {enableEngi
 if (isMultiplayer) then {
 	//--- Can I join?
 	missionNamespace setVariable ["CTI_PVF_CLT_JoinRequestAnswer", {_this execVM "Client\Functions\Client_JoinRequestAnswer.sqf"}]; //--- Early PVF, do not spoil the game with the others.
-	/* missionNamespace setVariable ["CTI_PVF_CLT_JoinRequestAnswer", {_this spawn CTI_CL_FNC_JoinRequestAnswer}]; //--- Early PVF, do not spoil the game with the others.
-
-	//--- Enable the player again (sim + visu) in case of no-ai settings
-	if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" < 1) then {
-		player enableSimulationGlobal true;
-		player hideObjectGlobal false;
-	};*/
-	
-	//--- Delay the client start for the server to complete it's part
-	//sleep 1;
 	
 	player setDammage 0;
 	
@@ -109,12 +99,6 @@ if (isMultiplayer) then {
 		if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Client\Init\Init_Client.sqf", "Awaiting for the Join ticket answer from the server..."] call CTI_CO_FNC_Log};
 		CTI_P_CanJoin
 	};
-	
-	/*_last_req = -100;
-	while {!CTI_P_CanJoin} do {
-		if (time - _last_req > 15) then { _last_req = time; [player, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestJoin", CTI_PV_SERVER]};
-		sleep 1;
-	};*/
 	
 	12452 cutText ["Receiving mission intel...", "BLACK IN", 5];
 	
@@ -142,11 +126,11 @@ call compile preprocessFile "Client\Functions\UI\Functions_UI_ServiceMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UnitsCamera.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UpgradeMenu.sqf";
 
+//--- Define the gear items
 if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_West.sqf"};
 if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_East.sqf"};
 
-//--- Load CUP Gear
-if (CTI_CUP_ADDON > 0) then { 
+if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then {
 	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_West.sqf"};
 	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_East.sqf"};
 };
@@ -157,13 +141,6 @@ CTI_InitClient = true;
 waitUntil {!isNil {(group player) getVariable "cti_funds"}};
 
 player addEventHandler ["killed", {_this spawn CTI_CL_FNC_OnPlayerKilled}];
-/*if !(CTI_IsServer) then { //--- Pure client execution
-	[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit;
-	
-	if (didJIP) then { //--- Attempt to retrieve the last known JIP gear if possible.
-		(player) remoteExec ["CTI_PVF_SRV_RequestJIPGear", CTI_PV_SERVER];
-	};
-};*/
 
 if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileNamespace setVariable ["CTI_PERSISTENT_HINTS", true]; saveProfileNamespace };
 
@@ -291,19 +268,6 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_
 	
 };
 
-// CTI_PurchaseMenu = player addAction ["<t color='#a5c4ff'>DEBUG: Purchase Units</t>", "Client\Actions\Action_PurchaseMenu.sqf", "HQ", 1, false, true, "", "_target == player"];//debug
-// player addAction ["<t color='#a5c4ff'>MENU debug: Factory</t>", "Client\Actions\Action_PurchaseMenu.sqf", "HQ", 93, false, true, "", "_target == player"];
-// player addAction ["<t color='#a5c4ff'>MENU: Equipment</t>", "Client\Actions\Action_GearMenu.sqf", "HQ", 93, false, true, "", "true"];
-
-// onMapSingleClick "{(vehicle leader _x) setPos ([_pos, 8, 30] call CTI_CO_FNC_GetRandomPosition)} forEach (CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups)";
-
-// if (CTI_DEV_MODE > 0) then { 
-	onMapSingleClick "vehicle player setPos _pos"; //--- benny debug: teleport
-	player addEventHandler ["HandleDamage", {if (player != (_this select 3)) then {(_this select 3) setDammage 1}; false}]; //--- God-Slayer mode.
-	player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
-	// player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_BuildMenu.sqf"];//debug
-// };
-
 if (profileNamespace getVariable "CTI_PERSISTENT_HINTS") then {
 	0 spawn {
 		sleep 10;
@@ -316,9 +280,9 @@ if (CTI_BASE_NOOBPROTECTION == 1) then {player addEventHandler ["fired", {_this 
 if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
 
 if (CTI_DEBUG) then {
-	// hint "DEBUG MODE IS ENABLED! DON'T FORGET TO TURN IT OFF!";
-	// onMapSingleClick "vehicle player setPos _pos";
-	// onMapSingleClick "a2 setPos _pos";
+	hint "DEBUG MODE IS ENABLED! DON'T FORGET TO TURN IT OFF!";
+	onMapSingleClick "vehicle player setPos _pos"; //--- benny debug: teleport
+	player addEventHandler ["HandleDamage", {if (player != (_this select 3)) then {(_this select 3) setDammage 1}; false}]; //--- God-Slayer mode.
 	player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
 };
 

@@ -94,7 +94,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[],[],[]] //--- Supply Rate
 ]];
 
-if (CTI_DEV_MODE > 0) then { 
+if (CTI_DEBUG) then { 
 	missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
 		[1, 1, 1], //--- Gear
 		[1, 1, 1], //--- Barracks

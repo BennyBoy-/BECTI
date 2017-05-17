@@ -121,9 +121,10 @@ call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_Camps.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_East.sqf";
 
 //--- CUP UNITS
-if (CTI_CUP_ADDON > 0) then { 
+if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then {
 	(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_West.sqf";
 	(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_East.sqf";
+	(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_Resistance.sqf";
 };
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_West.sqf";
