@@ -49,6 +49,9 @@ if (((_var select CTI_STRUCTURE_LABELS) select 0) == CTI_HQ_DEPLOY) then { //---
 		_structure setDir _direction;
 		_structure setVectorUp [0,0,0];
 		
+		//--- Transfer the previous damages to the new HQ if enabled
+		if (missionNamespace getVariable "CTI_BASE_HQ_DAMAGES_TRANSFER" > 0) then {_structure setDammage (getDammage _current_hq)};
+		
 		//--- Do we use our alternative damage system to prevent some bisteries from happening?
 		_alternative_damages = false;
 		_reduce_damages = 0;
@@ -88,6 +91,9 @@ if (((_var select CTI_STRUCTURE_LABELS) select 0) == CTI_HQ_DEPLOY) then { //---
 			_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", _sideID]]; //--- You want that on public
 			(_hq) remoteExec ["CTI_PVF_CLT_AddHQDamagerHandler", _side];
 		};
+		
+		//--- Transfer the previous damages to the new HQ if enabled
+		if (missionNamespace getVariable "CTI_BASE_HQ_DAMAGES_TRANSFER" > 0) then {_hq setDammage (getDammage _current_hq)};
 		
 		_logic setVariable ["cti_hq", _hq, true];
 		deleteVehicle _current_hq;

@@ -498,6 +498,7 @@ CTI_BASE_DEFENSES_SOLD_COEF = 0.25; //--- The player will get a fund return base
 
 //--- Base: HQ
 CTI_BASE_HQ_BOUNTY = 2.50; //--- The bounty awarded upon HQ destruction
+CTI_BASE_HQ_DAMAGES_TRANSFER = 1; //--- Determine whether the damage should be transfered when the HQ get deployed or mobilized
 CTI_BASE_HQ_REPAIR_PRICE = 40000; //--- The cost needed to repair the HQ
 CTI_BASE_HQ_REPAIR_RANGE = 35; //--- The range needed between the HQ wreck and the Repair Truck
 CTI_BASE_HQ_REPAIR_TIME = 15; //--- The time needed to repair the HQ
