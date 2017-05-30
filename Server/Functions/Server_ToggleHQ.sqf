@@ -50,7 +50,7 @@ if (((_var select CTI_STRUCTURE_LABELS) select 0) == CTI_HQ_DEPLOY) then { //---
 		_structure setVectorUp [0,0,0];
 		
 		//--- Transfer the previous damages to the new HQ if enabled
-		if (missionNamespace getVariable "CTI_BASE_HQ_DAMAGES_TRANSFER" > 0) then {_structure setDammage (getDammage _current_hq)};
+		if (CTI_BASE_HQ_DAMAGES_TRANSFER > 0) then {_structure setDammage (getDammage _current_hq)};
 		
 		//--- Do we use our alternative damage system to prevent some bisteries from happening?
 		_alternative_damages = false;
@@ -93,7 +93,7 @@ if (((_var select CTI_STRUCTURE_LABELS) select 0) == CTI_HQ_DEPLOY) then { //---
 		};
 		
 		//--- Transfer the previous damages to the new HQ if enabled
-		if (missionNamespace getVariable "CTI_BASE_HQ_DAMAGES_TRANSFER" > 0) then {_hq setDammage (getDammage _current_hq)};
+		if (CTI_BASE_HQ_DAMAGES_TRANSFER > 0) then {_hq setDammage (getDammage _current_hq)};
 		
 		_logic setVariable ["cti_hq", _hq, true];
 		deleteVehicle _current_hq;

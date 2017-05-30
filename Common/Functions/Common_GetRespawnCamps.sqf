@@ -40,7 +40,7 @@ switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS") do {
 		if !(isNull _town) then {
 			if (_town distance _location <= CTI_RESPAWN_CAMPS_RANGE_CLASSIC) then { //--- Make sure that we're in range
 				_list = [_town, _sideID] call CTI_CO_FNC_GetTownCampsOnSide;
-				if (CTI_RESPAWN_CAMPS_SAFE > 0) then { //--- Safeguard? check for enemies around the camps
+				if (CTI_RESPAWN_CAMPS_SAFE_RANGE > 0) then { //--- Safeguard? check for enemies around the camps
 					{
 						_cti_entities = _x nearEntities[["Man","Car","Motorcycle","Tank","Air","Ship"], CTI_RESPAWN_CAMPS_SAFE_RANGE];
 						if ({_x countSide _cti_entities > 0} count ([west, east, resistance] - [_side]) < 1) then {_camps pushBack _x};
@@ -60,7 +60,7 @@ switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS") do {
 			_list = [_town, _sideID] call CTI_CO_FNC_GetTownCampsOnSide;
 			{
 				if (_x distance _location <= CTI_RESPAWN_CAMPS_RANGE_ENHANCED) then {
-					if (CTI_RESPAWN_CAMPS_SAFE > 0) then { //--- Safeguard? check for enemies around the camps
+					if (CTI_RESPAWN_CAMPS_SAFE_RANGE > 0) then { //--- Safeguard? check for enemies around the camps
 						_cti_entities = _x nearEntities[["Man","Car","Motorcycle","Tank","Air","Ship"], CTI_RESPAWN_CAMPS_SAFE_RANGE];
 						if ({_x countSide _cti_entities > 0} count ([west, east, resistance] - [_side]) < 1) then {_camps pushBack _x};
 					} else {

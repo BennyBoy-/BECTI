@@ -4,7 +4,18 @@ CTI_UI_Respawn_GetAvailableLocations = {
 	_list = [];
 	
 	_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
-	_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
+	_structures = [];
+	
+	//--- Check if a structure is safe for respawn in case the safe range is set
+	if (CTI_RESPAWN_BASE_SAFE_RANGE > 0) then {
+		{
+			_cti_entities = _x nearEntities[["Man", "Car", "Motorcycle", "Tank", "Air", "Ship"], CTI_RESPAWN_BASE_SAFE_RANGE];
+			if ({_x countSide _cti_entities > 0} count ([west, east, resistance] - [CTI_P_SideJoined]) < 1) then {_structures pushBack _x};
+		} forEach ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures);
+	} else {
+		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
+	};
+	
 	if (alive _hq) then { _list pushBack _hq };
 	_list = _list + _structures;
 	if (count _list < 1) then { _list = [_hq] };
