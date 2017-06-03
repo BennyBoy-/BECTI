@@ -1,4 +1,4 @@
-private ["_groups", "_index", "_limit", "_positions", "_ratio", "_safe_range", "_side", "_sideID", "_spawn_range", "_teams", "_town", "_tvar", "_vvar"];
+private ["_groups", "_index", "_limit", "_positions", "_ratio", "_safe_range", "_side", "_sideID", "_spawn_range", "_teams", "_teams_priority", "_town", "_tvar", "_vvar"];
 
 _town = _this select 0;
 _side = _this select 1;
@@ -20,6 +20,28 @@ _spawn_max_ai = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX
 _spawn_min_ai = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN} else {CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN};
 _spawn_town_sv = if (_side == resistance) then {_town getVariable "cti_town_sv_max"} else {_town getVariable "cti_town_sv"};
 _active_units = (((_spawn_max_ai - _spawn_min_ai) * (_spawn_town_sv - CTI_TOWNS_SPAWN_SV_MIN)) / (CTI_TOWNS_SPAWN_SV_MAX - CTI_TOWNS_SPAWN_SV_MIN)) + _spawn_min_ai;
+
+//--- Sort the teams orders if needed
+_teams_priority = [];
+
+switch (CTI_TOWNS_SPAWN_PRIORITY) do {
+	case 1: { //--- Vehicles first
+		_teams_infantry = [];
+		_teams_vehicles = [];
+		
+		{
+			_vehicles = false;
+			{
+				if !(_x isKindOf "Man") exitWith {_vehicles = true};
+			} forEach _x;
+			
+			if (_vehicles) then {_teams_vehicles pushBack _x} else {_teams_infantry pushBack _x};
+		} forEach _teams;
+		
+		_teams_priority = _teams_vehicles + _teams_infantry;
+	};
+	default {_teams_priority = _teams}; //--- Random
+};
 
 _index = 0;
 _ratio = round(count _groups * (_ratio/100));
@@ -63,21 +85,33 @@ while {true} do {
 	//--- Create if the total AI count is below the given limit and if the the active squad value is below the threshold or if the current town AI size is below the given value
 	if ((_total < _limit && _active_squads < _ratio) || _current < _active_units) then {
 		_position = _positions select _index;
-		_team = _teams select _index;
+		_team = _teams_priority select _index;
 		_group = _groups select _index;
 		
-		//--- If the position holds enemies, try to get a new "safe" one, only applies to meadow areas
+		//--- If the position holds enemies, try to get a new "safe" one, only applies to ground towns
 		if (isNil {_town getVariable "cti_naval"}) then {
 			if (([_position nearEntities _safe_range, _side] call CTI_CO_FNC_GetAreaEnemiesCount) > 0) then {
-				{
-					if (([_x nearEntities _safe_range, _side] call CTI_CO_FNC_GetAreaEnemiesCount) < 1) exitWith {
-						_position = _x;
-						
-						if (CTI_Log_Level >= CTI_Log_Information) then {
-							["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Retrieved a new enemy-free position within [%1] meters to spawn the [%2] units in group [%3] for town [%4], the new position is [%5]", count _team, _group, _town getVariable "cti_town_name", _side, _position]] call CTI_CO_FNC_Log;
-						};
+				_use_default = true;
+				if (typeName _position isEqualTo "OBJECT") then { //--- If the position was meant to be a building, we try to find a new valid one, only applies to CTI_TOWNS_SPAWN_MODE with a value of 1
+					_positions_building = _town getVariable ["cti_town_spawn_building", []];
+					if (count _positions_building > 0) then {
+						_positions_building = _positions_building call CTI_CO_FNC_ArrayShuffle;
+						_building = [_positions_building, _side] call CTI_CO_FNC_GetTownSpawnBuilding;
+						if !(_building select 1 isEqualTo -1) then {_position = _building select 1; _use_default = false};
 					};
-				} forEach ([ASLToAGL getPosASL _town, _spawn_range, "meadow", 8, 8, 0.1, false] call CTI_CO_FNC_GetRandomBestPlaces);
+				};
+				
+				if (_use_default) then {
+					{
+						if (([_x nearEntities _safe_range, _side] call CTI_CO_FNC_GetAreaEnemiesCount) < 1) exitWith {
+							_position = _x;
+							
+							if (CTI_Log_Level >= CTI_Log_Information) then {
+								["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Retrieved a new enemy-free position within [%1] meters to spawn the [%2] units in group [%3] for town [%4], the new position is [%5]", count _team, _group, _town getVariable "cti_town_name", _side, _position]] call CTI_CO_FNC_Log;
+							};
+						};
+					} forEach ([ASLToAGL getPosASL _town, _spawn_range, "meadow", 8, 8, 0.1, false] call CTI_CO_FNC_GetRandomBestPlaces);
+				};
 			};
 		};
 		

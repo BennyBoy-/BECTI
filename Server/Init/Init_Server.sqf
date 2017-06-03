@@ -192,6 +192,7 @@ if (_attempts >= 500) then {
 0 spawn {
 	waitUntil {!isNil 'CTI_InitTowns'};
 	
+	//--- Initialize the game FSM after that the towns are initialized
 	execFSM "Server\FSM\update_ai_defensive.fsm";
 	execFSM "Server\FSM\update_garbage_collector.fsm";
 	execFSM "Server\FSM\update_resources.fsm";

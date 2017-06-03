@@ -30,6 +30,7 @@
 	Common Function: CTI_CO_FNC_GetSideID
 	Common Function: CTI_CO_FNC_GetSideUpgrades
 	Common Function: CTI_CO_FNC_GetTownCamps
+	Common Function: CTI_CO_FNC_GetTownSpawnBuilding
 	Common Function: CTI_CO_FNC_ManVehicle
 	Server Function: CTI_SE_FNC_HandleEmptyVehicle
 	
@@ -377,19 +378,39 @@ while {_totalGroups > 0} do {
 _groups = [];
 _positions = [];
 _camps = (_town) Call CTI_CO_FNC_GetTownCamps;
+
+_positions_building = _town getVariable ["cti_town_spawn_building", []];
+if (count _positions_building > 0) then {_positions_building = _positions_building call CTI_CO_FNC_ArrayShuffle};
+
 {
 	_position = [];
+	_has_vehicles = false;
+	{if !(_x isKindOf "Man") exitWith {_has_vehicles = true}} forEach _x;
 	
 	//--- A group may spawn close to a camp or somewhere in the town
-	if (isNil {_town getVariable "cti_naval"}) then {
-		if (count _camps > 0 && random 100 > 50) then {
+	if (isNil {_town getVariable "cti_naval"}) then { //--- The town is on the ground
+		if (count _camps > 0 && random 100 > 40) then { //--- A camp can be selected for spawning units
 			_camp_index = floor(random count _camps);
 			_position = [ASLToAGL getPosASL(_camps select _camp_index), 10, CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS, _tries] call CTI_CO_FNC_GetRandomPosition;
 			_position = [_position, 30, "meadow", 8, 5, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
 			_camps deleteAt _camp_index;
-		} else {
-			_position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE, _tries] call CTI_CO_FNC_GetRandomPosition;
-			_position = [_position, 80, "meadow", 8, 5, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
+		} else { //--- Pick a random position
+			_use_default = true;
+			if (CTI_TOWNS_SPAWN_MODE isEqualTo 1 && !_has_vehicles) then {
+				if (CTI_TOWNS_SPAWN_BUILDING_INFANTRY_CHANCE >= random 100 && count _positions_building > 0) then {
+					_building = [_positions_building, resistance] call CTI_CO_FNC_GetTownSpawnBuilding;
+					if !(_building select 1 isEqualTo -1) then {
+						_position = _building select 0;
+						_use_default = false;
+						_positions_building deleteAt (_building select 1);
+					};
+				};
+			};
+			
+			if (_use_default) then {
+				_position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE, _tries] call CTI_CO_FNC_GetRandomPosition;
+				_position = [_position, 80, "meadow", 8, 5, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
+			};
 		};
 	} else {
 		_position = [[ASLToAGL getPosASL _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE/1.5, 0] call CTI_CO_FNC_GetRandomPosition, 200, "sea", 8, 3, 1, true] call CTI_CO_FNC_GetRandomBestPlaces;

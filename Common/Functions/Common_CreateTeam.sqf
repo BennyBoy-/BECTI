@@ -18,7 +18,8 @@ _crews = [];
 
 {
 	if (_x isKindOf "Man") then {
-		_unit = [_x, _group, [_position, 2, 15, 50] call CTI_CO_FNC_GetRandomPosition, _sideID] call CTI_CO_FNC_CreateUnit;
+		_unit_pos = if (typeName _position isEqualTo "OBJECT") then {(_position buildingPos -1) select floor (random count (_position buildingPos -1))} else {[_position, 2, 15, 50] call CTI_CO_FNC_GetRandomPosition};
+		_unit = [_x, _group, _unit_pos, _sideID] call CTI_CO_FNC_CreateUnit;
 		_created_units pushBack _unit;
 	} else {
 		_crew = switch (true) do {

@@ -165,7 +165,7 @@ _object enableSimulationGlobal false;
 //_object = createVehicle ["Land_Tank_rust_F", _pos, [], 0, "CAN_COLLIDE"];
 //_object setDir 9.53674e-006;
 //_object setPosATL _pos;
-_object enableSimulationGlobal false;
+// _object enableSimulationGlobal false;
 
 _pos = [443.424744,3098.516846,121.146];
 _object = createVehicle ["Land_Pier_addon", _pos, [], 0, "CAN_COLLIDE"];

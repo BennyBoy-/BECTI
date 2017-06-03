@@ -48,6 +48,11 @@ if (typeName _team == "SIDE") then {
 
 //--- Determine the time needed to construct the unit (in case of d/c or timeout).
 _var = missionNamespace getVariable _classname;
+
+if (isNil '_var') exitWith {
+	if (CTI_Log_Level >= CTI_Log_Error) then { ["ERROR", "FILE: Server\Functions\Server_OnClientPurchase.sqf", format ["Cannot complete the Purchase Request [%1] from team [%2] on side [%3] since unit [%4] is not defined", _seed, _team, _side, _classname]] call CTI_CO_FNC_Log };
+};
+
 _required_time = _var select CTI_UNIT_TIME;
 
 //--- Compose the request

@@ -60,6 +60,7 @@ CTI_CO_FNC_GetTownCamps = compileFinal preprocessFileLineNumbers "Common\Functio
 CTI_CO_FNC_GetTownCampsHostileToSide = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTownCampsHostileToSide.sqf";
 CTI_CO_FNC_GetTownCampsOnSide = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTownCampsOnSide.sqf";
 CTI_CO_FNC_GetTownsResources = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTownsResources.sqf";
+CTI_CO_FNC_GetTownSpawnBuilding = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTownSpawnBuilding.sqf";
 CTI_CO_FNC_GetUnitLoadout = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetUnitLoadout.sqf";
 CTI_CO_FNC_GetUnitsScore = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetUnitsScore.sqf";
 CTI_CO_FNC_GetUpgrade = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetUpgrade.sqf";
@@ -159,3 +160,12 @@ missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
 	[["arifle_mk20c_f",["","acc_pointer_ir","optic_aco_grn",""],["30rnd_556x45_stanag"]],["launch_rpg32_f",[],["rpg32_f"]],["",[],[]]],
 	[["u_o_combatuniform_ocamo",[]],["v_platecarrier1_cbr",[]],["b_assaultpack_khk",["firstaidkit","firstaidkit","handgrenade","handgrenade","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","rpg32_f","rpg32_f"]]],
 	["h_helmeto_ocamo",""],[["nvgoggles","binocular"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
+	
+//--- If the towns units spawn mode is set to 1, we have to cache all possible spawn locations on start, only use on HC and Server
+if (CTI_TOWNS_SPAWN_MODE isEqualTo 1 && (CTI_IsHeadless || CTI_IsServer)) then {
+	0 spawn {
+		waitUntil {!isNil 'CTI_InitTowns'};
+		
+		execVM "Common\Init\Init_LocationsPositions.sqf";
+	};
+};
