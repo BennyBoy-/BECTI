@@ -301,10 +301,16 @@ _pool = [];
 		//--- Only one element is present, check for the force and probability and add it to our current pool
 		case "STRING": {
 			if (!isNil{missionNamespace getVariable format["%1_%2", _side, _x select 0]}) then {
-				_force = if (count _x > 1) then {_x select 1} else {1};
-				_probability = if (count _x > 2) then {_x select 2} else {100};
-			
-				for '_i' from 1 to _force do {_pool pushBack [format["%1_%2", _side, _x select 0], _probability]};
+				if (count (missionNamespace getVariable format["%1_%2", _side, _x select 0]) > 0) then {
+					_force = if (count _x > 1) then {_x select 1} else {1};
+					_probability = if (count _x > 2) then {_x select 2} else {100};
+				
+					for '_i' from 1 to _force do {_pool pushBack [format["%1_%2", _side, _x select 0], _probability]};
+				} else {
+					if (CTI_Log_Level >= CTI_Log_Warning) then { 
+						["WARNING", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Town unit pool [%1] has no units defined and will be skipped", format["%1_%2", _side, _x select 0]]] call CTI_CO_FNC_Log;
+					};
+				};
 			} else {
 				if (CTI_Log_Level >= CTI_Log_Error) then { 
 					["ERROR", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Attempting to use an undefined Occupation Team Template [%1] for town [%2] on side [%3]", format["%1_%2", _side, _x select 0], _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
@@ -316,10 +322,16 @@ _pool = [];
 			_pool_nest = [];
 			{
 				if (!isNil{missionNamespace getVariable format["%1_%2", _side, _x select 0]}) then {
-					_force = if (count _x > 1) then {_x select 1} else {1};
-					_probability = if (count _x > 2) then {_x select 2} else {100};
-					
-					for '_i' from 1 to _force do {_pool_nest pushBack [format["%1_%2", _side, _x select 0], _probability]};
+					if (count (missionNamespace getVariable format["%1_%2", _side, _x select 0]) > 0) then {
+						_force = if (count _x > 1) then {_x select 1} else {1};
+						_probability = if (count _x > 2) then {_x select 2} else {100};
+						
+						for '_i' from 1 to _force do {_pool_nest pushBack [format["%1_%2", _side, _x select 0], _probability]};
+					} else {
+						if (CTI_Log_Level >= CTI_Log_Warning) then { 
+							["WARNING", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Town unit pool [%1] has no units defined and will be skipped", format["%1_%2", _side, _x select 0]]] call CTI_CO_FNC_Log;
+						};
+					};
 				} else {
 					if (CTI_Log_Level >= CTI_Log_Error) then { 
 						["ERROR", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Attempting to use an undefined Occupation Team Template [%1] for town [%2] on side [%3]", format["%1_%2", _side, _x select 0], _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
@@ -391,8 +403,9 @@ if (count _positions_building > 0) then {_positions_building = _positions_buildi
 	if (isNil {_town getVariable "cti_naval"}) then { //--- The town is on the ground
 		if (count _camps > 0 && random 100 > 40) then { //--- A camp can be selected for spawning units
 			_camp_index = floor(random count _camps);
-			_position = [ASLToAGL getPosASL(_camps select _camp_index), 10, CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS, _tries] call CTI_CO_FNC_GetRandomPosition;
-			_position = [_position, 30, "meadow", 8, 5, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
+			// _position = [ASLToAGL getPosASL(_camps select _camp_index), 10, CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS, _tries] call CTI_CO_FNC_GetRandomPosition;
+			// _position = [_position, 30, "meadow", 8, 5, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
+			_position = [ASLToAGL getPosASL(_camps select _camp_index), 10, CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS, 10, if (_has_vehicles) then {"vehicles"} else {"infantry"}] call CTI_CO_FNC_GetSafePosition;
 			_camps deleteAt _camp_index;
 		} else { //--- Pick a random position
 			_use_default = true;
@@ -408,8 +421,9 @@ if (count _positions_building > 0) then {_positions_building = _positions_buildi
 			};
 			
 			if (_use_default) then {
-				_position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE, _tries] call CTI_CO_FNC_GetRandomPosition;
-				_position = [_position, 80, "meadow", 8, 5, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
+				// _position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE, _tries] call CTI_CO_FNC_GetRandomPosition;
+				// _position = [_position, 80, "meadow", 8, 5, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
+				_position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, 15, if (_has_vehicles) then {"vehicles"} else {"infantry"}] call CTI_CO_FNC_GetSafePosition;
 			};
 		};
 	} else {

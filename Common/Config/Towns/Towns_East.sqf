@@ -44,8 +44,8 @@ with missionNamespace do {
 			EAST_VEHICLE_AA3 = ["CUP_O_2S6M_RU"];
 			//--- Air
 			EAST_AIR_HELI1 = ["CUP_O_UH1H_TKA"];
-			EAST_AIR_HELI2 = [""];
-			EAST_AIR_HELI_ATTACK = [""];
+			EAST_AIR_HELI2 = [];
+			EAST_AIR_HELI_ATTACK = [];
 			EAST_AIR_AA = ["OFPS_SU25"];
 			EAST_AIR_CAS = ["OFPS_SU34_AGM"];
 			//--- Boats
@@ -100,8 +100,8 @@ with missionNamespace do {
 			EAST_VEHICLE_AA3 = ["CUP_O_2S6M_RU"];
 			//--- Air
 			EAST_AIR_HELI1 = ["CUP_O_UH1H_TKA"];
-			EAST_AIR_HELI2 = [""];
-			EAST_AIR_HELI_ATTACK = [""];
+			EAST_AIR_HELI2 = [];
+			EAST_AIR_HELI_ATTACK = [];
 			EAST_AIR_AA = ["OFPS_SU25"];
 			EAST_AIR_CAS = ["OFPS_SU34_AGM"];
 			//--- Boats
@@ -158,7 +158,7 @@ with missionNamespace do {
 			EAST_AIR_HELI1 = ["O_Heli_Light_02_F"];
 			EAST_AIR_HELI2 = ["O_Heli_Light_02_v2_F"];
 			EAST_AIR_HELI_ATTACK = ["O_Heli_Attack_02_F"];
-			EAST_AIR_AA = [""];
+			EAST_AIR_AA = [];
 			EAST_AIR_CAS = ["O_Plane_CAS_02_F"];
 			//--- Boats
 			EAST_NAVAL_ASSAULT_BOAT1 = ["O_Boat_Armed_01_hmg_F"];

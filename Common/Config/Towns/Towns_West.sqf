@@ -44,8 +44,8 @@ with missionNamespace do {
 			WEST_VEHICLE_AA3 = ["CUP_B_M163_USA"];
 			//--- Air
 			WEST_AIR_HELI1 = ["CUP_B_UH1D_GER_KSK_Des"];
-			WEST_AIR_HELI2 = [""];
-			WEST_AIR_HELI_ATTACK = [""];
+			WEST_AIR_HELI2 = [];
+			WEST_AIR_HELI_ATTACK = [];
 			WEST_AIR_AA = ["CUP_B_F35B_AA_USMC"];
 			WEST_AIR_CAS = ["CUP_B_F35B_LGB_USMC"];
 			//--- Boats
@@ -100,8 +100,8 @@ with missionNamespace do {
 			WEST_VEHICLE_AA3 = ["B_APC_Tracked_01_AA_F"];
 			//--- Air
 			WEST_AIR_HELI1 = ["CUP_B_UH1D_GER_KSK_Des"];
-			WEST_AIR_HELI2 = [""];
-			WEST_AIR_HELI_ATTACK = [""];
+			WEST_AIR_HELI2 = [];
+			WEST_AIR_HELI_ATTACK = [];
 			WEST_AIR_AA = ["CUP_B_F35B_AA_USMC"];
 			WEST_AIR_CAS = ["CUP_B_F35B_LGB_USMC"];
 			//--- Boats
@@ -158,13 +158,13 @@ with missionNamespace do {
 			WEST_AIR_HELI1 = ["B_Heli_Light_01_armed_F"]; //pawnee
 			WEST_AIR_HELI2 = ["B_Heli_Transport_01_F"]; //ghosthawk
 			WEST_AIR_HELI_ATTACK = ["B_Heli_Attack_01_F"];
-			WEST_AIR_AA = [""];
+			WEST_AIR_AA = [];
 			WEST_AIR_CAS = ["B_Plane_CAS_01_F"];
 			//--- Boats
 			WEST_NAVAL_ASSAULT_BOAT1 = ["B_Boat_Armed_01_minigun_F"];
 			WEST_NAVAL_ASSAULT_BOAT2 = ["B_Boat_Armed_01_minigun_F"];
-			WEST_NAVAL_MEDIUM_ASSAULT_BOAT = [""];
-			WEST_NAVAL_LARGE_ASSAULT_BOAT = [""];
+			WEST_NAVAL_MEDIUM_ASSAULT_BOAT = [];
+			WEST_NAVAL_LARGE_ASSAULT_BOAT = [];
 			//---Manual Set SQUAD - odd bug
 			WEST_TOWNS_SQUAD_NAVAL1 = ["B_diver_TL_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_diver_F"];
 			WEST_TOWNS_SQUAD_NAVAL2 = ["B_diver_TL_F", "B_diver_F", "B_diver_F", "B_diver_F", "B_Soldier_AT_F", "B_Soldier_AA_F"];

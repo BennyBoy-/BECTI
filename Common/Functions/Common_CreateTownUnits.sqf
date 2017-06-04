@@ -1,4 +1,4 @@
-private ["_groups", "_index", "_limit", "_positions", "_ratio", "_safe_range", "_side", "_sideID", "_spawn_range", "_teams", "_teams_priority", "_town", "_tvar", "_vvar"];
+private ["_groups", "_index", "_limit", "_positions", "_ratio", "_safe_range", "_side", "_sideID", "_sorted", "_spawn_range", "_teams", "_teams_priority", "_town", "_tvar", "_vvar"];
 
 _town = _this select 0;
 _side = _this select 1;
@@ -23,6 +23,7 @@ _active_units = (((_spawn_max_ai - _spawn_min_ai) * (_spawn_town_sv - CTI_TOWNS_
 
 //--- Sort the teams orders if needed
 _teams_priority = [];
+_sorted = false;
 
 switch (CTI_TOWNS_SPAWN_PRIORITY) do {
 	case 1: { //--- Vehicles first
@@ -39,6 +40,7 @@ switch (CTI_TOWNS_SPAWN_PRIORITY) do {
 		} forEach _teams;
 		
 		_teams_priority = _teams_vehicles + _teams_infantry;
+		_sorted = true;
 	};
 	default {_teams_priority = _teams}; //--- Random
 };
@@ -84,9 +86,10 @@ while {true} do {
 	
 	//--- Create if the total AI count is below the given limit and if the the active squad value is below the threshold or if the current town AI size is below the given value
 	if ((_total < _limit && _active_squads < _ratio) || _current < _active_units) then {
-		_position = _positions select _index;
 		_team = _teams_priority select _index;
-		_group = _groups select _index;
+		_index_sorted = if (_sorted) then {_teams find _team} else {_index};
+		_position = _positions select _index_sorted;
+		_group = _groups select _index_sorted;
 		
 		//--- If the position holds enemies, try to get a new "safe" one, only applies to ground towns
 		if (isNil {_town getVariable "cti_naval"}) then {
@@ -97,26 +100,30 @@ while {true} do {
 					if (count _positions_building > 0) then {
 						_positions_building = _positions_building call CTI_CO_FNC_ArrayShuffle;
 						_building = [_positions_building, _side] call CTI_CO_FNC_GetTownSpawnBuilding;
-						if !(_building select 1 isEqualTo -1) then {_position = _building select 1; _use_default = false};
+						if !(_building select 1 isEqualTo -1) then {_position = _building select 0; _use_default = false};
 					};
 				};
 				
 				if (_use_default) then {
-					{
-						if (([_x nearEntities _safe_range, _side] call CTI_CO_FNC_GetAreaEnemiesCount) < 1) exitWith {
-							_position = _x;
+					_has_vehicles = false;
+					{if !(_x isKindOf "Man") exitWith {_has_vehicles = true}} forEach _team;
+					
+					for '_i' from 1 to 100 do {
+						_position_ran = [ASLToAGL _position, 10, _spawn_range, 10, if (_has_vehicles) then {"vehicles"} else {"infantry"}] call CTI_CO_FNC_GetSafePosition;
+						if (([_position_ran nearEntities _safe_range, _side] call CTI_CO_FNC_GetAreaEnemiesCount) < 1) exitWith {
+							_position = _position_ran;
 							
 							if (CTI_Log_Level >= CTI_Log_Information) then {
 								["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Retrieved a new enemy-free position within [%1] meters to spawn the [%2] units in group [%3] for town [%4], the new position is [%5]", count _team, _group, _town getVariable "cti_town_name", _side, _position]] call CTI_CO_FNC_Log;
 							};
 						};
-					} forEach ([ASLToAGL getPosASL _town, _spawn_range, "meadow", 8, 8, 0.1, false] call CTI_CO_FNC_GetRandomBestPlaces);
+					};
 				};
 			};
 		};
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Spawning [%1] units in group [%2] for town [%3] on side [%4]. Overall AI [%5] and current limit [%6]. Active Squad in town [%7] with current Ratio [%8]. Current Live AI in town [%9], AI Spawn threshold is set to [%10]", count _team, _group, _town getVariable "cti_town_name", _side, _total, _limit, _active_squads, _ratio, _current, _active_units]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Spawning [%1] units in group [%2] for town [%3] on side [%4] at position [%5]. Overall AI [%6] and current limit [%7]. Active Squad in town [%8] with current Ratio [%9]. Current Live AI in town [%10], AI Spawn threshold is set to [%11]", count _team, _group, _town getVariable "cti_town_name", _side, _position, _total, _limit, _active_squads, _ratio, _current, _active_units]] call CTI_CO_FNC_Log;
 		};
 		
 		_index = _index + 1;
