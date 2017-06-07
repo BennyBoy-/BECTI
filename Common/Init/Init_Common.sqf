@@ -135,9 +135,6 @@ if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then {
 (west) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_East.sqf";
 
-//--- External Functions/Modules
-(east) call compile preprocessFileLineNumbers "Common\Functions\External\Functions_SHK.sqf";
-
 //--- Respawn markers
 createMarkerLocal ["respawn_east",getMarkerPos "CTI_EastRespawn"];
 "respawn_east" setMarkerColorLocal "ColorRed";

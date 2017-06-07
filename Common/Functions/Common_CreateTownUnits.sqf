@@ -95,7 +95,7 @@ while {true} do {
 		if (isNil {_town getVariable "cti_naval"}) then {
 			if (([_position nearEntities _safe_range, _side] call CTI_CO_FNC_GetAreaEnemiesCount) > 0) then {
 				_use_default = true;
-				if (typeName _position isEqualTo "OBJECT") then { //--- If the position was meant to be a building, we try to find a new valid one, only applies to CTI_TOWNS_SPAWN_MODE with a value of 1
+				if (typeName _position isEqualTo "OBJECT") then { //--- If the position was meant to be a building, we try to find a new valid building one, only applies to CTI_TOWNS_SPAWN_MODE with a value of 1
 					_positions_building = _town getVariable ["cti_town_spawn_building", []];
 					if (count _positions_building > 0) then {
 						_positions_building = _positions_building call CTI_CO_FNC_ArrayShuffle;
@@ -104,6 +104,7 @@ while {true} do {
 					};
 				};
 				
+				//--- If the position is not in a building, we do attempt to find a new safe position around the given area
 				if (_use_default) then {
 					_has_vehicles = false;
 					{if !(_x isKindOf "Man") exitWith {_has_vehicles = true}} forEach _team;
@@ -151,18 +152,6 @@ while {true} do {
 			} else { //--- HC
 				(_vehicles) remoteExec ["CTI_PVF_SRV_RequestHandleEmptyVehicles", CTI_PV_SERVER];
 				[_town, _side, _vehicles] remoteExec ["CTI_PVF_SRV_RequestTownAddVehicles", CTI_PV_SERVER];
-			};
-		};
-		
-		//--- Man the nearby structures if needed
-		if (CTI_SHK_BUILDING_ENABLED) then {
-			if !(isNil {_town getVariable "cti_naval"}) then {
-				if (CTI_Log_Level >= CTI_Log_Information) then {
-					["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Group [%1] members in town [%2] will be placed in nearby building if possible via SHK", _group, _town getVariable "cti_town_name"]] call CTI_CO_FNC_Log;
-				};
-				
-				_scan_range = if (isNil {_town getVariable "cti_naval"}) then {CTI_SHK_BUILDING_SCAN_RANGE} else {CTI_SHK_BUILDING_SCAN_RANGE * 1.75};
-				[ASLToAGL getPosASL _town, _men, (_scan_range + random(CTI_SHK_BUILDING_SCAN_RANGE_RAN) - random(CTI_SHK_BUILDING_SCAN_RANGE_RAN)), 0, [], true, true, _side] Call SHK_BuildingPosExec; 
 			};
 		};
 		

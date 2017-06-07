@@ -397,13 +397,11 @@ if (count _positions_building > 0) then {_positions_building = _positions_buildi
 	if (isNil {_town getVariable "cti_naval"}) then { //--- The town is on the ground
 		if (count _camps > 0 && random 100 > 40) then { //--- A camp can be selected for spawning units
 			_camp_index = floor(random count _camps);
-			// _position = [ASLToAGL getPosASL(_camps select _camp_index), 10, CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS, _tries] call CTI_CO_FNC_GetRandomPosition;
-			// _position = [_position, 30, "meadow", 8, 5, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
 			_position = [ASLToAGL getPosASL(_camps select _camp_index), 10, CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS, 10, if (_has_vehicles) then {"vehicles"} else {"infantry"}] call CTI_CO_FNC_GetSafePosition;
 			_camps deleteAt _camp_index;
 		} else { //--- Pick a random position
 			_use_default = true;
-			if (CTI_TOWNS_SPAWN_MODE isEqualTo 1 && !_has_vehicles) then {
+			if (CTI_TOWNS_SPAWN_MODE isEqualTo 1 && !_has_vehicles) then { //--- Check if Infantry should spawn in buildings or not
 				if (CTI_TOWNS_SPAWN_BUILDING_INFANTRY_CHANCE >= random 100 && count _positions_building > 0) then {
 					_building = [_positions_building, resistance] call CTI_CO_FNC_GetTownSpawnBuilding;
 					if !(_building select 1 isEqualTo -1) then {
@@ -414,14 +412,26 @@ if (count _positions_building > 0) then {_positions_building = _positions_buildi
 				};
 			};
 			
-			if (_use_default) then {
-				// _position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, _tries] call CTI_CO_FNC_GetRandomPosition;
-				// _position = [_position, 80, "meadow", 8, 5, 0.1, true] call CTI_CO_FNC_GetRandomBestPlaces;
+			if (_use_default) then { //--- Default spawn area, pick a safe area around the town
 				_position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, 15, if (_has_vehicles) then {"vehicles"} else {"infantry"}] call CTI_CO_FNC_GetSafePosition;
 			};
 		};
 	} else { //--- The town is naval
-		_position = [[ASLToAGL getPosASL _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE/1.5, 0] call CTI_CO_FNC_GetRandomPosition, 200, "sea", 8, 3, 1, true] call CTI_CO_FNC_GetRandomBestPlaces;
+		_use_default = true;
+		if (CTI_TOWNS_SPAWN_MODE isEqualTo 1 && !_has_vehicles) then { //--- Check if Infantry should spawn in buildings or not
+			if (count _positions_building > 0) then { //--- Naval AI squads will always spawn in buildings
+				_building = [_positions_building, resistance] call CTI_CO_FNC_GetTownSpawnBuilding;
+				if !(_building select 1 isEqualTo -1) then {
+					_position = _building select 0;
+					_use_default = false;
+					_positions_building deleteAt (_building select 1);
+				};
+			};
+		};
+		
+		if (_use_default) then { //--- Default spawn area, pick a sea area
+			_position = [[ASLToAGL getPosASL _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE/1.5, 0] call CTI_CO_FNC_GetRandomPosition, 200, "sea", 8, 3, 1, true] call CTI_CO_FNC_GetRandomBestPlaces;
+		};
 	};
 	
 	_positions pushBack _position;
