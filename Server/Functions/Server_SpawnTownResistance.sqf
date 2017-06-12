@@ -445,9 +445,6 @@ if (count _positions_building > 0) then {_positions_building = _positions_buildi
 	};
 } forEach _teams;
 
-//--- Update the town with the groups
-_town setVariable ["cti_town_resistance_groups", _groups];
-
 if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format["Composed [%1] Resistance Teams for town [%2] having a max SV of [%3]", count _teams, _town getVariable "cti_town_name", _value]] call CTI_CO_FNC_Log;
 };

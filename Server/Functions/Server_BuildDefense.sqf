@@ -122,6 +122,6 @@ if (_defense emptyPositions "gunner" > 0) then { //--- Hard defense
 };
 
 //AdminZeus
-if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_defense],true];};
+if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_defense],true] };
 
 _defense
