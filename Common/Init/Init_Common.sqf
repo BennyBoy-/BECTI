@@ -109,9 +109,6 @@ call compile preprocessFileLineNumbers "Common\Config\Artillery\Artillery.sqf";
 call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_Resistance.sqf";
 call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_West.sqf";
 call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_East.sqf";
-call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_Resistance_Defenses.sqf";
-call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_West_Defenses.sqf";
-call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_East_Defenses.sqf";
 call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_Camps.sqf";
 
 //--- Upgrade goes before the base definition so that we may construct the commander's logical path

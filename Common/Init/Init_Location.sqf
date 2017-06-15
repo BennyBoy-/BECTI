@@ -26,6 +26,7 @@ if (CTI_IsServer) then {
 	
 	//--- Town Statics
 	if (count _town_defenses > 0) then { 
+		if (typeName (_town_defenses select 0) == "STRING") then {_town_defenses = [_town_defenses]};
 		_town setVariable ["cti_town_defenses", _town_defenses];
 		if (isNil {_town getVariable "cti_town_hasdefenses"}) then {_town setVariable ["cti_town_hasdefenses", true]};
 	};

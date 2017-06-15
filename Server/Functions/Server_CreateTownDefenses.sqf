@@ -32,13 +32,16 @@ private ["_defenses", "_pool", "_pool_all", "_sideID"];
 _town = _this select 0;
 _side = _this select 1;
 
-_sideID = (_side) call CTI_CO_FNC_GetSideID
+_sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 _pool = [];
+_pool_all = [];
 
 //--- Add the town and the camps defenses to the overall pool
-_pool_all = (_town getVariable ["cti_town_defenses", []]);
-{_pool_all = _pool_all + (_x getVariable ["cti_camp_defenses", []])} forEach ([_town, _side] call CTI_CO_FNC_GetTownCampsOnSide);
+if (count (_town getVariable ["cti_town_defenses", []]) > 0) then {_pool_all = _pool_all + (_town getVariable "cti_town_defenses")};
+{
+	if (count (_x getVariable ["cti_camp_defenses", []]) > 0) then {_pool_all = _pool_all + (_x getVariable "cti_camp_defenses")};
+} forEach ([_town, _side] call CTI_CO_FNC_GetTownCampsOnSide);
 
 //--- Return the valid defenses that may be used
 {
@@ -47,17 +50,15 @@ _pool_all = (_town getVariable ["cti_town_defenses", []]);
 	
 	if !(getMarkerPos _marker isEqualTo [0,0,0]) then {
 		if (typeName (_class select 0) isEqualTo "STRING") then { //--- We're dealing with a simple defense
-			_classname = _x select 0;
-			
-			if (count(missionNamespace getVariable [format["%1_%2", _side, _classname], []]) > 0) then {
-				_probability = if (count _x > 1) then {_this select 1} else {100};
+			if (count(missionNamespace getVariable [format["%1_%2", _side, _class select 0], []]) > 0) then {
+				_probability = if (count _class > 1) then {_class select 1} else {100};
 				
 				if (_probability >= random 100) then {
-					_pool pushBack [_marker, _x select 0];
+					_pool pushBack [_marker, _class select 0];
 				};
 			} else {
 				if (CTI_Log_Level >= CTI_Log_Warning) then { 
-					["WARNING", "FILE: Server\Functions\Server_CreateTownDefenses.sqf", format ["Town Defense classname %1 is nil and will be skipped", format["%1_%2", _side, _classname]]] call CTI_CO_FNC_Log;
+					["WARNING", "FILE: Server\Functions\Server_CreateTownDefenses.sqf", format ["Town Defense classname %1 is nil and will be skipped", format["%1_%2", _side, _class select 0]]] call CTI_CO_FNC_Log;
 				};
 			};
 		} else { //--- We're dealing with multiple defenses choices
@@ -67,8 +68,8 @@ _pool_all = (_town getVariable ["cti_town_defenses", []]);
 				_classname = _x select 0;
 				
 				if (count(missionNamespace getVariable [format["%1_%2", _side, _classname], []]) > 0) then {
-					_force = if (count _x > 1) then {_this select 1} else {1};
-					_probability = if (count _x > 2) then {_this select 2} else {100};
+					_force = if (count _x > 1) then {_x select 1} else {1};
+					_probability = if (count _x > 2) then {_x select 2} else {100};
 					
 					for '_i' from 1 to _force do {_pool_multi pushBack [_x select 0, _probability]};
 				} else {
@@ -84,7 +85,7 @@ _pool_all = (_town getVariable ["cti_town_defenses", []]);
 				_match = false;
 				while {!_match} do {
 					for '_i' from 0 to (count _pool_multi)-1 do {
-						if (((_pool_multi select _i) select 2) >= random 100) exitWith {_match = true; _pool pushBack [_marker, (_pool_multi select _i) select 0]};
+						if (((_pool_multi select _i) select 1) >= random 100) exitWith {_match = true; _pool pushBack [_marker, (_pool_multi select _i) select 0]};
 					};
 				};
 			};
@@ -143,14 +144,14 @@ _town_group = if (count _pool > 0) then {createGroup _side} else {grpNull};
 //--- Store the town defenses along with the defender's group in a variable for an easier access
 if !(isNull _town_group) then {
 	//--- Give the defense group an explicit callsign
-	_town_group setGroupIdGlobal [format["(%1-DEF) %2", _town, _group]];
+	_town_group setGroupIdGlobal [format["(%1-DEF) %2", _town, _town_group]];
 	
 	//--- Remove the group when it becomes empty
 	_town_group deleteGroupWhenEmpty true;
 	
 	{
 		_can_delegate = if (count(missionNamespace getVariable ["CTI_HEADLESS_CLIENTS", []]) > 0) then {true} else {false};
-		_ai_args = [missionNamespace getVariable format["CTI_%1_Soldier", _side], _town_group, getMarkerPos _marker, _sideID, if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then {true} else {false}];
+		_ai_args = [missionNamespace getVariable format["CTI_%1_Soldier", _side], _town_group, getPos _x, _sideID, if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then {true} else {false}];
 		
 		//--- Assign him to the defense
 		if !(_can_delegate) then {
