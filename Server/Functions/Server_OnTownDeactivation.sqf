@@ -73,6 +73,27 @@ if (count _buildings > 0) then {
 	_town setVariable ["cti_town_spawn_building", _buildings];
 };
 
+//--- Cleanup the potential town defenses
+if !(isNil {_town getVariable "cti_town_hasdefenses"}) then {
+	if (CTI_Log_Level >= CTI_Log_Information) then {
+		["INFORMATION", "FILE: Server\Functions\Server_OnTownDeactivation.sqf", format["Town Defenses for side [%1] in town [%2] will be removed", _side, _town]] call CTI_CO_FNC_Log;
+	};
+	
+	_defenses = _town getVariable ["cti_town_defenses_active", []];
+	if (count _defenses > 0) then {
+		_group = _defenses select 0;
+		_props = _defenses select 1;
+		
+		//--- Remove the Town Defenses units
+		if !(isNil '_group') then {{deleteVehicle _x} forEach units _group};
+		
+		//--- Remote the Town Defenses statics/props
+		{deleteVehicle _x} forEach _props;
+		
+		_town setVariable ["cti_town_defenses_active", nil];
+	};
+};
+
 _town setVariable [format["cti_town_%1_groups", _variable], []];
 _town setVariable [format["cti_town_%1_active_vehicles", _variable], []];
 _town setVariable [format["cti_town_%1_active", _variable], false];

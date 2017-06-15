@@ -109,12 +109,16 @@ call compile preprocessFileLineNumbers "Common\Config\Artillery\Artillery.sqf";
 call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_Resistance.sqf";
 call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_West.sqf";
 call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_East.sqf";
+call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_Resistance_Defenses.sqf";
+call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_West_Defenses.sqf";
+call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_East_Defenses.sqf";
 call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_Camps.sqf";
 
 //--- Upgrade goes before the base definition so that we may construct the commander's logical path
 (west) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades_East.sqf";
 
+(resistance) call compile preprocessFileLineNumbers "Common\Config\Base\Base_Resistance.sqf";
 (west) call compile preprocessFileLineNumbers "Common\Config\Base\Base_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Base\Base_East.sqf";
 
@@ -129,6 +133,7 @@ if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then {
 	(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_CUP_Resistance.sqf";
 };
 
+(resistance) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_Resistance.sqf";
 (west) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_East.sqf";
 

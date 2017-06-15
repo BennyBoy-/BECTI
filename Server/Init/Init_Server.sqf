@@ -4,6 +4,7 @@ CTI_SE_FNC_AddScore = compileFinal preprocessFileLineNumbers "Server\Functions\S
 CTI_SE_FNC_AI_PurchaseSquad = compileFinal preprocessFileLineNumbers "Server\Functions\Server_AI_PurchaseSquad.sqf";
 CTI_SE_FNC_AttemptDefenseDelegation = compileFinal preprocessFileLineNumbers "Server\Functions\Server_AttemptDefenseDelegation.sqf";
 CTI_SE_FNC_AttemptTownDelegation = compileFinal preprocessFileLineNumbers "Server\Functions\Server_AttemptTownDelegation.sqf";
+CTI_SE_FNC_AttemptTownDefenseDelegation = compileFinal preprocessFileLineNumbers "Server\Functions\Server_AttemptTownDefenseDelegation.sqf";
 CTI_SE_FNC_BuildStructure = compileFinal preprocessFileLineNumbers "Server\Functions\Server_BuildStructure.sqf";
 CTI_SE_FNC_BuildDefense = compileFinal preprocessFileLineNumbers "Server\Functions\Server_BuildDefense.sqf";
 CTI_SE_FNC_CanCaptureTerritorialTown = compileFinal preprocessFileLineNumbers "Server\Functions\Server_CanCaptureTerritorialTown.sqf";

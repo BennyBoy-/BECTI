@@ -64,6 +64,10 @@ if (count _town_groups > 0) then {
 
 //--- Create defenses if needed
 if !(isNil {_town getVariable "cti_town_hasdefenses"}) then {
+	if (CTI_Log_Level >= CTI_Log_Information) then {
+		["INFORMATION", "FILE: Server\Functions\Server_OnTownActivation.sqf", format["Creating Town Defenses for side [%1] in town [%2]", _side, _town]] call CTI_CO_FNC_Log;
+	};
+	
 	[_town, _side] call CTI_SE_FNC_CreateTownDefenses;
 };
 

@@ -27,10 +27,12 @@
 */
 
 params ["_town", "_side"];
-private ["_defenses", "_pool", "_pool_all"];
+private ["_defenses", "_pool", "_pool_all", "_sideID"];
 
 _town = _this select 0;
 _side = _this select 1;
+
+_sideID = (_side) call CTI_CO_FNC_GetSideID
 
 _pool = [];
 
@@ -54,7 +56,9 @@ _pool_all = (_town getVariable ["cti_town_defenses", []]);
 					_pool pushBack [_marker, _x select 0];
 				};
 			} else {
-				//--- Warning: classname is nil
+				if (CTI_Log_Level >= CTI_Log_Warning) then { 
+					["WARNING", "FILE: Server\Functions\Server_CreateTownDefenses.sqf", format ["Town Defense classname %1 is nil and will be skipped", format["%1_%2", _side, _classname]]] call CTI_CO_FNC_Log;
+				};
 			};
 		} else { //--- We're dealing with multiple defenses choices
 			_pool_multi = [];
@@ -68,7 +72,9 @@ _pool_all = (_town getVariable ["cti_town_defenses", []]);
 					
 					for '_i' from 1 to _force do {_pool_multi pushBack [_x select 0, _probability]};
 				} else {
-					//--- Warning: classname is nil
+					if (CTI_Log_Level >= CTI_Log_Warning) then { 
+						["WARNING", "FILE: Server\Functions\Server_CreateTownDefenses.sqf", format ["Town Defense classname %1 is nil and will be skipped", format["%1_%2", _side, _classname]]] call CTI_CO_FNC_Log;
+					};
 				};
 			} forEach _class;
 			
@@ -84,32 +90,95 @@ _pool_all = (_town getVariable ["cti_town_defenses", []]);
 			};
 		};
 	} else {
-		//--- Warning: marker is nil
+		if (CTI_Log_Level >= CTI_Log_Warning) then { 
+			["WARNING", "FILE: Server\Functions\Server_CreateTownDefenses.sqf", format ["Town Defense Marker %1 does not exist and will be skipped", _marker]] call CTI_CO_FNC_Log;
+		};
 	};
 } forEach _pool_all;
 
 _defenses = [];
+_town_group = if (count _pool > 0) then {createGroup _side} else {grpNull};
 
 //--- Create the defenses 
 {
 	_marker = _x select 0;
-	_composition = missionNamespace getVariable format["%1_%2", _side, _x select 1];
+	_composition = (missionNamespace getVariable format["%1_%2", _side, _x select 1]) select 0;
+	
+	if (CTI_Log_Level >= CTI_Log_Information) then {
+		["INFORMATION", "FILE: Server\Functions\Server_CreateTownDefenses.sqf", format["Creating Town Defense [%1] at marker [%2]", format["%1_%2", _side, _x select 1], _marker]] call CTI_CO_FNC_Log;
+	};
 	
 	if (typeName _composition isEqualTo "STRING") then { //--- Singular classname
 		_defense = _composition createVehicle (getMarkerPos _marker);
 		_defense setDir (markerDir _marker);
 		_defense setVectorUp surfaceNormal position _defense;
-		_defense addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _side]];
-
-		// _defense setVariable ["cti_defense_town", true, true];
+		_defense addEventHandler ["killed", format["[_this select 0, _this select 1, %1, true] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
+		
+		// _defense setVariable ["cti_defense_town", true, true]; //todo: use later for empty defenses manning
 		
 		_defenses pushBack _defense;
 		
 		if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_defense],true] };
-	} else { //--- Composition
-		
+	} else { //--- Composition (script-block)
+		if (typeName _composition isEqualTo "CODE") then {
+			_custom_compo = [getMarkerPos _marker, markerDir _marker] call _composition;
+			_custom_defenses = _custom_compo select 0;
+			_custom_objects = _custom_compo select 1;
+			
+			{
+				_x addEventHandler ["killed", format["[_this select 0, _this select 1, %1, true] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
+				_defenses pushBack _x;
+			} forEach _custom_defenses;
+			
+			_defenses = _defenses + _custom_objects;
+		} else {
+			// Warning: unknown type, not a code block
+			if (CTI_Log_Level >= CTI_Log_Warning) then { 
+				["WARNING", "FILE: Server\Functions\Server_CreateTownDefenses.sqf", format ["Town Defense custom composition %1 is not a script block. Skipping", format["%1_%2", _side, _x select 1]]] call CTI_CO_FNC_Log;
+			};
+		};
 	};
 } forEach _pool;
 
-//--- Store the town defenses in a variable for an easier access
-_town setVariable ["cti_town_defenses_active", _defenses];
+//--- Store the town defenses along with the defender's group in a variable for an easier access
+if !(isNull _town_group) then {
+	//--- Give the defense group an explicit callsign
+	_town_group setGroupIdGlobal [format["(%1-DEF) %2", _town, _group]];
+	
+	//--- Remove the group when it becomes empty
+	_town_group deleteGroupWhenEmpty true;
+	
+	{
+		_can_delegate = if (count(missionNamespace getVariable ["CTI_HEADLESS_CLIENTS", []]) > 0) then {true} else {false};
+		_ai_args = [missionNamespace getVariable format["CTI_%1_Soldier", _side], _town_group, getMarkerPos _marker, _sideID, if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then {true} else {false}];
+		
+		//--- Assign him to the defense
+		if !(_can_delegate) then {
+			if (CTI_Log_Level >= CTI_Log_Information) then {
+				["INFORMATION", "FILE: Server\Functions\Server_CreateTownDefenses.sqf", format["No HC were detected, defense [%1] (%2) from side [%3] will be server-managed", _x, typeOf _x, _side]] call CTI_CO_FNC_Log;
+			};
+			
+			//--- Create the unit
+			_ai = (_ai_args) call CTI_CO_FNC_CreateUnit;
+			
+			//--- The arguments used to create the AI
+			[_ai] allowGetIn true;
+			_ai assignAsGunner _x;
+			[_ai] orderGetIn true;
+			_ai moveInGunner _x;
+			
+			//--- Update the gunner's properties
+			_ai setBehaviour "AWARE";
+			_ai setCombatMode "RED";
+		} else {
+			if (CTI_Log_Level >= CTI_Log_Information) then {
+				["INFORMATION", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["At least one HC is present, defense [%1] (%2) from side [%3] will be managed by an HC", _x, typeOf _x, _side]] call CTI_CO_FNC_Log;
+			};
+			
+			//--- Attempt town defense delegation
+			[_x, _town_group, _side, _ai_args] call CTI_SE_FNC_AttemptTownDefenseDelegation;
+		};
+	} forEach _defenses;
+	
+	_town setVariable ["cti_town_defenses_active", [_town_group, _defenses]];
+};

@@ -79,7 +79,7 @@ switch (_message_var) do {
 	case "order-getoutc": {_parameters sideChat "Acknowledged.  Disembarking from any transport(s)"};
 	case "penalty": {
 		_var = missionNamespace getVariable (_parameters select 0);
-		CTI_P_ChatID sideChat format ["A friendly %1 was killed by the %2 group! %2 was fined $%3", _var select CTI_UNIT_LABEL, (_parameters select 1) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], _parameters select 2];
+		CTI_P_ChatID sideChat format ["A friendly %1 was killed by the %2 group! %2 was fined $%3", if !(_parameters select 3) then {_var select CTI_UNIT_LABEL} else {_var select CTI_DEFENSE_LABEL}, (_parameters select 1) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], _parameters select 2];
 	};
 	case "repair-by": {
 		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _parameters select 1];
