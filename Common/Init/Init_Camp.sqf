@@ -1,7 +1,5 @@
-private ["_sideID", "_town", "_town_camps", "_town_name", "_town_side"];
-
-_town = _this select 0;
-_camp = _this select 1;
+params ["_town", "_camp", ["_defenses", []]];
+private ["_sideID", "_town_camps", "_town_name", "_town_side"];
 
 //--- Common Variables
 if (isNil {_town getVariable "cti_town_camps"}) then {_town setVariable ["cti_town_camps", []]};
@@ -26,6 +24,13 @@ if (CTI_IsServer) then {
 	
 	//--- Camp FSM
 	[_town, _camp] execFSM "Server\FSM\town_capture_camp.fsm";
+	
+	//--- Camp Statics
+	if (count _defenses > 0) then { 
+		if (typeName (_defenses select 0) == "STRING") then {_defenses = [_defenses]};
+		_camp setVariable ["cti_camp_defenses", _defenses];
+		if (isNil {_town getVariable "cti_town_hasdefenses"}) then {_town setVariable ["cti_town_hasdefenses", true]};
+	};
 };
 
 //--- Client Initialization

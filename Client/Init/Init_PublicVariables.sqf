@@ -59,12 +59,13 @@ with missionNamespace do {
 		_type_killed = _this select 0;
 		_award = _this select 1;
 		_killed_pname = _this select 2;
+		_is_defense = _this select 3;
 		
 		_delay = 5 + random 30;
 		sleep _delay;
 		
 		_var = missionNamespace getVariable _type_killed;
-		_label = _var select CTI_UNIT_LABEL;
+		_label = if !(_is_defense) then {_var select CTI_UNIT_LABEL} else {_var select CTI_DEFENSE_LABEL};
 		
 		(_award) call CTI_CL_FNC_ChangePlayerFunds;
 		if (_killed_pname == "") then {

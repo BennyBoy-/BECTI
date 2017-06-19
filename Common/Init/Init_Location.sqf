@@ -1,10 +1,11 @@
-private ["_sideID", "_town", "_town_name", "_town_side", "_town_sv_default", "_town_sv_max"];
+private ["_sideID", "_town", "_town_defenses", "_town_name", "_town_side", "_town_sv_default", "_town_sv_max"];
 
 _town = _this select 0;
 _town_name = _this select 1;
 _town_side = _this select 2;
 _town_sv_default = _this select 3;
 _town_sv_max = _this select 4;
+_town_defenses = if (count _this > 5) then {_this select 5} else {[]};
 
 _town setVariable ["cti_town_name", _town_name];
 _town setVariable ["cti_town_sv_default", _town_sv_default];
@@ -22,6 +23,13 @@ if (CTI_IsServer) then {
 	_town setVariable ["cti_town_sv", _town_sv_default, true];
 	_town setVariable ["cti_town_lastSideID", _sideID, true];
 	_town setVariable ["cti_town_sideID", _sideID, true];
+	
+	//--- Town Statics
+	if (count _town_defenses > 0) then { 
+		if (typeName (_town_defenses select 0) == "STRING") then {_town_defenses = [_town_defenses]};
+		_town setVariable ["cti_town_defenses", _town_defenses];
+		if (isNil {_town getVariable "cti_town_hasdefenses"}) then {_town setVariable ["cti_town_hasdefenses", true]};
+	};
 	
 	//--- Update the flag texture
 	if (typeOf _town == "FlagPole_F") then {_town setFlagTexture (missionNamespace getVariable [format["%1_TOWNS_FLAG_TEXTURE", _town_side], CTI_TOWNS_FLAG_TEXTURE_PEACE])};
