@@ -10,7 +10,10 @@ _bounty = if (count _this > 6) then {_this select 6} else {false};
 _extra_units = if (count _this > 7) then {_this select 7} else {true};
 
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
-if (isNull _group) then {_group = createGroup _side};
+if (isNull _group) then {
+	_group = createGroup _side;
+	_group deleteGroupWhenEmpty true;
+};
 
 _created_units = [];
 _created_vehicles = [];

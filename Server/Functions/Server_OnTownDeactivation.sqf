@@ -58,14 +58,14 @@ if !(isNil {missionNamespace getVariable "CTI_HEADLESS_CLIENTS"}) then {
 	} forEach _this;
 };
 
-//--- Cleanup the vehicles if needed
+//--- Cleanup the vehicles if needed (Skip it if the player owns it)
 {
 	if (alive _x) then {
 		if (!isPlayer _x) then {deleteVehicle _x};
 	};
 } forEach (_town getVariable format["cti_town_%1_active_vehicles", _variable]);
 
-//--- Cleanup the destroyed spawn structures if needed
+//--- Cleanup the destroyed AI Spawning structures if needed
 _buildings = +(_town getVariable ["cti_town_spawn_building", []]);
 if (count _buildings > 0) then {
 	{if !(alive _x) then {_buildings set [_forEachIndex, "nil"]}} forEach (_town getVariable ["cti_town_spawn_building", []]);
