@@ -7,7 +7,6 @@ with missionNamespace do {
 	EAST_TOWN_AT = ["O_static_AT_F"];
 	EAST_TOWN_AA = ["O_static_AA_F"];
 	
-	/*
 	// Custom composition: 
 	//  Parameters :
 	//    0: Center (the marker)
@@ -15,7 +14,7 @@ with missionNamespace do {
 	//  Returns :
 	//    [the mannable defenses, the composition objects]
 	
-	EAST_TOWN_BUNKER = [{
+	EAST_TOWN_MG_SBUNKER = [{
 		_t_center = _this select 0;
 		_t_direction = _this select 1;
 		
@@ -23,8 +22,8 @@ with missionNamespace do {
 		_t_composition = [];
 		
 		_t_pos = [_t_center, 5, _t_direction] call CTI_CO_FNC_GetPositionFrom;
-		_object = createVehicle ["Land_HBarrier_1_F", _t_pos, [], 0, "CAN_COLLIDE"];
-		_object setDir _t_direction;
+		_object = createVehicle ["Land_BagBunker_Small_F", _t_pos, [], 0, "CAN_COLLIDE"];
+		_object setDir (_t_direction - 180);
 		_object setPos _t_pos;
 		_object enableSimulationGlobal false;
 		_t_composition pushBack _object;
@@ -37,9 +36,9 @@ with missionNamespace do {
 		
 		//--- Return the defenses objects and the composition
 		[_t_defenses, _t_composition]
-	}]
-	*/
+	}];
 	
+	//--- Town Units
 	switch (CTI_TOWNS_OCCUPATION_EAST) do {
 		case 1: { //--- CUP - Russians TOWN OCCUPATION
 			//--- Infantry

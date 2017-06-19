@@ -309,13 +309,13 @@ CTI_Coin_OnPreviewPlacement = {
 		_defense_pos_valid = true;
 		switch (CTI_COIN_PARAM_KIND) do {
 			case 'STRUCTURES': {
-				_item = (CTI_COIN_PARAM select 1) select 0;
+				_item = (CTI_COIN_PARAM select CTI_STRUCTURE_CLASSES) select 0;
 			};
 			case 'DEFENSES': {
-				_item = CTI_COIN_PARAM select 1;
+				_item = CTI_COIN_PARAM select CTI_DEFENSE_CLASS;
 				
-				if !((CTI_COIN_PARAM select 7) isEqualTo []) then { //--- A blacklist is specified
-					if !((CTI_COIN_PARAM select 7) isEqualTo ["*"]) then { _defense_pos_valid = CTI_COIN_PREVIEW call CTI_Coin_DefenseCanBePlaced };
+				if !((CTI_COIN_PARAM select CTI_DEFENSE_COINBLACKLIST) isEqualTo []) then { //--- A blacklist is specified
+					if !((CTI_COIN_PARAM select CTI_DEFENSE_COINBLACKLIST) isEqualTo ["*"]) then { _defense_pos_valid = CTI_COIN_PREVIEW call CTI_Coin_DefenseCanBePlaced };
 				};
 			};
 		};
@@ -340,15 +340,16 @@ CTI_Coin_OnPreviewPlacement = {
 				case 'STRUCTURES': {
 					_area_valid = _position call CTI_Coin_UpdateBaseAreaLimits;
 					if (_area_valid isEqualTo "") then {
-						_variable = format ["CTI_%1_%2", CTI_P_SideJoined, (CTI_COIN_PARAM select 0) select 0];
-						[CTI_P_SideJoined, -(CTI_COIN_PARAM select 2)] call CTI_CO_FNC_ChangeSideSupply;
+						_variable = format ["CTI_%1_%2", CTI_P_SideJoined, (CTI_COIN_PARAM select CTI_STRUCTURE_LABELS) select 0];
+						[CTI_P_SideJoined, -(CTI_COIN_PARAM select CTI_STRUCTURE_PRICE)] call CTI_CO_FNC_ChangeSideSupply;
 						
 						//--- Check whether we're dealing with the HQ or a normal structure
-						if !(((CTI_COIN_PARAM select 0) select 0) == CTI_HQ_DEPLOY) then {
+						if (((CTI_COIN_PARAM select CTI_STRUCTURE_LABELS) select 0) != CTI_HQ_DEPLOY) then {
 							[_variable, CTI_P_SideJoined, _position, _direction, player] remoteExec ["CTI_PVF_SRV_RequestBuilding", CTI_PV_SERVER];
 						} else {
-							//--- When the HQ is deployed or mobilized, the commanding menu must be reloaded
+							//--- When the HQ is being deployed or mobilized, the commanding menu must be reloaded
 							_reload_expression = CTI_Coin_OnHQToggle;
+							if ((CTI_COIN_PARAM select CTI_STRUCTURE_TIME) > 0) then {CTI_P_SideLogic setVariable ["cti_hq_ready", false, true]};
 							[_variable, CTI_P_SideJoined, _position, _direction] remoteExec ["CTI_PVF_SRV_RequestHQToggle", CTI_PV_SERVER];
 						};
 					} else {
@@ -359,8 +360,8 @@ CTI_Coin_OnPreviewPlacement = {
 					};
 				};
 				case 'DEFENSES': {
-					_variable = format ["CTI_%1_%2", CTI_P_SideJoined, CTI_COIN_PARAM select 1];
-					-(CTI_COIN_PARAM select 2) call CTI_CL_FNC_ChangePlayerFunds;
+					_variable = format ["CTI_%1_%2", CTI_P_SideJoined, CTI_COIN_PARAM select CTI_DEFENSE_CLASS];
+					-(CTI_COIN_PARAM select CTI_DEFENSE_PRICE) call CTI_CL_FNC_ChangePlayerFunds;
 					[_variable, CTI_P_SideJoined, _position, _direction, player, profileNamespace getVariable ["CTI_COIN_WALLALIGN", true], profileNamespace getVariable ["CTI_COIN_AUTODEFENSE", true]] remoteExec ["CTI_PVF_SRV_RequestDefense", CTI_PV_SERVER];
 				};
 			};
@@ -371,7 +372,10 @@ CTI_Coin_OnPreviewPlacement = {
 			CTI_COIN_PREVIEW = nil;
 			CTI_COIN_LASTDIR = _direction;
 			
-			//--- Show the last known menu or the root menu again if no expression is requiered
+			//--- If HQ construction requires time, simply quit the menu
+			if !(CTI_P_SideLogic getVariable ['cti_hq_ready', true]) exitWith {CTI_COIN_EXIT = true};
+			
+			//--- Show the last known menu or the root menu again if no expression is required
 			if (isNil '_reload_expression') then {
 				showCommandingMenu (missionNamespace getVariable ["CTI_COIN_MENU", "#USER:CTI_COIN_Categories_0"]);
 			} else { //--- Trigger an expression if needed to show the menu after a certain unscheduled event
@@ -420,8 +424,15 @@ CTI_Coin_OnHQMobilized = {
 	_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 	_direction = getDir _hq;
 	
-	_variable = format ["CTI_%1_%2", CTI_P_SideJoined, (CTI_COIN_PARAM select 0) select 0];
+	_variable = format ["CTI_%1_%2", CTI_P_SideJoined, (CTI_COIN_PARAM select CTI_STRUCTURE_LABELS) select 0];
 	[_variable, CTI_P_SideJoined, position _hq, getDir _hq] remoteExec ["CTI_PVF_SRV_RequestHQToggle", CTI_PV_SERVER];
+	
+	//--- If HQ construction requires time, simply quit the menu
+	if ((CTI_COIN_PARAM select CTI_STRUCTURE_TIME) > 0) exitWith {
+		CTI_P_SideLogic setVariable ["cti_hq_ready", false, true];
+		CTI_COIN_PARAM = nil;
+		CTI_COIN_EXIT = true;
+	};
 	
 	CTI_COIN_PARAM = nil;
 	CTI_COIN_LASTDIR = _direction;

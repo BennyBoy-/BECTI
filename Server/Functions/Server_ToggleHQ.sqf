@@ -24,7 +24,7 @@
 	  -> Will mobilize or deploy the HQ based on the given and global variable at the desired position
 */
 
-private ["_direction", "_hq", "_is_deployed", "_logic", "_position", "_side", "_sideID", "_var", "_variable"];
+private ["_direction", "_hq", "_is_deployed", "_logic", "_position", "_side", "_sideID", "_structure_time", "_var", "_variable"];
 
 _variable = _this select 0;
 _side = _this select 1;
@@ -38,7 +38,14 @@ _is_deployed = (_side) call CTI_CO_FNC_IsHQDeployed;
 _current_hq = (_side) call CTI_CO_FNC_GetSideHQ;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
-if (((_var select CTI_STRUCTURE_LABELS) select 0) == CTI_HQ_DEPLOY) then { //--- Attempt to deploy the HQ
+//--- If HQ construction requires time, wait for the construction delay
+_structure_time = _var select CTI_STRUCTURE_TIME;
+if (_structure_time > 0) then {
+	sleep _structure_time;
+	_logic setVariable ["cti_hq_ready", true, true];
+};
+
+if (((_var select CTI_STRUCTURE_LABELS) select 0) isEqualTo CTI_HQ_DEPLOY) then { //--- Attempt to deploy the HQ
 	if (!_is_deployed && alive _current_hq) then { //--- Make sure that the HQ is not deployed and alive
 		_logic setVariable ["cti_hq_deployed", true, true];
 		

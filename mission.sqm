@@ -8,18 +8,18 @@ class EditorData
 	toggles=5;
 	class ItemIDProvider
 	{
-		nextID=259;
+		nextID=262;
 	};
 	class MarkerIDProvider
 	{
-		nextID=20;
+		nextID=21;
 	};
 	class Camera
 	{
-		pos[]={3750.2603,16.659767,7996.2119};
-		dir[]={0.36545241,-0.37604019,-0.85150647};
-		up[]={0.14831893,0.9265914,-0.34558371};
-		aside[]={-0.91895288,6.1700121e-009,-0.39439994};
+		pos[]={2082.5576,22.300493,5832.0156};
+		dir[]={0.49977157,-0.86224097,-0.082982838};
+		up[]={0.85060781,0.50646645,-0.14123663};
+		aside[]={-0.16380839,8.5980173e-007,-0.98654109};
 	};
 };
 binarizationWanted=0;
@@ -116,7 +116,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=186;
+		items=189;
 		class Item0
 		{
 			dataType="Marker";
@@ -2010,7 +2010,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="nullReturn = [this, ""Air Field"", resistance, 20, 60] execVM ""Common\Init\Init_Location.sqf""";
+				init="nullReturn = [this, ""Air Field"", resistance, 20, 60, [""airfield_mg"", [""TOWN_MG""]]] execVM ""Common\Init\Init_Location.sqf""";
 				name="AirField";
 			};
 			id=174;
@@ -3887,13 +3887,13 @@ class Mission
 			class PositionInfo
 			{
 				position[]={2181,7.5368023,5793};
-				angles[]={0,4.954586,0};
+				angles[]={0,4.9545884,0};
 			};
 			side="Empty";
 			flags=5;
 			class Attributes
 			{
-				init="nullreturn = [AirBase,this] execVM  ""Common\Init\Init_Camp.sqf"";";
+				init="nullreturn = [AirBase,this,[[""airbase_static"", [[""TOWN_MG_SBUNKER"",2,90], [""TOWN_GL"",1,50]]], [""airbase_static_2"", [[""TOWN_MG"",2,20], [""TOWN_GL"",1,10]]]]] execVM  ""Common\Init\Init_Camp.sqf"";";
 				disableSimulation=1;
 			};
 			id=212;
@@ -6116,6 +6116,36 @@ class Mission
 			{
 			};
 			id=216;
+		};
+		class Item186
+		{
+			dataType="Marker";
+			position[]={1744,0,5106};
+			name="airfield_mg";
+			type="Empty";
+			angle=14.852999;
+			id=259;
+			atlOffset=-5.52;
+		};
+		class Item187
+		{
+			dataType="Marker";
+			position[]={2186.0071,0,5792.939};
+			name="airbase_static";
+			type="Empty";
+			angle=100.219;
+			id=260;
+			atlOffset=-5.2041306;
+		};
+		class Item188
+		{
+			dataType="Marker";
+			position[]={2088.063,0,5830.5781};
+			name="airbase_static_2";
+			type="Empty";
+			angle=107.82194;
+			id=261;
+			atlOffset=-5.393712;
 		};
 	};
 	class Connections

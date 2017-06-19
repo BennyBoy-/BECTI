@@ -60,7 +60,7 @@ if !(isNil {missionNamespace getVariable "CTI_HEADLESS_CLIENTS"}) then {
 //--- Cleanup the vehicles if needed (Skip it if the player owns it)
 {
 	if (alive _x) then {
-		if (!isPlayer _x) then {deleteVehicle _x};
+		if (!isPlayer _x && (count crew _x > 0) && ({side _x == _side} count crew _x isEqualTo count crew _x)) then {deleteVehicle _x};
 	};
 } forEach (_town getVariable format["cti_town_%1_active_vehicles", _variable]);
 

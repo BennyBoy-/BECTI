@@ -82,11 +82,8 @@ if (count (_town getVariable ["cti_town_defenses", []]) > 0) then {_pool_all = _
 			if (count _pool_multi > 0) then { //--- Pick a random defense based on the given probability
 				_pool_multi = _pool_multi call CTI_CO_FNC_ArrayShuffle;
 				
-				_match = false;
-				while {!_match} do {
-					for '_i' from 0 to (count _pool_multi)-1 do {
-						if (((_pool_multi select _i) select 1) >= random 100) exitWith {_match = true; _pool pushBack [_marker, (_pool_multi select _i) select 0]};
-					};
+				for '_i' from 0 to (count _pool_multi)-1 do {
+					if (((_pool_multi select _i) select 1) >= random 100) exitWith {_pool pushBack [_marker, (_pool_multi select _i) select 0]};
 				};
 			};
 		};
@@ -98,6 +95,7 @@ if (count (_town getVariable ["cti_town_defenses", []]) > 0) then {_pool_all = _
 } forEach _pool_all;
 
 _defenses = [];
+_defenses_inert = [];
 _town_group = if (count _pool > 0) then {createGroup _side} else {grpNull};
 
 //--- Create the defenses 
@@ -131,7 +129,7 @@ _town_group = if (count _pool > 0) then {createGroup _side} else {grpNull};
 				_defenses pushBack _x;
 			} forEach _custom_defenses;
 			
-			_defenses = _defenses + _custom_objects;
+			_defenses_inert = _defenses_inert + _custom_objects;
 		} else {
 			// Warning: unknown type, not a code block
 			if (CTI_Log_Level >= CTI_Log_Warning) then { 
@@ -181,5 +179,5 @@ if !(isNull _town_group) then {
 		};
 	} forEach _defenses;
 	
-	_town setVariable ["cti_town_defenses_active", [_town_group, _defenses]];
+	_town setVariable ["cti_town_defenses_active", [_town_group, _defenses + _defenses_inert]];
 };

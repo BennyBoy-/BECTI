@@ -93,7 +93,9 @@ if (_attempts >= 500) then {
 	_startPos = _x select 2;
 	_sideID = _side call CTI_CO_FNC_GetSideID;
 	
-	_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _startPos, 0, _side, true, false] call CTI_CO_FNC_CreateVehicle;
+	_position = [_startPos, 1, 35, 5, "vehicles", ["Man","Car","Motorcycle","Tank","Ship","Air","StaticWeapon"], 5] call CTI_CO_FNC_GetSafePosition;
+	
+	_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _position, 0, _side, true, false] call CTI_CO_FNC_CreateVehicle;
 	_hq setVariable ["cti_gc_noremove", true]; //--- HQ wreck cannot be removed nor salvaged
 	_hq setVariable ["cti_ai_prohib", true]; //--- HQ may not be used by AI as a commandable vehicle
 	_hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_SE_FNC_OnHQDestroyed", _sideID]];
@@ -143,8 +145,9 @@ if (_attempts >= 500) then {
 		_model = _x select 0;
 		_equipment = _x select 1;
 		
-		_vehicle = [_model, _startPos, 0, _side, false, true, true] call CTI_CO_FNC_CreateVehicle;
-		[_vehicle, getPos _hq, 45, 60, true, false, true] call CTI_CO_FNC_PlaceNear;
+		_position = [getPos _hq, 30, 60, 10, "vehicles", ["Man","Car","Motorcycle","Tank","Ship","Air","StaticWeapon"], 8] call CTI_CO_FNC_GetSafePosition;
+		
+		_vehicle = [_model, _position, [_hq, _position] call CTI_CO_FNC_GetDirTo, _side, false, true, true] call CTI_CO_FNC_CreateVehicle;
 		[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
 		if (count _equipment > 0) then {[_vehicle, _equipment] call CTI_CO_FNC_EquipVehicleCargoSpace};
 	} forEach (missionNamespace getVariable format["CTI_%1_Vehicles_Startup", _side]);
@@ -162,7 +165,8 @@ if (_attempts >= 500) then {
 				
 				if !(isPlayer leader _group) then {
 					if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" > 0) then { //--- Wait for the player to be "ready"
-						(leader _group) setPos ([_startPos, 8, 30] call CTI_CO_FNC_GetRandomPosition);
+						_position = [getPos _hq, 8, 30, 5, "infantry", ["Man","Car","Motorcycle","Tank","Ship","Air","StaticWeapon"], 5] call CTI_CO_FNC_GetSafePosition;
+						(leader _group) setPos _position;
 						leader _group addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]]; //--- Called on destruction
 						if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {leader _group enableFatigue false}; //--- Disable the unit's fatigue
 						
