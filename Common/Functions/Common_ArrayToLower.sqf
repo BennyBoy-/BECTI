@@ -21,12 +21,10 @@
 	(_myArray) call CTI_CO_FNC_ArrayToLower; -> ["benny","benny","benny"]
 */
 
-params ["_array"];
 private ["_index", "_tolower"];
 
-_array = +_array;
 _tolower = [];
 
-{_tolower pushBack (toLower _x)} forEach _array;
+{_tolower pushBack (toLower _x)} forEach +_this;
 
 _tolower

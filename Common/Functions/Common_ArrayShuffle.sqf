@@ -25,10 +25,9 @@
 	  -> Random result like: [1,2,0,4,3]
 */
 
-params ["_array"];
-private ["_count","_ran","_selected","_shuffled"];
+private ["_array", "_count","_ran","_selected","_shuffled"];
 
-_array = +_array;
+_array = +_this;
 _shuffled = [];
 _count = (count _array) -1;
 

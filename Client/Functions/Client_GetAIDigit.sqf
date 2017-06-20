@@ -23,7 +23,7 @@
 	  -> Will return 2 Assuming the unit is #2 in the group
 */
 
-params ["_unit"]
+params ["_unit"];
 private ["_find", "_split", "_yield"];
 
 if (_unit isEqualTo leader (group _unit)) exitWith {"Leader"};
