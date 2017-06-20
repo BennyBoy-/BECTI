@@ -28,8 +28,8 @@
 	  -> Check if the explosive placement is valid or not, if near a friendly structure then it's removed
 */
 
-_unit = _this select 0;
-_projectile = _this select 1;
+params ["_unit", "_projectile"];
+private ["_closest", "_label", "_structures", "_var"];
 
 _structures = (CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures) + [CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ];
 _closest = [_unit, _structures] call CTI_CO_FNC_GetClosestEntity;

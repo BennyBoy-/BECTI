@@ -22,7 +22,8 @@
 	_artillery addEventHandler ["Fired", {[_this select 0, _this select 4, _this select 6] spawn CTI_CL_FNC_OnArtilleryFired}];
 */
 
-private ["_artillery", "_magazine", "_projectile", "_side"];
+params ["_artillery", "_ammo", "_projectile"];
+private ["_magazine", "_side"];
 
 _artillery = _this select 0;
 _ammo = _this select 1;

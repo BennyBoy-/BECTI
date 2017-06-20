@@ -31,11 +31,8 @@
 	  -> This function be triggered everytime the player fire
 */
 
-private ["_ammo", "_projectile", "_type", "_unit"];
-
-_unit = _this select 0;
-_ammo = _this select 4;
-_projectile = _this select 6;
+params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
+private ["_type"];
 
 _type = getText(configFile >> "CfgAmmo" >> _ammo >> "explosionType");
 

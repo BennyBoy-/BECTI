@@ -23,11 +23,10 @@
 	  -> Will return 2 Assuming the unit is #2 in the group
 */
 
-private ["_split", "_unit", "_yield"];
+params ["_unit"]
+private ["_find", "_split", "_yield"];
 
-_unit = _this;
-
-if (_unit == leader (group _unit)) exitWith {"Leader"};
+if (_unit isEqualTo leader (group _unit)) exitWith {"Leader"};
 if (isPlayer _unit && _unit != leader (group _unit)) exitWith {"Player"};
 
 _split = toArray(str _unit);
@@ -37,7 +36,7 @@ _yield = [];
 
 if (_find != -1) then {
 	for '_i' from (_find+1) to count(_split)-1 do {
-		if ((_split select _i) == 65 || (_split select _i) == 32) exitWith {};
+		if ((_split select _i) isEqualTo 65 || (_split select _i) isEqualTo 32) exitWith {};
 		_yield = _yield + [_split select _i];
 	};
 };

@@ -32,10 +32,8 @@
 	   -> Players get 250 / 4 (62.5 each)
 */
 
-private ["_commander", "_funds", "_groups", "_logic", "_side", "_total_groups", "_value", "_value_commander", "_value_player", "_value_players"];
-
-_side = _this select 0;
-_value = _this select 1;
+params ["_side", "_value"];
+private ["_commander", "_funds", "_groups", "_logic", "_total_groups", "_value_commander", "_value_player", "_value_players"];
 
 if (isNil '_value') exitWith {["ERROR", "FILE: Common\Functions\Common_AddSideFunds.sqf", format["A nil funds value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
 if (typeName _value != "SCALAR") exitWith {["ERROR", "FILE: Common\Functions\Common_AddSideFunds.sqf", format["A non-scalar funds value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};

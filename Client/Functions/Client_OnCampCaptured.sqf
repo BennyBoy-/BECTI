@@ -26,23 +26,19 @@
 	
   # EXAMPLE #
 	[EntreDeux, Camp1, WESTID, EASTID] call CTI_CL_FNC_OnCampCaptured
-	  -> Camp1 of EntreDeux will be captured from East to West
+	  -> Camp1 of Town EntreDeux will change side from East to West
 */
 
-private ["_camp", "_color", "_side_new", "_sideID_new", "_sideID_old", "_town"];
-
-_town = _this select 0;
-_camp = _this select 1;
-_sideID_new = _this select 2;
-_sideID_old = _this select 3;
+params ["_town", "_camp", "_sideID_new", "_sideID_old"];
+private ["_color", "_side_new"];
 
 if !(CTI_P_SideID in [_sideID_new, _sideID_old]) exitWith {}; //--- Make sure that the client need an update
 
 _side_new = (_sideID_new) call CTI_CO_FNC_GetSideFromID;
 
-if (_side_new == CTI_P_SideJoined) then { //--- The player's side has captured it
+if (_side_new isEqualTo CTI_P_SideJoined) then { //--- The player's side has captured it
 	CTI_P_ChatID commandChat format["A camp has been captured in %1!", _town getVariable "cti_town_name"];
-	// player award on capture?
+	// todo: player award on capture?
 } else {
 	CTI_P_ChatID commandChat format["A camp has been lost in %1!", _town getVariable "cti_town_name"];
 };

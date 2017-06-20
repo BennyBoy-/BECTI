@@ -22,10 +22,8 @@
 	  -> This will hook the player's vehicle to the chopper "myChopper1"
 */
 
-private ["_hooked", "_hooker", "_mpos"];
-
-_hooked = _this select 0;
-_hooker = _this select 1;
+params ["_hooked", "_hooker"];
+private ["_mpos"];
 
 //--- Determine where to hook.
 _mpos = switch (true) do {
@@ -43,7 +41,7 @@ while {true} do {
 	_current_hooked = _hooker getVariable ["cti_hooked", objNull];
 	
 	if (!canMove _hooker || getDammage _hooker > 0.3 || count crew _current_hooked > 0 || _hooked != _current_hooked) exitWith {
-		if (_current_hooked == _hooked) then {
+		if (_current_hooked isEqualTo _hooked) then {
 			_hooker setVariable ["cti_hooked", nil, true];
 			detach _current_hooked;
 			_velocity = velocity _hooker;

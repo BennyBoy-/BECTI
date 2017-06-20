@@ -22,10 +22,8 @@
     [_position, _ruins] call CTI_CL_FNC_RemoveRuins
 */
 
-private ["_classnames", "_position", "_var", "_variable"];
-
-_position = _this select 0;
-_variable = _this select 1;
+params ["_position", "_variable"];
+private ["_classnames", "_var"];
 
 _var = missionNamespace getVariable _variable;
 _classnames = _var select 1;

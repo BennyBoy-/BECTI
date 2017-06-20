@@ -34,13 +34,8 @@
 	[_seed, _classname, group player, _veh_infos, _factory] spawn CTI_CL_FNC_OnPurchaseOrderReceived
 */
 
-private ["_cost", "_factory", "_funds", "_index", "_model", "_net", "_req_buyer", "_req_classname", "_req_seed", "_req_time", "_req_time_out", "_script", "_var", "_var_classname", "_vehicle", "_veh_infos"];
-
-_req_seed = _this select 0;
-_req_classname = _this select 1;
-_req_buyer = _this select 2;
-_factory = _this select 3;
-_veh_infos = _this select 4;
+params ["_req_seed", "_req_classname", "_req_buyer", "_factory", "_veh_infos"];
+private ["_cost", "_funds", "_index", "_model", "_net", "_req_time", "_req_time_out", "_script", "_var", "_var_classname", "_vehicle"];
 
 _model = _req_classname;
 _var_classname = missionNamespace getVariable _req_classname;

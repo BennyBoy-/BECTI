@@ -22,10 +22,8 @@
 	[_structure, _variable] call CTI_CL_FNC_OnStructureConstructed
 */
 
-private ["_marker", "_score", "_structure", "_var", "_variable"];
-
-_structure = _this select 0;
-_variable = _this select 1;
+params ["_structure", "_variable"];
+private ["_marker", "_score", "_var"];
 
 _var = missionNamespace getVariable _variable;
 

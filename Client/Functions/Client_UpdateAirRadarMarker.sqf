@@ -21,9 +21,8 @@
 	  -> will track the object called enemyHind
 */
 
-private ["_marker", "_side", "_vehicle"];
-
-_vehicle = _this;
+params ["_vehicle"];
+private ["_air_radar", "_hint", "_marker", "_range", "_structures"];
 
 _marker = createMarkerLocal [format ["cti_airradar_hostile_%1", CTI_P_MarkerIterator], [-60000, -60000, 0]];
 CTI_P_MarkerIterator = CTI_P_MarkerIterator + 1;

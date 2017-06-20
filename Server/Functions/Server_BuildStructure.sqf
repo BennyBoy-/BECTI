@@ -27,10 +27,7 @@
     _placed = [_placed, CTI_CL_VAR_SideJoined, getPos _preview, getDir _preview] call CTI_SE_FNC_BuildStructure;
 */
 
-_classname = _this select 0;
-_side = _this select 1;
-_position = _this select 2;
-_direction = _this select 3;
+params["_classname", "_side", "_position", "_direction"];
 
 _var = missionNamespace getVariable _classname;
 
@@ -59,7 +56,7 @@ _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wi
 
 ["structure-preplaced", [_classname, _position]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 
-//AdminZeus
-if !(isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_structure],true] };
+//--- Add to ZEUS Control
+if !(isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_structure], true] };
 
 _structure

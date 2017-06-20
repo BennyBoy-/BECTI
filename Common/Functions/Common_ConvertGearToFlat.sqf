@@ -28,8 +28,8 @@
 	  -> ["arifle_mxc_f","acc_pointer_ir","optic_Aco","30rnd_65x39_caseless_mag","launch_nlaw_f","nlaw_f","u_b_combatuniform_mcam",...,"h_helmetb","nvgoggles",...]
 */
 
-private ["_classnames", "_gear"];
-_gear = _this;
+params ["_gear"];
+private ["_classnames"];
 
 _classnames = [];
 {

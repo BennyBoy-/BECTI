@@ -23,9 +23,7 @@
 	  -> Will return "Take Towns"
 */
 
-private ["_order"];
-
-_order = _this;
+params ["_order"];
 
 switch (true) do {
 	case (_order == CTI_ORDER_CLIENT_NONE): {"None"};

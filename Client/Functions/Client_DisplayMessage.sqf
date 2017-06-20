@@ -33,10 +33,7 @@
 	  -> Display a parameterized message for all client via the "CTI_PVF_CLT_OnMessageReceived" PVF
 */
 
-private ["_message_var", "_parameters"];
-
-_message_var = _this select 0;
-_parameters = if (count _this > 1) then {_this select 1} else {[]};
+params ["_message_var", ["_parameters", []]];
 
 switch (_message_var) do {
 	case "award-bounty": {player groupChat format ["$%1 awarded for the neutralization of a %2", _parameters select 0, _parameters select 1]};

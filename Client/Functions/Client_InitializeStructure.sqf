@@ -22,10 +22,8 @@
     [Barracks1, BarrackCoreInfo] call CTI_CL_FNC_InitializeStructure
 */
 
-private ["_marker", "_structure", "_var"];
-
-_structure = _this select 0;
-_var = _this select 1;
+params["_structure", "_var"];
+private ["_marker"];
 
 //--- Quick action (I know you want it brit!)
 if (((_var select 0) select 0) in CTI_FACTORIES) then {

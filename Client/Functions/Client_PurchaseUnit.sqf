@@ -26,12 +26,8 @@
     [_classname, uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", _selected_group, _veh_info] call CTI_CL_FNC_PurchaseUnit;
 */
 
-private ["_classname", "_factory", "_seed", "_team", "_veh_infos"];
-
-_classname = _this select 0;
-_factory = _this select 1;
-_team = _this select 2;
-_veh_infos = _this select 3;
+params ["_classname", "_factory", "_team", "_veh_infos"];
+private ["_seed"];
 
 if !(call CTI_CL_FNC_IsPlayerCommander) then {
 	if (_team != group player) then {_team = group player};

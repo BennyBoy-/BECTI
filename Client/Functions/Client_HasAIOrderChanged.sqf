@@ -23,11 +23,8 @@
     _changed = [loon2, CTI_ORDER_CLIENT_TAKETOWNS, [0,0]] call CTI_CL_FNC_HasAIOrderChanged
 */
 
-private ["_ai", "_changed", "_order", "_order_current", "_order_pos", "_order_pos_current"];
-
-_ai = _this select 0;
-_order_current = _this select 1;
-_order_pos_current = _this select 2;
+params ["_ai", "_order_current", "_order_pos_current"];
+private ["_changed", "_order", "_order_pos"];
 
 _order = _ai getVariable "cti_ai_order";
 

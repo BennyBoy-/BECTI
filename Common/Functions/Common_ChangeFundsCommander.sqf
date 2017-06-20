@@ -29,10 +29,8 @@
 	  -> Assuming commander had 5000 before: 4000
 */
 
-private ["_funds", "_side", "_value"];
-
-_side = _this select 0;
-_value = _this select 1;
+params ["_side", "_value"];
+private ["_funds", "_logic"];
 
 if (isNil '_value') exitWith {["ERROR", "FILE: Common\Functions\Common_ChangeFundsCommander.sqf", format["A nil funds value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
 if (typeName _value != "SCALAR") exitWith {["ERROR", "FILE: Common\Functions\Common_ChangeFundsCommander.sqf", format["A non-scalar funds value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};

@@ -27,10 +27,8 @@
 	  -> If the player had 5000 before, he'll end up with 5500
 */
 
-private ["_funds", "_group", "_side", "_value"];
-
-_group = _this select 0;
-_value = _this select 1;
+params ["_group", "_value"];
+private ["_funds", "_side"];
 
 _side = side _group;
 
