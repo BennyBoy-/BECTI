@@ -23,7 +23,7 @@
 
 //--- Commander related actions
 if (call CTI_CL_FNC_IsPlayerCommander) then { 
-	player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_CoinBuild.sqf", "HQ", 93, false, true, "", "_target == player && CTI_Base_HQInRange"];
+	player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_CoinBuild.sqf", "HQ", 93, false, true, "", "_target == player && CTI_Base_HQInRange && (CTI_P_SideLogic getVariable ['cti_hq_ready', true])"];
 };
 
 //--- Mixed actions

@@ -61,7 +61,7 @@ _prices pushBack 		500;
 _times pushBack			0;
 _placements pushBack 	[0, 15, false];
 _specials pushBack 		[];
-_conditions pushBack 	(compile format["%1 call CTI_CO_FNC_IsHQDeployed", _side]);
+_conditions pushBack 	(compile format["%1 call CTI_CO_FNC_IsHQDeployed && (CTI_P_SideLogic getVariable ['cti_hq_ready', true])", _side]);
 _respawnBPos pushBack	-1;
 
 
@@ -71,7 +71,7 @@ _prices pushBack 		500;
 _times pushBack			0;
 _placements pushBack 	[180, 15, false];
 _specials pushBack 		[["DMG_Alternative"], ["DMG_Reduce", 6]];
-_conditions pushBack 	(compile format["!(%1 call CTI_CO_FNC_IsHQDeployed)", _side]);
+_conditions pushBack 	(compile format["!(%1 call CTI_CO_FNC_IsHQDeployed) && (CTI_P_SideLogic getVariable ['cti_hq_ready', true])", _side]);
 _respawnBPos pushBack	-1;
 
 _headers pushBack		[CTI_BARRACKS, "Barracks", "Barracks"];
