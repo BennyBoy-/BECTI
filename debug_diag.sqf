@@ -16,7 +16,6 @@
 // createDialog "CTI_RscUnitsCamera";
 // createDialog "CTI_RscUpgradeMenu";
 // createDialog "CTI_RscHookMenu";
-// createDialog "CTI_RscBuildMenu";
 // createDialog "CTI_RscCommandMenu";
 // createDialog "CTI_RscAIMicromanagementMenu";
 // createDialog "CTI_RscSatelitteCamera";

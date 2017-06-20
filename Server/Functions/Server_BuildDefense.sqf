@@ -31,16 +31,15 @@
     _defense = [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, CTI_P_WallsAutoAlign, CTI_P_DefensesAutoManning] call CTI_SE_FNC_BuildDefense;
 */
 
-private ["_autoalign", "_defense", "_direction", "_direction_structure", "_fob", "_limit", "_logic", "_manned", "_origin", "_position", "_ruins", "_seed", "_side", "_sideID", "_stronger", "_var", "_varname"];
+private ["_autoalign", "_defense", "_direction", "_direction_structure", "_fob", "_limit", "_logic", "_manned", "_position", "_ruins", "_seed", "_side", "_sideID", "_stronger", "_var", "_varname"];
 
 _varname = _this select 0;
 _var = missionNamespace getVariable _varname;
 _side = _this select 1;
 _position = _this select 2;
 _direction = _this select 3;
-_origin = _this select 4;
-_autoalign = _this select 5;
-_manned = if (count _this > 6) then {_this select 6} else {false};
+_autoalign = _this select 4;
+_manned = if (count _this > 5) then {_this select 5} else {false};
 _seed = time + random 10000 - random 500 + diag_frameno;
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
@@ -93,8 +92,7 @@ _defense setDir _direction;
 _defense setPos _position;
 if (_defense emptyPositions "gunner" < 1 && !_fob) then { //--- Soft defense
 	_defense setDir _direction;
-	// _defense setVectorUp [0,0,0];
-	if !(isNull _origin) then {(_defense) remoteExec ["CTI_PVF_CLT_OnDefensePlaced", _origin]};
+	// _defense setVectorUp surfaceNormal position _defense;
 };
 
 //--- Make the defense stronger?

@@ -12,14 +12,12 @@
     1	[Side]: The Side which requested it
     2	[Array]: The position of the defense
     3	[Number]: The direction of the defense
-    4	{Optionnal} [Object]: The person which requested it (send it back for undo)
 	
   # RETURNED VALUE #
 	[Object]: The ruins
 	
   # SYNTAX #
 	[STRUCTURE VARIABLE, SIDE, POSITION, DIRECTION] call CTI_SE_FNC_BuildStructure
-	[STRUCTURE VARIABLE, SIDE, POSITION, DIRECTION, SOURCE] call CTI_SE_FNC_BuildStructure
 	
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideLogic
@@ -33,7 +31,6 @@ _classname = _this select 0;
 _side = _this select 1;
 _position = _this select 2;
 _direction = _this select 3;
-_origin = if (count _this > 4) then {_this select 4} else {objNull};
 
 _var = missionNamespace getVariable _classname;
 
@@ -62,9 +59,7 @@ _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wi
 
 ["structure-preplaced", [_classname, _position]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 
-if !(isNull _origin) then { (_structure) remoteExec ["CTI_PVF_CLT_OnStructurePlaced", _origin] };
-
 //AdminZeus
-if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_structure],true];};
+if !(isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_structure],true] };
 
 _structure

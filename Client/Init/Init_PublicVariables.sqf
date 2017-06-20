@@ -78,9 +78,6 @@ with missionNamespace do {
 	//--- The client receives a Camp Capture notification
 	CTI_PVF_CLT_OnCampCaptured = { _this spawn CTI_CL_FNC_OnCampCaptured };
 	
-	//--- The client receives a Defense notification
-	CTI_PVF_CLT_OnDefensePlaced = { CTI_P_LastDefenseBuilt = _this };
-	
 	//--- The client receives a FOB deployment notification
 	CTI_PVF_CLT_OnFOBDeployment = {
 		_fob = _this;
@@ -202,9 +199,6 @@ with missionNamespace do {
 	//--- The client receives a structure completion notification
 	CTI_PVF_CLT_OnStructureConstructed = { _this spawn CTI_CL_FNC_OnStructureConstructed };
 	
-	//--- The client receives a structure placement notification
-	CTI_PVF_CLT_OnStructurePlaced = { CTI_P_LastStructurePreBuilt = _this };
-
 	//--- The client receives a teamkill penalty
 	CTI_PVF_CLT_OnTeamkill = {
 		["teamkill"] call CTI_CL_FNC_DisplayMessage;
