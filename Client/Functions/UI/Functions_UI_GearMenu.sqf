@@ -579,6 +579,10 @@ CTI_UI_Gear_AddItem = {
 							default {-1};
 						};
 						
+						if (_slot isEqualTo -1) then { //--- Check if the item is an UAV Terminal, in that case, it goes straight in the GPS slot
+							if (getNumber(configFile >> "CfgWeapons" >> _item >> "ItemInfo" >> "type") isEqualTo CTI_SUBTYPE_UAVTERMINAL) then {_slot = 1};
+						};
+						
 						if (_slot != -1) then { //--- Special item
 							_current = ((_gear select 3) select 1) select _slot;
 							

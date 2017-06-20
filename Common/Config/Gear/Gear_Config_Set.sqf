@@ -87,6 +87,7 @@ for '_i' from 0 to count(_items)-1 do {
 					if (_item_type == "Item") then { //--- Items are handled differently
 						_item_subtype = switch (getNumber(configFile >> _config_type >> _item >> 'ItemInfo' >> 'type')) do {
 							case CTI_SUBTYPE_ITEM: {"BaseItem"};
+							case CTI_SUBTYPE_UAVTERMINAL: {"BaseItem"};
 							case CTI_SUBTYPE_ACC_MUZZLE: {"Acc-Muzzle"};
 							case CTI_SUBTYPE_ACC_OPTIC: {"Acc-Optics"};
 							case CTI_SUBTYPE_ACC_SIDE: {"Acc-Side"};

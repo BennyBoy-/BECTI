@@ -205,7 +205,7 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 												if (_x != "") then {
 													if (!isClass (configFile >> "CfgWeapons" >> _x) || !(_x in _side_gear)) exitWith {_flag_load = false; _err_reason = format["Item [%1] is either not a valid CfgWeapons class or does not belong to the player's side", _x]}; //--- The item ain't valid or it's not within the side's gear
 													if (getNumber(configFile >> "CfgWeapons" >> _x >> "type") != CTI_TYPE_ITEM) exitWith {_flag_load = false; _err_reason = format["Item [%1] type does not belong to the Item type", _x]}; //--- The item do not have a valid base class!
-													if (getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type") != CTI_SUBTYPE_ITEM) exitWith {_flag_load = false; _err_reason = format["Item [%1] type does not belong to the Item Subtype", _x]}; //--- The item is not a valid item
+													if !(getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type") in [CTI_SUBTYPE_ITEM, CTI_SUBTYPE_UAVTERMINAL]) exitWith {_flag_load = false; _err_reason = format["Item [%1] type does not belong to the Item/UAV Terminal Subtype", _x]}; //--- The item is not a valid item
 												};
 											} forEach (_gear_sub select 1);
 										} else {
