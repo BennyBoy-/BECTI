@@ -321,7 +321,7 @@ CTI_Coin_OnPreviewPlacement = {
 		};
 		
 		_direction = direction CTI_COIN_PREVIEW;
-		_position = position CTI_COIN_PREVIEW;
+		_position = getPosVisual CTI_COIN_PREVIEW;
 		
 		if (CTI_COIN_PREVIEW call CTI_Coin_PreviewSurfaceIsValid && _defense_pos_valid && CTI_COIN_PREVIEW distance CTI_COIN_ORIGIN <= CTI_COIN_RANGE) then { //--- Last check to make sure that the position is valid
 			deleteVehicle CTI_COIN_PREVIEW;

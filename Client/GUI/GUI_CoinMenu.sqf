@@ -140,6 +140,7 @@ with missionNamespace do {
 					//--- Create the preview item
 					_preview_item = _preview createVehicleLocal (screenToWorld [0.5,0.5]);
 					_preview_item allowDamage false;
+					_preview_item enableSimulation false;
 					if !(isNil 'CTI_COIN_LASTDIR') then {_preview_item setDir CTI_COIN_LASTDIR};
 					CTI_COIN_DIR = getDir _preview_item;
 					
@@ -160,7 +161,9 @@ with missionNamespace do {
 				//--- Update the direction to prevent it from moving by itself on sloppy hills
 				CTI_COIN_PREVIEW setDir CTI_COIN_DIR;
 				CTI_COIN_PREVIEW setVectorUp [0,0,0];
-				if (time - _last_collision_update > 2) then {_last_collision_update = time;{CTI_COIN_PREVIEW disableCollisionWith _x} forEach (CTI_COIN_PREVIEW nearEntities 150)};
+				// if (time - _last_collision_update > 2) then {_last_collision_update = time;{CTI_COIN_PREVIEW disableCollisionWith _x} forEach (CTI_COIN_PREVIEW nearEntities 150)};
+				
+				if !(CTI_COIN_PREVIEW isKindOf "Building") then {CTI_COIN_PREVIEW setVectorUp surfaceNormal position CTI_COIN_PREVIEW};
 				
 				//--- Update the coloration if needed
 				(CTI_COIN_PREVIEW) call CTI_Coin_UpdatePreview;
@@ -172,7 +175,7 @@ with missionNamespace do {
 					_helper_pos = CTI_COIN_PREVIEW modelToWorld [(sin (360 -_direction_structure) * _distance_structure), (cos (360 -_direction_structure) * _distance_structure), 0];
 					_helper_pos set [2, 0];
 					CTI_COIN_HELPER setPos _helper_pos;
-					CTI_COIN_HELPER setDir direction CTI_COIN_PREVIEW;
+					CTI_COIN_HELPER setDir CTI_COIN_DIR;
 				};
 			};
 		} else { //--- The player's commanding menu is gone

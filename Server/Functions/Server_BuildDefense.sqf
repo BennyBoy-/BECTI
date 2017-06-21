@@ -90,6 +90,7 @@ if (_fob) then {
 
 _defense setDir _direction;
 _defense setPos _position;
+if !(_defense isKindOf "Building") then {_defense setVectorUp surfaceNormal position _defense};
 if (_defense emptyPositions "gunner" < 1 && !_fob) then { //--- Soft defense
 	_defense setDir _direction;
 	// _defense setVectorUp surfaceNormal position _defense;

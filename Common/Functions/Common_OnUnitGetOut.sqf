@@ -23,7 +23,7 @@
     _vehicle addEventHandler ["getOut", {_this spawn CTI_CO_FNC_OnUnitGetOut}];
 */
 
-params ["_vehicle", "_unit"];
+params ["_vehicle", "_vehicle_pos", "_unit"];
 private ["_side"];
 
 if (alive _unit) then {

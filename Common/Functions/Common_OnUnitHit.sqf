@@ -23,6 +23,6 @@
     _vehicle addEventHandler ["hit", {_this spawn CTI_CO_FNC_OnUnitHit}];
 */
 
-params ["_unit","_causedby","_damage"];
+params ["_unit", "_causedby", "_damage"];
 
 if (_damage >= 0.05) then {_unit setVariable ["cti_lasthit", _causedby]; _unit setVariable ["cti_lasthit_time", time]};
