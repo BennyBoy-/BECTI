@@ -27,9 +27,8 @@
 	  -> Return the towns which are considered enemy to the Resistance
 */
 
-private ["_sideID", "_towns"];
-
-_sideID = _this;
+params ["_sideID"];
+private ["_towns"];
 
 if (typeName _sideID == "SIDE") then { _sideID = (_sideID) call CTI_CO_FNC_GetSideID };
 

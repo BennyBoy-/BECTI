@@ -26,11 +26,8 @@
 	[player, "U_B_CombatUniform_mcam", ["Laserbatteries","7Rnd_408_Mag",...]] call CTI_CO_FNC_EquipContainerUniform;
 */
 
-private ["_added", "_items", "_uniform", "_unit"];
-
-_unit = _this select 0;
-_uniform = _this select 1;
-_items = _this select 2;
+params ["_unit", "_uniform", "_items"];
+private ["_added", "_count"];
 
 if (uniform _unit != "") then {removeUniform _unit};//todo clearAllItemsFromUniform if it ever gets added someday.
 // if (uniform _unit != _uniform) then { removeUniform _unit }; //todo clearAllItemsFromUniform if it ever gets added someday.

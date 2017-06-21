@@ -22,10 +22,8 @@
 	  -> Assuming St Pierre has 1 camp held by West over 2 -> [Camp1]
 */
 
-private ["_camps", "_camps_side", "_sideID", "_town"];
-
-_town = _this select 0;
-_sideID = _this select 1;
+params ["_town", "_sideID"];
+private ["_camps", "_camps_side"];
 
 if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
 

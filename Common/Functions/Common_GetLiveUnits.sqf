@@ -21,13 +21,13 @@
     _lives = (group player) call CTI_CO_FNC_GetLiveUnits
 */
 
-private["_liveUnits","_units"];
+private ["_alive", "_units"];
 
 _units = _this;
 
-if (typeName _units == "GROUP") then { _units = units _units };
+if (typeName _units isEqualTo "GROUP") then { _units = units _units };
 
-_liveUnits = [];
+_alive = [];
 
-{if (alive _x) then {_liveUnits = _liveUnits + [_x]}} forEach _units;
-_liveUnits
+{if (alive _x) then {_alive = _alive + [_x]}} forEach _units;
+_alive

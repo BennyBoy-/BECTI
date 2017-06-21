@@ -26,7 +26,8 @@
 	  -> Rearm the player vehicle of the player
 */
 
-private ["_side", "_type", "_vehicle"];
+params ["_vehicle", "_side"];
+private ["_type"];
 
 _vehicle = _this select 0;
 _side = _this select 1;

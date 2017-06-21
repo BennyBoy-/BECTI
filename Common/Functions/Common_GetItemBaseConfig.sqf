@@ -23,7 +23,7 @@
     _base = ("B_AssaultPack_khk") call CTI_CO_FNC_GetItemBaseConfig
 */
 
-private ["_type"];
+private ["_itype", "_type"];
 
 _type = switch (true) do { //--- Determine the kind of item that we're dealing with
 	case (isClass (configFile >> 'CfgWeapons' >> _this)): {"CfgWeapons"};

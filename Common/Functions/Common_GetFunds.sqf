@@ -27,9 +27,9 @@
     _funds = (group player) call CTI_CO_FNC_GetFunds
 */
 
-private ["_funds", "_group", "_side"];
+params ["_group"];
+private ["_funds", "_side"];
 
-_group = _this;
 _side = side _group;
 
 _funds = 0;

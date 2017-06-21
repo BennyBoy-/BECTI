@@ -12,6 +12,7 @@
     0	[Object]: The killed entity
     1	[Object]: The killer
     2	[Integer]: The Side ID of the killed unit
+    3	[Optionnal} [Boolean]: Treat the killed entity as defense entity
 	
   # RETURNED VALUE #
 	None
@@ -23,10 +24,8 @@
     _vehicle addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _side]];
 */
 
-_killed = _this select 0;
-_killer = _this select 1;
-_sideID_killed = _this select 2;
-_is_defense = if (count _this > 3) then {_this select 3} else {false};
+params ["_killed", "_killer", "_sideID_killed", ["_is_defense", false]];
+
 _side_killed = (_sideID_killed) call CTI_CO_FNC_GetSideFromID;
 _side_killed_original = _side_killed;
 

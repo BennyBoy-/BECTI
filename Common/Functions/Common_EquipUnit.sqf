@@ -35,11 +35,8 @@
 	[player, _gear] call CTI_CO_FNC_EquipUnit; 
 */
 
-private ["_accessories", "_gear", "_item", "_magazines", "_new", "_unit"];
-
-_unit = _this select 0;
-_gear = _this select 1;
-
+params ["_unit", "_gear"];
+private ["_accessories", "_item", "_magazines", "_new"];
 
 //--- ######## [Weapons check-in] ########
 //--- Primary

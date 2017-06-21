@@ -21,9 +21,7 @@
 	  -> Sanitize the player's vehicle (Mags)
 */
 
-private ["_vehicle"];
-
-_vehicle = _this;
+params ["_vehicle"];
 
 {
 	if (_x in ["6Rnd_155mm_Mo_mine","6Rnd_155mm_Mo_AT_mine"]) then {_vehicle removeMagazine _x};

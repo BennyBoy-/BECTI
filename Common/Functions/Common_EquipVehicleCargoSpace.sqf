@@ -27,13 +27,11 @@
 	  -> This will add the content of gear on the player's vehicle
 */
 
-private ["_count", "_item", "_loadout", "_vehicle"];
-
-_vehicle = _this select 0;
-_loadout = _this select 1;
+params ["_vehicle", "_loadout"];
+private ["_count", "_item"];
 
 if !(alive _vehicle) exitWith {};
-if (count _loadout == 0) exitWith {};
+if (count _loadout isEqualTo 0) exitWith {};
 
 //--- Cleanup the vehicle
 clearBackpackCargoGlobal _vehicle;

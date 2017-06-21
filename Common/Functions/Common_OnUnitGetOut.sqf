@@ -23,10 +23,8 @@
     _vehicle addEventHandler ["getOut", {_this spawn CTI_CO_FNC_OnUnitGetOut}];
 */
 
-private ["_unit", "_vehicle"];
-
-_vehicle = _this select 0;
-_unit = _this select 2;
+params ["_vehicle", "_unit"];
+private ["_side"];
 
 if (alive _unit) then {
 	_side = side _unit;

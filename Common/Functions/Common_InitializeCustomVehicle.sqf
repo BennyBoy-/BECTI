@@ -26,11 +26,7 @@
 	  -> This will initialize the vehicle of the player with the "service-repairtruck" script
 */
 
-private ["_vehicle", "_script", "_side"];
-
-_vehicle = _this select 0;
-_side = _this select 1;
-_script = _this select 2;
+params ["_vehicle", "_side", "_script"];
 
 if (CTI_Log_Level >= CTI_Log_Debug) then {
 	["DEBUG", "FILE: Common\Functions\Common_InitializeCustomVehicle.sqf", format["Attempting to perform custom initialization of vehicle [%1] on side [%2] with script [%3]", typeOf _vehicle, _side, _script]] call CTI_CO_FNC_Log;

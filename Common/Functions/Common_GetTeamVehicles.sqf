@@ -25,20 +25,15 @@
 	  -> Return the current west upgrades levels
 */
 
-private["_center", "_group", "_local", "_move", "_range", "_vehicle", "_vehicles"];
-
-_group = _this select 0;
-_move = _this select 1;
-_center = if (count _this > 2) then {_this select 2} else {objNull};
-_range = if (count _this > 3) then {_this select 3} else {150};
-_local = if (count _this > 4) then {_this select 4} else {false};
+params ["_group", "_move", ["_center", objNull], ["_range", 150], ["_local", false]];
+private["_vehicle", "_vehicles"];
 
 _vehicles = [];
 
 {
 	_vehicle = vehicle _x;
 	
-	if (_x != _vehicle && !(_vehicle in _vehicles)) then {_vehicles = _vehicles + [_vehicle]};
+	if (_x != _vehicle && !(_vehicle in _vehicles)) then {_vehicles pushBack _vehicle};
 	if (_move && (!canMove _vehicle && !(_vehicle isKindOf "StaticWeapon"))) then {_vehicles = _vehicles - [_vehicle]};
 	if (!isNull _center && _center distance _vehicle > _range) then {_vehicles = _vehicles - [_vehicle]};
 	if (_local && !local _vehicle) then {_vehicles = _vehicles - [_vehicle]};

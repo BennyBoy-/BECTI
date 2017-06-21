@@ -25,16 +25,14 @@
     _closest = [player, CTI_P_SideID] call CTI_CO_FNC_GetClosestFriendlyTown;
 */
 
-private ["_center", "_friendlySide", "_towns"];
+params ["_center", "_friendlySide"];
+private ["_towns"];
 
-_center = _this select 0;
-_friendlySide = _this select 1;
-
-if (typeName _friendlySide == "SIDE") then {_friendlySide = (_friendlySide) call CTI_CO_FNC_GetSideID};
+if (typeName _friendlySide isEqualTo "SIDE") then {_friendlySide = (_friendlySide) call CTI_CO_FNC_GetSideID};
 
 _towns = [];
-{if (_x getVariable "cti_town_sideID" == _friendlySide) then {_towns pushBack _x}} forEach CTI_Towns;
+{if (_x getVariable "cti_town_sideID" isEqualTo _friendlySide) then {_towns pushBack _x}} forEach CTI_Towns;
 
-if (count _towns == 0) exitWith {objNull};
+if (count _towns isEqualTo 0) exitWith {objNull};
 
 [_center, _towns] call CTI_CO_FNC_GetClosestEntity

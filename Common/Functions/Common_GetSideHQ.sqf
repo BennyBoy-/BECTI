@@ -24,9 +24,7 @@
 	  -> Return the West HQ
 */
 
-private ["_side"];
-
-_side = _this;
+params ["_side"];
 
 if (typeName _side == "SCALAR") then {_side = (_side) call CTI_CO_FNC_GetSideFromID};
 if (typeName _side != "SIDE") exitWith {objNull};

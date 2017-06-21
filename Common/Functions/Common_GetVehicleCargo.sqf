@@ -22,8 +22,4 @@
 		["arifle_mxc_f", "30rnd_65x39_caseless_mag", "30rnd_65x39_caseless_mag", ...]
 */
 
-private ["_target"];
-
-_target = _this;
-
-weaponCargo _target + magazineCargo _target + itemCargo _target + backpackCargo _target
+weaponCargo _this + magazineCargo _this + itemCargo _this + backpackCargo _this

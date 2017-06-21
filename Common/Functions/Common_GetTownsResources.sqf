@@ -23,9 +23,9 @@
     _income = (West) call CTI_CO_FNC_GetTownsResources
 */
 
-private ["_hostiles", "_near", "_side", "_sideID", "_total_values"];
+params ["_side"];
+private ["_hostiles", "_near", "_sideID", "_total_values"];
 
-_side = _this;
 _total_values = 0;
 
 _sideID = (_side) call CTI_CO_FNC_GetSideID;

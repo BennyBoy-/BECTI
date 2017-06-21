@@ -23,8 +23,4 @@
     _cost = ("B_AssaultPack_khk") call CTI_CO_FNC_GetGearItemCost;
 */
 
-private ["_item"];
-
-_item = _this;
-
-((missionNamespace getVariable [format["cti_%1", _item], [[0, 0]]]) select 0) select 1
+((missionNamespace getVariable [format["cti_%1", _this], [[0, 0]]]) select 0) select 1

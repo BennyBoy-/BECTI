@@ -22,10 +22,8 @@
 	  -> Assuming that Entre Deux belongs to West and that Camp 1 is held by East -> [Camp1]
 */
 
-private ["_camps", "_camps_side", "_sideID", "_town"];
-
-_town = _this select 0;
-_sideID = _this select 1;
+params ["_town", "_sideID"];
+private ["_camps", "_camps_side"];
 
 if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
 

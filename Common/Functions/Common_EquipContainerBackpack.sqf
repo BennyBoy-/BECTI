@@ -25,11 +25,8 @@
 	[player, "B_FieldPack_blk", ["Laserbatteries","7Rnd_408_Mag",...]] call CTI_CO_FNC_EquipContainerBackpack;
 */
 
-private ["_added", "_backpack", "_items", "_unit"];
-
-_unit = _this select 0;
-_backpack = _this select 1;
-_items = _this select 2;
+params ["_unit", "_backpack", "_items"];
+private ["_added", "_count"];
 
 if (backpack _unit != _backpack) then { removeBackpack _unit };
 if (_backpack != "" && backpack _unit == "") then { _unit addBackpack _backpack };

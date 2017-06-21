@@ -23,16 +23,11 @@
     _changed = [group player, CTI_ORDER_TAKEHOLDTOWNS, [0,0]] call CTI_CO_FNC_HasOrderedChanged
 */
 
-private ["_changed", "_group", "_order", "_order_current", "_order_pos", "_order_pos_current"];
-
-_group = _this select 0;
-_order_current = _this select 1;
-_order_pos_current = _this select 2;
-
-_order = _group getVariable "cti_order";
+params ["_group", "_order_current", "_order_pos_current"];
+private ["_changed", "_order_pos"];
 
 _changed = false;
-if (_order != _order_current) then { //--- Order itself changed?
+if ((_group getVariable "cti_order") != _order_current) then { //--- Order itself changed?
 	_changed = true;
 } else { //--- Order position changed?
 	_order_pos = _group getVariable "cti_order_pos";

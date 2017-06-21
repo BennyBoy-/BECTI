@@ -26,7 +26,7 @@
 	[OBJECT, CENTER, RADIUS MIN, RADIUS MAX, FACE AWAY, RANDOM DIRECTION, SAFE PLACEMENT] call CTI_CO_FNC_GetRandomPosition
 	
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_PlaceSafe
+	Common Function: CTI_CO_FNC_place_safe
 	
   # EXAMPLE #
     [vehicle player, getPos Town0, 10, 20] call CTI_CO_FNC_PlaceNear;
@@ -37,31 +37,24 @@
 	  -> Place the player's vehicle safely near Town0 and force it to face away from the center
 */
 
-private["_destination","_direction","_faceAway","_maxRadius","_minRadius","_object","_placeSafe","_position","_radius","_randomDirection","_safeRadius"];
-
-_object = _this select 0;
-_position = _this select 1;
-_minRadius = _this select 2;
-_maxRadius = _this select 3;
-_faceAway = if (count _this > 4) then {_this select 4} else {true};
-_randomDirection = if (count _this > 5) then {_this select 5} else {true};
-_placeSafe = if (count _this > 6) then {_this select 6} else {false};
+params ["_object", "_position", "_min_radius", "_max_radius", ["_face_away", true], ["_random_dir", true], ["_place_safe", false]];
+private ["_destination", "_direction", "_radius", "_safeRadius"];
 
 _direction = random 360;
-_radius = (random (_maxRadius - _minRadius)) + _minRadius;
+_radius = (random (_max_radius - _min_radius)) + _min_radius;
 
-if (_placeSafe) then {
-	_safeRadius = (_maxRadius - _minRadius) / 2;
+if (_place_safe) then {
+	_safeRadius = (_max_radius - _min_radius) / 2;
 	if (_safeRadius < 5) then {_safeRadius = 5};
 	_destination = [(_position select 0)+((sin _direction)*_radius),(_position select 1)+((cos _direction)*_radius),0.3]; //z: (_position select 2)+0.5
-	[_object, _destination, _minRadius] call CTI_CO_FNC_PlaceSafe;
+	[_object, _destination, _min_radius] call CTI_CO_FNC_place_safe;
 } else {
 	_object setPos [(_position select 0)+((sin _direction)*_radius),(_position select 1)+((cos _direction)*_radius),0.3]; //z: (_position select 2)+0.5
 };
 
-if (_randomDirection) then {_object setDir random 360};
+if (_random_dir) then {_object setDir random 360};
 
-if (_faceAway) then {
+if (_face_away) then {
 	_destination = getPos _object;
 	_object setDir -((((_destination select 1) - (_position select 1)) atan2 ((_destination select 0) - (_position select 0))) - 90);
 	_object setVectorUp surfaceNormal position _object;

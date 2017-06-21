@@ -26,11 +26,8 @@
 	[player, "V_TacVest_oli", ["Laserbatteries","7Rnd_408_Mag",...]] call CTI_CO_FNC_EquipContainerVest;
 */
 
-private ["_added", "_items", "_unit", "_vest"];
-
-_unit = _this select 0;
-_vest = _this select 1;
-_items = _this select 2;
+params ["_unit", "_vest", "_items"];
+private ["_added", "_count"];
 
 if (vest _unit != "") then {removeVest _unit}; //todo clearAllItemsFromVest if it ever gets added someday.
 // if (vest _unit != _vest) then { removeVest _unit }; //todo clearAllItemsFromVest if it ever gets added someday.

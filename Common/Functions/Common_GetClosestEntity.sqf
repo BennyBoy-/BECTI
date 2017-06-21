@@ -22,13 +22,11 @@
     _closest = [player, [Town1, [0,0,0], [50,50]]] call CTI_CO_FNC_GetClosestEntity;
 */
 
-private ["_distance", "_nearest", "_object", "_objects"];
-
-_object = _this select 0;
-_objects = _this select 1;
+params ["_object", "_objects"];
+private ["_distance", "_nearest"];
 
 _nearest = objNull;
-_distance = 100000;
+_distance = 1000000;
 {if (_x distance _object < _distance) then {_nearest = _x;_distance = _x distance _object}} forEach _objects;
 
 _nearest

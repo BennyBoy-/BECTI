@@ -21,9 +21,8 @@
 	  -> Sanitize the player's vehicle (AA)
 */
 
-private ["_magazines","_vehicle","_weapons"];
-
-_vehicle = _this;
+params ["_vehicle"];
+private ["_ammo", "_magazines", "_magazines_remove", "_remove", "_weapons", "_weapons_remove"];
 
 _weapons = weapons _vehicle;
 _magazines = magazines _vehicle;
@@ -40,11 +39,11 @@ _magazines_remove = [];
 		
 		if (_ammo != "") then {
 			//--- We check if the ammo is air-lock based and that in inherits from the missile class.
-			if (getNumber(configFile >> "CfgAmmo" >> _ammo >> "airLock") == 1 && configName(inheritsFrom(configFile >> "CfgAmmo" >> _ammo)) == "MissileBase") then {_remove = true; _magazines_remove = _magazines_remove + [_x]};
+			if (getNumber(configFile >> "CfgAmmo" >> _ammo >> "airLock") isEqualTo 1 && configName(inheritsFrom(configFile >> "CfgAmmo" >> _ammo)) isEqualTo "MissileBase") then {_remove = true; _magazines_remove pushBack _x};
 		};
 	} forEach getArray(configFile >> "CfgWeapons" >> _x >> "magazines"); //--- We check the magazines array of the weapon.
 	
-	if (_remove) then {_weapons_remove = _weapons_remove + [_x]};
+	if (_remove) then {_weapons_remove pushBack _x};
 } forEach _weapons;
 
 {if (_x in _magazines_remove) then {_vehicle removeMagazine _x}} forEach _magazines; //--- Remove AA magazines if found.

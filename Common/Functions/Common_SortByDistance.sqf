@@ -22,10 +22,10 @@
 	  -> Will sort the towns by their distance from the player (closest to furthest)
 */
 
-private["_current","_nearest","_nearestDistance","_object","_objects","_sorted"];
+params ["_object", "_objects"];
+private["_current", "_index", "_nearest", "_nearestDistance", "_sorted"];
 
-_object = _this select 0;
-_objects = +(_this select 1);
+_objects = +(_objects);
 
 _sorted = [];
 for '_i' from 0 to count(_objects)-1 do {
@@ -36,7 +36,7 @@ for '_i' from 0 to count(_objects)-1 do {
 	for '_j' from count(_objects)-1 to 0 step -1 do {
 		_current = _objects select _j;
 		_distance = _current distance _object;
-		if (_distance < _nearestDistance) then {_nearest = _current;_nearestDistance = _distance;_index = _j};
+		if (_distance < _nearestDistance) then {_nearest = _current; _nearestDistance = _distance; _index = _j};
 	};
 
 	_sorted pushBack _nearest;

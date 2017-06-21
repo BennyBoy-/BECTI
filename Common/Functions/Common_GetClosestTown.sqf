@@ -23,8 +23,4 @@
     _closest = (player) call CTI_CO_FNC_GetClosestTown
 */
 
-private ["_center"];
-
-_center = _this;
-
-[_center, CTI_Towns] call CTI_CO_FNC_GetClosestEntity
+[_this, CTI_Towns] call CTI_CO_FNC_GetClosestEntity
