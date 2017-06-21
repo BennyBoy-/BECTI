@@ -117,7 +117,7 @@ _town_group = if (count _pool > 0) then {createGroup _side} else {grpNull};
 		
 		_defenses pushBack _defense;
 		
-		if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_defense],true] };
+		if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_defense], true]};
 	} else { //--- Composition (script-block)
 		if (typeName _composition isEqualTo "CODE") then {
 			_custom_compo = [getMarkerPos _marker, markerDir _marker] call _composition;
@@ -126,12 +126,12 @@ _town_group = if (count _pool > 0) then {createGroup _side} else {grpNull};
 			
 			{
 				_x addEventHandler ["killed", format["[_this select 0, _this select 1, %1, true] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
+				if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_x], true]};
 				_defenses pushBack _x;
 			} forEach _custom_defenses;
 			
 			_defenses_inert = _defenses_inert + _custom_objects;
 		} else {
-			// Warning: unknown type, not a code block
 			if (CTI_Log_Level >= CTI_Log_Warning) then { 
 				["WARNING", "FILE: Server\Functions\Server_CreateTownDefenses.sqf", format ["Town Defense custom composition %1 is not a script block. Skipping", format["%1_%2", _side, _x select 1]]] call CTI_CO_FNC_Log;
 			};
