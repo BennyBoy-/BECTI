@@ -56,7 +56,7 @@ _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wi
 
 ["structure-preplaced", [_classname, _position]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 
-//--- Add to ZEUS Control
-if !(isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_structure], true] };
+//--- ZEUS Curator Editable
+if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_structure], true]};
 
 _structure

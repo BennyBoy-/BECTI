@@ -29,13 +29,12 @@
 	  -> Delegate the creation to the HC if any, return false if none are present
 */
 
-private ["_candidates", "_groups", "_positions", "_side", "_teams", "_town"];
+params ["_town", "_side", "_teams", "_groups", "_positions"];
+private ["_candidates", "_candidates_count", "_delegated", "_delegation_table", "_sleep_thread"];
 
-_town = _this select 0;
-_side = _this select 1;
-_teams = +(_this select 2);
-_groups = +(_this select 3);
-_positions = +(_this select 4);
+_teams = +(_teams);
+_groups = +(_groups);
+_positions = +(_positions);
 
 _candidates = missionNamespace getVariable "CTI_HEADLESS_CLIENTS";
 

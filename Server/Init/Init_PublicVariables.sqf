@@ -303,6 +303,9 @@ with missionNamespace do {
 				
 				_team setVariable ["cti_funds", _funds, true];
 				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] information were updated. Current side is [%3] and funds are [%4], Teamswap? [%5]", _name, _uid, _side, _funds, (_side_origin != _side)]] call CTI_CO_FNC_Log};
+				
+				//--- ZEUS Curator Editable
+				if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_leader], true]};
 			} else {
 				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] information were not stored since he is not allowed to join", _name, _uid]] call CTI_CO_FNC_Log};
 			};

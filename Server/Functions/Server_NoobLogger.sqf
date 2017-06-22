@@ -22,9 +22,7 @@
 	  -> Add 2 points!
 */
 
-//--- Register the best players ingame!
-_proplayer = _this select 0;
-_score = _this select 1;
+params ["_proplayer", "_score"];
 
 //--- Try to get the score of that marvelous players.
 _uid = getPlayerUID _proplayer;
@@ -45,7 +43,7 @@ if ((_get select 0) > 3) then {
 		_start = time;
 		while {true} do {
 			_get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
-			if (time - _start > 240 || _get select 0 == 0) exitWith {};
+			if (time - _start > 240 || (_get select 0) isEqualTo 0) exitWith {};
 			sleep 10;
 		};
 		

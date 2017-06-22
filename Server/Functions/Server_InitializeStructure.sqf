@@ -23,13 +23,9 @@
     [Barracks1, BarrackCoreInfo, East] call CTI_SE_FNC_InitializeStructure
 */
 
-private ["_side", "_structure", "_var"];
+params ["_structure", "_var", "_side"];
 
-_structure = _this select 0;
-_var = _this select 1;
-_side = _this select 2;
-
-switch ((_var select 0) select 0) do {
+switch ((_var select CTI_STRUCTURE_LABELS) select 0) do {
 	case CTI_BARRACKS: {
 		//--- Handle the nearby statics
 		if (CTI_BASE_DEFENSES_AUTO_MODE > 0) then {

@@ -188,6 +188,9 @@ if (_attempts >= 500) then {
 						(leader _group) disableAI "FSM";
 					};
 				};
+				
+				//--- ZEUS Curator Editable
+				if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[leader _group], true]};
 			};
 		};
 	} forEach (synchronizedObjects _logic);
@@ -242,13 +245,3 @@ if !(CTI_DEBUG) then {
 //--- The server is initialized, notify everyone
 CTI_InitServer = true;
 publicVariable "CTI_InitServer";
-
-// Zeus admin for players
-if !( isNil "ADMIN_ZEUS") then {
-	0 spawn {
-		while {!CTI_GameOver} do {
-			ADMIN_ZEUS addCuratorEditableObjects [playableUnits+switchableUnits,true];
-			sleep 5;
-		};
-	};
-};

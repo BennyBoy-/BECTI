@@ -23,31 +23,29 @@
 	  -> Returns true if Gravette can be captured by the East side
 */
 
-private ["_canCapture", "_hq", "_hq_closest_town", "_sideCapturing", "_town"];
+params ["_town", "_side"];
+private ["_can_capture", "_hq", "_hq_closest_town"];
 
-_town = _this select 0;
-_sideCapturing = _this select 1;
-
-if (typeName _sideCapturing == "SIDE") then {_sideCapturing = (_sideCapturing) call CTI_CO_FNC_GetSideID};
+if (typeName _side isEqualTo "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 
 //--- Check if the capturing side is holding at least 1 town, if not, the HQ's closest town is capturable.
 _hq_closest_town = objNull;
-if ((_sideCapturing call CTI_CO_FNC_GetSideTownCount) < 1) then {
-	_hq = (_sideCapturing) call CTI_CO_FNC_GetSideHQ;
+if ((_side call CTI_CO_FNC_GetSideTownCount) < 1) then {
+	_hq = (_side) call CTI_CO_FNC_GetSideHQ;
 	if !(isNull _hq) then { //--- Resistance has no HQ by default
-		_hq_closest_town = [_hq, _sideCapturing] call CTI_CO_FNC_GetClosestEnemyTown;
+		_hq_closest_town = [_hq, _side] call CTI_CO_FNC_GetClosestEnemyTown;
 	};
 };
 
-_canCapture = false;
+_can_capture = false;
 if (isNull _hq_closest_town) then {
 	//--- Check if this town's neighbors are held by the capturing side
 	{
-		if ((_x getVariable "cti_town_sideID") == _sideCapturing) exitWith {_canCapture = true};
+		if ((_x getVariable "cti_town_sideID") isEqualTo _side) exitWith {_can_capture = true};
 	} forEach (_town getVariable "cti_town_neighbors");
 } else {
 	//--- Check if this town is the closest one
-	if (_hq_closest_town == _town) then {_canCapture = true};
+	if (_hq_closest_town isEqualTo _town) then {_can_capture = true};
 };
 
-_canCapture
+_can_capture

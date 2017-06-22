@@ -32,10 +32,8 @@
 	  -> Will delete the Tank wreck after a delay of 20 seconds
 */
 
-private ["_delay", "_object", "_object_group", "_object_isman", "_object_seed", "_object_type"];
-
-_object = _this select 0;
-_delay = if (count _this > 1) then {_this select 1} else {-1};
+params ["_object", ["_delay", -1]];
+private ["_object_group", "_object_isman", "_object_seed", "_object_type"];
 
 _object_isman = if (_object isKindOf "Man") then {true} else {false};
 _object_group = if (_object_isman) then {group _object} else {grpNull};
@@ -48,7 +46,7 @@ if (isNull _object) exitWith {
 _object_type = typeOf  _object;
 
 //--- Determine the nature of the given entity if the delay is not specified
-if (_delay == -1) then {
+if (_delay isEqualTo -1) then {
 	with missionNamespace do {
 		_delay = switch (true) do {
 			case (_object isKindOf "Man"): { CTI_GC_DELAY_MAN };

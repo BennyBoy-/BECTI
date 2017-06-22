@@ -51,6 +51,15 @@ if !(CTI_P_Jailed) then {[_killed, _killer, CTI_P_SideID] spawn CTI_CO_FNC_OnUni
 
 waitUntil {alive player};
 
+//--- ZEUS Curator Editable
+if !(isNil "ADMIN_ZEUS") then {
+	if (CTI_IsServer) then {
+		ADMIN_ZEUS addCuratorEditableObjects [[player], true];
+	} else {
+		[ADMIN_ZEUS, player] remoteExec ["CTI_PVF_SRV_RequestAddCuratorEditable", CTI_PV_SERVER];
+	};
+};
+
 if (CTI_P_Jailed) exitWith {
 	_pos = getMarkerPos "prison";
 	_rpos = [(_pos select 0) + random 2 - random 2, (_pos select 1) + random 2 - random 2, 0.75];

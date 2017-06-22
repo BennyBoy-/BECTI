@@ -31,19 +31,12 @@
     _structure addEventHandler ["handledamage", format ["[_this select 0, _this select 2, _this select 3, %1, %2, '%3', %4] call CTI_SE_FNC_OnBuildingHandleDamage", (_side) call CTI_CO_FNC_GetSideID, _reduce_damages, _variable, _position]];
 */
 
-private ["_damage", "_damaged", "_logic", "_position", "_reduce_damages", "_shooter", "_side", "_sideID", "_variable"];
-
-_damaged = _this select 0;
-_damage = _this select 1;
-_shooter = _this select 2;
-_sideID = _this select 3;
-_reduce_damages = _this select 4;
-_variable = _this select 5;
-_position = _this select 6;
+params ["_damaged", "_damage", "_shooter", "_sideID", "_reduce_damages", "_variable", "_position"];
+private ["_logic", "_side"];
 
 _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 
-if (CTI_BASE_NOOBPROTECTION == 1 && side _shooter in [_side, sideEnemy]) exitWith {0};
+if (CTI_BASE_NOOBPROTECTION isEqualTo 1 && side _shooter in [_side, sideEnemy]) exitWith {0};
 if (_reduce_damages > 0) then {_currentdmg = getDammage _damaged; _damage = _currentdmg + ((_damage - _currentdmg) / _reduce_damages)};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;

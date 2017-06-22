@@ -36,7 +36,8 @@
 	  -> Will spawn Resistance defense forces for Town0
 */
 
-private ["_groups", "_pool", "_pool_units", "_positions", "_teams", "_totalGroups", "_town", "_value", "_vehicles"];
+params ["_town"];
+private ["_groups", "_pool", "_pool_units", "_positions", "_teams", "_totalGroups", "_value", "_vehicles"];
 
 _town = _this;
 
@@ -358,7 +359,7 @@ while {_totalGroups > 0} do {
 		_team = _x;
 		
 		//--- If nested, pick a random element
-		if (typeName(_team select 0) == "ARRAY") then {
+		if (typeName(_team select 0) isEqualTo "ARRAY") then {
 			_team = _team select floor(random count _team);
 		};
 		

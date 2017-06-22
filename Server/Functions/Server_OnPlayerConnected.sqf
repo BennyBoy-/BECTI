@@ -26,11 +26,7 @@
     onPlayerConnected {[_uid, _name, _id] spawn CTI_SE_FNC_OnPlayerConnected};
 */
 
-_uid = _this select 0;
-_name = _this select 1;
-_id = _this select 2;
-_jip = _this select 3;
-_ownerID = _this select 4;
+params ["_uid", "_name", "_id", "_jip", "_ownerID"];
 
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] has joined the current session, jip? [%3]", _name, _uid, _jip]] call CTI_CO_FNC_Log};
 /*

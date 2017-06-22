@@ -21,12 +21,11 @@
 	  -> Will trigger a commander's vote for the west side
 */
 
+params ["_side"];
 private ["_logic", "_side", "_teams", "_votes"];
 
-_side = _this;
-
 _vote_time = CTI_VOTE_TIME;
-_logic = (_side) Call CTI_CO_FNC_GetSideLogic;
+_logic = (_side) call CTI_CO_FNC_GetSideLogic;
 
 //--- Vote countdown.
 while {_vote_time > -1} do {_vote_time = _vote_time - 1; _logic setVariable ["cti_votetime", _vote_time, true]; sleep 1};
@@ -49,7 +48,7 @@ _highest = 0;
 _highestTeam = -1;
 _tie = false;
 {
-	if (_x == _highest && _x > 0) then {_tie = true};
+	if (_x isEqualTo _highest && _x > 0) then {_tie = true};
 	if (_x > _highest) then {_highestTeam = _forEachIndex; _highest = _x; _tie = false};
 } forEach _votes;
 

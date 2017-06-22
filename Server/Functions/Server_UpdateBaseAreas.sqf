@@ -21,9 +21,8 @@
 	  -> Updates base areas if needed for the west side
 */
 
-private ["_areas", "_closest", "_delete_pos", "_logic", "_need_update", "_side", "_structures_positions"];
-
-_side = _this;
+params ["_side"];
+private ["_areas", "_closest", "_delete_pos", "_logic", "_need_update", "_structures_positions"];
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 

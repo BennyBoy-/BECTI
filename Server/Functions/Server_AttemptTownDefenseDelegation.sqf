@@ -23,12 +23,8 @@
     [staticX, defGroup, 1, ["B_Soldier_R", defGroup, [500, 600, 0], 1, true]] Call CTI_SE_FNC_AttemptTownDefenseDelegation;
 */
 
-private ["_ai_args", "_delegated", "_hc", "_hcs", "_result", "_side", "_sideID", "_static", "_unit"];
-
-_static = _this select 0;
-_group = _this select 1;
-_side = _this select 2;
-_ai_args = _this select 3;
+params ["_static", "_group", "_side", "_ai_args"];
+private ["_delegated", "_hc", "_hcs", "_result", "_sideID", "_unit"];
 
 _hcs = missionNamespace getVariable "CTI_HEADLESS_CLIENTS";
 _delegated = true;

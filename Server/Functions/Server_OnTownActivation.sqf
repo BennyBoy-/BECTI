@@ -34,9 +34,6 @@
 params ["_town", "_side"];
 private ["_return", "_town_groups", "_town_positions", "_town_teams", "_var_side"];
 
-_town = _this select 0;
-_side = _this select 1;
-
 //--- Determine whether we're dealing with resistance or occupation town and gather a propre team template (teams, groups, positions)
 _var_side = if (_side isEqualTo resistance) then {"resistance"} else {"occupation"};
 _return = if (_side isEqualTo resistance) then {(_town) call CTI_SE_FNC_SpawnTownResistance} else {[_town, _side] call CTI_SE_FNC_SpawnTownOccupation};

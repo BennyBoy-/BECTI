@@ -25,10 +25,8 @@
 	  -> Track the player's vehicle with a 120 seconds timeout
 */
 
-private ["_delay", "_timeout", "_vehicle"];
-
-_vehicle = _this select 0;
-_delay = if (count _this > 1) then {_this select 1} else {missionNamespace getVariable "CTI_VEHICLES_EMPTY_TIMEOUT"};
+params ["_vehicle", ["_delay", missionNamespace getVariable "CTI_VEHICLES_EMPTY_TIMEOUT"]];
+private ["_timeout"];
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Server\Functions\Server_HandleEmptyVehicle.sqf", format["Handling emptiness expiration for vehicle [%1] with a delay of [%2]", _vehicle, _delay]] call CTI_CO_FNC_Log;
@@ -36,23 +34,18 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 
 _timeout = time;
 while {alive _vehicle && time - _timeout <= _delay} do {
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- Before
-		case 0: {if ({alive _x} count crew _vehicle > 0) then {_timeout = time}};
-		case 1: {if ({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle) then {_timeout = time}};
-	};
-	
 	sleep CTI_VEHICLES_EMPTY_SCAN_PERIOD;
 	
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- After
+	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- Check about the vehicle status
 		case 0: {if ({alive _x} count crew _vehicle > 0) then {_timeout = time}};
 		case 1: {if ({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle) then {_timeout = time}};
 	};
 };
 
-if (alive _vehicle) then {
+if (alive _vehicle) then { //--- If we got out of the loop then we can just delete the vehicle if it's still alive
 	if (CTI_Log_Level >= CTI_Log_Information) then {
 		["INFORMATION", "FILE: Server\Functions\Server_HandleEmptyVehicle.sqf", format["Vehicle [%1] will now get removed after an empty delay of [%2]", _vehicle, _delay]] call CTI_CO_FNC_Log;
 	};
 
 	deleteVehicle _vehicle;
-}; //--- If we got out of the loop then we can just delete the vehicle
+};

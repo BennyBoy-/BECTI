@@ -31,9 +31,9 @@
 	  -> Will repair the West HQ if destroyed
 */
 
-private ["_commander", "_direction", "_hq", "_hq_wreck", "_logic", "_position", "_side", "_sideID"];
+params ["_side"];
+private ["_commander", "_direction", "_hq", "_hq_wreck", "_logic", "_position", "_sideID"];
 
-_side = _this;
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 

@@ -29,10 +29,8 @@
 	  -> Perform a situation awareness scan around the player and it's units
 */
 
-private ["_group", "_groupisplayable", "_side", "_side_enemy", "_side_logic", "_spotted_base", "_spotted_units", "_spotted_structure", "_spotted_unit", "_structures", "_value"];
-
-_side = _this select 0;
-_group = _this select 1;
+params ["_side", "_group"];
+private ["_groupisplayable", "_side_enemy", "_side_logic", "_spotted_base", "_spotted_units", "_spotted_structure", "_spotted_unit", "_structures", "_value"];
 
 _side_logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _side_enemy = ([east, west] - [_side]) select 0;
@@ -83,7 +81,9 @@ _spotted_structure = objNull;
 		if (time - _last_report > (_x select 1)) then {
 			[getPos _what, _x select 3, leader _group] remoteExec ["CTI_PVF_CLT_OnSpottedTargetReceived", _side];
 			_group setVariable [_x select 2, time];
-			_side_logic setVariable [_x select 4, (_side_logic getVariable (_x select 4)) + [_what]];
+			
+			(_side_logic getVariable (_x select 4)) pushBack _what;
+			// _side_logic setVariable [_x select 4, (_side_logic getVariable (_x select 4)) + [_what]];
 		};
 	};
 } forEach [[_spotted_structure, CTI_AI_TEAMS_OBSERVATION_BASE_DELAY, "cti_spotted_lastbasereport", "base", "cti_spotted_structures"], [_spotted_unit, CTI_AI_TEAMS_OBSERVATION_UNIT_DELAY, "cti_spotted_lastunitreport", "unit", "cti_spotted_units"]];

@@ -27,12 +27,10 @@
 	  -> Levie resistance forces will be deactivated
 */
 
-private ["_side", "_town", "_variable"];
+params ["_town", "_side"];
+private ["_buildings", "_variable"];
 
-_town = _this select 0;
-_side = _this select 1;
-
-_variable = if (_side == resistance) then {"resistance"} else {"occupation"};
+_variable = if (_side isEqualTo resistance) then {"resistance"} else {"occupation"};
 
 //--- Order the HC to perform a cleanup on their side
 if !(isNil {missionNamespace getVariable "CTI_HEADLESS_CLIENTS"}) then {
@@ -60,7 +58,7 @@ if !(isNil {missionNamespace getVariable "CTI_HEADLESS_CLIENTS"}) then {
 //--- Cleanup the vehicles if needed (Skip it if the player owns it)
 {
 	if (alive _x) then {
-		if (!isPlayer _x && (count crew _x > 0) && ({side _x == _side} count crew _x isEqualTo count crew _x)) then {deleteVehicle _x};
+		if (!isPlayer _x && (count crew _x > 0) && ({side _x isEqualTo _side} count crew _x isEqualTo count crew _x)) then {deleteVehicle _x};
 	};
 } forEach (_town getVariable format["cti_town_%1_active_vehicles", _variable]);
 

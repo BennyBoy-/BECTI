@@ -29,10 +29,8 @@
 	  -> Town0 is now captured by West
 */
 
-private ["_award_teams", "_currentSideID", "_flagTexture", "_last_capture", "_newSide", "_newSideID", "_town"];
-
-_town = _this select 0;
-_newSide = _this select 1;
+params ["_town", "_newSide"];
+private ["_award_teams", "_currentSideID", "_flagTexture", "_last_capture", "_newSideID"];
 
 _newSideID = (_newSide) call CTI_CO_FNC_GetSideID;
 _currentSideID = _town getVariable "cti_town_sideID";
@@ -58,7 +56,7 @@ if (missionNamespace getVariable "CTI_TOWNS_PEACE" > 0) then {
 		};
 		
 		//--- Thread spawn, Update the flag textures upon peace mode expiration if applicable
-		if (typeOf _town == "FlagPole_F") then {
+		if (typeOf _town isEqualTo "FlagPole_F") then {
 			[_town, _newSide] spawn {
 				_town = _this select 0;
 				_newSide = _this select 1;
@@ -66,7 +64,7 @@ if (missionNamespace getVariable "CTI_TOWNS_PEACE" > 0) then {
 				while {time < (_town getVariable "cti_town_peace")} do { sleep .5 };
 				
 				//--- Only update if the new side ID match the current side ID
-				if ((_newSide call CTI_CO_FNC_GetSideID) == (_town getVariable "cti_town_sideID")) then {
+				if ((_newSide call CTI_CO_FNC_GetSideID) isEqualTo (_town getVariable "cti_town_sideID")) then {
 					_town setFlagTexture (missionNamespace getVariable [format["%1_TOWNS_FLAG_TEXTURE", _newSide], CTI_TOWNS_FLAG_TEXTURE_PEACE]);
 				};
 			};
@@ -79,7 +77,7 @@ if (missionNamespace getVariable "CTI_TOWNS_PEACE" > 0) then {
 };
 
 //--- Update the flag texture
-if (typeOf _town == "FlagPole_F") then {_town setFlagTexture _flagTexture};
+if (typeOf _town isEqualTo "FlagPole_F") then {_town setFlagTexture _flagTexture};
 
 //--- Update the camps if needed
 {
@@ -98,7 +96,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 
 [_town, _newSideID, _currentSideID] remoteExec ["CTI_PVF_CLT_OnTownCaptured", CTI_PV_CLIENTS];
 
-if (_newSide != resistance && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" == 1)) then { //--- Award the AI
+if (_newSide != resistance && ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") isEqualTo 1)) then { //--- Award the AI
 	_award_teams = [];
 	{
 		if !(isNil '_x') then {

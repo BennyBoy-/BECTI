@@ -38,14 +38,8 @@
     [_req_seed, _req_classname, _req_buyer, _req_target, _factory, _req_side] spawn CTI_SE_FNC_HandleAIPurchase;
 */
 
-private ["_can_afford", "_cost", "_direction", "_distance", "_factory", "_funds", "_model", "_net", "_position", "_req_buyer", "_req_classname", "_req_seed", "_req_side", "_req_target", "_req_time_out", "_script", "_sideID", "_var", "_vehicle", "_var_classname"];
-
-_req_seed = _this select 0;
-_req_classname = _this select 1;
-_req_buyer = _this select 2;
-_req_target = _this select 3;
-_factory = _this select 4;
-_req_side = _this select 5;
+params ["_req_seed", "_req_classname", "_req_buyer", "_req_target", "_factory", "_req_side"];
+private ["_can_afford", "_cost", "_direction", "_distance", "_funds", "_model", "_net", "_position", "_req_time_out", "_script", "_sideID", "_var", "_vehicle", "_var_classname"];
 
 //--- First of all, make sure that we don't go "softly" above the AI group size
 _process = true;
@@ -67,7 +61,7 @@ _req_time_out = time + (_var_classname select CTI_UNIT_TIME);
 //--- Custom vehicle?
 _script = _var_classname select CTI_UNIT_SCRIPT;
 _customid = -1;
-if (typeName (_var_classname select CTI_UNIT_SCRIPT) == "ARRAY") then { _model = (_var_classname select CTI_UNIT_SCRIPT) select 0; _script = (_var_classname select CTI_UNIT_SCRIPT) select 1; _customid = (_var_classname select CTI_UNIT_SCRIPT) select 2};
+if (typeName (_var_classname select CTI_UNIT_SCRIPT) isEqualTo "ARRAY") then { _model = (_var_classname select CTI_UNIT_SCRIPT) select 0; _script = (_var_classname select CTI_UNIT_SCRIPT) select 1; _customid = (_var_classname select CTI_UNIT_SCRIPT) select 2};
 
 //--- Then we check if the buyer has enough funds to perform this operation
 _cost = _var_classname select CTI_UNIT_PRICE;
@@ -99,11 +93,11 @@ while { time <= _req_time_out && alive _factory } do { sleep .25 }; //--- Constr
 
 if !(alive _factory) exitWith { diag_log "the factory is dead" };
 
-_net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then { true } else { false };
+_net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") isEqualTo 1) then { true } else { false };
 
 //--- Condition?
 _process = true;
-if (_req_classname == format["CTI_Salvager_Independent_%1", _req_side]) then {if (count((_req_side call CTI_CO_FNC_GetSideLogic) getVariable "cti_salvagers") >= CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX) then { _process = false }};
+if (_req_classname isEqualTo format["CTI_Salvager_Independent_%1", _req_side]) then {if (count((_req_side call CTI_CO_FNC_GetSideLogic) getVariable "cti_salvagers") >= CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX) then { _process = false }};
 
 if !(_process) exitWith {[_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete};
 if (typeName _req_target != "SIDE") then {if ((count units _req_target) > CTI_AI_TEAMS_GROUPSIZE) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete }};
@@ -112,7 +106,7 @@ _funds = (_req_buyer) call CTI_CO_FNC_GetFunds;
 if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete };
 [_req_buyer, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
 
-if (typeName _req_target == "SIDE") then { _req_target = createGroup _req_side };
+if (typeName _req_target isEqualTo "SIDE") then { _req_target = createGroup _req_side };
 
 _vehicle = objNull;
 _units = [];
@@ -149,12 +143,6 @@ if (_script != "" && alive _vehicle) then {
 };
 
 //--- ZEUS Curator Editable
-if !(isNil "ADMIN_ZEUS") then {
-	if (CTI_IsServer) then {
-		ADMIN_ZEUS addCuratorEditableObjects [_units, true];
-	} else {
-		[ADMIN_ZEUS, _units] remoteExec ["CTI_PVF_SRV_RequestAddCuratorEditable", CTI_PV_SERVER];
-	};
-};
+if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [_units, true]};
 
 [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete;

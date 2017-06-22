@@ -24,13 +24,8 @@
     [_team, group player, CTI_P_SideJoined, _classname, _factory, _veh_infos, _seed] call CTI_SE_FNC_OnClientPurchase
 */
 
-private ["_factory", "_index", "_list", "_req_buyer", "_req_classname", "_req_seed", "_req_target"];
-
-_req_seed = _this select 0;
-_req_classname = _this select 1;
-_factory = _this select 2;
-_req_target = _this select 3;
-_req_buyer = _this select 4;
+params ["_req_seed", "_req_classname", "_factory", "_req_target", "_req_buyer"];
+private ["_index", "_list"];
 
 _list = _factory getVariable "cti_queue_processing";
 
@@ -40,7 +35,7 @@ if (isNil '_list') exitWith {}; //--- Thread ended of factory's dead.
 
 _index = -1;
 {
-	if ((_x select 0) == _req_seed && (_x select 1) == _req_classname) exitWith {_index = _forEachIndex};
+	if ((_x select 0) isEqualTo _req_seed && (_x select 1) isEqualTo _req_classname) exitWith {_index = _forEachIndex};
 } forEach _list;
 
 if (_index != -1) then {

@@ -39,10 +39,9 @@
 	  -> Will spawn West defense forces for Town0
 */
 
-private ["_groups", "_pool", "_pool_units", "_positions", "_side", "_sideID", "_teams", "_totalGroups", "_town", "_upgrade", "_value", "_vehicles"];
+params ["_town", "_side"];
+private ["_groups", "_pool", "_pool_units", "_positions", "_sideID", "_teams", "_totalGroups", "_upgrade", "_value", "_vehicles"];
 
-_town = _this select 0;
-_side = _this select 1;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 _upgrade = (_side call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_TOWNS;
 
@@ -364,7 +363,7 @@ while {_totalGroups > 0} do {
 		_team = _x;
 		
 		//--- If nested, pick a random element
-		if (typeName(_team select 0) == "ARRAY") then {
+		if (typeName(_team select 0) isEqualTo "ARRAY") then {
 			_team = _team select floor(random count _team);
 		};
 		

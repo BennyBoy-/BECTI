@@ -17,13 +17,7 @@ CTI_FSM_UpdateCommander_Respawn_SP = {
 	_leader disableAI "MOVE";
 	
 	//--- ZEUS Curator Editable
-	if !(isNil "ADMIN_ZEUS") then {
-		if (CTI_IsServer) then {
-			ADMIN_ZEUS addCuratorEditableObjects [[_leader], true];
-		} else {
-			[ADMIN_ZEUS, _leader] remoteExec ["CTI_PVF_SRV_RequestAddCuratorEditable", CTI_PV_SERVER];
-		};
-	};
+	if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_leader], true]};
 	
 	_group setVariable ["cti_nextrespawn", time + (missionNamespace getVariable "CTI_RESPAWN_TIMER")];
 	_respawn_start = time;
@@ -87,6 +81,9 @@ CTI_FSM_UpdateCommander_Respawn_MP = {
 	};
 	
 	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {_newUnit enableFatigue false}; //--- Disable the unit's fatigue
+	
+	//--- ZEUS Curator Editable
+	if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_newUnit], true]};
 };
 
 CTI_FSM_UpdateCommander_SetAIRole = {

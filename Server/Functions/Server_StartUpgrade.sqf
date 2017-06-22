@@ -28,7 +28,8 @@
 	  -> Will bring the barracks on level 1 after the upgrade completion
 */
 
-private ["_level", "_side", "_upgrade"];
+params ["_side", "_upgrade", "_level"];
+private ["_logic", "_upgrade_time", "_upgrades"];
 
 _side = _this select 0;
 _upgrade = _this select 1;
