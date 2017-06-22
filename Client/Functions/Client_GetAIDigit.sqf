@@ -37,7 +37,7 @@ _yield = [];
 if (_find != -1) then {
 	for '_i' from (_find+1) to count(_split)-1 do {
 		if ((_split select _i) isEqualTo 65 || (_split select _i) isEqualTo 32) exitWith {};
-		_yield = _yield + [_split select _i];
+		_yield pushBack (_split select _i);
 	};
 };
 

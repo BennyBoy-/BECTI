@@ -159,14 +159,15 @@ CTI_FSM_UpdateCommander_GetStructureEmplacement = {
 	_sideLogic = (_side) call CTI_CO_FNC_GetSideLogic;
 	
 	_hq = (_side) call CTI_CO_FNC_GetSideHQ;
-	_structures = ((_side) call CTI_CO_FNC_GetSideStructures) + [_hq];
+	_structures = (_side) call CTI_CO_FNC_GetSideStructures);
+	_structures pushBack _hq;
 	_structures = _structures + (_sideLogic getVariable "cti_structures_wip");
 	
 	_position = getPos _hq;
 	_position = [(_position select 0) + ((_template select 2) select 0), (_position select 1) + ((_template select 2) select 1), 0];
 	_distance = (_var select 4) select 1;
 	_direction = 0;//todo template defines it.
-	
+	//todo use nearterrainobject
 	_i = 0;
 	_radius = 70;
 	_done = false;

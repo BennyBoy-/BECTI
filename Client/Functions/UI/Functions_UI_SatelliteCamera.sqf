@@ -74,7 +74,7 @@ CTI_UI_SatelitteCamera_LoadEntityInformation = {
 	_magazines = "Magazines:<br />";
 	_magazines_items = uniformItems _entity + vestItems _entity + backpackItems _entity;
 	_magazines_items_added = [];
-	{if !(_x in _magazines_items_added) then {_item = _x; _cfg = (_item) call CTI_UI_Gear_GetItemBaseConfig; if (_cfg != "nil") then {_magazines = _magazines + format [" <t color='#e6ffc9'>%1</t> - %2<br />",getText(configFile >> _cfg >> _item >> "displayName"), {_item isEqualTo _x} count _magazines_items]}}; _magazines_items_added = _magazines_items_added + [_x]} forEach _magazines_items;
+	{if !(_x in _magazines_items_added) then {_item = _x; _cfg = (_item) call CTI_UI_Gear_GetItemBaseConfig; if (_cfg != "nil") then {_magazines = _magazines + format [" <t color='#e6ffc9'>%1</t> - %2<br />",getText(configFile >> _cfg >> _item >> "displayName"), {_item isEqualTo _x} count _magazines_items]}}; _magazines_items_added pushBack _x} forEach _magazines_items;
 	
 _html = format ["<t size='1.3' color='#2394ef'>Infantry :</t><br />
 Class: <t color='#8ccdff'>%1</t><br />
@@ -95,7 +95,7 @@ Health: %2<br />
 		_magazines = "Magazines:<br />";
 		_magazines_items = magazines _vehicle;
 		_magazines_items_added = [];
-		{if !(_x in _magazines_items_added) then {_item = _x; _magazines = _magazines + format [" <t color='#e6ffc9'>%1</t> - %2<br />",getText(configFile >> "CfgMagazines" >> _item >> "displayName"), {_x isEqualTo _item} count _magazines_items]}; _magazines_items_added = _magazines_items_added + [_x];} forEach _magazines_items;
+		{if !(_x in _magazines_items_added) then {_item = _x; _magazines = _magazines + format [" <t color='#e6ffc9'>%1</t> - %2<br />",getText(configFile >> "CfgMagazines" >> _item >> "displayName"), {_x isEqualTo _item} count _magazines_items]}; _magazines_items_added pushBack _x} forEach _magazines_items;
 		
 _html = _html + format ["<br /><t size='1.3' color='#2394ef'>Vehicle :</t><br />
 Class: <t color='#8ccdff'>%1</t><br />

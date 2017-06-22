@@ -71,7 +71,7 @@ CTI_UI_Respawn_GetListLabels = {
 	_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 	
 	{
-		_list = _list + [format["%1 - %2", _x call CTI_UI_Respawn_GetRespawnLabel, _x call CTI_UI_Respawn_GetLocationInformation]];
+		_list pushBack format["%1 - %2", _x call CTI_UI_Respawn_GetRespawnLabel, _x call CTI_UI_Respawn_GetLocationInformation];
 	} forEach _emplacements;
 	
 	_list

@@ -705,7 +705,7 @@ CTI_UI_Gear_AddContainerItem = {
 	_gear = uiNamespace getVariable "cti_dialog_ui_gear_target_gear";
 	
 	_items = ((_gear select 1) select _index) select 1;
-	_items = _items + [_item];
+	_items pushBack _item;
 	((_gear select 1) select _index) set [1, _items];
 	
 	if (_index isEqualTo uiNamespace getVariable "cti_dialog_ui_gear_items_tab") then {
@@ -766,7 +766,7 @@ CTI_UI_Gear_CheckAccessories = {
 			
 			if !(toLower((((_gear select 0) select _index) select 1) select _i) in _compatibleItems) then {
 				(((_gear select 0) select _index) select 1) set [_i, ""];
-				_defaults_process = _defaults_process + [_i];
+				_defaults_process pushBack _i;
 			};
 		};
 	};
@@ -1078,7 +1078,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 			case "CfgMagazines": { //todo, current mag!
 				_gear_sub = _gear select 1;
 				
-				for '_i' from 0 to 2 do {if ((_gear_sub select _i) select 0 != "") then { _idcs = _idcs + [77001+_i]; if (_tab isEqualTo _i) then {_idcs = _idcs + [77109]}} };
+				for '_i' from 0 to 2 do {if ((_gear_sub select _i) select 0 != "") then { _idcs pushBack (77001+_i); if (_tab isEqualTo _i) then {_idcs pushBack 77109}} };
 				
 				// current magazine
 				//--- Is there a primary weapon?
@@ -1088,7 +1088,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 					if (_gear_sub select 0 != "") then { //--- There is a weapon
 						_magazines = (getArray(configFile >> 'CfgWeapons' >> (_gear_sub select 0) >> 'magazines')) call CTI_CO_FNC_ArrayToLower;
 						
-						if (_item in _magazines) then {	_idcs = _idcs + [77901+_i] };
+						if (_item in _magazines) then {	_idcs pushBack (77901+_i) };
 					};
 				};*/
 			};
@@ -1097,32 +1097,32 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 				
 				_gear = _gear select 1;
 				
-				for '_i' from 0 to 2 do {if ((_gear select _i) select 0 != "") then { _idcs = _idcs + [77001+_i]; if (_tab isEqualTo _i) then {_idcs = _idcs + [77109]}} };
+				for '_i' from 0 to 2 do {if ((_gear select _i) select 0 != "") then { _idcs pushBack (77001+_i); if (_tab isEqualTo _i) then {_idcs pushBack 77109}} };
 			};
 			case "CfgVehicles": {
 				{
 					for '_i' from 0 to count(_translated)-1 do {
-						if (_x isEqualTo ((_translated select _i) select 0) && ((_translated select _i) select 2) != "") then {_idcs = _idcs + [(_translated select _i) select 1]; if (_tab isEqualTo _i) then {_idcs = _idcs + [77109]}};
+						if (_x isEqualTo ((_translated select _i) select 0) && ((_translated select _i) select 2) != "") then {_idcs pushBack ((_translated select _i) select 1); if (_tab isEqualTo _i) then {_idcs pushBack 77109}};
 					};
 				} forEach _slots;
-				_idcs = _idcs + [77003];
+				_idcs pushBack 77003;
 			};
 			case "CfgWeapons": {
 				_type = getNumber(configFile >> _config_type >> _item >> "type");
 				{
 					for '_i' from 0 to count(_translated)-1 do {
-						if (_x isEqualTo ((_translated select _i) select 0) && ((_translated select _i) select 2) != "") then {_idcs = _idcs + [(_translated select _i) select 1]; if (_tab isEqualTo _i) then {_idcs = _idcs + [77109]}};
+						if (_x isEqualTo ((_translated select _i) select 0) && ((_translated select _i) select 2) != "") then {_idcs pushBack ((_translated select _i) select 1); if (_tab isEqualTo _i) then {_idcs pushBack 77109}};
 					};
 				} forEach _slots;
 				
 				//--- Specific to item
 				switch (true) do {
 					//todo, rifle & rifle2h separation > secondary unavailable
-					case (_type in [CTI_TYPE_RIFLE, CTI_TYPE_RIFLE2H]): {_idcs = _idcs + [77013]};
-					case (_type isEqualTo CTI_TYPE_LAUNCHER): {_idcs = _idcs + [77018]};
-					case (_type isEqualTo CTI_TYPE_PISTOL): {_idcs = _idcs + [77023]};
+					case (_type in [CTI_TYPE_RIFLE, CTI_TYPE_RIFLE2H]): {_idcs pushBack 77013};
+					case (_type isEqualTo CTI_TYPE_LAUNCHER): {_idcs pushBack 77018};
+					case (_type isEqualTo CTI_TYPE_PISTOL): {_idcs pushBack 77023};
 					case (_type isEqualTo CTI_TYPE_EQUIPMENT): {
-						_idcs = _idcs + [if (getText(configFile >> 'CfgWeapons' >> _item >> 'simulation') isEqualTo "NVGoggles") then {77006} else {77007}]
+						_idcs pushBack (if (getText(configFile >> 'CfgWeapons' >> _item >> 'simulation') isEqualTo "NVGoggles") then {77006} else {77007}); //--- todo predicate condition
 					};
 					case (_type isEqualTo CTI_TYPE_ITEM): {
 						switch (getNumber(configFile >> _config_type >> _item >> 'ItemInfo' >> 'type')) do {
@@ -1133,8 +1133,8 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 									if ((_x select 0) != "") then { //--- Muzzle is an array
 										_compatibleItems = (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'MuzzleSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower);
 										{_compatibleItems pushBack toLower(configName _x)} forEach (configProperties[configfile >> _config_type >> (_x select 0) >> "WeaponSlotsInfo" >> "MuzzleSlot" >> "compatibleItems", "true", true]);
-										if (_item in _compatibleItems) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
-										// if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'MuzzleSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+										if (_item in _compatibleItems) then {_idcs pushBack (_acc_idcs select _forEachIndex)};
+										// if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'MuzzleSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs pushBack (_acc_idcs select _forEachIndex)};
 									};
 								} forEach (_gear select 0);
 							};
@@ -1146,7 +1146,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 									if ((_x select 0) != "") then { //--- Side is a subclass
 										_compatibleItems = (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'PointerSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower);
 										{_compatibleItems pushBack toLower(configName _x)} forEach (configProperties[configfile >> _config_type >> (_x select 0) >> "WeaponSlotsInfo" >> "PointerSlot" >> "compatibleItems", "true", true]);
-										if (_item in _compatibleItems) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+										if (_item in _compatibleItems) then {_idcs pushBack (_acc_idcs select _forEachIndex)};
 									};
 								} forEach (_gear select 0);
 							};
@@ -1157,7 +1157,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 									if ((_x select 0) != "") then { //--- Optics is a subclass
 										_compatibleItems = (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'CowsSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower);
 										{_compatibleItems pushBack toLower(configName _x)} forEach (configProperties[configfile >> _config_type >> (_x select 0) >> "WeaponSlotsInfo" >> "CowsSlot" >> "compatibleItems", "true", true]);
-										if (_item in _compatibleItems) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+										if (_item in _compatibleItems) then {_idcs pushBack (_acc_idcs select _forEachIndex)};
 									};
 								} forEach (_gear select 0);
 							};
@@ -1168,21 +1168,21 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 									if ((_x select 0) != "") then { //--- Optics is a subclass
 										_compatibleItems = (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'UnderBarrelSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower);
 										{_compatibleItems pushBack toLower(configName _x)} forEach (configProperties[configfile >> _config_type >> (_x select 0) >> "WeaponSlotsInfo" >> "UnderBarrelSlot" >> "compatibleItems", "true", true]);
-										if (_item in _compatibleItems) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+										if (_item in _compatibleItems) then {_idcs pushBack (_acc_idcs select _forEachIndex)};
 									};
 								} forEach (_gear select 0);
 							};
-							case CTI_SUBTYPE_HEADGEAR: {_idcs = _idcs + [77004]};
-							case CTI_SUBTYPE_VEST: {_idcs = _idcs + [77002]};
-							case CTI_SUBTYPE_UNIFORM: {_idcs = _idcs + [77001]};
-							case CTI_SUBTYPE_UAVTERMINAL: {_idcs = _idcs + [77009]};
+							case CTI_SUBTYPE_HEADGEAR: {_idcs pushBack 77004};
+							case CTI_SUBTYPE_VEST: {_idcs pushBack 77002};
+							case CTI_SUBTYPE_UNIFORM: {_idcs pushBack 77001};
+							case CTI_SUBTYPE_UAVTERMINAL: {_idcs pushBack 77009};
 							default {
 								switch (getText(configFile >> _config_type >> _item >> 'simulation')) do {
-									case "ItemMap": {_idcs = _idcs + [77008]};
-									case "ItemGPS": {_idcs = _idcs + [77009]};
-									case "ItemRadio": {_idcs = _idcs + [77010]};
-									case "ItemCompass": {_idcs = _idcs + [77011]};
-									case "ItemWatch": {_idcs = _idcs + [77012]};
+									case "ItemMap": {_idcs pushBack 77008};
+									case "ItemGPS": {_idcs pushBack 77009};
+									case "ItemRadio": {_idcs pushBack 77010};
+									case "ItemCompass": {_idcs pushBack 77011};
+									case "ItemWatch": {_idcs pushBack 77012};
 								};
 							};
 						};

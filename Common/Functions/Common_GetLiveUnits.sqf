@@ -29,5 +29,5 @@ if (typeName _units isEqualTo "GROUP") then { _units = units _units };
 
 _alive = [];
 
-{if (alive _x) then {_alive = _alive + [_x]}} forEach _units;
+{if (alive _x) then {_alive pushBack _x}} forEach _units;
 _alive

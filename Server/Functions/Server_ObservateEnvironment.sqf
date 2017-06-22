@@ -34,7 +34,8 @@ private ["_groupisplayable", "_side_enemy", "_side_logic", "_spotted_base", "_sp
 
 _side_logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _side_enemy = ([east, west] - [_side]) select 0;
-_structures = (_side_enemy call CTI_CO_FNC_GetSideStructures) + [_side_enemy call CTI_CO_FNC_GetSideHQ];
+_structures = (_side_enemy) call CTI_CO_FNC_GetSideStructures;
+_structures pushBack (_side_enemy call CTI_CO_FNC_GetSideHQ);
 _groupisplayable = _group call CTI_CO_FNC_IsGroupPlayable;
 
 //--- Sanitize a bit to avoid ending up with a thousand crap in the array

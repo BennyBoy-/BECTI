@@ -158,9 +158,6 @@ CTI_UI_Purchase_UpdateVehicleIcons = {
 	_IDCs = [110100, 110101, 110102, 110103];
 	
 	if (_classname isKindOf "Man") then {
-		// {
-			// ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _x) ctrlShow false; 
-		// } forEach (_IDCs + [110104]);
 		call CTI_UI_Purchase_HideVehicleIcons;
 	} else {
 		_var = missionNamespace getVariable _classname;
