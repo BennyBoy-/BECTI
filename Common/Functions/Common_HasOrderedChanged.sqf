@@ -32,8 +32,8 @@ if ((_group getVariable "cti_order") != _order_current) then { //--- Order itsel
 } else { //--- Order position changed?
 	_order_pos = _group getVariable "cti_order_pos";
 	switch (true) do {
-		case (typeName _order_pos_current == "ARRAY" && typeName _order_pos == "ARRAY"): {if (_order_pos_current select 0 != _order_pos select 0 || _order_pos_current select 1 != _order_pos select 1) then {_changed = true}};
-		case (typeName _order_pos_current == "OBJECT" && typeName _order_pos == "OBJECT"): {if (_order_pos_current != _order_pos) then {_changed = true}};
+		case (typeName _order_pos_current isEqualTo "ARRAY" && typeName _order_pos isEqualTo "ARRAY"): {if (_order_pos_current select 0 != _order_pos select 0 || _order_pos_current select 1 != _order_pos select 1) then {_changed = true}};
+		case (typeName _order_pos_current isEqualTo "OBJECT" && typeName _order_pos isEqualTo "OBJECT"): {if (_order_pos_current != _order_pos) then {_changed = true}};
 	};
 };
 

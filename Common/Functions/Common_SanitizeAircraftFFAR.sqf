@@ -39,7 +39,7 @@ _magazines_remove = [];
 		
 		if (_ammo != "") then {
 			//--- We check if the ammo is air-lock based and that in inherits from the missile class.
-			if (configName(inheritsFrom(configFile >> "CfgAmmo" >> _ammo)) == "RocketBase") then {_remove = true; _magazines_remove = _magazines_remove pushBack _x};
+			if (configName(inheritsFrom(configFile >> "CfgAmmo" >> _ammo)) isEqualTo "RocketBase") then {_remove = true; _magazines_remove = _magazines_remove pushBack _x};
 		};
 	} forEach getArray(configFile >> "CfgWeapons" >> _x >> "magazines"); //--- We check the magazines array of the weapon.
 	

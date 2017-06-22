@@ -210,11 +210,11 @@ class FSM
     class Determine_Action
     {
       name = "Determine_Action";
-      init = /*%FSM<STATEINIT""">*/"if ((((_town getVariable 'cti_town_sv') < _last_SV || (_town getVariable 'cti_town_sv') < (_town getVariable 'cti_town_sv_default')) && _sideID == (_town getVariable 'cti_town_sideID')) || _sideID != (_town getVariable 'cti_town_sideID')) then {" \n
+      init = /*%FSM<STATEINIT""">*/"if ((((_town getVariable 'cti_town_sv') < _last_SV || (_town getVariable 'cti_town_sv') < (_town getVariable 'cti_town_sv_default')) && _sideID isEqualTo (_town getVariable 'cti_town_sideID')) || _sideID != (_town getVariable 'cti_town_sideID')) then {" \n
        "	_capturable = true;" \n
        "	" \n
        "	//--- If we need all camps to capture the town, make sure that they belong to the team's before capturing the depot, skip naval towns" \n
-       "	if (_capture_mode == 1 && !_is_naval) then { " \n
+       "	if (_capture_mode isEqualTo 1 && !_is_naval) then { " \n
        "		if !([_town, _sideID] call CTI_CO_FNC_HasAllCamps) then {_capturable = false};" \n
        "	};" \n
        "	" \n
@@ -238,7 +238,7 @@ class FSM
        "	" \n
        "	//--- Check if the current camp still need to be targeted" \n
        "	if !(isNull _camp_target) then {" \n
-       "		if ((_camp_target getVariable ""cti_camp_sideID"") == _sideID) then {" \n
+       "		if ((_camp_target getVariable ""cti_camp_sideID"") isEqualTo _sideID) then {" \n
        "			_camp_target setVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], (_camp_target getVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], []]) - [objNull, _team]];" \n
        "			_camp_target = objNull;" \n
        "		} else {" \n
@@ -277,7 +277,7 @@ class FSM
           priority = 2.000000;
           to="Patrol";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_action == ""patrol"""/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_action isEqualTo ""patrol"""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -287,7 +287,7 @@ class FSM
           priority = 1.000000;
           to="Camp_Defense";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_action == ""defense_camp"""/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_action isEqualTo ""defense_camp"""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -297,7 +297,7 @@ class FSM
           priority = 0.000000;
           to="Town_Defense";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_action == ""defense"""/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_action isEqualTo ""defense"""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

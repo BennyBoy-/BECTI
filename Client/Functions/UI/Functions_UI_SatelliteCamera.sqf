@@ -5,7 +5,7 @@ CTI_UI_SatelitteCamera_MapClicked = {
 	_mx = _this select 2;
 	_my = _this select 3;
 	
-	if (_button == 0) then {
+	if (_button isEqualTo 0) then {
 		_position = _control ctrlMapScreenToWorld [_mx, _my];
 		_position set [2, getPos CTI_SatelitteCamera select 2];
 		CTI_SatelitteCamera setPos _position;
@@ -22,7 +22,7 @@ CTI_UI_SatelitteCamera_GetParsedVehicleRoles = {
 	
 	_parsed = "";
 	_opcrew = [];
-	if (alive driver _vehicle) then {_opcrew pushBack (driver _vehicle);_parsed = _parsed + format [" <t color='#ae6eef'>Driver:</t> <t color='#d4b4f7'>%1</t>%2<br />", driver _vehicle, if (effectiveCommander _vehicle == driver _vehicle) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]};
+	if (alive driver _vehicle) then {_opcrew pushBack (driver _vehicle);_parsed = _parsed + format [" <t color='#ae6eef'>Driver:</t> <t color='#d4b4f7'>%1</t>%2<br />", driver _vehicle, if (effectiveCommander _vehicle isEqualTo driver _vehicle) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]};
 	_gunner = "";
 	_commander = "";
 	_turrets = "";
@@ -34,9 +34,9 @@ CTI_UI_SatelitteCamera_GetParsedVehicleRoles = {
 		_unit = _vehicle turretUnit [_i];
 		if (alive _unit) then {
 			_roleFound = false;
-			if !(_found_gunner) then { if (getNumber (_turret_main >> "primaryGunner") > 0) then {_found_gunner = true; _roleFound = true; _opcrew pushBack _unit;_gunner = format [" <t color='#ae6eef'>Gunner:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
-			if (!_found_commander && !_roleFound) then { if (getNumber (_turret_main >> "primaryObserver") > 0) then {_found_commander = true; _opcrew pushBack _unit;_commander = format [" <t color='#ae6eef'>Commander:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
-			if !(_unit in _opcrew) then {_opcrew pushBack _unit;_turrets = _turrets + format [" <t color='#ae6eef'>Turret [%1]:</t> <t color='#d4b4f7'>%2</t>%3<br />", _i, _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]};
+			if !(_found_gunner) then { if (getNumber (_turret_main >> "primaryGunner") > 0) then {_found_gunner = true; _roleFound = true; _opcrew pushBack _unit;_gunner = format [" <t color='#ae6eef'>Gunner:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle isEqualTo _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
+			if (!_found_commander && !_roleFound) then { if (getNumber (_turret_main >> "primaryObserver") > 0) then {_found_commander = true; _opcrew pushBack _unit;_commander = format [" <t color='#ae6eef'>Commander:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle isEqualTo _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
+			if !(_unit in _opcrew) then {_opcrew pushBack _unit;_turrets = _turrets + format [" <t color='#ae6eef'>Turret [%1]:</t> <t color='#d4b4f7'>%2</t>%3<br />", _i, _unit, if (effectiveCommander _vehicle isEqualTo _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]};
 		};
 		
 		_config_sub = _turret_main >> "turrets";
@@ -46,9 +46,9 @@ CTI_UI_SatelitteCamera_GetParsedVehicleRoles = {
 			_unit = _vehicle turretUnit [_i, _j];
 			if (alive _unit) then {
 				_roleFound = false;
-				if !(_found_gunner) then { if (getNumber (_turret_sub >> "primaryGunner") > 0) then {_found_gunner = true; _roleFound = true; _opcrew pushBack _unit;_gunner = format [" <t color='#ae6eef'>Gunner:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
-				if (!_found_commander && !_roleFound) then { if (getNumber (_turret_sub >> "primaryObserver") > 0) then {_found_commander = true; _opcrew pushBack _unit;_commander = format [" <t color='#ae6eef'>Commander:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
-				if !(_unit in _opcrew) then {_opcrew pushBack _unit;_turrets = _turrets + format [" <t color='#ae6eef'>Turret [%1,%2]:</t> <t color='#d4b4f7'>%3</t>%4<br />", _i, _j, _unit, if (effectiveCommander _vehicle == _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]};
+				if !(_found_gunner) then { if (getNumber (_turret_sub >> "primaryGunner") > 0) then {_found_gunner = true; _roleFound = true; _opcrew pushBack _unit;_gunner = format [" <t color='#ae6eef'>Gunner:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle isEqualTo _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
+				if (!_found_commander && !_roleFound) then { if (getNumber (_turret_sub >> "primaryObserver") > 0) then {_found_commander = true; _opcrew pushBack _unit;_commander = format [" <t color='#ae6eef'>Commander:</t> <t color='#d4b4f7'>%1</t>%2<br />", _unit, if (effectiveCommander _vehicle isEqualTo _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]}};
+				if !(_unit in _opcrew) then {_opcrew pushBack _unit;_turrets = _turrets + format [" <t color='#ae6eef'>Turret [%1,%2]:</t> <t color='#d4b4f7'>%3</t>%4<br />", _i, _j, _unit, if (effectiveCommander _vehicle isEqualTo _unit) then {" - <t color='#8ccdff'>Vehicle Commander</t>"} else {""}]};
 			};
 		};
 	};
@@ -74,7 +74,7 @@ CTI_UI_SatelitteCamera_LoadEntityInformation = {
 	_magazines = "Magazines:<br />";
 	_magazines_items = uniformItems _entity + vestItems _entity + backpackItems _entity;
 	_magazines_items_added = [];
-	{if !(_x in _magazines_items_added) then {_item = _x; _cfg = (_item) call CTI_UI_Gear_GetItemBaseConfig; if (_cfg != "nil") then {_magazines = _magazines + format [" <t color='#e6ffc9'>%1</t> - %2<br />",getText(configFile >> _cfg >> _item >> "displayName"), {_item == _x} count _magazines_items]}}; _magazines_items_added = _magazines_items_added + [_x]} forEach _magazines_items;
+	{if !(_x in _magazines_items_added) then {_item = _x; _cfg = (_item) call CTI_UI_Gear_GetItemBaseConfig; if (_cfg != "nil") then {_magazines = _magazines + format [" <t color='#e6ffc9'>%1</t> - %2<br />",getText(configFile >> _cfg >> _item >> "displayName"), {_item isEqualTo _x} count _magazines_items]}}; _magazines_items_added = _magazines_items_added + [_x]} forEach _magazines_items;
 	
 _html = format ["<t size='1.3' color='#2394ef'>Infantry :</t><br />
 Class: <t color='#8ccdff'>%1</t><br />
@@ -95,7 +95,7 @@ Health: %2<br />
 		_magazines = "Magazines:<br />";
 		_magazines_items = magazines _vehicle;
 		_magazines_items_added = [];
-		{if !(_x in _magazines_items_added) then {_item = _x; _magazines = _magazines + format [" <t color='#e6ffc9'>%1</t> - %2<br />",getText(configFile >> "CfgMagazines" >> _item >> "displayName"), {_x == _item} count _magazines_items]}; _magazines_items_added = _magazines_items_added + [_x];} forEach _magazines_items;
+		{if !(_x in _magazines_items_added) then {_item = _x; _magazines = _magazines + format [" <t color='#e6ffc9'>%1</t> - %2<br />",getText(configFile >> "CfgMagazines" >> _item >> "displayName"), {_x isEqualTo _item} count _magazines_items]}; _magazines_items_added = _magazines_items_added + [_x];} forEach _magazines_items;
 		
 _html = _html + format ["<br /><t size='1.3' color='#2394ef'>Vehicle :</t><br />
 Class: <t color='#8ccdff'>%1</t><br />

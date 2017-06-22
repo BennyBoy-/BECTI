@@ -14,7 +14,7 @@ player playMove "Acts_carFixingWheel";
 sleep 3;
 waitUntil {animationState player != "Acts_carFixingWheel" || !alive player || vehicle player != player || !alive _vehicle || _vehicle distance player > 5};
 
-if (alive player && vehicle player == player && alive _vehicle && _vehicle distance player <= 5) then {
+if (alive player && vehicle player isEqualTo player && alive _vehicle && _vehicle distance player <= 5) then {
 	//--- Overall repairs (Global Arg)
 	if (_dammages > 0) then {
 		_dammages = _dammages - .15;

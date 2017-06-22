@@ -45,7 +45,7 @@ CTI_UI_Artillery_GetGivenTeamArtillery = {
 	_available = [];
 	_artillery = call CTI_UI_Artillery_GetTeamArtillery;
 	
-	{if (typeOf _x == _type) then {_available pushBack _x}} forEach _artillery;
+	{if (typeOf _x isEqualTo _type) then {_available pushBack _x}} forEach _artillery;
 	_available
 };
 

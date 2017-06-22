@@ -139,7 +139,7 @@ CTI_Coin_UpdatePreview = {
 			if !(_preview call CTI_Coin_PreviewSurfaceIsValid) then { //--- Check if the surface is valid
 				_color = CTI_COIN_COLOR_INVALID;
 			} else {
-				if (CTI_COIN_PARAM_KIND == "DEFENSES") then {
+				if (CTI_COIN_PARAM_KIND isEqualTo "DEFENSES") then {
 					if !((CTI_COIN_PARAM select CTI_DEFENSE_COINBLACKLIST) isEqualTo []) then { //--- A blacklist is specified
 						if ((CTI_COIN_PARAM select CTI_DEFENSE_COINBLACKLIST) isEqualTo ["*"]) then { //--- If a wildcard is specified, treat the defense as a structure
 							if !(_preview call CTI_Coin_PreviewSurfaceIsValid) then {_color = CTI_COIN_COLOR_INVALID};
@@ -152,7 +152,7 @@ CTI_Coin_UpdatePreview = {
 		};
 		
 		//--- Show or hide the object depending on the boundary presence
-		// if (_color == CTI_COIN_COLOR_OUTOFRANGE && !isObjectHidden _preview) then {_preview hideObject true};
+		// if (_color isEqualTo CTI_COIN_COLOR_OUTOFRANGE && !isObjectHidden _preview) then {_preview hideObject true};
 		// if (_color != CTI_COIN_COLOR_OUTOFRANGE && isObjectHidden _preview) then {_preview hideObject false};
 		
 		//--- Get the matching UI color
@@ -187,11 +187,11 @@ CTI_Coin_PreviewSurfaceIsValid = {
 				_isValid = false
 			} else {
 				_defense_collide = false;
-				if (CTI_COIN_PARAM_KIND == "DEFENSES") then {
+				if (CTI_COIN_PARAM_KIND isEqualTo "DEFENSES") then {
 					if ((CTI_COIN_PARAM select 7) isEqualTo ["*"]) then {_defense_collide = true};
 				};
 				
-				if (CTI_COIN_PARAM_KIND == "STRUCTURES" || _defense_collide) then {
+				if (CTI_COIN_PARAM_KIND isEqualTo "STRUCTURES" || _defense_collide) then {
 					_maxGrad = 24;
 					_minDist = 20;
 					
@@ -205,7 +205,7 @@ CTI_Coin_PreviewSurfaceIsValid = {
 						_preview 								//--- Ignored object
 					];
 					
-					if (count _isFlat == 0) then {_isValid = false};
+					if (count _isFlat isEqualTo 0) then {_isValid = false};
 				};
 			};
 		};
@@ -259,7 +259,7 @@ CTI_Coin_OnMouseButtonDown = {
 				if !(isNil 'CTI_COIN_PREVIEW') then {
 					call CTI_Coin_OnPreviewCanceled;
 				} else {
-					if (commandingMenu == "#USER:CTI_COIN_Categories_0") then {CTI_COIN_EXIT = true};
+					if (commandingMenu isEqualTo "#USER:CTI_COIN_Categories_0") then {CTI_COIN_EXIT = true};
 				};
 			};
 		};
@@ -274,7 +274,7 @@ CTI_Coin_UpdateBaseAreaLimits = {
 	_valid = "";
 	
 	with missionNamespace do {
-		if (CTI_COIN_SOURCE == 'HQ') then {
+		if (CTI_COIN_SOURCE isEqualTo 'HQ') then {
 			_in_area = false;
 			{if (_position distance2D _x <= CTI_BASE_AREA_RANGE) exitWith {_in_area = true}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
 			
@@ -504,12 +504,12 @@ CTI_Coin_OnKeyDown = {
 		
 		switch (true) do {
 			// case (_key in [1,14]): { //--- Either exit the camera or cancel the preview depending on where the player's at in the menu
-			case (_key == 1 || _key in actionKeys "NavigateMenu"): { //--- Either exit the camera or cancel the preview depending on where the player's at in the menu
+			case (_key isEqualTo 1 || _key in actionKeys "NavigateMenu"): { //--- Either exit the camera or cancel the preview depending on where the player's at in the menu
 				_handled = true;
 				if !(isNil 'CTI_COIN_PREVIEW') then {
 					call CTI_Coin_OnPreviewCanceled;
 				} else {
-					// if (_key == 14 && commandingMenu != "#USER:CTI_COIN_Categories_0") then {_handled = false} else {CTI_COIN_EXIT = true};
+					// if (_key isEqualTo 14 && commandingMenu != "#USER:CTI_COIN_Categories_0") then {_handled = false} else {CTI_COIN_EXIT = true};
 					if (_key in actionKeys "NavigateMenu" && commandingMenu != "#USER:CTI_COIN_Categories_0") then {_handled = false} else {CTI_COIN_EXIT = true};
 				};
 			};

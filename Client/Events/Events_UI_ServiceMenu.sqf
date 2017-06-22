@@ -11,7 +11,7 @@ switch (_action) do {
 		_ammo_depots = [CTI_AMMO, _structures, player] call CTI_CO_FNC_GetSideStructuresByType;
 		
 		_list = [group player, false] Call CTI_CO_FNC_GetTeamVehicles;
-		{if (vehicle _x == _x) then {_list pushBack _x}} forEach units player;
+		{if (vehicle _x isEqualTo _x) then {_list pushBack _x}} forEach units player;
 		
 		_player_support_repair = (CTI_SPECIAL_REPAIRTRUCK) call CTI_UI_Service_GetGroupMobileSupports;
 		_player_support_ammo = (CTI_SPECIAL_AMMOTRUCK) call CTI_UI_Service_GetGroupMobileSupports;
@@ -69,7 +69,7 @@ switch (_action) do {
 				_list_real pushBack _x;
 				_list_content pushBack _content;
 				if (_x isKindOf "Man") then {
-					_digit = if (group _x == group player) then {format["[%1] ",(_x) call CTI_CL_FNC_GetAIDigit]} else {""};
+					_digit = if (group _x isEqualTo group player) then {format["[%1] ",(_x) call CTI_CL_FNC_GetAIDigit]} else {""};
 					_var_name = if (isNil {_x getVariable "cti_customid"}) then {typeOf _x} else {missionNamespace getVariable format["CTI_CUSTOM_ENTITY_%1", _x getVariable "cti_customid"]};
 					_var_classname = missionNamespace getVariable _var_name;
 					_label = if !(isNil '_var_classname') then {_var_classname select CTI_UNIT_LABEL} else {getText(configFile >> "CfgVehicles" >> typeOf _x >> "displayName")};
@@ -84,9 +84,9 @@ switch (_action) do {
 					{_health = _health + round((1 - getDammage _x) * 100)} forEach _crew;
 					_health = if (count _crew > 0) then {format["%1%2", round(_health / count _crew), "%"]} else {"N/A"};
 					_digits = "";
-					if (count _crew > 0 && group _vehicle == group player) then {
+					if (count _crew > 0 && group _vehicle isEqualTo group player) then {
 						_digit_parsed = [];
-						{if (group _x == group player) then {_digit_parsed pushBack (_x call CTI_CL_FNC_GetAIDigit)}} forEach _crew;
+						{if (group _x isEqualTo group player) then {_digit_parsed pushBack (_x call CTI_CL_FNC_GetAIDigit)}} forEach _crew;
 						{
 							if (_forEachIndex >= 3) exitWith {_digits = _digits + "..."};
 							_digits = _digits + (_x);

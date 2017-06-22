@@ -21,7 +21,7 @@ CTI_UI_Upgrade_LoadUpgradeInfo = {
 		_links = ((missionNamespace getVariable Format["CTI_%1_UPGRADES_LINKS", CTI_P_SideJoined]) select _index) select _upgrade_current;
 		_html = "";
 		if (count _links > 0) then {
-			if (typeName (_links select 0) == "ARRAY") then {
+			if (typeName (_links select 0) isEqualTo "ARRAY") then {
 				_count = count(_links);
 				for '_i' from 0 to _count-1 do {
 					_coma = if (_i+1 < _count) then {", "} else {""};

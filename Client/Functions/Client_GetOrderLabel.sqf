@@ -24,17 +24,17 @@
 params ["_order"];
 
 switch (true) do {
-	case (_order == CTI_ORDER_TAKETOWNS): {"Take Towns"};
+	case (_order isEqualTo CTI_ORDER_TAKETOWNS): {"Take Towns"};
 	case (_order in [CTI_ORDER_TAKETOWN, CTI_ORDER_TAKETOWN_AUTO]): {"Take Town"};
-	case (_order == CTI_ORDER_TAKEHOLDTOWNS): {"Take Hold Towns"};
+	case (_order isEqualTo CTI_ORDER_TAKEHOLDTOWNS): {"Take Hold Towns"};
 	case (_order in [CTI_ORDER_TAKEHOLDTOWN, CTI_ORDER_TAKEHOLDTOWN_AUTO]): {"Take Hold Town"};
-	case (_order == CTI_ORDER_HOLDTOWNSBASES): {"Hold Towns/Base"};
-	case (_order == CTI_ORDER_HOLDTOWNSBASE): {"Hold Town/Base"};
-	case (_order == CTI_ORDER_SAD): {"Search and Destroy"};
-	case (_order == CTI_ORDER_MOVE): {"Move"}; 
-	case (_order == CTI_ORDER_EMBARKCOMMANDVEH): {"Get In"}; 
-	case (_order == CTI_ORDER_DISEMBARKCOMMANDVEH): {"Get Out"}; 
-	case (_order == CTI_ORDER_EMBARKCARGOVEH): {"Get In (Cargo)"}; 
-	case (_order == CTI_ORDER_DISEMBARKCARGOVEH): {"Get Out (Cargo)"}; 
+	case (_order isEqualTo CTI_ORDER_HOLDTOWNSBASES): {"Hold Towns/Base"};
+	case (_order isEqualTo CTI_ORDER_HOLDTOWNSBASE): {"Hold Town/Base"};
+	case (_order isEqualTo CTI_ORDER_SAD): {"Search and Destroy"};
+	case (_order isEqualTo CTI_ORDER_MOVE): {"Move"}; 
+	case (_order isEqualTo CTI_ORDER_EMBARKCOMMANDVEH): {"Get In"}; 
+	case (_order isEqualTo CTI_ORDER_DISEMBARKCOMMANDVEH): {"Get Out"}; 
+	case (_order isEqualTo CTI_ORDER_EMBARKCARGOVEH): {"Get In (Cargo)"}; 
+	case (_order isEqualTo CTI_ORDER_DISEMBARKCARGOVEH): {"Get Out (Cargo)"}; 
 	default {"Unknown"}
 }

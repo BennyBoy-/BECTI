@@ -15,13 +15,13 @@ _areaSize = _this select 2;
 _startPos = getPos _origin;
 
 //--- Check if the HQ is within a construction area
-if (_source == 'HQ') then {
+if (_source isEqualTo 'HQ') then {
 	{if (_startPos distance2D _x <= CTI_BASE_AREA_RANGE) exitWith {_startPos = [_x select 0, _x select 1, 0]}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
 };
 /*
 //--- HQ Area checkin
 _area_max = false;
-if (_source == 'HQ') then {
+if (_source isEqualTo 'HQ') then {
 	_in_area = false;
 	{if ([_startPos select 0, _startPos select 1] distance [_x select 0, _x select 1] <= CTI_BASE_AREA_RANGE) exitWith {_in_area = true}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
 	
@@ -111,7 +111,7 @@ with missionNamespace do {
 	
 	while {!isNil 'CTI_COIN_CAMCONSTRUCT' && !CTI_COIN_EXIT && alive player} do {
 		//--- Check if the HQ was mobilized/deployed
-		if (CTI_COIN_SOURCE == 'HQ' && isNull CTI_COIN_ORIGIN) then {
+		if (CTI_COIN_SOURCE isEqualTo 'HQ' && isNull CTI_COIN_ORIGIN) then {
 			_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 			if (alive _hq) then {CTI_COIN_ORIGIN = _hq};
 		};
@@ -127,7 +127,7 @@ with missionNamespace do {
 				switch (CTI_COIN_PARAM_KIND) do {
 					case 'STRUCTURES': {
 						_preview = (CTI_COIN_PARAM select 1) select 0;
-						if (((CTI_COIN_PARAM select 0) select 0) == CTI_HQ_MOBILIZE) then {_hq_mobilize = true};
+						if (((CTI_COIN_PARAM select 0) select 0) isEqualTo CTI_HQ_MOBILIZE) then {_hq_mobilize = true};
 						if (count(CTI_COIN_PARAM select 4) < 3) then {CTI_COIN_HELPER = "Sign_Arrow_Large_Blue_F" createVehicleLocal [0,0,0]};
 					};
 					case 'DEFENSES': {
@@ -179,14 +179,14 @@ with missionNamespace do {
 				};
 			};
 		} else { //--- The player's commanding menu is gone
-			if (commandingMenu == '' && !CTI_COIN_MENUTRANS) then {
+			if (commandingMenu isEqualTo '' && !CTI_COIN_MENUTRANS) then {
 				showCommandingMenu '#USER:CTI_COIN_Categories_0';
 			};
 		};
 		
 		//--- Check if the funds overlay control need an update
 		_update = false;
-		if (_source == 'HQ') then {
+		if (_source isEqualTo 'HQ') then {
 			if ((CTI_P_SideJoined call CTI_CO_FNC_GetSideSupply) != (CTI_COIN_LASTFUNDS select 0)) then {_update = true};
 			if ((call CTI_CL_FNC_GetPlayerFunds) != (CTI_COIN_LASTFUNDS select 1)) then {_update = true};
 			CTI_COIN_LASTFUNDS set [0, CTI_P_SideJoined call CTI_CO_FNC_GetSideSupply];
@@ -205,7 +205,7 @@ with missionNamespace do {
 			//--- Update the overlay cash controls
 			_cashValues = "";
 			_cashSize = 2;
-			if (_source == 'HQ') then {
+			if (_source isEqualTo 'HQ') then {
 				_cashValues = _cashValues + format ["S %1<br />", CTI_P_SideJoined call CTI_CO_FNC_GetSideSupply];
 				_cashValues = _cashValues + format ["$ %1<br />", call CTI_CL_FNC_GetPlayerFunds];
 				_cashSize = 1.4;
@@ -226,7 +226,7 @@ with missionNamespace do {
 				_textAlign = format["<t color='#42b6ff' shadow='2' size='1'>Auto Align:<t align='right'>%1</t></t><br />", actionKeysNames ["Diary", 1]];
 				_textAutoDefense = format["<t color='#42b6ff' shadow='2' size='1'>Auto Defense:<t align='right'>%1</t></t><br />", actionKeysNames ["Gear", 1]];
 				_textControls = format ["%1%2", _textAutoDefense, _textAlign];
-				if (commandingMenu == "#USER:CTI_COIN_Categories_0") then {
+				if (commandingMenu isEqualTo "#USER:CTI_COIN_Categories_0") then {
 					_textControls = _textControls + format ["<t color='%2' shadow='2' size='1'>Exit:<t align='right'>%1</t></t>", actionKeysNames ["NavigateMenu", 1], CTI_COIN_COLOR_INVALID];
 				} else {
 					_textControls = _textControls + format ["<t color='#42b6ff' shadow='2' size='1'>Back:<t align='right'>%1</t></t>", actionKeysNames ["NavigateMenu", 1]];

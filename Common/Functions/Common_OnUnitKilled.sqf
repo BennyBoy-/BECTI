@@ -33,7 +33,7 @@ _isvehicle_killed = if (_killed isKindOf "Man") then {false} else {true};
 
 //--- VEHICLES: The killed may be the killer (suicide), if so we determine determine who the proxy killer may be
 _killed_proxy = false;
-if ((_killer == _killed || isNull _killer) && _isvehicle_killed) then {
+if ((_killer isEqualTo _killed || isNull _killer) && _isvehicle_killed) then {
 	_last_hit = _killed getVariable "cti_lasthit";
 	if !(isNil "_last_hit") then {
 		if (alive _last_hit) then {
@@ -61,7 +61,7 @@ _isplayable_killed = (_group_killed) call CTI_CO_FNC_IsGroupPlayable;
 _isplayable_killer = (_group_killer) call CTI_CO_FNC_IsGroupPlayable;
 // _isplayer_killer = if (isPlayer leader _group_killer) then {true} else {false};
 
-_renegade_killer = if (_side_killer == sideEnemy) then {true} else {false};
+_renegade_killer = if (_side_killer isEqualTo sideEnemy) then {true} else {false};
 
 if (_renegade_killer) then { //--- Make sure the killer is not renegade, if so, get the side from the config.
 	if !(_killer isKindOf "Man") then {_type_killer = typeOf effectiveCommander(vehicle _killer)};
@@ -92,7 +92,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 				if (CTI_IsServer) then {[leader _group_killer, _points] spawn CTI_SE_FNC_AddScore} else {[leader _group_killer, _points] remoteExec ["CTI_PVF_SRV_RequestAddScore", CTI_PV_SERVER]};
 			};
 			
-			if (_side_killed_original == _side_killed) then { //--- If the side of the vehicle was different from the side of the killed unit (which can be the last occupant), then we skip the bounty part.
+			if (_side_killed_original isEqualTo _side_killed) then { //--- If the side of the vehicle was different from the side of the killed unit (which can be the last occupant), then we skip the bounty part.
 				_award_groups = [_group_killer];
 				
 				//--- The kill was not made by proxy and the killer is in a vehicle
@@ -129,7 +129,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 		// if ((!local _killed && isMultiplayer) || !isMultiplayer) then {
 			if (_killed != _killer && _isplayable_killer) then {
 				//--- Compensate the killed units with the killer's funds on non-captured entities
-				if ((_side_killer call CTI_CO_FNC_GetSideID) == _sideID_killed) then {
+				if ((_side_killer call CTI_CO_FNC_GetSideID) isEqualTo _sideID_killed) then {
 					_killer_funds = (_group_killer) call CTI_CO_FNC_GetFunds;
 					_penalty = _cost;
 					_cashout = _killer_funds - _cost;

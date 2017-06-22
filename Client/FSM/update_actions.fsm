@@ -63,7 +63,7 @@ class FSM
        "		};" \n
        "		if !(isNil ""CTI_HQ_BuildAction"") then {player removeAction CTI_HQ_BuildAction};" \n
        "	} else {" \n
-       "		CTI_HQ_BuildAction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_CoinBuild.sqf"", ""HQ"", 93, false, true, """", ""_target == player && CTI_Base_HQInRange""];" \n
+       "		CTI_HQ_BuildAction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_CoinBuild.sqf"", ""HQ"", 93, false, true, """", ""_target isEqualTo player && CTI_Base_HQInRange""];" \n
        "		(_hq) spawn (missionNamespace getVariable ""CTI_PVF_CLT_AddHQActions"");" \n
        "	};" \n
        "};" \n
@@ -117,7 +117,7 @@ class FSM
        "};" \n
        "" \n
        "//--- Actions" \n
-       "if (""ToolKit"" in items player && player == vehicle player) then {" \n
+       "if (""ToolKit"" in items player && player isEqualTo vehicle player) then {" \n
        "	if (count(vehicle player nearEntities [[""Car"",""Air"",""Tank"",""Ship""], 10]) > 0) then {" \n
        "		if !(CTI_P_ActionLockPick) then {CTI_P_ActionLockPick = true};" \n
        "		if !(CTI_P_ActionRepair) then {CTI_P_ActionRepair = true};" \n

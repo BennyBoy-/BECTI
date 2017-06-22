@@ -31,7 +31,7 @@ private ["_added", "_count"];
 
 if (uniform _unit != "") then {removeUniform _unit};//todo clearAllItemsFromUniform if it ever gets added someday.
 // if (uniform _unit != _uniform) then { removeUniform _unit }; //todo clearAllItemsFromUniform if it ever gets added someday.
-if (_uniform != "" && uniform _unit == "") then { _unit addUniform _uniform };
+if (_uniform != "" && uniform _unit isEqualTo "") then { _unit addUniform _uniform };
 
 _added = [];
 {
@@ -40,7 +40,7 @@ _added = [];
 		if !(_item in _added) then {
 			//_base = (_item) call CTI_CO_FNC_GetItemBaseConfig;
 			_added pushBack _item;
-			_count = {_x == _item} count _items;
+			_count = {_x isEqualTo _item} count _items;
 			
 			(uniformContainer _unit) addItemCargoGlobal [_item, _count];
 			/*switch (_base) do { //todo figure out bout that goggle mystery

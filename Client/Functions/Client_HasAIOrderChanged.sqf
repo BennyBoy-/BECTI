@@ -35,10 +35,10 @@ if (_order != _order_current) then { //--- Order itself changed?
 	_order_pos = _ai getVariable "cti_ai_order_pos";
 	
 	switch (true) do {
-		case (typeName _order_pos_current == "ARRAY" && typeName _order_pos == "ARRAY"): {
+		case (typeName _order_pos_current isEqualTo "ARRAY" && typeName _order_pos isEqualTo "ARRAY"): {
 			//--- Queued order?
-			_nested = if (typeName (_order_pos select 0) == "ARRAY") then {true} else {false};
-			_nested_current = if (typeName (_order_pos_current select 0) == "ARRAY") then {true} else {false};
+			_nested = if (typeName (_order_pos select 0) isEqualTo "ARRAY") then {true} else {false};
+			_nested_current = if (typeName (_order_pos_current select 0) isEqualTo "ARRAY") then {true} else {false};
 			
 			switch (true) do {
 				case (_nested && _nested_current): { //--- Current and new positions are nested
@@ -58,7 +58,7 @@ if (_order != _order_current) then { //--- Order itself changed?
 				};
 			};
 		};
-		case (typeName _order_pos_current == "OBJECT" && typeName _order_pos == "OBJECT"): {if (_order_pos_current != _order_pos) then {_changed = true}};//--- Object check, it's easier!
+		case (typeName _order_pos_current isEqualTo "OBJECT" && typeName _order_pos isEqualTo "OBJECT"): {if (_order_pos_current != _order_pos) then {_changed = true}};//--- Object check, it's easier!
 	};
 };
 

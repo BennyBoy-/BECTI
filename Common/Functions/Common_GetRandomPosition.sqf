@@ -33,7 +33,7 @@ private["_radius", "_direction"];
 
 _direction = random 360;
 
-if (typeName _position == "OBJECT") then {_position = ASLToAGL getPosASL _position};
+if (typeName _position isEqualTo "OBJECT") then {_position = ASLToAGL getPosASL _position};
 if (count _position < 3) then {_position set [2, 0]};
 
 _radius = (random (_max_radius - _min_radius)) + _min_radius;

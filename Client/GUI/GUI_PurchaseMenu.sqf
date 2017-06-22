@@ -63,7 +63,7 @@ while { true } do {
 		
 		_is_present = false;
 		{
-			if (_x select 0 == _req_seed && _x select 1 == _req_classname) exitWith {_is_present = true};
+			if (_x select 0 isEqualTo _req_seed && _x select 1 isEqualTo _req_classname) exitWith {_is_present = true};
 		} forEach +CTI_P_PurchaseRequests;
 		
 		if !(_is_present) then {
@@ -88,7 +88,7 @@ while { true } do {
 		
 		_is_present = false;
 		{
-			if (_x select 0 == _req_seed && _x select 1 == _req_classname) exitWith {_is_present = true};
+			if (_x select 0 isEqualTo _req_seed && _x select 1 isEqualTo _req_classname) exitWith {_is_present = true};
 		} forEach _lb_queued_content;
 		
 		if !(_is_present) then {

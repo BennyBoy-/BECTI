@@ -105,7 +105,7 @@ class FSM
           priority = 2.000000;
           to="Skip";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _west == 0 && _east == 0 && _resistance == 0"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _west isEqualTo 0 && _east isEqualTo 0 && _resistance isEqualTo 0"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -179,7 +179,7 @@ class FSM
        "if (_force != civilian) then {" \n
        "	_supply = _camp getVariable ""cti_camp_sv"";" \n
        "	" \n
-       "	if (_side == _force) then { //--- Protect" \n
+       "	if (_side isEqualTo _force) then { //--- Protect" \n
        "		_supply = _supply + (_forceCount * CTI_TOWNS_CAMPS_CAPTURE_RATE);" \n
        "		if (_supply > (_town getVariable ""cti_town_sv"")) then { _supply = _town getVariable ""cti_town_sv"" };" \n
        "	} else { //--- Capture" \n

@@ -25,12 +25,12 @@
 params ["_town", "_sideID"];
 private ["_camps", "_camps_side"];
 
-if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
+if (typeName _sideID isEqualTo "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
 
 _camps = _town getVariable "cti_town_camps";
 if (isNil '_camps') exitWith {[]};
 
 _camps_side = [];
-{if ((_x getVariable "cti_camp_sideID") == _sideID) then {_camps_side pushBack _x}} forEach _camps;
+{if ((_x getVariable "cti_camp_sideID") isEqualTo _sideID) then {_camps_side pushBack _x}} forEach _camps;
 
 _camps_side

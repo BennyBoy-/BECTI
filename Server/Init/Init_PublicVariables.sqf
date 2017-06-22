@@ -79,7 +79,7 @@ with missionNamespace do {
 	
 	//--- The client request an empty vehicle handling
 	CTI_PVF_SRV_RequestHandleEmptyVehicles = { 
-		if (typeName _this == "ARRAY") then {
+		if (typeName _this isEqualTo "ARRAY") then {
 			{[_x] spawn CTI_SE_FNC_HandleEmptyVehicle} forEach _this;
 		} else {
 			[_this] spawn CTI_SE_FNC_HandleEmptyVehicle;
@@ -195,8 +195,8 @@ with missionNamespace do {
 			//--- Check if the teamstack protection is enabled or not	
 			if ((missionNamespace getVariable "CTI_TEAMSTACK") > 0) then {
 				//--- Retrieve the player count for each given side (minus the connecting client)
-				_west_players = {side _x == west && isPlayer _x} count (playableUnits - [_leader]);
-				_east_players = {side _x == east && isPlayer _x} count (playableUnits - [_leader]);
+				_west_players = {side _x isEqualTo west && isPlayer _x} count (playableUnits - [_leader]);
+				_east_players = {side _x isEqualTo east && isPlayer _x} count (playableUnits - [_leader]);
 				
 				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)]] call CTI_CO_FNC_Log};
 				
@@ -219,7 +219,7 @@ with missionNamespace do {
 			};
 			
 			//--- Check if the player is still jailed
-			if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) == 1) then {_special = "jailed"};
+			if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) isEqualTo 1) then {_special = "jailed"};
 			
 			//--- Determine whether the client is allowed to join or not
 			if (_join) then {
@@ -252,8 +252,8 @@ with missionNamespace do {
 			//--- Apply the team stack system if enabled
 			if ((missionNamespace getVariable "CTI_TEAMSTACK") > 0 && _join) then {
 				//--- Retrieve the player count for each given side (minus the connecting client)
-				_west_players = {side _x == west && isPlayer _x} count (playableUnits - [_leader]);
-				_east_players = {side _x == east && isPlayer _x} count (playableUnits - [_leader]);
+				_west_players = {side _x isEqualTo west && isPlayer _x} count (playableUnits - [_leader]);
+				_east_players = {side _x isEqualTo east && isPlayer _x} count (playableUnits - [_leader]);
 				
 				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)]] call CTI_CO_FNC_Log};
 				
@@ -276,7 +276,7 @@ with missionNamespace do {
 			};
 			
 			//--- Check if the player is still jailed
-			if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) == 1) then {_special = "jailed"};
+			if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) isEqualTo 1) then {_special = "jailed"};
 			
 			_get set [3, _side];
 			
@@ -334,7 +334,7 @@ with missionNamespace do {
 		_side = _this select 1;
 		_vehicles = _this select 2;
 		
-		_tvar = if (_side == resistance) then {"cti_town_resistance_active_vehicles"} else {"cti_town_occupation_active_vehicles"};
+		_tvar = if (_side isEqualTo resistance) then {"cti_town_resistance_active_vehicles"} else {"cti_town_occupation_active_vehicles"};
 		
 		_town setVariable [_tvar, (_town getVariable _tvar) + _vehicles];
 	};

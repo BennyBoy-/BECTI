@@ -53,7 +53,7 @@ class FSM
        "{" \n
        "	_town = _x;" \n
        "	_visible = false;" \n
-       "	if ((_town getVariable ""cti_town_sideID"") == CTI_P_SideID) then {_visible = true} else {{if (_town distance _x < CTI_TOWNS_MARKERS_MAP_RANGE) then {_visible = true}} forEach _units};" \n
+       "	if ((_town getVariable ""cti_town_sideID"") isEqualTo CTI_P_SideID) then {_visible = true} else {{if (_town distance _x < CTI_TOWNS_MARKERS_MAP_RANGE) then {_visible = true}} forEach _units};" \n
        "	" \n
        "	if (_visible) then {" \n
        "		(format[""cti_town_marker_%1"", _town]) setMarkerTextLocal Format[""  %1 | SV: %2/%3"", _town getVariable ""cti_town_name"", _town getVariable ""cti_town_sv"", _town getVariable ""cti_town_sv_max""];" \n

@@ -42,11 +42,11 @@ switch (_action) do {
 		_my = _event select 3;
 		// _ctrl = _event select 5;
 		
-		if (_button == 0) then {
+		if (_button isEqualTo 0) then {
 			_mappos = ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290001) ctrlMapScreenToWorld [_mx, _my];
 			_marker = uiNamespace getVariable "cti_dialog_ui_artillerymenu_marker";
 			
-			if (_marker == "") then {(_mappos) call CTI_UI_Artillery_CreateArtilleryTargetMarker};
+			if (_marker isEqualTo "") then {(_mappos) call CTI_UI_Artillery_CreateArtilleryTargetMarker};
 			
 			_marker setMarkerPosLocal _mappos;
 		};

@@ -43,8 +43,8 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {
 	["DEBUG", "FILE: Common\Functions\Common_CreateUnit.sqf", format["Attempting to create a [%1] unit on team [%2] at [%3] on side [%4], net? [%5] special? [%6]", _classname, _group, _position, _sideID, _net, _special]] call CTI_CO_FNC_Log;
 };
 
-if (typeName _position == "OBJECT") then {_position = getPos _position};
-if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
+if (typeName _position isEqualTo "OBJECT") then {_position = getPos _position};
+if (typeName _sideID isEqualTo "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
 
 _unit = _group createUnit [_classname, _position, [], 0, _special];
 _unit setSkill (0.3 + (random 0.5));//todo tweak/improve

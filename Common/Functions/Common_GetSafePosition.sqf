@@ -33,7 +33,7 @@
 params["_center", ["_radius_min", 1], ["_radius_max", 200], ["_distance_min", 15], ["_template", ""], ["_near_entities", []], ["_near_entities_range", 5], ["_passes", 500]];
 private ["_breakout", "_center_ran", "_direction", "_filter", "_is_clear", "_position", "_radius"];
 
-if (typeName _center == "OBJECT") then {_center = position _center};
+if (typeName _center isEqualTo "OBJECT") then {_center = position _center};
 _position = _center;
 
 _filter = switch (_template) do {

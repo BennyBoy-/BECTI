@@ -15,12 +15,12 @@ switch (_action) do {
 		uiNamespace setVariable ["cti_dialog_ui_purchasemenu_unitcost", 90000]; //--- Muhahahah!
 		
 		if (call CTI_CL_FNC_IsPlayerCommander) then {
-			_groups = if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" == 1) then {(CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups} else {(CTI_P_SideJoined) call CTI_CO_FNC_GetSidePlayerGroups};
+			_groups = if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" isEqualTo 1) then {(CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups} else {(CTI_P_SideJoined) call CTI_CO_FNC_GetSidePlayerGroups};
 			uiNamespace setVariable ["cti_dialog_ui_purchasemenu_teams", _groups];
 			{
 				_header_ai = if (isPlayer leader _x) then {""} else {"[AI] "};
 				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110016) lbAdd format ["%1%2 (%3)", _header_ai, _x getVariable ["cti_alias", CTI_PLAYER_DEFAULT_ALIAS], name leader _x];
-				if (leader _x == player) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110016) lbSetCurSel _forEachIndex};
+				if (leader _x isEqualTo player) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110016) lbSetCurSel _forEachIndex};
 			} forEach (_groups);
 		} else {
 			_groups = [group player];
@@ -82,7 +82,7 @@ switch (_action) do {
 			(_factory_type) call CTI_UI_Purchase_FillUnitsList;
 			call CTI_UI_Purchase_OnUnitListLoad;
 			
-			if (call CTI_CL_FNC_IsPlayerCommander) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlShow (if (_factory_type == CTI_REPAIR) then {true} else {false})};
+			if (call CTI_CL_FNC_IsPlayerCommander) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlShow (if (_factory_type isEqualTo CTI_REPAIR) then {true} else {false})};
 		};
 	};
 	case "onVehicleIconClicked": {
@@ -108,7 +108,7 @@ switch (_action) do {
 	case "onPurchase": {
 		_selected = _this select 1;
 		
-		if (_selected == -1) exitWith {}; //nothing selected.
+		if (_selected isEqualTo -1) exitWith {}; //nothing selected.
 		
 		_funds = call CTI_CL_FNC_GetPlayerFunds;
 		if (_funds > (uiNamespace getVariable "cti_dialog_ui_purchasemenu_unitcost")) then {
@@ -121,7 +121,7 @@ switch (_action) do {
 			if (count _veh_info > 0) then {
 				if !((_veh_info select 0) || (_veh_info select 1) || (_veh_info select 2) || (_veh_info select 3)) then { _isEmpty = true };
 				
-				if (_veh_info select 3) then { //--- Turrets are specified (TODO: Fine tune if turret == driver)
+				if (_veh_info select 3) then { //--- Turrets are specified (TODO: Fine tune if turret isEqualTo driver)
 					_crew_count = count(_classname call CTI_CO_FNC_GetVehicleTurrets);
 					if (_veh_info select 0) then {_crew_count = _crew_count + 1}; //--- Add the driver to the crew count
 					if !(_veh_info select 1) then {_crew_count = _crew_count - 1}; //--- Subtract the gunner from the turrets if needed
@@ -135,7 +135,7 @@ switch (_action) do {
 			
 			if (alive(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory")) then {
 				_ai_enabled = missionNamespace getVariable "CTI_AI_TEAMS_ENABLED";
-				if (_ai_enabled == 1 || (isPlayer leader _selected_group && _ai_enabled == 0)) then {
+				if (_ai_enabled isEqualTo 1 || (isPlayer leader _selected_group && _ai_enabled isEqualTo 0)) then {
 					if ((count units _selected_group)+_crew_count <= CTI_PLAYERS_GROUPSIZE || _isEmpty) then { //todo ai != player limit
 						_proc_purchase = true;
 						if (_isEmpty && _selected_group != group player) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Empty vehicles may not be purchased for other groups."; };
@@ -197,7 +197,7 @@ switch (_action) do {
 			_seed = -1;
 			_index = -1;
 			{
-				if (round(_x select 0) == _rounded_seed && _x select 1 == _classname) exitWith {
+				if (round(_x select 0) isEqualTo _rounded_seed && _x select 1 isEqualTo _classname) exitWith {
 					_is_present = true;
 					_seed = _x select 0;
 					_req_factory = _x select 3;

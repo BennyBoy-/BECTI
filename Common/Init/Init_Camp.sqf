@@ -27,7 +27,7 @@ if (CTI_IsServer) then {
 	
 	//--- Camp Statics
 	if (count _defenses > 0) then { 
-		if (typeName (_defenses select 0) == "STRING") then {_defenses = [_defenses]};
+		if (typeName (_defenses select 0) isEqualTo "STRING") then {_defenses = [_defenses]};
 		_camp setVariable ["cti_camp_defenses", _defenses];
 		if (isNil {_town getVariable "cti_town_hasdefenses"}) then {_town setVariable ["cti_town_hasdefenses", true]};
 	};

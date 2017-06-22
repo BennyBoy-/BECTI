@@ -26,13 +26,13 @@ if (CTI_IsServer) then {
 	
 	//--- Town Statics
 	if (count _town_defenses > 0) then { 
-		if (typeName (_town_defenses select 0) == "STRING") then {_town_defenses = [_town_defenses]};
+		if (typeName (_town_defenses select 0) isEqualTo "STRING") then {_town_defenses = [_town_defenses]};
 		_town setVariable ["cti_town_defenses", _town_defenses];
 		if (isNil {_town getVariable "cti_town_hasdefenses"}) then {_town setVariable ["cti_town_hasdefenses", true]};
 	};
 	
 	//--- Update the flag texture
-	if (typeOf _town == "FlagPole_F") then {_town setFlagTexture (missionNamespace getVariable [format["%1_TOWNS_FLAG_TEXTURE", _town_side], CTI_TOWNS_FLAG_TEXTURE_PEACE])};
+	if (typeOf _town isEqualTo "FlagPole_F") then {_town setFlagTexture (missionNamespace getVariable [format["%1_TOWNS_FLAG_TEXTURE", _town_side], CTI_TOWNS_FLAG_TEXTURE_PEACE])};
 	
 	(_town) execFSM "Server\FSM\town_capture.fsm";
 	(_town) execFSM "Server\FSM\town_resistance.fsm";

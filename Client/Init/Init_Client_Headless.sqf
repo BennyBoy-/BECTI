@@ -113,7 +113,7 @@ with missionNamespace do {
 			[_town, _side, _town_vehicles] remoteExec ["CTI_PVF_SRV_RequestTownAddVehicles", CTI_PV_SERVER];
 		};
 		
-		_hc_tvar = if (_side == resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
+		_hc_tvar = if (_side isEqualTo resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
 		
 		{
 			//--- Register each groups on the town for deletion
@@ -140,7 +140,7 @@ with missionNamespace do {
 			["INFORMATION", "FUNCTION: CTI_PVF_HC_OnTownDelegationReceived", format["A Delegation request was received from the server for [%1] teams in town [%2] on [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
 		
-		_hc_tvar = if (_side == resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
+		_hc_tvar = if (_side isEqualTo resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
 		
 		//--- Register each groups on the town for deletion
 		{
@@ -160,7 +160,7 @@ with missionNamespace do {
 		_town = _this select 0;
 		_side = _this select 1;
 		
-		_hc_tvar = if (_side == resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
+		_hc_tvar = if (_side isEqualTo resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
 		
 		//--- Triggered only if we have units over here
 		if !(isNil {_town getVariable _hc_tvar}) then {
@@ -188,7 +188,7 @@ with missionNamespace do {
 		};
 		
 		//--- Wave System update, flush the current variable
-		_hc_tvar = if (_side == resistance) then {"cti_town_resistance_groups"} else {"cti_town_occupation_groups"};
+		_hc_tvar = if (_side isEqualTo resistance) then {"cti_town_resistance_groups"} else {"cti_town_occupation_groups"};
 		_town setVariable [_hc_tvar, []];
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
@@ -204,7 +204,7 @@ with missionNamespace do {
 		_side = _this select 1;
 		_groups = _this select 2;
 		
-		_hc_tvar = if (_side == resistance) then {"cti_town_resistance_groups"} else {"cti_town_occupation_groups"};
+		_hc_tvar = if (_side isEqualTo resistance) then {"cti_town_resistance_groups"} else {"cti_town_occupation_groups"};
 		
 		_town setVariable [_hc_tvar, (_town getVariable [_hc_tvar, []]) + _groups];
 		

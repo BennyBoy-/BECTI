@@ -161,7 +161,7 @@ class FSM
        "if (!isNull _camp && _camp distance player < CTI_TOWNS_CAMPS_CAPTURE_RANGE) then {" \n
        "	_sideID = _camp getVariable ""cti_camp_sideID"";" \n
        "	_curSV = _camp getVariable ""cti_camp_sv"";" \n
-       "	if (_lastCheck == ""Town"") then {_delay = 0};" \n
+       "	if (_lastCheck isEqualTo ""Town"") then {_delay = 0};" \n
        "	_txt = """";" \n
        "	_lastCheck = ""Camp"";" \n
        "} else {" \n

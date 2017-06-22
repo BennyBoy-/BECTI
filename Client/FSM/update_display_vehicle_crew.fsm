@@ -64,7 +64,7 @@ class FSM
        "	" \n
        "	{" \n
        "		_display = true;" \n
-       "		if (CTI_UI_DISPLAY_VEHICLE_CREW == 2) then { //--- Players only" \n
+       "		if (CTI_UI_DISPLAY_VEHICLE_CREW isEqualTo 2) then { //--- Players only" \n
        "			if !(isPlayer _x) then {_display = false}; //--- Hide if it isn't a player" \n
        "		}; " \n
        "		" \n

@@ -39,7 +39,7 @@ switch (_action) do {
 							_links = ((missionNamespace getVariable Format["CTI_%1_UPGRADES_LINKS", CTI_P_SideJoined]) select _selected) select _upgrade_current;
 							_link_needed = false;
 							if (count _links > 0) then {
-								if (typeName (_links select 0) == "ARRAY") then {
+								if (typeName (_links select 0) isEqualTo "ARRAY") then {
 									_count = count(_links);
 									for '_i' from 0 to _count-1 do {
 										_clink = _links select _i;

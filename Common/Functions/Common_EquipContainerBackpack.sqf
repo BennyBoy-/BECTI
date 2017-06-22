@@ -29,7 +29,7 @@ params ["_unit", "_backpack", "_items"];
 private ["_added", "_count"];
 
 if (backpack _unit != _backpack) then { removeBackpack _unit };
-if (_backpack != "" && backpack _unit == "") then { _unit addBackpack _backpack };
+if (_backpack != "" && backpack _unit isEqualTo "") then { _unit addBackpack _backpack };
 if (backpack _unit != "") then { clearAllItemsFromBackpack _unit };
 
 _added = [];
@@ -39,7 +39,7 @@ _added = [];
 		if !(_item in _added) then {
 			// _base = (_item) call CTI_CO_FNC_GetItemBaseConfig;
 			_added pushBack _item;
-			_count = {_x == _item} count _items;
+			_count = {_x isEqualTo _item} count _items;
 			
 			(unitBackPack _unit) addItemCargoGlobal [_item, _count];
 			/*switch (_base) do { //todo figure out bout that goggle mystery

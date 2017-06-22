@@ -31,7 +31,7 @@ private ["_added", "_count"];
 
 if (vest _unit != "") then {removeVest _unit}; //todo clearAllItemsFromVest if it ever gets added someday.
 // if (vest _unit != _vest) then { removeVest _unit }; //todo clearAllItemsFromVest if it ever gets added someday.
-if (_vest != "" && vest _unit == "") then { _unit addVest _vest };
+if (_vest != "" && vest _unit isEqualTo "") then { _unit addVest _vest };
 
 _added = [];
 {
@@ -40,7 +40,7 @@ _added = [];
 		if !(_item in _added) then {
 			//_base = (_item) call CTI_CO_FNC_GetItemBaseConfig;
 			_added pushBack _item;
-			_count = {_x == _item} count _items;
+			_count = {_x isEqualTo _item} count _items;
 			
 			(vestContainer _unit) addItemCargoGlobal [_item, _count];
 			/*switch (_base) do { //todo figure out bout that goggle mystery

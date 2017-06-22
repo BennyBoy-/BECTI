@@ -79,7 +79,7 @@ class FSM
        "	_marker_cap = format[""cti_town_territorial_%1_capture"", _x];" \n
        "	" \n
        "	//--- Town is held by the player side" \n
-       "	if ((_x getVariable ""cti_town_sideID"") == CTI_P_SideID) then {" \n
+       "	if ((_x getVariable ""cti_town_sideID"") isEqualTo CTI_P_SideID) then {" \n
        "		//--- Can we capture it?" \n
        "		_safe = true;" \n
        "		{" \n
@@ -108,12 +108,12 @@ class FSM
        "		//--- Hostile held, can we capture it?" \n
        "		_safe = true;" \n
        "		{" \n
-       "			if ((_x getVariable ""cti_town_sideID"") == CTI_P_SideID) exitWith {_safe = false};" \n
+       "			if ((_x getVariable ""cti_town_sideID"") isEqualTo CTI_P_SideID) exitWith {_safe = false};" \n
        "		} forEach (_x getVariable ""cti_town_neighbors"");" \n
        "		" \n
        "		//--- If we have no towns, the closest town to the HQ is capturable" \n
        "		if !(isNull _hq_closest_town) then {" \n
-       "			if (_hq_closest_town == _x) then {_safe = false};" \n
+       "			if (_hq_closest_town isEqualTo _x) then {_safe = false};" \n
        "		};" \n
        "		" \n
        "		//--- Safe, it cannot be captured" \n

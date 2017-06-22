@@ -120,12 +120,12 @@ call compile preprocessFile "Client\Functions\UI\Functions_UI_UnitsCamera.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UpgradeMenu.sqf";
 
 //--- Define the gear items
-if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_West.sqf"};
-if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_East.sqf"};
+if (CTI_P_SideJoined isEqualTo west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_West.sqf"};
+if (CTI_P_SideJoined isEqualTo east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_East.sqf"};
 
 if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then {
-	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_West.sqf"};
-	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_East.sqf"};
+	if (CTI_P_SideJoined isEqualTo west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_West.sqf"};
+	if (CTI_P_SideJoined isEqualTo east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_East.sqf"};
 };
 
 CTI_InitClient = true;
@@ -198,7 +198,7 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 		if (CTI_IsClient && !CTI_IsServer) then {
 			_hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CL_FNC_OnHQDestroyed", CTI_P_SideID]];
 			
-			if (CTI_BASE_NOOBPROTECTION == 1) then {
+			if (CTI_BASE_NOOBPROTECTION isEqualTo 1) then {
 				_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", CTI_P_SideID]]; //--- You want that on public
 			};
 		};
@@ -239,7 +239,7 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_
 	//--- Shadows Distance.
 	_distance = profileNamespace getVariable "CTI_PERSISTENT_SHADOWS_DISTANCE";
 	if !(isNil "_distance") then { 
-		if (typeName _distance == "SCALAR") then { 
+		if (typeName _distance isEqualTo "SCALAR") then { 
 			if (_distance < 50) then { _distance = 50 };
 			if (_distance > 200) then { _distance = 200 };
 			setShadowDistance _distance;
@@ -269,8 +269,8 @@ if (profileNamespace getVariable "CTI_PERSISTENT_HINTS") then {
 	};
 };
 
-if (CTI_BASE_NOOBPROTECTION == 1) then {player addEventHandler ["fired", {_this spawn CTI_CL_FNC_OnPlayerFired}]}; //--- Trust me, you want that
-if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
+if (CTI_BASE_NOOBPROTECTION isEqualTo 1) then {player addEventHandler ["fired", {_this spawn CTI_CL_FNC_OnPlayerFired}]}; //--- Trust me, you want that
+if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") isEqualTo 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
 
 if (CTI_DEBUG) then {
 	hint "DEBUG MODE IS ENABLED! DON'T FORGET TO TURN IT OFF!";

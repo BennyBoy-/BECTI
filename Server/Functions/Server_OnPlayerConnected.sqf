@@ -30,7 +30,7 @@ params ["_uid", "_name", "_id", "_jip", "_ownerID"];
 
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] has joined the current session, jip? [%3]", _name, _uid, _jip]] call CTI_CO_FNC_Log};
 /*
-if (_name == '__SERVER__' || _uid == '') exitWith {}; //--- We don't care about the server!
+if (_name isEqualTo '__SERVER__' || _uid isEqualTo '') exitWith {}; //--- We don't care about the server!
 
 waitUntil {!isNil 'CTI_Init_Common'};
 
@@ -38,7 +38,7 @@ waitUntil {!isNil 'CTI_Init_Common'};
 _max = 10;
 _team = grpNull;
 
-while {_max > 0 && isNull _team} do { { if ((getPlayerUID _x) == _uid || owner _x == _ownerID) exitWith {_team = group _x};	} forEach (call bis_fnc_listPlayers); if (isNull _team) then {sleep .75}; _max = _max - 1 };
+while {_max > 0 && isNull _team} do { { if ((getPlayerUID _x) isEqualTo _uid || owner _x isEqualTo _ownerID) exitWith {_team = group _x};	} forEach (call bis_fnc_listPlayers); if (isNull _team) then {sleep .75}; _max = _max - 1 };
 
 //--- Make sure that we've found a team, otherwise we simply exit.
 if (isNull _team) exitWith {if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] couldn't be found among the current playable units", _name, _uid]] call CTI_CO_FNC_Log}};
@@ -85,8 +85,8 @@ if (isNil '_get') then { //--- The player has joined for the first time (or afte
 	//--- Check if the teamstack protection is enabled or not	
 	if ((missionNamespace getVariable "CTI_TEAMSTACK") > 0) then {
 		//--- Retrieve the player count for each given side (minus the connecting client)
-		_west_players = {side _x == west && isPlayer _x} count (playableUnits - [_leader]);
-		_east_players = {side _x == east && isPlayer _x} count (playableUnits - [_leader]);
+		_west_players = {side _x isEqualTo west && isPlayer _x} count (playableUnits - [_leader]);
+		_east_players = {side _x isEqualTo east && isPlayer _x} count (playableUnits - [_leader]);
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)]] call CTI_CO_FNC_Log};
 		
@@ -109,7 +109,7 @@ if (isNil '_get') then { //--- The player has joined for the first time (or afte
 	};
 	
 	//--- Check if the player is still jailed
-	if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) == 1) then {_special = "jailed"};
+	if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) isEqualTo 1) then {_special = "jailed"};
 	
 	//--- Determine whether the client is allowed to join or not
 	if (_join) then {
@@ -139,8 +139,8 @@ if (isNil '_get') then { //--- The player has joined for the first time (or afte
 	//--- Apply the team stack system if enabled
 	if ((missionNamespace getVariable "CTI_TEAMSTACK") > 0 && _join) then {
 		//--- Retrieve the player count for each given side (minus the connecting client)
-		_west_players = {side _x == west && isPlayer _x} count (playableUnits - [_leader]);
-		_east_players = {side _x == east && isPlayer _x} count (playableUnits - [_leader]);
+		_west_players = {side _x isEqualTo west && isPlayer _x} count (playableUnits - [_leader]);
+		_east_players = {side _x isEqualTo east && isPlayer _x} count (playableUnits - [_leader]);
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] on side [%3]. Without this player, there are [%4] players on west and [%5] players on east. The stack limit is set on [%6] with a current value of [%7]", _name, _uid, _side, _west_players, _east_players, missionNamespace getVariable "CTI_TEAMSTACK", abs(_west_players - _east_players)]] call CTI_CO_FNC_Log};
 		
@@ -163,7 +163,7 @@ if (isNil '_get') then { //--- The player has joined for the first time (or afte
 	};
 	
 	//--- Check if the player is still jailed
-	if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) == 1) then {_special = "jailed"};
+	if ((missionNamespace getVariable [format ["CTI_SERVER_CLIENT_ELITE_%1", _uid], [0, 0]] select 1) isEqualTo 1) then {_special = "jailed"};
 	
 	//--- Determine whether the client is allowed to join or not
 	if (_join) then {

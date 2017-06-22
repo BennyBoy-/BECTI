@@ -39,7 +39,7 @@ _magazines_remove = [];
 		
 		if (_ammo != "") then {
 			//--- We check if the ammo is air-lock based and that in inherits from the missile class.
-			if (getNumber(configFile >> "CfgAmmo" >> _ammo >> "irLock") == 1 && getNumber(configFile >> "CfgAmmo" >> _ammo >> "airLock") == 0 && configName(inheritsFrom(configFile >> "CfgAmmo" >> _ammo)) == "MissileBase") then {_remove = true; _magazines_remove pushBack _x};
+			if (getNumber(configFile >> "CfgAmmo" >> _ammo >> "irLock") isEqualTo 1 && getNumber(configFile >> "CfgAmmo" >> _ammo >> "airLock") isEqualTo 0 && configName(inheritsFrom(configFile >> "CfgAmmo" >> _ammo)) isEqualTo "MissileBase") then {_remove = true; _magazines_remove pushBack _x};
 		};
 	} forEach getArray(configFile >> "CfgWeapons" >> _x >> "magazines"); //--- We check the magazines array of the weapon.
 	

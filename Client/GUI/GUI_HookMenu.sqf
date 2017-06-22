@@ -24,7 +24,7 @@ while { true } do {
 				uiNamespace setVariable ["cti_dialog_ui_hookmenu_hooked", _hooked];
 			};
 		} else {
-			if (((uiNamespace getVariable "cti_dialog_ui_hookmenu_hooked") == _hooked) || (isNull(uiNamespace getVariable "cti_dialog_ui_hookmenu_hooked") && isNull _hooked)) then {
+			if (((uiNamespace getVariable "cti_dialog_ui_hookmenu_hooked") isEqualTo _hooked) || (isNull(uiNamespace getVariable "cti_dialog_ui_hookmenu_hooked") && isNull _hooked)) then {
 				((uiNamespace getVariable "cti_dialog_ui_hookmenu") displayCtrl 240003) ctrlSetText "";
 			};
 		};

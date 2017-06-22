@@ -72,7 +72,7 @@ CTI_UI_Purchase_FillUnitsList = {
 	lnbClear ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007);
 	
 	//--- If we're dealing with a depot, determine whether it is on ground or on water
-	if (_type == CTI_DEPOT) then {
+	if (_type isEqualTo CTI_DEPOT) then {
 		if (((uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory") getVariable "cti_depot") getVariable ["cti_naval", false]) then {_type = CTI_DEPOT_NAVAL};
 	};
 	
@@ -168,8 +168,8 @@ CTI_UI_Purchase_UpdateVehicleIcons = {
 		
 		_showArray = [true, false, false, false];
 		{
-			if (count _x == 1) then {_showArray set [3, true]};
-			if (count _x == 2) then {
+			if (count _x isEqualTo 1) then {_showArray set [3, true]};
+			if (count _x isEqualTo 2) then {
 				switch (_x select 1) do { case "Gunner": {_showArray set [1, true]}; case "Commander": {_showArray set [2, true]}; };
 			};
 		} forEach _turrets;
@@ -198,7 +198,7 @@ CTI_UI_Purchase_UpdateCost = {
 			
 			//--- Ultimately if we're dealing with a sub we may want to use divers unless that our current soldiers are free-diving champions
 			if (_req_classname isKindOf "Ship") then {
-				if (getText(configFile >> "CfgVehicles" >> _req_classname >> "simulation") == "submarinex") then { _crew = missionNamespace getVariable format["CTI_%1_Diver", CTI_P_SideJoined] };
+				if (getText(configFile >> "CfgVehicles" >> _req_classname >> "simulation") isEqualTo "submarinex") then { _crew = missionNamespace getVariable format["CTI_%1_Diver", CTI_P_SideJoined] };
 			};
 			
 			_var_crew_classname = missionNamespace getVariable _crew;
@@ -207,7 +207,7 @@ CTI_UI_Purchase_UpdateCost = {
 				for '_i' from 0 to 2 do { if (_veh_infos select _i) then { _cost = _cost + (_var_crew_classname select CTI_UNIT_PRICE) } };
 				
 				if (_veh_infos select 3) then { //--- Turrets
-					{ if (count _x == 1) then { _cost = _cost + (_var_crew_classname select 2) } } forEach (_var select CTI_UNIT_TURRETS);
+					{ if (count _x isEqualTo 1) then { _cost = _cost + (_var_crew_classname select 2) } } forEach (_var select CTI_UNIT_TURRETS);
 				};
 			};
 		};

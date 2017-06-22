@@ -57,8 +57,8 @@ CTI_UI_MapCommanding_TrySetOrder = {
 		_order_pos = _group getVariable "cti_order_pos";
 		_assign = true;
 		switch (true) do {
-			case (typeName _order_pos_new == "ARRAY" && typeName _order_pos == "ARRAY"): {if (_order_pos_new select 0 == _order_pos select 0 && _order_pos_new select 1 == _order_pos select 1) then {_assign = false}};
-			case (typeName _order_pos_new == "OBJECT" && typeName _order_pos == "OBJECT"): {if (_order_pos_new == _order_pos || isNull _order_pos_new && isNull _order_pos) then {_assign = false}};
+			case (typeName _order_pos_new isEqualTo "ARRAY" && typeName _order_pos isEqualTo "ARRAY"): {if (_order_pos_new select 0 isEqualTo _order_pos select 0 && _order_pos_new select 1 isEqualTo _order_pos select 1) then {_assign = false}};
+			case (typeName _order_pos_new isEqualTo "OBJECT" && typeName _order_pos isEqualTo "OBJECT"): {if (_order_pos_new isEqualTo _order_pos || isNull _order_pos_new && isNull _order_pos) then {_assign = false}};
 		};
 		if (_assign) then {_group setVariable ["cti_order_pos", _order_pos_new, true]};
 	};
@@ -80,10 +80,10 @@ CTI_UI_MapCommanding_TrackGroupOrder = {
 		_ppos = getPos leader _track;
 		_mpos = _track getVariable "cti_order_pos";
 		
-		// if (leader _track == bravo) then {player sidechat format ["BEFORE   %1 %2",_ppos, _mpos]};
-		if (typeName _mpos == "ARRAY") then {if (_mpos select 0 == 0 && _mpos select 1 == 0) then {_mpos = _ppos}};
-		if (typeName _mpos == "OBJECT") then {_mpos = if (isNull _mpos) then {_ppos} else {getPos _mpos}};
-		// if (leader _track == bravo) then {player sidechat format ["AFTER   %1 %2",_ppos, _mpos]};
+		// if (leader _track isEqualTo bravo) then {player sidechat format ["BEFORE   %1 %2",_ppos, _mpos]};
+		if (typeName _mpos isEqualTo "ARRAY") then {if (_mpos select 0 isEqualTo 0 && _mpos select 1 isEqualTo 0) then {_mpos = _ppos}};
+		if (typeName _mpos isEqualTo "OBJECT") then {_mpos = if (isNull _mpos) then {_ppos} else {getPos _mpos}};
+		// if (leader _track isEqualTo bravo) then {player sidechat format ["AFTER   %1 %2",_ppos, _mpos]};
 		
 		
 		_difX = (_mpos select 0) - (_ppos select 0) +0.1;

@@ -112,10 +112,10 @@ class FSM
        "	switch (true) do {" \n
        "		case (_order in [CTI_ORDER_CLIENT_TAKETOWNS, CTI_ORDER_CLIENT_TAKEHOLDTOWNS]): {[_ai, _order, _reload] spawn CTI_FSM_UpdateClientAI_Order_TakeTowns};" \n
        "		case (_order in [CTI_ORDER_CLIENT_TAKETOWN, CTI_ORDER_CLIENT_TAKETOWN_AUTO, CTI_ORDER_CLIENT_TAKEHOLDTOWN, CTI_ORDER_CLIENT_TAKEHOLDTOWN_AUTO]): {[_ai, _order_pos, _seed, _reload, _order] spawn CTI_FSM_UpdateClientAI_Order_TakeTown};" \n
-       "		case (_order == CTI_ORDER_CLIENT_HOLDTOWNSBASES): {[_ai, _order, _reload] spawn CTI_FSM_UpdateClientAI_Order_HoldTownsBases};" \n
-       "		case (_order == CTI_ORDER_CLIENT_HOLDTOWNSBASE): {[_ai, _order_pos, _seed, _reload, _order] spawn CTI_FSM_UpdateClientAI_Order_HoldTownsBase};" \n
-       "		case (_order == CTI_ORDER_CLIENT_MOVE): {[_ai, _order_pos, _seed] spawn CTI_FSM_UpdateClientAI_Order_Move};" \n
-       "		case (_order == CTI_ORDER_CLIENT_PATROL): {[_ai, _order_pos, _seed] spawn CTI_FSM_UpdateClientAI_Order_Patrol};" \n
+       "		case (_order isEqualTo CTI_ORDER_CLIENT_HOLDTOWNSBASES): {[_ai, _order, _reload] spawn CTI_FSM_UpdateClientAI_Order_HoldTownsBases};" \n
+       "		case (_order isEqualTo CTI_ORDER_CLIENT_HOLDTOWNSBASE): {[_ai, _order_pos, _seed, _reload, _order] spawn CTI_FSM_UpdateClientAI_Order_HoldTownsBase};" \n
+       "		case (_order isEqualTo CTI_ORDER_CLIENT_MOVE): {[_ai, _order_pos, _seed] spawn CTI_FSM_UpdateClientAI_Order_Move};" \n
+       "		case (_order isEqualTo CTI_ORDER_CLIENT_PATROL): {[_ai, _order_pos, _seed] spawn CTI_FSM_UpdateClientAI_Order_Patrol};" \n
        "	};" \n
        "};" \n
        "" \n

@@ -47,8 +47,8 @@
 params ["_type", "_position", "_direction", "_sideID", ["_locked", false], ["_net", false], ["_handle", false], ["_special", "FORM"]];
 private ["_side", "_vehicle", "_velocity"];
 
-if (typeName _position == "OBJECT") then {_position = getPos _position};
-if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
+if (typeName _position isEqualTo "OBJECT") then {_position = getPos _position};
+if (typeName _sideID isEqualTo "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
 
 _side = _sideID call CTI_CO_FNC_GetSideFromID;
 
@@ -57,7 +57,7 @@ _velocity = velocity _vehicle;
 _vehicle setDir _direction;
 _vehicle setVectorUp surfaceNormal position _vehicle;
 
-if (_special == "FLY") then {
+if (_special isEqualTo "FLY") then {
 	_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
 };
 

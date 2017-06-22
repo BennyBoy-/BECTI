@@ -12,7 +12,7 @@ while { true } do {
 			//--- todo select the player back in the LB.
 		} else {
 			if (_thirdperson) then { //--- No need to do that with 3rd person disabled heh
-				if (vehicle _track == _track) then { //--- On Foot.
+				if (vehicle _track isEqualTo _track) then { //--- On Foot.
 					// _ep = _track weaponDirection currentWeapon _track; //--- If it has no weapons then 0 is returned.
 					// _pitch = (_ep) call CTI_UI_UnitsCamera_GetPitchFromDirectionVector;
 					// _pitch = _pitch + (uiNamespace getVariable "cti_dialog_ui_unitscam_pitch");

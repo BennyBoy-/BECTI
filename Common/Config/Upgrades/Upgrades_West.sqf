@@ -11,9 +11,9 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], [
 	true, //--- Air
 	true, //--- Air FFAR
 	true, //--- Air DAR
-	(missionNamespace getVariable "CTI_VEHICLES_AIR_AT") == 1, //--- Air AT
-	(missionNamespace getVariable "CTI_VEHICLES_AIR_AA") == 1, //--- Air AA
-	(missionNamespace getVariable "CTI_VEHICLES_AIR_CM") == 1, //--- Air CM
+	(missionNamespace getVariable "CTI_VEHICLES_AIR_AT") isEqualTo 1, //--- Air AT
+	(missionNamespace getVariable "CTI_VEHICLES_AIR_AA") isEqualTo 1, //--- Air AA
+	(missionNamespace getVariable "CTI_VEHICLES_AIR_CM") isEqualTo 1, //--- Air CM
 	(missionNamespace getVariable "CTI_TOWNS_OCCUPATION") > 0, //--- Towns Occupation
 	true, //--- Halom
 	true, //--- Air Radar

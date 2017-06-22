@@ -26,15 +26,15 @@
 params ["_order"];
 
 switch (true) do {
-	case (_order == CTI_ORDER_CLIENT_NONE): {"None"};
-	case (_order == CTI_ORDER_CLIENT_TAKETOWNS): {"Take Towns"};
+	case (_order isEqualTo CTI_ORDER_CLIENT_NONE): {"None"};
+	case (_order isEqualTo CTI_ORDER_CLIENT_TAKETOWNS): {"Take Towns"};
 	case (_order in [CTI_ORDER_CLIENT_TAKETOWN, CTI_ORDER_CLIENT_TAKETOWN_AUTO]): {"Take Town"};
-	case (_order == CTI_ORDER_CLIENT_TAKEHOLDTOWNS): {"Take Hold Towns"};
+	case (_order isEqualTo CTI_ORDER_CLIENT_TAKEHOLDTOWNS): {"Take Hold Towns"};
 	case (_order in [CTI_ORDER_CLIENT_TAKEHOLDTOWN, CTI_ORDER_CLIENT_TAKEHOLDTOWN_AUTO]): {"Take Hold Town"};
-	case (_order == CTI_ORDER_CLIENT_HOLDTOWNSBASES): {"Hold Towns/Base"};
-	case (_order == CTI_ORDER_CLIENT_HOLDTOWNSBASE): {"Hold Town/Base"};
-	case (_order == CTI_ORDER_CLIENT_SAD): {"Search and Destroy"};
-	case (_order == CTI_ORDER_CLIENT_MOVE): {"Move"}; 
-	case (_order == CTI_ORDER_CLIENT_PATROL): {"Patrol"}; 
+	case (_order isEqualTo CTI_ORDER_CLIENT_HOLDTOWNSBASES): {"Hold Towns/Base"};
+	case (_order isEqualTo CTI_ORDER_CLIENT_HOLDTOWNSBASE): {"Hold Town/Base"};
+	case (_order isEqualTo CTI_ORDER_CLIENT_SAD): {"Search and Destroy"};
+	case (_order isEqualTo CTI_ORDER_CLIENT_MOVE): {"Move"}; 
+	case (_order isEqualTo CTI_ORDER_CLIENT_PATROL): {"Patrol"}; 
 	default {"Unknown"}
 }

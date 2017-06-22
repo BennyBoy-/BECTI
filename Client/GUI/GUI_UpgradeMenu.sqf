@@ -25,7 +25,7 @@ while { true } do {
 		for '_i' from 0 to ((lnbSize 250002) select 0)-1 do {
 			_value = lnbValue[250002, [_i, 0]];
 			if ((_upgrades select _i) != _value) then {
-				if (_i == _selected) then {_need_reload = true};
+				if (_i isEqualTo _selected) then {_need_reload = true};
 				((uiNamespace getVariable "cti_dialog_ui_upgrademenu") displayCtrl 250002) lnbSetText [[_i, 0], format["%1/%2", _upgrades select _i, (missionNamespace getVariable Format["CTI_%1_UPGRADES_LEVELS", CTI_P_SideJoined]) select _i]];
 				((uiNamespace getVariable "cti_dialog_ui_upgrademenu") displayCtrl 250002) lnbSetValue [[_i, 0], _upgrades select _i];
 			};

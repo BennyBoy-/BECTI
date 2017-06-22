@@ -51,7 +51,7 @@ class FSM
        "	" \n
        "	//--- Make sure that AIs didn't ran out of their statics" \n
        "	{" \n
-       "		if (vehicle _x == _x) then {deleteVehicle _x};" \n
+       "		if (vehicle _x isEqualTo _x) then {deleteVehicle _x};" \n
        "	} forEach units _defensive_team;" \n
        "} forEach CTI_PLAYABLE_SIDES;" \n
        "" \n

@@ -26,7 +26,7 @@
 
 params ["_side"];
 
-if (typeName _side == "SCALAR") then {_side = (_side) call CTI_CO_FNC_GetSideFromID};
+if (typeName _side isEqualTo "SCALAR") then {_side = (_side) call CTI_CO_FNC_GetSideFromID};
 if (typeName _side != "SIDE") exitWith {objNull};
 
 switch (_side) do {

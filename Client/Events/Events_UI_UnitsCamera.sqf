@@ -52,9 +52,9 @@ switch (_action) do {
 		{
 			((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180100) lbAdd format ["%1 (%2)",_x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], if (isPlayer leader _x) then {name leader _x} else {"AI"}];
 			if (isNull _origin) then {
-				if (group _track == _x) then {((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180100) lbSetCurSel _forEachIndex};
+				if (group _track isEqualTo _x) then {((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180100) lbSetCurSel _forEachIndex};
 			} else {
-				if (group _origin == _x) then {if (_origin == leader _x) then {uiNamespace setVariable ["cti_dialog_ui_unitscam_origin", nil]}; ((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180100) lbSetCurSel _forEachIndex};
+				if (group _origin isEqualTo _x) then {if (_origin isEqualTo leader _x) then {uiNamespace setVariable ["cti_dialog_ui_unitscam_origin", nil]}; ((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180100) lbSetCurSel _forEachIndex};
 			};
 		} forEach _groups;
 		
@@ -123,7 +123,7 @@ switch (_action) do {
 		uiNamespace setVariable ["cti_dialog_ui_unitscam_groups_ai", _ais];
 		{
 			((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180101) lbAdd format["%1", _x];
-			if (alive _origin && _x == _origin) then {((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180101) lbSetCurSel _forEachIndex};
+			if (alive _origin && _x isEqualTo _origin) then {((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180101) lbSetCurSel _forEachIndex};
 		} forEach (_ais);
 		
 		if !(isNil {uiNamespace getVariable "cti_dialog_ui_unitscam_origin"}) then {

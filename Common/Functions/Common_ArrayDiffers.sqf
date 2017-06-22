@@ -38,7 +38,7 @@ if (count _array1 != count _array2) then {
 } else {
 	{
 		_item = _x;
-		if (({_x == _item} count _array1) != ({_x == _item} count _array2)) exitWith { _different = true };
+		if (({_x isEqualTo _item} count _array1) != ({_x isEqualTo _item} count _array2)) exitWith { _different = true };
 	} forEach _array1;
 };
 

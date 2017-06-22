@@ -8,7 +8,7 @@ switch (_action) do {
 		uiNamespace setVariable ["cti_dialog_ui_workersmenu_sellmode", 0];
 		
 		{
-			if (typeName _x == "OBJECT") then {
+			if (typeName _x isEqualTo "OBJECT") then {
 				((uiNamespace getVariable "cti_dialog_ui_workersmenu") displayCtrl 260002) lnbAddRow [format["%1", mapGridPosition _x], format["Worker %1",_forEachIndex+1]];
 				((uiNamespace getVariable "cti_dialog_ui_workersmenu") displayCtrl 260002) lnbSetValue [[_forEachIndex,0], _forEachIndex];
 			};
@@ -46,7 +46,7 @@ switch (_action) do {
 		_mx = _event select 2;
 		_my = _event select 3;
 		
-		if (_button == 0 && (uiNamespace getVariable "cti_dialog_ui_workersmenu_sellmode") == 1) then {
+		if (_button isEqualTo 0 && (uiNamespace getVariable "cti_dialog_ui_workersmenu_sellmode") isEqualTo 1) then {
 			_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 			_mappos = ((uiNamespace getVariable "cti_dialog_ui_workersmenu") displayCtrl 260001) ctrlMapScreenToWorld [_mx, _my];
 			_nearest = [_mappos, _structures] call CTI_CO_FNC_GetClosestEntity;

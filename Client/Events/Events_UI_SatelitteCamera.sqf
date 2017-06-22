@@ -33,7 +33,7 @@ switch (_action) do {
 		if (isNil '_origin') then { _origin = objNull };
 		{
 			((uiNamespace getVariable "cti_dialog_ui_satcam") displayCtrl 170100) lbAdd format ["%1 (%2)",_x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], if (isPlayer leader _x) then {name leader _x} else {"AI"}];
-			if (group _origin == _x) then {if (_origin == leader _x) then {uiNamespace setVariable ["cti_dialog_ui_satcam_origin", nil]}; ((uiNamespace getVariable "cti_dialog_ui_satcam") displayCtrl 170100) lbSetCurSel _forEachIndex};
+			if (group _origin isEqualTo _x) then {if (_origin isEqualTo leader _x) then {uiNamespace setVariable ["cti_dialog_ui_satcam_origin", nil]}; ((uiNamespace getVariable "cti_dialog_ui_satcam") displayCtrl 170100) lbSetCurSel _forEachIndex};
 		} forEach _groups;
 		
 		if (isNil {uiNamespace getVariable "cti_dialog_ui_satcam_showgroups"}) then {uiNamespace setVariable ["cti_dialog_ui_satcam_showgroups", true]};
@@ -75,7 +75,7 @@ switch (_action) do {
 		switch (uiNamespace getVariable "cti_dialog_ui_satcam_viewmode") do { case 1: {_mode = "NVG"; camUseNVG true }; };
 		((uiNamespace getVariable "cti_dialog_ui_satcam") displayCtrl 170013) ctrlSetText _mode;
 		
-		if (ctrlText ((uiNamespace getVariable "cti_dialog_ui_satcam") displayCtrl 170011) == "") then { ((uiNamespace getVariable "cti_dialog_ui_satcam") displayCtrl 170011) ctrlSetText "Feed: No Target" };
+		if (ctrlText ((uiNamespace getVariable "cti_dialog_ui_satcam") displayCtrl 170011) isEqualTo "") then { ((uiNamespace getVariable "cti_dialog_ui_satcam") displayCtrl 170011) ctrlSetText "Feed: No Target" };
 		
 		CTI_SatelitteCamera cameraEffect ["Internal", "back"];
 		
@@ -95,7 +95,7 @@ switch (_action) do {
 		uiNamespace setVariable ["cti_dialog_ui_satcam_groups_ai", _ais];
 		{
 			((uiNamespace getVariable "cti_dialog_ui_satcam") displayCtrl 170101) lbAdd format["%1", _x];
-			if (alive _origin && _x == _origin) then {((uiNamespace getVariable "cti_dialog_ui_satcam") displayCtrl 170101) lbSetCurSel _forEachIndex};
+			if (alive _origin && _x isEqualTo _origin) then {((uiNamespace getVariable "cti_dialog_ui_satcam") displayCtrl 170101) lbSetCurSel _forEachIndex};
 		} forEach (_ais);
 		
 		if !(isNil {uiNamespace getVariable "cti_dialog_ui_satcam_origin"}) then {

@@ -21,7 +21,7 @@ for '_i' from 0 to (count _c)-1 do {
 	
 	//--- Is it a custom unit?
 	_custom = false;
-	if (typeName(_s select _i) == "ARRAY") then { _classname = (_s select _i) select 0; _custom = true };
+	if (typeName(_s select _i) isEqualTo "ARRAY") then { _classname = (_s select _i) select 0; _custom = true };
 	
 	if (isClass (configFile >> "CfgVehicles" >> _classname)) then {
 		_get = missionNamespace getVariable _var_name;
@@ -29,12 +29,12 @@ for '_i' from 0 to (count _c)-1 do {
 			_stored = [];
 			
 			_picture = _p select _i;
-			if (_picture == "") then { 
+			if (_picture isEqualTo "") then { 
 				_picture = if (_classname isKindOf "Man") then { getText(configFile >> "CfgVehicles" >> _classname >> "portrait") } else { getText(configFile >> "CfgVehicles" >> _classname >> "picture") }
 			};
 			_label = switch (typeName (_n select _i)) do {
 				case "ARRAY": {format[_n select _i, getText(configFile >> "CfgVehicles" >> _classname >> "displayName")]};
-				case "STRING": {if ((_n select _i) == "") then { getText(configFile >> "CfgVehicles" >> _classname >> "displayName") } else { _n select _i }};
+				case "STRING": {if ((_n select _i) isEqualTo "") then { getText(configFile >> "CfgVehicles" >> _classname >> "displayName") } else { _n select _i }};
 				default {""};
 			};
 			_turrets = if !(_classname isKindOf "Man") then { (_classname) call compile preprocessFileLineNumbers "Common\Config\Units\Get_DetailedTurrets.sqf" } else { "" };

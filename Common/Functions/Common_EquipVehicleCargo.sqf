@@ -35,8 +35,8 @@ _loaded = [];
 {
 	_item = _x;
 	// if !(_item in _loaded) then {
-	if (({_x == _item} count _loaded) < 1) then {
-		_count = {_x == _item} count _gear;
+	if (({_x isEqualTo _item} count _loaded) < 1) then {
+		_count = {_x isEqualTo _item} count _gear;
 		_loaded pushBack _item;
 		
 		if (isClass (configFile >> 'CfgVehicles' >> _item)) then {

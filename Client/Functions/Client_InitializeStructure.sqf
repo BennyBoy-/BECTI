@@ -27,7 +27,7 @@ private ["_marker"];
 
 //--- Quick action (I know you want it brit!)
 if (((_var select 0) select 0) in CTI_FACTORIES) then {
-	_structure addAction [format["<t color='#c9f7bb'>Use %1</t>", ((_var select 0) select 1)], "Client\Actions\Action_UseNearestFactory.sqf", "", 95, false, true, "", "alive _target && _this == player"];
+	_structure addAction [format["<t color='#c9f7bb'>Use %1</t>", ((_var select 0) select 1)], "Client\Actions\Action_UseNearestFactory.sqf", "", 95, false, true, "", "alive _target && _this isEqualTo player"];
 };
 
 //--- Center marker

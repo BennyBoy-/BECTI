@@ -122,7 +122,7 @@ class FSM
           priority = 1.000000;
           to="Occupation_Active";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _sideID == CTI_RESISTANCE_ID"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _sideID isEqualTo CTI_RESISTANCE_ID"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

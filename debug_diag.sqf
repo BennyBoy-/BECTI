@@ -32,7 +32,7 @@
 // player sidechat format ["%1",player ammo primaryWeapon player];
 
 // execvm "Client\GUI\GUI_CoinMenu.sqf";
-player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_CoinBuild.sqf", "HQ", 93, false, true, "", "_target == player && CTI_Base_HQInRange"];
+player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_CoinBuild.sqf", "HQ", 93, false, true, "", "_target isEqualTo player && CTI_Base_HQInRange"];
 
 // _structures = (side player) call CTI_CO_FNC_GetSideStructures;
 // _structure = [player, _structures] call CTI_CO_FNC_GetClosestEntity;

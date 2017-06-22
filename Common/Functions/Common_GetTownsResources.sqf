@@ -31,10 +31,10 @@ _total_values = 0;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 {
-	if (_x getVariable "cti_town_sideID" == _sideID) then {
+	if (_x getVariable "cti_town_sideID" isEqualTo _sideID) then {
 		_total_values = _total_values + (_x getVariable "cti_town_sv");
 		
-		/*if (missionNamespace getVariable "CTI_ECONOMY_TOWNS_OCCUPATION" == 1) then { //--- Town occupation is active
+		/*if (missionNamespace getVariable "CTI_ECONOMY_TOWNS_OCCUPATION" isEqualTo 1) then { //--- Town occupation is active
 			_near = _x nearEntities ["AllVehicles", CTI_MARKERS_TOWN_AREA_RANGE];
 			if (_side countSide _near > 0) then { //--- The town is occupied by friendlies, but what about enemies?
 				_hostiles = 0;

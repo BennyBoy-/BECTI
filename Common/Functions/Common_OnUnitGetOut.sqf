@@ -28,6 +28,6 @@ private ["_side"];
 
 if (alive _unit) then {
 	_side = side _unit;
-	if (_side == sideEnemy) then {_side = switch (getNumber(configFile >> "CfgVehicles" >> typeOf _unit >> "side")) do {case 0: {east}; case 1: {west}; case 2: {resistance}; default {civilian}}};
+	if (_side isEqualTo sideEnemy) then {_side = switch (getNumber(configFile >> "CfgVehicles" >> typeOf _unit >> "side")) do {case 0: {east}; case 1: {west}; case 2: {resistance}; default {civilian}}};
 	_vehicle setVariable ["cti_occupant", _side];
 };

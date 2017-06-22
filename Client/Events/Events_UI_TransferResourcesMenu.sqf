@@ -3,7 +3,7 @@ _action = _this select 0;
 
 switch (_action) do {
 	case "onLoad": {
-		_groups = if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" == 1) then {(CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups} else {(CTI_P_SideJoined) call CTI_CO_FNC_GetSidePlayerGroups};
+		_groups = if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" isEqualTo 1) then {(CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups} else {(CTI_P_SideJoined) call CTI_CO_FNC_GetSidePlayerGroups};
 		_percent_award = round((CTI_P_SideLogic getVariable "cti_pool_award") * 100);
 		_percent_resources = round((CTI_P_SideLogic getVariable "cti_pool_resources") * 100);
 		uiNamespace setVariable ["cti_dialog_ui_transferresourcesmenu_groups", _groups];
@@ -23,14 +23,14 @@ switch (_action) do {
 		for '_i' from (CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN/10) to 10 do {
 			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140006) lbAdd format["%1", _i*10];
 			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140006) lbSetValue [_u, _i*10];
-			if (_percent_resources == (_i*10)) then {((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140006) lbSetCurSel _u};
+			if (_percent_resources isEqualTo (_i*10)) then {((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140006) lbSetCurSel _u};
 			_u = _u + 1;
 		};
 		
 		for '_i' from 0 to 10 do {
 			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140007) lbAdd format["%1", _i*10];
 			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140007) lbSetValue [_i, _i*10];
-			if (_percent_award == (_i*10)) then {((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140007) lbSetCurSel _i};
+			if (_percent_award isEqualTo (_i*10)) then {((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140007) lbSetCurSel _i};
 		};
 		
 		_funds = call CTI_CL_FNC_GetPlayerFunds;
@@ -101,7 +101,7 @@ switch (_action) do {
 	};
 	case "onGoBack": {
 		closeDialog 0;
-		if (CTI_P_LastRootMenu == "Commanding") then {
+		if (CTI_P_LastRootMenu isEqualTo "Commanding") then {
 			createDialog "CTI_RscCommandMenu";
 		} else {
 			createDialog "CTI_RscOptionsMenu";

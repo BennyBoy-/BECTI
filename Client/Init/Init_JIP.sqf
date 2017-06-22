@@ -42,13 +42,13 @@ if (isMultiplayer) then {sleep 5}; //--- Wait in MP for the net var to kick in
 //--- Add lock/unlock to team vehicles if needed.
 {
 	if (effectiveCommander _x in units player) then {
-		_x addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 2'];
-		_x addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 0'];
+		_x addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target isEqualTo 2'];
+		_x addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target isEqualTo 0'];
 	};
 } forEach ([group player, false] call CTI_CO_FNC_GetTeamVehicles);
 
 {
-	if (vehicle _x == _x) then { //--- On foot
+	if (vehicle _x isEqualTo _x) then { //--- On foot
 		_x setPos ([player, 8, 30] call CTI_CO_FNC_GetRandomPosition);
 	} else { //--- In vehicle
 		if ((effectiveCommander vehicle _x) in units player) then { //--- The vehicle is lead by us

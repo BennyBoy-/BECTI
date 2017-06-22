@@ -25,7 +25,7 @@ _cpt = 0;
 for '_i' from 0 to count(_items)-1 do {
 	_item = _items select _i;
 	_pushtogear = true;
-	if (typeName _item == "ARRAY") then {
+	if (typeName _item isEqualTo "ARRAY") then {
 		_pushtogear = false;
 		_item = _item select 0;
 	};
@@ -63,7 +63,7 @@ for '_i' from 0 to count(_items)-1 do {
 					if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Common\Config\Gear\Gear_Config_Set.sqf", format ["Set Magazine [%1].", _item]] call CTI_CO_FNC_Log };
 				};
 				case "CfgVehicles": {
-					if (getNumber(configFile >> _config_type >> _item >> 'isbackpack') == 1) then { //--- Make sure that this is a backpack
+					if (getNumber(configFile >> _config_type >> _item >> 'isbackpack') isEqualTo 1) then { //--- Make sure that this is a backpack
 						missionNamespace setVariable [format["cti_%1", _item], [[_upgrades select _i, _prices select _i], "Backpack", _config_type, _filterui select _i]];
 						if (_pushtogear) then {_gear_backpacks pushBack _item};
 						_cpt = _cpt + 1;
@@ -84,7 +84,7 @@ for '_i' from 0 to count(_items)-1 do {
 						default {"nil"};
 					};
 					
-					if (_item_type == "Item") then { //--- Items are handled differently
+					if (_item_type isEqualTo "Item") then { //--- Items are handled differently
 						_item_subtype = switch (getNumber(configFile >> _config_type >> _item >> 'ItemInfo' >> 'type')) do {
 							case CTI_SUBTYPE_ITEM: {"BaseItem"};
 							case CTI_SUBTYPE_UAVTERMINAL: {"BaseItem"};
@@ -100,9 +100,9 @@ for '_i' from 0 to count(_items)-1 do {
 						
 						if (_pushtogear) then {
 							switch (true) do { //--- Parse
-								case (_item_subtype == "Uniform"): { _gear_uniforms pushBack _item };
-								case (_item_subtype == "Vest"): { _gear_vests pushBack _item };
-								case (_item_subtype == "Headgear"): { _gear_headgear pushBack _item };
+								case (_item_subtype isEqualTo "Uniform"): { _gear_uniforms pushBack _item };
+								case (_item_subtype isEqualTo "Vest"): { _gear_vests pushBack _item };
+								case (_item_subtype isEqualTo "Headgear"): { _gear_headgear pushBack _item };
 								case (_item_subtype in ["Acc-Muzzle", "Acc-Optics", "Acc-Side", "Acc-Bipod"]): { _gear_accessories pushBack _item };
 								case (_item_subtype in ["BaseItem", ""]): { _gear_misc pushBack _item };
 							};
@@ -111,9 +111,9 @@ for '_i' from 0 to count(_items)-1 do {
 						if (_pushtogear) then {
 							switch (true) do { //--- Parse
 								case (_item_type in ["Rifle", "Rifle 2H"]): { _gear_primary pushBack _item };
-								case (_item_type == "Pistol"): { _gear_pistol pushBack _item };
-								case (_item_type == "Launcher"): { _gear_secondary pushBack _item };
-								case (_item_type == "Equipment"): { _gear_special pushBack _item };
+								case (_item_type isEqualTo "Pistol"): { _gear_pistol pushBack _item };
+								case (_item_type isEqualTo "Launcher"): { _gear_secondary pushBack _item };
+								case (_item_type isEqualTo "Equipment"): { _gear_special pushBack _item };
 							};
 						};
 					};
