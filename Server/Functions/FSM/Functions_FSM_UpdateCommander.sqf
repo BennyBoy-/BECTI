@@ -159,7 +159,7 @@ CTI_FSM_UpdateCommander_GetStructureEmplacement = {
 	_sideLogic = (_side) call CTI_CO_FNC_GetSideLogic;
 	
 	_hq = (_side) call CTI_CO_FNC_GetSideHQ;
-	_structures = (_side) call CTI_CO_FNC_GetSideStructures);
+	_structures = (_side call CTI_CO_FNC_GetSideStructures);
 	_structures pushBack _hq;
 	_structures = _structures + (_sideLogic getVariable "cti_structures_wip");
 	

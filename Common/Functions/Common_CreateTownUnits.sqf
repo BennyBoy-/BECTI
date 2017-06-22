@@ -134,6 +134,8 @@ while {true} do {
 				if (_use_default) then {
 					_has_vehicles = false;
 					{if !(_x isKindOf "Man") exitWith {_has_vehicles = true}} forEach _team;
+					//--- If a new building cannot be found, we look for a position
+					if (typeName _position isEqualTo "OBJECT") then {_position = getPos _position};
 					
 					for '_i' from 1 to 100 do {
 						_position_ran = [ASLToAGL _position, 10, _spawn_range, 10, if (_has_vehicles) then {"vehicles"} else {"infantry"}] call CTI_CO_FNC_GetSafePosition;
