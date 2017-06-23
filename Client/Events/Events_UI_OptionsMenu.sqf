@@ -4,12 +4,12 @@ _action = _this select 0;
 switch (_action) do {
 	case "onLoad": {
 		//--- Units cam available?
-		((uiNamespace getVariable "cti_dialog_ui_optionsmenu") displayCtrl 130012) ctrlEnable (if CTI_Base_ControlCenterInRange then {true} else {false});
+		((uiNamespace getVariable "cti_dialog_ui_optionsmenu") displayCtrl 130012) ctrlEnable ([false, true] select (CTI_Base_ControlCenterInRange));
 		((uiNamespace getVariable "cti_dialog_ui_optionsmenu") displayCtrl 130012) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafeZoneH * 0.795), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_optionsmenu") displayCtrl 130012) ctrlCommit 0;
 		
 		//--- Sat cam available?
 		_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
-		_enable = if (CTI_Base_ControlCenterInRange && _upgrades select CTI_UPGRADE_SATELLITE > 0) then {true} else {false};
+		_enable = [false, true] select (CTI_Base_ControlCenterInRange && _upgrades select CTI_UPGRADE_SATELLITE > 0);
 		((uiNamespace getVariable "cti_dialog_ui_optionsmenu") displayCtrl 130013) ctrlEnable _enable;
 		((uiNamespace getVariable "cti_dialog_ui_optionsmenu") displayCtrl 130013) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafeZoneH * 0.845), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_optionsmenu") displayCtrl 130013) ctrlCommit 0;
 		
@@ -75,18 +75,6 @@ switch (_action) do {
 			
 			//--- Close this menu and let the server-to-client PVF open the Vote menu
 			closeDialog 0;
-			//--- Don't lock this script
-			/*0 spawn {
-				(name player) remoteExec ["CTI_PVF_CLT_OnNewCommanderVote", CTI_P_SideJoined];
-				
-			
-				waitUntil{CTI_P_SideLogic getVariable "cti_votetime" > -1 || !alive player || !dialog};
-				
-				if (alive player && dialog) then {
-					closeDialog 0;
-					createDialog "CTI_RscVoteMenu";
-				};
-			};*/
 		} else {
 			closeDialog 0;
 			createDialog "CTI_RscVoteMenu";

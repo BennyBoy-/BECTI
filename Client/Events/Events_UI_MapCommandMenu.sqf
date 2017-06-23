@@ -80,7 +80,7 @@ switch (_action) do {
 		_value = lnbCurSelRow 220002;
 		if (_value > -1) then {
 			_value = lnbValue [220002, [_value, 0]];
-			_all = if (_value < 0) then {true} else {false};
+			_all = [false, true] select (_value < 0);
 			
 			switch (true) do {
 				case (_order in [CTI_ORDER_TAKETOWNS, CTI_ORDER_HOLDTOWNSBASES, CTI_ORDER_TAKEHOLDTOWNS]): {
@@ -150,7 +150,7 @@ switch (_action) do {
 					_value = lnbCurSelRow 220002;
 					if (_value > -1) then {
 						_value = lnbValue [220002, [_value, 0]];
-						_all = if (_value < 0) then {true} else {false};
+						_all = [false, true] select (_value < 0);
 						
 						_order = uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_order";
 						switch (_order) do { //--- Transform generic to singles
@@ -210,7 +210,7 @@ switch (_action) do {
 		if (_value > -1) then {
 			_value = lnbValue [220002, [_value, 0]];
 			
-			_all = if (_value < 0) then {true} else {false};
+			_all = [false, true] select (_value < 0);
 			_order = uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_order";
 			
 			if !(isNil '_order') then {
@@ -236,7 +236,7 @@ switch (_action) do {
 				};
 				
 				if !(_order in CTI_AI_ORDERS_ONETIMERS) then {
-					_posto = if (_setposition) then {_target} else {false};
+					_posto = [false, _target] select (_setposition);
 					if (_all) then {
 						{[_x, _order, _posto] call CTI_UI_MapCommanding_TrySetOrder} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
 					} else {
@@ -262,7 +262,6 @@ switch (_action) do {
 		if (_value > -1) then {
 			_value = lnbValue [220002, [_value, 0]];
 			
-			_all = if (_value < 0) then {true} else {false};
 			_order = uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_order";
 			
 			if !(isNil '_order') then {

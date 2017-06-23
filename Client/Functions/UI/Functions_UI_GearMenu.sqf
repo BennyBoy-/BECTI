@@ -216,7 +216,7 @@ CTI_UI_Gear_DisplayInventory = {
 	//--- Accessories
 	{
 		if (_x != "") then {
-			_config = if (isClass(configFile >> 'CfgWeapons' >> _x)) then {"CfgWeapons"} else {"CfgGlasses"};
+			_config = ["CfgGlasses", "CfgWeapons"] select (isClass(configFile >> 'CfgWeapons' >> _x));
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70004+_forEachIndex) ctrlSetText getText(configFile >> _config >> _x >> 'picture');
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70004+_forEachIndex) ctrlSetTooltip getText(configFile >> _config >> _x >> 'displayName');
 		} else {
@@ -554,7 +554,7 @@ CTI_UI_Gear_AddItem = {
 			};
 			case "Equipment": { //--- Binoc... NVG...
 				//--- Simulation?
-				_index = if (getText(configFile >> 'CfgWeapons' >> _item >> 'simulation') isEqualTo "NVGoggles") then {0} else {1};
+				_index = [1, 0] select (getText(configFile >> 'CfgWeapons' >> _item >> 'simulation') isEqualTo "NVGoggles");
 				_current = ((_gear select 3) select 0) select _index;
 				
 				if (_current != _item) then { //--- Replace
@@ -1416,7 +1416,7 @@ CTI_UI_Gear_UpdatePrice = {
 	_trade_in = [uiNamespace getVariable "cti_dialog_ui_gear_target_staticgear", uiNamespace getVariable "cti_dialog_ui_gear_target_gear"] call CTI_UI_Gear_GetGearCostDelta;
 	uiNamespace setVariable ["cti_dialog_ui_gear_tradein", _trade_in];
 	
-	_coloration = if (_trade_in > 0) then {"#F56363"} else {"#76F563"};
+	_coloration = ["#76F563", "#F56363"] select (_trade_in > 0);
 	
 	((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70028) ctrlSetStructuredText parseText format ["<t align='left'>Trade-in: <t color='%3'>$%1</t><t><t align='right'>Resources: <t color='%4'>$%2</t><t>", _trade_in, call CTI_CL_FNC_GetPlayerFunds, _coloration, CTI_P_Coloration_Money];
 };

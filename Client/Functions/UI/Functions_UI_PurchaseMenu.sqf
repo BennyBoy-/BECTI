@@ -280,12 +280,12 @@ CTI_UI_Purchase_SetVehicleIconsColor = {
 	private ["_color", "_idc"];
 	_idc = 110100;
 	{
-		_color = if (uiNamespace getVariable format ["cti_dialog_ui_purchasemenu_vehicon_%1", _x]) then {[0.258823529, 0.713725490, 1, 1]} else {[0.2, 0.2, 0.2, 1]};
+		_color = [[0.2, 0.2, 0.2, 1], [0.258823529, 0.713725490, 1, 1]] select (uiNamespace getVariable format ["cti_dialog_ui_purchasemenu_vehicon_%1", _x]);
 		
 		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl (_idc + _forEachIndex)) ctrlSetTextColor _color;
 	} forEach ['driver','gunner','commander','turrets'];
 	
-	_color = if (uiNamespace getVariable "cti_dialog_ui_purchasemenu_vehicon_lock") then {[1, 0.22745098, 0.22745098, 1]} else {[0.2, 0.2, 0.2, 1]};
+	_color = [[0.2, 0.2, 0.2, 1], [1, 0.22745098, 0.22745098, 1]] select (uiNamespace getVariable "cti_dialog_ui_purchasemenu_vehicon_lock");
 	((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110104) ctrlSetTextColor _color;
 };
 

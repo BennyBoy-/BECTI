@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ui_titles_helper.fsm">*/
+/*%FSM<COMPILE "D:\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ui_titles_helper.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Init"};
@@ -20,8 +20,8 @@ link6[] = {5,3};
 link7[] = {6,5};
 link8[] = {7,8};
 link9[] = {8,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,25,6316128,1,-260.176819,240.531586,696.536133,-366.411682,415,598,1};
-window[] = {2,-1,-1,-1,-1,561,-920,-152,104,3,433};
+globals[] = {25.000000,1,0,0,0,640,480,1,25,6316128,1,-220.361465,280.346893,663.960022,-398.987885,415,910,1};
+window[] = {2,-1,-1,-1,-1,535,-1842,-1074,78,3,433};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -71,12 +71,12 @@ class FSM
     {
       name = "Refresh";
       init = /*%FSM<STATEINIT""">*/"_nearest = (player) call CTI_CO_FNC_GetClosestTown;" \n
-       "_update = if (player distance _nearest < CTI_UI_TOWNS_PROGRESSBAR_DISTANCE && alive player) then {true} else {false};" \n
+       "_update = [false, true] select (player distance _nearest < CTI_UI_TOWNS_PROGRESSBAR_DISTANCE && alive player)" \n
        "" \n
        "if !(isNull (uiNamespace getVariable ""cti_title_capture"")) then {" \n
        "	_commander = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommanderTeam;" \n
        "	if (isNull _commander) then {" \n
-       "		_commander = if (missionNamespace getVariable ""CTI_AI_TEAMS_ENABLED"" > 0) then {""AI""} else {""N/A""};" \n
+       "		_commander = [""N/A"", ""AI""] select (missionNamespace getVariable ""CTI_AI_TEAMS_ENABLED"" > 0);" \n
        "	} else {" \n
        "		_commander = name leader _commander;" \n
        "	};" \n

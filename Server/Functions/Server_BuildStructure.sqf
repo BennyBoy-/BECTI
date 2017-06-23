@@ -50,7 +50,7 @@ _structure setVariable ["cti_structures_iteration", (_var select CTI_STRUCTURE_T
 _structure setVariable ["cti_structure_type", ((_var select CTI_STRUCTURE_LABELS) select 0)];
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
-_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull]];
+_logic setVariable ["cti_structures_wip", ((_logic getVariable "cti_structures_wip") pushBack _structure) - [objNull]];
 
 [_side, _structure, _classname, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
 

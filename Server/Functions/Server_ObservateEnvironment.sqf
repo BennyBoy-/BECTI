@@ -84,7 +84,6 @@ _spotted_structure = objNull;
 			_group setVariable [_x select 2, time];
 			
 			(_side_logic getVariable (_x select 4)) pushBack _what;
-			// _side_logic setVariable [_x select 4, (_side_logic getVariable (_x select 4)) + [_what]];
 		};
 	};
 } forEach [[_spotted_structure, CTI_AI_TEAMS_OBSERVATION_BASE_DELAY, "cti_spotted_lastbasereport", "base", "cti_spotted_structures"], [_spotted_unit, CTI_AI_TEAMS_OBSERVATION_UNIT_DELAY, "cti_spotted_lastunitreport", "unit", "cti_spotted_units"]];

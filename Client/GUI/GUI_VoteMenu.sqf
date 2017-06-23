@@ -45,7 +45,7 @@ while { alive player && dialog } do {
 		if (isPlayer leader _x) then {
 			_vote = _x getVariable "cti_vote";
 			_index = (uiNamespace getVariable "cti_dialog_ui_votemenu_groups") find _vote;
-			_index = if (_index < 0) then {0} else {_index + 1};
+			_index = [_index + 1, 0] select (_index < 0);
 			_vote_array set [_index, (_vote_array select _index) + 1];
 			_player_count = _player_count + 1;
 		};

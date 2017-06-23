@@ -83,7 +83,7 @@ switch (_message_var) do {
 		(_parameters select 0) groupChat format ["Repairing %1... %2%3", (_var select CTI_STRUCTURE_LABELS) select 1, _parameters select 2, "%"];
 	};
 	case "salvage": {
-		_value = if (call CTI_CL_FNC_IsPlayerCommander) then {_parameters select 2} else {_parameters select 1};
+		_value = [_parameters select 1, _parameters select 2] select (call CTI_CL_FNC_IsPlayerCommander);
 		_var = missionNamespace getVariable (_parameters select 0);
 		if (_value > 0) then {CTI_P_ChatID sideChat format ["$%2 received for the salvaging of a %1 by your side", _var select CTI_UNIT_LABEL, _value]};
 	};

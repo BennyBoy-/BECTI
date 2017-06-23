@@ -6,7 +6,7 @@ while { true } do {
 	{
 		_funds = (_x) call CTI_CO_FNC_GetFunds;
 		_lives = {alive _x} count units _x;
-		_independent = if (_x getVariable "cti_independent") then {"On"} else {"Off"};
+		_independent = ["Off", "On"] select (_x getVariable "cti_independent");
 		_squad = missionNamespace getVariable format ["CTI_SQUAD_%1_%2", CTI_P_SideJoined, _x getVariable "cti_role"];
 		_squad = if !(isNil '_squad') then { _squad select 0 } else { _x getVariable "cti_role" };
 		_order = _x getVariable "cti_order";

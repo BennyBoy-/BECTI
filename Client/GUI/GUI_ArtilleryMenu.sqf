@@ -24,7 +24,7 @@ while { true } do {
 			
 			//--- Make sure that it's alive
 			if (alive _artillery_piece) then {
-				_toggle = if (_forEachIndex in _selection) then {1} else {0};
+				_toggle = [0, 1] select (_forEachIndex in _selection);
 				{_x setMarkerAlphaLocal _toggle} forEach (_x select 1);
 			};
 		} forEach _artillery;

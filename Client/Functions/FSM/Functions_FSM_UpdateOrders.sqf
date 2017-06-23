@@ -173,7 +173,7 @@ CTI_FSM_UpdateOrders_HoldTownsBase = {
 	
 	//--- We patrol!
 	_pos_patrol = getPos _defend; 
-	_pos_patrol_isbase = if (isNil {_defend getVariable "cti_town_sideID"}) then {true} else {false};
+	_pos_patrol_isbase = [false, true] select (isNil {_defend getVariable "cti_town_sideID"});
 	
 	_destroyed = false;
 	while {true} do {

@@ -121,7 +121,7 @@ if (count _var > 0) then {
 
 _position = _factory modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
 _position set [2, .5];
-_net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") isEqualTo 1) then { true } else { false };
+_net = [false, true] select ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") isEqualTo 1);
 _vehicle = objNull;
 _units = [];
 

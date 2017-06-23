@@ -64,7 +64,7 @@ if !(_sell) then {
 
 	[_side, _structure, _variable, _position, _direction, true] spawn CTI_SE_FNC_HandleStructureConstruction;
 
-	_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull]];
+	_logic setVariable ["cti_structures_wip", ((_logic getVariable "cti_structures_wip") pushBack _structure) - [objNull]];
 	
 	//--- Bounty
 	if !(isNull _killer) then {

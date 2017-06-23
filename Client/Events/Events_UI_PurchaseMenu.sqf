@@ -18,7 +18,7 @@ switch (_action) do {
 			_groups = if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" isEqualTo 1) then {(CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups} else {(CTI_P_SideJoined) call CTI_CO_FNC_GetSidePlayerGroups};
 			uiNamespace setVariable ["cti_dialog_ui_purchasemenu_teams", _groups];
 			{
-				_header_ai = if (isPlayer leader _x) then {""} else {"[AI] "};
+				_header_ai = ["AI", ""] select (isPlayer leader _x);
 				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110016) lbAdd format ["%1%2 (%3)", _header_ai, _x getVariable ["cti_alias", CTI_PLAYER_DEFAULT_ALIAS], name leader _x];
 				if (leader _x isEqualTo player) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110016) lbSetCurSel _forEachIndex};
 			} forEach (_groups);
@@ -91,18 +91,18 @@ switch (_action) do {
 		
 		_classname = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbData [lnbCurSelRow 111007, 0];
 		
-		_toggle = if (uiNamespace getVariable format ["cti_dialog_ui_purchasemenu_vehicon_%1", _role]) then {false} else {true};
+		_toggle = [true, false] select (uiNamespace getVariable format ["cti_dialog_ui_purchasemenu_vehicon_%1", _role]);
 		uiNamespace setVariable [format ["cti_dialog_ui_purchasemenu_vehicon_%1", _role], _toggle];
 		
-		_color = if (_toggle) then {[0.258823529, 0.713725490, 1, 1]} else {[0.2, 0.2, 0.2, 1]};
+		_color = [[0.2, 0.2, 0.2, 1], [0.258823529, 0.713725490, 1, 1]] select (_toggle);
 		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _idc) ctrlSetTextColor _color;
 		(_classname) call CTI_UI_Purchase_UpdateCost;
 	};
 	case "onVehicleLockClicked": {
-		_toggle = if (uiNamespace getVariable "cti_dialog_ui_purchasemenu_vehicon_lock") then {false} else {true};
+		_toggle = [true, false] select (uiNamespace getVariable "cti_dialog_ui_purchasemenu_vehicon_lock");
 		uiNamespace setVariable ["cti_dialog_ui_purchasemenu_vehicon_lock", _toggle];
 		
-		_color = if (uiNamespace getVariable "cti_dialog_ui_purchasemenu_vehicon_lock") then {[1, 0.22745098, 0.22745098, 1]} else {[0.2, 0.2, 0.2, 1]};
+		_color = [[0.2, 0.2, 0.2, 1], [1, 0.22745098, 0.22745098, 1]] select (uiNamespace getVariable "cti_dialog_ui_purchasemenu_vehicon_lock");
 		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110104) ctrlSetTextColor _color;
 	};
 	case "onPurchase": {
@@ -117,7 +117,7 @@ switch (_action) do {
 			
 			_isEmpty = false;
 			_crew_count = 0;
-			_veh_info = if (_classname isKindOf "Man") then { [] } else { call CTI_UI_Purchase_GetVehicleInfo };
+			_veh_info = if (_classname isKindOf "Man") then {[]} else {call CTI_UI_Purchase_GetVehicleInfo};
 			if (count _veh_info > 0) then {
 				if !((_veh_info select 0) || (_veh_info select 1) || (_veh_info select 2) || (_veh_info select 3)) then { _isEmpty = true };
 				

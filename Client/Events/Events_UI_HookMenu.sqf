@@ -52,7 +52,7 @@ switch (_action) do {
 			if !(_has_something) then {
 				_selected = (uiNamespace getVariable "cti_dialog_ui_hookmenu_list") select _selected;
 				if !(isNil '_selected') then {
-					_wreck_allow = if (typeOf CTI_P_HookVehicle in CTI_VEHICLES_HOOKERS_EX) then {true} else {false};
+					_wreck_allow = [false, true] select (typeOf CTI_P_HookVehicle in CTI_VEHICLES_HOOKERS_EX);
 					if (((alive _selected && !_wreck_allow) || _wreck_allow) && _selected distance CTI_P_HookVehicle <= 15 && count crew _selected isEqualTo 0 && speed _selected < 10 && getPos _selected select 2 < 5 && local CTI_P_HookVehicle) then {
 						CTI_P_HookVehicle setVariable ["cti_hooked", _selected, true];
 						[_selected, CTI_P_HookVehicle] spawn CTI_CL_FNC_HookVehicle;

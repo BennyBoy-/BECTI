@@ -37,8 +37,8 @@ if (_order != _order_current) then { //--- Order itself changed?
 	switch (true) do {
 		case (typeName _order_pos_current isEqualTo "ARRAY" && typeName _order_pos isEqualTo "ARRAY"): {
 			//--- Queued order?
-			_nested = if (typeName (_order_pos select 0) isEqualTo "ARRAY") then {true} else {false};
-			_nested_current = if (typeName (_order_pos_current select 0) isEqualTo "ARRAY") then {true} else {false};
+			_nested = [false, true] select (typeName (_order_pos select 0) isEqualTo "ARRAY");
+			_nested_current = [false, true] select (typeName (_order_pos_current select 0) isEqualTo "ARRAY");
 			
 			switch (true) do {
 				case (_nested && _nested_current): { //--- Current and new positions are nested

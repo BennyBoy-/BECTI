@@ -18,23 +18,6 @@ _startPos = getPos _origin;
 if (_source isEqualTo 'HQ') then {
 	{if (_startPos distance2D _x <= CTI_BASE_AREA_RANGE) exitWith {_startPos = [_x select 0, _x select 1, 0]}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
 };
-/*
-//--- HQ Area checkin
-_area_max = false;
-if (_source isEqualTo 'HQ') then {
-	_in_area = false;
-	{if ([_startPos select 0, _startPos select 1] distance [_x select 0, _x select 1] <= CTI_BASE_AREA_RANGE) exitWith {_in_area = true}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
-	
-	if !(_in_area) then {
-		if (count (CTI_P_SideLogic getVariable "cti_structures_areas") < (missionNamespace getVariable "CTI_BASE_AREA_MAX")) then {
-			CTI_P_SideLogic setVariable ["cti_structures_areas", (CTI_P_SideLogic getVariable "cti_structures_areas") + [[_startPos select 0, _startPos select 1]], true];
-		} else {
-			_area_max = true;
-		};
-	};
-};
-
-if (_area_max) exitWith {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The base area limit has been reached."};*/
 
 if !(isNil {missionNamespace getVariable "CTI_COIN_CAMCONSTRUCT"}) exitWith {};
 
@@ -84,7 +67,7 @@ with missionNamespace do {
 	CTI_COIN_CAMCONSTRUCT camConstuctionSetParams ([_startPos] + _areaSize);
 	
 	//--- Apply NVG or not depending on the daytime
-	_nvgstate = if (daytime > 18.5 || daytime < 5.5) then {true} else {false};
+	_nvgstate = [false, true] select (daytime > 18.5 || daytime < 5.5);
 	camUseNVG _nvgstate;
 	CTI_COIN_CAMUSENVG = _nvgstate;
 	

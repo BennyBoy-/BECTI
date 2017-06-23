@@ -8,11 +8,8 @@ switch (_action) do {
 		execVM "Client\GUI\GUI_GearMenu.sqf";
 		
 		//--- Handle drag stop //todo check the getVariable modification.
-		_dragging = if (isNil{uiNamespace getVariable "cti_dialog_ui_gear_dragging"}) then {false} else {uiNamespace getVariable "cti_dialog_ui_gear_dragging"};
-		// if (uiNamespace getVariable ["cti_dialog_ui_gear_dragging", false]) then {uiNamespace setVariable ["cti_dialog_ui_gear_dragging", false]};
-		if (_dragging) then {uiNamespace setVariable ["cti_dialog_ui_gear_dragging", false]};
-		// (findDisplay 70000) displaySetEventHandler ["mouseButtonUp", "if (uiNamespace getVariable ['cti_dialog_ui_gear_dragging', false]) then {['onShoppingListMouseUp', _this select 1] call compile preprocessFileLineNumbers 'Client\Functions\UI\Function_UI_Gear_Events.sqf'}"];
-		(findDisplay 70000) displaySetEventHandler ["mouseButtonUp", "_dragging = if (isNil{uiNamespace getVariable 'cti_dialog_ui_gear_dragging'}) then {false} else {uiNamespace getVariable 'cti_dialog_ui_gear_dragging'}; if (_dragging) then {['onShoppingListMouseUp', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_GearMenu.sqf'}"];
+		if (uiNamespace getVariable ["cti_dialog_ui_gear_dragging", false]) then {uiNamespace setVariable ["cti_dialog_ui_gear_dragging", false]};
+		(findDisplay 70000) displaySetEventHandler ["mouseButtonUp", "if (uiNamespace getVariable ['cti_dialog_ui_gear_dragging', fase]) then {['onShoppingListMouseUp', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_GearMenu.sqf'}"];
 	};
 	case "onShoppingTabClicked": { //--- A shopping tab was clicked upon
 		//--- New tab

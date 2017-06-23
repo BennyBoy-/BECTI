@@ -64,7 +64,7 @@ CTI_UI_KeyHandler_SatelitteCamera_MouseZChanged = {
 	_pos = getPos CTI_SatelitteCamera;
 	_level = _pos select 2;
 	
-	_change = if (_change > 0) then { _level - (_level * 0.2) } else { _level + (_level * 0.2) };
+	_change = [_level + (_level * 0.2), _level - (_level * 0.2)] select (_change > 0);
 	if (_change > CTI_SATCAM_ZOOM_MAX) then { _change = CTI_SATCAM_ZOOM_MAX };
 	if (_change < CTI_SATCAM_ZOOM_MIN) then { _change = CTI_SATCAM_ZOOM_MIN };
 	

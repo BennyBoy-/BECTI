@@ -19,7 +19,7 @@ switch (_action) do {
 		_available_ammo_depots = [vehicle player, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 		
 		_available_depot = [vehicle player, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
-		_available_depot = if (isNull _available_depot) then {[]} else {[_available_depot]};
+		_available_depot = [[_available_depot], []] select (isNull _available_depot);
 		
 		//--- Get the outter vehicles near our mobile supports
 		{
@@ -40,7 +40,7 @@ switch (_action) do {
 				_available_repair_depots = [_x, _repair_depots, CTI_SERVICE_REPAIR_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 				_available_repair_trucks = [_x, CTI_SPECIAL_REPAIRTRUCK, CTI_SERVICE_REPAIR_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
 				_available_depot = [_x, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
-				_available_depot = if (isNull _available_depot) then {[]} else {[_available_depot]};
+				_available_depot = [[_available_depot], []] select (isNull _available_depot);
 				if (count _available_repair_depots > 0 || count _available_repair_trucks > 0 || count _available_depot > 0) then {
 					_load_content = true; 
 					_content set [3, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks], ["Depot", _available_depot]]];
@@ -52,7 +52,7 @@ switch (_action) do {
 				_available_ammo_depots = [_vehicle, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 				_available_ammo_trucks = [_vehicle, CTI_SPECIAL_AMMOTRUCK, CTI_SERVICE_AMMO_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
 				_available_depot = [_vehicle, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
-				_available_depot = if (isNull _available_depot) then {[]} else {[_available_depot]};
+				_available_depot = [[_available_depot], []] select (isNull _available_depot);
 				if (count _available_repair_depots > 0 || count _available_repair_trucks > 0 || count _available_depot > 0) then {
 					_load_content = true;
 					_content set [0, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks], ["Depot", _available_depot]]];
@@ -92,7 +92,7 @@ switch (_action) do {
 							_digits = _digits + (_x);
 							if (_forEachIndex < (count _digit_parsed)-1 && _forEachIndex < 2) then {_digits = _digits + ","};
 						} forEach _digit_parsed;
-						if (_digits != "") then {_digits = format["[%1] ",_digits]};
+						if !(_digits isEqualTo "") then {_digits = format["[%1] ",_digits]};
 					};
 					((uiNamespace getVariable "cti_dialog_ui_servicemenu") displayCtrl 230005) lnbAddRow [_digits+_label, format["%1%2",round((1 - getDammage _vehicle) * 100), "%"], format["%1%2", round((fuel _vehicle) * 100), "%"], _health];
 				};

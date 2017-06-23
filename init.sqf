@@ -24,10 +24,10 @@ CTI_CO_FNC_Log = compile preprocessFileLineNumbers "Common\Functions\Common_Log.
 CTI_GameOver = false;
 
 //--- Determine which machine is running this init script
-CTI_IsHostedServer = if (isServer && !isDedicated) then {true} else {false};
-CTI_IsServer = if (isDedicated || CTI_IsHostedServer) then {true} else {false};
-CTI_IsClient = if (CTI_IsHostedServer || !isDedicated) then {true} else {false};
-CTI_IsHeadless = if !(hasInterface || isDedicated) then {true} else {false};
+CTI_IsHostedServer = [false, true] select (isServer && !isDedicated);
+CTI_IsServer = [false, true] select (isDedicated || CTI_IsHostedServer);
+CTI_IsClient = [false, true] select (CTI_IsHostedServer || !isDedicated);
+CTI_IsHeadless = [false, true] select !(hasInterface || isDedicated);
 
 //--- Create a resistance center
 createCenter resistance;

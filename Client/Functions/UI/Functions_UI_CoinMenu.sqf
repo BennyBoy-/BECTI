@@ -398,7 +398,7 @@ CTI_Coin_OnHQToggle = {
 			showCommandingMenu (missionNamespace getVariable ["CTI_COIN_MENU", "#USER:CTI_COIN_Categories_0"]);
 			
 			//--- Update the camera area
-			_areaSize = if (CTI_P_SideJoined call CTI_CO_FNC_IsHQDeployed) then {CTI_COIN_AREA_HQ_DEPLOYED} else {CTI_COIN_AREA_HQ_MOBILIZED};
+			_areaSize = [CTI_COIN_AREA_HQ_MOBILIZED, CTI_COIN_AREA_HQ_DEPLOYED] select (CTI_P_SideJoined call CTI_CO_FNC_IsHQDeployed);
 			if !(isNil 'CTI_COIN_CAMCONSTRUCT') then {
 				_position = getPos (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ);
 				{if (_position distance2D _x <= CTI_BASE_AREA_RANGE) exitWith {_position = [_x select 0, _x select 1, 0]}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");

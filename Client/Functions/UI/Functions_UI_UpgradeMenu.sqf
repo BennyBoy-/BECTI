@@ -24,7 +24,7 @@ CTI_UI_Upgrade_LoadUpgradeInfo = {
 			if (typeName (_links select 0) isEqualTo "ARRAY") then {
 				_count = count(_links);
 				for '_i' from 0 to _count-1 do {
-					_coma = if (_i+1 < _count) then {", "} else {""};
+					_coma = ["", ", "] select (_i+1 < _count);
 					_clink = _links select _i;
 					_linkto = _upgrades select (_clink select 0);
 					_html = _html + Format ["<t shadow='1'><t color='%1'>%2 </t><t color='#F5D363'>%3</t>%4</t>",if (_linkto >= (_clink select 1)) then {'#76F563'} else {'#F56363'},(_upgrade_labels select (_clink select 0)) select 0, _clink select 1,_coma];

@@ -19,7 +19,7 @@ CTI_FSM_UpdateClientAI_Order_Patrol = {
 	};
 	
 	//--- Is it a queued order?
-	_is_queued = if ((typeName (_position select 0)) isEqualTo "ARRAY") then {true} else {false};
+	_is_queued = [false, true] select ((typeName (_position select 0)) isEqualTo "ARRAY");
 	
 	if (_exit) exitWith {if (_is_queued) then {_ai setVariable ["cti_ai_reload", true]}}; //--- Reload if the order is queued since the leader may die and our members may not move to the next pos.
 	
@@ -53,7 +53,7 @@ CTI_FSM_UpdateClientAI_Order_Patrol = {
 		
 		if ((_ai distance _position_current < 20) || ([getPos _ai select 0, getPos _ai select 1] distance [_position_current select 0, _position_current select 1] < 125 && vehicle _ai isKindOf "Air")) then { //--- Move order complete, more nodes?
 			//--- Determine the next node (restart?)
-			_node = if (_node + 1 > (count _patrol_area)-1) then {0} else {_node + 1};
+			_node = [_node + 1, 0] select (_node + 1 > (count _patrol_area) - 1);
 			{_x setVariable ["cti_ai_order_patrol_cn", _node]} forEach (_ai getVariable "cti_ai_formation");
 			_position_current = _patrol_area select _node;
 			vehicle _ai doMove _position_current;
@@ -83,7 +83,7 @@ CTI_FSM_UpdateClientAI_Order_Move = {
 	};
 	
 	//--- Is it a queued order?
-	_is_queued = if ((typeName (_position select 0)) isEqualTo "ARRAY") then {true} else {false};
+	_is_queued = [false, true] select ((typeName (_position select 0)) isEqualTo "ARRAY");
 	
 	if (_exit) exitWith {if (_is_queued) then {_ai setVariable ["cti_ai_reload", true]}}; //--- Reload if the order is queued since the leader may die and our members may not move to the next pos.
 	
@@ -331,9 +331,14 @@ CTI_FSM_UpdateClientAI_Order_HoldTownsBase = {
 	if !(_reload) then {_ai groupChat "Acknowledged.  Proceeding to nearest base or friendly town for guard duty"};
 	
 	//--- We patrol!
-	_move_defend_last = 0;_move_patrol_reload = true;
-	_action = "patrol";_last_action = "";_patrol_area = [];_start_patrol = time;
-	_pos_patrol = getPos _defend; _pos_patrol_isbase = if (isNil {_defend getVariable "cti_town_sideID"}) then {true} else {false};
+	_move_defend_last = 0;
+	_move_patrol_reload = true;
+	_action = "patrol";
+	_last_action = "";
+	_patrol_area = [];
+	_start_patrol = time;
+	_pos_patrol = getPos _defend; 
+	_pos_patrol_isbase = [false, true] select (isNil {_defend getVariable "cti_town_sideID"});
 	
 	for '_i' from 1 to CTI_AI_ORDER_HOLDTOWNSBASES_HOPS do {_patrol_area pushBack ([_defend, 5, CTI_AI_ORDER_HOLDTOWNSBASES_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition)};
 	

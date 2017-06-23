@@ -76,7 +76,7 @@ switch (_action) do {
 				if !(alive _target) exitWith {_setposition = false};
 			};
 			
-			_posto = if (_setposition) then {_target} else {false};
+			_posto = [false, _target] select (_setposition);
 			
 			(_units_effective) call CTI_UI_AIMicromanagement_UnregisterFormation; //--- Unregister the previous members if needed
 			if (count _units_effective > 1) then {(_units_effective) call CTI_UI_AIMicromanagement_SetFormation}; //--- Register the new members
@@ -147,7 +147,7 @@ switch (_action) do {
 						case (_order isEqualTo CTI_ORDER_CLIENT_MOVE): {
 							if (_ctrl || count(uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick_queued") > 0) then { //--- Order queued? (todo later move to the general scope)
 								uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick", true];
-								uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick_queued", (uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick_queued") + [_mappos]];
+								(uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick_queued") pushBack _mappos;
 							};
 							
 							if !(_ctrl) then { //--- Ctrl released
@@ -166,7 +166,7 @@ switch (_action) do {
 						case (_order isEqualTo CTI_ORDER_CLIENT_PATROL): {
 							if (_ctrl || count(uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick_queued") > 0) then { //--- Order queued? (todo later move to the general scope)
 								uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick", true];
-								uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick_queued", (uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick_queued") + [_mappos]];
+								(uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick_queued") pushBack _mappos;
 							};
 							
 							if !(_ctrl) then { //--- Ctrl released

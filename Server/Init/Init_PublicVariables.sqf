@@ -175,7 +175,7 @@ with missionNamespace do {
 			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_SRV_RequestJoin", format["Player [%1] [%2] does not belong to any CTI Groups on [%3]. Performed late-initialization and updated the Global Teams", _name, _uid, _side]] call CTI_CO_FNC_Log};
 			
 			//--- Update the global teams
-			_logic setVariable ["cti_teams", _teams - [objNull] + [_team], true];
+			_logic setVariable ["cti_teams", (_teams pushBack _team) - [objNull], true];
 		};
 		
 		//--- We attempt to get the player information in case that he had joined before.

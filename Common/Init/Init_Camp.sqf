@@ -2,8 +2,7 @@ params ["_town", "_camp", ["_defenses", []]];
 private ["_sideID", "_town_camps", "_town_name", "_town_side"];
 
 //--- Common Variables
-if (isNil {_town getVariable "cti_town_camps"}) then {_town setVariable ["cti_town_camps", []]};
-_town setVariable ["cti_town_camps", (_town getVariable "cti_town_camps") + [_camp]];
+_town setVariable ["cti_town_camps", ((_town getVariable ["cti_town_camps", []]) pushBack _camp)];
 _camp setVariable ["cti_camp_town", _town];
 
 waitUntil {!isNil 'CTI_Init_JIP' && !isNil 'CTI_Init_Common'};

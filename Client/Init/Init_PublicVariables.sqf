@@ -183,8 +183,8 @@ with missionNamespace do {
 		_from = _this select 2;
 		
 		_position = [_position, 5, CTI_AI_TEAMS_OBSERVATION_ACCURACY] call CTI_CO_FNC_GetRandomPosition;
-		_markerType = if (_type isEqualTo "base") then {"mil_warning"} else {"mil_unknown"};
-		_marker = createMarkerLocal [Format ["cti_report_%1", CTI_P_MarkerIterator], _position];CTI_P_MarkerIterator = CTI_P_MarkerIterator + 1;
+		_markerType = ["mil_unknown", "mil_warning"] select (_type isEqualTo "base");
+		_marker = createMarkerLocal [format ["cti_report_%1", CTI_P_MarkerIterator], _position];CTI_P_MarkerIterator = CTI_P_MarkerIterator + 1;
 		_marker setMarkerTypeLocal _markerType;
 		_marker setMarkerColorLocal "ColorBlack";
 		_marker setMarkerSizeLocal [0.5, 0.5]; 
@@ -259,7 +259,7 @@ with missionNamespace do {
 			
 			if !(isNil '_damages') then {
 				if (_damages > 0) then {
-					_repair = if (_damages - _repair < 0) then {0} else {_damages - _repair};
+					_repair = [_damages - _repair, 0] select (_damages - _repair < 0);
 					_vehicle setHit [_x, _repair];
 				};
 			};
