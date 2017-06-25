@@ -108,17 +108,19 @@ with missionNamespace do {
 			["INFORMATION", "FUNCTION: CTI_PVF_HC_OnTownDelegationReceived", format["A Delegation request was received from the server for [%1] teams in town [%2] on [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
 		
-		_hc_tvar = ["cti_hc_delegated_groups_occupation", "cti_hc_delegated_groups_resistance"] select (_side isEqualTo resistance);
-		
-		//--- Register each groups on the town for deletion
-		{
-			_town setVariable [_hc_tvar, ((_town getVariable [_hc_tvar, []]) pushBack _x)];
-		} forEach _groups;
-		
-		// sleep _sleep_thread;
-		
-		//--- Create the desired units
-		[_town, _side, _teams, _groups, _positions] spawn CTI_CO_FNC_CreateTownUnits;
+		if (count _groups > 0) then {		
+			_hc_tvar = ["cti_hc_delegated_groups_occupation", "cti_hc_delegated_groups_resistance"] select (_side isEqualTo resistance);
+			
+			if (isNil {_town getVariable _hc_tvar}) then {_town setVariable [_hc_tvar, []]};
+			
+			//--- Register each groups on the town for deletion
+			{(_town getVariable _hc_tvar) pushBack _x} forEach _groups;
+			
+			// sleep _sleep_thread;
+			
+			//--- Create the desired units
+			[_town, _side, _teams, _groups, _positions] spawn CTI_CO_FNC_CreateTownUnits;
+		};
 	};
 	
 	CTI_PVF_HC_OnTownDelegationRemoval = {

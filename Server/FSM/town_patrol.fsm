@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\tools\BIS\FSM Editor Personal Edition\scriptedFSM.cfg, town_patrol.fsm">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, town_patrol.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,-300.000000,-475.000000,-200.000000,-425.000000,0.000000,"Init"};
@@ -40,8 +40,8 @@ link17[] = {14,17};
 link18[] = {15,16};
 link19[] = {16,17};
 link20[] = {17,13};
-globals[] = {25.000000,1,0,0,0,640,480,1,56,6316128,1,-68.773331,554.576660,24.443359,-672.646240,852,910,1};
-window[] = {2,-1,-1,-1,-1,906,-1868,-408,52,3,870};
+globals[] = {25.000000,1,0,0,0,640,480,1,56,6316128,1,-243.927246,434.901245,79.154388,-645.884399,852,910,1};
+window[] = {2,-1,-1,-1,-1,984,130,1590,130,3,870};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -239,7 +239,8 @@ class FSM
        "	//--- Check if the current camp still need to be targeted" \n
        "	if !(isNull _camp_target) then {" \n
        "		if ((_camp_target getVariable ""cti_camp_sideID"") isEqualTo _sideID) then {" \n
-       "			_camp_target setVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], (_camp_target getVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], []]) - [objNull, _team]];" \n
+       "			_assignees = _camp_target getVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], []];" \n
+       "			for '_i' from count(_assignees)-1 to 0 step -1 do {if (isNull(_assignees select _i) || ((_assignees select _i) isEqualTo _team)) then {_assignees deleteAt _i}};" \n
        "			_camp_target = objNull;" \n
        "		} else {" \n
        "			_action = ""defense_camp"";" \n
@@ -261,7 +262,8 @@ class FSM
        "		//--- We found one camp to defend" \n
        "		if !(isNull _camp_target) then {" \n
        "			_action = ""defense_camp"";" \n
-       "			_camp_target setVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], ((_camp_target getVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], []]) pushBack _team)];" \n
+       "			_assignees = _camp_target getVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], []];" \n
+       "			_assignees pushBack _team;" \n
        "		};" \n
        "	};" \n
        "};" \n

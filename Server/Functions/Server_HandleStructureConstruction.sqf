@@ -123,7 +123,9 @@ if (_completion >= 100) then { //--- The structure is complete
 		};
 	};
 
-	_logic setVariable ["cti_structures", ((_logic getVariable "cti_structures") pushBack _structure), true];
+	_structures = _logic getVariable "cti_structures";
+	_structures pushBack _structure;
+	_logic setVariable ["cti_structures", _structures, true];
 
 	[_structure, _var, _side] call CTI_SE_FNC_InitializeStructure;
 	

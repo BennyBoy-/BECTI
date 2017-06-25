@@ -49,7 +49,8 @@ for '_i' from 0 to (count _headers) -1 do {
 		};
 		
 		_find = _sub_categories find (_categories select _i);
-		missionNamespace setVariable [format["CTI_COIN_%1_DEFENSE_CATEGORY_%2", _side, _find], (missionNamespace getVariable [format["CTI_COIN_%1_DEFENSE_CATEGORY_%2", _side, _find], []]) pushBack format["CTI_%1_%2", _side, _classname]];
+		if (isNil {missionNamespace getVariable format["CTI_COIN_%1_DEFENSE_CATEGORY_%2", _side, _find]}) then {missionNamespace setVariable [format["CTI_COIN_%1_DEFENSE_CATEGORY_%2", _side, _find], []]};
+		(missionNamespace getVariable format["CTI_COIN_%1_DEFENSE_CATEGORY_%2", _side, _find]) pushBack format["CTI_%1_%2", _side, _classname];
 		
 		missionNamespace setVariable [format["CTI_%1_%2", _side, _classname], _stored];
 		_defenses pushBack format["CTI_%1_%2", _side, _classname];

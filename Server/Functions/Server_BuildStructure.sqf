@@ -50,7 +50,10 @@ _structure setVariable ["cti_structures_iteration", (_var select CTI_STRUCTURE_T
 _structure setVariable ["cti_structure_type", ((_var select CTI_STRUCTURE_LABELS) select 0)];
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
-_logic setVariable ["cti_structures_wip", ((_logic getVariable "cti_structures_wip") pushBack _structure) - [objNull]];
+
+_structures_wip = _logic getVariable "cti_structures_wip";
+_structures_wip pushBack _structure;
+for '_i' from count(_structures_wip)-1 to 0 step -1 do {if (isNull(_structures_wip select _i)) then {_structures_wip deleteAt _i}};
 
 [_side, _structure, _classname, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
 

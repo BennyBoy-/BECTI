@@ -80,7 +80,10 @@ if (_fob) then {
 	};
 	
 	(_defense) remoteExec ["CTI_PVF_CLT_OnFOBDeployment", _side];
-	_logic setVariable ["cti_fobs", ((_logic getVariable "cti_fobs") pushBack _defense), true];
+	
+	_fobs = _logic getVariable "cti_fobs";
+	_fobs pushBack _defense;
+	_logic setVariable ["cti_fobs", _fobs, true];
 };
 
 _defense setDir _direction;
