@@ -30,7 +30,7 @@
 */
 
 params ["_town", "_side", "_teams", "_groups", "_positions"];
-private ["_candidates", "_candidates_count", "_delegated", "_delegation_table", "_sleep_thread"];
+private ["_candidates", "_candidates_count", "_delegated", "_delegation_table"];
 
 _teams = +(_teams);
 _groups = +(_groups);
@@ -57,12 +57,11 @@ if !(isNil '_candidates') then {
 		
 		_index_hc = 0;
 		for '_i' from 0 to count(_teams)-1 do {
-			_delegation_table set [_index_hc, (_delegation_table select _index_hc) pushBack [_teams select _i, _groups select _i, _positions select _i]];
+			(_delegation_table select _index_hc) pushBack [_teams select _i, _groups select _i, _positions select _i];
 			_index_hc = if (_index_hc+1 > _candidates_count) then {0} else {_index_hc + 1};
 		};
 		
 		//--- Delegate the creation now
-		_sleep_thread = 0; //--- Debug: add a delay while HC are fucked
 		{
 			_owner_id = (_candidates select _forEachIndex) select 0;
 			_hc_entity = (_candidates select _forEachIndex) select 1;
@@ -92,9 +91,7 @@ if !(isNil '_candidates') then {
 			} forEach _x;
 			
 			// [_town, _side, _sub_teams, _sub_groups, _sub_positions] remoteExec ["CTI_PVF_HC_OnTownDelegationReceived", _hc_entity];
-			[_town, _side, _sub_teams, _sub_groups, _sub_positions, _sleep_thread] remoteExec ["CTI_PVF_HC_OnTownDelegationReceived", _hc_entity]; //--- debug while hc is fubar, add a delay
-			
-			_sleep_thread = _sleep_thread + 10; //--- Debug: add a delay while HC are fucked
+			[_town, _side, _sub_teams, _sub_groups, _sub_positions] remoteExec ["CTI_PVF_HC_OnTownDelegationReceived", _hc_entity]; //--- debug while hc is fubar, add a delay
 			
 			if (CTI_Log_Level >= CTI_Log_Information) then {
 				["INFORMATION", "FILE: Server\Functions\Server_AttemptTownDelegation.sqf", format["Delegating unit creation to Headless Client [%1] with owner ID [%2] in [%3] for [%4] team(s) on [%5]", _uid, _owner_id, _town getVariable "cti_town_name", count _sub_teams, _side]] call CTI_CO_FNC_Log;
