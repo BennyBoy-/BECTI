@@ -54,7 +54,7 @@ _spotted_structure = objNull;
 {
 	if (!(_x in _spotted_base) && alive _x) then {
 		_value = 1;
-		if (_groupisplayable) then {_value = if (leader _group distance _x < 400) then {0.5} else {0.75}};
+		if (_groupisplayable) then {_value = [0.75, 0.5] select (leader _group distance _x < 400)};
 		if (leader _group knowsAbout _x >= _value) then {_spotted_structure = _x};
 	};
 	if !(isNull _spotted_structure) exitWith {};
@@ -65,7 +65,7 @@ _spotted_structure = objNull;
 	{
 		if (!(_x in _spotted_units) && alive _x) then {
 			_value = 1.25;
-			if (_groupisplayable) then {_value = if (leader _group distance _x < 400) then {0.5} else {0.9}};
+			if (_groupisplayable) then {_value = [0.9, 0.5] select (leader _group distance _x < 400)};
 			if (leader _group knowsAbout _x >= _value) then {_spotted_unit = _x};
 		};
 		if !(isNull _spotted_unit) exitWith {};

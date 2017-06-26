@@ -29,7 +29,7 @@ params ["_killed", "_killer", "_sideID_killed", ["_is_defense", false]];
 _side_killed = (_sideID_killed) call CTI_CO_FNC_GetSideFromID;
 _side_killed_original = _side_killed;
 
-_isvehicle_killed = if (_killed isKindOf "Man") then {false} else {true};
+_isvehicle_killed = [true, false] select (_killed isKindOf "Man");
 
 //--- VEHICLES: The killed may be the killer (suicide), if so we determine determine who the proxy killer may be
 _killed_proxy = false;
@@ -59,9 +59,8 @@ _type_killed = typeOf _killed;
 _type_killer = typeOf _killer;
 _isplayable_killed = (_group_killed) call CTI_CO_FNC_IsGroupPlayable;
 _isplayable_killer = (_group_killer) call CTI_CO_FNC_IsGroupPlayable;
-// _isplayer_killer = if (isPlayer leader _group_killer) then {true} else {false};
 
-_renegade_killer = if (_side_killer isEqualTo sideEnemy) then {true} else {false};
+_renegade_killer = [false, true] select (_side_killer isEqualTo sideEnemy);
 
 if (_renegade_killer) then { //--- Make sure the killer is not renegade, if so, get the side from the config.
 	if !(_killer isKindOf "Man") then {_type_killer = typeOf effectiveCommander(vehicle _killer)};
@@ -74,7 +73,7 @@ if !(_is_defense) then {
 } else {
 	_var_name = format ["CTI_%1_%2", _side_killed, _type_killed];
 };
-// _var_name = if (isNil {_killed getVariable "cti_customid"}) then {_type_killed} else {missionNamespace getVariable format["CTI_CUSTOM_ENTITY_%1", _killed getVariable "cti_customid"]};
+
 _var = missionNamespace getVariable _var_name;
 
 //todo check what happens when crew bails out. side become civ?!
@@ -111,7 +110,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 					_killed_pname = name _killed;
 				};
 				
-				if (count _award_groups > 1) then { _bounty = round(_bounty / (count _award_groups))};
+				if (count _award_groups > 1) then {_bounty = round(_bounty / (count _award_groups))};
 				
 				//--- Award
 				{
@@ -139,7 +138,6 @@ if (!isNil '_var' && _isplayable_killer) then {
 						if (_isplayable_killed) then {[_group_killed, _penalty] call CTI_CO_FNC_ChangeFunds}; //--- If the killed unit belong to a playable group, then we compensate that group.
 						if (_isplayable_killer) then { //--- If the killer unit belong to a playable group, then we penalize that group.
 							[_group_killer, -_penalty] call CTI_CO_FNC_ChangeFunds;
-							_show_local = if (CTI_IsHostedServer || CTI_IsClient) then {true} else {false};
 							["penalty", [_var_name, _group_killer, _penalty, _is_defense]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side_killed];
 							remoteExec ["CTI_PVF_CLT_OnTeamkill", _killer];
 						};

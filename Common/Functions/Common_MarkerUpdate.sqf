@@ -58,7 +58,7 @@ if (_marker_dead_type != "" && !(isNull _target)) then {
 	_marker_name setMarkerColorLocal _marker_dead_color;
 	_marker_name setMarkerSizeLocal _marker_dead_size;
 	
-	_delay = if (_type isKindOf "Man") then {CTI_MARKERS_UNITS_DEAD_DELAY} else {CTI_MARKERS_VEHICLES_DEAD_DELAY};
+	_delay = [CTI_MARKERS_VEHICLES_DEAD_DELAY, CTI_MARKERS_UNITS_DEAD_DELAY] select (_type isKindOf "Man");
 	sleep _delay;
 };
 

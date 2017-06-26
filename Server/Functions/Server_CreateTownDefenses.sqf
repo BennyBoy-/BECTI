@@ -146,8 +146,8 @@ if !(isNull _town_group) then {
 	_town_group deleteGroupWhenEmpty true;
 	
 	{
-		_can_delegate = if (count(missionNamespace getVariable ["CTI_HEADLESS_CLIENTS", []]) > 0) then {true} else {false};
-		_ai_args = [missionNamespace getVariable format["CTI_%1_Soldier", _side], _town_group, getPos _x, _sideID, if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") isEqualTo 1) then {true} else {false}];
+		_can_delegate = [false, true] select (count(missionNamespace getVariable ["CTI_HEADLESS_CLIENTS", []]) > 0);
+		_ai_args = [missionNamespace getVariable format["CTI_%1_Soldier", _side], _town_group, getPos _x, _sideID, ([false, true] select ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") isEqualTo 1))];
 		
 		//--- Assign him to the defense
 		if !(_can_delegate) then {

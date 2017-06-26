@@ -708,7 +708,7 @@ CTI_UI_Gear_AddContainerItem = {
 	_items pushBack _item;
 	((_gear select 1) select _index) set [1, _items];
 	
-	if (_index isEqualTo uiNamespace getVariable "cti_dialog_ui_gear_items_tab") then {
+	if (_index isEqualTo (uiNamespace getVariable "cti_dialog_ui_gear_items_tab")) then {
 		_exists = -1;
 		for '_i' from 0 to ((lnbSize 70109) select 0)-1 do {
 			if (lnbData[70109, [_i, 0]] isEqualTo _item) exitWith {_exists = _i};

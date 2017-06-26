@@ -46,7 +46,7 @@ switch (_action) do {
 		_role = _who getVariable "cti_role";
 		_order = _who getVariable "cti_order";
 		
-		((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190005) lbSetCurSel (if (_who getVariable "cti_independent") then {0} else {1});
+		((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190005) lbSetCurSel ([1, 0] select (_who getVariable "cti_independent"));
 		for '_i' from 0 to lbSize((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190006)-1 do {
 			if (((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190006) lbData _i isEqualTo _role) exitWith {((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190006) lbSetCurSel _i};
 		};

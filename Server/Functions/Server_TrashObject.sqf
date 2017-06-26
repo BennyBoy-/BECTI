@@ -35,7 +35,7 @@
 params ["_object", ["_delay", -1]];
 private ["_object_group", "_object_isman", "_object_seed", "_object_type"];
 
-_object_isman = if (_object isKindOf "Man") then {true} else {false};
+_object_isman = [false, true] select (_object isKindOf "Man");
 _object_group = if (_object_isman) then {group _object} else {grpNull};
 _object_seed = time + random 100 - random 50 + diag_frameno;
 

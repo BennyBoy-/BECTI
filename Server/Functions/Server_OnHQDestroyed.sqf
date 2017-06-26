@@ -35,7 +35,7 @@ _sideID = _this select 2;
 _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 
 _was_deployed = _side call CTI_CO_FNC_IsHQDeployed;
-_var = missionNamespace getVariable format["CTI_%1_%2", _side, if (_was_deployed) then {CTI_HQ_DEPLOY} else {CTI_HQ_MOBILIZE}];
+_var = missionNamespace getVariable format["CTI_%1_%2", _side, ([CTI_HQ_MOBILIZE, CTI_HQ_DEPLOY] select (_was_deployed))];
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Server\Functions\Server_OnHQDestroyed.sqf", format["HQ [%1] from side [%2] has been destroyed by [%3], deployed? [%4]", _killed, _side, _killer, _was_deployed]] call CTI_CO_FNC_Log;

@@ -37,7 +37,7 @@ private ["_classnames", "_logic", "_sell", "_side", "_structure", "_var"];
 
 _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
-_sell = if (isNil {_killed getVariable "cti_sell"}) then {false} else {true};
+_sell = [true, false] select (isNil {_killed getVariable "cti_sell"});
 
 // bistery: a damaged structure will not trigger the EH assigned to the original one! will it get fixed? nop!
 _logic setVariable ["cti_structures", (_logic getVariable "cti_structures") - [_killed, objNull], true];

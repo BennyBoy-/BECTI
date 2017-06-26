@@ -81,10 +81,10 @@ if ((missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") > 0) then {
 			case 1: { //--- Priced
 				private ["_coefficient", "_funds", "_price"];
 				_town = _x getVariable "cti_camp_town";
-				_coefficient = if (_town getVariable "cti_town_sideID" isEqualTo _sideID) then {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_FRIENDLY} else {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_ENEMY};
+				_coefficient = [CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_ENEMY, CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_FRIENDLY] select (_town getVariable "cti_town_sideID" isEqualTo _sideID);
 				_price = round((_town getVariable "cti_town_sv") * _coefficient);
 				
-				_funds = (_group) Call CTI_CO_FNC_GetFunds;
+				_funds = (_group) call CTI_CO_FNC_GetFunds;
 				if (_funds >= _price) then {_list pushBack _x};
 			};
 			case 2: { //--- Limited

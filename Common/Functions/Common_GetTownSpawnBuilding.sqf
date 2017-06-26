@@ -25,7 +25,7 @@
 params["_buildings", "_side"];
 private ["_building", "_building_valid", "_entities", "_hostiles", "_safe_range"];
 
-_safe_range = if (_side isEqualTo resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE} else {CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE};
+_safe_range = [CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE, CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE] select (_side isEqualTo resistance);
 _hostiles = [west, east, resistance] - [_side];
 
 _index = -1;
@@ -35,7 +35,7 @@ _building = objNull;
 		_building_valid = true;
 		
 		if (_safe_range > 0) then {
-			_entities = _x nearEntities[["Man"], _safe_range];
+			_entities = _x nearEntities [["Man"], _safe_range];
 			if (({_x countSide _entities > 0} count _hostiles) > 0) then {_building_valid = false};
 		};
 		

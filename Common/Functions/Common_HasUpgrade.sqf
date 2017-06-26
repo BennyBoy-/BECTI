@@ -28,4 +28,4 @@ private ["_upgrades"];
 
 _upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
 
-if ((_upgrades select _upgrade) >= _upgrade_level) then {true} else {false}
+[false, true] select ((_upgrades select _upgrade) >= _upgrade_level)

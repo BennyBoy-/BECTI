@@ -30,7 +30,7 @@
 params ["_town", "_side"];
 private ["_buildings", "_variable"];
 
-_variable = if (_side isEqualTo resistance) then {"resistance"} else {"occupation"};
+_variable = ["occupation", "resistance"] select (_side isEqualTo resistance);
 
 //--- Order the HC to perform a cleanup on their side
 if !(isNil {missionNamespace getVariable "CTI_HEADLESS_CLIENTS"}) then {

@@ -58,7 +58,7 @@ if !(isNil '_candidates') then {
 		_index_hc = 0;
 		for '_i' from 0 to count(_teams)-1 do {
 			(_delegation_table select _index_hc) pushBack [_teams select _i, _groups select _i, _positions select _i];
-			_index_hc = if (_index_hc+1 > _candidates_count) then {0} else {_index_hc + 1};
+			_index_hc = [_index_hc + 1, 0] select (_index_hc+1 > _candidates_count);
 		};
 		
 		//--- Delegate the creation now

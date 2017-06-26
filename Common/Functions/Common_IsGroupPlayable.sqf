@@ -21,4 +21,4 @@
 	  -> Return true if the player is synced to his/her side Game Logic
 */
 
-if !(isNil {_this getVariable "cti_order"}) then {true} else {false}
+[false, true] select !(isNil {_this getVariable "cti_order"});

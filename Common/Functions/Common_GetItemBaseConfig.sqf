@@ -37,7 +37,7 @@ if (_type isEqualTo "CfgWeapons") then {
 	_itype = getNumber(configFile >> "CfgWeapons" >> _this >> "type");
 	if (_itype isEqualTo CTI_TYPE_ITEM) then {_type = "Item"};
 	if (_itype isEqualTo CTI_TYPE_EQUIPMENT) then {
-		_type = if (getText(configFile >> 'CfgWeapons' >> _item >> 'simulation') isEqualTo "NVGoggles") then {"Item"} else {"CfgWeapons"};// NVG is considered as an item but binocs and rest are not.
+		_type = ["CfgWeapons", "Item"] select (getText(configFile >> 'CfgWeapons' >> _item >> 'simulation') isEqualTo "NVGoggles");// NVG is considered as an item but binocs and rest are not.
 	};
 };
 

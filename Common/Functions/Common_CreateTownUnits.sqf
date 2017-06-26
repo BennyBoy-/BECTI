@@ -44,7 +44,7 @@ _spawn_range = [CTI_TOWNS_OCCUPATION_SPAWN_RANGE, CTI_TOWNS_RESISTANCE_SPAWN_RAN
 //--- Determine how many AI should be present at a given time (perform a min max from the given SV range)
 _spawn_max_ai = [CTI_TOWNS_OCCUPATION_SPAWN_AI_MAX, CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX] select (_side isEqualTo resistance);
 _spawn_min_ai = [CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN, CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN] select (_side isEqualTo resistance);
-_spawn_town_sv = if (_side isEqualTo resistance) then {_town getVariable "cti_town_sv_max"} else {_town getVariable "cti_town_sv"};
+_spawn_town_sv = _town getVariable (["cti_town_sv", "cti_town_sv_max"] select (_side isEqualTo resistance));
 _active_units = (((_spawn_max_ai - _spawn_min_ai) * (_spawn_town_sv - CTI_TOWNS_SPAWN_SV_MIN)) / (CTI_TOWNS_SPAWN_SV_MAX - CTI_TOWNS_SPAWN_SV_MIN)) + _spawn_min_ai;
 
 //--- Sort the teams orders if needed
@@ -138,7 +138,7 @@ while {true} do {
 					if (typeName _position isEqualTo "OBJECT") then {_position = getPos _position};
 					
 					for '_i' from 1 to 100 do {
-						_position_ran = [ASLToAGL _position, 10, _spawn_range, 10, if (_has_vehicles) then {"vehicles"} else {"infantry"}] call CTI_CO_FNC_GetSafePosition;
+						_position_ran = [ASLToAGL _position, 10, _spawn_range, 10, ["infantry", "vehicles"] select (_has_vehicles)] call CTI_CO_FNC_GetSafePosition;
 						if (([_position_ran nearEntities _safe_range, _side] call CTI_CO_FNC_GetAreaEnemiesCount) < 1) exitWith {
 							_position = _position_ran;
 							

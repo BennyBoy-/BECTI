@@ -337,7 +337,7 @@ with missionNamespace do {
 		_side = _this select 1;
 		_vehicles = _this select 2;
 		
-		_tvar = if (_side isEqualTo resistance) then {"cti_town_resistance_active_vehicles"} else {"cti_town_occupation_active_vehicles"};
+		_tvar = ["cti_town_occupation_active_vehicles", "cti_town_resistance_active_vehicles"] select (_side isEqualTo resistance);
 		
 		_town setVariable [_tvar, (_town getVariable _tvar) + _vehicles];
 	};

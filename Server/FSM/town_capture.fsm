@@ -38,8 +38,8 @@ link16[] = {13,15};
 link17[] = {14,16};
 link18[] = {15,7};
 link19[] = {16,15};
-globals[] = {25.000000,1,0,0,0,640,480,1,176,6316128,1,-597.589905,527.397278,108.934799,-676.978699,856,911,1};
-window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,874};
+globals[] = {25.000000,1,0,0,0,640,480,1,176,6316128,1,-597.589905,527.397278,108.934799,-676.978699,856,910,1};
+window[] = {2,-1,-1,-1,-1,989,208,1463,208,3,874};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -188,9 +188,9 @@ class FSM
     class Check_Capture
     {
       name = "Check_Capture";
-      init = /*%FSM<STATEINIT""">*/"_resistanceDominion = if (_resistance > _east && _resistance > _west) then {true} else {false};" \n
-       "_westDominion = if (_west > _east && _west > _resistance) then {true} else {false};" \n
-       "_eastDominion = if (_east > _west && _east > _resistance) then {true} else {false};" \n
+      init = /*%FSM<STATEINIT""">*/"_resistanceDominion = [false, true] select (_resistance > _east && _resistance > _west);" \n
+       "_westDominion = [false, true] select (_west > _east && _west > _resistance);" \n
+       "_eastDominion = [false, true] select (_east > _west && _east > _resistance);" \n
        "" \n
        "_force = switch (true) do { case _resistanceDominion: { resistance }; case _westDominion: { west }; case _eastDominion: { east }; default { civilian } };" \n
        "_forceCount = switch (true) do { case _resistanceDominion: { _resistance }; case _westDominion: { _west }; case _eastDominion: { _east }; default { 0 } };" \n

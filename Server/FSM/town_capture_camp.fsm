@@ -3,13 +3,13 @@
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Cycle"};
-item2[] = {"Units_near_Camp",2,4346,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Units near" \n "Camp"};
+item2[] = {"Units_near_Camp",2,250,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Units near" \n "Camp"};
 item3[] = {"End_FSM",1,250,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Empty",4,218,50.000000,-300.000000,150.000000,-250.000000,2.000000,"Empty"};
 item5[] = {"Gameover",8,218,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Gameover"};
 item6[] = {"Not_Empty",4,218,-250.000000,-300.000000,-150.000000,-250.000000,1.000000,"Not Empty"};
 item7[] = {"Skip",2,250,50.000000,-400.000000,150.000000,-350.000000,0.000000,"Skip"};
-item8[] = {"Check_Capture",2,250,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Check" \n "Capture"};
+item8[] = {"Check_Capture",2,4346,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Check" \n "Capture"};
 item9[] = {"Ready",8,218,-400.000000,-200.000000,-300.000000,-150.000000,0.000000,"Ready"};
 item10[] = {"Not_Ready",4,218,-250.000000,0.000000,-150.000000,50.000000,1.000000,"Not" \n "Ready"};
 item11[] = {"",7,210,196.000000,20.999996,204.000000,29.000004,0.000000,""};
@@ -31,8 +31,8 @@ link12[] = {10,11};
 link13[] = {11,12};
 link14[] = {12,7};
 link15[] = {13,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-641.318481,256.740845,125.281189,-570.734009,947,911,1};
-window[] = {2,-1,-1,-1,-1,856,75,1330,75,3,965};
+globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-641.318481,256.740845,125.281189,-570.734009,947,910,1};
+window[] = {2,-1,-1,-1,-1,833,52,1307,52,3,965};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -168,9 +168,9 @@ class FSM
     class Check_Capture
     {
       name = "Check_Capture";
-      init = /*%FSM<STATEINIT""">*/"_resistanceDominion = if (_resistance > _east && _resistance > _west) then {true} else {false};" \n
-       "_westDominion = if (_west > _east && _west > _resistance) then {true} else {false};" \n
-       "_eastDominion = if (_east > _west && _east > _resistance) then {true} else {false};" \n
+      init = /*%FSM<STATEINIT""">*/"_resistanceDominion = [false, true] select (_resistance > _east && _resistance > _west);" \n
+       "_westDominion = [false, true] select (_west > _east && _west > _resistance);" \n
+       "_eastDominion = [false, true] select (_east > _west && _east > _resistance);" \n
        "" \n
        "_force = switch (true) do { case _resistanceDominion: { resistance }; case _westDominion: { west }; case _eastDominion: { east }; default { civilian } };" \n
        "_forceCount = switch (true) do { case _resistanceDominion: { _resistance }; case _westDominion: { _west }; case _eastDominion: { _east }; default { 0 } };" \n

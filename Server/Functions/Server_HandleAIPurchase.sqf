@@ -93,7 +93,7 @@ while { time <= _req_time_out && alive _factory } do { sleep .25 }; //--- Constr
 
 if !(alive _factory) exitWith { diag_log "the factory is dead" };
 
-_net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") isEqualTo 1) then { true } else { false };
+_net = [false, true] select ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") isEqualTo 1);
 
 //--- Condition?
 _process = true;

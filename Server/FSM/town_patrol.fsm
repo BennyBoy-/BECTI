@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, town_patrol.fsm">*/
+/*%FSM<COMPILE "D:\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, town_patrol.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,-300.000000,-475.000000,-200.000000,-425.000000,0.000000,"Init"};
@@ -8,8 +8,8 @@ item3[] = {"Path_Renewal",4,218,275.000000,-575.000000,375.000000,-525.000000,2.
 item4[] = {"Alive",4,218,275.000000,-375.000000,375.000000,-325.000000,1.000000,"Alive"};
 item5[] = {"Done",8,218,425.000000,-475.000000,525.000000,-425.000000,0.000000,"Done"};
 item6[] = {"End",1,250,575.000000,-475.000000,675.000000,-425.000000,0.000000,"End"};
-item7[] = {"Renewal",2,250,-150.000000,-575.000000,-50.000000,-525.000000,0.000000,"Renewal"};
-item8[] = {"Determine_Action",2,4346,275.000000,-275.000000,375.000000,-225.000000,0.000000,"Determine" \n "Action"};
+item7[] = {"Renewal",2,4346,-150.000000,-575.000000,-50.000000,-525.000000,0.000000,"Renewal"};
+item8[] = {"Determine_Action",2,250,275.000000,-275.000000,375.000000,-225.000000,0.000000,"Determine" \n "Action"};
 item9[] = {"Patrol",4,218,125.000000,-275.000000,225.000000,-225.000000,2.000000,"Patrol"};
 item10[] = {"Town_Defense",4,218,125.000000,-125.000000,225.000000,-75.000000,0.000000,"Town" \n "Defense"};
 item11[] = {"Town_Defense",2,250,-25.000000,-125.000000,75.000000,-75.000000,0.000000,"Town" \n "Defense"};
@@ -40,8 +40,8 @@ link17[] = {14,17};
 link18[] = {15,16};
 link19[] = {16,17};
 link20[] = {17,13};
-globals[] = {25.000000,1,0,0,0,640,480,1,56,6316128,1,-243.927246,434.901245,79.154388,-645.884399,852,910,1};
-window[] = {2,-1,-1,-1,-1,984,130,1590,130,3,870};
+globals[] = {25.000000,1,0,0,0,640,480,1,56,6316128,1,-176.203339,502.625549,10.632324,-714.406006,852,910,1};
+window[] = {2,-1,-1,-1,-1,932,78,1538,78,3,870};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -96,7 +96,7 @@ class FSM
       name = "Check";
       init = /*%FSM<STATEINIT""">*/"_ncycle = time + 4 + (random 5);" \n
        "" \n
-       "_aliveTeam = if ({alive _x} count units _team < 1 || isNull _team) then {false} else {true};"/*%FSM</STATEINIT""">*/;
+       "_aliveTeam = [true, false] select ({alive _x} count units _team < 1 || isNull _team);"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -139,7 +139,8 @@ class FSM
       name = "End";
       init = /*%FSM<STATEINIT""">*/"//--- Cleanup the camp variables if needed" \n
        "if !(isNull _camp_target) then {" \n
-       "	_camp_target setVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], (_camp_target getVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], []]) - [objNull, _team]];" \n
+       "	_assignees = _camp_target getVariable [format[""cti_town_ai_camp_assignees_%1"", _sideID], []];" \n
+       "	for '_i' from count(_assignees)-1 to 0 step -1 do {if (isNull(_assignees select _i) || (_assignees select _i) isEqualTo _team) then {_assignees deleteAt _i}};" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -161,9 +162,10 @@ class FSM
        "//--- Fetch the possible camps" \n
        "_camps = (_town) Call CTI_CO_FNC_GetTownCamps;" \n
        "" \n
+       "//todo: use the new safe spot command for non camps" \n
        "//--- A patrol hop is composed as follow: [location, object, subroutine]" \n
        "for '_i' from 1 to CTI_TOWNS_PATROL_HOPS do {" \n
-       "	_tries = if (isNil {_town getVariable ""cti_naval""}) then {250} else {0};" \n
+       "	_tries = [0, 250] select (isNil {_town getVariable ""cti_naval""});" \n
        "	if (count _camps > 0) then {" \n
        "		_position = [ASLToAGL getPosASL (_camps select 0), 2, CTI_TOWNS_CAMPS_CAPTURE_RANGE/2, _tries] call CTI_CO_FNC_GetRandomPosition;" \n
        "		if (isNil {_town getVariable ""cti_naval""}) then {" \n
@@ -186,10 +188,10 @@ class FSM
        "	};" \n
        "};" \n
        "" \n
-       "if (random 100 > 50) then {_team setFormation ""DIAMOND""} else {_team setFormation ""STAG COLUMN""};" \n
-       "if (random 100 > 30) then {_team setCombatMode ""YELLOW""} else {_team setCombatMode ""RED""};" \n
-       "if (random 100 > 20) then {_team setBehaviour ""AWARE""} else {_team setBehaviour ""COMBAT""};" \n
-       "//if (random 100 > 50) then {_team setSpeedMode ""NORMAL""} else {_team setSpeedMode ""LIMITED""};"/*%FSM</STATEINIT""">*/;
+       "_team setFormation ([""STAG COLUMN"", ""DIAMOND""] select (random 100 > 50));" \n
+       "_team setCombatMode ([""RED"", ""YELLOW""] select (random 100 > 30));" \n
+       "_team setBehaviour ([""COMBAT"", ""AWARE""] select (random 100 > 20));" \n
+       "// _team setSpeedMode ([""LIMITED"", ""NORMAL""] select (random 100 > 50));"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

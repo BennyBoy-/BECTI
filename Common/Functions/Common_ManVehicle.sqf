@@ -40,7 +40,7 @@ _units = [];
 _position = getPos _vehicle;
 _position = [(_position select 0) + 5, (_position select 1) + 5, 0];
 
-_net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") isEqualTo 1 && _sideID in [CTI_WEST_ID, CTI_EAST_ID]) then { true } else { false };
+_net = [false, true] select ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") isEqualTo 1 && _sideID in [CTI_WEST_ID, CTI_EAST_ID]);
 
 //--- Man the driver
 if (_vehicle emptyPositions "driver" > 0) then {
