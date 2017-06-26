@@ -38,11 +38,11 @@ _index = -1;
 	if ((_x select 0) isEqualTo _req_seed && (_x select 1) isEqualTo _req_classname) exitWith {_index = _forEachIndex};
 } forEach _list;
 
-if (_index != -1) then {
+if !(_index isEqualTo -1) then {
 	_list deleteAt _index;
 	_factory setVariable ["cti_queue_processing", _list];
 };
 
-if (_req_target != _req_buyer && isPlayer leader _req_target) then { //--- Notify the remote target
+if (!(_req_target isEqualTo _req_buyer) && isPlayer leader _req_target) then { //--- Notify the remote target
 	[_req_seed, _req_classname, _factory] remoteExec ["CTI_PVF_CLT_OnPurchaseOrderCancelled", leader _req_target];
 };

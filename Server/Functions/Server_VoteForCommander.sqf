@@ -55,7 +55,7 @@ _tie = false;
 _commander = objNull;
 
 //--- Attempt to get a playable team.
-if (!_tie && _highest > _vote_ai && _highestTeam != -1) then {_commander = _teams select _highestTeam};
+if (!_tie && _highest > _vote_ai && !(_highestTeam isEqualTo -1)) then {_commander = _teams select _highestTeam};
 
 //--- Player voted for an ai...?
 if !(isNull _commander) then {if !(isPlayer leader _commander) then {_commander = objNull}};

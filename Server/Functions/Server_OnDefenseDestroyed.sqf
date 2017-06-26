@@ -55,7 +55,7 @@ if (_fob) then { //--- Erase this FOB upon destruction
 sleep 5;
 
 //--- If the building has some ruins upon destruction then we remove them
-if (_ruins != "") then {
+if !(_ruins isEqualTo "") then {
 	//--- Wipe them from the server
 	{deleteVehicle _x} forEach (nearestObjects [_position, [_ruins], 25]);
 	

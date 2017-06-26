@@ -37,7 +37,7 @@ _index = -1;
 	if ((_x select 0) isEqualTo _req_seed && (_x select 1) isEqualTo _req_classname) exitWith {_index = _forEachIndex};
 } forEach _list;
 
-if (_index != -1) then {
+if !(_index isEqualTo -1) then {
 	_list deleteAt _index;
 	_factory setVariable ["cti_queue_processing", _list];
 };

@@ -8,12 +8,12 @@ item3[] = {"Path_Renewal",4,218,275.000000,-575.000000,375.000000,-525.000000,2.
 item4[] = {"Alive",4,218,275.000000,-375.000000,375.000000,-325.000000,1.000000,"Alive"};
 item5[] = {"Done",8,218,425.000000,-475.000000,525.000000,-425.000000,0.000000,"Done"};
 item6[] = {"End",1,250,575.000000,-475.000000,675.000000,-425.000000,0.000000,"End"};
-item7[] = {"Renewal",2,4346,-150.000000,-575.000000,-50.000000,-525.000000,0.000000,"Renewal"};
+item7[] = {"Renewal",2,250,-150.000000,-575.000000,-50.000000,-525.000000,0.000000,"Renewal"};
 item8[] = {"Determine_Action",2,250,275.000000,-275.000000,375.000000,-225.000000,0.000000,"Determine" \n "Action"};
 item9[] = {"Patrol",4,218,125.000000,-275.000000,225.000000,-225.000000,2.000000,"Patrol"};
 item10[] = {"Town_Defense",4,218,125.000000,-125.000000,225.000000,-75.000000,0.000000,"Town" \n "Defense"};
 item11[] = {"Town_Defense",2,250,-25.000000,-125.000000,75.000000,-75.000000,0.000000,"Town" \n "Defense"};
-item12[] = {"Patrol",2,250,-25.000000,-275.000000,75.000000,-225.000000,0.000000,"Patrol"};
+item12[] = {"Patrol",2,4346,-25.000000,-275.000000,75.000000,-225.000000,0.000000,"Patrol"};
 item13[] = {"",7,210,-104.000000,-254.000000,-96.000008,-246.000000,0.000000,""};
 item14[] = {"",7,210,-104.000000,-103.999977,-96.000000,-96.000023,0.000000,""};
 item15[] = {"Camp_Defense",4,218,125.000000,-200.000000,225.000000,-150.000000,1.000000,"Camp" \n "Defense"};
@@ -40,8 +40,8 @@ link17[] = {14,17};
 link18[] = {15,16};
 link19[] = {16,17};
 link20[] = {17,13};
-globals[] = {25.000000,1,0,0,0,640,480,1,56,6316128,1,-176.203339,502.625549,10.632324,-714.406006,852,910,1};
-window[] = {2,-1,-1,-1,-1,932,78,1538,78,3,870};
+globals[] = {25.000000,1,0,0,0,640,480,1,56,6316128,1,-122.023643,556.805542,24.973938,-700.064453,852,910,1};
+window[] = {2,-1,-1,-1,-1,880,26,1486,26,3,870};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -212,7 +212,7 @@ class FSM
     class Determine_Action
     {
       name = "Determine_Action";
-      init = /*%FSM<STATEINIT""">*/"if ((((_town getVariable 'cti_town_sv') < _last_SV || (_town getVariable 'cti_town_sv') < (_town getVariable 'cti_town_sv_default')) && _sideID isEqualTo (_town getVariable 'cti_town_sideID')) || _sideID != (_town getVariable 'cti_town_sideID')) then {" \n
+      init = /*%FSM<STATEINIT""">*/"if ((((_town getVariable 'cti_town_sv') < _last_SV || (_town getVariable 'cti_town_sv') < (_town getVariable 'cti_town_sv_default')) && _sideID isEqualTo (_town getVariable 'cti_town_sideID')) || !(_sideID isEqualTo (_town getVariable 'cti_town_sideID'))) then {" \n
        "	_capturable = true;" \n
        "	" \n
        "	//--- If we need all camps to capture the town, make sure that they belong to the team's before capturing the depot, skip naval towns" \n
@@ -223,19 +223,19 @@ class FSM
        "	//--- Make sure that the depot can be captured before proceeding there, if not, the team will either patrol or defend camps" \n
        "	if (_capturable) then {" \n
        "		_action = ""defense"";" \n
-       "		if (_action != _last_action) then {_move_defend_last = -120};" \n
+       "		if !(_action isEqualTo _last_action) then {_move_defend_last = -120};" \n
        "	} else {" \n
        "		_action = ""patrol"";" \n
-       "		if (_action != _last_action) then {_move_patrol_reload = true};" \n
+       "		if !(_action isEqualTo _last_action) then {_move_patrol_reload = true};" \n
        "	};" \n
        "} else {" \n
        "	//--- Default action, patrol" \n
        "	_action = ""patrol"";" \n
-       "	if (_action != _last_action) then {_move_patrol_reload = true};" \n
+       "	if !(_action isEqualTo _last_action) then {_move_patrol_reload = true};" \n
        "};" \n
        "" \n
        "//--- Handle the camp defense if we're not busy defending the town, skip naval towns" \n
-       "if (_action != ""defense"" && !_is_naval) then {" \n
+       "if (!(_action isEqualTo ""defense"") && !_is_naval) then {" \n
        "	_camps_hostile = [_town, _sideID] call CTI_CO_FNC_GetTownCampsHostileToSide;" \n
        "	" \n
        "	//--- Check if the current camp still need to be targeted" \n
@@ -344,7 +344,7 @@ class FSM
        "		//--- Subroutine checkup" \n
        "		switch (_patrol_hop select 2) do {" \n
        "			case ""camp"": { //--- Camp patrol node" \n
-       "				if ((_patrol_hop select 1) getVariable ""cti_camp_sideID"" != _sideID) then { //--- Camp is held by the enemy, wait a bit" \n
+       "				if !((_patrol_hop select 1) getVariable ""cti_camp_sideID"" isEqualTo _sideID) then { //--- Camp is held by the enemy, wait a bit" \n
        "					if (_patrol_hop_idlefor < 0) then {_patrol_hop_idlefor = time + 40 + random 100};" \n
        "				} else { //--- Camp is held by our side, wait a bit but not too long" \n
        "					if (_patrol_hop_idlefor < 0) then {_patrol_hop_idlefor = time + 10 + random 60};" \n

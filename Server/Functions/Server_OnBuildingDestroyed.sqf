@@ -70,7 +70,7 @@ if !(_sell) then {
 	
 	//--- Bounty
 	if !(isNull _killer) then {
-		if (side _killer != sideEnemy && side _killer != _side && (group _killer) call CTI_CO_FNC_IsGroupPlayable) then {
+		if (!(side _killer isEqualTo sideEnemy) && !(side _killer isEqualTo _side) && (group _killer) call CTI_CO_FNC_IsGroupPlayable) then {
 			if (isPlayer _killer) then {
 				_label = ((_var select CTI_STRUCTURE_LABELS) select 1);
 				_award = round((_var select CTI_STRUCTURE_PRICE) * CTI_BASE_CONSTRUCTION_BOUNTY);

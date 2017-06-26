@@ -3,13 +3,13 @@
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Cycle"};
-item2[] = {"Units_near_Cente",2,250,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Units near" \n "Center"};
+item2[] = {"Units_near_Cente",2,4346,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Units near" \n "Center"};
 item3[] = {"End_FSM",1,250,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Empty",4,218,50.000000,-300.000000,150.000000,-250.000000,2.000000,"Empty"};
 item5[] = {"Gameover",8,218,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Gameover"};
 item6[] = {"Not_Empty",4,218,-250.000000,-300.000000,-150.000000,-250.000000,1.000000,"Not Empty"};
 item7[] = {"Blank",2,250,50.000000,-400.000000,150.000000,-350.000000,0.000000,"Blank"};
-item8[] = {"Check_Capture",2,4346,-250.000000,0.000000,-150.000000,50.000000,0.000000,"Check" \n "Capture"};
+item8[] = {"Check_Capture",2,250,-250.000000,0.000000,-150.000000,50.000000,0.000000,"Check" \n "Capture"};
 item9[] = {"Capture",8,218,-500.000000,0.000000,-400.000000,50.000000,0.000000,"Capture"};
 item10[] = {"No_Capture",4,218,-250.000000,100.000000,-150.000000,150.000000,1.000000,"No Capture"};
 item11[] = {"",7,210,246.000046,121.000023,253.999969,128.999985,0.000000,""};
@@ -39,7 +39,7 @@ link17[] = {14,16};
 link18[] = {15,7};
 link19[] = {16,15};
 globals[] = {25.000000,1,0,0,0,640,480,1,176,6316128,1,-597.589905,527.397278,108.934799,-676.978699,856,910,1};
-window[] = {2,-1,-1,-1,-1,989,208,1463,208,3,874};
+window[] = {2,-1,-1,-1,-1,1015,234,1489,234,3,874};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -80,18 +80,17 @@ class FSM
     {
       name = "Units_near_Cente";
       init = /*%FSM<STATEINIT""">*/"_sideID = _town getVariable ""cti_town_sideID"";" \n
-       "_side = (_sideID) Call CTI_CO_FNC_GetSideFromID;" \n
-       "//_objects = (_town nearEntities [""AllVehicles"", _capture_range]) unitsBelowHeight 30;" \n
-       "_objects = [];" \n
-       "// {if (((ASLToAGL getPosASL _x) select 2) < 30) then {_objects pushBack _x}} forEach (_town nearEntities [""AllVehicles"", _capture_range]);" \n
-       "switch (CTI_TOWNS_CAPTURE_DETECTION_MODE) do {" \n
-       "	case 1: {{if (_x distance _town <= _capture_range && (((ASLToAGL getPosASL _x) select 2) <= 30)) then {_objects pushBack _x}} forEach allPlayers};" \n
-       "	case 2: {{if (_x distance _town <= _capture_range && (((ASLToAGL getPosASL _x) select 2) <= 30)) then {_objects pushBack _x}} forEach (playableUnits + switchableUnits)};" \n
-       "	default {{if (((ASLToAGL getPosASL _x) select 2) <= 30) then {_objects pushBack _x}} forEach (_town nearEntities [""AllVehicles"", _capture_range])};" \n
+       "_side = (_sideID) call CTI_CO_FNC_GetSideFromID;" \n
+       "" \n
+       "//--- Retrieve the units next to the town based on the detection mode" \n
+       "_objects = switch (CTI_TOWNS_CAPTURE_DETECTION_MODE) do {" \n
+       "	case 1: {allPlayers select {_x distance _town <= _capture_range && (((ASLToAGL getPosASL _x) select 2) <= 30)}}; //--- Players only" \n
+       "	case 2: {(playableUnits + switchableUnits) select {_x distance _town <= _capture_range && (((ASLToAGL getPosASL _x) select 2) <= 30)}}; //--- Playable units only" \n
+       "	default {(_town nearEntities [""AllVehicles"", _capture_range]) select {((ASLToAGL getPosASL _x) select 2) <= 30}}; //--- Everyone" \n
        "};" \n
        "" \n
        "//--- Add the town's local AI if needed" \n
-       "if (CTI_TOWNS_CAPTURE_DETECTION_MODE != 0) then {" \n
+       "if (CTI_TOWNS_CAPTURE_DETECTION_MODE in [0, 1]) then {" \n
        "	_town_local = (_town getVariable [""cti_town_occupation_groups"", []]) + (_town getVariable [""cti_town_resistance_groups"", []]);" \n
        "	{if (((ASLToAGL getPosASL _x) select 2) <= 30 && group _x in _town_local) then {_objects pushBack _x}} forEach (_town nearEntities [""AllVehicles"", _capture_range]);" \n
        "};" \n
@@ -196,7 +195,7 @@ class FSM
        "_forceCount = switch (true) do { case _resistanceDominion: { _resistance }; case _westDominion: { _west }; case _eastDominion: { _east }; default { 0 } };" \n
        "" \n
        "_captured = false;" \n
-       "if (_force != civilian) then {" \n
+       "if !(_force isEqualTo civilian) then {" \n
        "	_supply = _town getVariable ""cti_town_sv"";" \n
        "	" \n
        "	if (_side isEqualTo _force) then { //--- Protect" \n
@@ -215,7 +214,7 @@ class FSM
        "		if (_capturable) then {" \n
        "			switch (missionNamespace getVariable ""CTI_TOWNS_CAPTURE_MODE"") do {" \n
        "				case 1: { //--- All camps must belong to the capturing side" \n
-       "					if (count(_town Call CTI_CO_FNC_GetTownCamps) != count([_town, _force] Call CTI_CO_FNC_GetTownCampsOnSide)) then {_capturable = false};" \n
+       "					if !(count(_town Call CTI_CO_FNC_GetTownCamps) isEqualTo count([_town, _force] Call CTI_CO_FNC_GetTownCampsOnSide)) then {_capturable = false};" \n
        "				};" \n
        "			};" \n
        "		};" \n
@@ -233,7 +232,7 @@ class FSM
        "		};" \n
        "	};" \n
        "	" \n
-       "	if (_supply != (_town getVariable ""cti_town_sv"")) then {_town setVariable [""cti_town_sv"", _supply, true]};" \n
+       "	if !(_supply isEqualTo (_town getVariable ""cti_town_sv"")) then {_town setVariable [""cti_town_sv"", _supply, true]};" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links

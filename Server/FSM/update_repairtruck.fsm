@@ -173,7 +173,7 @@ class FSM
        "	_repairs = [];" \n
        "	{" \n
        "		_virtual_damages = _x getVariable [""cti_altdmg"", -1];" \n
-       "		if ((getDammage _x != 0 || _virtual_damages > 0) && (_vehicle distance _x < CTI_VEHICLES_REPAIRTRUCK_BASE_REPAIR_RANGE)) then {_repairs pushBack _x};" \n
+       "		if ((!(getDammage _x isEqualTo 0) || _virtual_damages > 0) && (_vehicle distance _x < CTI_VEHICLES_REPAIRTRUCK_BASE_REPAIR_RANGE)) then {_repairs pushBack _x};" \n
        "	} forEach (_side call CTI_CO_FNC_GetSideStructures);" \n
        "	" \n
        "	if (count _repairs > 0) then { _target = [_vehicle, _repairs] call CTI_CO_FNC_GetClosestEntity;	_action = ""repair""};" \n

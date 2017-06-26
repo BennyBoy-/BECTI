@@ -371,7 +371,7 @@ while {_totalGroups > 0} do {
 		_probability = _team select 1;
 		
 		_can_use = true;
-		if (_probability != 100) then {
+		if !(_probability isEqualTo 100) then {
 			if (random 100 > _probability) then { _can_use = false };
 		};
 		

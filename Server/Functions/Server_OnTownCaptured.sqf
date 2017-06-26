@@ -96,7 +96,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 
 [_town, _newSideID, _currentSideID] remoteExec ["CTI_PVF_CLT_OnTownCaptured", CTI_PV_CLIENTS];
 
-if (_newSide != resistance && ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") isEqualTo 1)) then { //--- Award the AI
+if (!(_newSide isEqualTo resistance) && ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") isEqualTo 1)) then { //--- Award the AI
 	_award_teams = [];
 	{
 		if !(isNil '_x') then {
@@ -132,7 +132,7 @@ if (_newSide != resistance && ((missionNamespace getVariable "CTI_AI_TEAMS_ENABL
 //--- Determine whether to remove the town forces or not
 switch (CTI_TOWNS_CAPTURE_DELETE_FORCES) do {
 	case 1: { //--- West & East
-		if (_currentSideID != CTI_RESISTANCE_ID) then {[_town, (_currentSideID) call CTI_CO_FNC_GetSideFromID] call CTI_SE_FNC_OnTownDeactivation};
+		if !(_currentSideID isEqualTo CTI_RESISTANCE_ID) then {[_town, (_currentSideID) call CTI_CO_FNC_GetSideFromID] call CTI_SE_FNC_OnTownDeactivation};
 	}; 
 	case 2: {[_town, (_currentSideID) call CTI_CO_FNC_GetSideFromID] call CTI_SE_FNC_OnTownDeactivation}; //--- All
 };
