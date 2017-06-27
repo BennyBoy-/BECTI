@@ -379,7 +379,7 @@ CTI_UI_Gear_DisplayShoppingItems = {
 		{
 			if ((_x select 4) <= _upgrade_gear) then { //--- Add the template if it's equal or below the upgrade level
 				_row = lnbAddRow [70108, [_x select 0, format ["$%1", _x select 2]]];
-				if (!(_x select 1) isEqualTo "") then {lnbSetPicture [70108, [_row, 1], _x select 1]};
+				if !((_x select 1) isEqualTo "") then {lnbSetPicture [70108, [_row, 1], _x select 1]};
 				_seed = if (count _x > 5) then {_x select 5} else {-1};
 				lnbSetValue [70108, [_row, 0], _seed];
 				lnbSetValue [70108, [_row, 1], _forEachIndex];
