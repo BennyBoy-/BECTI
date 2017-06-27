@@ -1,0 +1,556 @@
+/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, ai_commander.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"Cycle"};
+item2[] = {"Check_Commander",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Check" \n "Commander" \n "Control"};
+item3[] = {"End_FSM",1,250,-400.000000,0.000000,-300.000000,50.000000,0.000000,"End FSM"};
+item4[] = {"Human",8,218,-250.000000,0.000000,-150.000000,50.000000,0.000000,"Human"};
+item5[] = {"AI",4,218,-100.000000,100.000000,0.000000,150.000000,1.000000,"AI"};
+item6[] = {"Check_HQ_Status",2,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"Check" \n "HQ Status"};
+item7[] = {"Alive",4,218,-250.000000,200.000000,-150.000000,250.000000,1.000000,"Alive"};
+item8[] = {"Destroyed",4,218,50.000000,200.000000,150.000000,250.000000,0.000000,"Destroyed"};
+item9[] = {"Check_HQ_Deploym",2,250,-250.000000,300.000000,-150.000000,350.000000,0.000000,"Check" \n "HQ Deployment"};
+item10[] = {"Mobilized",4,218,-400.000000,300.000000,-300.000000,350.000000,0.000000,"Mobilized"};
+item11[] = {"Deployed",4,218,-250.000000,400.000000,-150.000000,450.000000,1.000000,"Deployed"};
+item12[] = {"Try_Deploy_HQ",2,250,-400.000000,400.000000,-300.000000,450.000000,0.000000,"Try" \n "Deploy HQ"};
+item13[] = {"Next",8,218,-400.000000,500.000000,-300.000000,550.000000,0.000000,"Next"};
+item14[] = {"Check_Base_Struc",2,250,-250.000000,500.000000,-150.000000,550.000000,0.000000,"Check" \n "Base Structures"};
+item15[] = {"",7,210,696.000000,1396.000000,704.000000,1404.000000,0.000000,""};
+item16[] = {"",7,210,696.000000,-78.999985,704.000000,-71.000015,0.000000,""};
+item17[] = {"Try_Repair_HQ",2,250,50.000000,300.000000,150.000000,350.000000,0.000000,"Try" \n "Repair HQ"};
+item18[] = {"Construct",4,218,-250.000000,600.000000,-150.000000,650.000000,1.000000,"Construct"};
+item19[] = {"Upgrade",4,218,-275.000000,1050.000000,-175.000000,1100.000000,1.000000,"Upgrade"};
+item20[] = {"Determine_Construction",2,250,-250.000000,700.000000,-150.000000,750.000000,0.000000,"Determine" \n "Construction" \n "Mode"};
+item21[] = {"Timed",4,218,-250.000000,800.000000,-150.000000,850.000000,1.000000,"Timed"};
+item22[] = {"Workers",4,218,-400.000000,700.000000,-300.000000,750.000000,0.000000,"Workers"};
+item23[] = {"Check_Workers",2,250,-400.000000,800.000000,-300.000000,850.000000,0.000000,"Check" \n "Workers"};
+item24[] = {"Determine_Commander",2,4346,-250.000000,900.000000,-150.000000,950.000000,0.000000,"Determine" \n "Commander" \n "Core Action"};
+item25[] = {"Next",8,218,-400.000000,900.000000,-300.000000,950.000000,0.000000,"Next"};
+item26[] = {"Next",8,218,-400.000000,1050.000000,-300.000000,1100.000000,0.000000,"Next"};
+item27[] = {"Build",4,218,-150.000000,1050.000000,-50.000000,1100.000000,2.000000,"Build"};
+item28[] = {"Try_Upgrade",2,250,-275.000000,1150.000000,-175.000000,1200.000000,0.000000,"Try" \n "Upgrade"};
+item29[] = {"WIP",2,250,-575.000000,1375.000000,-475.000000,1425.000000,0.000000,"WIP"};
+item30[] = {"Try_Construction",2,250,-150.000000,1150.000000,-50.000000,1200.000000,0.000000,"Try" \n "Construction"};
+item31[] = {"",7,210,-228.999985,1246.000000,-221.000015,1254.000000,0.000000,""};
+item32[] = {"",7,210,-354.000000,1246.000000,-346.000000,1254.000000,0.000000,""};
+item33[] = {"",7,210,-104.000000,1246.000000,-96.000000,1254.000000,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,4};
+link3[] = {2,5};
+link4[] = {4,3};
+link5[] = {5,6};
+link6[] = {6,7};
+link7[] = {6,8};
+link8[] = {7,9};
+link9[] = {8,17};
+link10[] = {9,10};
+link11[] = {9,11};
+link12[] = {10,12};
+link13[] = {11,14};
+link14[] = {12,13};
+link15[] = {13,14};
+link16[] = {14,18};
+link17[] = {15,16};
+link18[] = {16,1};
+link19[] = {17,15};
+link20[] = {18,20};
+link21[] = {19,28};
+link22[] = {20,21};
+link23[] = {20,22};
+link24[] = {21,24};
+link25[] = {22,23};
+link26[] = {23,25};
+link27[] = {24,19};
+link28[] = {24,26};
+link29[] = {24,27};
+link30[] = {25,24};
+link31[] = {26,29};
+link32[] = {27,30};
+link33[] = {28,31};
+link34[] = {29,15};
+link35[] = {30,33};
+link36[] = {31,32};
+link37[] = {32,26};
+link38[] = {33,31};
+globals[] = {25.000000,1,0,0,0,640,480,1,256,6316128,1,-764.370361,509.025818,1477.064941,248.144806,1317,1271,1};
+window[] = {2,-1,-1,-1,-1,1056,275,1625,275,3,1335};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "ai_commander.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_side = _this;" \n
+       "_sideID = (_side) call CTI_CO_FNC_GetSideID;" \n
+       "_sideLogic = (_side) call CTI_CO_FNC_GetSideLogic;" \n
+       "" \n
+       "//--- Commander Base/Upgrade" \n
+       "_logical_path = missionNamespace getVariable format[""CTI_%1_Commander_Path"", _side];" \n
+       "" \n
+       "//--- Base layout" \n
+       "_template = missionNamespace getVariable format[""CTI_%1_Base_Template"", _side];" \n
+       "" \n
+       "_construction_mode = missionNamespace getVariable ""CTI_BASE_CONSTRUCTION_MODE"";" \n
+       "" \n
+       "_ncycle = 0;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Check_Commander";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Check_Commander">*/
+    class Check_Commander
+    {
+      name = "Check_Commander";
+      init = /*%FSM<STATEINIT""">*/"_sideCommander = (_side) call CTI_CO_FNC_GetSideCommanderTeam;" \n
+       "" \n
+       "_ncycle = time + 5;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "AI">*/
+        class AI
+        {
+          priority = 1.000000;
+          to="Check_HQ_Status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && isNull _sideCommander/* && _sideLogic getVariable ""cti_ai_commander""*/" \n
+           "" \n
+           "//todo: remove sidelogic comment"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Human">*/
+        class Human
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/"_sideLogic setVariable [""cti_ai_commander"", false];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Check_HQ_Status">*/
+    class Check_HQ_Status
+    {
+      name = "Check_HQ_Status";
+      init = /*%FSM<STATEINIT""">*/"_hq = (_side) call CTI_CO_FNC_GetSideHQ;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Alive">*/
+        class Alive
+        {
+          priority = 1.000000;
+          to="Check_HQ_Deploym";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"alive _hq"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Destroyed">*/
+        class Destroyed
+        {
+          priority = 0.000000;
+          to="Try_Repair_HQ";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive _hq"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Check_HQ_Deploym">*/
+    class Check_HQ_Deploym
+    {
+      name = "Check_HQ_Deploym";
+      init = /*%FSM<STATEINIT""">*/"_hq_deployed = (_side) call CTI_CO_FNC_IsHQDeployed;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Deployed">*/
+        class Deployed
+        {
+          priority = 1.000000;
+          to="Check_Base_Struc";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_hq_deployed"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Mobilized">*/
+        class Mobilized
+        {
+          priority = 0.000000;
+          to="Try_Deploy_HQ";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_hq_deployed"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Try_Deploy_HQ">*/
+    class Try_Deploy_HQ
+    {
+      name = "Try_Deploy_HQ";
+      init = /*%FSM<STATEINIT""">*/"_hq_var = missionNamespace getVariable format [""CTI_%1_%2"", _side, CTI_HQ_DEPLOY];" \n
+       "_supply = (_side) call CTI_CO_FNC_GetSideSupply;" \n
+       "" \n
+       "//--- Deploy the HQ if we have enough supply" \n
+       "if (_supply >= (_hq_var select CTI_STRUCTURE_PRICE)) then {" \n
+       "	//--- Use Rübe's function to find a safe spot" \n
+       "	_positions = [" \n
+       "		[""position"", getPos _hq]," \n
+       "		[""number"", 7]," \n
+       "		[""range"", [0, 120]]," \n
+       "		[""sector"", [0, 360]]," \n
+       "		[""roadDistance"", 10]," \n
+       "		[""objDistance"", (10 * 0.5)]," \n
+       "		[""maxGradient"", 0.3]" \n
+       "	] call RUBE_randomCirclePositions;" \n
+       "	" \n
+       "	_position = if (count _positions > 0) then {_positions select floor (random count _positions)} else {getPos _hq};" \n
+       "	" \n
+       "	[format [""CTI_%1_%2"", _side, CTI_HQ_DEPLOY], _side, _position, getDir _hq] Spawn CTI_SE_FNC_ToggleHQ;" \n
+       "	" \n
+       "	[_side, -(_hq_var select CTI_STRUCTURE_PRICE)] call CTI_CO_FNC_ChangeSideSupply;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Next">*/
+        class Next
+        {
+          priority = 0.000000;
+          to="Check_Base_Struc";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Check_Base_Struc">*/
+    class Check_Base_Struc
+    {
+      name = "Check_Base_Struc";
+      init = /*%FSM<STATEINIT""">*/"_hq_deployed = (_side) call CTI_CO_FNC_IsHQDeployed;" \n
+       "" \n
+       "_supply = (_side) call CTI_CO_FNC_GetSideSupply;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Construct">*/
+        class Construct
+        {
+          priority = 1.000000;
+          to="Determine_Construction";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_hq_deployed"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Try_Repair_HQ">*/
+    class Try_Repair_HQ
+    {
+      name = "Try_Repair_HQ";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Check_Commander";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Determine_Construction">*/
+    class Determine_Construction
+    {
+      name = "Determine_Construction";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Timed">*/
+        class Timed
+        {
+          priority = 1.000000;
+          to="Determine_Commander";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_construction_mode in [1, 2]"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Workers">*/
+        class Workers
+        {
+          priority = 0.000000;
+          to="Check_Workers";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_construction_mode isEqualTo 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Check_Workers">*/
+    class Check_Workers
+    {
+      name = "Check_Workers";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Next">*/
+        class Next
+        {
+          priority = 0.000000;
+          to="Determine_Commander";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Determine_Commander">*/
+    class Determine_Commander
+    {
+      name = "Determine_Commander";
+      init = /*%FSM<STATEINIT""">*/"_current_content = [];" \n
+       "_current_action = """";" \n
+       "" \n
+       "{" \n
+       "	_selected_action = _x select 0;" \n
+       "	_selected_param = _x select 1;" \n
+       "	_selected_condition = _x select 2;" \n
+       "	" \n
+       "	_break = false;" \n
+       "	" \n
+       "	//--- Make sure that our commander's condition is valid" \n
+       "	if (call _selected_condition) then {" \n
+       "		//--- Based on the action nature, check if it can be done" \n
+       "		switch (_selected_action) do {" \n
+       "			case ""build-structures"": {" \n
+       "				//--- Make sure that the structure is not already built or in range" \n
+       "				if !([_side, _selected_param, getPos _hq, CTI_BASE_CONSTRUCTION_RANGE*2] call CTI_CO_FNC_HasStructure) then {" \n
+       "" \n
+       "					//--- It's not present in the valid structures array but it may be in the WIP one" \n
+       "					_is_being_built = false;" \n
+       "					{if ((_x getVariable ""cti_structure_type"") isEqualTo _selected_param && _x distance _hq <= (CTI_BASE_CONSTRUCTION_RANGE*2)) exitWith {_is_being_built = true}} forEach (_sideLogic getVariable ""cti_structures_wip"");" \n
+       "					" \n
+       "					//--- It's not being built" \n
+       "					if !(_is_being_built) then {" \n
+       "						_var = missionNamespace getVariable format [""CTI_%1_%2"", _side, _selected_param];" \n
+       "" \n
+       "						//--- Make sure that the structure is properly defined" \n
+       "						if !(isNil '_var') then {" \n
+       "							_supply = (_side) call CTI_CO_FNC_GetSideSupply;" \n
+       "" \n
+       "							//--- Make sure that we can afford it" \n
+       "							if (_supply >= (_var select CTI_STRUCTURE_PRICE)) then {" \n
+       "								_current_content = _selected_param;" \n
+       "								_current_action = _selected_action;" \n
+       "							} else {" \n
+       "								//--- Don't go any further if the commander cannot afford the structure" \n
+       "								_break = true;" \n
+       "							};" \n
+       "						};" \n
+       "					};" \n
+       "				};" \n
+       "			};" \n
+       "			case ""upgrade"": {" \n
+       "				_break = true; //todo: control upgrades" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "" \n
+       "	//--- Break out of the loop once we have something to deal with" \n
+       "	if (count _current_content > 0 || _break) exitWith {};" \n
+       "} forEach _logical_path;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Build">*/
+        class Build
+        {
+          priority = 2.000000;
+          to="Try_Construction";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_current_action isEqualTo ""build-structures"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Upgrade">*/
+        class Upgrade
+        {
+          priority = 1.000000;
+          to="Try_Upgrade";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_current_action isEqualTo ""upgrade"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Next">*/
+        class Next
+        {
+          priority = 0.000000;
+          to="WIP";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Try_Upgrade">*/
+    class Try_Upgrade
+    {
+      name = "Try_Upgrade";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Next">*/
+        class Next
+        {
+          priority = 0.000000;
+          to="WIP";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "WIP">*/
+    class WIP
+    {
+      name = "WIP";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Check_Commander";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Try_Construction">*/
+    class Try_Construction
+    {
+      name = "Try_Construction";
+      init = /*%FSM<STATEINIT""">*/"_var = missionNamespace getVariable format [""CTI_%1_%2"", _side, _current_content];" \n
+       "" \n
+       "//--- Attempt to find the matching template for a position" \n
+       "_index = -1;" \n
+       "{if ((_x select 0) isEqualTo ((_var select CTI_STRUCTURE_LABELS) select 0)) exitWith {_index = _forEachIndex }} forEach _template;" \n
+       "" \n
+       "_position = getPos _hq;" \n
+       "if (_index > -1) then {" \n
+       "	_position_template = (_template select _index) select 2;" \n
+       "	_position = [(_position select 0)+(_position_template select 0), (_position select 1)+(_position_template select 1), 0];" \n
+       "} else {" \n
+       "	_position = [_position, 2, CTI_BASE_CONSTRUCTION_RANGE, 10, ""vehicles""] call CTI_CO_FNC_GetSafePosition;" \n
+       "};" \n
+       "" \n
+       "//--- Use Rübe's function to find a safe spot" \n
+       "_positions = [" \n
+       "	[""position"", _position]," \n
+       "	[""number"", 7]," \n
+       "	[""range"", [0, 120]]," \n
+       "	[""sector"", [0, 360]]," \n
+       "	[""roadDistance"", 15]," \n
+       "	[""objDistance"", (15 * 0.5)]," \n
+       "	[""maxGradient"", 0.3]" \n
+       "] call RUBE_randomCirclePositions;" \n
+       "" \n
+       "if (count _positions > 0) then {_position = _positions select floor (random count _positions)};" \n
+       "" \n
+       "//--- Construct" \n
+       "_direction = ((_var select CTI_STRUCTURE_PLACEMENT) select 0) + getDir _hq;" \n
+       "[format [""CTI_%1_%2"", _side, _current_content], _side, _position, _direction] call CTI_SE_FNC_BuildStructure;" \n
+       "" \n
+       "[_side, -(_var select CTI_STRUCTURE_PRICE)] call CTI_CO_FNC_ChangeSideSupply;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Next">*/
+        class Next
+        {
+          priority = 0.000000;
+          to="WIP";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM",
+  };
+};
+/*%FSM</COMPILE>*/

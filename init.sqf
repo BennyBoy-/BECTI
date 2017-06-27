@@ -1,3 +1,14 @@
+//////////////////// debug
+CTI_AI_TEAMS_ENABLED = 0; //debug
+if (isServer) then {
+	0 spawn {
+		waitUntil {!isNil "CTI_InitServer"};
+		
+		west execFSM "Server\FSM\ai_commander.fsm";
+	};
+};
+//////////////////// debug
+
 //--- Initial View Distance and Object View Distance for both clients and server
 setViewDistance 1750;
 setObjectViewDistance 1750;
@@ -5,8 +16,8 @@ setObjectViewDistance 1750;
 //--- Early definition, will be override later on in the init files.
 CTI_P_SideJoined = civilian;
 
-// CTI_DEBUG = true;
-CTI_DEBUG = false;
+CTI_DEBUG = true;
+// CTI_DEBUG = false;
 
 //--- Log levels
 CTI_Log_Debug = 3;

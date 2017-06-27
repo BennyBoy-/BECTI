@@ -24,6 +24,8 @@
 	  -> Will mobilize or deploy the HQ based on the given and global variable at the desired position
 */
 
+//todo: notify clients when deploy/mobilize occurs
+
 params ["_variable", "_side", "_position", "_direction"];
 private ["_hq", "_is_deployed", "_logic", "_sideID", "_structure_time", "_var"];
 

@@ -10,8 +10,8 @@
   # PARAMETERS #
     0	[String]: The structure variable name
     1	[Side]: The Side which requested it
-    2	[Array]: The position of the defense
-    3	[Number]: The direction of the defense
+    2	[Array]: The position of the structure
+    3	[Number]: The direction of the structure
 	
   # RETURNED VALUE #
 	[Object]: The ruins
