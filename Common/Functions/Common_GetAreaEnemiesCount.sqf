@@ -27,11 +27,8 @@
 	[_list, West, [East, Resistance]] call CTI_CO_FNC_GetAreaEnemiesCount; -> 0
 */
 
-private ["_count","_sides","_sideFriendly","_sideIgnored","_units"];
-
-_units = _this select 0;
-_sideFriendly = _this select 1;
-_sideIgnored = if (count _this > 2) then {_this select 2} else {[]};
+params ["_units", "_sideFriendly", ["_sideIgnored", []]];
+private ["_count", "_sides"];
 
 _sides = [west, east, resistance, sideEnemy] - [_sideFriendly] - _sideIgnored;
 _count = 0;

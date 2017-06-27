@@ -41,7 +41,7 @@ switch (_action) do {
 		_grid_max = missionNamespace getVariable "CTI_GRAPHICS_TG_MAX";
 		
 		if (isNil '_grid') then { _grid = 25 };
-		if (typeName _grid != "SCALAR") then { _grid = 0 };
+		if !(typeName _grid isEqualTo "SCALAR") then { _grid = 0 };
 		if (_grid > _grid_max) then { _grid = _grid_max };
 		
 		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150008) sliderSetRange [0, _grid_max];

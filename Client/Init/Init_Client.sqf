@@ -19,8 +19,6 @@ CTI_CL_FNC_HasAIOrderChanged = compileFinal preprocessFile "Client\Functions\Cli
 CTI_CL_FNC_HookVehicle = compileFinal preprocessFile "Client\Functions\Client_HookVehicle.sqf";
 CTI_CL_FNC_IsPlayerCommander = compileFinal preprocessFile "Client\Functions\Client_IsPlayerCommander.sqf";
 CTI_CL_FNC_InitializeStructure = compileFinal preprocessFile "Client\Functions\Client_InitializeStructure.sqf";
-CTI_CL_FNC_PlacingBuilding = compileFinal preprocessFile "Client\Functions\Client_PlacingBuilding.sqf";
-CTI_CL_FNC_PlacingDefense = compileFinal preprocessFile "Client\Functions\Client_PlacingDefense.sqf";
 CTI_CL_FNC_OnArtilleryFired = compileFinal preprocessFile "Client\Functions\Client_OnArtilleryFired.sqf";
 CTI_CL_FNC_OnCampCaptured = compileFinal preprocessFile "Client\Functions\Client_OnCampCaptured.sqf";
 CTI_CL_FNC_OnExplosivePlaced = compileFinal preprocessFile "Client\Functions\Client_OnExplosivePlaced.sqf";
@@ -50,9 +48,6 @@ CTI_P_TeamsRequests = [];
 CTI_P_TeamsRequests_FOB = 0;
 CTI_P_TeamsRequests_FOB_Dismantle = 0;
 CTI_P_TeamsRequests_Last = -5000;
-CTI_P_PreBuilding = false;
-CTI_P_LastDefenseBuilt = objNull;
-CTI_P_LastStructurePreBuilt = objNull;
 CTI_P_Respawning = false;
 CTI_P_CurrentTasks = [];
 CTI_P_CanJoin = false;
@@ -65,8 +60,6 @@ CTI_P_LastRepairTime = -600;
 CTI_P_WallsAutoAlign = true;
 CTI_P_DefensesAutoManning = false;
 CTI_P_ServerFPS = -1;
-CTI_P_RapidDefence_Actions=[];
-CTI_P_RapidDefence=-1;
 
 //--- Actions (skills)
 CTI_P_ActionLockPick = false;
@@ -80,7 +73,7 @@ CTI_P_ActionRepairNextUse = -1;
 CTI_P_Coloration_Money = "#BAFF81";
 
 //--- Artillery Computer is only enabled on demand
-if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") != -1) then {enableEngineArtillery false};
+if !((missionNamespace getVariable "CTI_ARTILLERY_SETUP") isEqualTo -1) then {enableEngineArtillery false};
 
 if (isMultiplayer) then {
 	//--- Can I join?
@@ -127,12 +120,12 @@ call compile preprocessFile "Client\Functions\UI\Functions_UI_UnitsCamera.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UpgradeMenu.sqf";
 
 //--- Define the gear items
-if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_West.sqf"};
-if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_East.sqf"};
+if (CTI_P_SideJoined isEqualTo west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_West.sqf"};
+if (CTI_P_SideJoined isEqualTo east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_East.sqf"};
 
 if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then {
-	if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_West.sqf"};
-	if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_East.sqf"};
+	if (CTI_P_SideJoined isEqualTo west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_West.sqf"};
+	if (CTI_P_SideJoined isEqualTo east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_CUP_East.sqf"};
 };
 
 CTI_InitClient = true;
@@ -205,7 +198,7 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 		if (CTI_IsClient && !CTI_IsServer) then {
 			_hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CL_FNC_OnHQDestroyed", CTI_P_SideID]];
 			
-			if (CTI_BASE_NOOBPROTECTION == 1) then {
+			if (CTI_BASE_NOOBPROTECTION isEqualTo 1) then {
 				_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", CTI_P_SideID]]; //--- You want that on public
 			};
 		};
@@ -231,7 +224,7 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_
 	_distance_max = missionNamespace getVariable "CTI_GRAPHICS_VD_MAX";
 	
 	if (isNil "_distance") then { _distance = viewDistance };
-	if (typeName _distance != "SCALAR") then { _distance = viewDistance };
+	if !(typeName _distance isEqualTo "SCALAR") then { _distance = viewDistance };
 	if (_distance < 1) then { _distance = 500 };
 	if (_distance > _distance_max) then { _distance = _distance_max };
 	setViewDistance _distance;
@@ -246,7 +239,7 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_
 	//--- Shadows Distance.
 	_distance = profileNamespace getVariable "CTI_PERSISTENT_SHADOWS_DISTANCE";
 	if !(isNil "_distance") then { 
-		if (typeName _distance == "SCALAR") then { 
+		if (typeName _distance isEqualTo "SCALAR") then { 
 			if (_distance < 50) then { _distance = 50 };
 			if (_distance > 200) then { _distance = 200 };
 			setShadowDistance _distance;
@@ -258,7 +251,7 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATEV3_
 	_grid_max = missionNamespace getVariable "CTI_GRAPHICS_TG_MAX";
 	
 	if (isNil "_grid") then { _grid = 25 };
-	if (typeName _grid != "SCALAR") then { 
+	if !(typeName _grid isEqualTo "SCALAR") then { 
 		_grid = 0;
 	} else {
 		if (_grid < 0) then { _grid = 0 };
@@ -276,13 +269,13 @@ if (profileNamespace getVariable "CTI_PERSISTENT_HINTS") then {
 	};
 };
 
-if (CTI_BASE_NOOBPROTECTION == 1) then {player addEventHandler ["fired", {_this spawn CTI_CL_FNC_OnPlayerFired}]}; //--- Trust me, you want that
-if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
+if (CTI_BASE_NOOBPROTECTION isEqualTo 1) then {player addEventHandler ["fired", {_this spawn CTI_CL_FNC_OnPlayerFired}]}; //--- Trust me, you want that
+if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") isEqualTo 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
 
 if (CTI_DEBUG) then {
 	hint "DEBUG MODE IS ENABLED! DON'T FORGET TO TURN IT OFF!";
 	onMapSingleClick "vehicle player setPos _pos"; //--- benny debug: teleport
-	player addEventHandler ["HandleDamage", {if (player != (_this select 3)) then {(_this select 3) setDammage 1}; false}]; //--- God-Slayer mode.
+	player addEventHandler ["HandleDamage", {if !(player isEqualTo (_this select 3)) then {(_this select 3) setDammage 1}; false}]; //--- God-Slayer mode.
 	player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
 };
 

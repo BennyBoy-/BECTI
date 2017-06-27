@@ -10,9 +10,10 @@
 	Revision Date:	15-10-2013
 	
   # PARAMETERS #
-    0	[String]: The Player's UID
-    1	[String]: The Player's name
-    2	[Number]: The Player's seed ID
+    0	[Object]: The Player's unit object
+    1	[Number]: The Player's seed ID
+    2	[Number]: The Player's UID
+    3	[String]: The Player's name
 	
   # RETURNED VALUE #
 	None
@@ -32,16 +33,13 @@
     onPlayerDisconnected {[_uid, _name, _id] call CTI_SE_FNC_OnPlayerDisconnected};
 */
 
-_unit = _this select 0;
-_id = _this select 1;
-_uid = _this select 2;
-_name = _this select 3;
+params ["_unit", "_id", "_uid", "_name"];
 
 _team = group _unit;
 
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Player [%1] [%2] with unit [%3] in group [%4] has left the current session", _name, _uid, _unit, _team]] call CTI_CO_FNC_Log};
 
-if (_name == '__SERVER__' || _uid == '') exitWith {}; //--- We don't care about the server!
+if (_name isEqualTo '__SERVER__' || _uid isEqualTo '') exitWith {}; //--- We don't care about the server!
 
 waitUntil {!isNil 'CTI_Init_Common'};
 
@@ -49,7 +47,7 @@ waitUntil {!isNil 'CTI_Init_Common'};
 _candidates = missionNamespace getVariable "CTI_HEADLESS_CLIENTS";
 if !(isNil '_candidates') then {
 	_index = -1;
-	{if (_x select 2 == _uid) exitWith {_index = _forEachIndex}} forEach _candidates;
+	{if (_x select 2 isEqualTo _uid) exitWith {_index = _forEachIndex}} forEach _candidates;
 	if (_index > -1) then {
 		// _candidates set [_index, "!nil!"]; _candidates = _candidates - ["!nil!"];
 		_candidates deleteAt _index;
@@ -77,7 +75,7 @@ _hq = (_side) call CTI_CO_FNC_GetSideHQ;
 
 //--- We force the unit out of it's vehicle.
 if !(isNull assignedVehicle _unit) then { unassignVehicle _unit; [_unit] orderGetIn false; [_unit] allowGetIn false };
-if (vehicle _unit == _hq) then { _unit action ["EJECT", vehicle _unit] }; //--- Is it the HQ?
+if (vehicle _unit isEqualTo _hq) then { _unit action ["EJECT", vehicle _unit] }; //--- Is it the HQ?
 
 _get set [1, _funds];
 
@@ -93,7 +91,7 @@ missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], _get];
 	
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Updated Player [%1] [%2] funds to [%3]", _name, _uid, _funds]] call CTI_CO_FNC_Log};
 
-if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1) then { //--- Place the leader back at base
+if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") isEqualTo 1) then { //--- Place the leader back at base
 	_unit enableAI "Move";
 	_structures = (_side) call CTI_CO_FNC_GetSideStructures;
 	
@@ -128,7 +126,7 @@ if (_is_commander && !isNull _team) then {
 	//--- Send a message!
 	["commander-disconnected"] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 	
-	if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1) then { (_side) execFSM "Server\FSM\update_commander.fsm" }; //--- AI commander takeover
+	if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") isEqualTo 1) then { (_side) execFSM "Server\FSM\update_commander.fsm" }; //--- AI commander takeover
 };
 
 //--- Update the global teams if needed

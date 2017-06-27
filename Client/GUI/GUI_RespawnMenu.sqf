@@ -6,7 +6,7 @@ while { true } do {
 	_locations_tracker = uiNamespace getVariable "cti_dialog_ui_respawnmenu_locations_tracker";
 	
 	//--- A Minimap click has been performed.
-	if (mouseButtonDown == 0 && mouseButtonUp == 0) then {
+	if (mouseButtonDown isEqualTo 0 && mouseButtonUp isEqualTo 0) then {
 		mouseButtonDown = -1;
 		mouseButtonUp = -1;
 		// player sidechat "click";
@@ -16,7 +16,7 @@ while { true } do {
 		
 		if (_nearest distance _clicked_position < 500) then {
 			{
-				if (_x == _nearest) exitWith {
+				if (_x isEqualTo _nearest) exitWith {
 					uiNamespace setVariable ["cti_dialog_ui_respawnmenu_respawn_update", false];
 					((uiNamespace getVariable "cti_dialog_ui_respawnmenu") displayCtrl 120002) lbSetCurSel _forEachIndex 
 				};
@@ -28,7 +28,7 @@ while { true } do {
 	{
 		_location = _x;
 		_require_addin = true;
-		{if (_x select 0 == _location) exitWith {_require_addin = false}} forEach _locations_tracker;
+		{if (_x select 0 isEqualTo _location) exitWith {_require_addin = false}} forEach _locations_tracker;
 		if (_require_addin) then {_changes = true; (_location) call CTI_UI_Respawn_AppendTracker};
 	} forEach _locations;
 	

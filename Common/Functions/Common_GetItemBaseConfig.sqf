@@ -23,7 +23,7 @@
     _base = ("B_AssaultPack_khk") call CTI_CO_FNC_GetItemBaseConfig
 */
 
-private ["_type"];
+private ["_itype", "_type"];
 
 _type = switch (true) do { //--- Determine the kind of item that we're dealing with
 	case (isClass (configFile >> 'CfgWeapons' >> _this)): {"CfgWeapons"};
@@ -33,11 +33,11 @@ _type = switch (true) do { //--- Determine the kind of item that we're dealing w
 	default {"nil"};
 };
 
-if (_type == "CfgWeapons") then {
+if (_type isEqualTo "CfgWeapons") then {
 	_itype = getNumber(configFile >> "CfgWeapons" >> _this >> "type");
-	if (_itype == CTI_TYPE_ITEM) then {_type = "Item"};
-	if (_itype == CTI_TYPE_EQUIPMENT) then {
-		_type = if (getText(configFile >> 'CfgWeapons' >> _item >> 'simulation') == "NVGoggles") then {"Item"} else {"CfgWeapons"};// NVG is considered as an item but binocs and rest are not.
+	if (_itype isEqualTo CTI_TYPE_ITEM) then {_type = "Item"};
+	if (_itype isEqualTo CTI_TYPE_EQUIPMENT) then {
+		_type = ["CfgWeapons", "Item"] select (getText(configFile >> 'CfgWeapons' >> _item >> 'simulation') isEqualTo "NVGoggles");// NVG is considered as an item but binocs and rest are not.
 	};
 };
 

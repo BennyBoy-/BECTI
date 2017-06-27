@@ -33,10 +33,7 @@
 	  -> Display a parameterized message for all client via the "CTI_PVF_CLT_OnMessageReceived" PVF
 */
 
-private ["_message_var", "_parameters"];
-
-_message_var = _this select 0;
-_parameters = if (count _this > 1) then {_this select 1} else {[]};
+params ["_message_var", ["_parameters", []]];
 
 switch (_message_var) do {
 	case "award-bounty": {player groupChat format ["$%1 awarded for the neutralization of a %2", _parameters select 0, _parameters select 1]};
@@ -55,7 +52,7 @@ switch (_message_var) do {
 				CTI_P_ChatID commandChat "No Commander Selected!";
 			};
 		} else {
-			if (_parameters != group player) then {
+			if !(_parameters isEqualTo group player) then {
 				CTI_P_ChatID commandChat format["%1 is the new commander!", name leader _parameters];
 			} else {
 				CTI_P_ChatID commandChat "You are the new commander!";
@@ -86,7 +83,7 @@ switch (_message_var) do {
 		(_parameters select 0) groupChat format ["Repairing %1... %2%3", (_var select CTI_STRUCTURE_LABELS) select 1, _parameters select 2, "%"];
 	};
 	case "salvage": {
-		_value = if (call CTI_CL_FNC_IsPlayerCommander) then {_parameters select 2} else {_parameters select 1};
+		_value = [_parameters select 1, _parameters select 2] select (call CTI_CL_FNC_IsPlayerCommander);
 		_var = missionNamespace getVariable (_parameters select 0);
 		if (_value > 0) then {CTI_P_ChatID sideChat format ["$%2 received for the salvaging of a %1 by your side", _var select CTI_UNIT_LABEL, _value]};
 	};

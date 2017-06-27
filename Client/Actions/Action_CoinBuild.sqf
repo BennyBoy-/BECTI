@@ -5,7 +5,7 @@ _origin = player;
 
 switch (_source) do {
 	case "HQ": {
-		_areaSize = if (CTI_P_SideJoined call CTI_CO_FNC_IsHQDeployed) then {CTI_COIN_AREA_HQ_DEPLOYED} else {CTI_COIN_AREA_HQ_MOBILIZED};
+		_areaSize = [CTI_COIN_AREA_HQ_MOBILIZED, CTI_COIN_AREA_HQ_DEPLOYED] select (CTI_P_SideJoined call CTI_CO_FNC_IsHQDeployed);
 		_origin = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 	};
 	case "RepairTruck": {

@@ -1,1 +1,0 @@
-createDialog "CTI_RscBuildMenu";

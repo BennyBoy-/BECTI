@@ -28,14 +28,10 @@
     [_group, _side, _var select 2, _factory_nearest] call CTI_SE_FNC_AI_PurchaseSquad;
 */
 
-private ["_can_use", "_compose", "_factory", "_flaten", "_group", "_need", "_picked", "_pool", "_probability", "_side"];
+params ["_group", "_side", "_pool", "_factory"];
+private ["_can_use", "_compose", "_flaten", "_need", "_picked", "_probability"];
 
-_group = _this select 0;
-_side = _this select 1;
-_pool = _this select 2;
-_factory = _this select 3;
-
-_need = round(3 + random 2); //--- The amount of units to purchase
+_need = round(3 + random 2); //--- The amount of units to purchase, todo improve
 _compose = [];
 
 _flaten = [];

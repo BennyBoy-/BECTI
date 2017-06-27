@@ -30,8 +30,8 @@ link11[] = {10,12};
 link12[] = {11,1};
 link13[] = {12,13};
 link14[] = {13,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,200,6316128,1,-488.236145,529.525024,476.747345,-444.781525,973,881,1};
-window[] = {2,-1,-1,-1,-1,806,25,1280,25,3,991};
+globals[] = {25.000000,1,0,0,0,640,480,1,200,6316128,1,-488.236145,529.525024,476.747345,-444.781525,973,910,1};
+window[] = {2,-1,-1,-1,-1,1015,-1686,-431,234,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -159,8 +159,7 @@ class FSM
     class Phase_III_Detect
     {
       name = "Phase_III_Detect";
-      init = /*%FSM<STATEINIT""">*/"_entities = [];" \n
-       "{if (!alive _x && isNil {_x getVariable ""cti_gc_noremove""}) then {_entities pushBack _x}} foreach ((nearestObjects [_salvager, ['Car','Motorcycle','Ship','Air','Tank','StaticWeapon'], CTI_VEHICLES_SALVAGE_RANGE]) - [_salvager]);" \n
+      init = /*%FSM<STATEINIT""">*/"_entities = ((nearestObjects [_salvager, ['Car','Motorcycle','Ship','Air','Tank','StaticWeapon'], CTI_VEHICLES_SALVAGE_RANGE]) - [_salvager]) select {!alive _x && isNil {_x getVariable ""cti_gc_noremove""}};" \n
        "" \n
        "if (count _entities > 0) then {" \n
        "	_wreck = [_salvager, _entities] call CTI_CO_FNC_GetClosestEntity;" \n

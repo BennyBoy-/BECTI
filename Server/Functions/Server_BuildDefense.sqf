@@ -31,16 +31,10 @@
     _defense = [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, CTI_P_WallsAutoAlign, CTI_P_DefensesAutoManning] call CTI_SE_FNC_BuildDefense;
 */
 
-private ["_autoalign", "_defense", "_direction", "_direction_structure", "_fob", "_limit", "_logic", "_manned", "_origin", "_position", "_ruins", "_seed", "_side", "_sideID", "_stronger", "_var", "_varname"];
+params ["_varname", "_side", "_position", "_direction", "_autoalign", ["_manned", false]];
+private ["_defense", "_direction_structure", "_fob", "_limit", "_logic", "_ruins", "_seed", "_sideID", "_stronger", "_var"];
 
-_varname = _this select 0;
 _var = missionNamespace getVariable _varname;
-_side = _this select 1;
-_position = _this select 2;
-_direction = _this select 3;
-_origin = _this select 4;
-_autoalign = _this select 5;
-_manned = if (count _this > 6) then {_this select 6} else {false};
 _seed = time + random 10000 - random 500 + diag_frameno;
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
@@ -53,7 +47,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 //--- Is it a fob?
 _fob = false;
 _limit = false;
-{if (_x select 0 == "FOB") exitWith {_fob = true}} forEach (_var select CTI_DEFENSE_SPECIALS);
+{if (_x select 0 isEqualTo "FOB") exitWith {_fob = true}} forEach (_var select CTI_DEFENSE_SPECIALS);
 if (_fob) then {if (count(_logic getVariable "cti_fobs") >= CTI_BASE_FOB_MAX) then {_limit = true}};
 if (_limit) exitWith {};
 
@@ -68,7 +62,7 @@ if (_defense isKindOf "Building") then {
 	if (_autoalign) then {
 		private ["_autoSupport", "_correction", "_offsetZ", "_width"];
 		_autoSupport = [];
-		{if (_x select 0 == "CanAutoAlign") exitWith {_autoSupport = _x}} forEach (_var select CTI_DEFENSE_SPECIALS);
+		{if (_x select 0 isEqualTo "CanAutoAlign") exitWith {_autoSupport = _x}} forEach (_var select CTI_DEFENSE_SPECIALS);
 		
 		if (count _autoSupport > 0) then {
 			_width = _autoSupport select 1;
@@ -86,25 +80,28 @@ if (_fob) then {
 	};
 	
 	(_defense) remoteExec ["CTI_PVF_CLT_OnFOBDeployment", _side];
-	_logic setVariable ["cti_fobs", (_logic getVariable "cti_fobs") + [_defense], true];
+	
+	_fobs = _logic getVariable "cti_fobs";
+	_fobs pushBack _defense;
+	_logic setVariable ["cti_fobs", _fobs, true];
 };
 
 _defense setDir _direction;
 _defense setPos _position;
+if !(_defense isKindOf "Building") then {_defense setVectorUp surfaceNormal position _defense};
 if (_defense emptyPositions "gunner" < 1 && !_fob) then { //--- Soft defense
 	_defense setDir _direction;
-	// _defense setVectorUp [0,0,0];
-	if !(isNull _origin) then {(_defense) remoteExec ["CTI_PVF_CLT_OnDefensePlaced", _origin]};
+	// _defense setVectorUp surfaceNormal position _defense;
 };
 
 //--- Make the defense stronger?
 _stronger = -1;
-{if (_x select 0 == "DMG_Reduce") exitWith {_stronger = _x select 1}} forEach (_var select CTI_DEFENSE_SPECIALS);
-if (_stronger != -1) then {_defense addEventHandler ["handleDamage", format["getDammage (_this select 0)+(_this select 2)/%1",_stronger]]};
+{if (_x select 0 isEqualTo "DMG_Reduce") exitWith {_stronger = _x select 1}} forEach (_var select CTI_DEFENSE_SPECIALS);
+if !(_stronger isEqualTo -1) then {_defense addEventHandler ["handleDamage", format["getDammage (_this select 0)+(_this select 2)/%1",_stronger]]};
 
 //--- Check if the defense has a ruin model attached (we don't wana have a cemetery of wrecks)
 _ruins = "";
-{if (_x select 0 == "RuinOnDestroyed") exitWith {_ruins = _x select 1}} forEach (_var select CTI_DEFENSE_SPECIALS);
+{if (_x select 0 isEqualTo "RuinOnDestroyed") exitWith {_ruins = _x select 1}} forEach (_var select CTI_DEFENSE_SPECIALS);
 
 _defense addEventHandler ["killed", format["[_this select 0, _this select 1, %1, '%2', '%3'] spawn CTI_SE_FNC_OnDefenseDestroyed", _sideID, _ruins, _varname]];
 
@@ -121,7 +118,7 @@ if (_defense emptyPositions "gunner" > 0) then { //--- Hard defense
 	};
 };
 
-//AdminZeus
-if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_defense],true] };
+//--- ZEUS Curator Editable
+if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_defense], true]};
 
 _defense

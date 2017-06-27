@@ -4,7 +4,7 @@ CTI_FSM_UpdateAI_GetRespawnLocation = {
 	_side = _this select 0;
 	_center = _this select 1;
 	
-	if (typeName _side == "SCALAR") then { _side = (_side) call CTI_CO_FNC_GetSideFromID };
+	if (typeName _side isEqualTo "SCALAR") then { _side = (_side) call CTI_CO_FNC_GetSideFromID };
 	
 	_hq = (_side) call CTI_CO_FNC_GetSideHQ;
 	_structures = (_side) call CTI_CO_FNC_GetSideStructures;
@@ -12,7 +12,7 @@ CTI_FSM_UpdateAI_GetRespawnLocation = {
 	_list = _structures;
 	if (alive _hq) then { _list pushBack _hq };
 	
-	if (count _list == 0) then { _list = [_hq] };
+	if (count _list isEqualTo 0) then { _list = [_hq] };
 	
 	[_center, _list] call CTI_CO_FNC_GetClosestEntity
 };
@@ -43,7 +43,10 @@ CTI_FSM_UpdateAI_RespawnLeader_MP = {
 	
 	_group setVariable ["cti_team_reload", true]; //--- The group shall reload whatever it was doing
 	
-	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {_newUnit enableFatigue false}; //--- Disable the unit's fatigue
+	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") isEqualTo 0) then {_newUnit enableFatigue false}; //--- Disable the unit's fatigue
+	
+	//--- ZEUS Curator Editable
+	if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_newUnit], true]};
 };
 
 CTI_FSM_UpdateAI_RespawnLeader_SP = {
@@ -66,13 +69,7 @@ CTI_FSM_UpdateAI_RespawnLeader_SP = {
 	_leader disableAI "MOVE";
 	
 	//--- ZEUS Curator Editable
-	if !(isNil "ADMIN_ZEUS") then {
-		if (CTI_IsServer) then {
-			ADMIN_ZEUS addCuratorEditableObjects [[_leader], true];
-		} else {
-			[ADMIN_ZEUS, _leader] remoteExec ["CTI_PVF_SRV_RequestAddCuratorEditable", CTI_PV_SERVER];
-		};
-	};
+	if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_leader], true]};
 	
 	_group setVariable ["cti_nextrespawn", time + (missionNamespace getVariable "CTI_RESPAWN_TIMER")];
 	_respawn_start = time;
@@ -85,7 +82,7 @@ CTI_FSM_UpdateAI_RespawnLeader_SP = {
 	
 	_leader enableAI "MOVE";
 	_leader setPos ([[_side, _position] call CTI_FSM_UpdateAI_GetRespawnLocation, 8, 30] call CTI_CO_FNC_GetRandomPosition);
-	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {_leader enableFatigue false}; //--- Disable the unit's fatigue
+	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") isEqualTo 0) then {_leader enableFatigue false}; //--- Disable the unit's fatigue
 	
 	_group setVariable ["cti_team_reload", true]; //--- The group shall reload whatever it was doing
 };
@@ -101,7 +98,7 @@ CTI_FSM_UpdateAI_EmbarkCommandableVehicles = {
 	{
 		_roles = assignedVehicleRole _x;
 		if (count _roles > 0) then { //--- It's assigned
-			if (_roles select 0 == "cargo" || (vehicle _x isKindOf "StaticWeapon" || assignedVehicle _x isKindOf "StaticWeapon")) then {
+			if (_roles select 0 isEqualTo "cargo" || (vehicle _x isKindOf "StaticWeapon" || assignedVehicle _x isKindOf "StaticWeapon")) then {
 				_interacts pushBack _x;
 			};
 		} else { //--- No given roles
@@ -151,7 +148,7 @@ CTI_FSM_UpdateAI_EmbarkCommandableVehicles = {
 					_crew = crew _x;
 					{_enemies = _enemies + (_x countSide _crew)} forEach _sidechecks;
 					
-					if (count _assigned == 0 && _enemies == 0) then { //--- There is no "outsiders" among the main roles and no enemies
+					if (count _assigned isEqualTo 0 && _enemies isEqualTo 0) then { //--- There is no "outsiders" among the main roles and no enemies
 						switch (true) do {
 							case (_x isKindOf "Air"): {if !(_x in _interacts_with_air) then {_interacts_with_air pushBack _x}};
 							case (_x isKindOf "Tank"): {if !(_x in _interacts_with_heavy) then {_interacts_with_heavy pushBack _x}};
@@ -188,7 +185,7 @@ CTI_FSM_UpdateAI_EmbarkCommandableVehicles = {
 			{
 				_roles = assignedVehicleRole _x;
 				if (count _roles > 0) then {
-					if (_roles select 0 == "cargo" && assignedVehicle _x in _units) then {_remains = _remains - [_x]};
+					if (_roles select 0 isEqualTo "cargo" && assignedVehicle _x in _units) then {_remains = _remains - [_x]};
 				};
 			} forEach +_remains;
 			
@@ -271,7 +268,7 @@ CTI_FSM_UpdateAI_EmbarkCargoVehicles = {
 		{
 			if (local _x && isNil{_x getVariable "cti_ai_prohib"} && canMove _x && !(_x in _units) && alive driver _x && _x emptyPositions "cargo" > 0) then { //--- Vehicle is local to our server, it's usable, it can move
 				_remote_goto = (group _x) getVariable "cti_order_pos";
-				if (!isNil '_remote_goto' && side _group == side _x) then {
+				if (!isNil '_remote_goto' && side _group isEqualTo side _x) then {
 					_cargo = abs ((_x emptyPositions "cargo") - count(assignedCargo _x)); //--- Get the vehicle absolute cargo
 					if (_remote_goto distance _x > (CTI_AI_TEAMS_CARGO_VEHICLES_DISEMBARK_RANGE+50) && _local_goto distance _remote_goto <= CTI_AI_TEAMS_CARGO_VEHICLES_MATCH_RANGE && _unit distance _local_goto > (CTI_AI_TEAMS_CARGO_VEHICLES_DISEMBARK_RANGE+50) && _cargo > 0) then { //--- Objectives aligns?
 						_has_vehicle = true; unassignVehicle _unit; _unit assignAsCargo _x; [_unit] orderGetIn true;
@@ -294,7 +291,7 @@ CTI_FSM_UpdateAI_DisembarkCargoVehicles = {
 	
 	{
 		_roles = assignedVehicleRole _x;
-		if (count _roles > 0) then {if (_roles select 0 == "cargo") then {unassignVehicle _x}}; 
+		if (count _roles > 0) then {if (_roles select 0 isEqualTo "cargo") then {unassignVehicle _x}}; 
 	} forEach units _group;
 };
 
@@ -373,7 +370,7 @@ CTI_FSM_UpdateAI_Order_TakeTown = {
 		if (isNil '_group') exitWith {};
 		if (_seed != (_group getVariable "cti_order_seed")) exitWith {};
 		
-		if ((_town getVariable "cti_town_sideID") == _sideID) exitWith {_side_owned = true};
+		if ((_town getVariable "cti_town_sideID") isEqualTo _sideID) exitWith {_side_owned = true};
 		if (_order in [CTI_ORDER_TAKETOWN_AUTO, CTI_ORDER_TAKEHOLDTOWN_AUTO]) then {if (([leader _group, _side] call CTI_CO_FNC_GetClosestEnemyTown) != _town) then {_process = false}};
 		
 		sleep 5;
@@ -395,7 +392,7 @@ CTI_FSM_UpdateAI_Order_TakeTown = {
 				if (isNil '_group') exitWith {};
 				if (_seed != (_group getVariable "cti_order_seed") || time - _start_patrol > CTI_AI_ORDER_TAKEHOLDTOWNS_TIME) exitWith {};
 				
-				if (((_town getVariable 'cti_town_sv') < CTI_TOWNS_CAPTURE_VALUE_CEIL && _sideID == (_town getVariable 'cti_town_sideID')) || _sideID != (_town getVariable 'cti_town_sideID')) then {
+				if (((_town getVariable 'cti_town_sv') < CTI_TOWNS_CAPTURE_VALUE_CEIL && _sideID isEqualTo (_town getVariable 'cti_town_sideID')) || _sideID != (_town getVariable 'cti_town_sideID')) then {
 					_action = "defense";if (_action != _last_action) then {_move_defend_last = -120};
 				} else {
 					_action = "patrol";if (_action != _last_action) then {_move_patrol_reload = true};
@@ -417,7 +414,7 @@ CTI_FSM_UpdateAI_Order_TakeTown = {
 	if (isNil '_group') exitWith {};
 	
 	//--- Release ! (if order still match the current seed)
-	if (_seed == (_group getVariable "cti_order_seed")) then {
+	if (_seed isEqualTo (_group getVariable "cti_order_seed")) then {
 		switch (true) do {
 			case (_order in [CTI_ORDER_TAKETOWN, CTI_ORDER_TAKETOWN_AUTO]): {_group setVariable ["cti_order", CTI_ORDER_TAKETOWNS, true]};
 			case (_order in [CTI_ORDER_TAKEHOLDTOWN, CTI_ORDER_TAKEHOLDTOWN_AUTO]): {_group setVariable ["cti_order", CTI_ORDER_TAKEHOLDTOWNS, true]};
@@ -487,7 +484,7 @@ CTI_FSM_UpdateAI_Order_HoldTownsBase = {
 		if !(alive _defend) exitWith {_destroyed = true};
 		
 		if !(isNil {_defend getVariable "cti_town_sideID"}) then {
-			if (((_defend getVariable 'cti_town_sv') < CTI_TOWNS_CAPTURE_VALUE_CEIL && _sideID == (_defend getVariable 'cti_town_sideID')) || _sideID != (_defend getVariable 'cti_town_sideID')) then {
+			if (((_defend getVariable 'cti_town_sv') < CTI_TOWNS_CAPTURE_VALUE_CEIL && _sideID isEqualTo (_defend getVariable 'cti_town_sideID')) || _sideID != (_defend getVariable 'cti_town_sideID')) then {
 				_action = "defense";if (_action != _last_action) then {_move_defend_last = -120};
 			} else {
 				_action = "patrol";if (_action != _last_action) then {_move_patrol_reload = true};

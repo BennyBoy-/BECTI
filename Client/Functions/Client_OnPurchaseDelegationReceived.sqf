@@ -25,10 +25,6 @@
 	[_seed, _classname, group player, _veh_infos, _factory] call CTI_CL_FNC_OnPurchaseDelegationReceived
 */
 
-_req_seed = _this select 0;
-_req_classname = _this select 1;
-_req_buyer = _this select 2;
-_req_vehinfos = _this select 3;
-_factory = _this select 4;
+params ["_req_seed", "_req_classname", "_req_buyer", "_req_vehinfos", "_factory"];
 
 CTI_P_PurchaseRequests pushBack [_req_seed, _req_classname, _req_vehinfos, _factory, group player, false];

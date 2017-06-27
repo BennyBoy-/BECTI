@@ -24,9 +24,4 @@
 	  -> Returns true if the player is the current commander
 */
 
-private ["_group", "_side"];
-
-_group = _this;
-_side = side _group;
-
-(_side call CTI_CO_FNC_GetSideCommanderTeam) isEqualTo _group
+((side _this) call CTI_CO_FNC_GetSideCommanderTeam) isEqualTo _this

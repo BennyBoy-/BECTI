@@ -26,21 +26,18 @@
 	[West, "loose"] spawn CTI_CL_FNC_OnMissionEnding
 */
 
-private ["_result", "_side", "_win"];
-
-_side = _this select 0;
-_result = _this select 1;
+params ["_side", "_result"];
+private ["_win"];
 
 CTI_GameOver = true;
-// player sidechat "%1 lost!!! booo! brit sucks btw.";
 //todo camera work and shitz
 
 sleep 10;
 
 _win = false;
 switch (_result) do {
-	case "win": {if (CTI_P_SideJoined == _side) then {_win = true}};
-	case "loose": {if (CTI_P_SideJoined != _side) then {_win = true}};
+	case "win": {if (CTI_P_SideJoined isEqualTo _side) then {_win = true}};
+	case "loose": {if !(CTI_P_SideJoined isEqualTo _side) then {_win = true}};
 };
 
 if (_win) then {["END1", true, 0] call BIS_fnc_endMission} else {["END2", false, 0] call BIS_fnc_endMission};

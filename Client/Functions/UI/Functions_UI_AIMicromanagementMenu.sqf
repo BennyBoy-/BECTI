@@ -52,8 +52,8 @@ CTI_UI_AIMicromanagement_TrySetOrder = {
 	_order = _this select 1;
 	_order_pos_new = _this select 2;
 	
-	if (_order != (_ai getVariable "cti_ai_order")) then {_ai setVariable ["cti_ai_order", _order]};
-	if (typeName _order_pos_new != "BOOL") then {_ai setVariable ["cti_ai_order_pos", _order_pos_new]};
+	if !(_order isEqualTo (_ai getVariable "cti_ai_order")) then {_ai setVariable ["cti_ai_order", _order]};
+	if !(typeName _order_pos_new isEqualTo "BOOL") then {_ai setVariable ["cti_ai_order_pos", _order_pos_new]};
 };
 
 CTI_UI_AIMicromanagement_GetEffectiveUnits = {

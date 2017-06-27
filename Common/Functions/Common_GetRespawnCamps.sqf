@@ -13,22 +13,19 @@
     2	[Group]: the unit's group
 	
   # RETURNED VALUE #
-	[Array]: The living units
+	[Array]: The available camps
 	
   # SYNTAX #
 	[CENTER, SIDE, GROUP] call CTI_CO_FNC_GetRespawnCamps
 	
   # EXAMPLE #
-    _camps = [deathpos, sideplayer, group player] call CTI_CO_FNC_GetRespawnCamps
+    _camps = [deathpos, side player, group player] call CTI_CO_FNC_GetRespawnCamps
 */
 
-private ["_camps", "_group", "_location", "_side", "_sideID"];
+params ["_location", "_sideID", "_group"];
+private ["_camps", "_side", "_town"];
 
-_location = _this select 0;
-_sideID = _this select 1;
-_group = _this select 2;
-
-if (typeName _sideID == "SIDE") then { _sideID = (_sideID) call CTI_CO_FNC_GetSideID };
+if (typeName _sideID isEqualTo "SIDE") then { _sideID = (_sideID) call CTI_CO_FNC_GetSideID };
 _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 
 _camps = [];
@@ -36,6 +33,7 @@ _camps = [];
 //--- Determine the camp respawn mode
 switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS") do {
 	case 1: { //--- Classic Mode, get the closest town
+		private ["_cti_entities", "_list"];
 		_town = (_location) call CTI_CO_FNC_GetClosestTown;
 		if !(isNull _town) then {
 			if (_town distance _location <= CTI_RESPAWN_CAMPS_RANGE_CLASSIC) then { //--- Make sure that we're in range
@@ -53,11 +51,12 @@ switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS") do {
 	};
 	case 2: { //--- Enhanced Respawn, get the camps around the unit
 		//--- Retrieve the nearby towns (Camps enhanced range * 4)
+		private ["_cti_entities", "_list", "_towns_near"];
 		_towns_near = [_location, CTI_Towns, CTI_RESPAWN_CAMPS_RANGE_ENHANCED*4] call CTI_CO_FNC_GetEntitiesInRange;
 		
 		//--- Check the friendly camps of each nearby towns
 		{
-			_list = [_town, _sideID] call CTI_CO_FNC_GetTownCampsOnSide;
+			_list = [_x, _sideID] call CTI_CO_FNC_GetTownCampsOnSide;
 			{
 				if (_x distance _location <= CTI_RESPAWN_CAMPS_RANGE_ENHANCED) then {
 					if (CTI_RESPAWN_CAMPS_SAFE_RANGE > 0) then { //--- Safeguard? check for enemies around the camps
@@ -74,15 +73,18 @@ switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS") do {
 
 //--- Check the camp condition if needed, default is unlimited
 if ((missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") > 0) then {
+	private ["_list"];
 	_list = [];
+	
 	{
 		switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") do {
 			case 1: { //--- Priced
+				private ["_coefficient", "_funds", "_price"];
 				_town = _x getVariable "cti_camp_town";
-				_coefficient = if (_town getVariable "cti_town_sideID" == _sideID) then {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_FRIENDLY} else {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_ENEMY};
+				_coefficient = [CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_ENEMY, CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_FRIENDLY] select (_town getVariable "cti_town_sideID" isEqualTo _sideID);
 				_price = round((_town getVariable "cti_town_sv") * _coefficient);
 				
-				_funds = (_group) Call CTI_CO_FNC_GetFunds;
+				_funds = (_group) call CTI_CO_FNC_GetFunds;
 				if (_funds >= _price) then {_list pushBack _x};
 			};
 			case 2: { //--- Limited

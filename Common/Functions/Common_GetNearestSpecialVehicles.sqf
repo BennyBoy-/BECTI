@@ -22,19 +22,16 @@
     _vehicles = [vehicle player, CTI_SPECIAL_REPAIRTRUCK, 100] call CTI_CO_FNC_GetNearestSpecialVehicles;
 */
 
-private ["_available", "_range", "_structures", "_type", "_unit"];
-
-_unit = _this select 0;
-_type = _this select 1;
-_range = _this select 2;
+params ["_center", "_type", "_range"];
+private ["_available", "_spec"];
 
 _available = [];
 {
 	if !(isNil {_x getVariable "cti_spec"}) then {
 		_spec = _x getVariable "cti_spec";
-		if (typeName _spec != "ARRAY") then {_spec = [_spec]};
+		if !(typeName _spec isEqualTo "ARRAY") then {_spec = [_spec]};
 		if (_type in _spec && getPos _x select 2 < 5) then {_available pushBack _x};
 	};
-} forEach (_unit nearEntities [["Car", "Ship", "Motorcycle", "Tank", "Air"], _range]);
+} forEach (_center nearEntities [["Car", "Ship", "Motorcycle", "Tank", "Air"], _range]);
 
 _available

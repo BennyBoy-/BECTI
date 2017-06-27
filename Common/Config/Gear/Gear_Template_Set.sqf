@@ -19,8 +19,8 @@ _formated = [];
 	} forEach (_x call CTI_CO_FNC_ConvertGearToFlat);
 	
 	{
-		if (_x select 0 != "") then {
-			if (_label != "") then { _label = _label + " | " };
+		if !((_x select 0) isEqualTo "") then {
+			if !(_label isEqualTo "") then { _label = _label + " | " };
 			_label = _label + getText(configFile >> "CfgWeapons" >> (_x select 0) >> "displayName");
 			if !(_haspic) then { _picture = getText(configFile >> "CfgWeapons" >> (_x select 0) >> "picture"); _haspic = true};
 		};

@@ -15,7 +15,7 @@ for '_i' from 0 to count(_levels)-1 do {_values pushBack []};
 	_upgrade = _x select 0;
 	_level = _x select 1;
 	if (_enabled select _upgrade) then {
-		if !(_level in (_values select _upgrade)) then {_values set [_upgrade, (_values select _upgrade) + [_level]]};
+		if !(_level in (_values select _upgrade)) then {(_values select _upgrade) pushBack _level};
 	};
 } forEach _orders;
 

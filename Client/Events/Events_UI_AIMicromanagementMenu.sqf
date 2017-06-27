@@ -43,7 +43,7 @@ switch (_action) do {
 					
 					{[_x, _order, [0,0]] call CTI_UI_AIMicromanagement_TrySetOrder} forEach _units_effective; //--- Assign a new order
 				};
-				case (_order == CTI_ORDER_CLIENT_MOVE): {
+				case (_order isEqualTo CTI_ORDER_CLIENT_MOVE): {
 					uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick", true];
 					((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270013) ctrlSetStructuredText parseText format["<t color='#efa12b' align='center'>Click on the map to terminate the order assignment</t>"];
 				};
@@ -76,7 +76,7 @@ switch (_action) do {
 				if !(alive _target) exitWith {_setposition = false};
 			};
 			
-			_posto = if (_setposition) then {_target} else {false};
+			_posto = [false, _target] select (_setposition);
 			
 			(_units_effective) call CTI_UI_AIMicromanagement_UnregisterFormation; //--- Unregister the previous members if needed
 			if (count _units_effective > 1) then {(_units_effective) call CTI_UI_AIMicromanagement_SetFormation}; //--- Register the new members
@@ -101,7 +101,7 @@ switch (_action) do {
 		_my = _event select 3;
 		_ctrl = _event select 5;
 		
-		if (_button == 0 && uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick") then {
+		if (_button isEqualTo 0 && uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick") then {
 			uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick", false];
 			if !(_ctrl) then {((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270013) ctrlSetStructuredText parseText ""};
 			
@@ -130,7 +130,7 @@ switch (_action) do {
 								};
 							};
 						};
-						case (_order == CTI_ORDER_CLIENT_HOLDTOWNSBASE): {
+						case (_order isEqualTo CTI_ORDER_CLIENT_HOLDTOWNSBASE): {
 							_closest_town = [_mappos, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestFriendlyTown;
 							_list = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 							if !(isNull _closest_town) then {_list pushBack _closest_town}; //--- Add the closest town
@@ -144,10 +144,10 @@ switch (_action) do {
 								};
 							};
 						};
-						case (_order == CTI_ORDER_CLIENT_MOVE): {
+						case (_order isEqualTo CTI_ORDER_CLIENT_MOVE): {
 							if (_ctrl || count(uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick_queued") > 0) then { //--- Order queued? (todo later move to the general scope)
 								uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick", true];
-								uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick_queued", (uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick_queued") + [_mappos]];
+								(uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick_queued") pushBack _mappos;
 							};
 							
 							if !(_ctrl) then { //--- Ctrl released
@@ -163,10 +163,10 @@ switch (_action) do {
 								uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick_queued", []];
 							};
 						};
-						case (_order == CTI_ORDER_CLIENT_PATROL): {
+						case (_order isEqualTo CTI_ORDER_CLIENT_PATROL): {
 							if (_ctrl || count(uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick_queued") > 0) then { //--- Order queued? (todo later move to the general scope)
 								uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick", true];
-								uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick_queued", (uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick_queued") + [_mappos]];
+								(uiNamespace getVariable "cti_dialog_ui_aimicromenu_mapclick_queued") pushBack _mappos;
 							};
 							
 							if !(_ctrl) then { //--- Ctrl released
@@ -195,7 +195,7 @@ switch (_action) do {
 			{
 				_value = ((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270002) lbValue _x;
 				_who = (uiNamespace getVariable "cti_dialog_ui_aimicromenu_units") select _value;
-				if (_who == effectiveCommander vehicle _who && vehicle _who != _who) then {(vehicle _who) setDammage 1};
+				if (_who isEqualTo effectiveCommander vehicle _who && !(vehicle _who isEqualTo _who)) then {(vehicle _who) setDammage 1};
 				_who setDammage 1;
 			} forEach _selection;
 			{((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270002) lbDelete _x} forEach _selection;

@@ -27,14 +27,6 @@ switch (_action) do {
 			if !(isPlayer leader _who) then {_who = grpNull}; //--- Non player vote = ai/null com
 		};
 		
-		_current_vote = group player getVariable "cti_vote";
-		_vote_update = false;
-		
-		if (isNull _who && !isNull _current_vote || !isNull _who && isNull _current_vote) then {_vote_update = true};
-		if (!isNull _who && !isNull _current_vote) then {
-			if (_who != _current_vote) then {_vote_update = true};
-		};
-		
-		if (_vote_update) then {group player setVariable ["cti_vote", _who, true]};
+		if !(_who isEqualTo (group player getVariable "cti_vote")) then {group player setVariable ["cti_vote", _who, true]};
 	};
 };

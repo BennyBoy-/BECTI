@@ -31,8 +31,8 @@ link12[] = {10,11};
 link13[] = {11,12};
 link14[] = {12,7};
 link15[] = {13,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-641.318481,256.740845,125.281189,-570.734009,947,911,1};
-window[] = {2,-1,-1,-1,-1,856,75,1330,75,3,965};
+globals[] = {25.000000,1,0,0,0,640,480,1,170,6316128,1,-585.367615,312.691833,117.694641,-578.320496,947,910,1};
+window[] = {2,-1,-1,-1,-1,911,-1790,-535,130,3,965};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -68,18 +68,17 @@ class FSM
     {
       name = "Units_near_Camp";
       init = /*%FSM<STATEINIT""">*/"_sideID = _camp getVariable ""cti_camp_sideID"";" \n
-       "_side = (_sideID) Call CTI_CO_FNC_GetSideFromID;" \n
+       "_side = (_sideID) call CTI_CO_FNC_GetSideFromID;" \n
        "_town_local = (_town getVariable [""cti_town_occupation_groups"", []]) + (_town getVariable [""cti_town_resistance_groups"", []]);" \n
-       "// _objects = _camp nearEntities [""Man"", CTI_TOWNS_CAMPS_CAPTURE_RANGE];" \n
        "" \n
-       "_objects = [];" \n
-       "switch (CTI_TOWNS_CAPTURE_DETECTION_MODE) do {" \n
-       "	case 1: {{if (_x distance _camp <= CTI_TOWNS_CAMPS_CAPTURE_RANGE) then {_objects pushBack _x}} forEach allPlayers};" \n
-       "	case 2: {{if (_x distance _camp <= CTI_TOWNS_CAMPS_CAPTURE_RANGE) then {_objects pushBack _x}} forEach (playableUnits + switchableUnits)};" \n
-       "	default {_objects = _camp nearEntities [""Man"", CTI_TOWNS_CAMPS_CAPTURE_RANGE]};" \n
+       "//--- Retrieve the units next to the camp based on the detection mode" \n
+       "_objects = switch (CTI_TOWNS_CAPTURE_DETECTION_MODE) do {" \n
+       "	case 1: {allPlayers select {_x distance _camp <= CTI_TOWNS_CAMPS_CAPTURE_RANGE}}; //--- Players only" \n
+       "	case 2: {(playableUnits + switchableUnits) select {_x distance _camp <= CTI_TOWNS_CAMPS_CAPTURE_RANGE}}; //--- Playable units only" \n
+       "	default {_camp nearEntities [""Man"", CTI_TOWNS_CAMPS_CAPTURE_RANGE]}; //--- Everyone" \n
        "};" \n
        "" \n
-       "//--- Add the town's local AI if needed." \n
+       "//--- Add the town's local AI if needed (with an increased range)" \n
        "{if (((ASLToAGL getPosASL _x) select 2) <= 30 && group _x in _town_local && !(_x in _objects)) then {_objects pushBack _x}} forEach (_camp nearEntities [""AllVehicles"", CTI_TOWNS_CAMPS_CAPTURE_RANGE_TOWN_AI]);" \n
        "" \n
        "_west = west countSide _objects;" \n
@@ -105,7 +104,7 @@ class FSM
           priority = 2.000000;
           to="Skip";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _west == 0 && _east == 0 && _resistance == 0"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _west isEqualTo 0 && _east isEqualTo 0 && _resistance isEqualTo 0"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -168,18 +167,18 @@ class FSM
     class Check_Capture
     {
       name = "Check_Capture";
-      init = /*%FSM<STATEINIT""">*/"_resistanceDominion = if (_resistance > _east && _resistance > _west) then {true} else {false};" \n
-       "_westDominion = if (_west > _east && _west > _resistance) then {true} else {false};" \n
-       "_eastDominion = if (_east > _west && _east > _resistance) then {true} else {false};" \n
+      init = /*%FSM<STATEINIT""">*/"_resistanceDominion = [false, true] select (_resistance > _east && _resistance > _west);" \n
+       "_westDominion = [false, true] select (_west > _east && _west > _resistance);" \n
+       "_eastDominion = [false, true] select (_east > _west && _east > _resistance);" \n
        "" \n
        "_force = switch (true) do { case _resistanceDominion: { resistance }; case _westDominion: { west }; case _eastDominion: { east }; default { civilian } };" \n
        "_forceCount = switch (true) do { case _resistanceDominion: { _resistance }; case _westDominion: { _west }; case _eastDominion: { _east }; default { 0 } };" \n
        "" \n
        "_captured = false;" \n
-       "if (_force != civilian) then {" \n
+       "if !(_force isEqualTo civilian) then {" \n
        "	_supply = _camp getVariable ""cti_camp_sv"";" \n
        "	" \n
-       "	if (_side == _force) then { //--- Protect" \n
+       "	if (_side isEqualTo _force) then { //--- Protect" \n
        "		_supply = _supply + (_forceCount * CTI_TOWNS_CAMPS_CAPTURE_RATE);" \n
        "		if (_supply > (_town getVariable ""cti_town_sv"")) then { _supply = _town getVariable ""cti_town_sv"" };" \n
        "	} else { //--- Capture" \n
@@ -196,7 +195,7 @@ class FSM
        "		};" \n
        "	};" \n
        "	" \n
-       "	if (_supply != (_camp getVariable ""cti_camp_sv"")) then {_camp setVariable [""cti_camp_sv"", _supply, true]};" \n
+       "	if !(_supply isEqualTo (_camp getVariable ""cti_camp_sv"")) then {_camp setVariable [""cti_camp_sv"", _supply, true]};" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links

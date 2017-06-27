@@ -32,28 +32,18 @@
   # EXAMPLE #
     [player, "b_inf", "ColorGreen", [0.75,0.75], "Me on the Map", "MySuperMarker1", .96] spawn CTI_CO_FNC_MarkerUpdate
 	  -> Track the player until it's death with the marker "MySuperMarker1", refresh each 0.96 ms
-    [player, "b_inf", "ColorGreen", [0.75,0.75], "Me on the Map", "MySuperMarker1", .96, "b_unknown", [0.75,0.75], "ColorBlack"] spawn CTI_CO_FNC_MarkerUpdate
+    [player, "b_inf", "ColorGreen", [0.75,0.75], "Me on the Map", "MySuperMarker1", .96, "b_unknown", "ColorBlack", [0.75,0.75]] spawn CTI_CO_FNC_MarkerUpdate
 	  -> Track the player until it's death with the marker "MySuperMarker1", refresh each 0.96 ms and keep a dead marker on death for x seconds
 */
 
-private ["_marker_color", "_marker_dead_color", "_marker_dead_size", "_marker_dead_type", "_marker_label", "_marker_name", "_marker_size", "_marker_type", "_target", "_type", "_update_delay"];
-
-_target = _this select 0;
-_marker_type = _this select 1;
-_marker_color = _this select 2;
-_marker_size = _this select 3;
-_marker_label = _this select 4;
-_marker_name = _this select 5;
-_update_delay = _this select 6;
-_marker_dead_type = if (count _this > 7) then {_this select 7} else {""};
-_marker_dead_color = if (count _this > 8) then {_this select 8} else {""};
-_marker_dead_size = if (count _this > 9) then {_this select 9} else {""};
+params ["_target", "_marker_type", "_marker_color", "_marker_size", "_marker_label", "_marker_name", "_update_delay", ["_marker_dead_type", ""], ["_marker_dead_color", "ColorBlack"], ["_marker_dead_size", [1,1]]];
+private ["_delay", "_type"];
 
 if !(alive _target) exitWith {};
 _type = typeOf _target;
 
 createMarkerLocal [_marker_name,visiblePosition _target];
-if (_marker_label != "") then {_marker_name setMarkerTextLocal _marker_label};
+if !(_marker_label isEqualTo "") then {_marker_name setMarkerTextLocal _marker_label};
 _marker_name setMarkerTypeLocal _marker_type;
 _marker_name setMarkerColorLocal _marker_color;
 _marker_name setMarkerSizeLocal _marker_size;
@@ -63,12 +53,12 @@ while {alive _target} do {
 	sleep _update_delay;
 };
 
-if (_marker_dead_type != "" && !(isNull _target)) then {
+if (!(_marker_dead_type isEqualTo "") && !(isNull _target)) then {
 	_marker_name setMarkerTypeLocal _marker_dead_type;
 	_marker_name setMarkerColorLocal _marker_dead_color;
 	_marker_name setMarkerSizeLocal _marker_dead_size;
 	
-	_delay = if (_type isKindOf "Man") then {CTI_MARKERS_UNITS_DEAD_DELAY} else {CTI_MARKERS_VEHICLES_DEAD_DELAY};
+	_delay = [CTI_MARKERS_VEHICLES_DEAD_DELAY, CTI_MARKERS_UNITS_DEAD_DELAY] select (_type isKindOf "Man");
 	sleep _delay;
 };
 

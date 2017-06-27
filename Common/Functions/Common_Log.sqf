@@ -22,10 +22,6 @@
    ["DEBUG", "Common\Functions\Common_Log.sqf", "McFly can't fly"] call CTI_CO_FNC_Log
 */
 
-private ["_log_content", "_log_from", "_log_type"];
-
-_log_type = _this select 0;
-_log_from = _this select 1;
-_log_content = _this select 2;
+params ["_log_type", "_log_from", "_log_content"];
 
 diag_log format["[CTI (%1)] [frameno:%2 | ticktime:%3 | fps:%4] [%5] %6", _log_type, diag_frameno, diag_tickTime, diag_fps, _log_from, _log_content]

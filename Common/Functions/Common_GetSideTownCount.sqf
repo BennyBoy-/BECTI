@@ -24,10 +24,8 @@
 	  -> Return the towns count owned by West
 */
 
-private["_sideID"];
+params ["_sideID"];
 
-_sideID = _this;
+if (typeName _sideID isEqualTo "SIDE") then { _sideID = _this call CTI_CO_FNC_GetSideID };
 
-if (typeName _sideID == "SIDE") then { _sideID = _this call CTI_CO_FNC_GetSideID };
-
-{(_x getVariable "cti_town_sideID") == _sideID} count CTI_Towns
+{(_x getVariable "cti_town_sideID") isEqualTo _sideID} count CTI_Towns

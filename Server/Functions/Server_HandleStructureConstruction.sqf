@@ -35,16 +35,10 @@
     [_side, _structure, _variable, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
 */
 
-private ["_completion", "_completion_ratio", "_completion_last", "_direction", "_isDestroyed", "_lasttouch", "_position", "_side", "_structure", "_time_build", "_var", "_variable"];
+params ["_side", "_structure", "_variable", "_position", "_direction", ["_isDestroyed", false]];
+private ["_completion", "_completion_ratio", "_completion_last", "_lasttouch", "_sideID", "_time_build", "_var"];
 
-_side = _this select 0;
-_side_id= (_side) call CTI_CO_FNC_GetSideID;
-_structure = _this select 1;
-_variable = _this select 2;
-_position = _this select 3;
-_direction = _this select 4;
-_isDestroyed = if (count _this > 5) then {_this select 5} else {false};
-
+_sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 if (CTI_DEBUG) then {_structure setVariable ["cti_completion", 100]};
 waitUntil {!isNil {_structure getVariable "cti_completion"}};
@@ -60,7 +54,7 @@ switch (missionNamespace getVariable "CTI_BASE_CONSTRUCTION_MODE") do {
 		if !(CTI_DEBUG) then { sleep _time_build }; //this timer determines how long it takes for the structure to pop up, ss83
 		
 		//--- Upon destruction, a structure is no longer valid in a timed-based situation
-		_completion = if (_isDestroyed) then {0} else {100};
+		_completion = [100, 0] select (_isDestroyed);
 	};
 	case 1: { //--- Worker Based
 		_lasttouch = time;
@@ -119,17 +113,19 @@ if (_completion >= 100) then { //--- The structure is complete
 	{if ("DMG_Alternative" in _x) then {_alternative_damages = true}; if ("DMG_Reduce" in _x) then {_reduce_damages = _x select 1}} forEach (_var select CTI_STRUCTURE_SPECIALS);
 	if (_alternative_damages) then {
 		_structure setVariable ["cti_altdmg", 0];
-		_structure addEventHandler ["handledamage", format ["[_this select 0, _this select 2, _this select 3, '%1', %2, %3, %4, %5, %6] call CTI_SE_FNC_OnBuildingHandleVirtualDamage", _variable, (_side) call CTI_CO_FNC_GetSideID, _position, _direction, _completion_ratio, _reduce_damages]];
+		_structure addEventHandler ["handledamage", format ["[_this select 0, _this select 2, _this select 3, '%1', %2, %3, %4, %5, %6] call CTI_SE_FNC_OnBuildingHandleVirtualDamage", _variable, _sideID, _position, _direction, _completion_ratio, _reduce_damages]];
 	} else {
-		_structure addEventHandler ["killed", format ["[_this select 0, _this select 1, '%1', %2, %3, %4, %5] spawn CTI_SE_FNC_OnBuildingDestroyed", _variable, (_side) call CTI_CO_FNC_GetSideID, _position, _direction, _completion_ratio]];
-		if (_reduce_damages > 0 || CTI_BASE_NOOBPROTECTION == 1) then {
-			_structure addEventHandler ["handledamage", format ["[_this select 0, _this select 2, _this select 3, %1, %2, '%3', %4] call CTI_SE_FNC_OnBuildingHandleDamage", (_side) call CTI_CO_FNC_GetSideID, _reduce_damages, _variable, _position]];
+		_structure addEventHandler ["killed", format ["[_this select 0, _this select 1, '%1', %2, %3, %4, %5] spawn CTI_SE_FNC_OnBuildingDestroyed", _variable, _sideID, _position, _direction, _completion_ratio]];
+		if (_reduce_damages > 0 || CTI_BASE_NOOBPROTECTION isEqualTo 1) then {
+			_structure addEventHandler ["handledamage", format ["[_this select 0, _this select 2, _this select 3, %1, %2, '%3', %4] call CTI_SE_FNC_OnBuildingHandleDamage", _sideID, _reduce_damages, _variable, _position]];
 		} else {
-			_structure addEventHandler ["hit", format ["[_this select 0, _this select 2, %1, '%2', %3] spawn CTI_SE_FNC_OnBuildingHit", (_side) call CTI_CO_FNC_GetSideID, _variable, _position]];
+			_structure addEventHandler ["hit", format ["[_this select 0, _this select 2, %1, '%2', %3] spawn CTI_SE_FNC_OnBuildingHit", _sideID, _variable, _position]];
 		};
 	};
 
-	_logic setVariable ["cti_structures", (_logic getVariable "cti_structures") + [_structure], true];
+	_structures = _logic getVariable "cti_structures";
+	_structures pushBack _structure;
+	_logic setVariable ["cti_structures", _structures, true];
 
 	[_structure, _var, _side] call CTI_SE_FNC_InitializeStructure;
 	
@@ -178,5 +174,5 @@ if (_completion >= 100) then { //--- The structure is complete
 	//todo: add message bout structure expiration
 };
 
-//Admin Zeus
-if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_structure],true];};
+//--- ZEUS Curator Editable
+if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_structure],true]};

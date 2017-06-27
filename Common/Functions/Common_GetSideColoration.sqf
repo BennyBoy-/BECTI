@@ -21,7 +21,7 @@
 	  -> Return the color assigned to CTI_WEST_COLOR
 */
 
-if (typeName _this != "SIDE") exitWith {""};
+if !(typeName _this isEqualTo "SIDE") exitWith {""};
 
 switch (_this) do {
 	case west: {CTI_WEST_COLOR};

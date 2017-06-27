@@ -39,10 +39,9 @@
 	  -> Will spawn West defense forces for Town0
 */
 
-private ["_groups", "_pool", "_pool_units", "_positions", "_side", "_sideID", "_teams", "_totalGroups", "_town", "_upgrade", "_value", "_vehicles"];
+params ["_town", "_side"];
+private ["_groups", "_pool", "_pool_units", "_positions", "_sideID", "_teams", "_totalGroups", "_upgrade", "_value", "_vehicles"];
 
-_town = _this select 0;
-_side = _this select 1;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 _upgrade = (_side call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_TOWNS;
 
@@ -364,7 +363,7 @@ while {_totalGroups > 0} do {
 		_team = _x;
 		
 		//--- If nested, pick a random element
-		if (typeName(_team select 0) == "ARRAY") then {
+		if (typeName(_team select 0) isEqualTo "ARRAY") then {
 			_team = _team select floor(random count _team);
 		};
 		
@@ -372,7 +371,7 @@ while {_totalGroups > 0} do {
 		_probability = _team select 1;
 		
 		_can_use = true;
-		if (_probability != 100) then {
+		if !(_probability isEqualTo 100) then {
 			if (random 100 > _probability) then { _can_use = false };
 		};
 		
@@ -403,7 +402,7 @@ if (count _positions_building > 0) then {_positions_building = _positions_buildi
 	if (isNil {_town getVariable "cti_naval"}) then { //--- The town is on the ground
 		if (count _camps > 0 && random 100 > 40) then { //--- A camp can be selected for spawning units
 			_camp_index = floor(random count _camps);
-			_position = [ASLToAGL getPosASL(_camps select _camp_index), 10, CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS, 10, if (_has_vehicles) then {"vehicles"} else {"infantry"}] call CTI_CO_FNC_GetSafePosition;
+			_position = [ASLToAGL getPosASL(_camps select _camp_index), 10, CTI_TOWNS_OCCUPATION_SPAWN_RANGE_CAMPS, 10, (["infantry", "vehicles"] select (_has_vehicles))] call CTI_CO_FNC_GetSafePosition;
 			_camps deleteAt _camp_index;
 		} else { //--- Pick a random position
 			_use_default = true;
@@ -419,7 +418,7 @@ if (count _positions_building > 0) then {_positions_building = _positions_buildi
 			};
 			
 			if (_use_default) then { //--- Default spawn area, pick a safe area around the town
-				_position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE, 15, if (_has_vehicles) then {"vehicles"} else {"infantry"}] call CTI_CO_FNC_GetSafePosition;
+				_position = [ASLToAGL getPosASL _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE, 15, (["infantry", "vehicles"] select (_has_vehicles))] call CTI_CO_FNC_GetSafePosition;
 			};
 		};
 	} else { //--- The town is naval

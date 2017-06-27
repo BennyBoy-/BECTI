@@ -57,11 +57,11 @@ class FSM
        "	_factories = 0;" \n
        "	{_factories = _factories + count([_x, _structures] call CTI_CO_FNC_GetSideStructuresByType)} forEach (missionNamespace getVariable format[""CTI_%1_Factories"", _side]);" \n
        "	" \n
-       "	if (!(alive _hq) && _factories == 0 && !CTI_GameOver) exitWith {" \n
+       "	if (!(alive _hq) && _factories isEqualTo 0 && !CTI_GameOver) exitWith {" \n
        "		[_x, ""loose""] remoteExec [""CTI_PVF_CLT_OnMissionEnding"", CTI_PV_CLIENTS];" \n
        "		CTI_GameOver = true;" \n
        "	};" \n
-       "	if (_towns == _total && !CTI_GameOver) exitWith {" \n
+       "	if (_towns isEqualTo _total && !CTI_GameOver) exitWith {" \n
        "		[_x, ""win""] remoteExec [""CTI_PVF_CLT_OnMissionEnding"", CTI_PV_CLIENTS];" \n
        "		CTI_GameOver = true;" \n
        "	};" \n

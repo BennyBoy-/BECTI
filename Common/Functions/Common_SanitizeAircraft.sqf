@@ -29,10 +29,8 @@
 	  -> Sanitize the player's vehicle depending on the upgrade levels/parameters
 */
 
-private ["_side", "_vehicle", "_upgrades"];
-
-_vehicle = _this select 0;
-_side = _this select 1;
+params ["_vehicle", "_side"];
+private ["_upgrades"];
 
 _upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
 

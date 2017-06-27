@@ -24,12 +24,8 @@
     _has_barracks = [west, CTI_BARRACKS] call CTI_CO_FNC_HasStructure;
 */
 
-private ["_center", "_distance", "_has_structure", "_side", "_structure_type", "_structures"];
-
-_side = _this select 0;
-_structure_type = _this select 1;
-_center = if (count _this > 2) then {_this select 2} else {false};
-_distance = if (count _this > 3) then {_this select 3} else {650};
+params ["_side", "_structure_type", ["_center", false], ["_distance", 650]];
+private ["_has_structure", "_structure", "_structures"];
 
 _has_structure = false;
 
@@ -39,7 +35,7 @@ _structures = [_structure_type, _structures] call CTI_CO_FNC_GetSideStructuresBy
 //--- Don't bother if we have nothing
 if (count _structures > 0) then {
 	//--- Check whether we have to filter or not with the distance
-	if (typeName _center != "BOOL") then {
+	if !(typeName _center isEqualTo "BOOL") then {
 		_structure = [_structure_type, _center, _structures, _distance] call CTI_CO_FNC_GetClosestStructure;
 		if !(isNull _structure) then {_has_structure = true};
 	} else {

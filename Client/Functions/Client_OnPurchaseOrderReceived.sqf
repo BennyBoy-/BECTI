@@ -34,13 +34,8 @@
 	[_seed, _classname, group player, _veh_infos, _factory] spawn CTI_CL_FNC_OnPurchaseOrderReceived
 */
 
-private ["_cost", "_factory", "_funds", "_index", "_model", "_net", "_req_buyer", "_req_classname", "_req_seed", "_req_time", "_req_time_out", "_script", "_var", "_var_classname", "_vehicle", "_veh_infos"];
-
-_req_seed = _this select 0;
-_req_classname = _this select 1;
-_req_buyer = _this select 2;
-_factory = _this select 3;
-_veh_infos = _this select 4;
+params ["_req_seed", "_req_classname", "_req_buyer", "_factory", "_veh_infos"];
+private ["_cost", "_funds", "_index", "_model", "_net", "_req_time", "_req_time_out", "_script", "_var", "_var_classname", "_vehicle"];
 
 _model = _req_classname;
 _var_classname = missionNamespace getVariable _req_classname;
@@ -48,14 +43,14 @@ _var_classname = missionNamespace getVariable _req_classname;
 //--- Custom vehicle?
 _script = _var_classname select CTI_UNIT_SCRIPT;
 _customid = -1;
-if (typeName (_var_classname select CTI_UNIT_SCRIPT) == "ARRAY") then { _model = (_var_classname select CTI_UNIT_SCRIPT) select 0; _script = (_var_classname select CTI_UNIT_SCRIPT) select 1; _customid = (_var_classname select CTI_UNIT_SCRIPT) select 2};
+if (typeName (_var_classname select CTI_UNIT_SCRIPT) isEqualTo "ARRAY") then { _model = (_var_classname select CTI_UNIT_SCRIPT) select 0; _script = (_var_classname select CTI_UNIT_SCRIPT) select 1; _customid = (_var_classname select CTI_UNIT_SCRIPT) select 2};
 
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\Functions\Client_OnPurchaseOrderReceived.sqf", format["Received purchase order concerning classname [%1] with seed [%2] from [%3] on factory [%4, (%5)]", _req_classname, _req_seed, _req_buyer, _factory, _factory getVariable ["cti_structure_type", "Depot"]]] call CTI_CO_FNC_Log };
 
 //--- Find the current request among our requests
 _index = -1;
-{ if ((_x select 0) == _req_seed && (_x select 1) == _req_classname) exitWith {_index = _forEachIndex} } forEach CTI_P_PurchaseRequests;
-if (_index == -1) exitWith { diag_log "debug: unknown index in onpurchaseorderreceived" }; //todo better msg.
+{ if ((_x select 0) isEqualTo _req_seed && (_x select 1) isEqualTo _req_classname) exitWith {_index = _forEachIndex} } forEach CTI_P_PurchaseRequests;
+if (_index isEqualTo -1) exitWith { diag_log "debug: unknown index in onpurchaseorderreceived" }; //todo better msg.
 
 // CTI_P_PurchaseRequests set [_index, "!REMOVE!"];
 // CTI_P_PurchaseRequests = CTI_P_PurchaseRequests - ["!REMOVE!"];
@@ -81,7 +76,7 @@ if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	
 	//--- Ultimately if we're dealing with a sub we may want to use divers unless that our current soldiers are free-diving champions
 	if (_model isKindOf "Ship") then {
-		if (getText(configFile >> "CfgVehicles" >> _model >> "simulation") == "submarinex") then { _crew = missionNamespace getVariable format["CTI_%1_Diver", CTI_P_SideJoined] };
+		if (getText(configFile >> "CfgVehicles" >> _model >> "simulation") isEqualTo "submarinex") then { _crew = missionNamespace getVariable format["CTI_%1_Diver", CTI_P_SideJoined] };
 	};
 	
 	_var_crew_classname = missionNamespace getVariable _crew;
@@ -89,7 +84,7 @@ if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 		for '_i' from 0 to 2 do { if (_veh_infos select _i) then { _cost = _cost + (_var_crew_classname select CTI_UNIT_PRICE) } };
 		
 		if (_veh_infos select 3) then { //--- Turrets
-			{ if (count _x == 1) then { _cost = _cost + (_var_crew_classname select CTI_UNIT_PRICE) } } forEach (_var_classname select CTI_UNIT_TURRETS);
+			{ if (count _x isEqualTo 1) then { _cost = _cost + (_var_crew_classname select CTI_UNIT_PRICE) } } forEach (_var_classname select CTI_UNIT_TURRETS);
 		};
 	};
 };
@@ -126,7 +121,7 @@ if (count _var > 0) then {
 
 _position = _factory modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
 _position set [2, .5];
-_net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then { true } else { false };
+_net = [false, true] select ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") isEqualTo 1);
 _vehicle = objNull;
 _units = [];
 
@@ -142,7 +137,7 @@ if (_model isKindOf "Man") then {
 		
 		//--- Ultimately if we're dealing with a sub we may want to use divers unless that our current soldiers are free-diving champions
 		if (_model isKindOf "Ship") then {
-			if (getText(configFile >> "CfgVehicles" >> _model >> "simulation") == "submarinex") then { _crew = missionNamespace getVariable format["CTI_%1_Diver", CTI_P_SideJoined] };
+			if (getText(configFile >> "CfgVehicles" >> _model >> "simulation") isEqualTo "submarinex") then { _crew = missionNamespace getVariable format["CTI_%1_Diver", CTI_P_SideJoined] };
 		};
 		
 		if (_veh_infos select 0) then {
@@ -152,13 +147,13 @@ if (_model isKindOf "Man") then {
 		};
 		
 		{
-			if (count _x == 1 && _veh_infos select 3) then {
+			if (count _x isEqualTo 1 && _veh_infos select 3) then {
 				_unit = [_crew, group player, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit;
 				_unit moveInTurret [_vehicle, (_x select 0)];
 				_units pushBack _unit;
 			}; //--- Turret
 			
-			if (count _x == 2) then {
+			if (count _x isEqualTo 2) then {
 				switch (_x select 1) do {
 					case "Gunner": { if (_veh_infos select 1) then { _unit = [_crew, group player, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit; _unit moveInTurret [_vehicle, (_x select 0)]; _units pushBack _unit; }};
 					case "Commander": { if (_veh_infos select 2) then { _unit = [_crew, group player, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit; _unit moveInTurret [_vehicle, (_x select 0)]; _units pushBack _unit; }};
@@ -167,8 +162,8 @@ if (_model isKindOf "Man") then {
 		} forEach (_var_classname select CTI_UNIT_TURRETS);
 	};
 	
-	_vehicle addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 2'];
-	_vehicle addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 0'];
+	_vehicle addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target isEqualTo 2'];
+	_vehicle addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target isEqualTo 0'];
 	
 	player reveal _vehicle;
 	
@@ -176,7 +171,7 @@ if (_model isKindOf "Man") then {
 	if (_vehicle isKindOf "Air") then {[_vehicle, CTI_P_SideJoined] call CTI_CO_FNC_SanitizeAircraft};
 	
 	//--- Sanitize the artillery loadout, mines may lag the server for instance
-	if (CTI_ARTILLERY_FILTER == 1) then {if (_model in (missionNamespace getVariable ["CTI_ARTILLERY", []])) then {(_vehicle) call CTI_CO_FNC_SanitizeArtillery}};
+	if (CTI_ARTILLERY_FILTER isEqualTo 1) then {if (_model in (missionNamespace getVariable ["CTI_ARTILLERY", []])) then {(_vehicle) call CTI_CO_FNC_SanitizeArtillery}};
 	
 	//--- Track this vehicle
 	(_vehicle) remoteExec ["CTI_PVF_SRV_RequestHandleEmptyVehicles", CTI_PV_SERVER];
@@ -196,13 +191,13 @@ if !(isNil "ADMIN_ZEUS") then {
 	};
 };
 
-if (_script != "" && alive _vehicle) then {
+if (!(_script isEqualTo "") && alive _vehicle) then {
 	[_vehicle, CTI_P_SideJoined, _script] spawn CTI_CO_FNC_InitializeCustomVehicle;
 	if (_customid > -1) then {_vehicle setVariable ["cti_customid", _customid, true]};
 };
 
 //--- Notify the current client
-_picture = if ((_var_classname select CTI_UNIT_PICTURE) != "") then {format["<img image='%1' size='2.5'/><br /><br />", _var_classname select CTI_UNIT_PICTURE]} else {""};
+_picture = if !((_var_classname select CTI_UNIT_PICTURE) isEqualTo "") then {format["<img image='%1' size='2.5'/><br /><br />", _var_classname select CTI_UNIT_PICTURE]} else {""};
 hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />%4<t>Your <t color='#ccffaf'>%1</t> has arrived from the <t color='#fcffaf'>%2</t> at grid <t color='#beafff'>%3</t></t>", _var_classname select CTI_UNIT_LABEL, _factory_label, mapGridPosition _position, _picture];
 
 //--- send a notice to the server that our order is now complete

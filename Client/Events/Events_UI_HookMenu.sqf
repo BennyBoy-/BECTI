@@ -21,7 +21,7 @@ switch (_action) do {
 		if (isNil '_hooked') then {_hooked = objNull};
 		
 		_entities = [];
-		{if (getPos _x select 2 < 5 && speed _x < 10 && count crew _x == 0) then {_entities pushBack _x}} forEach (CTI_P_HookVehicle nearEntities [_list, 15]);
+		{if (getPos _x select 2 < 5 && speed _x < 10 && count crew _x isEqualTo 0) then {_entities pushBack _x}} forEach (CTI_P_HookVehicle nearEntities [_list, 15]);
 		_entities = _entities - [_hooked, CTI_P_HookVehicle];
 		uiNamespace setVariable ["cti_dialog_ui_hookmenu_list", _entities];
 		
@@ -52,8 +52,8 @@ switch (_action) do {
 			if !(_has_something) then {
 				_selected = (uiNamespace getVariable "cti_dialog_ui_hookmenu_list") select _selected;
 				if !(isNil '_selected') then {
-					_wreck_allow = if (typeOf CTI_P_HookVehicle in CTI_VEHICLES_HOOKERS_EX) then {true} else {false};
-					if (((alive _selected && !_wreck_allow) || _wreck_allow) && _selected distance CTI_P_HookVehicle <= 15 && count crew _selected == 0 && speed _selected < 10 && getPos _selected select 2 < 5 && local CTI_P_HookVehicle) then {
+					_wreck_allow = [false, true] select (typeOf CTI_P_HookVehicle in CTI_VEHICLES_HOOKERS_EX);
+					if (((alive _selected && !_wreck_allow) || _wreck_allow) && _selected distance CTI_P_HookVehicle <= 15 && count crew _selected isEqualTo 0 && speed _selected < 10 && getPos _selected select 2 < 5 && local CTI_P_HookVehicle) then {
 						CTI_P_HookVehicle setVariable ["cti_hooked", _selected, true];
 						[_selected, CTI_P_HookVehicle] spawn CTI_CL_FNC_HookVehicle;
 						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The vehicle has been attached";

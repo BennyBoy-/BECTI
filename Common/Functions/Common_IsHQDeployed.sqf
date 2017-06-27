@@ -21,7 +21,7 @@
 	  -> Return true if the West HQ is deployed
 */
 
-if (typeName _this != "SIDE") exitWith {false};
+if !(typeName _this isEqualTo "SIDE") exitWith {false};
 
 switch (_this) do {
 	case west: {CTI_WEST getVariable "cti_hq_deployed"};

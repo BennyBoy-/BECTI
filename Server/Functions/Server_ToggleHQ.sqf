@@ -24,14 +24,10 @@
 	  -> Will mobilize or deploy the HQ based on the given and global variable at the desired position
 */
 
-private ["_direction", "_hq", "_is_deployed", "_logic", "_position", "_side", "_sideID", "_structure_time", "_var", "_variable"];
+params ["_variable", "_side", "_position", "_direction"];
+private ["_hq", "_is_deployed", "_logic", "_sideID", "_structure_time", "_var"];
 
-_variable = _this select 0;
-_side = _this select 1;
-_position = _this select 2;
-_direction = _this select 3;
-
-_var = missionNamespace getVariable (_this select 0);
+_var = missionNamespace getVariable _variable;
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _is_deployed = (_side) call CTI_CO_FNC_IsHQDeployed;
@@ -69,7 +65,7 @@ if (((_var select CTI_STRUCTURE_LABELS) select 0) isEqualTo CTI_HQ_DEPLOY) then 
 		} else {
 			if (CTI_BASE_HQ_DAMAGES_TRANSFER > 0) then {_structure setDammage _damages};
 			_structure addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_SE_FNC_OnHQDestroyed", _sideID]];
-			if (_reduce_damages > 0 || CTI_BASE_NOOBPROTECTION == 1) then {
+			if (_reduce_damages > 0 || CTI_BASE_NOOBPROTECTION isEqualTo 1) then {
 				_structure addEventHandler ["handledamage", format ["[_this select 0, _this select 2, _this select 3, %1, %2, '%3', %4] call CTI_SE_FNC_OnBuildingHandleDamage", (_side) call CTI_CO_FNC_GetSideID, _reduce_damages, _variable, _position]];
 			} else {
 				_structure addEventHandler ["hit", format ["[_this select 0, _this select 2, %1, '%2', %3] spawn CTI_SE_FNC_OnBuildingHit", (_side) call CTI_CO_FNC_GetSideID, _variable, _position]];
@@ -95,7 +91,7 @@ if (((_var select CTI_STRUCTURE_LABELS) select 0) isEqualTo CTI_HQ_DEPLOY) then 
 		_hq setVariable ["cti_gc_noremove", true]; //--- HQ wreck cannot be removed nor salvaged
 		_hq setVariable ["cti_ai_prohib", true]; //--- HQ may not be used by AI as a commandable vehicle
 		_hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_SE_FNC_OnHQDestroyed", _sideID]];
-		if (CTI_BASE_NOOBPROTECTION == 1) then {
+		if (CTI_BASE_NOOBPROTECTION isEqualTo 1) then {
 			_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", _sideID]]; //--- You want that on public
 			(_hq) remoteExec ["CTI_PVF_CLT_AddHQDamagerHandler", _side];
 		};

@@ -27,9 +27,8 @@
 		["h_helmetb",""],[["nvgoggles","binocular"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
 */
 
-private ["_allitems", "_backpack", "_backpack_items", "_goggles", "_handgun", "_handgun_accessories", "_handgun_current_magazine", "_headgear", "_items", "_primary", "_primary_accessories", "_primary_current_magazine", "_secondary", "_secondary_accessories", "_secondary_current_magazine", "_slot", "_target", "_uniform", "_uniform_items", "_vest", "_vest_items"];
-
-_target = _this;
+params ["_target"];
+private ["_allitems", "_backpack", "_backpack_items", "_goggles", "_handgun", "_handgun_accessories", "_handgun_current_magazine", "_headgear", "_items", "_primary", "_primary_accessories", "_primary_current_magazine", "_secondary", "_secondary_accessories", "_secondary_current_magazine", "_slot", "_uniform", "_uniform_items", "_vest", "_vest_items"];
 
 //--- Uniform, Vest and backpack
 _uniform = toLower(uniform _target);
@@ -71,11 +70,11 @@ _items = [["", ""], ["", "", "", "", ""]];
 		case "ItemWatch": {[1,4]};
 		default {[-1]};
 	};
-	if (_slot select 0 == -1) then { //--- The simulation couldn't be determined, try to get the subtype maybe?
+	if ((_slot select 0) isEqualTo -1) then { //--- The simulation couldn't be determined, try to get the subtype maybe?
 		if (getNumber(configFile >> 'CfgWeapons' >> _x >> 'ItemInfo' >> 'type') isEqualTo CTI_SUBTYPE_UAVTERMINAL) then {_slot = [1,1]};
 		if (getNumber(configFile >> 'CfgWeapons' >> _x >> 'useAsBinocular') isEqualTo 1 && getText(configFile >> 'CfgWeapons' >> _x >> 'simulation') isEqualTo "weapon") then {_slot = [0,1]};
 	};
-	if (_slot select 0 != -1) then { (_items select (_slot select 0)) set [_slot select 1, _x] };
+	if !(_slot select 0 isEqualTo -1) then { (_items select (_slot select 0)) set [_slot select 1, _x] };
 } forEach _allitems;
 _items = [(_items select 0) call CTI_CO_FNC_ArrayToLower, (_items select 1) call CTI_CO_FNC_ArrayToLower];
 

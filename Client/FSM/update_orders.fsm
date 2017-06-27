@@ -68,10 +68,10 @@ class FSM
        "	switch (true) do {" \n
        "		case (_order in [CTI_ORDER_TAKETOWNS, CTI_ORDER_TAKEHOLDTOWNS]): {[_order, _reload] spawn CTI_FSM_UpdateOrders_TakeTowns};" \n
        "		case (_order in [CTI_ORDER_TAKETOWN, CTI_ORDER_TAKETOWN_AUTO, CTI_ORDER_TAKEHOLDTOWN, CTI_ORDER_TAKEHOLDTOWN_AUTO]): {[_order, _order_pos, _seed, _reload] spawn CTI_FSM_UpdateOrders_TakeTown};" \n
-       "		case (_order == CTI_ORDER_HOLDTOWNSBASES): {[_order, _reload] spawn CTI_FSM_UpdateOrders_HoldTownsBases};" \n
-       "		case (_order == CTI_ORDER_HOLDTOWNSBASE): {[_order, _order_pos, _seed, _reload] spawn CTI_FSM_UpdateOrders_HoldTownsBase};" \n
-       "		case (_order == CTI_ORDER_MOVE): {[_order_pos, _seed, _reload] spawn CTI_FSM_UpdateOrders_Move};" \n
-       "		case (_order == CTI_ORDER_SAD): {[_order_pos, _seed, _reload] spawn CTI_FSM_UpdateOrders_SAD};" \n
+       "		case (_order isEqualTo CTI_ORDER_HOLDTOWNSBASES): {[_order, _reload] spawn CTI_FSM_UpdateOrders_HoldTownsBases};" \n
+       "		case (_order isEqualTo CTI_ORDER_HOLDTOWNSBASE): {[_order, _order_pos, _seed, _reload] spawn CTI_FSM_UpdateOrders_HoldTownsBase};" \n
+       "		case (_order isEqualTo CTI_ORDER_MOVE): {[_order_pos, _seed, _reload] spawn CTI_FSM_UpdateOrders_Move};" \n
+       "		case (_order isEqualTo CTI_ORDER_SAD): {[_order_pos, _seed, _reload] spawn CTI_FSM_UpdateOrders_SAD};" \n
        "	};" \n
        "};" \n
        "" \n

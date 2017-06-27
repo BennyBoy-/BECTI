@@ -44,28 +44,24 @@
 	  -> Create a locked and handled "B_Quadbike_01_F" at the player's position facing South on the player's initial side
 */
 
-private ["_direction", "_handle", "_locked", "_net", "_position", "_side", "_sideID", "_special", "_type", "_vehicle", "_velocity"];
+params ["_type", "_position", "_direction", "_sideID", ["_locked", false], ["_net", false], ["_handle", false], ["_special", "FORM"]];
+private ["_side", "_vehicle", "_velocity"];
 
-_type = _this select 0;
-_position = _this select 1;
-_direction = _this select 2;
-_sideID = _this select 3;
-_locked = if (count _this > 4) then {_this select 4} else {false};
-_net = if (count _this > 5) then {_this select 5} else {false};
-_handle = if (count _this > 6) then {_this select 6} else {false};
-_special = if (count _this > 7) then {_this select 7} else {"FORM"};
-
-if (typeName _position == "OBJECT") then {_position = getPos _position};
-if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
+if (typeName _position isEqualTo "OBJECT") then {_position = getPos _position};
+if (typeName _sideID isEqualTo "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
 
 _side = _sideID call CTI_CO_FNC_GetSideFromID;
+
+if (CTI_Log_Level >= CTI_Log_Debug) then {
+	["DEBUG", "FILE: Common\Functions\Common_CreateVehicle.sqf", format["Attempting to create a [%1] vehicle at position [%2] with direction [%3] on side [%4], locked [%5]? net [%6]? handle [%7]? special [%8]", _type, _position, _direction, _side, _locked, _net, _handle, _special]] call CTI_CO_FNC_Log;
+};
 
 _vehicle = createVehicle [_type, _position, [], 7, _special];
 _velocity = velocity _vehicle;
 _vehicle setDir _direction;
 _vehicle setVectorUp surfaceNormal position _vehicle;
 
-if (_special == "FLY") then {
+if (_special isEqualTo "FLY") then {
 	_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
 };
 

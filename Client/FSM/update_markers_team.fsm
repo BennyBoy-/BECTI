@@ -39,7 +39,7 @@ class FSM
        "	while {!isNull _group} do {" \n
        "		_color = CTI_P_SideColor;" \n
        "		" \n
-       "		if (missionNamespace getVariable ""CTI_AI_TEAMS_ENABLED"" == 0) then {" \n
+       "		if (missionNamespace getVariable ""CTI_AI_TEAMS_ENABLED"" isEqualTo 0) then {" \n
        "			_marker setMarkerAlphaLocal (if !(isPlayer leader _group) then {0} else {1});" \n
        "		};" \n
        "		" \n

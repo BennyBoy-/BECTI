@@ -21,7 +21,7 @@
 	  -> Return the commander of the player's side
 */
 
-if (typeName _this != "SIDE") exitWith {grpNull};
+if !(typeName _this isEqualTo "SIDE") exitWith {grpNull};
 
 switch (_this) do {
 	case west: {CTI_WEST getVariable "cti_commander"};

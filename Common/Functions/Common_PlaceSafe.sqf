@@ -26,11 +26,8 @@
 	  -> Place the player's vehicle safely near Town0 within 75 meters
 */
 
-private ["_center", "_object", "_position", "_radius"];
-
-_object = _this select 0;
-_center = _this select 1;
-_radius = _this select 2;
+params ["_object", "_center", "_radius"];
+private ["_position"];
 
 _position = [_center, _radius] call CTI_CO_FNC_GetEmptyPosition;
 

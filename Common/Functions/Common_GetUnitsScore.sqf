@@ -22,9 +22,9 @@
 	  -> Return the sum of the units score (or 0 in SP)
 */
 
-private ["_logic", "_score"];
+private ["_score"];
 
-if (typeName _this != "ARRAY") exitWith {0};
+if !(typeName _this isEqualTo "ARRAY") exitWith {0};
 
 _score = 0;
 {_score = _score + score leader _x} forEach _this;

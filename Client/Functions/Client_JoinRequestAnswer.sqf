@@ -28,11 +28,9 @@
 	  -> The client cannot join
 */
 
-private ["_can_join", "_ending", "_loadout", "_special"];
+params["_can_join", "_special", "_loadout"];
+private ["_ending"];
 
-_can_join = _this select 0;
-_special = _this select 1;
-_loadout = _this select 2;
 _ending = "END6";
 
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Client\Functions\Client_JoinRequestAnswer.sqf", format["The join request has been answered with the following settings: can join [%1], special [%2]", _can_join, _special]] call CTI_CO_FNC_Log};

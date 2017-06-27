@@ -30,17 +30,14 @@
 	[_structure, _variable] call CTI_CL_FNC_OnTownCaptured
 */
 
-private ["_color", "_in_range", "_last_capture", "_score", "_side_new", "_sideID_new", "_sideID_old", "_town", "_value"];
-
-_town = _this select 0;
-_sideID_new = _this select 1;
-_sideID_old = _this select 2;
+params ["_town", "_sideID_new", "_sideID_old"];
+private ["_color", "_in_range", "_last_capture", "_score", "_side_new", "_value"];
 
 if !(CTI_P_SideID in [_sideID_new, _sideID_old]) exitWith {}; //--- Make sure that the client need an update
 
 _side_new = (_sideID_new) call CTI_CO_FNC_GetSideFromID;
 
-if (_side_new == CTI_P_SideJoined) then { //--- The player's side has captured it
+if (_side_new isEqualTo CTI_P_SideJoined) then { //--- The player's side has captured it
 	//todo move to displaymessage
 	CTI_P_ChatID commandChat format["%1 has been captured!", _town getVariable "cti_town_name"];
 	
@@ -74,7 +71,7 @@ if (_side_new == CTI_P_SideJoined) then { //--- The player's side has captured i
 };
 
 //--- Whenever a town is captured or lost, if the camp spawn mode is on limited, we reset the respawn counter.
-if ((missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") == 2) then {_town setVariable ["cti_camp_respawn_count", CTI_RESPAWN_CAMPS_CONDITION_LIMITED]};
+if ((missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") isEqualTo 2) then {_town setVariable ["cti_camp_respawn_count", CTI_RESPAWN_CAMPS_CONDITION_LIMITED]};
 
 //--- Paint it
 _color = (_side_new) call CTI_CO_FNC_GetSideColoration;

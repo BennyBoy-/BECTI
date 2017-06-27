@@ -5,7 +5,7 @@ while { true } do {
 	_artillery_marker = uiNamespace getVariable "cti_dialog_ui_artillerymenu_marker";
 	_artillery_magazine = uiNamespace getVariable "cti_dialog_ui_artillerymenu_artillery_magazine";
 	
-	if (_artillery_magazine != "") then {
+	if !(_artillery_magazine isEqualTo "") then {
 		_selection = lbSelection ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290014);
 		
 		_range = uiNamespace getVariable "cti_dialog_ui_artillerymenu_artillery_range";
@@ -16,7 +16,7 @@ while { true } do {
 			_artillery_piece = _x select 0;
 			//--- LB coloration, no lbSetText? :(
 			_color = [1,0,0,0.5];
-			if (_artillery_marker != "") then {
+			if !(_artillery_marker isEqualTo "") then {
 				_target = getMarkerPos _artillery_marker;
 				if ([_artillery_piece, _artillery_magazine, _target, _range_min, _range_max] call CTI_UI_Artillery_CanFire && alive _artillery_piece) then {_color = [0,1,0,0.5]};
 			};
@@ -24,7 +24,7 @@ while { true } do {
 			
 			//--- Make sure that it's alive
 			if (alive _artillery_piece) then {
-				_toggle = if (_forEachIndex in _selection) then {1} else {0};
+				_toggle = [0, 1] select (_forEachIndex in _selection);
 				{_x setMarkerAlphaLocal _toggle} forEach (_x select 1);
 			};
 		} forEach _artillery;

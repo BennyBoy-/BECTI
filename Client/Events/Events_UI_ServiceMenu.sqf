@@ -11,7 +11,7 @@ switch (_action) do {
 		_ammo_depots = [CTI_AMMO, _structures, player] call CTI_CO_FNC_GetSideStructuresByType;
 		
 		_list = [group player, false] Call CTI_CO_FNC_GetTeamVehicles;
-		{if (vehicle _x == _x) then {_list pushBack _x}} forEach units player;
+		{if (vehicle _x isEqualTo _x) then {_list pushBack _x}} forEach units player;
 		
 		_player_support_repair = (CTI_SPECIAL_REPAIRTRUCK) call CTI_UI_Service_GetGroupMobileSupports;
 		_player_support_ammo = (CTI_SPECIAL_AMMOTRUCK) call CTI_UI_Service_GetGroupMobileSupports;
@@ -19,7 +19,7 @@ switch (_action) do {
 		_available_ammo_depots = [vehicle player, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 		
 		_available_depot = [vehicle player, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
-		_available_depot = if (isNull _available_depot) then {[]} else {[_available_depot]};
+		_available_depot = [[_available_depot], []] select (isNull _available_depot);
 		
 		//--- Get the outter vehicles near our mobile supports
 		{
@@ -40,7 +40,7 @@ switch (_action) do {
 				_available_repair_depots = [_x, _repair_depots, CTI_SERVICE_REPAIR_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 				_available_repair_trucks = [_x, CTI_SPECIAL_REPAIRTRUCK, CTI_SERVICE_REPAIR_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
 				_available_depot = [_x, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
-				_available_depot = if (isNull _available_depot) then {[]} else {[_available_depot]};
+				_available_depot = [[_available_depot], []] select (isNull _available_depot);
 				if (count _available_repair_depots > 0 || count _available_repair_trucks > 0 || count _available_depot > 0) then {
 					_load_content = true; 
 					_content set [3, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks], ["Depot", _available_depot]]];
@@ -52,7 +52,7 @@ switch (_action) do {
 				_available_ammo_depots = [_vehicle, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 				_available_ammo_trucks = [_vehicle, CTI_SPECIAL_AMMOTRUCK, CTI_SERVICE_AMMO_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
 				_available_depot = [_vehicle, CTI_P_SideID] call CTI_CO_FNC_GetClosestDepot;
-				_available_depot = if (isNull _available_depot) then {[]} else {[_available_depot]};
+				_available_depot = [[_available_depot], []] select (isNull _available_depot);
 				if (count _available_repair_depots > 0 || count _available_repair_trucks > 0 || count _available_depot > 0) then {
 					_load_content = true;
 					_content set [0, [["Base", _available_repair_depots], ["Mobile", _available_repair_trucks], ["Depot", _available_depot]]];
@@ -69,7 +69,7 @@ switch (_action) do {
 				_list_real pushBack _x;
 				_list_content pushBack _content;
 				if (_x isKindOf "Man") then {
-					_digit = if (group _x == group player) then {format["[%1] ",(_x) call CTI_CL_FNC_GetAIDigit]} else {""};
+					_digit = if (group _x isEqualTo group player) then {format["[%1] ",(_x) call CTI_CL_FNC_GetAIDigit]} else {""};
 					_var_name = if (isNil {_x getVariable "cti_customid"}) then {typeOf _x} else {missionNamespace getVariable format["CTI_CUSTOM_ENTITY_%1", _x getVariable "cti_customid"]};
 					_var_classname = missionNamespace getVariable _var_name;
 					_label = if !(isNil '_var_classname') then {_var_classname select CTI_UNIT_LABEL} else {getText(configFile >> "CfgVehicles" >> typeOf _x >> "displayName")};
@@ -84,15 +84,15 @@ switch (_action) do {
 					{_health = _health + round((1 - getDammage _x) * 100)} forEach _crew;
 					_health = if (count _crew > 0) then {format["%1%2", round(_health / count _crew), "%"]} else {"N/A"};
 					_digits = "";
-					if (count _crew > 0 && group _vehicle == group player) then {
+					if (count _crew > 0 && group _vehicle isEqualTo group player) then {
 						_digit_parsed = [];
-						{if (group _x == group player) then {_digit_parsed pushBack (_x call CTI_CL_FNC_GetAIDigit)}} forEach _crew;
+						{if (group _x isEqualTo group player) then {_digit_parsed pushBack (_x call CTI_CL_FNC_GetAIDigit)}} forEach _crew;
 						{
 							if (_forEachIndex >= 3) exitWith {_digits = _digits + "..."};
 							_digits = _digits + (_x);
 							if (_forEachIndex < (count _digit_parsed)-1 && _forEachIndex < 2) then {_digits = _digits + ","};
 						} forEach _digit_parsed;
-						if (_digits != "") then {_digits = format["[%1] ",_digits]};
+						if !(_digits isEqualTo "") then {_digits = format["[%1] ",_digits]};
 					};
 					((uiNamespace getVariable "cti_dialog_ui_servicemenu") displayCtrl 230005) lnbAddRow [_digits+_label, format["%1%2",round((1 - getDammage _vehicle) * 100), "%"], format["%1%2", round((fuel _vehicle) * 100), "%"], _health];
 				};
@@ -122,7 +122,7 @@ switch (_action) do {
 				{
 					if ((_x select 0) in _enables) then {
 						_price = _x select 1;
-						if ((_x select 0) != 230004) then {
+						if !((_x select 0) isEqualTo 230004) then {
 							_price = [_selected, _x select 1, _x select 2] call CTI_UI_Service_GetPrice;
 						} else {
 							if (count crew _selected > 0) then {

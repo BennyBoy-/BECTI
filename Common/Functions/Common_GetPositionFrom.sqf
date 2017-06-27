@@ -28,13 +28,9 @@
 	  -> Will return the position 50 meters straight north of the player
 */
 
-private["_destination","_distance","_direction","_position"];
+params ["_position", "_distance", "_direction"];
 
-_position = _this select 0;
-_distance = _this select 1;
-_direction = _this select 2;
+if !(typeName _position isEqualTo "ARRAY") then {_position = position _position};
+if !(typeName _direction isEqualTo "SCALAR") then {_direction = [_position, _direction] call CTI_CO_FNC_GetDirTo};
 
-if (typeName _position != "ARRAY") then {_position = position _position};
-if (typeName _direction != "SCALAR") then {_direction = [_position, _direction] call CTI_CO_FNC_GetDirTo};
-
-[(_position select 0)+((sin _direction)*_distance),(_position select 1)+((cos _direction)*_distance),(_position select 2)]
+[(_position select 0)+((sin _direction)*_distance), (_position select 1)+((cos _direction)*_distance), (_position select 2)]

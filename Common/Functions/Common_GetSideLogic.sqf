@@ -21,7 +21,7 @@
 	  -> Return the CTI_WEST logic
 */
 
-if (typeName _this != "SIDE") exitWith {objNull};
+if !(typeName _this isEqualTo "SIDE") exitWith {objNull};
 
 switch (_this) do {
 	case west: {CTI_WEST};

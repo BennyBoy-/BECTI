@@ -45,7 +45,7 @@ while { alive player && dialog } do {
 		if (isPlayer leader _x) then {
 			_vote = _x getVariable "cti_vote";
 			_index = (uiNamespace getVariable "cti_dialog_ui_votemenu_groups") find _vote;
-			_index = if (_index < 0) then {0} else {_index + 1};
+			_index = [_index + 1, 0] select (_index < 0);
 			_vote_array set [_index, (_vote_array select _index) + 1];
 			_player_count = _player_count + 1;
 		};
@@ -56,17 +56,17 @@ while { alive player && dialog } do {
 	for '_i' from 0 to count(uiNamespace getVariable "cti_dialog_ui_votemenu_groups") do {if ((_vote_array select _i) > (_vote_array select _highest_id)) then {_highest_id = _i}};
 	
 	//--- Ai or null commander is handled outside
-	if ((((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 300001) lnbText [0, 1]) != str(_vote_array select 0)) then {lnbSetText [300001, [0, 1], str(_vote_array select 0)]}; //--- AI Commander
+	if !((((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 300001) lnbText [0, 1]) isEqualTo str(_vote_array select 0)) then {lnbSetText [300001, [0, 1], str(_vote_array select 0)]}; //--- AI Commander
 	
 	for '_i' from 1 to ((lnbSize 300001) select 0)-1 do { //--- Update the UI list properties (name / votes) for players.
 		_value = lnbValue [300001,[_i, 0]];
 		_team = (uiNamespace getVariable "cti_dialog_ui_votemenu_groups") select _value;
-		if ((((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 300001) lnbText [_i, 0]) != name leader _team) then {lnbSetText [300001, [_i, 0], name leader _team]};
-		if ((((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 300001) lnbText [_i, 1]) != str(_vote_array select _value+1)) then {lnbSetText [300001, [_i, 1], str(_vote_array select _value+1)]};
+		if !((((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 300001) lnbText [_i, 0]) isEqualTo name leader _team) then {lnbSetText [300001, [_i, 0], name leader _team]};
+		if !((((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 300001) lnbText [_i, 1]) isEqualTo str(_vote_array select _value+1)) then {lnbSetText [300001, [_i, 1], str(_vote_array select _value+1)]};
 	};
 	
 	//--- Display the highest voted person
-	_voted_commander = if ((_vote_array select _highest_id) <= (_player_count/2) || _highest_id == 0) then {if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" > 0) then {"Electing: AI Commander"} else {"Electing: No Commander"}} else {format["Electing: %1", name leader ((uiNamespace getVariable "cti_dialog_ui_votemenu_groups") select _highest_id-1)]};
+	_voted_commander = if ((_vote_array select _highest_id) <= (_player_count/2) || _highest_id isEqualTo 0) then {if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" > 0) then {"Electing: AI Commander"} else {"Electing: No Commander"}} else {format["Electing: %1", name leader ((uiNamespace getVariable "cti_dialog_ui_votemenu_groups") select _highest_id-1)]};
 	((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 300003) ctrlSetText _voted_commander;
 	
 	sleep .1;

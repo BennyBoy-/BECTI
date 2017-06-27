@@ -23,12 +23,8 @@
     [ai1, defGroup, 1, ["B_Soldier_R", defGroup, [500, 600, 0], 1, true]] Call CTI_SE_FNC_AttemptDefenseDelegation;
 */
 
-private ["_ai_args", "_delegated", "_hc", "_hcs", "_result", "_side", "_sideID", "_static", "_unit"];
-
-_static = _this select 0;
-_group = _this select 1;
-_side = _this select 2;
-_ai_args = _this select 3;
+params ["_static", "_group", "_side", "_ai_args"];
+private ["_delegated", "_hc", "_hcs", "_result", "_sideID", "_unit"];
 
 _hcs = missionNamespace getVariable "CTI_HEADLESS_CLIENTS";
 _delegated = true;
@@ -44,7 +40,7 @@ _sideID = (_side) call CTI_CO_FNC_GetSideID;
 _hc = (_hcs select 0) select 0;
 
 //--- First of all, we delegate the group to the HC if needed
-if (groupOwner _group != _hc) then {
+if !(groupOwner _group isEqualTo _hc) then {
 	if (CTI_Log_Level >= CTI_Log_Information) then {
 		["INFORMATION", "FILE: Server\Functions\Server_AttemptDefenseDelegation.sqf", format["Attempting to change ownership of group [%1] to HC [%2]", _group, _hc]] call CTI_CO_FNC_Log;
 	};
@@ -90,6 +86,7 @@ if !(isNil {_static getVariable "cti_delegated"}) then {
 	_static addEventHandler ["killed", format["[_this select 0, _this select 1, %1, '%2', '%3'] spawn CTI_SE_FNC_OnDefenseDestroyed", _sideID, "", _varname]];
 	[_static, CTI_BASE_DEFENSES_EMPTY_TIMEOUT] spawn CTI_SE_FNC_HandleEmptyVehicle; //--- Track the defense lifespan
 	
+	//--- ZEUS Curator Editable
 	if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_static], true]};
 	
 	if (CTI_Log_Level >= CTI_Log_Information) then {

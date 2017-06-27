@@ -23,22 +23,17 @@
     _changed = [group player, CTI_ORDER_TAKEHOLDTOWNS, [0,0]] call CTI_CO_FNC_HasOrderedChanged
 */
 
-private ["_changed", "_group", "_order", "_order_current", "_order_pos", "_order_pos_current"];
-
-_group = _this select 0;
-_order_current = _this select 1;
-_order_pos_current = _this select 2;
-
-_order = _group getVariable "cti_order";
+params ["_group", "_order_current", "_order_pos_current"];
+private ["_changed", "_order_pos"];
 
 _changed = false;
-if (_order != _order_current) then { //--- Order itself changed?
+if !((_group getVariable "cti_order") isEqualTo _order_current) then { //--- Order itself changed?
 	_changed = true;
 } else { //--- Order position changed?
 	_order_pos = _group getVariable "cti_order_pos";
 	switch (true) do {
-		case (typeName _order_pos_current == "ARRAY" && typeName _order_pos == "ARRAY"): {if (_order_pos_current select 0 != _order_pos select 0 || _order_pos_current select 1 != _order_pos select 1) then {_changed = true}};
-		case (typeName _order_pos_current == "OBJECT" && typeName _order_pos == "OBJECT"): {if (_order_pos_current != _order_pos) then {_changed = true}};
+		case (typeName _order_pos_current isEqualTo "ARRAY" && typeName _order_pos isEqualTo "ARRAY"): {if (!((_order_pos_current select 0) isEqualTo (_order_pos select 0)) || !((_order_pos_current select 1) isEqualTo (_order_pos select 1))) then {_changed = true}};
+		case (typeName _order_pos_current isEqualTo "OBJECT" && typeName _order_pos isEqualTo "OBJECT"): {if !(_order_pos_current isEqualTo _order_pos) then {_changed = true}};
 	};
 };
 

@@ -21,21 +21,21 @@ while { true } do {
 		_resources_pool = CTI_P_SideLogic getVariable "cti_pool_resources";
 		_income = call CTI_CL_FNC_GetPlayerIncome;
 		
-		if (_funds != _last_funds) then {
+		if !(_funds isEqualTo _last_funds) then {
 			((uiNamespace getVariable "cti_dialog_ui_optionsmenu") displayCtrl 130001) ctrlSetStructuredText (parseText format["<t>Resources: <t color='%1'>$%2</t></t>", CTI_P_Coloration_Money, _funds]);
 			_last_funds = _funds;
 		};
-		if (_resources_pool != _last_resources_pool || _award_pool != _last_award_pool) then {
+		if (!(_resources_pool isEqualTo _last_resources_pool) || !(_award_pool isEqualTo _last_award_pool)) then {
 			((uiNamespace getVariable "cti_dialog_ui_optionsmenu") displayCtrl 130002) ctrlSetStructuredText (parseText format["<t>Pools (Players/Award): %1%3 / %2%3</t>", round(_resources_pool*100), round(_award_pool*100), "%"]);
 			_last_resources_pool = _resources_pool;
 			_last_award_pool = _award_pool;
 		};
-		if (_income != _last_income) then {
+		if !(_income isEqualTo _last_income) then {
 			_side_income = ((CTI_P_SideJoined) call CTI_CO_FNC_GetTownsResources) * CTI_TOWNS_INCOME_RATIO;
 			((uiNamespace getVariable "cti_dialog_ui_optionsmenu") displayCtrl 130003) ctrlSetStructuredText (parseText format["<t>Income (Me/Side): <t color='%1'>$%2</t>/<t color='%1'>$%3</t></t>", CTI_P_Coloration_Money, _income, round _side_income]);
 			_last_income = _income;
 		};
-		if (_held != _last_townheld) then {
+		if !(_held isEqualTo _last_townheld) then {
 			((uiNamespace getVariable "cti_dialog_ui_optionsmenu") displayCtrl 130004) ctrlSetStructuredText (parseText format["<t>Towns Held: <t color='#66baff'>%1</t>/%2</t>", _held, _town_count]);
 			_last_townheld = _held;
 		};

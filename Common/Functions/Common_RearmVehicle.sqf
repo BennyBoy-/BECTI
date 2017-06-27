@@ -26,7 +26,8 @@
 	  -> Rearm the player vehicle of the player
 */
 
-private ["_side", "_type", "_vehicle"];
+params ["_vehicle", "_side"];
+private ["_type"];
 
 _vehicle = _this select 0;
 _side = _this select 1;
@@ -53,4 +54,4 @@ for '_i' from 0 to (count _config)-1 do {
 if (_vehicle isKindOf "Air") then {[_vehicle, _side] call CTI_CO_FNC_SanitizeAircraft};
 
 //--- Sanitize the artillery loadout, mines may lag the server for instance
-if (CTI_ARTILLERY_FILTER == 1) then {if (typeOf _vehicle in (missionNamespace getVariable ["CTI_ARTILLERY", []])) then {(_vehicle) call CTI_CO_FNC_SanitizeArtillery}};
+if (CTI_ARTILLERY_FILTER isEqualTo 1) then {if (typeOf _vehicle in (missionNamespace getVariable ["CTI_ARTILLERY", []])) then {(_vehicle) call CTI_CO_FNC_SanitizeArtillery}};

@@ -23,8 +23,4 @@
     _funds = (West) call CTI_CO_FNC_GetFundsCommander;
 */
 
-private ["_side"];
-
-_side = _this;
-
-(_side call CTI_CO_FNC_GetSideLogic) getVariable ["cti_commander_funds", 0]
+(_this call CTI_CO_FNC_GetSideLogic) getVariable ["cti_commander_funds", 0]

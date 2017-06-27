@@ -21,9 +21,8 @@
 	  -> Sanitize the player's vehicle (CM)
 */
 
-private ["_cms","_magazines","_vehicle","_weapons"];
-
-_vehicle = _this;
+params ["_vehicle"];
+private ["_weapons"];
 
 _weapons = getArray(configFile >> "CfgVehicles" >> typeOf _vehicle >> "weapons");
 

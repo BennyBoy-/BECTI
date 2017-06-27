@@ -17,13 +17,7 @@ CTI_FSM_UpdateCommander_Respawn_SP = {
 	_leader disableAI "MOVE";
 	
 	//--- ZEUS Curator Editable
-	if !(isNil "ADMIN_ZEUS") then {
-		if (CTI_IsServer) then {
-			ADMIN_ZEUS addCuratorEditableObjects [[_leader], true];
-		} else {
-			[ADMIN_ZEUS, _leader] remoteExec ["CTI_PVF_SRV_RequestAddCuratorEditable", CTI_PV_SERVER];
-		};
-	};
+	if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_leader], true]};
 	
 	_group setVariable ["cti_nextrespawn", time + (missionNamespace getVariable "CTI_RESPAWN_TIMER")];
 	_respawn_start = time;
@@ -48,7 +42,7 @@ CTI_FSM_UpdateCommander_Respawn_SP = {
 		};
 	};
 	
-	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {_leader enableFatigue false}; //--- Disable the unit's fatigue
+	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") isEqualTo 0) then {_leader enableFatigue false}; //--- Disable the unit's fatigue
 };
 
 CTI_FSM_UpdateCommander_Respawn_MP = {
@@ -86,7 +80,10 @@ CTI_FSM_UpdateCommander_Respawn_MP = {
 		};
 	};
 	
-	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {_newUnit enableFatigue false}; //--- Disable the unit's fatigue
+	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") isEqualTo 0) then {_newUnit enableFatigue false}; //--- Disable the unit's fatigue
+	
+	//--- ZEUS Curator Editable
+	if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_newUnit], true]};
 };
 
 CTI_FSM_UpdateCommander_SetAIRole = {
@@ -120,7 +117,7 @@ CTI_FSM_UpdateCommander_SetAIRole = {
 		if (_max_assigned != -1) then {
 			_same = 0;
 			{
-				if ((_x getVariable "cti_role") == _squad) then {_same = _same + 1};
+				if ((_x getVariable "cti_role") isEqualTo _squad) then {_same = _same + 1};
 			} forEach _teams;
 			
 			if (_same >= _max_assigned) then { _max_reached = true };
@@ -131,7 +128,7 @@ CTI_FSM_UpdateCommander_SetAIRole = {
 			
 			_allowed = missionNamespace getVariable format["CTI_SQUADS_%1_TOWN_DEFENSE", _side];
 			if !(isNil '_allowed') then {
-				_defenders = ({(_x getVariable "cti_order") == CTI_ORDER_HOLDTOWNSBASES} count _teams);
+				_defenders = ({(_x getVariable "cti_order") isEqualTo CTI_ORDER_HOLDTOWNSBASES} count _teams);
 				if (_defenders < CTI_AI_TEAMS_DEFEND_TOWNS) then {
 					if (_squad in _allowed) then { _group setVariable ["cti_order", CTI_ORDER_HOLDTOWNSBASES, true] };
 				};
@@ -145,10 +142,10 @@ CTI_FSM_UpdateCommander_GetMostValuedTowns = {
 	private ["_sideID", "_towns"];
 	_sideID = _this;
 	
-	if (typeName _sideID == "SIDE") then { _sideID = _this call CTI_CO_FNC_GetSideID };
+	if (typeName _sideID isEqualTo "SIDE") then { _sideID = _this call CTI_CO_FNC_GetSideID };
 	
 	_towns = [];
-	{if ((_x getVariable "cti_town_sideID") == _sideID && (_x getVariable "cti_town_sv_max") > CTI_AI_TEAMS_DEFEND_TOWNS_WORTH) then {_towns pushBack _x}} forEach CTI_Towns;
+	{if ((_x getVariable "cti_town_sideID") isEqualTo _sideID && (_x getVariable "cti_town_sv_max") > CTI_AI_TEAMS_DEFEND_TOWNS_WORTH) then {_towns pushBack _x}} forEach CTI_Towns;
 	
 	_towns
 };
@@ -162,21 +159,22 @@ CTI_FSM_UpdateCommander_GetStructureEmplacement = {
 	_sideLogic = (_side) call CTI_CO_FNC_GetSideLogic;
 	
 	_hq = (_side) call CTI_CO_FNC_GetSideHQ;
-	_structures = ((_side) call CTI_CO_FNC_GetSideStructures) + [_hq];
+	_structures = (_side call CTI_CO_FNC_GetSideStructures);
+	_structures pushBack _hq;
 	_structures = _structures + (_sideLogic getVariable "cti_structures_wip");
 	
 	_position = getPos _hq;
 	_position = [(_position select 0) + ((_template select 2) select 0), (_position select 1) + ((_template select 2) select 1), 0];
 	_distance = (_var select 4) select 1;
 	_direction = 0;//todo template defines it.
-	
+	//todo use nearterrainobject
 	_i = 0;
 	_radius = 70;
 	_done = false;
 	while {_i < 1000 && !_done} do {
 		_tpos = [(_position select 0)+(_radius - (random (_radius * 2))),(_position select 1)+(_radius - (random (_radius * 2)))];
 		_fpos = _tpos isFlatEmpty [13, 1, 0.5, 10, 0, false, objNull];
-		if (count _fpos > 0 && count(_tpos nearRoads 17) == 0 && ([_tpos, _structures] call CTI_CO_FNC_GetClosestEntity) distance _tpos > 25) then {
+		if (count _fpos > 0 && count(_tpos nearRoads 17) isEqualTo 0 && ([_tpos, _structures] call CTI_CO_FNC_GetClosestEntity) distance _tpos > 25) then {
 			_position = _fpos; _done = true
 		};
 		_i = _i + 1;

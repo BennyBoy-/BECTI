@@ -23,13 +23,9 @@
     _has_occupation2 = [west, CTI_UPGRADE_TOWNS, 2] call CTI_CO_FNC_HasUpgrade;
 */
 
-private ["_side", "_upgrade", "_upgrade_level", "_upgrades"];
-
-_side = _this select 0;
-_upgrade = _this select 1;
-_upgrade_level = _this select 2;
+params ["_side", "_upgrade", "_upgrade_level"];
+private ["_upgrades"];
 
 _upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
-_existing = _upgrades select _upgrade;
 
-if (_existing >= _upgrade_level) then {true} else {false}
+[false, true] select ((_upgrades select _upgrade) >= _upgrade_level)

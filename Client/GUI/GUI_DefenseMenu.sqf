@@ -14,11 +14,11 @@ while { true } do {
 	} forEach (CTI_P_SideLogic getVariable "cti_workers");
 	_funds = call CTI_CL_FNC_GetPlayerFunds;
 	
-	if (_last_funds != _funds) then {
+	if !(_last_funds isEqualTo _funds) then {
 		((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200008) ctrlSetStructuredText (parseText format["Resources: <t color='%2'>$%1</t>", _funds, CTI_P_Coloration_Money]);
 	};
 	
-	if (_last_workercount != _count) then {
+	if !(_last_workercount isEqualTo _count) then {
 		((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200009) ctrlSetStructuredText (parseText format["Workers Removed!"]);
 	};
 	

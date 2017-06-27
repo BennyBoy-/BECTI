@@ -36,7 +36,7 @@ CTI_UI_Respawn_GetAvailableLocations = {
 	if ((missionNamespace getVariable "CTI_RESPAWN_MOBILE") > 0) then {
 		_mobile = (CTI_DeathPosition) call CTI_UI_Respawn_GetMobileRespawn;
 		_list = _list + _mobile;
-		{{if (group _x == group player) then {_ignore_mobile_crew pushBack _x}} forEach crew _x} forEach _mobile;
+		{{if (group _x isEqualTo group player) then {_ignore_mobile_crew pushBack _x}} forEach crew _x} forEach _mobile;
 	};
 	
 	//--- Add the nearest player's AI (impersonation) minus the mobile's crew
@@ -56,7 +56,7 @@ CTI_UI_Respawn_GetMobileRespawn = {
 	_available = [];
 	
 	{
-		if ((_x getVariable ["cti_spec", -1]) == CTI_SPECIAL_MEDICALVEHICLE && (_x getVariable ["cti_net", -1]) == CTI_P_SideID) then {_available pushBack _x};
+		if ((_x getVariable ["cti_spec", -1]) isEqualTo CTI_SPECIAL_MEDICALVEHICLE && (_x getVariable ["cti_net", -1]) isEqualTo CTI_P_SideID) then {_available pushBack _x};
 	} forEach (_center nearEntities [["Car","Air","Tank","Ship"], CTI_RESPAWN_MOBILE_RANGE]);
 	
 	_available
@@ -71,7 +71,7 @@ CTI_UI_Respawn_GetListLabels = {
 	_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 	
 	{
-		_list = _list + [format["%1 - %2", _x call CTI_UI_Respawn_GetRespawnLabel, _x call CTI_UI_Respawn_GetLocationInformation]];
+		_list pushBack format["%1 - %2", _x call CTI_UI_Respawn_GetRespawnLabel, _x call CTI_UI_Respawn_GetLocationInformation];
 	} forEach _emplacements;
 	
 	_list
@@ -83,12 +83,12 @@ CTI_UI_Respawn_GetRespawnLabel = {
 	
 	_value = "Structure";
 	switch (true) do {
-		case (_location == (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ)): { _value = "Headquarters"	};
+		case (_location isEqualTo (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ)): { _value = "Headquarters"	};
 		case (!isNil {_location getVariable "cti_camp_town"}): { 
 			_town = _location getVariable "cti_camp_town";
 			switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") do {
 				case 1: {
-					_coefficient = if (_town getVariable "cti_town_sideID" == CTI_P_SideID) then {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_FRIENDLY} else {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_ENEMY};
+					_coefficient = if (_town getVariable "cti_town_sideID" isEqualTo CTI_P_SideID) then {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_FRIENDLY} else {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_ENEMY};
 					_price = round((_town getVariable "cti_town_sv") * _coefficient);
 					_value = format["Camp (%1) - $%2", _town getVariable "cti_town_name", _price];
 				};
@@ -150,7 +150,7 @@ CTI_UI_Respawn_AppendTracker = {
 				_marker setMarkerPosLocal (getPos _location);
 				
 				_abort = true;
-				{ if ((_x select 0) == _location) exitWith {_abort = false} } forEach _locations_tracker;
+				{ if ((_x select 0) isEqualTo _location) exitWith {_abort = false} } forEach _locations_tracker;
 				sleep .25;
 			};
 		};
@@ -182,7 +182,7 @@ CTI_UI_Respawn_LoadLocations = {
 	
 	_set = false;
 	{
-		if (_x == _spawn) exitWith { _set = true; uiNamespace setVariable ["cti_dialog_ui_respawnmenu_respawn_update", false]; ((uiNamespace getVariable "cti_dialog_ui_respawnmenu") displayCtrl 120002) lbSetCurSel _forEachIndex; };
+		if (_x isEqualTo _spawn) exitWith { _set = true; uiNamespace setVariable ["cti_dialog_ui_respawnmenu_respawn_update", false]; ((uiNamespace getVariable "cti_dialog_ui_respawnmenu") displayCtrl 120002) lbSetCurSel _forEachIndex; };
 	} forEach _respawn_locations;
 	
 	if !(_set) then {
@@ -216,7 +216,7 @@ CTI_UI_Respawn_UseSelector = {
 	_marker setMarkerColorLocal CTI_P_SideColor;
 	_marker setMarkerSizeLocal [_marker_size, _marker_size];
 
-	while {_target == (uiNamespace getVariable "cti_dialog_ui_respawnmenu_respawnat") && !isNil {uiNamespace getVariable "cti_dialog_ui_respawnmenu"}} do {
+	while {_target isEqualTo (uiNamespace getVariable "cti_dialog_ui_respawnmenu_respawnat") && !isNil {uiNamespace getVariable "cti_dialog_ui_respawnmenu"}} do {
 		_marker_dir = (_marker_dir + 1) % 360;
 		_marker setMarkerDirLocal _marker_dir;
 		_marker setMarkerSizeLocal [_marker_size, _marker_size];
@@ -258,7 +258,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 				_town = _where getVariable "cti_camp_town";
 				switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS_CONDITION") do {
 					case 1: {
-						_coefficient = if (_town getVariable "cti_town_sideID" == CTI_P_SideID) then {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_FRIENDLY} else {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_ENEMY};
+						_coefficient = if (_town getVariable "cti_town_sideID" isEqualTo CTI_P_SideID) then {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_FRIENDLY} else {CTI_RESPAWN_CAMPS_CONDITION_PRICED_COEF_ENEMY};
 						_price = round((_town getVariable "cti_town_sv") * _coefficient);
 						(-_price) call CTI_CL_FNC_ChangePlayerFunds
 					}; //--- Priced, deduce the cost from the player's funds
@@ -362,6 +362,6 @@ CTI_UI_Respawn_OnRespawnReady = {
 		[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
 	};
 	
-	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
+	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") isEqualTo 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
 	CTI_P_Respawning = false;
 };

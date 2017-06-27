@@ -31,9 +31,9 @@
 	  -> Will repair the West HQ if destroyed
 */
 
-private ["_commander", "_direction", "_hq", "_hq_wreck", "_logic", "_position", "_side", "_sideID"];
+params ["_side"];
+private ["_commander", "_direction", "_hq", "_hq_wreck", "_logic", "_position", "_sideID"];
 
-_side = _this;
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
@@ -49,7 +49,7 @@ _hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _position, _dire
 _hq setVariable ["cti_gc_noremove", true]; //--- HQ wreck cannot be removed nor salvaged
 _hq setVariable ["cti_ai_prohib", true]; //--- HQ may not be used by AI as a commandable vehicle
 _hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_SE_FNC_OnHQDestroyed", _sideID]];
-if (CTI_BASE_NOOBPROTECTION == 1) then {
+if (CTI_BASE_NOOBPROTECTION isEqualTo 1) then {
 	_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", _sideID]]; //--- You want that on public
 	(_hq) remoteExec ["CTI_PVF_CLT_AddHQDamagerHandler", _side];
 };

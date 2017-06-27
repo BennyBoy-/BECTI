@@ -23,10 +23,8 @@
     _hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", _sideID]]; 
 */
 
-_damage = _this select 0;
-_shooter = _this select 1;
-_sideID = _this select 2;
+params ["_damage", "_shooter", "_sideID"];
 
-if (CTI_BASE_NOOBPROTECTION == 1 && side _shooter in [_sideID call CTI_CO_FNC_GetSideFromID, sideEnemy]) exitWith {0};
+if (CTI_BASE_NOOBPROTECTION isEqualTo 1 && side _shooter in [_sideID call CTI_CO_FNC_GetSideFromID, sideEnemy]) exitWith {0};
 
 _damage

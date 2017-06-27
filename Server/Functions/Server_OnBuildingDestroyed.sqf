@@ -32,19 +32,12 @@
     [_damaged, _shooter, _variable, _sideID, _position, _direction, _completion_ratio] spawn CTI_SE_FNC_OnBuildingDestroyed
 */
 
-private ["_classnames", "_completion_ratio", "_direction", "_killed", "_killer", "_logic", "_position", "_sell", "_side", "_sideID", "_structure", "_var", "_variable"];
-
-_killed = _this select 0;
-_killer = _this select 1;
-_variable = _this select 2;
-_sideID = _this select 3;
-_position = _this select 4;
-_direction = _this select 5;
-_completion_ratio = _this select 6;
+params ["_killed", "_killer", "_variable", "_sideID", "_position", "_direction", "_completion_ratio"];
+private ["_classnames", "_logic", "_sell", "_side", "_structure", "_var"];
 
 _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
-_sell = if (isNil {_killed getVariable "cti_sell"}) then {false} else {true};
+_sell = [true, false] select (isNil {_killed getVariable "cti_sell"});
 
 // bistery: a damaged structure will not trigger the EH assigned to the original one! will it get fixed? nop!
 _logic setVariable ["cti_structures", (_logic getVariable "cti_structures") - [_killed, objNull], true];
@@ -71,11 +64,13 @@ if !(_sell) then {
 
 	[_side, _structure, _variable, _position, _direction, true] spawn CTI_SE_FNC_HandleStructureConstruction;
 
-	_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull]];
+	_structures_wip = _logic getVariable "cti_structures_wip";
+	_structures_wip pushBack _structure;
+	for '_i' from count(_structures_wip)-1 to 0 step -1 do {if (isNull(_structures_wip select _i)) then {_structures_wip deleteAt _i}};
 	
 	//--- Bounty
 	if !(isNull _killer) then {
-		if (side _killer != sideEnemy && side _killer != _side && (group _killer) call CTI_CO_FNC_IsGroupPlayable) then {
+		if (!(side _killer isEqualTo sideEnemy) && !(side _killer isEqualTo _side) && (group _killer) call CTI_CO_FNC_IsGroupPlayable) then {
 			if (isPlayer _killer) then {
 				_label = ((_var select CTI_STRUCTURE_LABELS) select 1);
 				_award = round((_var select CTI_STRUCTURE_PRICE) * CTI_BASE_CONSTRUCTION_BOUNTY);

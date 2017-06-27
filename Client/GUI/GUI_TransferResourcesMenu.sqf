@@ -13,7 +13,7 @@ while { true } do {
 		
 		{
 			_funds = (_x) call CTI_CO_FNC_GetFunds;
-			if (((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbText [_forEachIndex, 0] != format ["$%1", _funds]) then {
+			if !((((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbText [_forEachIndex, 0]) isEqualTo format ["$%1", _funds]) then {
 				((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbSetText [[_forEachIndex, 0], format ["$%1", _funds]];
 			};
 		} forEach (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_groups");
@@ -22,7 +22,7 @@ while { true } do {
 		_income_commander = round(_incomes select 0);
 		_income_players = round(_incomes select 1);
 		
-		if (_income_commander != _last_income_commander || _income_players != _last_income_players) then {
+		if (!(_income_commander isEqualTo _last_income_commander) || !(_income_players isEqualTo _last_income_players)) then {
 			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140010) ctrlSetStructuredText (parseText format["<t align='left'>Commander Pool:</t> <t align='right' color='%1'>$%2</t>", CTI_P_Coloration_Money, _income_commander]);
 			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140011) ctrlSetStructuredText (parseText format["<t align='left'>Players Pool:</t> <t align='right' color='%1'>$%2</t>", CTI_P_Coloration_Money, _income_players]);
 			
@@ -32,7 +32,7 @@ while { true } do {
 	};
 	
 	_funds = call CTI_CL_FNC_GetPlayerFunds;
-	if (_funds != _last_funds) then {
+	if !(_funds isEqualTo _last_funds) then {
 		((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140008) sliderSetRange [0, _funds];
 		((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140002) ctrlSetStructuredText (parseText format["<t align='left'>Your Resources:</t> <t align='right' color='%1'>$%2</t>", CTI_P_Coloration_Money, _funds]);
 		_last_funds = _funds;
@@ -40,7 +40,7 @@ while { true } do {
 	
 	if (!isNil {uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_group"}) then {
 		_funds = (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_group") call CTI_CO_FNC_GetFunds;
-		if (_funds != _last_grp_funds) then {
+		if !(_funds isEqualTo _last_grp_funds) then {
 			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140003) ctrlSetStructuredText (parseText format["<t align='left'>Player Resources:</t> <t align='right' color='%1'>$%2</t>", CTI_P_Coloration_Money, _funds]);
 			_last_grp_funds = _funds;
 		};

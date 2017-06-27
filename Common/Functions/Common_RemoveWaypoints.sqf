@@ -21,8 +21,4 @@
 	  -> Remove the existing player's group waypoints
 */
 
-private ['_team'];
-
-_team = _this;
-
-for '_i' from (count waypoints _team)-1 to 0 step -1 do { deleteWaypoint [_team, _i] };
+for '_i' from (count waypoints _this)-1 to 0 step -1 do { deleteWaypoint [_this, _i] };

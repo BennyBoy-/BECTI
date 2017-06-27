@@ -94,7 +94,7 @@ with missionNamespace do {
 		};
 	};
 	
-	/*CTI_PVF_HC_OnTownDelegationReceived = {
+	CTI_PVF_HC_OnTownDelegationReceived = {
 		private ["_groups", "_hc_tvar", "_positions", "_side", "_teams", "_town", "_town_vehicles"];
 		
 		_town = _this select 0;
@@ -106,52 +106,18 @@ with missionNamespace do {
 		if (CTI_Log_Level >= CTI_Log_Information) then {
 			["INFORMATION", "FUNCTION: CTI_PVF_HC_OnTownDelegationReceived", format["A Delegation request was received from the server for [%1] teams in town [%2] on [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
-// IMPORTANT: Change it if HC AI spawn ever get fixed, the function will be spawned instead of being called
-		_town_vehicles = [_town, _side, _teams, _groups, _positions] call CTI_CO_FNC_CreateTownUnits;
 		
-		if (count _town_vehicles > 0) then {
-			[_town, _side, _town_vehicles] remoteExec ["CTI_PVF_SRV_RequestTownAddVehicles", CTI_PV_SERVER];
-		};
-		
-		_hc_tvar = if (_side == resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
-		
-		{
+		if (count _groups > 0) then {		
+			_hc_tvar = ["cti_hc_delegated_groups_occupation", "cti_hc_delegated_groups_resistance"] select (_side isEqualTo resistance);
+			
+			if (isNil {_town getVariable _hc_tvar}) then {_town setVariable [_hc_tvar, []]};
+			
 			//--- Register each groups on the town for deletion
-			if (isNil {_town getVariable _hc_tvar}) then {_town setVariable [_hc_tvar, [_x]]} else {_town setVariable [_hc_tvar, (_town getVariable _hc_tvar) + [_x]]};
-		// commented in for delegation removal via pvf
-			// _x spawn {
-				// while {count units _this > 0} do {sleep 5}; 
-				// deleteGroup _this;
-			// };
-		} forEach _groups; //--- Delete the group client-sided.
-	};*/
-	
-	CTI_PVF_HC_OnTownDelegationReceived = {
-		private ["_groups", "_hc_tvar", "_positions", "_side", "_sleep_thread", "_teams", "_town", "_town_vehicles"];
-		
-		_town = _this select 0;
-		_side = _this select 1;
-		_teams = _this select 2;
-		_groups = _this select 3;
-		_positions = _this select 4;
-		_sleep_thread = _this select 5;//--- Debug: add a delay while HC are fucked
-		
-		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FUNCTION: CTI_PVF_HC_OnTownDelegationReceived", format["A Delegation request was received from the server for [%1] teams in town [%2] on [%3]", count _teams, _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+			{(_town getVariable _hc_tvar) pushBack _x} forEach _groups;
+			
+			//--- Create the desired units
+			[_town, _side, _teams, _groups, _positions] spawn CTI_CO_FNC_CreateTownUnits;
 		};
-		
-		_hc_tvar = if (_side == resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
-		
-		//--- Register each groups on the town for deletion
-		{
-			if (isNil {_town getVariable _hc_tvar}) then {_town setVariable [_hc_tvar, [_x]]} else {_town setVariable [_hc_tvar, (_town getVariable _hc_tvar) + [_x]]};
-		} forEach _groups;
-		
-		// sleep _sleep_thread;
-		
-		//--- Create the desired units
-		// [_town, _side, _teams, _groups, _positions] spawn CTI_HC_CreateTownUnits;
-		[_town, _side, _teams, _groups, _positions] spawn CTI_CO_FNC_CreateTownUnits;
 	};
 	
 	CTI_PVF_HC_OnTownDelegationRemoval = {
@@ -160,7 +126,7 @@ with missionNamespace do {
 		_town = _this select 0;
 		_side = _this select 1;
 		
-		_hc_tvar = if (_side == resistance) then {"cti_hc_delegated_groups_resistance"} else {"cti_hc_delegated_groups_occupation"};
+		_hc_tvar = ["cti_hc_delegated_groups_occupation", "cti_hc_delegated_groups_resistance"] select (_side isEqualTo resistance);
 		
 		//--- Triggered only if we have units over here
 		if !(isNil {_town getVariable _hc_tvar}) then {
@@ -188,7 +154,7 @@ with missionNamespace do {
 		};
 		
 		//--- Wave System update, flush the current variable
-		_hc_tvar = if (_side == resistance) then {"cti_town_resistance_groups"} else {"cti_town_occupation_groups"};
+		_hc_tvar = ["cti_town_occupation_groups", "cti_town_resistance_groups"] select (_side isEqualTo resistance);
 		_town setVariable [_hc_tvar, []];
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
@@ -204,7 +170,7 @@ with missionNamespace do {
 		_side = _this select 1;
 		_groups = _this select 2;
 		
-		_hc_tvar = if (_side == resistance) then {"cti_town_resistance_groups"} else {"cti_town_occupation_groups"};
+		_hc_tvar = ["cti_town_occupation_groups", "cti_town_resistance_groups"] select (_side isEqualTo resistance);
 		
 		_town setVariable [_hc_tvar, (_town getVariable [_hc_tvar, []]) + _groups];
 		
@@ -255,7 +221,7 @@ with missionNamespace do {
 			
 			if !(isNil '_damages') then {
 				if (_damages > 0) then {
-					_repair = if (_damages - _repair < 0) then {0} else {_damages - _repair};
+					_repair = [_damages - _repair, 0] select (_damages - _repair < 0);
 					_vehicle setHit [_x, _repair];
 				};
 			};

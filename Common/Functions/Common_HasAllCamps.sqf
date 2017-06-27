@@ -21,11 +21,8 @@
     _west_own_camps = [Meaux, west] call CTI_CO_FNC_HasAllCamps;
 */
 
-private ["_sideID", "_town"];
+params ["_town", "_sideID"];
 
-_town = _this select 0;
-_sideID = _this select 1;
+if (typeName _sideID isEqualTo "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
 
-if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
-
-count(_town Call CTI_CO_FNC_GetTownCamps) == count([_town, _sideID] Call CTI_CO_FNC_GetTownCampsOnSide)
+count(_town Call CTI_CO_FNC_GetTownCamps) isEqualTo count([_town, _sideID] call CTI_CO_FNC_GetTownCampsOnSide)

@@ -6,7 +6,7 @@ while { true } do {
 		_seed = lnbValue[280005, [_i, 0]];
 		_found = false;
 		{
-			if (typeName _x == "ARRAY") then {if ((_x select 3) == _seed) then {_found = true}};
+			if (typeName _x isEqualTo "ARRAY") then {if ((_x select 3) isEqualTo _seed) then {_found = true}};
 			if (_found) exitWith {};
 		} forEach +CTI_P_TeamsRequests;
 		
@@ -17,13 +17,13 @@ while { true } do {
 	
 	//--- We've had some new requests inbetween?
 	{
-		if (typeName _x == "ARRAY") then {
+		if (typeName _x isEqualTo "ARRAY") then {
 			_seed = _x select 3;
 			_found = false;
 			
 			for '_i' from 0 to ((lnbSize((uiNamespace getVariable "cti_dialog_ui_requestmenu") displayCtrl 280005)) select 0) do {
 				_seed_lb = lnbValue[280005, [_i, 0]];
-				if (_seed == _seed_lb) exitWith {_found = true};
+				if (_seed isEqualTo _seed_lb) exitWith {_found = true};
 			};
 			
 			if !(_found) then {

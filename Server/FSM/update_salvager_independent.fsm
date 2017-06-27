@@ -10,7 +10,7 @@ item5[] = {"Terminate",8,218,50.000000,-200.000000,150.000000,-150.000000,0.0000
 item6[] = {"Unassigned",8,218,-250.000000,0.000000,-150.000000,50.000000,0.000000,"Unassigned"};
 item7[] = {"End_FSM",1,250,200.000000,-200.000000,300.000000,-150.000000,0.000000,"End FSM"};
 item8[] = {"Assigned",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Assigned"};
-item9[] = {"Attempt_Assignme",2,250,-400.000000,0.000000,-300.000000,50.000000,0.000000,"Attempt" \n "Assignment"};
+item9[] = {"Attempt_Assignme",2,4346,-400.000000,0.000000,-300.000000,50.000000,0.000000,"Attempt" \n "Assignment"};
 item10[] = {"Phase_III_Nature",2,250,50.000000,100.000000,150.000000,150.000000,0.000000,"Phase III" \n "Nature"};
 item11[] = {"",7,210,-354.000000,-279.000000,-346.000000,-271.000000,0.000000,""};
 item12[] = {"Goto_Repair",4,218,-100.000000,200.000000,0.000000,250.000000,0.000000,"Goto" \n "Repair"};
@@ -21,7 +21,7 @@ item16[] = {"",7,210,371.000000,471.000000,379.000000,479.000000,0.000000,""};
 item17[] = {"",7,210,371.000000,-279.000000,379.000000,-271.000000,0.000000,""};
 item18[] = {"",7,210,96.000000,471.000000,104.000000,479.000000,0.000000,""};
 item19[] = {"Goto_Target",4,218,50.000000,200.000000,150.000000,250.000000,0.000000,"Goto" \n "Target"};
-item20[] = {"Update_Target",2,4346,50.000000,300.000000,150.000000,350.000000,0.000000,"Update" \n "Target"};
+item20[] = {"Update_Target",2,250,50.000000,300.000000,150.000000,350.000000,0.000000,"Update" \n "Target"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,3};
@@ -46,8 +46,8 @@ link20[] = {17,1};
 link21[] = {18,16};
 link22[] = {19,20};
 link23[] = {20,18};
-globals[] = {25.000000,1,0,0,0,640,480,1,196,6316128,1,-555.809814,609.651367,630.043701,-455.164551,973,881,1};
-window[] = {2,-1,-1,-1,-1,931,150,1405,150,3,991};
+globals[] = {25.000000,1,0,0,0,640,480,1,196,6316128,1,-555.809814,609.651367,630.043701,-455.164551,973,910,1};
+window[] = {2,-1,-1,-1,-1,989,-1712,-457,208,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -136,7 +136,7 @@ class FSM
           priority = 1.000000;
           to="Phase_III_Nature";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_action != """""/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_action isEqualTo """")"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -176,8 +176,7 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"_goto = objNull;" \n
        "_move_lasttime = 0;" \n
        "_action = """";" \n
-       "_list = [];" \n
-       "{if (!alive _x && !(surfaceIsWater getPos _x) && _x distance _salvager < CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE && isNil {_x getVariable ""cti_gc_noremove""}) then {_list pushBack _x}} forEach vehicles;" \n
+       "_list = vehicles select {!alive _x && !(surfaceIsWater getPos _x) && _x distance _salvager < CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE && isNil {_x getVariable ""cti_gc_noremove""}};" \n
        "" \n
        "if (count _list > 0) then { _last_targetcheck = time; _goto = [_salvager, _list] call CTI_CO_FNC_GetClosestEntity; _action = ""goto-target""; _salvager commandMove (position _goto) };" \n
        "" \n
@@ -230,7 +229,7 @@ class FSM
           priority = 0.000000;
           to="Update_Town";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_action == ""goto-town"""/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_action isEqualTo ""goto-town"""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -240,7 +239,7 @@ class FSM
           priority = 0.000000;
           to="Update_Target";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_action == ""goto-target"""/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_action isEqualTo ""goto-target"""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -250,7 +249,7 @@ class FSM
           priority = 0.000000;
           to="Update_Repair";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_action == ""goto-repair"""/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_action isEqualTo ""goto-repair"""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -293,7 +292,7 @@ class FSM
     class Update_Town
     {
       name = "Update_Town";
-      init = /*%FSM<STATEINIT""">*/"if (_goto getVariable ""sideID"" == _sideID) then {" \n
+      init = /*%FSM<STATEINIT""">*/"if (_goto getVariable ""sideID"" isEqualTo _sideID) then {" \n
        "	if (_salvager distance _goto > 75) then {" \n
        "		if (time - _move_lasttime > 30) then {" \n
        "			_salvager commandMove ([_goto, 8, 30] call CTI_CO_FNC_GetRandomPosition);" \n
@@ -347,14 +346,14 @@ class FSM
        "	};" \n
        "	" \n
        "	//--- Is there a target closer to our salvager?" \n
-       "	if (time - _last_targetcheck > 25 && _action != """") then {" \n
+       "	if (time - _last_targetcheck > 25 && !(_action isEqualTo """")) then {" \n
        "		_last_targetcheck = time;" \n
        "		_list = [];" \n
        "		{if (!alive _x && !(surfaceIsWater getPos _x) && _x distance _salvager < CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE && isNil {_x getVariable ""cti_gc_noremove""}) then {_list pushBack _x}} forEach vehicles;" \n
        "" \n
        "		if (count _list > 0) then { " \n
        "			_closest = [_salvager, _list] call CTI_CO_FNC_GetClosestEntity;" \n
-       "			if (_goto != _closest) then { _action = """"; doStop _salvager };" \n
+       "			if !(_goto isEqualTo _closest) then { _action = """"; doStop _salvager };" \n
        "		};" \n
        "	};" \n
        "} else {" \n

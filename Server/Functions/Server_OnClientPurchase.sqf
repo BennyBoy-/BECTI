@@ -29,18 +29,11 @@
     [_team, group player, CTI_P_SideJoined, _classname, _factory, _veh_infos, _seed] call CTI_SE_FNC_OnClientPurchase
 */
 
-private ["_buyer", "_buyto_ai", "_classname", "_factory", "_locked", "_request", "_seed", "_side", "_team", "_var", "_veh_infos"];
-
-_team = _this select 0;
-_buyer = _this select 1;
-_side = _this select 2;
-_classname = _this select 3;
-_factory = _this select 4;
-_veh_infos = _this select 5;
-_seed = _this select 6;
+params ["_team", "_buyer", "_side", "_classname" ,"_factory" ,"_veh_infos" ,"_seed"];
+private ["_buyto_ai", "_locked", "_request", "_var"];
 
 _buyto_ai = false;
-if (typeName _team == "SIDE") then {
+if (typeName _team isEqualTo "SIDE") then {
 	_buyto_ai = true;
 } else {
 	if !(isPlayer leader _team) then {_buyto_ai = true};

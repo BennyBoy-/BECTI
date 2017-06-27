@@ -27,10 +27,8 @@
 	  -> Will search for manable statics around _structure
 */
 
-private ["_ai", "_defense_team", "_delegate", "_direction", "_distance", "_logic", "_manned", "_nearest_area", "_net", "_position", "_side", "_sideID", "_structure", "_var"];
-
-_structure = _this select 0;
-_side = _this select 1;
+params ["_structure", "_side"];
+private ["_ai", "_defense_team", "_delegate", "_direction", "_distance", "_logic", "_manned", "_nearest_area", "_net", "_position", "_sideID", "_var"];
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
@@ -41,7 +39,7 @@ _direction = 360 - ((_var select CTI_DEFENSE_PLACEMENT) select 0);
 _distance = (_var select CTI_DEFENSE_PLACEMENT) select 1;
 _position = _structure modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
 
-_net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then {true} else {false};
+_net = [false, true] select ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") isEqualTo 1);
 _nearest_area = if (CTI_BASE_DEFENSES_AUTO_MODE > 0) then {[_structure, _logic getVariable "cti_structures_areas"] call CTI_CO_FNC_GetClosestEntity} else {objNull};
 
 //--- Perform a defense manning routine while we can

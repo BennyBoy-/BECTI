@@ -22,9 +22,6 @@
 	  -> Returns the "Gear" upgrade level for the west side
 */
 
-private ["_index", "_side"];
-
-_side = _this select 0;
-_index = _this select 1;
+params ["_side", "_index"];
 
 ((_side) call CTI_CO_FNC_GetSideUpgrades) select _index

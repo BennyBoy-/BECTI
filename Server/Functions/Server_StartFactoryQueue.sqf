@@ -25,9 +25,9 @@
 	  -> Will create a queue for _factory and listen to the incoming requests until none remains
 */
 
-private ["_factory", "_list", "_req_buyer", "_req_classname", "_req_seed", "_req_side", "_req_time", "_req_time_out", "_req_toai", "_request", "_thread_id"];
+params ["_factory"];
+private ["_list", "_req_buyer", "_req_classname", "_req_seed", "_req_side", "_req_time", "_req_time_out", "_req_toai", "_request", "_thread_id"];
 
-_factory = _this;
 _factory setVariable ["cti_inuse", true, true];
 
 _thread_id = round(time + random 200 - random 50 + diag_frameno);
@@ -39,7 +39,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Server\F
 //--- Listen to purchase requests
 while { alive _factory } do {
 	_list = _factory getVariable "cti_queue_processing";
-	if (count _list == 0) exitWith { _factory setVariable ["cti_queue_processing", nil] }; //--- No requests, exit.
+	if (count _list < 1) exitWith { _factory setVariable ["cti_queue_processing", nil] }; //--- No requests, exit.
 	
 	_request = +(_list select 0);
 	_req_seed = _request select 0;
@@ -57,15 +57,15 @@ while { alive _factory } do {
 	
 //todo req_toai for indep salvager from client!
 	if (_req_toai) then { //--- Send a purchase request to the client if the target is not an AI.
-		if (isPlayer leader _req_buyer && typeName _req_target != "SIDE") then {
-			if (_req_buyer != _req_target) then {[_req_seed, _req_classname, _req_target, _factory] remoteExec ["CTI_PVF_CLT_OnPurchaseDelegationStart", leader _req_buyer]};
+		if (isPlayer leader _req_buyer && !(typeName _req_target isEqualTo "SIDE")) then {
+			if !(_req_buyer isEqualTo _req_target) then {[_req_seed, _req_classname, _req_target, _factory] remoteExec ["CTI_PVF_CLT_OnPurchaseDelegationStart", leader _req_buyer]};
 		};
 		
 		[_req_seed, _req_classname, _req_buyer, _req_target, _factory, _req_side] spawn CTI_SE_FNC_HandleAIPurchase;
 	} else {
 		//--- Target != source? notify the source that his remote req is being handled.
-		if (typeName _req_target != "SIDE") then {
-			if (_req_buyer != _req_target) then {[_req_seed, _req_classname, _req_target, _factory] remoteExec ["CTI_PVF_CLT_OnPurchaseDelegationStart", leader _req_buyer]};
+		if !(typeName _req_target isEqualTo "SIDE") then {
+			if !(_req_buyer isEqualTo _req_target) then {[_req_seed, _req_classname, _req_target, _factory] remoteExec ["CTI_PVF_CLT_OnPurchaseDelegationStart", leader _req_buyer]};
 			
 			[_req_seed, _req_classname, _req_buyer, _factory, _req_veh_infos] remoteExec ["CTI_PVF_CLT_OnPurchaseOrderReceived", leader _req_target];
 			if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Server\Functions\Server_StartFactoryQueue.sqf", format["Request from group [%1] concerning classname [%2] with seed [%3] in queue thread [%4] was forwarded to team [%5]", _req_buyer, _req_classname, _req_seed, _thread_id, _req_target]] call CTI_CO_FNC_Log };
@@ -77,7 +77,7 @@ while { alive _factory } do {
 		_is_present = false;
 			
 		{
-			if ((_x select 0) == _req_seed && (_x select 1) == _req_classname && (_x select 2) == _req_time) exitWith {_is_present = true};
+			if ((_x select 0) isEqualTo _req_seed && (_x select 1) isEqualTo _req_classname && (_x select 2) isEqualTo _req_time) exitWith {_is_present = true};
 		} forEach (_factory getVariable "cti_queue_processing");
 		
 		if (time > _req_time_out || !_is_present) exitWith { //--- Request timed out or the client already finished processing it's order.

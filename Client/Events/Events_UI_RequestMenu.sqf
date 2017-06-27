@@ -13,7 +13,7 @@ switch (_action) do {
 			_name = _x select 4;
 			
 			if !(isNil '_origin') then {
-				if (_name == name leader _origin) then {
+				if (_name isEqualTo name leader _origin) then {
 					_row = ((uiNamespace getVariable "cti_dialog_ui_requestmenu") displayCtrl 280005) lnbAddRow [format ["%1",_origin getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]], (_request) call CTI_UI_Request_GetRequestLabel];
 					((uiNamespace getVariable "cti_dialog_ui_requestmenu") displayCtrl 280005) lnbSetValue [[_row, 0], _seed];
 				} else {
@@ -42,7 +42,7 @@ switch (_action) do {
 			// player sidechat format ["%1",_seed];
 			
 			_request = [];
-			{if (typeName _x == "ARRAY") then {if ((_x select 3) == _seed) exitWith {_request = CTI_P_TeamsRequests select _forEachIndex}}} forEach CTI_P_TeamsRequests;
+			{if (typeName _x isEqualTo "ARRAY") then {if ((_x select 3) isEqualTo _seed) exitWith {_request = CTI_P_TeamsRequests select _forEachIndex}}} forEach CTI_P_TeamsRequests;
 			if (count _request > 0) then {
 				(_request) call CTI_UI_Request_SetRequestDescription;
 			};
@@ -58,7 +58,7 @@ switch (_action) do {
 			_requests = +CTI_P_TeamsRequests;
 			_request = [];
 			_id = -1;
-			{if ((_x select 3) == _seed) exitWith {_request = _requests select _forEachIndex;_id = _forEachIndex}} forEach _requests;
+			{if ((_x select 3) isEqualTo _seed) exitWith {_request = _requests select _forEachIndex;_id = _forEachIndex}} forEach _requests;
 			
 			if (count _request > 0) then { //--- We check if the request is still valid
 				//--- Make sure that the request is still valid
@@ -67,7 +67,7 @@ switch (_action) do {
 				_name = _request select 4;
 				
 				if !(isNil '_origin') then {
-					if (_name == name leader _origin) then {
+					if (_name isEqualTo name leader _origin) then {
 						if (isPlayer leader _origin) then { //--- Answer the client
 							["accept", _type] remoteExec ["CTI_PVF_CLT_OnRequestAnswered", leader _origin];
 						} else { //--- Answer the server (AI)
@@ -93,7 +93,7 @@ switch (_action) do {
 			_requests = +CTI_P_TeamsRequests;
 			_request = [];
 			_id = -1;
-			{if ((_x select 3) == _seed) exitWith {_request = _requests select _forEachIndex;_id = _forEachIndex}} forEach _requests;
+			{if ((_x select 3) isEqualTo _seed) exitWith {_request = _requests select _forEachIndex;_id = _forEachIndex}} forEach _requests;
 			
 			if (count _request > 0) then { //--- We check if the request is still valid
 				//--- Make sure that the request is still valid
@@ -102,7 +102,7 @@ switch (_action) do {
 				_name = _request select 4;
 				
 				if !(isNil '_origin') then {
-					if (_name == name leader _origin) then {
+					if (_name isEqualTo name leader _origin) then {
 						if (isPlayer leader _origin) then { //--- Answer the client
 							["deny", _type] remoteExec ["CTI_PVF_CLT_OnRequestAnswered", leader _origin];
 						} else { //--- Answer the server (AI)

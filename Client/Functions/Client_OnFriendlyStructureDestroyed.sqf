@@ -24,11 +24,8 @@
 	  -> Update the client purchase queue and display a message
 */
 
-private ["_position", "_sell", "_var", "_variable"];
-
-_position = _this select 0;
-_variable = _this select 1;
-_sell = _this select 2;
+params ["_position", "_variable", "_sell"];
+private ["_var"];
 
 _var = missionNamespace getVariable _variable;
 

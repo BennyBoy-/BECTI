@@ -23,10 +23,11 @@
 	[_myArray, _removes] call CTI_CO_FNC_ArrayShift; -> [0,2,West]
 */
 
-private ["_array", "_i", "_remove", "_shifted"];
+params ["_array", "_remove"];
+private ["_i", "_shifted"];
 
-_array = +(_this select 0);
-_remove = _this select 1;
+//--- Don't alter the original array
+_array = +(_array);
 
 _shifted = [];
 _i = 0;

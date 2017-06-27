@@ -21,7 +21,7 @@
 	  -> Return the resistance's side
 */
 
-if (typeName _this != "SCALAR") exitWith {civilian};
+if !(typeName _this isEqualTo "SCALAR") exitWith {civilian};
 
 switch (_this) do {
 	case CTI_WEST_ID: {west};

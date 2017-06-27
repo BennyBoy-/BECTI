@@ -5,7 +5,7 @@ CTI_UI_Request_OnRequestAnswered = {
 	_request = _this select 1;
 	
 	//--- ALTER: CTI_REQUEST
-	if (_answer == "accept") then { //--- The request was granted by the com
+	if (_answer isEqualTo "accept") then { //--- The request was granted by the com
 		switch (_request) do {
 			case CTI_REQUEST_FOB: {
 				CTI_P_ChatID sideChat "Your FOB construction request has been accepted by the commander";
@@ -97,8 +97,8 @@ CTI_UI_Request_HandleRequest = {
 		
 		_found = false;
 		{
-			if (typeName _x == "ARRAY") then {
-				if (_seed == (_x select 3)) then {_found = true};
+			if (typeName _x isEqualTo "ARRAY") then {
+				if (_seed isEqualTo (_x select 3)) then {_found = true};
 			};
 			if (_found) exitWith {};
 		} forEach +CTI_P_TeamsRequests;
@@ -110,7 +110,7 @@ CTI_UI_Request_HandleRequest = {
 	
 	if (_remove) then {
 		_id = -1;
-		{if (typeName _x == "ARRAY") then {if ((_x select 3) == _seed) exitWith {_id = _forEachIndex}}} forEach CTI_P_TeamsRequests;
+		{if (typeName _x isEqualTo "ARRAY") then {if ((_x select 3) isEqualTo _seed) exitWith {_id = _forEachIndex}}} forEach CTI_P_TeamsRequests;
 		if (_id > -1) then { CTI_P_TeamsRequests deleteAt _id };
 	};
 };

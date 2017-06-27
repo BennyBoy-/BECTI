@@ -21,7 +21,7 @@
 	  -> Return the current west upgrades levels
 */
 
-if (typeName _this != "SIDE") exitWith {[]};
+if !(typeName _this isEqualTo "SIDE") exitWith {[]};
 
 switch (_this) do {
 	case west: {CTI_WEST getVariable "cti_upgrades"};

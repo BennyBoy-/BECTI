@@ -42,11 +42,11 @@ switch (_action) do {
 		_my = _event select 3;
 		// _ctrl = _event select 5;
 		
-		if (_button == 0) then {
+		if (_button isEqualTo 0) then {
 			_mappos = ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290001) ctrlMapScreenToWorld [_mx, _my];
 			_marker = uiNamespace getVariable "cti_dialog_ui_artillerymenu_marker";
 			
-			if (_marker == "") then {(_mappos) call CTI_UI_Artillery_CreateArtilleryTargetMarker};
+			if (_marker isEqualTo "") then {(_mappos) call CTI_UI_Artillery_CreateArtilleryTargetMarker};
 			
 			_marker setMarkerPosLocal _mappos;
 		};
@@ -124,7 +124,7 @@ switch (_action) do {
 		_artillery_range = uiNamespace getVariable "cti_dialog_ui_artillerymenu_artillery_range";
 		
 		//todo timeout!
-		if (_artillery_magazine != "" && _artillery_marker != "" && time - CTI_P_LastFireMission > CTI_ARTILLERY_TIMEOUT) then {
+		if (!(_artillery_magazine isEqualTo "") && !(_artillery_marker isEqualTo "") && time - CTI_P_LastFireMission > CTI_ARTILLERY_TIMEOUT) then {
 			//--- We only grab the selected artillery pieces
 			_artillery = (_artillery) call CTI_UI_Artillery_GetSelectedArtilleryArray;
 			
@@ -159,7 +159,7 @@ switch (_action) do {
 		
 		//--- Remove the target marker
 		_marker = uiNamespace getVariable "cti_dialog_ui_artillerymenu_marker";
-		if (_marker != "") then {
+		if !(_marker isEqualTo "") then {
 			uiNamespace setVariable ["cti_dialog_ui_artillerymenu_marker_lastcoord", getMarkerPos _marker];
 			deleteMarkerLocal _marker;
 		};

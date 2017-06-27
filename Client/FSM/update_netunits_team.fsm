@@ -47,7 +47,7 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;" \n
        "" \n
        "_scan = vehicles;" \n
-       "if (missionNamespace getVariable ""CTI_MARKERS_INFANTRY"" == 1) then {_scan =_scan + allUnits};" \n
+       "if (missionNamespace getVariable ""CTI_MARKERS_INFANTRY"" isEqualTo 1) then {_scan =_scan + allUnits};" \n
        "" \n
        "{" \n
        "	if (alive _x && !isNil{_x getVariable ""cti_net""} && isNil{_x getVariable ""cti_initialized""}) then {" \n

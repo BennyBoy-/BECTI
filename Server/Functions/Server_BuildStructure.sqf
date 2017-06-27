@@ -12,14 +12,12 @@
     1	[Side]: The Side which requested it
     2	[Array]: The position of the defense
     3	[Number]: The direction of the defense
-    4	{Optionnal} [Object]: The person which requested it (send it back for undo)
 	
   # RETURNED VALUE #
 	[Object]: The ruins
 	
   # SYNTAX #
 	[STRUCTURE VARIABLE, SIDE, POSITION, DIRECTION] call CTI_SE_FNC_BuildStructure
-	[STRUCTURE VARIABLE, SIDE, POSITION, DIRECTION, SOURCE] call CTI_SE_FNC_BuildStructure
 	
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideLogic
@@ -29,11 +27,7 @@
     _placed = [_placed, CTI_CL_VAR_SideJoined, getPos _preview, getDir _preview] call CTI_SE_FNC_BuildStructure;
 */
 
-_classname = _this select 0;
-_side = _this select 1;
-_position = _this select 2;
-_direction = _this select 3;
-_origin = if (count _this > 4) then {_this select 4} else {objNull};
+params["_classname", "_side", "_position", "_direction"];
 
 _var = missionNamespace getVariable _classname;
 
@@ -56,15 +50,16 @@ _structure setVariable ["cti_structures_iteration", (_var select CTI_STRUCTURE_T
 _structure setVariable ["cti_structure_type", ((_var select CTI_STRUCTURE_LABELS) select 0)];
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
-_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull]];
+
+_structures_wip = _logic getVariable "cti_structures_wip";
+_structures_wip pushBack _structure;
+for '_i' from count(_structures_wip)-1 to 0 step -1 do {if (isNull(_structures_wip select _i)) then {_structures_wip deleteAt _i}};
 
 [_side, _structure, _classname, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
 
 ["structure-preplaced", [_classname, _position]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 
-if !(isNull _origin) then { (_structure) remoteExec ["CTI_PVF_CLT_OnStructurePlaced", _origin] };
-
-//AdminZeus
-if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_structure],true];};
+//--- ZEUS Curator Editable
+if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [[_structure], true]};
 
 _structure

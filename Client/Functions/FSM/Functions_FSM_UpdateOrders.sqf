@@ -59,10 +59,10 @@ CTI_FSM_UpdateOrders_TakeTown = {
 	_side_owned = false;
 	while {_process} do {
 		if (isNil '_group') exitWith {};
-		if (_seed != (_group getVariable "cti_order_seed")) exitWith {};
+		if !(_seed isEqualTo (_group getVariable "cti_order_seed")) exitWith {};
 		
-		if ((_town getVariable "cti_town_sideID") == CTI_P_SideID) exitWith {_side_owned = true};
-		if (_order in [CTI_ORDER_TAKETOWN_AUTO, CTI_ORDER_TAKEHOLDTOWN_AUTO] && !CTI_P_Respawning) then {if (([player, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestEnemyTown) != _town) then {_process = false}};
+		if ((_town getVariable "cti_town_sideID") isEqualTo CTI_P_SideID) exitWith {_side_owned = true};
+		if (_order in [CTI_ORDER_TAKETOWN_AUTO, CTI_ORDER_TAKEHOLDTOWN_AUTO] && !CTI_P_Respawning) then {if !(([player, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestEnemyTown) isEqualTo _town) then {_process = false}};
 		
 		sleep 5;
 	};
@@ -87,13 +87,13 @@ CTI_FSM_UpdateOrders_TakeTown = {
 			_start_patrol = time;
 			
 			while {true} do {
-				if (_seed != (_group getVariable "cti_order_seed") || time - _start_patrol > CTI_PLAYER_ORDER_TAKEHOLDTOWNS_TIME) exitWith {};
+				if (!(_seed isEqualTo (_group getVariable "cti_order_seed")) || time - _start_patrol > CTI_PLAYER_ORDER_TAKEHOLDTOWNS_TIME) exitWith {};
 				
 				sleep 2.5;
 			};
 			
 			if (time - _start_patrol > CTI_PLAYER_ORDER_TAKEHOLDTOWNS_TIME) then {
-				if ((_town getVariable "cti_town_sideID") == CTI_P_SideID) then {
+				if ((_town getVariable "cti_town_sideID") isEqualTo CTI_P_SideID) then {
 					["CTI_TaskSucceeded",[_task_title]] call bis_fnc_showNotification;
 					_task setTaskState "Succeeded";
 				} else {
@@ -105,7 +105,7 @@ CTI_FSM_UpdateOrders_TakeTown = {
 	};
 	
 	//--- Release ! (if order still match the current seed)
-	if (_seed == (_group getVariable "cti_order_seed")) then {
+	if (_seed isEqualTo (_group getVariable "cti_order_seed")) then {
 		switch (true) do {
 			case (_order in [CTI_ORDER_TAKETOWN, CTI_ORDER_TAKETOWN_AUTO]): {_group setVariable ["cti_order", CTI_ORDER_TAKETOWNS, true]};
 			case (_order in [CTI_ORDER_TAKEHOLDTOWN, CTI_ORDER_TAKEHOLDTOWN_AUTO]): {_group setVariable ["cti_order", CTI_ORDER_TAKEHOLDTOWNS, true]};
@@ -173,11 +173,11 @@ CTI_FSM_UpdateOrders_HoldTownsBase = {
 	
 	//--- We patrol!
 	_pos_patrol = getPos _defend; 
-	_pos_patrol_isbase = if (isNil {_defend getVariable "cti_town_sideID"}) then {true} else {false};
+	_pos_patrol_isbase = [false, true] select (isNil {_defend getVariable "cti_town_sideID"});
 	
 	_destroyed = false;
 	while {true} do {
-		if (_seed != (_group getVariable "cti_order_seed")) exitWith {};
+		if !(_seed isEqualTo (_group getVariable "cti_order_seed")) exitWith {};
 		if !(alive _defend) exitWith {_destroyed = true};
 		
 		sleep 2.5;
@@ -225,7 +225,7 @@ CTI_FSM_UpdateOrders_Move = {
 	
 	_reach = false;
 	while {true} do {
-		if (_seed != (_group getVariable "cti_order_seed")) exitWith {};
+		if !(_seed isEqualTo (_group getVariable "cti_order_seed")) exitWith {};
 		if (player distance _order_pos <= 20) exitWith {_reach = true};
 		
 		sleep 1.5;

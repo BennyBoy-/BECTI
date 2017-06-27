@@ -4479,7 +4479,7 @@ class Mission
 			};
 			id=169;
 			type="Land_BagBunker_Large_F";
-			atlOffset=1.5258789e-005;
+			atlOffset=0.030441284;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4521,7 +4521,7 @@ class Mission
 			};
 			id=170;
 			type="Land_BagBunker_Large_F";
-			atlOffset=-2.3841858e-007;
+			atlOffset=0.030430555;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4563,6 +4563,7 @@ class Mission
 			};
 			id=171;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030430794;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4604,7 +4605,7 @@ class Mission
 			};
 			id=172;
 			type="Land_BagBunker_Large_F";
-			atlOffset=-4.7683716e-007;
+			atlOffset=0.030430317;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4646,6 +4647,7 @@ class Mission
 			};
 			id=173;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030426025;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4687,6 +4689,7 @@ class Mission
 			};
 			id=174;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030426025;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4728,6 +4731,7 @@ class Mission
 			};
 			id=175;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030426025;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4769,6 +4773,7 @@ class Mission
 			};
 			id=176;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.03042984;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4810,6 +4815,7 @@ class Mission
 			};
 			id=177;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030430794;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4851,6 +4857,7 @@ class Mission
 			};
 			id=178;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030430794;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4892,6 +4899,7 @@ class Mission
 			};
 			id=179;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030426025;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4933,6 +4941,7 @@ class Mission
 			};
 			id=180;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030426025;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4974,6 +4983,7 @@ class Mission
 			};
 			id=181;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030426025;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5015,6 +5025,7 @@ class Mission
 			};
 			id=182;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030426025;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5056,6 +5067,7 @@ class Mission
 			};
 			id=183;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030426025;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5097,6 +5109,7 @@ class Mission
 			};
 			id=184;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030430794;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5138,6 +5151,7 @@ class Mission
 			};
 			id=185;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030430794;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5179,7 +5193,7 @@ class Mission
 			};
 			id=186;
 			type="Land_BagBunker_Large_F";
-			atlOffset=-2.3841858e-007;
+			atlOffset=0.030430555;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5221,6 +5235,7 @@ class Mission
 			};
 			id=187;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030430794;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5262,6 +5277,7 @@ class Mission
 			};
 			id=188;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.03042984;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5303,6 +5319,7 @@ class Mission
 			};
 			id=189;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030426025;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5344,7 +5361,7 @@ class Mission
 			};
 			id=190;
 			type="Land_BagBunker_Large_F";
-			atlOffset=7.6293945e-006;
+			atlOffset=0.030433655;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5386,7 +5403,7 @@ class Mission
 			};
 			id=191;
 			type="Land_BagBunker_Large_F";
-			atlOffset=-4.7683716e-007;
+			atlOffset=0.030430317;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5416,7 +5433,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={6063,19.330122,5593};
+				position[]={6063,19.33012,5593};
 				angles[]={0,5.282815,0};
 			};
 			side="Empty";
@@ -5428,6 +5445,7 @@ class Mission
 			};
 			id=192;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.03042984;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5469,6 +5487,7 @@ class Mission
 			};
 			id=193;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030426025;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5510,6 +5529,7 @@ class Mission
 			};
 			id=194;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030426025;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5551,6 +5571,7 @@ class Mission
 			};
 			id=195;
 			type="Land_BagBunker_Large_F";
+			atlOffset=0.030430794;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5592,7 +5613,7 @@ class Mission
 			};
 			id=196;
 			type="Land_BagBunker_Large_F";
-			atlOffset=-7.6293945e-006;
+			atlOffset=0.030418396;
 			class CustomAttributes
 			{
 				class Attribute0

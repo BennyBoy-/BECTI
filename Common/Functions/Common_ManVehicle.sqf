@@ -33,29 +33,24 @@
 	     and will join the player's group
 */
 
-private ["_crew", "_config", "_config_sub", "_extra_units", "_group", "_net", "_position", "_sideID", "_turrets", "_units", "_vehicle"];
+params ["_vehicle", "_crew", "_group", "_sideID", ["_extra_turrets", true]];
+private ["_config", "_config_sub", "_net", "_position", "_turret_main", "_turrets", "_unit", "_units"];
 
-_vehicle = _this select 0;
-_crew = _this select 1;
-_group = _this select 2;
-_sideID = _this select 3;
-_extra_units = if (count _this > 4) then {_this select 4} else {true};
-
-// _turrets
 _units = [];
 _position = getPos _vehicle;
 _position = [(_position select 0) + 5, (_position select 1) + 5, 0];
 
-_net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1 && _sideID in [CTI_WEST_ID, CTI_EAST_ID]) then { true } else { false };
+_net = [false, true] select ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") isEqualTo 1 && _sideID in [CTI_WEST_ID, CTI_EAST_ID]);
 
+//--- Man the driver
 if (_vehicle emptyPositions "driver" > 0) then {
 	_unit = [_crew, _group, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 	_unit moveInDriver _vehicle;
 	_units pushBack _unit;
 };
 
-//--- Extra units is equal to extra turrets manning
-if (_extra_units) then {
+//--- If the extra turrets parameter is set, we man all the turrets, not just the gunner & commander
+if (_extra_turrets) then {
 	_turrets = [];
 	_config = configFile >> "CfgVehicles" >> typeOf _vehicle >> "turrets";
 	for '_i' from 0 to (count _config)-1 do {
@@ -74,7 +69,7 @@ if (_extra_units) then {
 		_unit moveInTurret [_vehicle, _x];
 		_units pushBack _unit;
 	} forEach _turrets;
-} else { //--- Only man the gunner / commander if false
+} else { //--- Only man the gunner / commander if the extra turrets parameter is not set
 	if (_vehicle emptyPositions "gunner" > 0) then {
 		_unit = [_crew, _group, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 		_unit moveInGunner _vehicle;

@@ -21,7 +21,7 @@
 	  -> Return CTI_WEST_ID
 */
 
-if (typeName _this != "SIDE") exitWith {-1};
+if !(typeName _this isEqualTo "SIDE") exitWith {-1};
 
 switch (_this) do {
 	case west: {CTI_WEST_ID};

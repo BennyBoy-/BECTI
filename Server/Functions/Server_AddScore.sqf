@@ -23,9 +23,6 @@
 	  -> Adds 5 points to the player on the leaderboard
 */
 
-private ["_who", "_value"];
-
-_who = _this select 0;
-_value = _this select 1;
+params ["_who", "_value"];
 
 _who addScore _value;

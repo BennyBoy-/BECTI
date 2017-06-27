@@ -27,10 +27,7 @@
 	  -> This function be triggered everytime the player dies
 */
 
-private ["_killed", "_killer"];
-
-_killed = _this select 0;
-_killer = _this select 1;
+params ["_killed", "_killer"];
 
 CTI_DeathPosition = getPos _killed;
 
@@ -54,6 +51,15 @@ if !(CTI_P_Jailed) then {[_killed, _killer, CTI_P_SideID] spawn CTI_CO_FNC_OnUni
 
 waitUntil {alive player};
 
+//--- ZEUS Curator Editable
+if !(isNil "ADMIN_ZEUS") then {
+	if (CTI_IsServer) then {
+		ADMIN_ZEUS addCuratorEditableObjects [[player], true];
+	} else {
+		[ADMIN_ZEUS, player] remoteExec ["CTI_PVF_SRV_RequestAddCuratorEditable", CTI_PV_SERVER];
+	};
+};
+
 if (CTI_P_Jailed) exitWith {
 	_pos = getMarkerPos "prison";
 	_rpos = [(_pos select 0) + random 2 - random 2, (_pos select 1) + random 2 - random 2, 0.75];
@@ -71,7 +77,7 @@ CTI_DeathTimer = time + (missionNamespace getVariable "CTI_RESPAWN_TIMER");
 call CTI_CL_FNC_AddMissionActions;
 
 //--- Make sure that player is always the leader (of his group).
-if (leader(group player) != player) then {(group player) selectLeader player};
+if !(leader(group player) isEqualTo player) then {(group player) selectLeader player};
 
 createDialog "CTI_RscRespawnMenu";
 

@@ -22,11 +22,8 @@ for '_i' from 0 to (count _v)-1 do {
 	if (count _pool > 0) then {
 		_cat = _c select _i;
 		
-		if (isNil {missionNamespace getVariable format ["CTI_SQUADS_%1_%2", _side, _cat]}) then {
-			missionNamespace setVariable [format ["CTI_SQUADS_%1_%2", _side, _cat], [_v select _i]];
-		} else {
-			missionNamespace setVariable [format ["CTI_SQUADS_%1_%2", _side, _cat], (missionNamespace getVariable format ["CTI_SQUADS_%1_%2", _side, _cat]) + [_v select _i]];
-		};
+		if (isNil {missionNamespace getVariable format ["CTI_SQUADS_%1_%2", _side, _cat]}) then {missionNamespace setVariable [format ["CTI_SQUADS_%1_%2", _side, _cat], []]};
+		(missionNamespace getVariable format ["CTI_SQUADS_%1_%2", _side, _cat]) pushBack (_v select _i);
 		
 		missionNamespace setVariable [format ["CTI_SQUAD_%1_%2", _side, _v select _i], [_t select _i, _m select _i, _pool, _f select _i, _s select _i]];
 		_squads pushBack (_v select _i);

@@ -28,19 +28,17 @@
 	[_myArray3, _myArray4] call CTI_CO_FNC_ArrayDiffers; -> False
 */
 
-private ["_array1", "_array2", "_different", "_item"];
-
-_array1 = _this select 0;
-_array2 = _this select 1;
+params ["_array1", "_array2"];
+private ["_different", "_item"];
 
 _different = false;
 
-if (count _array1 != count _array2) then { 
+if !(count _array1 isEqualTo count _array2) then { 
 	_different = true;
 } else {
 	{
 		_item = _x;
-		if (({_x == _item} count _array1) != ({_x == _item} count _array2)) exitWith { _different = true };
+		if !(({_x isEqualTo _item} count _array1) isEqualTo ({_x isEqualTo _item} count _array2)) exitWith { _different = true };
 	} forEach _array1;
 };
 

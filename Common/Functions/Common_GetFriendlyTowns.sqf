@@ -27,13 +27,14 @@
 	  -> Return the towns which are considered friendly to the Resistance
 */
 
-private ["_sideID", "_towns"];
+params ["_sideID"];
+private ["_towns"];
 
 _sideID = _this;
 
-if (typeName _sideID == "SIDE") then { _sideID = (_sideID) call CTI_CO_FNC_GetSideID };
+if (typeName _sideID isEqualTo "SIDE") then { _sideID = (_sideID) call CTI_CO_FNC_GetSideID };
 
 _towns = [];
-{if (_x getVariable "cti_town_sideID" == _sideID) then {_towns pushBack _x}} forEach CTI_Towns;
+{if (_x getVariable "cti_town_sideID" isEqualTo _sideID) then {_towns pushBack _x}} forEach CTI_Towns;
 
 _towns

@@ -1,24 +1,50 @@
-private ["_groups", "_index", "_limit", "_positions", "_ratio", "_safe_range", "_side", "_sideID", "_sorted", "_spawn_range", "_teams", "_teams_priority", "_town", "_tvar", "_vvar"];
+/*
+  # HEADER #
+	Script: 		Common\Functions\Common_CreateTownUnits.sqf
+	Alias:			CTI_CO_FNC_CreateTownUnits
+	Description:	Create town AI units in waves for a given side
+	Author: 		Benny
+	Creation Date:	20-06-2017
+	Revision Date:	20-06-2017
+	
+  # PARAMETERS #
+    0	[Object]: The town
+    1	[Side]: The units side
+    2	[Array]: The units to create (per array)
+	3	[Array]: The units groups
+	4	[Array]: The units positions
+	
+  # RETURNED VALUE #
+	None
+	
+  # SYNTAX #
+	[TOWN, SIDE, CLASSNAMES, GROUPS, POSITIONS] call CTI_CO_FNC_CreateTownUnits
+	
+  # NOTES #
+	- This file is usually called by the Server but an Headless Client may also call it
+	- The spawn script uses a wave system, _ratio and _limit determine the waves count active at a time
+	
+  # EXAMPLE #
+    [NoeAirport, West, [["B_MRAP_01_hmg_F", "B_Soldier_GL_F", "B_soldier_AR_F"],["B_Soldier_TL_F", "B_Soldier_GL_F", "B_soldier_AR_F"]], [groupX, groupY], [[7502.04, 7650.10, 0],[7306.12, 7522.74]]] call CTI_CO_FNC_CreateTeam
+	  -> Will create 2 West teams at Noe Airport
+*/
 
-_town = _this select 0;
-_side = _this select 1;
-_teams = _this select 2;
-_groups = _this select 3;
-_positions = _this select 4;
+params ["_town", "_side", "_teams", "_groups", "_positions"];
+private ["_index", "_limit", "_ratio", "_safe_range", "_sideID", "_sorted", "_spawn_range", "_teams_priority", "_tvar", "_vvar"];
 
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
-_vvar = if (_side == resistance) then {"cti_town_resistance_active_vehicles"} else {"cti_town_occupation_active_vehicles"};
-_tvar = if (_side == resistance) then {"cti_town_resistance_groups"} else {"cti_town_occupation_groups"};
-_limit = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI"};
-_ratio = if (_side == resistance) then {missionNamespace getVariable "CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO"} else {missionNamespace getVariable "CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO"};
-_safe_range = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE} else {CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE};
-_spawn_range = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_RANGE} else {CTI_TOWNS_OCCUPATION_SPAWN_RANGE};
+_vvar = ["cti_town_occupation_active_vehicles", "cti_town_resistance_active_vehicles"] select (_side isEqualTo resistance);
+_tvar = ["cti_town_occupation_groups", "cti_town_resistance_groups"] select (_side isEqualTo resistance);
+_limit = missionNamespace getVariable (["CTI_TOWNS_OCCUPATION_LIMIT_AI", "CTI_TOWNS_RESISTANCE_LIMIT_AI"] select (_side isEqualTo resistance));
+_ratio = missionNamespace getVariable (["CTI_TOWNS_OCCUPATION_LIMIT_AI_QUEUE_RATIO", "CTI_TOWNS_RESISTANCE_LIMIT_AI_QUEUE_RATIO"] select (_side isEqualTo resistance));
+_safe_range = [CTI_TOWNS_OCCUPATION_SPAWN_SAFE_RANGE, CTI_TOWNS_RESISTANCE_SPAWN_SAFE_RANGE] select (_side isEqualTo resistance);
+_spawn_range = [CTI_TOWNS_OCCUPATION_SPAWN_RANGE, CTI_TOWNS_RESISTANCE_SPAWN_RANGE] select (_side isEqualTo resistance);
 
 //--- Determine how many AI should be present at a given time (perform a min max from the given SV range)
-_spawn_max_ai = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX} else {CTI_TOWNS_OCCUPATION_SPAWN_AI_MAX};
-_spawn_min_ai = if (_side == resistance) then {CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN} else {CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN};
-_spawn_town_sv = if (_side == resistance) then {_town getVariable "cti_town_sv_max"} else {_town getVariable "cti_town_sv"};
+_spawn_max_ai = [CTI_TOWNS_OCCUPATION_SPAWN_AI_MAX, CTI_TOWNS_RESISTANCE_SPAWN_AI_MAX] select (_side isEqualTo resistance);
+_spawn_min_ai = [CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN, CTI_TOWNS_RESISTANCE_SPAWN_AI_MIN] select (_side isEqualTo resistance);
+_spawn_town_sv = _town getVariable (["cti_town_sv", "cti_town_sv_max"] select (_side isEqualTo resistance));
 _active_units = (((_spawn_max_ai - _spawn_min_ai) * (_spawn_town_sv - CTI_TOWNS_SPAWN_SV_MIN)) / (CTI_TOWNS_SPAWN_SV_MAX - CTI_TOWNS_SPAWN_SV_MIN)) + _spawn_min_ai;
 
 //--- Sort the teams orders if needed
@@ -108,9 +134,11 @@ while {true} do {
 				if (_use_default) then {
 					_has_vehicles = false;
 					{if !(_x isKindOf "Man") exitWith {_has_vehicles = true}} forEach _team;
+					//--- If a new building cannot be found, we look for a position
+					if (typeName _position isEqualTo "OBJECT") then {_position = getPos _position};
 					
 					for '_i' from 1 to 100 do {
-						_position_ran = [ASLToAGL _position, 10, _spawn_range, 10, if (_has_vehicles) then {"vehicles"} else {"infantry"}] call CTI_CO_FNC_GetSafePosition;
+						_position_ran = [ASLToAGL _position, 10, _spawn_range, 10, ["infantry", "vehicles"] select (_has_vehicles)] call CTI_CO_FNC_GetSafePosition;
 						if (([_position_ran nearEntities _safe_range, _side] call CTI_CO_FNC_GetAreaEnemiesCount) < 1) exitWith {
 							_position = _position_ran;
 							

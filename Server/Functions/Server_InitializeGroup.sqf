@@ -22,10 +22,7 @@
 	  -> Will initialize the player's group on his own side
 */
 
-private ["_side", "_team"];
-
-_team = _this select 0;
-_side = _this select 1;
+params ["_team", "_side"];
 
 if (isNil {_team getVariable "cti_funds"}) then {_team setVariable ["cti_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", _side], true]};
 _team setVariable ["cti_role_evo", "Infantry"]; //--- Evolutive role

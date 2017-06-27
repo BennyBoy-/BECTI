@@ -139,7 +139,7 @@ CTI_Coin_UpdatePreview = {
 			if !(_preview call CTI_Coin_PreviewSurfaceIsValid) then { //--- Check if the surface is valid
 				_color = CTI_COIN_COLOR_INVALID;
 			} else {
-				if (CTI_COIN_PARAM_KIND == "DEFENSES") then {
+				if (CTI_COIN_PARAM_KIND isEqualTo "DEFENSES") then {
 					if !((CTI_COIN_PARAM select CTI_DEFENSE_COINBLACKLIST) isEqualTo []) then { //--- A blacklist is specified
 						if ((CTI_COIN_PARAM select CTI_DEFENSE_COINBLACKLIST) isEqualTo ["*"]) then { //--- If a wildcard is specified, treat the defense as a structure
 							if !(_preview call CTI_Coin_PreviewSurfaceIsValid) then {_color = CTI_COIN_COLOR_INVALID};
@@ -152,7 +152,7 @@ CTI_Coin_UpdatePreview = {
 		};
 		
 		//--- Show or hide the object depending on the boundary presence
-		// if (_color == CTI_COIN_COLOR_OUTOFRANGE && !isObjectHidden _preview) then {_preview hideObject true};
+		// if (_color isEqualTo CTI_COIN_COLOR_OUTOFRANGE && !isObjectHidden _preview) then {_preview hideObject true};
 		// if (_color != CTI_COIN_COLOR_OUTOFRANGE && isObjectHidden _preview) then {_preview hideObject false};
 		
 		//--- Get the matching UI color
@@ -187,11 +187,11 @@ CTI_Coin_PreviewSurfaceIsValid = {
 				_isValid = false
 			} else {
 				_defense_collide = false;
-				if (CTI_COIN_PARAM_KIND == "DEFENSES") then {
+				if (CTI_COIN_PARAM_KIND isEqualTo "DEFENSES") then {
 					if ((CTI_COIN_PARAM select 7) isEqualTo ["*"]) then {_defense_collide = true};
 				};
 				
-				if (CTI_COIN_PARAM_KIND == "STRUCTURES" || _defense_collide) then {
+				if (CTI_COIN_PARAM_KIND isEqualTo "STRUCTURES" || _defense_collide) then {
 					_maxGrad = 24;
 					_minDist = 20;
 					
@@ -205,7 +205,7 @@ CTI_Coin_PreviewSurfaceIsValid = {
 						_preview 								//--- Ignored object
 					];
 					
-					if (count _isFlat == 0) then {_isValid = false};
+					if (count _isFlat isEqualTo 0) then {_isValid = false};
 				};
 			};
 		};
@@ -259,7 +259,7 @@ CTI_Coin_OnMouseButtonDown = {
 				if !(isNil 'CTI_COIN_PREVIEW') then {
 					call CTI_Coin_OnPreviewCanceled;
 				} else {
-					if (commandingMenu == "#USER:CTI_COIN_Categories_0") then {CTI_COIN_EXIT = true};
+					if (commandingMenu isEqualTo "#USER:CTI_COIN_Categories_0") then {CTI_COIN_EXIT = true};
 				};
 			};
 		};
@@ -274,7 +274,7 @@ CTI_Coin_UpdateBaseAreaLimits = {
 	_valid = "";
 	
 	with missionNamespace do {
-		if (CTI_COIN_SOURCE == 'HQ') then {
+		if (CTI_COIN_SOURCE isEqualTo 'HQ') then {
 			_in_area = false;
 			{if (_position distance2D _x <= CTI_BASE_AREA_RANGE) exitWith {_in_area = true}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
 			
@@ -321,7 +321,7 @@ CTI_Coin_OnPreviewPlacement = {
 		};
 		
 		_direction = direction CTI_COIN_PREVIEW;
-		_position = position CTI_COIN_PREVIEW;
+		_position = getPosVisual CTI_COIN_PREVIEW;
 		
 		if (CTI_COIN_PREVIEW call CTI_Coin_PreviewSurfaceIsValid && _defense_pos_valid && CTI_COIN_PREVIEW distance CTI_COIN_ORIGIN <= CTI_COIN_RANGE) then { //--- Last check to make sure that the position is valid
 			deleteVehicle CTI_COIN_PREVIEW;
@@ -344,8 +344,8 @@ CTI_Coin_OnPreviewPlacement = {
 						[CTI_P_SideJoined, -(CTI_COIN_PARAM select CTI_STRUCTURE_PRICE)] call CTI_CO_FNC_ChangeSideSupply;
 						
 						//--- Check whether we're dealing with the HQ or a normal structure
-						if (((CTI_COIN_PARAM select CTI_STRUCTURE_LABELS) select 0) != CTI_HQ_DEPLOY) then {
-							[_variable, CTI_P_SideJoined, _position, _direction, player] remoteExec ["CTI_PVF_SRV_RequestBuilding", CTI_PV_SERVER];
+						if !(((CTI_COIN_PARAM select CTI_STRUCTURE_LABELS) select 0) isEqualTo CTI_HQ_DEPLOY) then {
+							[_variable, CTI_P_SideJoined, _position, _direction] remoteExec ["CTI_PVF_SRV_RequestBuilding", CTI_PV_SERVER];
 						} else {
 							//--- When the HQ is being deployed or mobilized, the commanding menu must be reloaded
 							_reload_expression = CTI_Coin_OnHQToggle;
@@ -362,7 +362,7 @@ CTI_Coin_OnPreviewPlacement = {
 				case 'DEFENSES': {
 					_variable = format ["CTI_%1_%2", CTI_P_SideJoined, CTI_COIN_PARAM select CTI_DEFENSE_CLASS];
 					-(CTI_COIN_PARAM select CTI_DEFENSE_PRICE) call CTI_CL_FNC_ChangePlayerFunds;
-					[_variable, CTI_P_SideJoined, _position, _direction, player, profileNamespace getVariable ["CTI_COIN_WALLALIGN", true], profileNamespace getVariable ["CTI_COIN_AUTODEFENSE", true]] remoteExec ["CTI_PVF_SRV_RequestDefense", CTI_PV_SERVER];
+					[_variable, CTI_P_SideJoined, _position, _direction, profileNamespace getVariable ["CTI_COIN_WALLALIGN", true], profileNamespace getVariable ["CTI_COIN_AUTODEFENSE", true]] remoteExec ["CTI_PVF_SRV_RequestDefense", CTI_PV_SERVER];
 				};
 			};
 			
@@ -398,7 +398,7 @@ CTI_Coin_OnHQToggle = {
 			showCommandingMenu (missionNamespace getVariable ["CTI_COIN_MENU", "#USER:CTI_COIN_Categories_0"]);
 			
 			//--- Update the camera area
-			_areaSize = if (CTI_P_SideJoined call CTI_CO_FNC_IsHQDeployed) then {CTI_COIN_AREA_HQ_DEPLOYED} else {CTI_COIN_AREA_HQ_MOBILIZED};
+			_areaSize = [CTI_COIN_AREA_HQ_MOBILIZED, CTI_COIN_AREA_HQ_DEPLOYED] select (CTI_P_SideJoined call CTI_CO_FNC_IsHQDeployed);
 			if !(isNil 'CTI_COIN_CAMCONSTRUCT') then {
 				_position = getPos (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ);
 				{if (_position distance2D _x <= CTI_BASE_AREA_RANGE) exitWith {_position = [_x select 0, _x select 1, 0]}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
@@ -504,13 +504,13 @@ CTI_Coin_OnKeyDown = {
 		
 		switch (true) do {
 			// case (_key in [1,14]): { //--- Either exit the camera or cancel the preview depending on where the player's at in the menu
-			case (_key == 1 || _key in actionKeys "NavigateMenu"): { //--- Either exit the camera or cancel the preview depending on where the player's at in the menu
+			case (_key isEqualTo 1 || _key in actionKeys "NavigateMenu"): { //--- Either exit the camera or cancel the preview depending on where the player's at in the menu
 				_handled = true;
 				if !(isNil 'CTI_COIN_PREVIEW') then {
 					call CTI_Coin_OnPreviewCanceled;
 				} else {
-					// if (_key == 14 && commandingMenu != "#USER:CTI_COIN_Categories_0") then {_handled = false} else {CTI_COIN_EXIT = true};
-					if (_key in actionKeys "NavigateMenu" && commandingMenu != "#USER:CTI_COIN_Categories_0") then {_handled = false} else {CTI_COIN_EXIT = true};
+					// if (_key isEqualTo 14 && commandingMenu != "#USER:CTI_COIN_Categories_0") then {_handled = false} else {CTI_COIN_EXIT = true};
+					if (_key in actionKeys "NavigateMenu" && !(commandingMenu isEqualTo "#USER:CTI_COIN_Categories_0")) then {_handled = false} else {CTI_COIN_EXIT = true};
 				};
 			};
 			case (_key in [28, 156]): {if !(isNil 'CTI_COIN_PREVIEW') then {call CTI_Coin_OnPreviewPlacement}};

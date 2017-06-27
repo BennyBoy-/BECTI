@@ -18,9 +18,9 @@
 		_marker setMarkerPosLocal getPos _hq;
 		
 		if !(alive _hq) then {
-			if (markerColor _marker != "ColorBlack") then {_marker setMarkerColorLocal "ColorBlack"; _marker setMarkerTextLocal "HQ Wreck"};
+			if !(markerColor _marker isEqualTo "ColorBlack") then {_marker setMarkerColorLocal "ColorBlack"; _marker setMarkerTextLocal "HQ Wreck"};
 		} else {
-			if (markerColor _marker != CTI_P_SideColor) then {_marker setMarkerColorLocal CTI_P_SideColor; _marker setMarkerTextLocal "HQ"};
+			if !(markerColor _marker isEqualTo CTI_P_SideColor) then {_marker setMarkerColorLocal CTI_P_SideColor; _marker setMarkerTextLocal "HQ"};
 		};
 		
 		sleep 0.5;
@@ -42,13 +42,13 @@ if (isMultiplayer) then {sleep 5}; //--- Wait in MP for the net var to kick in
 //--- Add lock/unlock to team vehicles if needed.
 {
 	if (effectiveCommander _x in units player) then {
-		_x addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 2'];
-		_x addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 0'];
+		_x addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target isEqualTo 2'];
+		_x addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target isEqualTo 0'];
 	};
 } forEach ([group player, false] call CTI_CO_FNC_GetTeamVehicles);
 
 {
-	if (vehicle _x == _x) then { //--- On foot
+	if (vehicle _x isEqualTo _x) then { //--- On foot
 		_x setPos ([player, 8, 30] call CTI_CO_FNC_GetRandomPosition);
 	} else { //--- In vehicle
 		if ((effectiveCommander vehicle _x) in units player) then { //--- The vehicle is lead by us
@@ -65,11 +65,11 @@ if (CTI_BASE_AIRRADAR_Z_OFFSET > 0 || CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1)
 	{
 		if (alive _x && _x isKindOf "Air" && CTI_BASE_AIRRADAR_Z_OFFSET > 0) then {
 			_sideID = _x getVariable ["cti_net", -1];
-			if (_sideID != CTI_P_SideID && _sideID != -1) then {(_x) spawn CTI_CL_FNC_UpdateAirRadarMarker};
+			if (!(_sideID isEqualTo CTI_P_SideID) && !(_sideID isEqualTo -1)) then {(_x) spawn CTI_CL_FNC_UpdateAirRadarMarker};
 		};
 		if (alive _x && _x isKindOf "StaticWeapon" && CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1 && getNumber(configFile >> "CfgVehicles" >> typeOf _x >> "artilleryScanner") > 0) then {
 			_sideID = _x getVariable ["cti_net_static", -1];
-			if (_sideID != -1) then {_artillery addEventHandler ["Fired", {[_this select 0, _this select 4, _this select 6] spawn CTI_CL_FNC_OnArtilleryFired}]};
+			if !(_sideID isEqualTo -1) then {_artillery addEventHandler ["Fired", {[_this select 0, _this select 4, _this select 6] spawn CTI_CL_FNC_OnArtilleryFired}]};
 		};
 	} forEach vehicles;
 };
