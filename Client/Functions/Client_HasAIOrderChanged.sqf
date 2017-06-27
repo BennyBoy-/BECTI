@@ -29,7 +29,7 @@ private ["_changed", "_order", "_order_pos"];
 _order = _ai getVariable "cti_ai_order";
 
 _changed = false;
-if (_order != _order_current) then { //--- Order itself changed?
+if !(_order isEqualTo _order_current) then { //--- Order itself changed?
 	_changed = true;
 } else { //--- Order position changed?
 	_order_pos = _ai getVariable "cti_ai_order_pos";
@@ -42,23 +42,23 @@ if (_order != _order_current) then { //--- Order itself changed?
 			
 			switch (true) do {
 				case (_nested && _nested_current): { //--- Current and new positions are nested
-					if (count _order_pos_current != count _order_pos) then { //--- Count differs, don't bother
+					if !(count _order_pos_current isEqualTo count _order_pos) then { //--- Count differs, don't bother
 						_changed = true;
 					} else { //--- Check the first element of the nested content
 						_first_pos = _order_pos select 0;
 						_first_pos_current = _order_pos_current select 0;
-						if (_first_pos_current select 0 != _first_pos select 0 || _first_pos_current select 1 != _first_pos select 1) then {_changed = true}; //--- 2D Check
+						if (!((_first_pos_current select 0) isEqualTo (_first_pos select 0)) || !((_first_pos_current select 1) isEqualTo (_first_pos select 1))) then {_changed = true}; //--- 2D Check
 					};
 				};
 				case ((_nested && !_nested_current) || (!_nested && _nested_current)): { //--- Current or new positions was nested
 					_changed = true;
 				};
 				case (!_nested && !_nested_current): { //--- Current and new positions are not nested
-					if (_order_pos_current select 0 != _order_pos select 0 || _order_pos_current select 1 != _order_pos select 1) then {_changed = true}; //--- 2D Check
+					if (!((_order_pos_current select 0) isEqualTo (_order_pos select 0)) || !((_order_pos_current select 1) isEqualTo (_order_pos select 1))) then {_changed = true}; //--- 2D Check
 				};
 			};
 		};
-		case (typeName _order_pos_current isEqualTo "OBJECT" && typeName _order_pos isEqualTo "OBJECT"): {if (_order_pos_current != _order_pos) then {_changed = true}};//--- Object check, it's easier!
+		case (typeName _order_pos_current isEqualTo "OBJECT" && typeName _order_pos isEqualTo "OBJECT"): {if !(_order_pos_current isEqualTo _order_pos) then {_changed = true}};//--- Object check, it's easier!
 	};
 };
 

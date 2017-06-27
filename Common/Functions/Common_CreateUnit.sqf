@@ -40,7 +40,7 @@ params ["_classname", "_group", "_position", "_sideID", ["_net", false], ["_spec
 private ["_unit"];
 
 if (CTI_Log_Level >= CTI_Log_Debug) then {
-	["DEBUG", "FILE: Common\Functions\Common_CreateUnit.sqf", format["Attempting to create a [%1] unit on team [%2] at [%3] on side [%4], net? [%5] special? [%6]", _classname, _group, _position, _sideID, _net, _special]] call CTI_CO_FNC_Log;
+	["DEBUG", "FILE: Common\Functions\Common_CreateUnit.sqf", format["Attempting to create a [%1] unit on team [%2] at position [%3] on side [%4], net? [%5] special? [%6]", _classname, _group, _position, _sideID, _net, _special]] call CTI_CO_FNC_Log;
 };
 
 if (typeName _position isEqualTo "OBJECT") then {_position = getPos _position};

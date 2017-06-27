@@ -68,7 +68,7 @@ CTI_UI_KeyHandler_SatelitteCamera_MouseZChanged = {
 	if (_change > CTI_SATCAM_ZOOM_MAX) then { _change = CTI_SATCAM_ZOOM_MAX };
 	if (_change < CTI_SATCAM_ZOOM_MIN) then { _change = CTI_SATCAM_ZOOM_MIN };
 	
-	if (_change != _level) then {
+	if !(_change isEqualTo _level) then {
 		_pos set [2, _change];
 		CTI_SatelitteCamera setPos _pos;
 	};
@@ -99,7 +99,7 @@ CTI_UI_KeyHandler_SatelitteCamera_MouseButtonDown = {
 			if !(isNull _swapto) then {
 				uiNamespace setVariable ["cti_dialog_ui_satcam_focus", _swapto];
 				
-				if (_swapto != leader group _swapto) then {uiNamespace setVariable ["cti_dialog_ui_satcam_mapselect", _swapto]};
+				if !(_swapto isEqualTo leader group _swapto) then {uiNamespace setVariable ["cti_dialog_ui_satcam_mapselect", _swapto]};
 				
 				((uiNamespace getVariable "cti_dialog_ui_satcam") displayCtrl 170100) lbSetCurSel (_groups find group _swapto);
 			};
@@ -187,7 +187,7 @@ CTI_UI_KeyHandler_UnitsCam_MouseButtonDown = {
 			if !(isNull _swapto) then {
 				uiNamespace setVariable ["cti_dialog_ui_unitscam_focus", _swapto];
 				
-				if (_swapto != leader group _swapto) then {uiNamespace setVariable ["cti_dialog_ui_unitscam_screenselect", _swapto]};
+				if !(_swapto isEqualTo leader group _swapto) then {uiNamespace setVariable ["cti_dialog_ui_unitscam_screenselect", _swapto]};
 				
 				((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180100) lbSetCurSel (_groups find group _swapto);
 			};

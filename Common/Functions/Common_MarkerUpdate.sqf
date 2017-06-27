@@ -43,7 +43,7 @@ if !(alive _target) exitWith {};
 _type = typeOf _target;
 
 createMarkerLocal [_marker_name,visiblePosition _target];
-if (_marker_label != "") then {_marker_name setMarkerTextLocal _marker_label};
+if !(_marker_label isEqualTo "") then {_marker_name setMarkerTextLocal _marker_label};
 _marker_name setMarkerTypeLocal _marker_type;
 _marker_name setMarkerColorLocal _marker_color;
 _marker_name setMarkerSizeLocal _marker_size;
@@ -53,7 +53,7 @@ while {alive _target} do {
 	sleep _update_delay;
 };
 
-if (_marker_dead_type != "" && !(isNull _target)) then {
+if (!(_marker_dead_type isEqualTo "") && !(isNull _target)) then {
 	_marker_name setMarkerTypeLocal _marker_dead_type;
 	_marker_name setMarkerColorLocal _marker_dead_color;
 	_marker_name setMarkerSizeLocal _marker_dead_size;

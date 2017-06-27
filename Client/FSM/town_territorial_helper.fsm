@@ -1,9 +1,9 @@
-/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, town_territorial_helper.fsm">*/
+/*%FSM<COMPILE "D:\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, town_territorial_helper.fsm">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start_FSM",0,4346,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
+item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"Cycle"};
-item2[] = {"Update_Markers",2,250,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Update" \n "Markers"};
+item2[] = {"Update_Markers",2,4346,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Update" \n "Markers"};
 item3[] = {"End_FSM",1,250,50.000000,-325.000000,150.000000,-275.000000,0.000000,"End FSM"};
 item4[] = {"Terminate",4,218,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Terminate"};
 link0[] = {0,1};
@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-456.160217,360.531433,242.139771,-456.939575,1018,881,1};
-window[] = {2,-1,-1,-1,-1,856,75,1330,75,3,1036};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-456.160217,360.531433,242.139771,-456.939575,1018,910,1};
+window[] = {2,-1,-1,-1,-1,911,130,1385,130,3,1036};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -83,7 +83,7 @@ class FSM
        "		//--- Can we capture it?" \n
        "		_safe = true;" \n
        "		{" \n
-       "			if ((_x getVariable ""cti_town_sideID"") != CTI_P_SideID) exitWith {_safe = false};" \n
+       "			if !((_x getVariable ""cti_town_sideID"") isEqualTo CTI_P_SideID) exitWith {_safe = false};" \n
        "		} forEach (_x getVariable ""cti_town_neighbors"");" \n
        "		" \n
        "		//--- Safe, it cannot be captured" \n

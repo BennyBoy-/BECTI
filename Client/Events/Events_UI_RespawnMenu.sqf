@@ -24,7 +24,7 @@ switch (_action) do {
 			
 			_proc_respawn = true;
 			while { round(CTI_DeathTimer - time) > 0 } do {
-				if (_seed != (uiNamespace getVariable "cti_dialog_ui_respawnmenu_seed")) exitWith { _proc_respawn = false }; //--- The menu was opened again.
+				if !(_seed isEqualTo (uiNamespace getVariable "cti_dialog_ui_respawnmenu_seed")) exitWith { _proc_respawn = false }; //--- The menu was opened again.
 				
 				((uiNamespace getVariable "cti_dialog_ui_respawnmenu") displayCtrl 120003) ctrlSetStructuredText parseText format ["Respawning at <t color='#BAFF81'>%1</t> in <t color='#EBC451'>%2</t> seconds",(uiNamespace getVariable "cti_dialog_ui_respawnmenu_respawnat") call CTI_UI_Respawn_GetRespawnLabel, round(CTI_DeathTimer - time)];
 				
@@ -46,7 +46,7 @@ switch (_action) do {
 			uiNamespace setVariable ["cti_dialog_ui_respawnmenu_respawn_update", true];
 		};
 		
-		if (_old_spawn != _selected) then {(_selected) spawn CTI_UI_Respawn_UseSelector};
+		if !(_old_spawn isEqualTo _selected) then {(_selected) spawn CTI_UI_Respawn_UseSelector};
 	};
 	case "onUnload": {
 		{ deleteMarkerLocal (_x select 1) } forEach (uiNamespace getVariable "cti_dialog_ui_respawnmenu_locations_tracker");

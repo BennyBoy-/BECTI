@@ -40,7 +40,7 @@ _marker_color = CTI_P_SideColor;
 
 //--- Perform general operations
 _special = _vehicle getVariable ["cti_spec", []];
-if (typeName _special != "ARRAY") then { _special = [_special] };
+if !(typeName _special isEqualTo "ARRAY") then { _special = [_special] };
 
 if (CTI_SPECIAL_REPAIRTRUCK in _special) then { //--- Repair truck.
 	_marker_size = [0.75,0.75];
@@ -70,7 +70,7 @@ if (_vehicle isKindOf "Ship") then {
 if (_vehicle isKindOf "Plane") then {_vehicle addAction ["<t color='#86F078'>Taxi Reverse</t>","Client\Actions\Action_TaxiReverse.sqf", [], 99, false, true, "", 'driver _target isEqualTo _this && alive _target && speed _target < 4 && speed _target > -4 && getPos _target select 2 < 4']};
 
 //--- Perform side-speficic operations
-if (_sideID != CTI_P_SideID) exitWith {};
+if !(_sideID isEqualTo CTI_P_SideID) exitWith {};
 
 if (CTI_SPECIAL_REPAIRTRUCK in _special) then { //--- Repair truck.
 	if (CTI_BASE_FOB_MAX > 0) then {

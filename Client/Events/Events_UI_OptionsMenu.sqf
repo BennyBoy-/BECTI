@@ -30,7 +30,7 @@ switch (_action) do {
 	};
 	case "onUnflipPressed": { //--- Unflip the nearest vehicle
 		_vehicle = vehicle player;
-		if (player != _vehicle) then {
+		if !(player isEqualTo _vehicle) then {
 			if (speed _vehicle < 5 && getPos _vehicle select 2 < 5) then {
 				_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1];
 				_vehicle setVelocity [0,0,1];

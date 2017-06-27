@@ -36,7 +36,7 @@ while { true } do {
 		//--- The factory is destroyed, attempt to pick a new one from the same tab if possible. If none are available, we do nothing since the first check handles that
 		if ([CTI_Base_BarracksInRange, CTI_Base_LightInRange, CTI_Base_HeavyInRange, CTI_Base_AirInRange, CTI_Base_RepairInRange, CTI_Base_AmmoInRange, CTI_Base_NavalInRange, CTI_Base_DepotInRange] select (uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_index")) then {
 			//--- Update the factory list if needed
-			if ((uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type") != CTI_DEPOT) then {
+			if !((uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type") isEqualTo CTI_DEPOT) then {
 				_fetched = [uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type", (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType;
 				
 				//--- Make sure that we have at least 1 available factory
@@ -50,7 +50,7 @@ while { true } do {
 	
 	_group = uiNamespace getVariable "cti_dialog_ui_purchasemenu_team";
 	_size = count units _group;
-	if (_size != _last_size) then {
+	if !(_size isEqualTo _last_size) then {
 		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110902) ctrlSetStructuredText (parseText format["<t align='right'>Group Size: <t color='#66baff'>%1</t>/%2</t>", _size, if (isPlayer leader _group) then {CTI_PLAYERS_GROUPSIZE} else {CTI_AI_TEAMS_GROUPSIZE}]);
 	};
 	
@@ -98,7 +98,7 @@ while { true } do {
 			_label = "";
 			if (_req_classname isKindOf "Man") then {
 				_label = _name;
-				if (_req_to != group player) then {_label = _label + format [" To %1", _req_to]};
+				if !(_req_to isEqualTo group player) then {_label = _label + format [" To %1", _req_to]};
 			} else {
 				_empty = false;
 				if (count _req_manning > 0) then {
@@ -106,7 +106,7 @@ while { true } do {
 				};
 				if (_empty) then {_label = "Empty "};
 				_label = _label + _name;
-				if (_req_to != group player) then {_label = _label + format [" To %1", _req_to]};
+				if !(_req_to isEqualTo group player) then {_label = _label + format [" To %1", _req_to]};
 			};
 			
 			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110013) lbAdd _label;
@@ -117,7 +117,7 @@ while { true } do {
 	
 	_funds = call CTI_CL_FNC_GetPlayerFunds;
 	
-	if (_last_funds != _funds) then {
+	if !(_last_funds isEqualTo _funds) then {
 		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110015) ctrlSetStructuredText (parseText format["<t align='right'>Resources: <t color='%2'>$%1</t></t>", _funds, CTI_P_Coloration_Money]);
 	};
 	

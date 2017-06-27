@@ -10,7 +10,7 @@ CTI_P_ActionLockPickNextUse = time + CTI_P_ActionLockPickDelay;
 
 player playMove "Acts_carFixingWheel";
 sleep 3;
-waitUntil {animationState player != "Acts_carFixingWheel" || !alive player || vehicle player != player || !alive _vehicle || _vehicle distance player > 5};
+waitUntil {!(animationState player isEqualTo "Acts_carFixingWheel") || !alive player || !(vehicle player isEqualTo player) || !alive _vehicle || _vehicle distance player > 5};
 
 if (locked _vehicle in [-1, 0, 1]) exitWith {};
 

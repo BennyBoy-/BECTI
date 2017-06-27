@@ -40,7 +40,7 @@ while {true} do {
 	
 	_current_hooked = _hooker getVariable ["cti_hooked", objNull];
 	
-	if (!canMove _hooker || getDammage _hooker > 0.3 || count crew _current_hooked > 0 || _hooked != _current_hooked) exitWith {
+	if (!canMove _hooker || getDammage _hooker > 0.3 || count crew _current_hooked > 0 || !(_hooked isEqualTo _current_hooked)) exitWith {
 		if (_current_hooked isEqualTo _hooked) then {
 			_hooker setVariable ["cti_hooked", nil, true];
 			detach _current_hooked;

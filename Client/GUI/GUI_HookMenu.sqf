@@ -15,7 +15,7 @@ while { true } do {
 		};
 		
 		if (_has_something) then {
-			if ((uiNamespace getVariable "cti_dialog_ui_hookmenu_hooked") != _hooked) then {
+			if !((uiNamespace getVariable "cti_dialog_ui_hookmenu_hooked") isEqualTo _hooked) then {
 				_var_name = if (isNil {_hooked getVariable "cti_customid"}) then {typeOf _hooked} else {missionNamespace getVariable format["CTI_CUSTOM_ENTITY_%1", _hooked getVariable "cti_customid"]};
 				_var_classname = missionNamespace getVariable _var_name;
 				_label = if !(isNil '_var_classname') then {_var_classname select CTI_UNIT_LABEL} else {getText(configFile >> "CfgVehicles" >> typeOf _hooked >> "displayName")};

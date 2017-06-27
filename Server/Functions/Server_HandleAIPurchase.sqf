@@ -43,7 +43,7 @@ private ["_can_afford", "_cost", "_direction", "_distance", "_funds", "_model", 
 
 //--- First of all, make sure that we don't go "softly" above the AI group size
 _process = true;
-if (typeName _req_target != "SIDE") then { if ((count units _req_target)+1 > CTI_AI_TEAMS_GROUPSIZE) then {_process = false} };
+if !(typeName _req_target isEqualTo "SIDE") then { if ((count units _req_target)+1 > CTI_AI_TEAMS_GROUPSIZE) then {_process = false} };
 if !(_process) exitWith {[_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete};
 
 _sideID = (_req_side) call CTI_CO_FNC_GetSideID;
@@ -100,7 +100,7 @@ _process = true;
 if (_req_classname isEqualTo format["CTI_Salvager_Independent_%1", _req_side]) then {if (count((_req_side call CTI_CO_FNC_GetSideLogic) getVariable "cti_salvagers") >= CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX) then { _process = false }};
 
 if !(_process) exitWith {[_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete};
-if (typeName _req_target != "SIDE") then {if ((count units _req_target) > CTI_AI_TEAMS_GROUPSIZE) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete }};
+if !(typeName _req_target isEqualTo "SIDE") then {if ((count units _req_target) > CTI_AI_TEAMS_GROUPSIZE) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete }};
 
 _funds = (_req_buyer) call CTI_CO_FNC_GetFunds;
 if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete };
@@ -137,7 +137,7 @@ if (_model isKindOf "Man") then {
 	// _req_target addVehicle _vehicle;
 };
 
-if (_script != "" && alive _vehicle) then {
+if (!(_script isEqualTo "") && alive _vehicle) then {
 	[_vehicle, _req_side, _script] spawn CTI_CO_FNC_InitializeCustomVehicle;
 	if (_customid > -1) then {_vehicle setVariable ["cti_customid", _customid, true]};
 };

@@ -56,7 +56,7 @@ switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS") do {
 		
 		//--- Check the friendly camps of each nearby towns
 		{
-			_list = [_town, _sideID] call CTI_CO_FNC_GetTownCampsOnSide;
+			_list = [_x, _sideID] call CTI_CO_FNC_GetTownCampsOnSide;
 			{
 				if (_x distance _location <= CTI_RESPAWN_CAMPS_RANGE_ENHANCED) then {
 					if (CTI_RESPAWN_CAMPS_SAFE_RANGE > 0) then { //--- Safeguard? check for enemies around the camps

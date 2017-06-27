@@ -34,7 +34,7 @@ _closest = objNull;
 if (typeName _sideID isEqualTo "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
 {
 	if !(isNil {_x getVariable "cti_depot"}) then {
-		if (_sideID != -2) then {
+		if !(_sideID isEqualTo -2) then {
 			if (_sideID isEqualTo ((_x getVariable "cti_depot") getVariable ["cti_town_sideID", -1])) then {_closest = _x;};
 		} else {
 			_closest = _x;

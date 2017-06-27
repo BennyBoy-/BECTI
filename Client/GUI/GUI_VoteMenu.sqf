@@ -56,13 +56,13 @@ while { alive player && dialog } do {
 	for '_i' from 0 to count(uiNamespace getVariable "cti_dialog_ui_votemenu_groups") do {if ((_vote_array select _i) > (_vote_array select _highest_id)) then {_highest_id = _i}};
 	
 	//--- Ai or null commander is handled outside
-	if ((((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 300001) lnbText [0, 1]) != str(_vote_array select 0)) then {lnbSetText [300001, [0, 1], str(_vote_array select 0)]}; //--- AI Commander
+	if !((((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 300001) lnbText [0, 1]) isEqualTo str(_vote_array select 0)) then {lnbSetText [300001, [0, 1], str(_vote_array select 0)]}; //--- AI Commander
 	
 	for '_i' from 1 to ((lnbSize 300001) select 0)-1 do { //--- Update the UI list properties (name / votes) for players.
 		_value = lnbValue [300001,[_i, 0]];
 		_team = (uiNamespace getVariable "cti_dialog_ui_votemenu_groups") select _value;
-		if ((((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 300001) lnbText [_i, 0]) != name leader _team) then {lnbSetText [300001, [_i, 0], name leader _team]};
-		if ((((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 300001) lnbText [_i, 1]) != str(_vote_array select _value+1)) then {lnbSetText [300001, [_i, 1], str(_vote_array select _value+1)]};
+		if !((((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 300001) lnbText [_i, 0]) isEqualTo name leader _team) then {lnbSetText [300001, [_i, 0], name leader _team]};
+		if !((((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 300001) lnbText [_i, 1]) isEqualTo str(_vote_array select _value+1)) then {lnbSetText [300001, [_i, 1], str(_vote_array select _value+1)]};
 	};
 	
 	//--- Display the highest voted person

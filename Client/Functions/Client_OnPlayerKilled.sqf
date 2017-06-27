@@ -77,7 +77,7 @@ CTI_DeathTimer = time + (missionNamespace getVariable "CTI_RESPAWN_TIMER");
 call CTI_CL_FNC_AddMissionActions;
 
 //--- Make sure that player is always the leader (of his group).
-if (leader(group player) != player) then {(group player) selectLeader player};
+if !(leader(group player) isEqualTo player) then {(group player) selectLeader player};
 
 createDialog "CTI_RscRespawnMenu";
 

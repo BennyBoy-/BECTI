@@ -70,11 +70,11 @@ CTI_UI_SatelitteCamera_LoadEntityInformation = {
 	_dmg = getDammage _entity;
 	_health = format ["%1 (Value: %2)<br />", switch (true) do { case (_dmg <= 0.1): {"<t color='#99f26d'>Healthy</t>"}; case (_dmg > 0.1 && _dmg < 0.6): {"<t color='#f9f461'>Lightly Injured</t>"}; default {"<t color='#f25752'>Heavily Injured</t>"}}, format["%1%2",round((1 - _dmg) * 100), "%"]];
 	_weapons = "Weapons:<br />";
-	{_weapons = _weapons + format ["%1%2%3", if (_x select 0 != "") then {format [" <t color='#99f26d'>%1</t>",getText(configFile >> "CfgWeapons" >> _x select 0 >> "displayName")]} else {""}, if (count (_x select 1) > 0) then {format[" - <t color='#e6ffc9'>%1</t>",getText(configFile >> "CfgMagazines" >> ((_x select 1) select 0) >> "displayName")]} else {""}, if (_x select 0 != "") then {"<br />"} else {""}]} forEach [[primaryWeapon _entity, primaryWeaponMagazine _entity],[secondaryWeapon _entity, secondaryWeaponMagazine _entity],[handgunWeapon _entity, handgunMagazine _entity]];
+	{_weapons = _weapons + format ["%1%2%3", if !((_x select 0) isEqualTo "") then {format [" <t color='#99f26d'>%1</t>",getText(configFile >> "CfgWeapons" >> _x select 0 >> "displayName")]} else {""}, if (count (_x select 1) > 0) then {format[" - <t color='#e6ffc9'>%1</t>",getText(configFile >> "CfgMagazines" >> ((_x select 1) select 0) >> "displayName")]} else {""}, if !((_x select 0) isEqualTo "") then {"<br />"} else {""}]} forEach [[primaryWeapon _entity, primaryWeaponMagazine _entity],[secondaryWeapon _entity, secondaryWeaponMagazine _entity],[handgunWeapon _entity, handgunMagazine _entity]];
 	_magazines = "Magazines:<br />";
 	_magazines_items = uniformItems _entity + vestItems _entity + backpackItems _entity;
 	_magazines_items_added = [];
-	{if !(_x in _magazines_items_added) then {_item = _x; _cfg = (_item) call CTI_UI_Gear_GetItemBaseConfig; if (_cfg != "nil") then {_magazines = _magazines + format [" <t color='#e6ffc9'>%1</t> - %2<br />",getText(configFile >> _cfg >> _item >> "displayName"), {_item isEqualTo _x} count _magazines_items]}}; _magazines_items_added pushBack _x} forEach _magazines_items;
+	{if !(_x in _magazines_items_added) then {_item = _x; _cfg = (_item) call CTI_UI_Gear_GetItemBaseConfig; if !(_cfg isEqualTo "nil") then {_magazines = _magazines + format [" <t color='#e6ffc9'>%1</t> - %2<br />",getText(configFile >> _cfg >> _item >> "displayName"), {_item isEqualTo _x} count _magazines_items]}}; _magazines_items_added pushBack _x} forEach _magazines_items;
 	
 _html = format ["<t size='1.3' color='#2394ef'>Infantry :</t><br />
 Class: <t color='#8ccdff'>%1</t><br />
@@ -83,7 +83,7 @@ Health: %2<br />
 %4
 ", _type, _health, _weapons, _magazines];
 	
-	if (_vehicle != _entity) then {	
+	if !(_vehicle isEqualTo _entity) then {	
 		_type = getText(configFile >> "CfgVehicles" >> typeOf _vehicle >> "displayName");
 		_dmg = getDammage _vehicle;
 		_health = format ["%1 (Value: %2)%3%4<br />", switch (true) do { case (_dmg <= 0.1): {"<t color='#99f26d'>Operational</t>"}; case (_dmg > 0.1 && _dmg < 0.6): {"<t color='#f9f461'>Lightly Damaged</t>"}; default {"<t color='#f25752'>Heavily Damaged</t>"}}, format["%1%2",round((1 - _dmg) * 100), "%"], if (!canMove _vehicle && !(_vehicle isKindOf "StaticWeapon")) then {", <t color='#f25752'>Can't Move</t>"} else {""}, if (!canFire _vehicle && (_vehicle emptyPositions "gunner" > 0 || alive gunner _vehicle)) then {", <t color='#f9f461'>Can't Fire</t>"} else {""}];

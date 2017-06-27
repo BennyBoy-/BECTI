@@ -33,6 +33,6 @@ private ["_towns"];
 if (typeName _sideID isEqualTo "SIDE") then { _sideID = (_sideID) call CTI_CO_FNC_GetSideID };
 
 _towns = [];
-{if (_x getVariable "cti_town_sideID" != _sideID) then {_towns pushBack _x}} forEach CTI_Towns;
+{if !((_x getVariable "cti_town_sideID") isEqualTo _sideID) then {_towns pushBack _x}} forEach CTI_Towns;
 
 _towns

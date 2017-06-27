@@ -24,7 +24,7 @@
 	  -> Return the West Commander team
 */
 
-if (typeName _this != "SIDE") exitWith {grpNull};
+if !(typeName _this isEqualTo "SIDE") exitWith {grpNull};
 
 switch (_this) do {
 	case west: {CTI_WEST getVariable "cti_commander_team"};

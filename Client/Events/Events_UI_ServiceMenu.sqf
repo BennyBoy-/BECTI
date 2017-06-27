@@ -122,7 +122,7 @@ switch (_action) do {
 				{
 					if ((_x select 0) in _enables) then {
 						_price = _x select 1;
-						if ((_x select 0) != 230004) then {
+						if !((_x select 0) isEqualTo 230004) then {
 							_price = [_selected, _x select 1, _x select 2] call CTI_UI_Service_GetPrice;
 						} else {
 							if (count crew _selected > 0) then {

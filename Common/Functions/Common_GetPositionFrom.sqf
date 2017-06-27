@@ -30,7 +30,7 @@
 
 params ["_position", "_distance", "_direction"];
 
-if (typeName _position != "ARRAY") then {_position = position _position};
-if (typeName _direction != "SCALAR") then {_direction = [_position, _direction] call CTI_CO_FNC_GetDirTo};
+if !(typeName _position isEqualTo "ARRAY") then {_position = position _position};
+if !(typeName _direction isEqualTo "SCALAR") then {_direction = [_position, _direction] call CTI_CO_FNC_GetDirTo};
 
 [(_position select 0)+((sin _direction)*_distance), (_position select 1)+((cos _direction)*_distance), (_position select 2)]

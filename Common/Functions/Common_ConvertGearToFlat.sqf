@@ -33,22 +33,22 @@ private ["_classnames"];
 _classnames = [];
 {
 diag_log (_x);
-	if (_x select 0 != "") then { _classnames pushBack (_x select 0) };
-	{ if (_x != "") then { _classnames pushBack _x } } forEach (_x select 1);
+	if !((_x select 0) isEqualTo "") then { _classnames pushBack (_x select 0) };
+	{ if !(_x isEqualTo "") then { _classnames pushBack _x } } forEach (_x select 1);
 	if (count(_x select 2) > 0) then { _classnames pushBack ((_x select 2) select 0) };
 } forEach (_this select 0);
 
 {
-	if (_x select 0 != "") then { _classnames pushBack (_x select 0) };
-	{ if (_x != "") then { _classnames pushBack _x } } forEach (_x select 1);
+	if !((_x select 0) isEqualTo "") then { _classnames pushBack (_x select 0) };
+	{ if !(_x isEqualTo "") then { _classnames pushBack _x } } forEach (_x select 1);
 } forEach (_this select 1);
 
 {
-	if (_x != "") then { _classnames pushBack _x };
+	if !(_x isEqualTo "") then { _classnames pushBack _x };
 } forEach (_this select 2);
 
 {
-	{if (_x != "") then { _classnames pushBack _x }} forEach _x;
+	{if !(_x isEqualTo "") then { _classnames pushBack _x }} forEach _x;
 } forEach (_this select 3);
 
 _classnames

@@ -18,9 +18,9 @@
 		_marker setMarkerPosLocal getPos _hq;
 		
 		if !(alive _hq) then {
-			if (markerColor _marker != "ColorBlack") then {_marker setMarkerColorLocal "ColorBlack"; _marker setMarkerTextLocal "HQ Wreck"};
+			if !(markerColor _marker isEqualTo "ColorBlack") then {_marker setMarkerColorLocal "ColorBlack"; _marker setMarkerTextLocal "HQ Wreck"};
 		} else {
-			if (markerColor _marker != CTI_P_SideColor) then {_marker setMarkerColorLocal CTI_P_SideColor; _marker setMarkerTextLocal "HQ"};
+			if !(markerColor _marker isEqualTo CTI_P_SideColor) then {_marker setMarkerColorLocal CTI_P_SideColor; _marker setMarkerTextLocal "HQ"};
 		};
 		
 		sleep 0.5;
@@ -65,11 +65,11 @@ if (CTI_BASE_AIRRADAR_Z_OFFSET > 0 || CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1)
 	{
 		if (alive _x && _x isKindOf "Air" && CTI_BASE_AIRRADAR_Z_OFFSET > 0) then {
 			_sideID = _x getVariable ["cti_net", -1];
-			if (_sideID != CTI_P_SideID && _sideID != -1) then {(_x) spawn CTI_CL_FNC_UpdateAirRadarMarker};
+			if (!(_sideID isEqualTo CTI_P_SideID) && !(_sideID isEqualTo -1)) then {(_x) spawn CTI_CL_FNC_UpdateAirRadarMarker};
 		};
 		if (alive _x && _x isKindOf "StaticWeapon" && CTI_BASE_ARTRADAR_TRACK_FLIGHT_DELAY > -1 && getNumber(configFile >> "CfgVehicles" >> typeOf _x >> "artilleryScanner") > 0) then {
 			_sideID = _x getVariable ["cti_net_static", -1];
-			if (_sideID != -1) then {_artillery addEventHandler ["Fired", {[_this select 0, _this select 4, _this select 6] spawn CTI_CL_FNC_OnArtilleryFired}]};
+			if !(_sideID isEqualTo -1) then {_artillery addEventHandler ["Fired", {[_this select 0, _this select 4, _this select 6] spawn CTI_CL_FNC_OnArtilleryFired}]};
 		};
 	} forEach vehicles;
 };

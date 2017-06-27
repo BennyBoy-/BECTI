@@ -3,7 +3,7 @@
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Cycle"};
-item2[] = {"Units_near_Cente",2,4346,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Units near" \n "Center"};
+item2[] = {"Units_near_Cente",2,250,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Units near" \n "Center"};
 item3[] = {"End_FSM",1,250,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Empty",4,218,50.000000,-300.000000,150.000000,-250.000000,2.000000,"Empty"};
 item5[] = {"Gameover",8,218,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Gameover"};
@@ -15,7 +15,7 @@ item10[] = {"No_Capture",4,218,-250.000000,100.000000,-150.000000,150.000000,1.0
 item11[] = {"",7,210,246.000046,121.000023,253.999969,128.999985,0.000000,""};
 item12[] = {"Captured",2,250,-500.000000,-400.000000,-400.000000,-350.000000,0.000000,"Captured"};
 item13[] = {"Supply_Mode",2,250,200.000000,-300.000000,300.000000,-250.000000,0.000000,"Supply" \n "Mode"};
-item14[] = {"Timed",4,218,350.000000,-300.000000,450.000000,-250.000000,1.000000,"Timed"};
+item14[] = {"Timed",4,4314,350.000000,-300.000000,450.000000,-250.000000,1.000000,"Timed"};
 item15[] = {"Default",8,218,200.000000,-400.000000,300.000000,-350.000000,0.000000,"Default"};
 item16[] = {"Timed_Update",2,250,350.000000,-400.000000,450.000000,-350.000000,0.000000,"Timed" \n "Update"};
 link0[] = {0,1};
@@ -39,7 +39,7 @@ link17[] = {14,16};
 link18[] = {15,7};
 link19[] = {16,15};
 globals[] = {25.000000,1,0,0,0,640,480,1,176,6316128,1,-597.589905,527.397278,108.934799,-676.978699,856,910,1};
-window[] = {2,-1,-1,-1,-1,1015,234,1489,234,3,874};
+window[] = {2,-1,-1,-1,-1,989,-1712,-457,208,3,874};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -207,22 +207,22 @@ class FSM
        "		//--- In case of territorial mode, check that the town can be captured!" \n
        "		_capturable = true;" \n
        "		if ((missionNamespace getVariable ""CTI_TOWNS_TERRITORIAL"") > 0) then {" \n
-       "			_capturable = [_town, _force] Call CTI_SE_FNC_CanCaptureTerritorialTown;" \n
+       "			_capturable = [_town, _force] call CTI_SE_FNC_CanCaptureTerritorialTown;" \n
        "		};" \n
        "		" \n
        "		//--- Handle the capture mode (if the town is considered capturable that is)" \n
        "		if (_capturable) then {" \n
        "			switch (missionNamespace getVariable ""CTI_TOWNS_CAPTURE_MODE"") do {" \n
        "				case 1: { //--- All camps must belong to the capturing side" \n
-       "					if !(count(_town Call CTI_CO_FNC_GetTownCamps) isEqualTo count([_town, _force] Call CTI_CO_FNC_GetTownCampsOnSide)) then {_capturable = false};" \n
+       "					if !(count(_town Call CTI_CO_FNC_GetTownCamps) isEqualTo count([_town, _force] call CTI_CO_FNC_GetTownCampsOnSide)) then {_capturable = false};" \n
        "				};" \n
        "			};" \n
        "		};" \n
        "		" \n
        "		if (_capturable) then {" \n
        "			//--- Retrieve the current held camps to apply a capture coefficient" \n
-       "			_camps_count = count(_town Call CTI_CO_FNC_GetTownCamps);" \n
-       "			_camps_force = if (_camps_count < 1) then {1} else {count([_town, _force] Call CTI_CO_FNC_GetTownCampsOnSide) / _camps_count};" \n
+       "			_camps_count = count(_town call CTI_CO_FNC_GetTownCamps);" \n
+       "			_camps_force = if (_camps_count < 1) then {1} else {count([_town, _force] call CTI_CO_FNC_GetTownCampsOnSide) / _camps_count};" \n
        "			_rate = CTI_TOWNS_CAPTURE_RATE * _camps_force * CTI_TOWNS_CAPTURE_RATE_CAMPS;" \n
        "			if (_rate < 1) then {_rate = 1};" \n
        "			_rate = round(_forceCount * _rate);" \n
@@ -295,7 +295,7 @@ class FSM
           priority = 1.000000;
           to="Timed_Update";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"CTI_TOWNS_SUPPLY_MODE isEqualTo 1 && _sideID != CTI_RESISTANCE_ID"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_TOWNS_SUPPLY_MODE isEqualTo 1 && !(_sideID isEqualTo CTI_RESISTANCE_ID)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

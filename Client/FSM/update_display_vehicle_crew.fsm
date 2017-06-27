@@ -12,7 +12,7 @@ link2[] = {3,1};
 link3[] = {3,4};
 link4[] = {4,2};
 globals[] = {25.000000,1,0,0,0,640,480,1,277,6316128,1,-489.064819,425.210815,396.643402,-572.168213,855,910,1};
-window[] = {2,-1,-1,-1,-1,911,-1790,-535,130,3,873};
+window[] = {2,-1,-1,-1,-1,963,-1738,-483,182,3,873};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -58,7 +58,7 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"_ncycle = time + 1;" \n
        "" \n
        "_vehicle = vehicle player;" \n
-       "if (player != _vehicle) then {" \n
+       "if !(player isEqualTo _vehicle) then {" \n
        "	_titleText = """";" \n
        "	_crewCount = (count crew _vehicle) - 1;" \n
        "	" \n
@@ -74,7 +74,7 @@ class FSM
        "		};" \n
        "	} forEach crew _vehicle;" \n
        "	" \n
-       "	if (_titleText != """") then {titleText [_titleText, ""PLAIN DOWN"", 1.2]};" \n
+       "	if !(_titleText isEqualTo """") then {titleText [_titleText, ""PLAIN DOWN"", 1.2]};" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links

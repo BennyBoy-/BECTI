@@ -26,7 +26,7 @@
 
 private ["_logic", "_teams"];
 
-if (typeName _this != "SIDE") exitWith {[]};
+if !(typeName _this isEqualTo "SIDE") exitWith {[]};
 
 _logic = (_this) call CTI_CO_FNC_GetSideLogic;
 

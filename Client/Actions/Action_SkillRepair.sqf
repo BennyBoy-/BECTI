@@ -12,7 +12,7 @@ CTI_P_ActionRepairNextUse = time + CTI_P_ActionRepairDelay;
 
 player playMove "Acts_carFixingWheel";
 sleep 3;
-waitUntil {animationState player != "Acts_carFixingWheel" || !alive player || vehicle player != player || !alive _vehicle || _vehicle distance player > 5};
+waitUntil {!(animationState player isEqualTo "Acts_carFixingWheel") || !alive player || !(vehicle player isEqualTo player) || !alive _vehicle || _vehicle distance player > 5};
 
 if (alive player && vehicle player isEqualTo player && alive _vehicle && _vehicle distance player <= 5) then {
 	//--- Overall repairs (Global Arg)

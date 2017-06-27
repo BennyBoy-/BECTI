@@ -31,7 +31,7 @@ link12[] = {11,1};
 link13[] = {12,13};
 link14[] = {13,1};
 globals[] = {25.000000,1,0,0,0,640,480,1,202,6316128,1,-488.236023,529.526123,399.343689,-522.185181,973,910,1};
-window[] = {2,-1,-1,-1,-1,963,182,1437,182,3,991};
+window[] = {2,-1,-1,-1,-1,807,-1894,-639,26,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -161,10 +161,9 @@ class FSM
     class Phase_III_Detect
     {
       name = "Phase_III_Detect";
-      init = /*%FSM<STATEINIT""">*/"_constructs = [];" \n
-       "_action = """";" \n
+      init = /*%FSM<STATEINIT""">*/"_action = """";" \n
        "_target = objNull;" \n
-       "{if (_vehicle distance _x < CTI_VEHICLES_REPAIRTRUCK_BASE_REPAIR_RANGE) then {_constructs pushBack _x}} forEach (_logic getVariable ""cti_structures_wip""); //--- Construction come first" \n
+       "_constructs = (_logic getVariable ""cti_structures_wip"") select {_vehicle distance _x < CTI_VEHICLES_REPAIRTRUCK_BASE_REPAIR_RANGE}; //--- Construction come first" \n
        "" \n
        "if (count _constructs > 0) then {" \n
        "	_target = [_vehicle, _constructs] call CTI_CO_FNC_GetClosestEntity;" \n

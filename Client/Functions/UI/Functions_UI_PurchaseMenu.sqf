@@ -186,7 +186,7 @@ CTI_UI_Purchase_UpdateCost = {
 	
 	_cost = 0;
 	
-	if (_classname != "") then {
+	if !(_classname isEqualTo "") then {
 		_var = missionNamespace getVariable _classname;
 		_cost = _var select CTI_UNIT_PRICE;
 		if !(_classname isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
@@ -224,7 +224,7 @@ CTI_UI_Purchase_OnUnitListLoad = {
 	private ["_classname"];
 	if (lnbCurSelRow 111007 > -1) then {
 		_classname = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbData [lnbCurSelRow 111007, 0];
-		if (_classname != "") then {
+		if !(_classname isEqualTo "") then {
 			(_classname) call CTI_UI_Purchase_UpdateVehicleIcons;
 		} else {
 			call CTI_UI_Purchase_HideVehicleIcons;
@@ -245,7 +245,7 @@ CTI_UI_Purchase_LoadFactories = {
 	
 	lbClear ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110009);
 	
-	if (_type != CTI_DEPOT) then {
+	if !(_type isEqualTo CTI_DEPOT) then {
 		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 		_fetched = [_type, _structures, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType;
 		

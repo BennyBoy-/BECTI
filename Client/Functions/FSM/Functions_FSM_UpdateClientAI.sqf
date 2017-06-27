@@ -15,7 +15,7 @@ CTI_FSM_UpdateClientAI_Order_Patrol = {
 		_subleader = objNull;
 		{if (alive _x) exitWith {_subleader = _x}} forEach _members;
 		
-		if (_ai != _subleader) then {_exit = true};
+		if !(_ai isEqualTo _subleader) then {_exit = true};
 	};
 	
 	//--- Is it a queued order?
@@ -49,7 +49,7 @@ CTI_FSM_UpdateClientAI_Order_Patrol = {
 		sleep 1;
 		
 		if !(alive _ai) exitWith {};
-		if (_seed != (_ai getVariable "cti_ai_order_seed")) exitWith {};
+		if !(_seed isEqualTo (_ai getVariable "cti_ai_order_seed")) exitWith {};
 		
 		if ((_ai distance _position_current < 20) || ([getPos _ai select 0, getPos _ai select 1] distance [_position_current select 0, _position_current select 1] < 125 && vehicle _ai isKindOf "Air")) then { //--- Move order complete, more nodes?
 			//--- Determine the next node (restart?)
@@ -79,7 +79,7 @@ CTI_FSM_UpdateClientAI_Order_Move = {
 		_subleader = objNull;
 		{if (alive _x) exitWith {_subleader = _x}} forEach _members;
 		
-		if (_ai != _subleader) then {_exit = true};
+		if !(_ai isEqualTo _subleader) then {_exit = true};
 	};
 	
 	//--- Is it a queued order?
@@ -105,7 +105,7 @@ CTI_FSM_UpdateClientAI_Order_Move = {
 			sleep 2;
 			
 			if !(alive _ai) exitWith {};
-			if (_seed != (_ai getVariable "cti_ai_order_seed")) exitWith {};
+			if !(_seed isEqualTo (_ai getVariable "cti_ai_order_seed")) exitWith {};
 			
 			if ((_ai distance _position_current < 20) || ([getPos _ai select 0, getPos _ai select 1] distance [_position_current select 0, _position_current select 1] < 125 && vehicle _ai isKindOf "Air")) then { //--- Move order complete, more nodes?
 				_position set [0, false];
@@ -116,7 +116,7 @@ CTI_FSM_UpdateClientAI_Order_Move = {
 				if (typeName _position_current isEqualTo "ARRAY") then {vehicle _ai doMove _position_current; ((_ai getVariable "cti_ai_formation") - [_ai]) doFollow _ai};
 			};
 			
-			if (typeName _position_current != "ARRAY") exitWith {};
+			if !(typeName _position_current isEqualTo "ARRAY") exitWith {};
 		};
 	};
 };
@@ -138,7 +138,7 @@ CTI_FSM_UpdateClientAI_Order_TakeTowns = {
 		_subleader = objNull;
 		{if (alive _x) exitWith {_subleader = _x}} forEach _members;
 		
-		if (_ai != _subleader) then {_exit = true};
+		if !(_ai isEqualTo _subleader) then {_exit = true};
 	};
 	
 	if (_exit) exitWith {_ai setVariable ["cti_ai_reload", true]}; //--- Reload in case the subleader died (reelect)
@@ -176,7 +176,7 @@ CTI_FSM_UpdateClientAI_Order_TakeTown = {
 		_subleader = objNull;
 		{if (alive _x) exitWith {_subleader = _x}} forEach _members;
 		
-		if (_ai != _subleader) then {_exit = true};
+		if !(_ai isEqualTo _subleader) then {_exit = true};
 	};
 	
 	if (_exit) exitWith {
@@ -204,10 +204,10 @@ CTI_FSM_UpdateClientAI_Order_TakeTown = {
 	_side_owned = false;
 	while {_process} do {
 		if !(alive _ai) exitWith {};
-		if (_seed != (_ai getVariable "cti_ai_order_seed")) exitWith {};
+		if !(_seed isEqualTo (_ai getVariable "cti_ai_order_seed")) exitWith {};
 		
 		if ((_town getVariable "cti_town_sideID") isEqualTo CTI_P_SideID) exitWith {_side_owned = true};
-		if (_order in [CTI_ORDER_CLIENT_TAKETOWN_AUTO, CTI_ORDER_CLIENT_TAKEHOLDTOWN_AUTO]) then {if (([_ai, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestEnemyTown) != _town) then {_process = false}};
+		if (_order in [CTI_ORDER_CLIENT_TAKETOWN_AUTO, CTI_ORDER_CLIENT_TAKEHOLDTOWN_AUTO]) then {if !(([_ai, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestEnemyTown) isEqualTo _town) then {_process = false}};
 		
 		sleep 5;
 	};
@@ -226,12 +226,12 @@ CTI_FSM_UpdateClientAI_Order_TakeTown = {
 			
 			while {true} do {
 				if !(alive _ai) exitWith {};
-				if (_seed != (_ai getVariable "cti_ai_order_seed") || time - _start_patrol > CTI_AI_ORDER_TAKEHOLDTOWNS_TIME) exitWith {};
+				if (!(_seed isEqualTo (_ai getVariable "cti_ai_order_seed")) || time - _start_patrol > CTI_AI_ORDER_TAKEHOLDTOWNS_TIME) exitWith {};
 				
-				if (((_town getVariable 'cti_town_sv') < CTI_TOWNS_CAPTURE_VALUE_CEIL && CTI_P_SideID isEqualTo (_town getVariable 'cti_town_sideID')) || CTI_P_SideID != (_town getVariable 'cti_town_sideID')) then {
-					_action = "defense";if (_action != _last_action) then {_move_defend_last = -120};
+				if (((_town getVariable 'cti_town_sv') < CTI_TOWNS_CAPTURE_VALUE_CEIL && CTI_P_SideID isEqualTo (_town getVariable 'cti_town_sideID')) || !(CTI_P_SideID isEqualTo (_town getVariable 'cti_town_sideID'))) then {
+					_action = "defense";if !(_action isEqualTo _last_action) then {_move_defend_last = -120};
 				} else {
-					_action = "patrol";if (_action != _last_action) then {_move_patrol_reload = true};
+					_action = "patrol";if !(_action isEqualTo _last_action) then {_move_patrol_reload = true};
 				};
 				
 				switch (_action) do {
@@ -277,7 +277,7 @@ CTI_FSM_UpdateClientAI_Order_HoldTownsBases = {
 		_subleader = objNull;
 		{if (alive _x) exitWith {_subleader = _x}} forEach _members;
 		
-		if (_ai != _subleader) then {_exit = true};
+		if !(_ai isEqualTo _subleader) then {_exit = true};
 	};
 	
 	if (_exit) exitWith {_ai setVariable ["cti_ai_reload", true]}; //--- Reload in case the subleader died (reelect)
@@ -322,7 +322,7 @@ CTI_FSM_UpdateClientAI_Order_HoldTownsBase = {
 		_subleader = objNull;
 		{if (alive _x) exitWith {_subleader = _x}} forEach _members;
 		
-		if (_ai != _subleader) then {_exit = true};
+		if !(_ai isEqualTo _subleader) then {_exit = true};
 	};
 	
 	if (_exit) exitWith {_ai setVariable ["cti_ai_order", CTI_ORDER_CLIENT_HOLDTOWNSBASES]};
@@ -345,14 +345,14 @@ CTI_FSM_UpdateClientAI_Order_HoldTownsBase = {
 	_destroyed = false;
 	while {true} do {
 		if !(alive _ai) exitWith {};
-		if (_seed != (_ai getVariable "cti_ai_order_seed")) exitWith {};
+		if !(_seed isEqualTo (_ai getVariable "cti_ai_order_seed")) exitWith {};
 		if !(alive _defend) exitWith {_destroyed = true};
 		
 		if !(isNil {_defend getVariable "cti_town_sideID"}) then {
-			if (((_defend getVariable 'cti_town_sv') < CTI_TOWNS_CAPTURE_VALUE_CEIL && CTI_P_SideID isEqualTo (_defend getVariable 'cti_town_sideID')) || CTI_P_SideID != (_defend getVariable 'cti_town_sideID')) then {
-				_action = "defense";if (_action != _last_action) then {_move_defend_last = -120};
+			if (((_defend getVariable 'cti_town_sv') < CTI_TOWNS_CAPTURE_VALUE_CEIL && CTI_P_SideID isEqualTo (_defend getVariable 'cti_town_sideID')) || !(CTI_P_SideID isEqualTo (_defend getVariable 'cti_town_sideID'))) then {
+				_action = "defense";if !(_action isEqualTo _last_action) then {_move_defend_last = -120};
 			} else {
-				_action = "patrol";if (_action != _last_action) then {_move_patrol_reload = true};
+				_action = "patrol";if !(_action isEqualTo _last_action) then {_move_patrol_reload = true};
 			};
 		};
 		

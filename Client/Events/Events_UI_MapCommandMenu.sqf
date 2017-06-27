@@ -51,7 +51,7 @@ switch (_action) do {
 			(_markers select _value) setMarkerAlphaLocal 1;
 			
 			_current = uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_group_current";
-			if (_current != _who) then { //--- Only refresh if needed
+			if !(_current isEqualTo _who) then { //--- Only refresh if needed
 				uiNamespace setVariable ["cti_dialog_ui_mapcommandmenu_group_current", _who];
 				for '_i' from 0 to lbSize(220009)-1 do {
 					if (_order isEqualTo (((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220009) lbValue _i)) exitWith {
@@ -141,7 +141,7 @@ switch (_action) do {
 		_my = _event select 3;
 		
 		_operation = uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_mapclick";
-		if (_button isEqualTo 0 && _operation != "") then {
+		if (_button isEqualTo 0 && !(_operation isEqualTo "")) then {
 			uiNamespace setVariable ["cti_dialog_ui_mapcommandmenu_mapclick", ""];
 			((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220013) ctrlSetStructuredText parseText "";
 			

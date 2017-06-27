@@ -33,7 +33,7 @@ private ["_funds", "_side"];
 _side = side _group;
 
 if (isNil '_value') exitWith {["ERROR", "FILE: Common\Functions\Common_ChangeFunds.sqf", format["A nil funds value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
-if (typeName _value != "SCALAR") exitWith {["ERROR", "FILE: Common\Functions\Common_ChangeFunds.sqf", format["A non-scalar funds value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
+if !(typeName _value isEqualTo "SCALAR") exitWith {["ERROR", "FILE: Common\Functions\Common_ChangeFunds.sqf", format["A non-scalar funds value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
 
 //--- Change a team's funds
 if (_group call CTI_CO_FNC_IsGroupCommander) then {

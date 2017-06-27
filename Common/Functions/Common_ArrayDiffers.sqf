@@ -33,12 +33,12 @@ private ["_different", "_item"];
 
 _different = false;
 
-if (count _array1 != count _array2) then { 
+if !(count _array1 isEqualTo count _array2) then { 
 	_different = true;
 } else {
 	{
 		_item = _x;
-		if (({_x isEqualTo _item} count _array1) != ({_x isEqualTo _item} count _array2)) exitWith { _different = true };
+		if !(({_x isEqualTo _item} count _array1) isEqualTo ({_x isEqualTo _item} count _array2)) exitWith { _different = true };
 	} forEach _array1;
 };
 

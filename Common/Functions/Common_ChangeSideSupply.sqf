@@ -32,7 +32,7 @@ params ["_side", "_value"];
 private ["_logic", "_supply"];
 
 if (isNil '_value') exitWith {["ERROR", "FILE: Common\Functions\Common_ChangeSideSupply.sqf", format["A nil supply value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
-if (typeName _value != "SCALAR") exitWith {["ERROR", "FILE: Common\Functions\Common_ChangeSideSupply.sqf", format["A non-scalar value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
+if !(typeName _value isEqualTo "SCALAR") exitWith {["ERROR", "FILE: Common\Functions\Common_ChangeSideSupply.sqf", format["A non-scalar value has been specified for side [%1]", _side]] call CTI_CO_FNC_Log};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _supply = (_side) call CTI_CO_FNC_GetSideSupply;

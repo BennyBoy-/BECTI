@@ -6,7 +6,6 @@ switch (_action) do {
 		_groups = if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" isEqualTo 1) then {(CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups} else {(CTI_P_SideJoined) call CTI_CO_FNC_GetSidePlayerGroups};
 		_commander = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommanderTeam;
 		_groups = _groups - [_commander];
-		// if (_commander != group player) exitWith {};
 		
 		uiNamespace setVariable ["cti_dialog_ui_teamsmenu_groups", _groups];
 		
@@ -71,7 +70,7 @@ switch (_action) do {
 		if (_selected > -1 && _role > -1) then {
 			_who = (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups") select _selected;
 			_role = ((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190006) lbData _role;
-			if (_role != (_who getVariable "cti_role")) then {_who setVariable ["cti_role", _role, true]};
+			if !(_role isEqualTo (_who getVariable "cti_role")) then {_who setVariable ["cti_role", _role, true]};
 		};
 	};
 	case "onOrderPressed": {
@@ -82,7 +81,7 @@ switch (_action) do {
 			_who = (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups") select _selected;
 			_order = ((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190016) lbValue _order;
 			if !(_order in CTI_AI_ORDERS_ONETIMERS) then {
-				if (_order != (_who getVariable "cti_order")) then {_who setVariable ["cti_order", _order, true]};
+				if !(_order isEqualTo (_who getVariable "cti_order")) then {_who setVariable ["cti_order", _order, true]};
 			} else {
 				if!(isPlayer leader _who) then {[_who, _order, CTI_P_SideJoined] remoteExec ["CTI_PVF_SRV_RequestAIOrderAction", CTI_PV_SERVER]};
 			};
@@ -119,7 +118,7 @@ switch (_action) do {
 		
 		if (_role > -1) then {
 			_role = ((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190006) lbData _role;
-			{if (_role != (_x getVariable "cti_role")) then {_x setVariable ["cti_role", _role, true]}} forEach (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups");
+			{if !(_role isEqualTo (_x getVariable "cti_role")) then {_x setVariable ["cti_role", _role, true]}} forEach (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups");
 		};
 	};
 	case "onOrderAllPressed": { // todo: player?
@@ -128,7 +127,7 @@ switch (_action) do {
 		if (_order > -1) then {
 			_order = ((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190016) lbValue _order;
 			if !(_order in CTI_AI_ORDERS_ONETIMERS) then {
-				{if (_order != (_x getVariable "cti_order")) then {_x setVariable ["cti_order", _order, true]}} forEach (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups");
+				{if !(_order isEqualTo (_x getVariable "cti_order")) then {_x setVariable ["cti_order", _order, true]}} forEach (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups");
 			} else {
 				_ais = [];
 				{if!(isPlayer leader _x) then {_ais pushBack _x}} forEach (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups");

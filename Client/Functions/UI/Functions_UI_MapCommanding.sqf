@@ -52,8 +52,8 @@ CTI_UI_MapCommanding_TrySetOrder = {
 	_order = _this select 1;
 	_order_pos_new = _this select 2;
 
-	if (_order != (_group getVariable "cti_order")) then {_group setVariable ["cti_order", _order, true]};
-	if (typeName _order_pos_new != "BOOL") then {
+	if !(_order isEqualTo (_group getVariable "cti_order")) then {_group setVariable ["cti_order", _order, true]};
+	if !(typeName _order_pos_new isEqualTo "BOOL") then {
 		_order_pos = _group getVariable "cti_order_pos";
 		_assign = true;
 		switch (true) do {

@@ -52,6 +52,10 @@ if (typeName _sideID isEqualTo "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC
 
 _side = _sideID call CTI_CO_FNC_GetSideFromID;
 
+if (CTI_Log_Level >= CTI_Log_Debug) then {
+	["DEBUG", "FILE: Common\Functions\Common_CreateVehicle.sqf", format["Attempting to create a [%1] vehicle at position [%2] with direction [%3] on side [%4], locked [%5]? net [%6]? handle [%7]? special [%8]", _type, _position, _direction, _side, _locked, _net, _handle, _special]] call CTI_CO_FNC_Log;
+};
+
 _vehicle = createVehicle [_type, _position, [], 7, _special];
 _velocity = velocity _vehicle;
 _vehicle setDir _direction;

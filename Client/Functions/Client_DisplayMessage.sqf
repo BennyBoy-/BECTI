@@ -52,7 +52,7 @@ switch (_message_var) do {
 				CTI_P_ChatID commandChat "No Commander Selected!";
 			};
 		} else {
-			if (_parameters != group player) then {
+			if !(_parameters isEqualTo group player) then {
 				CTI_P_ChatID commandChat format["%1 is the new commander!", name leader _parameters];
 			} else {
 				CTI_P_ChatID commandChat "You are the new commander!";

@@ -44,7 +44,7 @@ switch (_action) do {
 	case "onGroupLBSelChanged": {
 		_changeto = _this select 1;
 		
-		if (_changeto != -1) then {
+		if !(_changeto isEqualTo -1) then {
 			_group = (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_groups") select _changeto;
 			_funds = (_group) call CTI_CO_FNC_GetFunds;
 			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140003) ctrlSetStructuredText (parseText format["Player Resources: <t color='%1'>$%2</t>", CTI_P_Coloration_Money, _funds]);
@@ -61,7 +61,7 @@ switch (_action) do {
 		
 		if (_amount > 0 && _amount <= call CTI_CL_FNC_GetPlayerFunds) then {
 			_group = (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_groups") select (lnbCurSelRow 140001);
-			if (_group != group player) then {
+			if !(_group isEqualTo group player) then {
 				[_group, _amount] call CTI_CO_FNC_ChangeFunds;
 				-(_amount) call CTI_CL_FNC_ChangePlayerFunds;
 				["funds-transfer", [_amount ,_group]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", leader _group];
@@ -86,7 +86,7 @@ switch (_action) do {
 			_changeto = (((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140007) lbValue _changeto)/100;
 			
 			_percent_award = CTI_P_SideLogic getVariable "cti_pool_award";
-			if (_changeto != _percent_award) then { CTI_P_SideLogic setVariable ["cti_pool_award", _changeto, true] };
+			if !(_changeto isEqualTo _percent_award) then { CTI_P_SideLogic setVariable ["cti_pool_award", _changeto, true] };
 		};
 	};
 	case "onResourcesPoolLBSelChanged": {
@@ -96,7 +96,7 @@ switch (_action) do {
 			_changeto = (((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140006) lbValue _changeto)/100;
 			
 			_percent_resources = CTI_P_SideLogic getVariable "cti_pool_resources";
-			if (_changeto != _percent_resources) then { CTI_P_SideLogic setVariable ["cti_pool_resources", _changeto, true] };
+			if !(_changeto isEqualTo _percent_resources) then { CTI_P_SideLogic setVariable ["cti_pool_resources", _changeto, true] };
 		};
 	};
 	case "onGoBack": {

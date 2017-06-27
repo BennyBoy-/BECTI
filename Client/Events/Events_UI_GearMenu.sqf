@@ -80,7 +80,7 @@ switch (_action) do {
 		_selected = _this select 1;
 		
 		//--- Get the current tab
-		if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" != 7) then {//--- Skip on template tab
+		if !(uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" isEqualTo 7) then {//--- Skip on template tab
 			_updated = false;
 			if (uiNamespace getVariable "cti_dialog_ui_gear_target" isKindOf "Man") then {
 				_updated = (lnbData [70108, [_selected,0]]) call CTI_UI_Gear_AddItem;
@@ -99,7 +99,7 @@ switch (_action) do {
 		//--- Item (Data)
 		_selected = ((_this select 1) select 0) select 2;
 		
-		if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" != 7) then { //--- Skip on template tab
+		if !(uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" isEqualTo 7) then { //--- Skip on template tab
 			uiNamespace setVariable ["cti_dialog_ui_gear_dragging", true];
 			(_selected) call CTI_UI_Gear_OnShoppingItemDrag;
 		};
@@ -110,7 +110,7 @@ switch (_action) do {
 		_dropped = _this select 3;
 		_path = _this select 4;
 		
-		if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" != 7) then { //--- Skip on template tab
+		if !(uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" isEqualTo 7) then { //--- Skip on template tab
 			_updated = [_idc, _dropped, _kind, _path] call CTI_UI_Gear_OnShoppingItemDrop;
 			if (_updated) then { call CTI_UI_Gear_UpdatePrice };
 		};
@@ -158,7 +158,7 @@ switch (_action) do {
 		
 		if (uiNamespace getVariable "cti_dialog_ui_gear_target" isKindOf "Man") then {
 			//--- Make sure that the container is present.
-			if ((((_gear select 1) select _container) select 0) != "") then {
+			if !((((_gear select 1) select _container) select 0) isEqualTo "") then {
 				(((_gear select 1) select _container) select 1) call CTI_UI_Gear_DisplayContainerItems;
 				
 				//--- Change the color
@@ -190,7 +190,7 @@ switch (_action) do {
 		
 		_gear = uiNamespace getVariable "cti_dialog_ui_gear_target_gear";
 		
-		if ((_gear select 2) select _slot != "" && uiNamespace getVariable "cti_dialog_ui_gear_target" isKindOf "Man") then {
+		if (!((_gear select 2) select _slot isEqualTo "") && uiNamespace getVariable "cti_dialog_ui_gear_target" isKindOf "Man") then {
 			//--- Apply the default picture and release the tooltip
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _idc) ctrlSetText _default;
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _idc) ctrlSetTooltip "";
@@ -207,7 +207,7 @@ switch (_action) do {
 		
 		_gear = uiNamespace getVariable "cti_dialog_ui_gear_target_gear";
 		
-		if ((((_gear select 3) select (_slot select 0)) select (_slot select 1)) != "" && uiNamespace getVariable "cti_dialog_ui_gear_target" isKindOf "Man") then {
+		if (!((((_gear select 3) select (_slot select 0)) select (_slot select 1)) isEqualTo "") && uiNamespace getVariable "cti_dialog_ui_gear_target" isKindOf "Man") then {
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _idc) ctrlSetText _default;
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _idc) ctrlSetTooltip "";
 			
@@ -278,7 +278,7 @@ switch (_action) do {
 		_gear = uiNamespace getVariable "cti_dialog_ui_gear_target_gear";
 		if (uiNamespace getVariable "cti_dialog_ui_gear_target" isKindOf "Man") then {
 			if (count(((_gear select 0) select _slot_type) select 1) > 0) then {
-				if (((((_gear select 0) select _slot_type) select 1) select _slot) != "") then {
+				if !(((((_gear select 0) select _slot_type) select 1) select _slot) isEqualTo "") then {
 					((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _idc) ctrlSetText _default;
 					((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _idc) ctrlSetTooltip "";
 					
@@ -390,10 +390,10 @@ switch (_action) do {
 				if (_side_template) then {if !((toLower _x) in _side_gear) then {_side_template = false}}; //--- Check whether or not the item belong to the player's side
 			} forEach (_gear call CTI_CO_FNC_ConvertGearToFlat);
 			
-			if (_cost != 0) then {
+			if !(_cost isEqualTo 0) then {
 				{
-					if (_x select 0 != "") then {
-						if (_label != "") then { _label = _label + " | " };
+					if !(_x select 0 isEqualTo "") then {
+						if !(_label isEqualTo "") then { _label = _label + " | " };
 						_label = _label + getText(configFile >> "CfgWeapons" >> (_x select 0) >> "displayName");
 						if !(_haspic) then { _picture = getText(configFile >> "CfgWeapons" >> (_x select 0) >> "picture"); _haspic = true};
 					};
@@ -476,7 +476,7 @@ switch (_action) do {
 			_gear = uiNamespace getVariable "cti_dialog_ui_gear_target_gear";
 			_container_type = ((_gear select 1) select _container) select 0;
 			
-			if (_container_type != "") then {
+			if !(_container_type isEqualTo "") then {
 				if (uiNamespace getVariable "cti_dialog_ui_gear_items_tab" isEqualTo _container) then {lnbClear 70109};
 				
 				["Container", "", _container_type, [_container, ((_gear select 1) select _container) select 1]] call CTI_UI_Gear_UpdateMass;

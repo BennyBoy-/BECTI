@@ -21,7 +21,7 @@ while { true } do {
 					
 					_distance = 2.5;
 					_relPos = [(sin _dir)*(cos _pitch * _distance),(cos _pitch) * (cos _dir * _distance),1.5-(sin _pitch * _distance)]; //--- Orbit
-					if (camTarget CTI_UnitsCamera != _track || _last_tracked != _track) then { CTI_UnitsCamera camSetTarget _track; CTI_UnitsCamera camSetRelPos _relPos; CTI_UnitsCamera camCommit 0 };
+					if (!(camTarget CTI_UnitsCamera isEqualTo _track) || !(_last_tracked isEqualTo _track)) then { CTI_UnitsCamera camSetTarget _track; CTI_UnitsCamera camSetRelPos _relPos; CTI_UnitsCamera camCommit 0 };
 					CTI_UnitsCamera camSetRelPos _relPos;
 				} else {
 					_vehicle = vehicle _track;
@@ -32,7 +32,7 @@ while { true } do {
 					
 					_distance = switch (true) do {case (_vehicle isKindOf "Car" || _vehicle isKindOf "Motorcycle"): {13.5}; case (_vehicle isKindOf "Tank"): {15}; default {22.5} };
 					_relPos = [(sin _dir)*(cos _pitch * _distance),(cos _pitch) * (cos _dir * _distance),1.5-(sin _pitch * _distance)]; //--- Orbit
-					if (camTarget CTI_UnitsCamera != _vehicle || _last_tracked != _track) then { CTI_UnitsCamera camSetTarget vehicle _track; CTI_UnitsCamera camSetRelPos _relPos; CTI_UnitsCamera camCommit 0 };
+					if (!(camTarget CTI_UnitsCamera isEqualTo _vehicle) || !(_last_tracked isEqualTo _track)) then { CTI_UnitsCamera camSetTarget vehicle _track; CTI_UnitsCamera camSetRelPos _relPos; CTI_UnitsCamera camCommit 0 };
 					CTI_UnitsCamera camSetRelPos _relPos;
 				};
 			};

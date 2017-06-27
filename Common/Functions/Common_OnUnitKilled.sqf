@@ -37,13 +37,11 @@ if ((_killer isEqualTo _killed || isNull _killer) && _isvehicle_killed) then {
 	_last_hit = _killed getVariable "cti_lasthit";
 	if !(isNil "_last_hit") then {
 		if (alive _last_hit) then {
-			// if (side _last_hit != _side_killed && time - (_killed getVariable "cti_lasthit_time") < 25) then {_killed_proxy = true; _killer = _last_hit};
 			if (time - (_killed getVariable "cti_lasthit_time") < 25) then {_killed_proxy = true; _killer = _last_hit};
 		};
 	};
 };
 
-// player sidechat format ["%1",_killer];
 if !(alive _killer) exitWith {}; //--- Killer is null or dead, nothing to see here
 
 //--- VEHICLES: Determine the side of the last occupant of the vehicle
@@ -76,17 +74,13 @@ if !(_is_defense) then {
 
 _var = missionNamespace getVariable _var_name;
 
-//todo check what happens when crew bails out. side become civ?!
-// this addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", 0]];this addEventHandler ["hit", {_this spawn CTI_CO_FNC_OnUnitHit}];
-// this addEventHandler ["getIn", {_this spawn CTI_CO_FNC_OnUnitGetOut}]; this addEventHandler ["getOut", {_this spawn CTI_CO_FNC_OnUnitGetOut}]; this setVariable ["cti_occupant", west call CTI_CO_FNC_GetSideFromID];
-// player sidechat format ["killed:%1 (%2)    killer:%3 (%4)",_killed, _side_killed,_killer, _side_killer];
 if (!isNil '_var' && _isplayable_killer) then {
 	_cost = if !(_is_defense) then {_var select CTI_UNIT_PRICE} else {_var select CTI_DEFENSE_PRICE};
 	
-	if (_side_killer != _side_killed) then { //--- Kill
-		if (_side_killed != civilian) then {
+	if !(_side_killer isEqualTo _side_killed) then { //--- Kill
+		if !(_side_killed isEqualTo civilian) then {
 			//--- The kill does not come from the leader, award the score to the leader in any cases.
-			if (_killer != leader _group_killer) then {
+			if !(_killer isEqualTo leader _group_killer) then {
 				_points = switch (true) do {case (_type_killed isKindOf "Infantry"): {1};case (_type_killed isKindOf "Car"): {2};case (_type_killed isKindOf "Ship"): {4};case (_type_killed isKindOf "Motorcycle"): {1};case (_type_killed isKindOf "Tank"): {4};case (_type_killed isKindOf "Helicopter"): {4};case (_type_killed isKindOf "Plane"): {6};case (_type_killed isKindOf "StaticWeapon"): {2};case (_type_killed isKindOf "Building"): {2};default {1}};
 				if (CTI_IsServer) then {[leader _group_killer, _points] spawn CTI_SE_FNC_AddScore} else {[leader _group_killer, _points] remoteExec ["CTI_PVF_SRV_RequestAddScore", CTI_PV_SERVER]};
 			};
@@ -95,7 +89,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 				_award_groups = [_group_killer];
 				
 				//--- The kill was not made by proxy and the killer is in a vehicle
-				if (!_killed_proxy && vehicle _killer != _killer) then {
+				if (!_killed_proxy && !(vehicle _killer isEqualTo _killer)) then {
 					_vehicle = vehicle _killer;
 					{if (alive _x) then {if !(group _x in _award_groups) then {_award_groups pushBack (group _x)}}} forEach [driver _vehicle, gunner _vehicle, commander _vehicle];
 				};
@@ -125,8 +119,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 	} else { //--- Teamkill
 		//--- Don't bother with local entities on MP.
 		if ((!local _killer && isMultiplayer) || !isMultiplayer) then {
-		// if ((!local _killed && isMultiplayer) || !isMultiplayer) then {
-			if (_killed != _killer && _isplayable_killer) then {
+			if (!(_killed isEqualTo _killer) && _isplayable_killer) then {
 				//--- Compensate the killed units with the killer's funds on non-captured entities
 				if ((_side_killer call CTI_CO_FNC_GetSideID) isEqualTo _sideID_killed) then {
 					_killer_funds = (_group_killer) call CTI_CO_FNC_GetFunds;

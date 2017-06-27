@@ -38,7 +38,7 @@ for '_i' from 0 to count(_items)-1 do {
 		default {"nil"};
 	};
 	
-	if (_config_type != "nil") then { //--- Make sure that it exists
+	if !(_config_type isEqualTo "nil") then { //--- Make sure that it exists
 		if (isNil {missionNamespace getVariable _item}) then {
 			switch (_config_type) do { //--- Each item is handled differently
 				case "CfgGlasses": {
@@ -118,7 +118,7 @@ for '_i' from 0 to count(_items)-1 do {
 						};
 					};
 					
-					if (_item_subtype != "") then {
+					if !(_item_subtype isEqualTo "") then {
 						_item_type = [_item_type, _item_subtype];
 					};
 					

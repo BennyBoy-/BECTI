@@ -44,7 +44,7 @@ _found = [];
 } forEach _structures;
 
 if (count _found > 0 && typeName _sort in ["OBJECT","POSITION"]) then { 
-	if (_distance != -1) then { 
+	if !(_distance isEqualTo -1) then { 
 		_temp = [];
 		{ if (_x distance _sort <= _distance) then { _temp pushBack _x } } forEach _found;
 		_found = _temp;

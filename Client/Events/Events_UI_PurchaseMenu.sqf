@@ -39,7 +39,7 @@ switch (_action) do {
 		call CTI_UI_Purchase_OnUnitListLoad;
 		
 		
-		if (_factory_type != CTI_REPAIR || !(call CTI_CL_FNC_IsPlayerCommander)) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlShow false};
+		if (!(_factory_type isEqualTo CTI_REPAIR) || !(call CTI_CL_FNC_IsPlayerCommander)) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlShow false};
 		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.535), SafeZoneY + (SafeZoneH * 0.825), SafeZoneW * 0.275, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlCommit 0;
 		
 		execVM "Client\GUI\GUI_PurchaseMenu.sqf";
@@ -138,11 +138,11 @@ switch (_action) do {
 				if (_ai_enabled isEqualTo 1 || (isPlayer leader _selected_group && _ai_enabled isEqualTo 0)) then {
 					if ((count units _selected_group)+_crew_count <= CTI_PLAYERS_GROUPSIZE || _isEmpty) then { //todo ai != player limit
 						_proc_purchase = true;
-						if (_isEmpty && _selected_group != group player) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Empty vehicles may not be purchased for other groups."; };
+						if (_isEmpty && !(_selected_group isEqualTo group player)) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Empty vehicles may not be purchased for other groups."; };
 						
 						if (_proc_purchase) then {
 							_get = missionNamespace getVariable _classname;
-							_picture = if ((_get select CTI_UNIT_PICTURE) != "") then {format["<img image='%1' size='2.5'/><br /><br />", _get select CTI_UNIT_PICTURE]} else {""};
+							_picture = if !((_get select CTI_UNIT_PICTURE) isEqualTo "") then {format["<img image='%1' size='2.5'/><br /><br />", _get select CTI_UNIT_PICTURE]} else {""};
 							hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />%2<t>A <t color='#ccffaf'>%1</t> is being built</t>", _get select CTI_UNIT_LABEL, _picture];
 							[_classname, uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", _selected_group, _veh_info] call CTI_CL_FNC_PurchaseUnit;
 						};
@@ -185,7 +185,7 @@ switch (_action) do {
 	case "onQueueCancel": {
 		_selected = _this select 1;
 		
-		if (_selected != -1) then {
+		if !(_selected isEqualTo -1) then {
 			_classname = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110013) lbData _selected;
 			_rounded_seed = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110013) lbValue _selected;
 			

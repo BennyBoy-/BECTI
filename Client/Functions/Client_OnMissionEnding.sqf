@@ -37,7 +37,7 @@ sleep 10;
 _win = false;
 switch (_result) do {
 	case "win": {if (CTI_P_SideJoined isEqualTo _side) then {_win = true}};
-	case "loose": {if (CTI_P_SideJoined != _side) then {_win = true}};
+	case "loose": {if !(CTI_P_SideJoined isEqualTo _side) then {_win = true}};
 };
 
 if (_win) then {["END1", true, 0] call BIS_fnc_endMission} else {["END2", false, 0] call BIS_fnc_endMission};

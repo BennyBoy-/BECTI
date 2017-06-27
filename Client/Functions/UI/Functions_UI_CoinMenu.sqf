@@ -344,7 +344,7 @@ CTI_Coin_OnPreviewPlacement = {
 						[CTI_P_SideJoined, -(CTI_COIN_PARAM select CTI_STRUCTURE_PRICE)] call CTI_CO_FNC_ChangeSideSupply;
 						
 						//--- Check whether we're dealing with the HQ or a normal structure
-						if (((CTI_COIN_PARAM select CTI_STRUCTURE_LABELS) select 0) != CTI_HQ_DEPLOY) then {
+						if !(((CTI_COIN_PARAM select CTI_STRUCTURE_LABELS) select 0) isEqualTo CTI_HQ_DEPLOY) then {
 							[_variable, CTI_P_SideJoined, _position, _direction] remoteExec ["CTI_PVF_SRV_RequestBuilding", CTI_PV_SERVER];
 						} else {
 							//--- When the HQ is being deployed or mobilized, the commanding menu must be reloaded
@@ -510,7 +510,7 @@ CTI_Coin_OnKeyDown = {
 					call CTI_Coin_OnPreviewCanceled;
 				} else {
 					// if (_key isEqualTo 14 && commandingMenu != "#USER:CTI_COIN_Categories_0") then {_handled = false} else {CTI_COIN_EXIT = true};
-					if (_key in actionKeys "NavigateMenu" && commandingMenu != "#USER:CTI_COIN_Categories_0") then {_handled = false} else {CTI_COIN_EXIT = true};
+					if (_key in actionKeys "NavigateMenu" && !(commandingMenu isEqualTo "#USER:CTI_COIN_Categories_0")) then {_handled = false} else {CTI_COIN_EXIT = true};
 				};
 			};
 			case (_key in [28, 156]): {if !(isNil 'CTI_COIN_PREVIEW') then {call CTI_Coin_OnPreviewPlacement}};

@@ -33,7 +33,7 @@ _vehicles = [];
 {
 	_vehicle = vehicle _x;
 	
-	if (_x != _vehicle && !(_vehicle in _vehicles)) then {_vehicles pushBack _vehicle};
+	if (!(_x isEqualTo _vehicle) && !(_vehicle in _vehicles)) then {_vehicles pushBack _vehicle};
 	if (_move && (!canMove _vehicle && !(_vehicle isKindOf "StaticWeapon"))) then {_vehicles = _vehicles - [_vehicle]};
 	if (!isNull _center && _center distance _vehicle > _range) then {_vehicles = _vehicles - [_vehicle]};
 	if (_local && !local _vehicle) then {_vehicles = _vehicles - [_vehicle]};

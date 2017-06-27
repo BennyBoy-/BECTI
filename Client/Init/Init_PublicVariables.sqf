@@ -141,7 +141,7 @@ with missionNamespace do {
 		_index = -1;
 		{ if ((_x select 0) isEqualTo _req_seed && (_x select 1) isEqualTo _req_classname) exitWith {_index = _forEachIndex} } forEach CTI_P_PurchaseRequests;
 		
-		if (_index != -1) then {CTI_P_PurchaseRequests deleteAt _index};
+		if !(_index isEqualTo -1) then {CTI_P_PurchaseRequests deleteAt _index};
 		//todo cash deduction!
 		if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FUNCTION: CTI_PVF_CLT_OnPurchaseDelegationStart", format["Removed purchase delegation for [%1] concerning classname [%2] with seed [%3] on factory [%4, (%5)]", _req_target, _req_classname, _req_seed, _factory, _factory getVariable "cti_structure_type"]] call CTI_CO_FNC_Log };
 	};
@@ -155,7 +155,7 @@ with missionNamespace do {
 		_index = -1;
 		{ if ((_x select 0) isEqualTo _req_seed && (_x select 1) isEqualTo _req_classname) exitWith {_index = _forEachIndex} } forEach CTI_P_PurchaseRequests;
 		
-		if (_index != -1) then {
+		if !(_index isEqualTo -1) then {
 			// CTI_P_PurchaseRequests set [_index, "!REMOVE!"];
 			// CTI_P_PurchaseRequests = CTI_P_PurchaseRequests - ["!REMOVE!"];
 			CTI_P_PurchaseRequests deleteAt _index;

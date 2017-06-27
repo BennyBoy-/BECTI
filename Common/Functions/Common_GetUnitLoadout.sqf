@@ -74,7 +74,7 @@ _items = [["", ""], ["", "", "", "", ""]];
 		if (getNumber(configFile >> 'CfgWeapons' >> _x >> 'ItemInfo' >> 'type') isEqualTo CTI_SUBTYPE_UAVTERMINAL) then {_slot = [1,1]};
 		if (getNumber(configFile >> 'CfgWeapons' >> _x >> 'useAsBinocular') isEqualTo 1 && getText(configFile >> 'CfgWeapons' >> _x >> 'simulation') isEqualTo "weapon") then {_slot = [0,1]};
 	};
-	if (_slot select 0 != -1) then { (_items select (_slot select 0)) set [_slot select 1, _x] };
+	if !(_slot select 0 isEqualTo -1) then { (_items select (_slot select 0)) set [_slot select 1, _x] };
 } forEach _allitems;
 _items = [(_items select 0) call CTI_CO_FNC_ArrayToLower, (_items select 1) call CTI_CO_FNC_ArrayToLower];
 

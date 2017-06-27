@@ -11,23 +11,21 @@ while { true } do {
 		_squad = if !(isNil '_squad') then { _squad select 0 } else { _x getVariable "cti_role" };
 		_order = _x getVariable "cti_order";
 		
-		// if (((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbValue [_forEachIndex, 1] != _lives) then {
-		if (lnbValue [190001, [_forEachIndex, 1]] != _lives) then {
+		if !(lnbValue [190001, [_forEachIndex, 1]] isEqualTo _lives) then {
 			((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbSetText [[_forEachIndex, 1], str(_lives)];
 			((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbSetValue [[_forEachIndex, 1], _lives];
 		};
-		// if (((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbValue [_forEachIndex, 5] != _order) then {
-		if (lnbValue [190001, [_forEachIndex, 5]] != _order) then {
+		if !(lnbValue [190001, [_forEachIndex, 5]] isEqualTo _order) then {
 			((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbSetText [[_forEachIndex, 5], (_order) call CTI_CL_FNC_GetOrderLabel];
 			((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbSetValue [[_forEachIndex, 5], _order];
 		};
-		if (((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbText [_forEachIndex, 2] != format ["$%1", _funds]) then {((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbSetText [[_forEachIndex, 2], format ["$%1", _funds]]};
-		if (((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbText [_forEachIndex, 3] != _independent) then {((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbSetText [[_forEachIndex, 3], _independent]};
-		if (((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbText [_forEachIndex, 4] != _squad) then {((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbSetText [[_forEachIndex, 4], _squad]};
+		if !((((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbText [_forEachIndex, 2]) isEqualTo format ["$%1", _funds]) then {((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbSetText [[_forEachIndex, 2], format ["$%1", _funds]]};
+		if !((((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbText [_forEachIndex, 3]) isEqualTo _independent) then {((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbSetText [[_forEachIndex, 3], _independent]};
+		if !((((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbText [_forEachIndex, 4]) isEqualTo _squad) then {((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbSetText [[_forEachIndex, 4], _squad]};
 	} forEach (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups");
 	
 	_funds = call CTI_CL_FNC_GetPlayerFunds;
-	if (_funds != _last_funds) then {
+	if !(_funds isEqualTo _last_funds) then {
 		((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190004) ctrlSetStructuredText (parseText format["Resources: <t color='%1'>$%2</t>", CTI_P_Coloration_Money, _funds]);
 	};
 	_last_funds = _funds;
