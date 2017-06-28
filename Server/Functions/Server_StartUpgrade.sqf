@@ -51,7 +51,7 @@ _logic setVariable ["cti_upgrades", _upgrades, true];
 _logic setVariable ["cti_upgrade", -1, true];
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
-	["INFORMATION", "FILE: Server\Functions\Server_StartUpgrade.sqf", format["The [%1] side [%2] upgrade is now complete at level [%3]", _side, (missionNamespace getVariable Format["CTI_%1_UPGRADES_LABELS", _side]) select _upgrade]] call CTI_CO_FNC_Log;
+	["INFORMATION", "FILE: Server\Functions\Server_StartUpgrade.sqf", format["The [%1] side [%2] upgrade is now complete at level [%3]", _side, (missionNamespace getVariable Format["CTI_%1_UPGRADES_LABELS", _side]) select _upgrade, _upgrades select _upgrade]] call CTI_CO_FNC_Log;
 };
 
 ["upgrade-ended", [_upgrade, _level+1]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];

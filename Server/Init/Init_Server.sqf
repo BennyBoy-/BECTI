@@ -122,7 +122,7 @@ if (_attempts >= 500) then {
 	_logic setVariable ["cti_supply", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_SUPPLY_%1", _side], true];
 	
 	_upgrades = [];
-	_upgrades = resize count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]);
+	_upgrades resize count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]);
 	// for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { _upgrades pushBack 0 };
 	// for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { _upgrades pushBack 1 };
 	_logic setVariable ["cti_upgrades", (_upgrades apply {0}), true];

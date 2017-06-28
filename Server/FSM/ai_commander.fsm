@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ai_commander.fsm">*/
+/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, ai_commander.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Start FSM"};
@@ -31,7 +31,7 @@ item26[] = {"Next",8,218,-400.000000,1050.000000,-300.000000,1100.000000,0.00000
 item27[] = {"Build",4,218,-150.000000,1050.000000,-50.000000,1100.000000,2.000000,"Build"};
 item28[] = {"Try_Upgrade",2,250,-275.000000,1150.000000,-175.000000,1200.000000,0.000000,"Try" \n "Upgrade"};
 item29[] = {"WIP",2,250,-575.000000,1375.000000,-475.000000,1425.000000,0.000000,"WIP"};
-item30[] = {"Try_Construction",2,250,-150.000000,1150.000000,-50.000000,1200.000000,0.000000,"Try" \n "Construction"};
+item30[] = {"Try_Construction",2,4346,-150.000000,1150.000000,-50.000000,1200.000000,0.000000,"Try" \n "Construction"};
 item31[] = {"",7,210,-228.999985,1246.000000,-221.000015,1254.000000,0.000000,""};
 item32[] = {"",7,210,-354.000000,1246.000000,-346.000000,1254.000000,0.000000,""};
 item33[] = {"",7,210,-104.000000,1246.000000,-96.000000,1254.000000,0.000000,""};
@@ -74,8 +74,8 @@ link35[] = {30,33};
 link36[] = {31,32};
 link37[] = {32,26};
 link38[] = {33,31};
-globals[] = {25.000000,1,0,0,0,640,480,1,256,6316128,1,-909.994324,653.427795,1328.158691,247.889282,1317,910,1};
-window[] = {2,-1,-1,-32000,-32000,833,-1868,-518,52,3,1335};
+globals[] = {25.000000,1,0,0,0,640,480,1,256,6316128,1,-966.269470,925.471008,1629.713135,-195.953003,1317,1271,1};
+window[] = {2,-1,-1,-1,-1,1031,250,1600,250,3,1335};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -323,7 +323,7 @@ class FSM
           priority = 1.000000;
           to="Determine_Commander";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_construction_mode in [1, 2] || !_hq_deployed"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_construction_mode in [0, 2] || !_hq_deployed"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -333,7 +333,7 @@ class FSM
           priority = 0.000000;
           to="Check_Workers";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_construction_mode isEqualTo 0 && _hq_deployed"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_construction_mode isEqualTo 1 && _hq_deployed"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -397,7 +397,7 @@ class FSM
        "		};" \n
        "		" \n
        "		//--- Add workers if needed to our current base, the commander will try to get half of the workers limit in it's base. (note that a previously deleted worker will still count as active for this cycle)" \n
-       "		if (count _workers_base < (CTI_BASE_WORKERS_LIMIT / 2) && count _workers < CTI_BASE_WORKERS_LIMIT)) then {" \n
+       "		if (count _workers_base < (CTI_BASE_WORKERS_LIMIT / 2) && count _workers < CTI_BASE_WORKERS_LIMIT) then {" \n
        "			[_side, true] spawn CTI_SE_FNC_CreateWorker;" \n
        "			[_side, -CTI_BASE_WORKERS_PRICE] call CTI_CO_FNC_ChangeFundsCommander;" \n
        "		};" \n
@@ -481,7 +481,7 @@ class FSM
        "						//--- Make sure that no upgrades are running" \n
        "						if ((_sideLogic getVariable ""cti_upgrade"") < 0) then {" \n
        "							_upgrade = _selected_param select 0;" \n
-       "							_upgrade_level = _selected_param select 1;" \n
+       "							_upgrade_desired = _selected_param select 1;" \n
        "							" \n
        "							_upgrade_current = [_side, _upgrade] call CTI_CO_FNC_GetUpgrade;" \n
        "							_upgrade_enabled = (missionNamespace getVariable format[""CTI_%1_UPGRADES_ENABLED"", _side]) select _upgrade;" \n
@@ -491,7 +491,7 @@ class FSM
        "								_upgrade_level = (missionNamespace getVariable format[""CTI_%1_UPGRADES_LEVELS"", _side]) select _upgrade;" \n
        "								" \n
        "								//--- Make sure that the desired upgrade level is not already reached" \n
-       "								if (_upgrade_current < _upgrade_level) then {" \n
+       "								if (_upgrade_current < _upgrade_level && _upgrade_current < _upgrade_desired) then {" \n
        "									_upgrade_price = ((missionNamespace getVariable format[""CTI_%1_UPGRADES_COSTS"", _side]) select _upgrade) select _upgrade_current;" \n
        "									" \n
        "									//--- Make sure that we can afford it" \n
@@ -526,7 +526,7 @@ class FSM
        "	//--- Check if all upgrades are complete or not" \n
        "	if !(_upgrades_complete) then {" \n
        "		//--- Attempt to process the remaining upgrades, make sure that no upgrades are running and that we have a Control Center in range" \n
-       "		if ((_logic getVariable ""cti_upgrade"") < 0 && _cc_inrange) then {" \n
+       "		if ((_sideLogic getVariable ""cti_upgrade"") < 0 && _cc_inrange) then {" \n
        "			_current_content = (_side) call CTI_FSM_AICommander_TryUpgrade;" \n
        "			if (count _current_content > 0) then {_current_action = ""upgrade""};" \n
        "		};" \n
@@ -646,8 +646,28 @@ class FSM
        "if (count _positions > 0) then {_position = selectRandom _positions};" \n
        "" \n
        "//--- Construct" \n
+       "_distance = ((_var select CTI_STRUCTURE_PLACEMENT) select 1);" \n
        "_direction = ((_var select CTI_STRUCTURE_PLACEMENT) select 0) + getDir _hq;" \n
-       "[format [""CTI_%1_%2"", _side, _current_content], _side, _position, _direction] call CTI_SE_FNC_BuildStructure;" \n
+       "" \n
+       "_position_factory = [(_position select 0) + (sin _direction * _distance), (_position select 1) + (cos _direction * _distance), _position select 2];" \n
+       "_position_safe = false;" \n
+       "for '_i' from 0 to 360 step 5 do {" \n
+       "	if (count (_position_factory nearRoads 18) > 0 || surfaceIsWater _position_factory) then {" \n
+       "		_direction = _direction + _i;" \n
+       "		_position_factory = [(_position select 0) + (sin _direction * _distance), (_position select 1) + (cos _direction * _distance), _position select 2];" \n
+       "	} else {" \n
+       "		_position_safe = true;" \n
+       "	};" \n
+       "	" \n
+       "	if (_position_safe) exitWith {};" \n
+       "};" \n
+       "" \n
+       "// _position_factory = [(_position select 0) + (sin _direction * _distance), (_position select 1) + (cos _direction * _distance), _position select 2];" \n
+       "" \n
+       "			_sign = ""Sign_Arrow_Large_Blue_F"" createVehicleLocal _position;" \n
+       "			_sign setPos _position;" \n
+       "" \n
+       "[format [""CTI_%1_%2"", _side, _current_content], _side, _position_factory, _direction] call CTI_SE_FNC_BuildStructure;" \n
        "" \n
        "[_side, -(_var select CTI_STRUCTURE_PRICE)] call CTI_CO_FNC_ChangeSideSupply;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
