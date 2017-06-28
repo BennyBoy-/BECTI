@@ -64,6 +64,6 @@ _positions = [];
 {if ((_x select 1) >= _valid_floor) then {_positions pushBack (_x select 0)}} forEach _places;
 
 if (count _positions < 1) then {_positions = [_position]};
-if (_return_one) exitWith {_positions select floor(random count _positions)};
+if (_return_one) exitWith {selectRandom _positions};
 
 _positions

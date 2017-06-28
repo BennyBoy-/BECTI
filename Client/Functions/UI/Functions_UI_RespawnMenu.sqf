@@ -289,11 +289,11 @@ CTI_UI_Respawn_OnRespawnReady = {
 						
 						_bpos = [0,0,0];
 						switch (typeName _bposlist) do { //--- TODO: Check if a spot is already occupied by another player/ai
-							case "ARRAY": {_bpos = _where buildingPos (_bposlist select floor(random count _bposlist))};
+							case "ARRAY": {_bpos = _where buildingPos (selectRandom _bposlist)};
 							case "SCALAR": {
 								if (_bposlist isEqualTo -1) then {
 									_list = _where buildingPos _bposlist;
-									_bpos = _list select floor(random count _list);
+									_bpos = selectRandom _list;
 								} else {
 									_bpos = _where buildingPos _bposlist;
 								};
@@ -317,11 +317,11 @@ CTI_UI_Respawn_OnRespawnReady = {
 							
 							_bpos = [0,0,0];
 							switch (typeName _bposlist) do { //--- TODO: Check if a spot is already occupied by another player/ai
-								case "ARRAY": {_bpos = _where buildingPos (_bposlist select floor(random count _bposlist))};
+								case "ARRAY": {_bpos = _where buildingPos (selectRandom _bposlist)};
 								case "SCALAR": {
 									if (_bposlist isEqualTo -1) then {
 										_list = _where buildingPos _bposlist;
-										_bpos = _list select floor(random count _list);
+										_bpos = selectRandom _list;
 									} else {
 										_bpos = _where buildingPos _bposlist;
 									};

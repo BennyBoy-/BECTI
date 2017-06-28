@@ -37,7 +37,7 @@ if (count _hcs < 1) exitWith {false};
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 //--- Grab a random HC. (TODO: Round robin iterator if hc count > 1)
-_hc = (_hcs select floor(random count _hcs)) select 0;
+_hc = (selectRandom _hcs) select 0;
 
 //--- First of all, we delegate the group to the HC if needed
 if !(groupOwner _group isEqualTo _hc) then {

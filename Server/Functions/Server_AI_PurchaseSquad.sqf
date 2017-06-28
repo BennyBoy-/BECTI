@@ -40,7 +40,7 @@ _flaten = [];
 _pool = _flaten call CTI_CO_FNC_ArrayShuffle;
 
 while {_need > 0} do {
-	_picked = _pool select floor(random count _pool);
+	_picked = selectRandom _pool;
 	_probability = if (count _picked > 2) then {_picked select 2} else {100};
 	
 	_can_use = true;

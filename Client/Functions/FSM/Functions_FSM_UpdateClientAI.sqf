@@ -235,7 +235,7 @@ CTI_FSM_UpdateClientAI_Order_TakeTown = {
 				};
 				
 				switch (_action) do {
-					case "patrol": {if (_move_patrol_reload || unitReady _ai && random 100 > (45 + (random 15))) then {if (_move_patrol_reload) then {_move_patrol_reload = false};_move_to = _patrol_area select floor(random count _patrol_area); vehicle _ai doMove _move_to; ((_ai getVariable "cti_ai_formation") - [_ai]) doFollow _ai}};
+					case "patrol": {if (_move_patrol_reload || unitReady _ai && random 100 > (45 + (random 15))) then {if (_move_patrol_reload) then {_move_patrol_reload = false};_move_to = selectRandom _patrol_area; vehicle _ai doMove _move_to; ((_ai getVariable "cti_ai_formation") - [_ai]) doFollow _ai}};
 					case "defense": {if (unitReady _ai && time - _move_defend_last > 65) then {_move_defend_last = time; vehicle _ai doMove ([_town, 10, 50] call CTI_CO_FNC_GetRandomPosition); ((_ai getVariable "cti_ai_formation") - [_ai]) doFollow _ai}};
 				};
 				
@@ -357,7 +357,7 @@ CTI_FSM_UpdateClientAI_Order_HoldTownsBase = {
 		};
 		
 		switch (_action) do {
-			case "patrol": {if (_move_patrol_reload || unitReady _ai && random 100 > (45 + (random 15))) then {if (_move_patrol_reload) then {_move_patrol_reload = false};_move_to = _patrol_area select floor(random count _patrol_area); vehicle _ai doMove _move_to; ((_ai getVariable "cti_ai_formation") - [_ai]) doFollow _ai}};
+			case "patrol": {if (_move_patrol_reload || unitReady _ai && random 100 > (45 + (random 15))) then {if (_move_patrol_reload) then {_move_patrol_reload = false};_move_to = selectRandom _patrol_area; vehicle _ai doMove _move_to; ((_ai getVariable "cti_ai_formation") - [_ai]) doFollow _ai}};
 			case "defense": {if (unitReady _ai && time - _move_defend_last > 65) then {_move_defend_last = time; vehicle _ai doMove ([_defend, 10, 50] call CTI_CO_FNC_GetRandomPosition); ((_ai getVariable "cti_ai_formation") - [_ai]) doFollow _ai}};
 		};
 		

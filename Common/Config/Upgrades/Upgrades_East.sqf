@@ -45,7 +45,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500], //--- IR SMOKE
 	[75000], //--- Satellite
 	[50000], //--- Nuke
-	[12000, 24000, 36000] //--- Supply Rate
+	[12000,24000,36000] //--- Supply Rate
 ]];
 
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
@@ -138,7 +138,7 @@ if (CTI_DEBUG) then {
 		[60], //--- IR Smoke
 		[600], //--- Satellite
 		[300], //--- Nuke
-		[60, 75, 90] //--- Supply Rate
+		[60,75,90] //--- Supply Rate
 	]];
 };
 

@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, ai_commander.fsm">*/
+/*%FSM<COMPILE "D:\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ai_commander.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Start FSM"};
@@ -19,13 +19,13 @@ item14[] = {"Check_Base_Struc",2,250,-250.000000,500.000000,-150.000000,550.0000
 item15[] = {"",7,210,696.000000,1396.000000,704.000000,1404.000000,0.000000,""};
 item16[] = {"",7,210,696.000000,-78.999985,704.000000,-71.000015,0.000000,""};
 item17[] = {"Try_Repair_HQ",2,250,50.000000,300.000000,150.000000,350.000000,0.000000,"Try" \n "Repair HQ"};
-item18[] = {"Construct",4,218,-250.000000,600.000000,-150.000000,650.000000,1.000000,"Construct"};
+item18[] = {"Next",8,218,-250.000000,600.000000,-150.000000,650.000000,0.000000,"Next"};
 item19[] = {"Upgrade",4,218,-275.000000,1050.000000,-175.000000,1100.000000,1.000000,"Upgrade"};
 item20[] = {"Determine_Construction",2,250,-250.000000,700.000000,-150.000000,750.000000,0.000000,"Determine" \n "Construction" \n "Mode"};
 item21[] = {"Timed",4,218,-250.000000,800.000000,-150.000000,850.000000,1.000000,"Timed"};
 item22[] = {"Workers",4,218,-400.000000,700.000000,-300.000000,750.000000,0.000000,"Workers"};
 item23[] = {"Check_Workers",2,250,-400.000000,800.000000,-300.000000,850.000000,0.000000,"Check" \n "Workers"};
-item24[] = {"Determine_Commander",2,4346,-250.000000,900.000000,-150.000000,950.000000,0.000000,"Determine" \n "Commander" \n "Core Action"};
+item24[] = {"Determine_Commander",2,250,-250.000000,900.000000,-150.000000,950.000000,0.000000,"Determine" \n "Commander" \n "Core Action"};
 item25[] = {"Next",8,218,-400.000000,900.000000,-300.000000,950.000000,0.000000,"Next"};
 item26[] = {"Next",8,218,-400.000000,1050.000000,-300.000000,1100.000000,0.000000,"Next"};
 item27[] = {"Build",4,218,-150.000000,1050.000000,-50.000000,1100.000000,2.000000,"Build"};
@@ -74,8 +74,8 @@ link35[] = {30,33};
 link36[] = {31,32};
 link37[] = {32,26};
 link38[] = {33,31};
-globals[] = {25.000000,1,0,0,0,640,480,1,256,6316128,1,-764.370361,509.025818,1477.064941,248.144806,1317,1271,1};
-window[] = {2,-1,-1,-1,-1,1056,275,1625,275,3,1335};
+globals[] = {25.000000,1,0,0,0,640,480,1,256,6316128,1,-909.994324,653.427795,1328.158691,247.889282,1317,910,1};
+window[] = {2,-1,-1,-32000,-32000,833,-1868,-518,52,3,1335};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -243,7 +243,7 @@ class FSM
        "		[""maxGradient"", 0.3]" \n
        "	] call RUBE_randomCirclePositions;" \n
        "	" \n
-       "	_position = if (count _positions > 0) then {_positions select floor (random count _positions)} else {getPos _hq};" \n
+       "	_position = if (count _positions > 0) then {selectRandom _positions} else {getPos _hq};" \n
        "	" \n
        "	[format [""CTI_%1_%2"", _side, CTI_HQ_DEPLOY], _side, _position, getDir _hq] Spawn CTI_SE_FNC_ToggleHQ;" \n
        "	" \n
@@ -275,13 +275,13 @@ class FSM
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "Construct">*/
-        class Construct
+        /*%FSM<LINK "Next">*/
+        class Next
         {
-          priority = 1.000000;
+          priority = 0.000000;
           to="Determine_Construction";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_hq_deployed"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -323,7 +323,7 @@ class FSM
           priority = 1.000000;
           to="Determine_Commander";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_construction_mode in [1, 2]"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_construction_mode in [1, 2] || !_hq_deployed"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -333,7 +333,7 @@ class FSM
           priority = 0.000000;
           to="Check_Workers";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_construction_mode isEqualTo 0"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_construction_mode isEqualTo 0 && _hq_deployed"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -344,7 +344,65 @@ class FSM
     class Check_Workers
     {
       name = "Check_Workers";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_structures = ((_side) call CTI_CO_FNC_GetSideStructures) + (_sideLogic getVariable ""cti_structures_wip"");" \n
+       "_structures = [_hq, _structures, CTI_BASE_WORKERS_RANGE] call CTI_CO_FNC_GetEntitiesInRange;" \n
+       "_workers = (_sideLogic getVariable [""cti_workers"", []]) select {alive _x};" \n
+       "_workers_base = [_hq, _workers, CTI_BASE_WORKERS_RANGE * 1.25] call CTI_CO_FNC_GetEntitiesInRange;" \n
+       "" \n
+       "//--- Make sure that we have something to build in range or that the workers need to be reinforced" \n
+       "if (count _structures > 0 && ((count _workers < CTI_BASE_WORKERS_LIMIT) || count _workers_base < round(CTI_BASE_WORKERS_LIMIT / 2))) then {" \n
+       "	//--- Make sure that we have enough funds" \n
+       "	if (((_side) call CTI_CO_FNC_GetFundsCommander) >= CTI_BASE_WORKERS_PRICE) then {" \n
+       "		//--- Half of the workers need to work on the main base, we may have to clean some" \n
+       "		if (count _workers_base < round(CTI_BASE_WORKERS_LIMIT / 2) && count _workers >= CTI_BASE_WORKERS_LIMIT) then {" \n
+       "			//--- We can cull some workers from the other bases if we did reach the worker limit" \n
+       "			_remote_workers = _workers - _workers_base;" \n
+       "			_delete_random = false;" \n
+       "			" \n
+       "			//--- Handle either base area or ""free"" mode" \n
+       "			if ((missionNamespace getVariable ""CTI_BASE_AREA_MAX"") > 0) then {" \n
+       "				_workers_areas = [];" \n
+       "				" \n
+       "				//--- Retrieve the remote workers per areas" \n
+       "				{" \n
+       "					_near_workers = [_x, _remote_workers, CTI_BASE_WORKERS_RANGE * 1.25] call CTI_CO_FNC_GetEntitiesInRange;" \n
+       "					if (count _near_workers > 0) then {_workers_areas pushBack _near_workers};" \n
+       "				} forEach (_sideLogic getVariable [""cti_structures_areas"", []]);" \n
+       "				" \n
+       "				//--- Find an area with at least 2 workers" \n
+       "				_cull = false;" \n
+       "				{" \n
+       "					if (count _x > 1) exitWith {" \n
+       "						_cull = true;" \n
+       "						(selectRandom _x) setDammage 1;" \n
+       "					}" \n
+       "				} forEach _workers_areas;" \n
+       "				" \n
+       "				//--- If no suitable areas with at least 2 workers could be found, we try to cull them by areas order" \n
+       "				if (!_cull && count _workers_areas > 0) then {" \n
+       "					_cull = true;" \n
+       "					(selectRandom (_workers_areas select 0)) setDammage 1;" \n
+       "				};" \n
+       "				" \n
+       "				//--- Ultimately, if all fails, we delete a random remote worker" \n
+       "				if !(_cull) then {_delete_random = true};" \n
+       "			} else {" \n
+       "				_delete_random = true;" \n
+       "			};" \n
+       "			" \n
+       "			//--- Delete a random remote worker if needed" \n
+       "			if (_delete_random) then {" \n
+       "				(selectRandom _remote_workers) setDammage 1; " \n
+       "			};" \n
+       "		};" \n
+       "		" \n
+       "		//--- Add workers if needed to our current base, the commander will try to get half of the workers limit in it's base. (note that a previously deleted worker will still count as active for this cycle)" \n
+       "		if (count _workers_base < (CTI_BASE_WORKERS_LIMIT / 2) && count _workers < CTI_BASE_WORKERS_LIMIT)) then {" \n
+       "			[_side, true] spawn CTI_SE_FNC_CreateWorker;" \n
+       "			[_side, -CTI_BASE_WORKERS_PRICE] call CTI_CO_FNC_ChangeFundsCommander;" \n
+       "		};" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -365,57 +423,115 @@ class FSM
     class Determine_Commander
     {
       name = "Determine_Commander";
-      init = /*%FSM<STATEINIT""">*/"_current_content = [];" \n
+      init = /*%FSM<STATEINIT""">*/"//todo: check base area limit" \n
+       "" \n
+       "_current_content = [];" \n
        "_current_action = """";" \n
+       "_cc_inrange = [_side, CTI_CONTROLCENTER, getPos _hq, CTI_BASE_PURCHASE_UNITS_RANGE_CC] call CTI_CO_FNC_HasStructure;" \n
+       "" \n
+       "_upgrades_complete = (_side) call CTI_CO_FNC_AreSideUpgradesComplete;" \n
+       "" \n
+       "_break = false;" \n
        "" \n
        "{" \n
        "	_selected_action = _x select 0;" \n
        "	_selected_param = _x select 1;" \n
        "	_selected_condition = _x select 2;" \n
        "	" \n
-       "	_break = false;" \n
-       "	" \n
        "	//--- Make sure that our commander's condition is valid" \n
        "	if (call _selected_condition) then {" \n
        "		//--- Based on the action nature, check if it can be done" \n
        "		switch (_selected_action) do {" \n
        "			case ""build-structures"": {" \n
-       "				//--- Make sure that the structure is not already built or in range" \n
-       "				if !([_side, _selected_param, getPos _hq, CTI_BASE_CONSTRUCTION_RANGE*2] call CTI_CO_FNC_HasStructure) then {" \n
+       "				//--- The HQ has to be deployed in order to construct" \n
+       "				if (_hq_deployed && alive _hq) then {" \n
+       "					//--- Make sure that the structure is not already built or in range" \n
+       "					if !([_side, _selected_param, getPos _hq, CTI_BASE_CONSTRUCTION_RANGE*2] call CTI_CO_FNC_HasStructure) then {" \n
        "" \n
-       "					//--- It's not present in the valid structures array but it may be in the WIP one" \n
-       "					_is_being_built = false;" \n
-       "					{if ((_x getVariable ""cti_structure_type"") isEqualTo _selected_param && _x distance _hq <= (CTI_BASE_CONSTRUCTION_RANGE*2)) exitWith {_is_being_built = true}} forEach (_sideLogic getVariable ""cti_structures_wip"");" \n
-       "					" \n
-       "					//--- It's not being built" \n
-       "					if !(_is_being_built) then {" \n
-       "						_var = missionNamespace getVariable format [""CTI_%1_%2"", _side, _selected_param];" \n
+       "						//--- It's not present in the valid structures array but it may be in the WIP one" \n
+       "						_is_being_built = false;" \n
+       "						{if ((_x getVariable ""cti_structure_type"") isEqualTo _selected_param && _x distance _hq <= (CTI_BASE_CONSTRUCTION_RANGE*2)) exitWith {_is_being_built = true}} forEach (_sideLogic getVariable ""cti_structures_wip"");" \n
+       "						" \n
+       "						//--- It's not being built" \n
+       "						if !(_is_being_built) then {" \n
+       "							_var = missionNamespace getVariable format [""CTI_%1_%2"", _side, _selected_param];" \n
        "" \n
-       "						//--- Make sure that the structure is properly defined" \n
-       "						if !(isNil '_var') then {" \n
-       "							_supply = (_side) call CTI_CO_FNC_GetSideSupply;" \n
+       "							//--- Make sure that the structure is properly defined" \n
+       "							if !(isNil '_var') then {" \n
+       "								_supply = (_side) call CTI_CO_FNC_GetSideSupply;" \n
        "" \n
-       "							//--- Make sure that we can afford it" \n
-       "							if (_supply >= (_var select CTI_STRUCTURE_PRICE)) then {" \n
-       "								_current_content = _selected_param;" \n
-       "								_current_action = _selected_action;" \n
-       "							} else {" \n
-       "								//--- Don't go any further if the commander cannot afford the structure" \n
-       "								_break = true;" \n
+       "								//--- Make sure that we can afford it" \n
+       "								if (_supply >= (_var select CTI_STRUCTURE_PRICE)) then {" \n
+       "									_current_content = _selected_param;" \n
+       "									_current_action = _selected_action;" \n
+       "								} else {" \n
+       "									//--- Don't go any further if the commander cannot afford the structure" \n
+       "									_break = true;" \n
+       "								};" \n
        "							};" \n
        "						};" \n
        "					};" \n
        "				};" \n
        "			};" \n
        "			case ""upgrade"": {" \n
-       "				_break = true; //todo: control upgrades" \n
+       "				//--- Make sure that we still have things to upgrade" \n
+       "				if !(_upgrades_complete) then {" \n
+       "					//--- Make sure that we have a Control Center in range" \n
+       "					if (_cc_inrange) then {" \n
+       "						//--- Make sure that no upgrades are running" \n
+       "						if ((_sideLogic getVariable ""cti_upgrade"") < 0) then {" \n
+       "							_upgrade = _selected_param select 0;" \n
+       "							_upgrade_level = _selected_param select 1;" \n
+       "							" \n
+       "							_upgrade_current = [_side, _upgrade] call CTI_CO_FNC_GetUpgrade;" \n
+       "							_upgrade_enabled = (missionNamespace getVariable format[""CTI_%1_UPGRADES_ENABLED"", _side]) select _upgrade;" \n
+       "							" \n
+       "							//--- Make sure that the desired upgrade is enabled" \n
+       "							if (_upgrade_enabled) then {" \n
+       "								_upgrade_level = (missionNamespace getVariable format[""CTI_%1_UPGRADES_LEVELS"", _side]) select _upgrade;" \n
+       "								" \n
+       "								//--- Make sure that the desired upgrade level is not already reached" \n
+       "								if (_upgrade_current < _upgrade_level) then {" \n
+       "									_upgrade_price = ((missionNamespace getVariable format[""CTI_%1_UPGRADES_COSTS"", _side]) select _upgrade) select _upgrade_current;" \n
+       "									" \n
+       "									//--- Make sure that we can afford it" \n
+       "									if (((_side) call CTI_CO_FNC_GetFundsCommander) >= _upgrade_price) then {" \n
+       "										_current_content = [_upgrade, _upgrade_current, _upgrade_price];" \n
+       "										_current_action = _selected_action;" \n
+       "									} else {" \n
+       "										//--- Don't go any further if the commander cannot afford the upgrade" \n
+       "										_break = true;" \n
+       "									};" \n
+       "								};" \n
+       "							};" \n
+       "						} else {" \n
+       "							//--- Don't go any further if an upgrade is already running" \n
+       "							_break = true;" \n
+       "						};" \n
+       "					} else {" \n
+       "						//--- Don't go any further if we miss a Control Center" \n
+       "						_break = true;" \n
+       "					};" \n
+       "				};" \n
        "			};" \n
        "		};" \n
        "	};" \n
        "" \n
        "	//--- Break out of the loop once we have something to deal with" \n
        "	if (count _current_content > 0 || _break) exitWith {};" \n
-       "} forEach _logical_path;"/*%FSM</STATEINIT""">*/;
+       "} forEach _logical_path;" \n
+       "" \n
+       "//--- The logical path is complete, " \n
+       "if (!_break && _current_action isEqualTo """") then {" \n
+       "	//--- Check if all upgrades are complete or not" \n
+       "	if !(_upgrades_complete) then {" \n
+       "		//--- Attempt to process the remaining upgrades, make sure that no upgrades are running and that we have a Control Center in range" \n
+       "		if ((_logic getVariable ""cti_upgrade"") < 0 && _cc_inrange) then {" \n
+       "			_current_content = (_side) call CTI_FSM_AICommander_TryUpgrade;" \n
+       "			if (count _current_content > 0) then {_current_action = ""upgrade""};" \n
+       "		};" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -456,7 +572,11 @@ class FSM
     class Try_Upgrade
     {
       name = "Try_Upgrade";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"// _current_content = [_upgrade, _upgrade_current, _upgrade_price]" \n
+       "" \n
+       "[_side, -(_current_content select 2)] call CTI_CO_FNC_ChangeFundsCommander;" \n
+       "_sideLogic setVariable [""cti_upgrade"", (_current_content select 0), true];" \n
+       "[_side, (_current_content select 0), (_current_content select 1)] spawn CTI_SE_FNC_StartUpgrade;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -523,7 +643,7 @@ class FSM
        "	[""maxGradient"", 0.3]" \n
        "] call RUBE_randomCirclePositions;" \n
        "" \n
-       "if (count _positions > 0) then {_position = _positions select floor (random count _positions)};" \n
+       "if (count _positions > 0) then {_position = selectRandom _positions};" \n
        "" \n
        "//--- Construct" \n
        "_direction = ((_var select CTI_STRUCTURE_PLACEMENT) select 0) + getDir _hq;" \n

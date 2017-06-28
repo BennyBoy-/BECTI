@@ -54,6 +54,7 @@ funcVectorSub = compileFinal preprocessFileLineNumbers "Server\Functions\Externa
 call compile preprocessFileLineNumbers "Server\Init\initTownStructures.sqf";
 
 call compile preprocessFileLineNumbers "Server\Init\Init_PublicVariables.sqf";
+call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_AICommander.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_RepairTruck.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_UpdateAI.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_UpdateCommander.sqf";
@@ -75,10 +76,9 @@ _westLocation = getMarkerPos "cti-spawn0";
 _eastLocation = getMarkerPos "cti-spawn0";
 
 _attempts = 0;
-_total = count _startup_locations;
 while {_eastLocation distance _westLocation < _range && _attempts <= 500} do {
-	_eastLocation = _startup_locations select floor(random _total);
-	_westLocation = _startup_locations select floor(random _total);
+	_eastLocation = selectRandom _startup_locations;
+	_westLocation = selectRandom _startup_locations;
 	_attempts = _attempts + 1;
 };
 
@@ -108,9 +108,9 @@ if (_attempts >= 500) then {
 	_logic setVariable ["cti_hq_deployed", false, true];
 	_logic setVariable ["cti_structures_wip", []];
 	_logic setVariable ["cti_structures", [], true];
-	_logic setVariable ["cti_structures_areas", [], true];
+	_logic setVariable ["cti_structures_areas", [], true]; //todo disable if area limit is on 0
 	_logic setVariable ["cti_structures_lasthit", -600];
-	_logic setVariable ["cti_workers", [], true];
+	_logic setVariable ["cti_workers", [], true]; //todo disable if timed mode
 	_logic setVariable ["cti_commander_team", grpNull, true];
 	_logic setVariable ["cti_ai_commander", false];
 	_logic setVariable ["cti_commander_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1_COMMANDER", _side], true];
@@ -122,9 +122,10 @@ if (_attempts >= 500) then {
 	_logic setVariable ["cti_supply", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_SUPPLY_%1", _side], true];
 	
 	_upgrades = [];
-	for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { _upgrades pushBack 0 };
+	_upgrades = resize count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]);
+	// for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { _upgrades pushBack 0 };
 	// for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { _upgrades pushBack 1 };
-	_logic setVariable ["cti_upgrades", _upgrades, true];
+	_logic setVariable ["cti_upgrades", (_upgrades apply {0}), true];
 	_logic setVariable ["cti_upgrade", -1, true];
 	
 	//--- Create the defensive teams if needed

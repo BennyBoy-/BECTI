@@ -364,7 +364,7 @@ class FSM
        "	//--- Process the next node" \n
        "	if (_next_node) then {" \n
        "		_patrol_hop_idlefor = -1;" \n
-       "		_patrol_hop = _patrol_area select floor(random count _patrol_area); " \n
+       "		_patrol_hop = selectRandom _patrol_area; " \n
        "		_team move (_patrol_hop select 0);" \n
        "	};" \n
        "};"/*%FSM</STATEINIT""">*/;

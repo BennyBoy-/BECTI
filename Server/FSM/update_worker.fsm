@@ -149,11 +149,11 @@ class FSM
        "" \n
        "if (count _tasks_build > 0) then { //--- 1: Construction" \n
        "	_worker_assignment = ""Construction"";" \n
-       "	_worker_assignment_target = _tasks_build select floor(random count _tasks_build);" \n
+       "	_worker_assignment_target = selectRandom _tasks_build;" \n
        "} else {" \n
        "	if (count _tasks_repair > 0) then { //--- 2: Repair" \n
        "		_worker_assignment = ""Repair"";" \n
-       "		_worker_assignment_target = _tasks_repair select floor(random count _tasks_repair);" \n
+       "		_worker_assignment_target = selectRandom _tasks_repair;" \n
        "	} else { //--- 3: Repair (Entities)" \n
        "		_vehicles_service = [];" \n
        "		{ if (getDammage _x > .01 && speed _x < 5 && position _x select 2 < 3 && side _x isEqualTo _side) then { _vehicles_service pushBack _x } } forEach (_worker nearEntities [[""Car"", ""Motorcycle"", ""Tank"", ""Air"", ""StaticWeapon""], (CTI_BASE_WORKERS_RANGE * .8)]);" \n
@@ -267,7 +267,7 @@ class FSM
        "		if (time - _worker_lastmove > 40) then {_worker commandMove (getPos _worker_assignment_target); _worker_lastmove = time};" \n
        "	} else {" \n
        "		doStop _worker;" \n
-       "		_worker playMove (_animations select floor(random (count _animations)));" \n
+       "		_worker playMove (selectRandom _animations);" \n
        "		_addin = _completion + ((CTI_BASE_WORKERS_BUILD_COEFFICIENT/(_worker_assignment_target getVariable ""cti_structures_iteration"")) * (_worker_assignment_target getVariable ""cti_completion_ratio""));" \n
        "		if (_addin > 100) then {_addin = 100};" \n
        "		_worker_assignment_target setVariable [""cti_completion"", _addin];" \n
@@ -329,7 +329,7 @@ class FSM
        "		if (time - _worker_lastmove > 40) then {_worker commandMove (getPos _worker_assignment_target);_worker_lastmove = time};" \n
        "	} else {" \n
        "		doStop _worker;" \n
-       "		_worker playMove (_animations select floor(random (count _animations)));" \n
+       "		_worker playMove (selectRandom _animations);" \n
        "		" \n
        "		if (_virtual_damages < 0) then {" \n
        "			_addin = getDammage _worker_assignment_target - CTI_BASE_WORKERS_REPAIR;" \n
@@ -370,7 +370,7 @@ class FSM
        "		if (time - _worker_lastmove > 40) then {_worker commandMove (getPos _worker_assignment_target);_worker_lastmove = time};" \n
        "	} else {" \n
        "		doStop _worker;" \n
-       "		_worker playMove (_animations select floor(random (count _animations)));" \n
+       "		_worker playMove (selectRandom _animations);" \n
        "		_worker_assignment_target setDammage ((getDammage _worker_assignment_target) - CTI_BASE_WORKERS_REPAIR_ENTITY);" \n
        "	};" \n
        "};" \n

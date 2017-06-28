@@ -1,4 +1,5 @@
 CTI_CO_FNC_AddSideFunds = compileFinal preprocessFileLineNumbers "Common\Functions\Common_AddSideFunds.sqf";
+CTI_CO_FNC_AreSideUpgradesComplete = compileFinal preprocessFileLineNumbers "Common\Functions\Common_AreSideUpgradesComplete.sqf";
 CTI_CO_FNC_ArrayDiffers = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ArrayDiffers.sqf";
 CTI_CO_FNC_ArrayShift = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ArrayShift.sqf";
 CTI_CO_FNC_ArrayShuffle = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ArrayShuffle.sqf";

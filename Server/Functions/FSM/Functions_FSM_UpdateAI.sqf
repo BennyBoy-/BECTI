@@ -399,7 +399,7 @@ CTI_FSM_UpdateAI_Order_TakeTown = {
 				};
 				
 				switch (_action) do {
-					case "patrol": {if (_move_patrol_reload || unitReady leader _group && random 100 > (45 + (random 15))) then {if (_move_patrol_reload) then {_move_patrol_reload = false};_move_to = _patrol_area select floor(random count _patrol_area); _group move _move_to}};
+					case "patrol": {if (_move_patrol_reload || unitReady leader _group && random 100 > (45 + (random 15))) then {if (_move_patrol_reload) then {_move_patrol_reload = false};_move_to = selectRandom _patrol_area; _group move _move_to}};
 					case "defense": {if (unitReady leader _group && time - _move_defend_last > 65) then {_move_defend_last = time; _group move ([_town, 10, 50] call CTI_CO_FNC_GetRandomPosition)}};
 				};
 				
@@ -492,7 +492,7 @@ CTI_FSM_UpdateAI_Order_HoldTownsBase = {
 		};
 		
 		switch (_action) do {
-			case "patrol": {if (_move_patrol_reload || unitReady leader _group && random 100 > (45 + (random 15))) then {if (_move_patrol_reload) then {_move_patrol_reload = false};_move_to = _patrol_area select floor(random count _patrol_area); _group move _move_to}};
+			case "patrol": {if (_move_patrol_reload || unitReady leader _group && random 100 > (45 + (random 15))) then {if (_move_patrol_reload) then {_move_patrol_reload = false};_move_to = selectRandom _patrol_area; _group move _move_to}};
 			case "defense": {if (unitReady leader _group && time - _move_defend_last > 65) then {_move_defend_last = time; _group move ([_defend, 10, 50] call CTI_CO_FNC_GetRandomPosition)}};
 		};
 		

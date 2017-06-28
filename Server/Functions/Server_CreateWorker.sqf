@@ -46,7 +46,7 @@ _group = createGroup _side;
 _group setSpeedMode "LIMITED";
 
 _model = missionNamespace getVariable [format["CTI_%1_Worker", _side], "C_man_1"];
-if (typeName _model isEqualTo "ARRAY") then {_model = _model select floor(random count _model)};
+if (typeName _model isEqualTo "ARRAY") then {_model = selectRandom _model};
 
 _worker = _group createUnit [_model, [_hq, 5, 20] call CTI_CO_FNC_GetRandomPosition, [], 0, "FORM"];
 if !(_ai_order) then {_workers set [_index, _worker]} else {_workers pushBack _worker};
