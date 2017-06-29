@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ai_commander.fsm">*/
+/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, ai_commander.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Start FSM"};
@@ -33,7 +33,7 @@ item28[] = {"Try_Upgrade",2,250,-375.000000,1150.000000,-275.000000,1200.000000,
 item29[] = {"Teams_Management",2,250,50.000000,1500.000000,150.000000,1550.000000,0.000000,"Teams" \n "Management"};
 item30[] = {"Try_Construction",2,250,-250.000000,1150.000000,-150.000000,1200.000000,0.000000,"Try" \n "Construction"};
 item31[] = {"Defenses",4,218,-400.000000,1350.000000,-300.000000,1400.000000,2.000000,"Defenses"};
-item32[] = {"Determine_Commander_1",2,250,-550.000000,1350.000000,-450.000000,1400.000000,0.000000,"Determine" \n "Commander" \n "Aux. Action"};
+item32[] = {"Determine_Commander_1",2,4346,-550.000000,1350.000000,-450.000000,1400.000000,0.000000,"Determine" \n "Commander" \n "Aux. Action"};
 item33[] = {"",7,210,-504.000000,1071.000000,-496.000000,1079.000000,0.000000,""};
 item34[] = {"Salvagers",4,218,-400.000000,1425.000000,-300.000000,1475.000000,1.000000,"Salvagers"};
 item35[] = {"Try_Defenses",2,250,-250.000000,1350.000000,-150.000000,1400.000000,0.000000,"Try" \n "Defenses"};
@@ -42,7 +42,7 @@ item37[] = {"",7,210,-354.000000,1521.000000,-346.000000,1529.000000,0.000000,""
 item38[] = {"Next",8,218,-100.000000,1500.000000,0.000000,1550.000000,0.000000,"Next"};
 item39[] = {"Set_Orders",4,218,200.000000,1500.000000,300.000000,1550.000000,3.000000,"Set" \n "Orders"};
 item40[] = {"Set_Roles",4,218,200.000000,1425.000000,300.000000,1475.000000,2.000000,"Set" \n "Roles"};
-item41[] = {"Add__Team_Units",4,4314,200.000000,1575.000000,300.000000,1625.000000,1.000000,"Add " \n "Team Units"};
+item41[] = {"Add__Team_Units",4,218,200.000000,1575.000000,300.000000,1625.000000,1.000000,"Add " \n "Team Units"};
 item42[] = {"Set_Update_Roles",2,250,350.000000,1425.000000,450.000000,1475.000000,0.000000,"Set/Update" \n "Roles"};
 item43[] = {"Set_Update_Order",2,250,350.000000,1500.000000,450.000000,1550.000000,0.000000,"Set/Update" \n "Orders"};
 item44[] = {"Try_Add_Team_Uni",2,250,350.000000,1575.000000,450.000000,1625.000000,0.000000,"Try" \n "Add Team Units"};
@@ -105,8 +105,8 @@ link53[] = {43,45};
 link54[] = {44,45};
 link55[] = {45,46};
 link56[] = {46,16};
-globals[] = {25.000000,1,0,0,0,640,480,1,282,6316128,1,-212.581116,788.371155,1784.086670,1091.938843,1316,910,1};
-window[] = {2,-1,-1,-1,-1,911,-1790,-440,130,3,1334};
+globals[] = {25.000000,1,0,0,0,640,480,1,282,6316128,1,-661.336182,339.615723,1497.340698,805.192871,1316,1271,1};
+window[] = {2,-1,-1,-1,-1,1056,275,1625,275,3,1334};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -756,7 +756,7 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"_current_action = """";" \n
        "" \n
        "//--- Salvagers are needed?" \n
-       "_factory_repair = [CTI_REPAIR, _hq, _structures] call CTI_CO_FNC_GetClosestStructure;" \n
+       "_factory_repair = [CTI_REPAIR, _hq, (_side) call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestStructure;" \n
        "if !(isNull _factory_repair) then {" \n
        "	if (((_side) call CTI_CO_FNC_GetFundsCommander) >= CTI_VEHICLES_SALVAGER_PRICE && !isNull _factory_repair && count(_sideLogic getVariable ""cti_salvagers"") < CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX && time - _commander_lastsalvager_addin > 300) then {_current_action = ""hire-salvager""};" \n
        "};"/*%FSM</STATEINIT""">*/;

@@ -398,7 +398,7 @@ if (count _positions_building > 0) then {_positions_building = _positions_buildi
 	if (isNil {_town getVariable "cti_naval"}) then { //--- The town is on the ground
 		if (count _camps > 0 && random 100 > 40) then { //--- A camp can be selected for spawning units
 			_camp_index = floor(random count _camps);
-			_position = [getPos (_camps select _camp_index), 15, ([CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS, CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS * 3] select (_has_vehicles), [10, 25] select (_has_vehicles), (["infantry", "vehicles"] select (_has_vehicles))] call CTI_CO_FNC_GetSafePosition;
+			_position = [getPos (_camps select _camp_index), 15, ([CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS, CTI_TOWNS_RESISTANCE_SPAWN_RANGE_CAMPS * 3] select (_has_vehicles)), [10, 25] select (_has_vehicles), (["infantry", "vehicles"] select (_has_vehicles))] call CTI_CO_FNC_GetSafePosition;
 			_camps deleteAt _camp_index;
 		} else { //--- Pick a random position
 			_use_default = true;
@@ -414,7 +414,7 @@ if (count _positions_building > 0) then {_positions_building = _positions_buildi
 			};
 			
 			if (_use_default) then { //--- Default spawn area, pick a safe area around the town
-				_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, [10, 25] select (_has_vehicles), (["infantry", "vehicles"] select (_has_vehicles))] call CTI_CO_FNC_GetSafePosition;
+				_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE, ([10, 25] select (_has_vehicles)), (["infantry", "vehicles"] select (_has_vehicles))] call CTI_CO_FNC_GetSafePosition;
 			};
 		};
 	} else { //--- The town is naval

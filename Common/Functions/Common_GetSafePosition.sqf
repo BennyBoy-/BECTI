@@ -70,7 +70,7 @@ if (_center isEqualTo _position) then {
 	if (_failover_narrow && _failover_narrow_depth > 0) then {
 		_n_radius_max = _radius_max * 1.25;
 		_n_distance_min = _distance_min - (_distance_min / 4);
-		_n_near_entities_range =  _near_entities_range - (_near_entities_range / 4)
+		_n_near_entities_range =  _near_entities_range - (_near_entities_range / 4);
 		_position = [_center, _radius_min, _n_radius_max, _n_distance_min, _template, _near_entities, _n_near_entities_range, _passes, _failover_narrow, _failover_narrow_depth-1] call CTI_CO_FNC_GetSafePosition;
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then { 
