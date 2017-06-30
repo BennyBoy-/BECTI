@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, ai_commander.fsm">*/
+/*%FSM<COMPILE "D:\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ai_commander.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Start FSM"};
@@ -30,10 +30,10 @@ item25[] = {"Next",8,218,-400.000000,900.000000,-300.000000,950.000000,0.000000,
 item26[] = {"Next",8,218,-550.000000,1250.000000,-450.000000,1300.000000,0.000000,"Next"};
 item27[] = {"Build",4,218,-250.000000,1050.000000,-150.000000,1100.000000,2.000000,"Build"};
 item28[] = {"Try_Upgrade",2,250,-375.000000,1150.000000,-275.000000,1200.000000,0.000000,"Try" \n "Upgrade"};
-item29[] = {"Teams_Management",2,250,50.000000,1500.000000,150.000000,1550.000000,0.000000,"Teams" \n "Management"};
+item29[] = {"Teams_Management",2,4346,50.000000,1500.000000,150.000000,1550.000000,0.000000,"Teams" \n "Management"};
 item30[] = {"Try_Construction",2,250,-250.000000,1150.000000,-150.000000,1200.000000,0.000000,"Try" \n "Construction"};
 item31[] = {"Defenses",4,218,-400.000000,1350.000000,-300.000000,1400.000000,2.000000,"Defenses"};
-item32[] = {"Determine_Commander_1",2,4346,-550.000000,1350.000000,-450.000000,1400.000000,0.000000,"Determine" \n "Commander" \n "Aux. Action"};
+item32[] = {"Determine_Commander_1",2,250,-550.000000,1350.000000,-450.000000,1400.000000,0.000000,"Determine" \n "Commander" \n "Aux. Action"};
 item33[] = {"",7,210,-504.000000,1071.000000,-496.000000,1079.000000,0.000000,""};
 item34[] = {"Salvagers",4,218,-400.000000,1425.000000,-300.000000,1475.000000,1.000000,"Salvagers"};
 item35[] = {"Try_Defenses",2,250,-250.000000,1350.000000,-150.000000,1400.000000,0.000000,"Try" \n "Defenses"};
@@ -105,8 +105,8 @@ link53[] = {43,45};
 link54[] = {44,45};
 link55[] = {45,46};
 link56[] = {46,16};
-globals[] = {25.000000,1,0,0,0,640,480,1,282,6316128,1,-661.336182,339.615723,1497.340698,805.192871,1316,1271,1};
-window[] = {2,-1,-1,-1,-1,1056,275,1625,275,3,1334};
+globals[] = {25.000000,1,0,0,0,640,480,1,282,6316128,1,-1172.592163,1117.498901,2159.511230,574.733521,1315,910,1};
+window[] = {2,-1,-1,-1,-1,911,-1790,-440,130,3,1333};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -127,7 +127,8 @@ class FSM
        "//--- Base layout" \n
        "_template = missionNamespace getVariable format[""CTI_%1_Base_Template"", _side];" \n
        "" \n
-       "_commander_lastsalvager_addin = -600;" \n
+       "_commander_time_lasthiresalvager = -600;" \n
+       "_commander_time_lastorder = -6000;" \n
        "" \n
        "_construction_mode = missionNamespace getVariable ""CTI_BASE_CONSTRUCTION_MODE"";" \n
        "" \n
@@ -630,7 +631,9 @@ class FSM
     class Teams_Management
     {
       name = "Teams_Management";
-      init = /*%FSM<STATEINIT""">*/"_current_action = """";"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_current_action = """";" \n
+       "" \n
+       "if (time - _commander_time_lastorder > 1000) then {_current_action = ""roles""};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -758,7 +761,7 @@ class FSM
        "//--- Salvagers are needed?" \n
        "_factory_repair = [CTI_REPAIR, _hq, (_side) call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestStructure;" \n
        "if !(isNull _factory_repair) then {" \n
-       "	if (((_side) call CTI_CO_FNC_GetFundsCommander) >= CTI_VEHICLES_SALVAGER_PRICE && !isNull _factory_repair && count(_sideLogic getVariable ""cti_salvagers"") < CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX && time - _commander_lastsalvager_addin > 300) then {_current_action = ""hire-salvager""};" \n
+       "	if (((_side) call CTI_CO_FNC_GetFundsCommander) >= CTI_VEHICLES_SALVAGER_PRICE && !isNull _factory_repair && count(_sideLogic getVariable ""cti_salvagers"") < CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX && time - _commander_time_lasthiresalvager > 300) then {_current_action = ""hire-salvager""};" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -821,7 +824,7 @@ class FSM
     class Try_Salvagers
     {
       name = "Try_Salvagers";
-      init = /*%FSM<STATEINIT""">*/"_commander_lastsalvager_addin = time;" \n
+      init = /*%FSM<STATEINIT""">*/"_commander_time_lasthiresalvager = time;" \n
        "[_side, grpNull, _side, format[""CTI_Salvager_Independent_%1"", _side], _factory_repair, [true, true, true, true, true], (time + random 10000 - random 500 + diag_frameno)] call CTI_SE_FNC_OnClientPurchase;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -843,7 +846,54 @@ class FSM
     class Set_Update_Roles
     {
       name = "Set_Update_Roles";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_commander_time_lastorder = time;" \n
+       "" \n
+       "//--- Get the available structures" \n
+       "_barracks = [_side, CTI_BARRACKS] call CTI_CO_FNC_HasStructure;" \n
+       "_light = [_side, CTI_LIGHT] call CTI_CO_FNC_HasStructure;" \n
+       "_heavy = [_side, CTI_HEAVY] call CTI_CO_FNC_HasStructure;" \n
+       "_air = [_side, CTI_AIR] call CTI_CO_FNC_HasStructure;" \n
+       "" \n
+       "//--- Get the HQ" \n
+       "// _hq = (_side) call CTI_CO_FNC_GetSideHQ;" \n
+       "" \n
+       "//--- Define the default modifiers" \n
+       "_barracks_modifier = 1;" \n
+       "_light_modifier = 1;" \n
+       "_heavy_modifier = 1;" \n
+       "_air_modifier = 1;" \n
+       "" \n
+       "//--- Min funds, todo tweak" \n
+       "_light_funds = 1200;" \n
+       "_heavy_funds = 4500;" \n
+       "_air_funds = 9000;" \n
+       "" \n
+       "//--- Modify the weighted values based on the current context" \n
+       "if (_barracks && !_light) then {_barracks_modifier = _barracks_modifier + .5};" \n
+       "if (_barracks && _light) then {_barracks_modifier = _barracks_modifier - .25; _light_modifier = _light_modifier + .2};" \n
+       "if (_heavy) then {_heavy_modifier = _heavy_modifier + .15; _light_modifier = _light_modifier - .28} else {_heavy_modifier = _heavy_modifier - .15};" \n
+       "if !(_air) then {_air_modifier = 0};" \n
+       "" \n
+       "//--- Determine the weight array (Barracks, Light, Heavy, Air)" \n
+       "_weight = [1, .5, .35, .1];" \n
+       "" \n
+       "//todo : determine weight based on external factors (funds, towns...)" \n
+       "" \n
+       "//--- Assign roles" \n
+       "_teams = _side call CTI_CO_FNC_GetSideGroups;" \n
+       "" \n
+       "{" \n
+       "	_funds = (_x) call CTI_CO_FNC_GetFundsTeam;" \n
+       "	" \n
+       "	if (_funds < _light_funds && _light) then {_light_modifier = _light_modifier - .2; _barracks_modifier = _barracks_modifier + .1};" \n
+       "	if (_funds < _heavy_funds && _heavy) then {_heavy_modifier = _heavy_modifier - .17};" \n
+       "	" \n
+       "	_role = [""Infantry"", ""Light"", ""Heavy"", ""Air""] selectRandomWeighted [(_weight select 0) * _barracks_modifier, (_weight select 1) * _light_modifier, (_weight select 2) * _heavy_modifier, (_weight select 3) * _air_modifier];" \n
+       "	" \n
+       "	[_side, _x, _role] call CTI_FSM_AICommander_SetAIRole;" \n
+       "	// _x setVariable [""cti_role"", xxxxxxxx];" \n
+       "	" \n
+       "} forEach (_side call CTI_CO_FNC_GetSideGroups);"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

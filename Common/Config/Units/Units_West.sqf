@@ -35,7 +35,6 @@ _s pushBack "";
 _d pushBack 0;
 _g pushBack "Khaki";
 
-/* AT titan soldier blocked out
 _c pushBack 'B_soldier_AT_F';
 _p pushBack '';
 _n pushBack '';
@@ -46,7 +45,6 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 _g pushBack "Khaki";
-*/
 
 _c pushBack 'B_soldier_AR_F';
 _p pushBack '';
@@ -291,7 +289,6 @@ _d pushBack 0;
 _g pushBack "Khaki";
 
 //--- Light Vehicles
-
 _c pushBack 'B_Quadbike_01_F';
 _p pushBack '';
 _n pushBack '';
@@ -325,19 +322,6 @@ _s pushBack "";
 _d pushBack 0;
 _g pushBack "Khaki";
 
-/*
-_c pushBack 'C_Van_01_transport_F'; 
-_p pushBack '';
-_n pushBack '';
-_o pushBack 500;
-_t pushBack 15;
-_u pushBack 0;
-_f pushBack CTI_FACTORY_LIGHT;
-_s pushBack "";
-_d pushBack 0;
-_g pushBack "Khaki";
-*/
-
 _c pushBack 'B_Truck_01_transport_F';
 _p pushBack '';
 _n pushBack '';
@@ -365,7 +349,7 @@ _p pushBack '';
 _n pushBack '';
 _o pushBack 800;
 _t pushBack 20;
-_u pushBack 2;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "";
 _d pushBack 0;
@@ -412,7 +396,7 @@ _t pushBack 20;
 _u pushBack 1;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "LoadUGV";
-_d pushBack 0; // Radioman - Init LoadUGV script
+_d pushBack 0;
 _g pushBack "Khaki";
 
 _c pushBack 'B_UGV_01_rcws_F';
@@ -427,13 +411,12 @@ _d pushBack 0;
 _g pushBack "Khaki";
 
 //--- Heavy Vehicles
-
 _c pushBack 'B_APC_Wheeled_01_cannon_F';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 7000;
 _t pushBack 30;
-_u pushBack 2;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
@@ -444,7 +427,7 @@ _p pushBack '';
 _n pushBack '';
 _o pushBack 5000;
 _t pushBack 30;
-_u pushBack 2;
+_u pushBack 0;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
@@ -506,7 +489,6 @@ _d pushBack 0;
 _g pushBack "Khaki";
 
 //--- Repair Vehicles
-
 _c pushBack 'B_Truck_01_Repair_F';
 _p pushBack '';
 _n pushBack '';
@@ -574,7 +556,6 @@ _d pushBack 0;
 _g pushBack "Khaki";
 
 //--- Ammo Vehicles
-
 _c pushBack 'B_Truck_01_ammo_F';
 _p pushBack '';
 _n pushBack '';
@@ -621,7 +602,6 @@ _g pushBack "Khaki";
 
 
 //--- Air Vehicles
-
 _c pushBack 'B_UAV_02_CAS_F';
 _p pushBack '';
 _n pushBack '';
@@ -711,8 +691,6 @@ _d pushBack 30;
 _g pushBack "Khaki";
 
 //--- Naval Vehicles
-
-
 _c pushBack 'C_Boat_Civil_01_F';
 _p pushBack '';
 _n pushBack '';

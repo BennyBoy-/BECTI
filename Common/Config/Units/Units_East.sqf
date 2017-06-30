@@ -46,7 +46,6 @@ _s pushBack "";
 _d pushBack 0;
 _g pushBack "Khaki";
 
-/* Titan AT inf blocked out
 _c pushBack 'O_Soldier_AT_F';
 _p pushBack '';
 _n pushBack '';
@@ -57,7 +56,6 @@ _f pushBack CTI_FACTORY_BARRACKS;
 _s pushBack "";
 _d pushBack 0;
 _g pushBack "Khaki";
-*/
 
 _c pushBack 'O_Soldier_AR_F';
 _p pushBack '';
@@ -291,7 +289,6 @@ _d pushBack 0;
 _g pushBack "Khaki";
 
 //--- Light Vehicles
-
 _c pushBack 'O_Quadbike_01_F';
 _p pushBack '';
 _n pushBack '';
@@ -399,7 +396,7 @@ _t pushBack 20;
 _u pushBack 2;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "LoadUGV";
-_d pushBack 0; // Radioman - Init LoadUGV script
+_d pushBack 0;
 _g pushBack "Khaki";
 
 _c pushBack 'O_UGV_01_rcws_F';
@@ -458,13 +455,12 @@ _d pushBack 0;
 _g pushBack "Khaki";
 
 //--- Heavy Vehicles
-
 _c pushBack 'O_APC_Tracked_02_cannon_F';
 _p pushBack '';
 _n pushBack '';
 _o pushBack 10000;
 _t pushBack 30;
-_u pushBack 2;
+_u pushBack 1;
 _f pushBack CTI_FACTORY_HEAVY;
 _s pushBack "";
 _d pushBack 0;
@@ -504,7 +500,6 @@ _d pushBack 0;
 _g pushBack "Khaki";
 
 //--- Repair Vehicles
-
 _c pushBack 'O_Truck_02_box_F';
 _p pushBack '';
 _n pushBack '';
@@ -583,7 +578,6 @@ _d pushBack 0;
 _g pushBack "Khaki";
 
 //--- Ammo Vehicles
-
 _c pushBack "Box_East_Wps_F";
 _p pushBack '';
 _n pushBack 'Empty Crate';
@@ -629,7 +623,6 @@ _d pushBack 0;
 _g pushBack "Khaki";
 
 //--- Air Vehicles
-
 _c pushBack 'O_UAV_02_F';
 _p pushBack '';
 _n pushBack '';
@@ -773,9 +766,7 @@ _s pushBack "";
 _d pushBack 0;
 _g pushBack "Khaki";
 
-
 //--- Naval Vehicles
-
 _c pushBack 'C_Boat_Civil_01_F';
 _p pushBack '';
 _n pushBack '';

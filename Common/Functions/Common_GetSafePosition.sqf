@@ -47,7 +47,8 @@ _breakout = false;
 for '_i' from 1 to _passes do {
 	_direction = random 360;
 	_radius = (random (_radius_max - _radius_min)) + _radius_min;
-	_center_ran = [(_center select 0)+((sin _direction)*_radius),(_center select 1)+((cos _direction)*_radius),(_center select 2)];
+	// _center_ran = [(_center select 0)+((sin _direction)*_radius),(_center select 1)+((cos _direction)*_radius),(_center select 2)];
+	_center_ran = [(_center select 0)+((sin _direction)*_radius), (_center select 1)+((cos _direction)*_radius), 0];
 	
 	if (count (nearestTerrainObjects [_center_ran, _filter, _distance_min, false]) < 1 && !surfaceIsWater _center_ran) then {
 		_is_clear = true;

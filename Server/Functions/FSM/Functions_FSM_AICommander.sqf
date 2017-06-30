@@ -34,3 +34,26 @@ CTI_FSM_AICommander_TryUpgrade = {
 	
 	_current_content
 };
+
+CTI_FSM_AICommander_SetAIRole = {
+	params ["_side", "_group", "_role"];
+	
+	_category = missionNamespace getVariable [format["CTI_SQUADS_%1_CATEGORY_%2", _side, _role], []];
+	
+	if (count _category > 0) then {
+		//--- Find a valid matching squad array based on the given condition
+		_pool = [];
+		{
+			if (call (_x select 2)) exitWith {_pool = _x};
+		} forEach _category;
+		
+		//--- If no conditions can be met, use the first squad array element
+		if (count _pool < 1) then {_pool = _category select 0};
+		
+		_squad = (_x select 0) selectRandomWeighted (_x select 1); 
+		
+		_group setVariable ["cti_role", _squad];
+	} else {
+		// todo warn about nil category, default to infantry
+	};
+};

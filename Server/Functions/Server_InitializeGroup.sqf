@@ -25,7 +25,6 @@
 params ["_team", "_side"];
 
 if (isNil {_team getVariable "cti_funds"}) then {_team setVariable ["cti_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", _side], true]};
-_team setVariable ["cti_role_evo", "Infantry"]; //--- Evolutive role
 _team setVariable ["cti_order", CTI_ORDER_TAKETOWNS, true];
 _team setVariable ["cti_order_pos", [0,0], true];
 _team setVariable ["cti_vote", grpNull, true];
