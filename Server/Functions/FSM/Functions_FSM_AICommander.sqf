@@ -50,7 +50,7 @@ CTI_FSM_AICommander_SetAIRole = {
 		//--- If no conditions can be met, use the first squad array element
 		if (count _pool < 1) then {_pool = _category select 0};
 		
-		_squad = (_x select 0) selectRandomWeighted (_x select 1); 
+		_squad = (_pool select 0) selectRandomWeighted (_pool select 1); 
 		
 		_group setVariable ["cti_role", _squad];
 	} else {

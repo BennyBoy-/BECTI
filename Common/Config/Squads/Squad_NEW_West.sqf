@@ -70,7 +70,7 @@ if (isServer) then {
 	//--- If no conditions can be met, the AI commander will use the first element if present
 	missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_INFANTRY", _side], [
 		[["Infantry", "InfantryLAT"], [1.3, 1], compile format["([%1, CTI_UPGRADE_GEAR] call CTI_CO_FNC_GetUpgrade) < 1", _side]],
-		[["Infantry", "InfantryAT", "InfantryAA", "InfantryRanged"], [2, 1.25, .35, .55], compile format["([%1, CTI_UPGRADE_GEAR] call CTI_CO_FNC_GetUpgrade) > 0", _side]],
+		[["Infantry", "InfantryAT", "InfantryAA", "InfantryRanged"], [2, 1.25, .35, .55], compile format["([%1, CTI_UPGRADE_GEAR] call CTI_CO_FNC_GetUpgrade) > 0", _side]]
 	]];
 	
 	missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_LIGHT", _side], [

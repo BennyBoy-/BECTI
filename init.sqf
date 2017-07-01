@@ -1,5 +1,5 @@
 //////////////////// debug
-CTI_AI_TEAMS_ENABLED = 0; //debug
+// CTI_AI_TEAMS_ENABLED = 0; //debug
 if (isServer) then {
 	0 spawn {
 		waitUntil {!isNil "CTI_InitServer"};

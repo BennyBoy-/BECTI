@@ -28,30 +28,27 @@
     [_group, _side, _var select 2, _factory_nearest] call CTI_SE_FNC_AI_PurchaseSquad;
 */
 
-params ["_group", "_side", "_pool", "_factory"];
-private ["_can_use", "_compose", "_flaten", "_need", "_picked", "_probability"];
+params ["_group", "_side", "_squad", "_factory"];
+private ["_can_use", "_compose", "_need", "_picked", "_probability"];
 
 _need = round(3 + random 2); //--- The amount of units to purchase, todo improve
 _compose = [];
 
-_flaten = [];
-{ for '_i' from 1 to (_x select 1) do {_flaten pushBack _x} } forEach _pool;
-
-_pool = _flaten call CTI_CO_FNC_ArrayShuffle;
-
 while {_need > 0} do {
-	_picked = selectRandom _pool;
-	_probability = if (count _picked > 2) then {_picked select 2} else {100};
+	//todo: check upgrade level + funds
+	_picked = ((_squad select CTI_SQUAD_COMPOSITION) select 0) selectRandomWeighted ((_squad select CTI_SQUAD_COMPOSITION) select 1);
+	// _probability = if (count _picked > 2) then {_picked select 2} else {100};
 	
-	_can_use = true;
-	if (_probability != 100) then {
-		if (random 100 > _probability) then {_can_use = false};
-	};
+	// _can_use = true;
+	// if (_probability != 100) then {
+		// if (random 100 > _probability) then {_can_use = false};
+	// };
 	
-	if (_can_use) then {
-		_compose pushBack (_picked select 0);
+	// if (_can_use) then {
+		// _compose pushBack (_picked select 0);
+		_compose pushBack _picked;
 		_need = _need - 1;
-	};
+	// };
 };
 
 {
