@@ -363,12 +363,29 @@ CTI_FSM_UpdateAI_Order_TakeTown = {
 	//--- Let's go to the town!
 	_group move ([getPos _town, 5, 40] call CTI_CO_FNC_GetRandomPosition);
 	
+	if !(behaviour leader _group isEqualTo "AWARE") then {_group setBehaviour "AWARE"};
+	if !(combatMode _group isEqualTo "YELLOW") then {_group setCombatMode "YELLOW"};
+	if !(speedMode _group isEqualTo "FULL") then {_group setSpeedMode "FULL"};
+	
+	_combat = false;
+	
 	//--- Town Taking thread (Auto orders may swap targets if needed)
 	_process = true;
 	_side_owned = false;
 	while {_process} do {
 		if (isNil '_group') exitWith {};
 		if (_seed != (_group getVariable "cti_order_seed")) exitWith {};
+		
+		if (leader _group distance _town < CTI_AI_ORDER_TAKEHOLDTOWNS_RANGE && !_combat) then {
+			_combat = true;
+			
+			_has_vehicles = false;
+			{if !(_x isKindOf "Man") exitWith {_has_vehicles = true}} forEach units _group;
+			
+			if !(behaviour leader _group isEqualTo (["STEALTH", "COMBAT"] select _has_vehicles)) then {_group setBehaviour (["STEALTH", "COMBAT"] select _has_vehicles)};
+			if !(combatMode _group isEqualTo "RED") then {_group setCombatMode "RED"};
+			if !(speedMode _group isEqualTo "LIMITED") then {_group setSpeedMode "LIMITED"};
+		};
 		
 		if ((_town getVariable "cti_town_sideID") isEqualTo _sideID) exitWith {_side_owned = true};
 		if (_order in [CTI_ORDER_TAKETOWN_AUTO, CTI_ORDER_TAKEHOLDTOWN_AUTO]) then {if (([leader _group, _side] call CTI_CO_FNC_GetClosestEnemyTown) != _town) then {_process = false}};
@@ -387,6 +404,10 @@ CTI_FSM_UpdateAI_Order_TakeTown = {
 			_action = "";_last_action = "";_patrol_area = [];_start_patrol = time;
 			
 			for '_i' from 1 to CTI_AI_ORDER_TAKEHOLDTOWNS_HOPS do {_patrol_area pushBack ([_town, 5, CTI_AI_ORDER_TAKEHOLDTOWNS_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition)};
+			
+			if !(behaviour leader _group isEqualTo "AWARE") then {_group setBehaviour "AWARE"};
+			if !(combatMode _group isEqualTo "YELLOW") then {_group setCombatMode "YELLOW"};
+			if !(speedMode _group isEqualTo "NORMAL") then {_group setSpeedMode "NORMAL"};
 			
 			while {true} do {
 				if (isNil '_group') exitWith {};
