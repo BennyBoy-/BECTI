@@ -35,6 +35,11 @@ private ["_award_teams", "_currentSideID", "_flagTexture", "_last_capture", "_ne
 _newSideID = (_newSide) call CTI_CO_FNC_GetSideID;
 _currentSideID = _town getVariable "cti_town_sideID";
 
+//--- Remove the town defenses first of all
+if !(isNil {_town getVariable "cti_town_hasdefenses"}) then {
+	[_town, (_currentSideID) call CTI_CO_FNC_GetSideFromID] call CTI_SE_FNC_RemoveTownDefenses;
+};
+
 _town setVariable ["cti_town_sideID", _newSideID, true];
 _town setVariable ["cti_town_lastSideID", _currentSideID, true];
 

@@ -53,5 +53,7 @@ while {_need > 0} do {
 
 {
 	_seed = time + random 10000 - random 500 + diag_frameno;
+	_crew_count = if (_x isKindOf "Man") then {1} else {count((_x) call compile preprocessFileLineNumbers "Common\Config\Units\Get_DetailedTurrets.sqf")}; //--- TODO, make that a function
+	_group setVariable ["cti_ai_units_queued", (_group getVariable ["cti_ai_units_queued", []]) + [[_seed, _crew_count]]];
 	[_group, _group, _side, _x, _factory, [true, true, true, true, true], _seed] call CTI_SE_FNC_OnClientPurchase;
 } forEach _compose;

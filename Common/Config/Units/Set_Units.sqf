@@ -37,7 +37,7 @@ for '_i' from 0 to (count _c)-1 do {
 				case "STRING": {if ((_n select _i) isEqualTo "") then { getText(configFile >> "CfgVehicles" >> _classname >> "displayName") } else { _n select _i }};
 				default {""};
 			};
-			_turrets = if !(_classname isKindOf "Man") then { (_classname) call compile preprocessFileLineNumbers "Common\Config\Units\Get_DetailedTurrets.sqf" } else { "" };
+			_turrets = if !(_classname isKindOf "Man") then { (_classname) call compile preprocessFileLineNumbers "Common\Config\Units\Get_DetailedTurrets.sqf" } else { "" }; //--- TODO, make that a function
 			
 			_scripts = _s select _i;
 			if (_custom) then { //--- Custom vehicle are tracked by an ID to make it easier to spot on the network, we avoid the use of a string for our 56k modem friends.

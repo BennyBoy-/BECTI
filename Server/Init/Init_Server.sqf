@@ -32,6 +32,7 @@ CTI_SE_FNC_OnHQDestroyed = compileFinal preprocessFileLineNumbers "Server\Functi
 CTI_SE_FNC_OnTownActivation = compileFinal preprocessFileLineNumbers "Server\Functions\Server_OnTownActivation.sqf";
 CTI_SE_FNC_OnTownCaptured = compileFinal preprocessFileLineNumbers "Server\Functions\Server_OnTownCaptured.sqf";
 CTI_SE_FNC_OnTownDeactivation = compileFinal preprocessFileLineNumbers "Server\Functions\Server_OnTownDeactivation.sqf";
+CTI_SE_FNC_RemoveTownDefenses = compileFinal preprocessFileLineNumbers "Server\Functions\Server_RemoveTownDefenses.sqf";
 CTI_SE_FNC_RepairHQ = compileFinal preprocessFileLineNumbers "Server\Functions\Server_RepairHQ.sqf";
 CTI_SE_FNC_SpawnTownOccupation = compileFinal preprocessFileLineNumbers "Server\Functions\Server_SpawnTownOccupation.sqf";
 CTI_SE_FNC_SpawnTownResistance = compileFinal preprocessFileLineNumbers "Server\Functions\Server_SpawnTownResistance.sqf";

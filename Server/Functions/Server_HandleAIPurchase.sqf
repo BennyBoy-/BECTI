@@ -41,10 +41,24 @@
 params ["_req_seed", "_req_classname", "_req_buyer", "_req_target", "_factory", "_req_side"];
 private ["_can_afford", "_cost", "_direction", "_distance", "_funds", "_model", "_net", "_position", "_req_time_out", "_script", "_sideID", "_var", "_vehicle", "_var_classname"];
 
+//--- Clear the AI Group Queue if needed
+_ai_clear_queue = {
+	params ["_seed", "_group"];
+	private ["_queue"];
+	
+	_queue = _group getVariable ["cti_ai_units_queued", []];
+	for '_i' from count(_queue)-1 to 0 step -1 do {
+		if (((_queue select _i) select 0) isEqualTo _seed) exitWith {_queue deleteAt _i};
+	};
+};
+
 //--- First of all, make sure that we don't go "softly" above the AI group size
 _process = true;
 if !(typeName _req_target isEqualTo "SIDE") then { if ((count units _req_target)+1 > CTI_AI_TEAMS_GROUPSIZE) then {_process = false} };
-if !(_process) exitWith {[_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete};
+if !(_process) exitWith {
+	[_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete; 
+	if (typeName _req_target isEqualTo "GROUP") then {[_req_seed, _req_target] call _ai_clear_queue};
+};
 
 _sideID = (_req_side) call CTI_CO_FNC_GetSideID;
 _model = _req_classname;
@@ -54,6 +68,7 @@ _var_classname = missionNamespace getVariable _req_classname;
 if (isNil '_var_classname') exitWith {
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["ERROR", "FILE: Server\Functions\Server_HandleAIPurchase.sqf", format["An AI request from group [%1] to group [%2] using the seed [%3] could not be processed in the factory [%4 (%5)], classname [%6] is not defined", _req_buyer, _req_target, _req_seed, _factory, _factory getVariable "cti_structure_type", _req_classname]] call CTI_CO_FNC_Log };
 	[_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete;
+	if (typeName _req_target isEqualTo "GROUP") then {[_req_seed, _req_target] call _ai_clear_queue};
 };
 
 _req_time_out = time + (_var_classname select CTI_UNIT_TIME);
@@ -74,7 +89,10 @@ if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 };
 
 _funds = (_req_buyer) call CTI_CO_FNC_GetFunds;
-if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete };
+if (_funds < _cost) exitWith { 
+	[_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete;
+	if (typeName _req_target isEqualTo "GROUP") then {[_req_seed, _req_target] call _ai_clear_queue};
+};
 // [_req_buyer, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
 
 _direction = 360 - CTI_TOWNS_DEPOT_BUILD_DIRECTION;
@@ -91,7 +109,10 @@ _position set [2, .5];
 
 while { time <= _req_time_out && alive _factory } do { sleep .25 }; //--- Construction...
 
-if !(alive _factory) exitWith { diag_log "the factory is dead" };
+if !(alive _factory) exitWith { //--- TODO, better msg
+	diag_log "the factory is dead"; 
+	if (typeName _req_target isEqualTo "GROUP") then {[_req_seed, _req_target] call _ai_clear_queue}; 
+};
 
 _net = [false, true] select ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") isEqualTo 1);
 
@@ -99,11 +120,26 @@ _net = [false, true] select ((missionNamespace getVariable "CTI_MARKERS_INFANTRY
 _process = true;
 if (_req_classname isEqualTo format["CTI_Salvager_Independent_%1", _req_side]) then {if (count((_req_side call CTI_CO_FNC_GetSideLogic) getVariable "cti_salvagers") >= CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX) then { _process = false }};
 
-if !(_process) exitWith {[_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete};
-if !(typeName _req_target isEqualTo "SIDE") then {if ((count units _req_target) > CTI_AI_TEAMS_GROUPSIZE) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete }};
+if !(_process) exitWith {
+	[_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete;
+	if (typeName _req_target isEqualTo "GROUP") then {[_req_seed, _req_target] call _ai_clear_queue};
+};
+
+_max_gz = false;
+if !(typeName _req_target isEqualTo "SIDE") then {
+	if ((count units _req_target) > CTI_AI_TEAMS_GROUPSIZE) then { _max_gz = true };
+};
+
+if (_max_gz) then {
+	[_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete;
+	if (typeName _req_target isEqualTo "GROUP") then {[_req_seed, _req_target] call _ai_clear_queue};
+};
 
 _funds = (_req_buyer) call CTI_CO_FNC_GetFunds;
-if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete };
+if (_funds < _cost) exitWith { 
+	[_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete; 
+	if (typeName _req_target isEqualTo "GROUP") then {[_req_seed, _req_target] call _ai_clear_queue};
+};
 [_req_buyer, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
 
 if (typeName _req_target isEqualTo "SIDE") then { _req_target = createGroup _req_side };
@@ -146,3 +182,4 @@ if (!(_script isEqualTo "") && alive _vehicle) then {
 if !(isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorEditableObjects [_units, true]};
 
 [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete;
+if (typeName _req_target isEqualTo "GROUP") then {[_req_seed, _req_target] call _ai_clear_queue};
