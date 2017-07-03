@@ -151,6 +151,11 @@ if (_model isKindOf "Man") then {
 	_units pushBack _vehicle;
 } else {
 	private ["_crew", "_unit"];
+	
+	if (CTI_VEHICLES_BASE_SAFE_SPAWN > 0 && !(_model isKindOf "Ship")) then { //--- Safe spawn?
+		_position = [_position, 1, 40, 5, "vehicles", ["Man","Car","Motorcycle","Tank","Ship","Air","StaticWeapon"], 5, ["Building", 20]] call CTI_CO_FNC_GetSafePosition;
+	};
+	
 	_vehicle = [_model, _position, _direction + getDir _factory, _sideID, true, true, true] call CTI_CO_FNC_CreateVehicle;
 	
 	_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
@@ -171,6 +176,9 @@ if (_model isKindOf "Man") then {
 	//--- Authorize the air loadout depending on the parameters set
 	if (_vehicle isKindOf "Air") then {[_vehicle, _req_side] call CTI_CO_FNC_SanitizeAircraft};
 	// _req_target addVehicle _vehicle;
+	
+	//--- Allow our crew to perform repairs (TODO: give them repair kits)
+	{_x setUnitTrait ["Engineer", true]} forEach _units;
 };
 
 if (!(_script isEqualTo "") && alive _vehicle) then {

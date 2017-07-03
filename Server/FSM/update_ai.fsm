@@ -9,9 +9,9 @@ item4[] = {"Not_AI",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.0000
 item5[] = {"AI",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"AI"};
 item6[] = {"Phase_VI_Duty",2,250,-100.000000,1000.000000,0.000000,1050.000000,0.000000,"Phase VI" \n "Duty"};
 item7[] = {"",7,210,246.000015,-278.999969,253.999985,-271.000000,0.000000,""};
-item8[] = {"Phase_III_Group",2,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"Phase III" \n "Group Reinforce"};
+item8[] = {"Phase_III_Group",2,4346,-100.000000,200.000000,0.000000,250.000000,0.000000,"Phase III" \n "Group Reinforce"};
 item9[] = {"In_Need",8,218,50.000000,200.000000,150.000000,250.000000,0.000000,"In Need"};
-item10[] = {"Attempt_Purchase",2,4346,200.000000,200.000000,300.000000,250.000000,0.000000,"Attempt" \n "Purchases"};
+item10[] = {"Attempt_Purchase",2,250,200.000000,200.000000,300.000000,250.000000,0.000000,"Attempt" \n "Purchases"};
 item11[] = {"No_Need",4,218,-100.000000,300.000000,0.000000,350.000000,1.000000,"No Need"};
 item12[] = {"Phase_II_Respawn",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Phase II" \n "Respawning"};
 item13[] = {"Ready",4,218,-100.000000,100.000000,0.000000,150.000000,1.000000,"Ready"};
@@ -65,8 +65,8 @@ link30[] = {26,27};
 link31[] = {27,28};
 link32[] = {28,29};
 link33[] = {29,6};
-globals[] = {25.000000,1,0,0,0,640,480,1,272,6316128,1,-655.174683,717.708252,871.172485,-590.024231,855,1271,1};
-window[] = {2,-1,-1,-1,-1,931,150,1405,150,3,873};
+globals[] = {25.000000,1,0,0,0,640,480,1,272,6316128,1,-454.286224,516.819458,1152.203369,-291.393585,855,1271,1};
+window[] = {2,-1,-1,-1,-1,881,100,1355,100,3,873};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -245,7 +245,17 @@ class FSM
        "_purchase = false;" \n
        "_remoting = false;" \n
        "if (!isNil '_var' && (_group getVariable ""cti_independent"")) then {//--- The role is set, it is independent, there is at least 1 structure, we have the min funds, the group is not buying or heading to a factory." \n
-       "	if (count _structures > 0 && _funds >= (_var select 1)) then {" \n
+       "	_upgrade_id = switch (_var select CTI_SQUAD_FACTORY) do {" \n
+       "		case CTI_BARRACKS: {CTI_UPGRADE_BARRACKS};" \n
+       "		case CTI_LIGHT: {CTI_UPGRADE_LIGHT};" \n
+       "		case CTI_HEAVY: {CTI_UPGRADE_HEAVY};" \n
+       "		case CTI_AIR: {CTI_UPGRADE_AIR};" \n
+       "		default {-1};" \n
+       "	};" \n
+       "	" \n
+       "	_upgrade_reached = if (_upgrade_id > -1) then {([_side, _upgrade_id] call CTI_CO_FNC_GetUpgrade) >= (_var select CTI_SQUAD_UPGRADELEVEL)} else {true};" \n
+       "	" \n
+       "	if (count _structures > 0 && _funds >= (_var select 1) && _upgrade_reached) then {" \n
        "		_factories = [_var select 3, _structures, leader _group] call CTI_CO_FNC_GetSideStructuresByType;" \n
        "		_factory_nearest = objNull;" \n
        "		" \n
@@ -271,12 +281,13 @@ class FSM
        "			if ([_side, CTI_CONTROLCENTER, getPos(leader _group), CTI_BASE_PURCHASE_UNITS_RANGE_CC] call CTI_CO_FNC_HasStructure) then {" \n
        "				if (_factory_nearest distance (leader _group) < CTI_BASE_PURCHASE_UNITS_RANGE_CC) then {" \n
        "					//--- Can do remoting?" \n
-       "					switch (true) do {" \n
-       "						case (_role in (missionNamespace getVariable format[""CTI_SQUADS_%1_KIND_INFANTRY"", _side])): {_remoting = true};" \n
-       "						case (_role in (missionNamespace getVariable format[""CTI_SQUADS_%1_KIND_LIGHT"", _side])): {_remoting = true};" \n
-       "						case (_role in (missionNamespace getVariable format[""CTI_SQUADS_%1_KIND_HEAVY"", _side])): {_remoting = true};" \n
-       "						case (_role in (missionNamespace getVariable format[""CTI_SQUADS_%1_KIND_AIR"", _side])): {_remoting = true};" \n
-       "					};" \n
+       "					// switch (true) do {" \n
+       "						// case (_role in (missionNamespace getVariable format[""CTI_SQUADS_%1_KIND_INFANTRY"", _side])): {_remoting = true};" \n
+       "						// case (_role in (missionNamespace getVariable format[""CTI_SQUADS_%1_KIND_LIGHT"", _side])): {_remoting = true};" \n
+       "						// case (_role in (missionNamespace getVariable format[""CTI_SQUADS_%1_KIND_HEAVY"", _side])): {_remoting = true};" \n
+       "						// case (_role in (missionNamespace getVariable format[""CTI_SQUADS_%1_KIND_AIR"", _side])): {_remoting = true};" \n
+       "					// };" \n
+       "					_remoting = true;" \n
        "				};" \n
        "			};" \n
        "			" \n

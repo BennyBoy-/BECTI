@@ -365,7 +365,7 @@ CTI_FSM_UpdateAI_Order_TakeTown = {
 	
 	if !(behaviour leader _group isEqualTo "AWARE") then {_group setBehaviour "AWARE"};
 	if !(combatMode _group isEqualTo "YELLOW") then {_group setCombatMode "YELLOW"};
-	if !(speedMode _group isEqualTo "FULL") then {_group setSpeedMode "FULL"};
+	if !(speedMode _group isEqualTo "NORMAL") then {_group setSpeedMode "NORMAL"};
 	
 	_combat = false;
 	

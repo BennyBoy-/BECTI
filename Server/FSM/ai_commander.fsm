@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ai_commander.fsm">*/
+/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, ai_commander.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Start FSM"};
@@ -105,8 +105,8 @@ link53[] = {43,45};
 link54[] = {44,45};
 link55[] = {45,46};
 link56[] = {46,16};
-globals[] = {25.000000,1,0,0,0,640,480,1,282,6316128,1,-725.768555,894.122925,1871.431030,750.441467,1315,910,1};
-window[] = {2,-1,-1,-1,-1,989,208,1558,208,3,1333};
+globals[] = {25.000000,1,0,0,0,640,480,1,282,6316128,1,-725.768555,894.122925,1871.431030,750.441467,1315,1271,1};
+window[] = {2,-1,-1,-1,-1,881,100,1450,100,3,1333};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -881,14 +881,14 @@ class FSM
        "//todo : determine weight based on external factors (funds, towns...)" \n
        "_teams = _side call CTI_CO_FNC_GetSideGroups;" \n
        "" \n
-       "_infantry_floor = round(_teams / 2);" \n
+       "_infantry_floor = round(count _teams / 2);" \n
        "_infantry_count = 0;" \n
        "" \n
        "//TODO: everytime a role is assigned, divide the weight by that role's overall weight (i.e, light assigned, _weight set [1, (_weight select 1) * .95])" \n
        "//--- Assign roles" \n
        "{" \n
        "	_funds = (_x) call CTI_CO_FNC_GetFundsTeam;" \n
-       "	_var = missionNamespace getVariable [format[""CTI_SQUADS_%1_CATEGORY_%2"", _side, _x getVariable ""cti_role""], []];" \n
+       "	_var = missionNamespace getVariable [format[""CTI_SQUAD_%1_%2"", _side, _x getVariable ""cti_role""], []];" \n
        "	" \n
        "	//--- AI groups are more likely to invest into what they already own" \n
        "	_barracks_modifier_local = _barracks_modifier;" \n

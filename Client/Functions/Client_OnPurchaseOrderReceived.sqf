@@ -129,6 +129,10 @@ if (_model isKindOf "Man") then {
 	_vehicle = [_model, group player, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit;
 	_units pushBack _vehicle;
 } else {
+	if (CTI_VEHICLES_BASE_SAFE_SPAWN > 0 && !(_model isKindOf "Ship")) then { //--- Safe spawn?
+		_position = [_position, 1, 40, 5, "vehicles", ["Man","Car","Motorcycle","Tank","Ship","Air","StaticWeapon"], 5, ["Building", 20]] call CTI_CO_FNC_GetSafePosition;
+	};
+
 	_vehicle = [_model, _position, _direction + getDir _factory, CTI_P_SideID, (_veh_infos select 4), true, true] call CTI_CO_FNC_CreateVehicle;
 	
 	if (_veh_infos select 0 || _veh_infos select 1 || _veh_infos select 2 || _veh_infos select 3) then { //--- Not empty.
@@ -161,6 +165,9 @@ if (_model isKindOf "Man") then {
 			};
 		} forEach (_var_classname select CTI_UNIT_TURRETS);
 	};
+	
+	//--- Allow our crew to perform repairs (TODO: give them repair kits)
+	{_x setUnitTrait ["Engineer", true]} forEach _units;
 	
 	_vehicle addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target isEqualTo 2'];
 	_vehicle addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target isEqualTo 0'];

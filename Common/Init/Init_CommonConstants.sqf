@@ -575,6 +575,7 @@ with missionNamespace do {
  */
 
 //--- Vehicles: Misc
+CTI_VEHICLES_BASE_SAFE_SPAWN = 1; //--- If enabled, the vehicles will try to spawn near their factory in a safe area
 CTI_VEHICLES_EMPTY_SCAN_PERIOD = 15; //--- Scan for a crew member in a vehicle each x seconds
 CTI_VEHICLES_HANDLER_EMPTY = 0; //--- Determine how an empty vehicle is handled by the engine (0: Typical delay, 1: delay AND the unit cannot move/fire)
 CTI_VEHICLES_HOOKERS = ["B_Heli_Transport_01_F", "O_Heli_Light_02_unarmed_F", "B_Boat_Armed_01_minigun_F", "O_Boat_Armed_01_hmg_F"]; //--- Vehicle which may lift things (not actual hookers btw)

@@ -1,6 +1,6 @@
 _last_tracked = objNull;
 _last_campos = [0,0,0];
-_thirdperson = [false, true] select (difficultyEnabled "3rdPersonView");
+_thirdperson = [false, true] select (difficultyOption "thirdPersonView" isEqualTo 1);
 
 while { true } do {
 	if (isNil {uiNamespace getVariable "cti_dialog_ui_unitscam"}) exitWith {}; //--- Menu is closed.
@@ -13,9 +13,6 @@ while { true } do {
 		} else {
 			if (_thirdperson) then { //--- No need to do that with 3rd person disabled heh
 				if (vehicle _track isEqualTo _track) then { //--- On Foot.
-					// _ep = _track weaponDirection currentWeapon _track; //--- If it has no weapons then 0 is returned.
-					// _pitch = (_ep) call CTI_UI_UnitsCamera_GetPitchFromDirectionVector;
-					// _pitch = _pitch + (uiNamespace getVariable "cti_dialog_ui_unitscam_pitch");
 					_pitch = uiNamespace getVariable "cti_dialog_ui_unitscam_pitch";
 					_dir = uiNamespace getVariable "cti_dialog_ui_unitscam_dir";
 					
@@ -25,8 +22,6 @@ while { true } do {
 					CTI_UnitsCamera camSetRelPos _relPos;
 				} else {
 					_vehicle = vehicle _track;
-					// _pitch = (vectorDir _vehicle) call CTI_UI_UnitsCamera_GetPitchFromDirectionVector;
-					// _pitch = _pitch + (uiNamespace getVariable "cti_dialog_ui_unitscam_pitch");
 					_pitch = uiNamespace getVariable "cti_dialog_ui_unitscam_pitch";
 					_dir = uiNamespace getVariable "cti_dialog_ui_unitscam_dir";
 					

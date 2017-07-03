@@ -8,8 +8,6 @@ switch (_action) do {
 		_track = player;
 		showCinemaBorder false;
 		
-		// _ep = _track weaponDirection currentWeapon _track;
-		// _pitch = (_ep) call CTI_UI_UnitsCamera_GetPitchFromDirectionVector;
 		_pitch = 0;
 		_dir = 180;
 		_distance = 2.5;
@@ -20,7 +18,7 @@ switch (_action) do {
 		CTI_UnitsCamera camSetRelPos _pos;
 		CTI_UnitsCamera camCommit 0;
 		
-		if (difficultyEnabled "3rdPersonView") then {
+		if (difficultyOption "thirdPersonView" isEqualTo 1) then {
 			uiNamespace setVariable ["cti_dialog_ui_unitscam_camview", "external"];
 			CTI_UnitsCamera cameraEffect ["Internal", "back"];
 			
@@ -218,6 +216,7 @@ switch (_action) do {
 			switch (_changeto) do {
 				case "ironsight": {
 					CTI_UnitsCamera cameraEffect["TERMINATE","BACK"];
+					vehicle _track switchCamera "INTERNAL";
 					vehicle _track switchCamera "GUNNER";
 					uiNamespace setVariable ["cti_dialog_ui_unitscam_camview", "ironsight"];
 				};
@@ -227,8 +226,8 @@ switch (_action) do {
 					uiNamespace setVariable ["cti_dialog_ui_unitscam_camview", "internal"];
 				};
 				case "external": {
-					if (difficultyEnabled "3rdPersonView") then {
-						vehicle player switchCamera (uiNamespace getVariable "cti_dialog_ui_unitscam_camview_in");
+					if (difficultyOption "thirdPersonView" isEqualTo 1) then {
+						vehicle _track switchCamera (uiNamespace getVariable "cti_dialog_ui_unitscam_camview_in");
 						CTI_UnitsCamera cameraEffect ["Internal", "back"];
 						uiNamespace setVariable ["cti_dialog_ui_unitscam_camview", "external"];
 					};
