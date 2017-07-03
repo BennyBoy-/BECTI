@@ -1,14 +1,3 @@
-//////////////////// debug
-// CTI_AI_TEAMS_ENABLED = 0; //debug
-if (isServer) then {
-	0 spawn {
-		waitUntil {!isNil "CTI_InitServer"};
-		
-		west execFSM "Server\FSM\ai_commander.fsm";
-	};
-};
-//////////////////// debug
-
 //--- Initial View Distance and Object View Distance for both clients and server
 setViewDistance 1750;
 setObjectViewDistance 1750;

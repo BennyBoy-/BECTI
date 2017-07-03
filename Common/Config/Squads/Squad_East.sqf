@@ -1,113 +1,92 @@
 _side = _this;
 
-_v = [];
-_t = [];
-_p = [];
-_f = [];
-_m = [];
-_c = [];
-_s = [];
+_names = [];
+_label = [];
+_members = [];
+_factories = [];
 
-//--- Commander will assign those orders based on the force and the probability [type, strenght, {probability}, {Max per side}]
-missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_INFANTRY", _side], [["Infantry", 2], ["InfantryAT", 1], ["InfantryAA", 1, 40, .10], ["InfantryRanged", 1, 60, .05]]];
-missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_LIGHT", _side], [["Motorized", 1, 75, .12], ["Mechanized", 1, 90, .15]]];
-missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_HEAVY", _side], [["Mechanized", 1, 35], ["AntiAir", 1, 85, .10], ["MechanizedHeavy", 1], ["Armored", 2]]];
-missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_AIR", _side], [["AirAttack", 1]]];
+//--- Infantry Templates
+_names pushBack "Infantry";
+_label pushBack "Infantry Squad";
+_members pushBack [["O_Soldier_F", "O_soldier_AR_F", "O_medic_F", "O_soldier_LAT_F", "O_Soldier_GL_F", "O_sniper_F", "O_soldier_M_F"], [1.75, 1, 0.8, 1.2, 1, 0.4, 0.5]];
+_factories pushBack CTI_BARRACKS;
 
-missionNamespace setVariable [format["CTI_SQUADS_%1_TOWN_DEFENSE", _side], ["InfantryAT", "InfantryAA"]];
+_names pushBack "InfantryLAT";
+_label pushBack "Infantry LAT Squad";
+_members pushBack [["O_soldier_LAT_F", "O_medic_F"], [2.7, 0.25]];
+_factories pushBack CTI_BARRACKS;
 
-//--- Those are used by the commander to determine the kind of unit an AI team has
-missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_INFANTRY", _side], ["Infantry", "InfantryAT", "InfantryAA", "InfantryRanged"]];
-missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_LIGHT", _side], ["Motorized"]];
-missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_HEAVY", _side], ["Mechanized", "MechanizedHeavy", "Armored", "AntiAir"]];
-missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], ["AirAttack"]];
+_names pushBack "InfantryAT";
+_label pushBack "Infantry AT Squad";
+_members pushBack [["O_soldier_AT_F", "O_medic_F", "O_soldier_LAT_F"], [3, 0.25, 1.5]];
+_factories pushBack CTI_BARRACKS;
 
-_v pushBack "Infantry";
-_t pushBack "Infantry";
-_p pushBack [["O_Soldier_F", 5], ["O_soldier_AR_F", 2, 80], ["O_medic_F", 1], ["O_soldier_LAT_F", 1, 70], ["O_Soldier_GL_F", 2, 90], ["O_sniper_F", 1, 70], ["O_soldier_M_F", 1, 55]];
-_f pushBack CTI_BARRACKS;
-_m pushBack 500;
-_c pushBack "Infantry";
-_s pushBack [];
+_names pushBack "InfantryAA";
+_label pushBack "Infantry AA Squad";
+_members pushBack [["O_soldier_AA_F", "O_medic_F", "O_soldier_LAT_F"], [3, 0.25, 0.5]];
+_factories pushBack CTI_BARRACKS;
 
-_v pushBack "InfantryAT";
-_t pushBack "Infantry - AT";
-_p pushBack [["O_soldier_AT_F", 5, 85], ["O_medic_F", 1], ["O_soldier_LAT_F", 3, 75]];
-_f pushBack CTI_BARRACKS;
-_m pushBack 800;
-_c pushBack "InfantryAT";
-_s pushBack [];
+_names pushBack "InfantryRanged";
+_label pushBack "Snipers";
+_members pushBack [["O_sniper_F", "O_soldier_M_F"], [2, 1]];
+_factories pushBack CTI_BARRACKS;
 
-_v pushBack "InfantryAA";
-_t pushBack "Infantry - AA";
-_p pushBack [["O_soldier_AA_F", 5, 85], ["O_medic_F", 1], ["O_soldier_LAT_F", 2, 60]];
-_f pushBack CTI_BARRACKS;
-_m pushBack 800;
-_c pushBack "InfantryAA";
-_s pushBack [];
+//--- Light vehicles templates
+_names pushBack "Motorized";
+_label pushBack "Motorized MRAP";
+_members pushBack [["O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F"], [1.75, 1]];
+_factories pushBack CTI_LIGHT;
 
-_v pushBack "InfantryRanged";
-_t pushBack "Infantry - Snipers";
-_p pushBack [["O_sniper_F", 2], ["O_soldier_M_F", 1]];
-_f pushBack CTI_BARRACKS;
-_m pushBack 900;
-_c pushBack "InfantryAdvanced";
-_s pushBack [];
+//--- Heavy vehicles templates
+_names pushBack "Mechanized";
+_label pushBack "Mechanized APC";
+_members pushBack [["O_APC_Tracked_02_cannon_F", "O_APC_Wheeled_02_rcws_F"], [1.8, 1]];
+_factories pushBack CTI_HEAVY;
 
-// _v pushBack "Motorized";
-// _t pushBack "Motorized - Transport";
-// _p pushBack [["O_Truck_02_transport_F", 1]];
-// _f pushBack CTI_LIGHT;
-// _m pushBack 1000;
-// _c pushBack "MotorizedTransport";
-// _s pushBack [["Transport"], ["TransportFitCargo", 40]];
+_names pushBack "MechanizedTracked";
+_label pushBack "Mechanized APC (Heavy)";
+_members pushBack [["O_APC_Wheeled_02_rcws_F"], [1]];
+_factories pushBack CTI_HEAVY;
 
-_v pushBack "Motorized";
-_t pushBack "Motorized - MPRAP";
-_p pushBack [["O_MRAP_02_hmg_F", 3], ["O_MRAP_02_gmg_F", 2, 75]];
-_f pushBack CTI_LIGHT;
-_m pushBack 1200;
-_c pushBack "Motorized";
-_s pushBack [];
+_names pushBack "Armored";
+_label pushBack "Armored - MBT";
+_members pushBack [["O_MBT_02_cannon_F"], [1]];
+_factories pushBack CTI_HEAVY;
 
-_v pushBack "Mechanized";
-_t pushBack "Mechanized - APC";
-_p pushBack [["O_APC_Wheeled_02_rcws_F", 1], ["O_APC_Tracked_02_cannon_F", 1, 50]];
-_f pushBack CTI_HEAVY;
-_m pushBack 2500;
-_c pushBack "Mechanized";
-_s pushBack [];
+_names pushBack "AntiAir";
+_label pushBack "Armored - Anti Air";
+_members pushBack [["O_APC_Tracked_02_AA_F"], [1]];
+_factories pushBack CTI_HEAVY;
 
-_v pushBack "MechanizedHeavy";
-_t pushBack "Mechanized - APC (Heavy)";
-_p pushBack [["O_APC_Tracked_02_cannon_F", 1]];
-_f pushBack CTI_HEAVY;
-_m pushBack 3000;
-_c pushBack "Mechanized";
-_s pushBack [];
+//--- Aircraft templates
+_names pushBack "AirAttack";
+_label pushBack "Air - Attack Helicopter";
+_members pushBack [["O_Heli_Attack_02_F"], [1]];
+_factories pushBack CTI_AIR;
 
-_v pushBack "Armored";
-_t pushBack "Armored - MBT";
-_p pushBack [["O_MBT_02_cannon_F", 1]];
-_f pushBack CTI_HEAVY;
-_m pushBack 6500;
-_c pushBack "Armored";
-_s pushBack [];
+//--- AI Commander variables
+if (isServer) then {
+	//--- Format is <Squad Template Name>, <Weight>, <Maximum % of squad using the template (-1 = no limits, empty array will skip it)>, <Condition>
+	//--- If no conditions can be met, the AI commander will use the first element if present
+	missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_INFANTRY", _side], [
+		[["Infantry", "InfantryLAT"], [1.3, 1], compile format["([%1, CTI_UPGRADE_GEAR] call CTI_CO_FNC_GetUpgrade) < 1", _side]],
+		[["Infantry", "InfantryAT", "InfantryAA", "InfantryRanged"], [2, 1.25, .25, .55], compile format["([%1, CTI_UPGRADE_GEAR] call CTI_CO_FNC_GetUpgrade) > 0", _side]]
+	]];
+	
+	missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_LIGHT", _side], [
+		[["Motorized"], [1], {true}]
+	]];
+	
+	missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_HEAVY", _side], [
+		[["MechanizedTracked", "Armored"], [1, .75], compile format["([%1, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetUpgrade) < 1", _side]],
+		[["Mechanized", "AntiAir", "MechanizedTracked", "Armored"], [.8, .3, .8, 2.4], compile format["([%1, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetUpgrade) > 1", _side]]
+	]];
+	
+	missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_AIR", _side], [
+		[["AirAttack"], [1], {true}]
+	]];
+	
+	// missionNamespace setVariable [format["CTI_SQUADS_%1_TOWN_DEFENSE", _side], ["InfantryAT", "InfantryAA"]]; // USED BY UPDATECOMMANDER FSM as valid types for base defenses
+};
 
-_v pushBack "AntiAir";
-_t pushBack "Armored - Anti Air";
-_p pushBack [["O_APC_Tracked_02_AA_F", 1]];
-_f pushBack CTI_HEAVY;
-_m pushBack 8500;
-_c pushBack "AntiAir";
-_s pushBack [];
-
-_v pushBack "AirAttack";
-_t pushBack "Air - Attack";
-_p pushBack [["O_Heli_Attack_02_F", 1]];
-_f pushBack CTI_AIR;
-_m pushBack 25000;
-_c pushBack "Air";
-_s pushBack [];
-
-[_side, _v, _t, _p, _f, _m, _c, _s] call compile preprocessFileLineNumbers "Common\Config\Squads\Squads_Set.sqf";
+[_side, _names, _label, _members, _factories] call compile preprocessFileLineNumbers "Common\Config\Squads\Squads_Set.sqf";

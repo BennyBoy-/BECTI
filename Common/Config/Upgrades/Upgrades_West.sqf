@@ -10,7 +10,6 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], [
 	true, //--- Naval
 	true, //--- Air
 	true, //--- Air FFAR
-	true, //--- Air DAR
 	(missionNamespace getVariable "CTI_VEHICLES_AIR_AT") isEqualTo 1, //--- Air AT
 	(missionNamespace getVariable "CTI_VEHICLES_AIR_AA") isEqualTo 1, //--- Air AA
 	(missionNamespace getVariable "CTI_VEHICLES_AIR_CM") isEqualTo 1, //--- Air CM
@@ -21,7 +20,6 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], [
 	true, //--- Respawn Range
 	true, //--- IR SMOKE
 	true, //--- Satellite
-	true, //--- Nuke
 	true //--- Supply Rate
 ]];
 
@@ -33,7 +31,6 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500,2500], //--- Naval
 	[1500,2500,3500], //--- Air
 	[1500], //--- Air FFAR
-	[1500], //--- Air DAR
 	[1500], //--- Air AT
 	[1500], //--- Air AA
 	[1500], //--- Air CM
@@ -44,7 +41,6 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
 	[1500,2500,3500], //--- Respawn Range
 	[1500], //--- IR SMOKE
 	[75000], //--- Satellite
-	[50000], //--- Nuke
 	[12000, 24000, 36000] //--- Supply Rate
 ]];
 
@@ -56,7 +52,6 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	2, //--- Naval
 	3, //--- Air
 	1, //--- Air FFAR
-	1, //--- Air DAR
 	1, //--- Air AT
 	1, //--- Air AA
 	1, //--- Air CM
@@ -67,7 +62,6 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
 	3, //--- Respawn Range
 	1, //--- IR Smoke
 	1, //--- Satellite
-	1, //--- Nuke
 	3 //--- Supply Rate
 ]];
 
@@ -79,7 +73,6 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[],[]], //--- Naval
 	[[],[],[]], //--- Air
 	[[CTI_UPGRADE_AIR, 1]], //--- Air FFAR
-	[[CTI_UPGRADE_AIR, 1]], //--- Air DAR
 	[[CTI_UPGRADE_AIR, 1]], //--- Air AT
 	[[CTI_UPGRADE_AIR, 1]], //--- Air AA
 	[[]], //--- Air CM
@@ -90,7 +83,6 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
 	[[],[],[]], //--- Respawn Range
 	[[]], //--- IR Smoke
 	[[CTI_UPGRADE_AIR, 3]], //--- Satellite
-	[[CTI_UPGRADE_HEAVY,3]], //--- Nuke
 	[[],[],[]] //--- Supply Rate
 ]];
 
@@ -103,7 +95,6 @@ if (CTI_DEBUG) then {
 			[1, 1], //--- Naval
 			[1, 1, 1], //--- Air
 			[1], //--- Air FFAR
-			[1], //--- Air DAR
 			[1], //--- Air AT
 			[1], //--- Air AA
 			[1], //--- Air CM
@@ -114,7 +105,6 @@ if (CTI_DEBUG) then {
 			[1, 1, 1], //--- Respawn Range
 			[1], //--- IR Smoke
 			[1], //--- Satellite
-			[1], //--- Nuke
 			[1,1,1] //--- Supply Rate
 	]];
 } else {
@@ -126,7 +116,6 @@ if (CTI_DEBUG) then {
 		[60,60], //--- Naval
 		[60,60,60], //--- Air
 		[60], //--- Air FFAR
-		[60], //--- Air DAR
 		[60], //--- Air AT
 		[60], //--- Air AA
 		[60], //--- Air CM
@@ -137,7 +126,6 @@ if (CTI_DEBUG) then {
 		[60,60,60], //--- Respawn Range
 		[60], //--- IR Smoke
 		[600], //--- Satellite
-		[300], //--- Nuke
 		[60, 75, 90] //--- Supply Rate
 	]];
 };
@@ -158,7 +146,6 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_AI_ORDER", _side], [
 	[CTI_UPGRADE_GEAR, 3],
 	[CTI_UPGRADE_TOWNS, 2],
 	[CTI_UPGRADE_AIR_FFAR, 1],
-	[CTI_UPGRADE_AIR_DAR, 1],
 	[CTI_UPGRADE_AIR_AT, 1],
 	[CTI_UPGRADE_AIR_AA, 1],
 	[CTI_UPGRADE_AIR_CM, 1],
@@ -169,8 +156,7 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_AI_ORDER", _side], [
 	[CTI_UPGRADE_ARTR, 1],
 	[CTI_UPGRADE_REST, 1],
 	[CTI_UPGRADE_IRSMOKE, 1],
-	[CTI_UPGRADE_SATELLITE, 1],
-	[CTI_UPGRADE_NUKE, 1]
+	[CTI_UPGRADE_SATELLITE, 1]
 ]];
 
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LABELS", _side], [
@@ -180,19 +166,17 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_LABELS", _side], [
 	["Heavy Factory", "Unlock better armored units"], //--- Heavy
 	["Naval Factory", "Unlock better naval units"], //--- Naval
 	["Aircraft Factory", "Unlock better aircraft units"], //--- Air
-	["(DISABLED) Aircraft FFAR", "Unlocks the FFAR Rockets for Aircrafts"], //--- Air FFAR
-	["(DISABLED) Aircraft DAR", "Unlocks the DAR Rockets for Aircrafts"], //--- Air DAR
+	["Aircraft FFAR", "Unlocks the FFAR Rockets for Aircrafts"], //--- Air FFAR
 	["Aircraft AT", "Unlocks the Anti Tank Missiles for Aircrafts"], //--- Air AT
 	["Aircraft AA", "Unlocks the Anti Air Missiles for Aircrafts"], //--- Air AA
 	["Aircraft Countermeasures", "Allows Aircraft to deploy countermeasures"], //--- Air CM
 	["Towns Depot", "Improves Vehicles available at Depots"], //--- Towns Depot
 	["(DISABLED) Halo", "Enable HALO Jumping from the Air factory"], //--- Halo
-	["(DISABLED) Air Radar", "Enable Air Radars"], //--- Air Radar
-	["(DISABLED) Artillery Radar", "Enable Artillery radar on Air Radars"], //--- Art Radar
+	["Air Radar", "Enable Air Radars"], //--- Air Radar
+	["Artillery Radar", "Enable Artillery radar on Air Radars"], //--- Art Radar
 	["(DISABLED) Respawn Range", "Increase the max range of the respawn truck."], //--- Respawn Range
 	["(DISABLED) IR Smoke", "Enable IR Smoke Deployment from Vehicles"], //--- IR Smoke
-	["(DISABLED) Satellite", "Allows the use of the satellite camera"], //--- Satellite
-	["(DISABLED) Nuclear Arms Deal", "Unlock Nuke Truck in Light Factory"], //--- Nuke
+	["Satellite", "Allows the use of the satellite camera"], //--- Satellite
 	["Supply Rate", "Improves the Supply delivery rate"] //--- Supply Rate
 ]];
 

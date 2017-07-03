@@ -136,8 +136,7 @@ if ((missionNamespace getVariable "CTI_CUP_ADDON") > 0) then {
 (west) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_East.sqf";
 
-// (west) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_West.sqf";
-(west) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_NEW_West.sqf";
+(west) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_East.sqf";
 
 //--- Respawn markers

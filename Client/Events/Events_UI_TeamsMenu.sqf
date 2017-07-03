@@ -25,8 +25,9 @@ switch (_action) do {
 		} forEach [["Take Towns", CTI_ORDER_TAKETOWNS],["Take Hold Towns", CTI_ORDER_TAKEHOLDTOWNS],["Hold Towns/Base", CTI_ORDER_HOLDTOWNSBASES],["Search and Destroy", CTI_ORDER_SAD],["Get In", CTI_ORDER_EMBARKCOMMANDVEH],["Get Out", CTI_ORDER_DISEMBARKCOMMANDVEH],["Get In (Cargo)", CTI_ORDER_EMBARKCARGOVEH],["Get Out (Cargo)", CTI_ORDER_DISEMBARKCARGOVEH]];
 		
 		{
+			// TODO: Add upgrade label to the lb
 			_get = missionNamespace getVariable format ["CTI_SQUAD_%1_%2", CTI_P_SideJoined, _x];
-			((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190006) lbAdd (_get select 0);
+			((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190006) lbAdd format["%1 [U:%2]", (_get select CTI_SQUAD_LABEL), (_get select CTI_SQUAD_UPGRADELEVEL)];
 			((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190006) lbSetData [_forEachIndex, _x];
 		} forEach (missionNamespace getVariable format ["CTI_SQUADS_%1", CTI_P_SideJoined]);
 		

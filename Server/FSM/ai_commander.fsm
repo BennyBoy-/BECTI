@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ai_commander.fsm">*/
+/*%FSM<COMPILE "D:\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ai_commander.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Start FSM"};
@@ -31,7 +31,7 @@ item26[] = {"Next",8,218,-550.000000,1250.000000,-450.000000,1300.000000,0.00000
 item27[] = {"Build",4,218,-250.000000,1050.000000,-150.000000,1100.000000,2.000000,"Build"};
 item28[] = {"Try_Upgrade",2,250,-375.000000,1150.000000,-275.000000,1200.000000,0.000000,"Try" \n "Upgrade"};
 item29[] = {"Teams_Management",2,250,50.000000,1500.000000,150.000000,1550.000000,0.000000,"Teams" \n "Management"};
-item30[] = {"Try_Construction",2,4346,-250.000000,1150.000000,-150.000000,1200.000000,0.000000,"Try" \n "Construction"};
+item30[] = {"Try_Construction",2,250,-250.000000,1150.000000,-150.000000,1200.000000,0.000000,"Try" \n "Construction"};
 item31[] = {"Defenses",4,218,-400.000000,1350.000000,-300.000000,1400.000000,2.000000,"Defenses"};
 item32[] = {"Determine_Commander_1",2,250,-550.000000,1350.000000,-450.000000,1400.000000,0.000000,"Determine" \n "Commander" \n "Aux. Action"};
 item33[] = {"",7,210,-504.000000,1071.000000,-496.000000,1079.000000,0.000000,""};
@@ -43,7 +43,7 @@ item38[] = {"Next",8,218,-100.000000,1500.000000,0.000000,1550.000000,0.000000,"
 item39[] = {"Set_Orders",4,218,200.000000,1500.000000,300.000000,1550.000000,3.000000,"Set" \n "Orders"};
 item40[] = {"Set_Roles",4,218,200.000000,1425.000000,300.000000,1475.000000,2.000000,"Set" \n "Roles"};
 item41[] = {"Add__Team_Units",4,218,200.000000,1575.000000,300.000000,1625.000000,1.000000,"Add " \n "Team Units"};
-item42[] = {"Set_Update_Roles",2,250,350.000000,1425.000000,450.000000,1475.000000,0.000000,"Set/Update" \n "Roles"};
+item42[] = {"Set_Update_Roles",2,4346,350.000000,1425.000000,450.000000,1475.000000,0.000000,"Set/Update" \n "Roles"};
 item43[] = {"Set_Update_Order",2,250,350.000000,1500.000000,450.000000,1550.000000,0.000000,"Set/Update" \n "Orders"};
 item44[] = {"Try_Add_Team_Uni",2,250,350.000000,1575.000000,450.000000,1625.000000,0.000000,"Try" \n "Add Team Units"};
 item45[] = {"Next",8,218,525.000000,1650.000000,625.000000,1700.000000,0.000000,"Next"};
@@ -105,8 +105,8 @@ link53[] = {43,45};
 link54[] = {44,45};
 link55[] = {45,46};
 link56[] = {46,16};
-globals[] = {25.000000,1,0,0,0,640,480,1,282,6316128,1,-1002.936523,616.954956,1697.738403,576.748840,1315,910,1};
-window[] = {2,-1,-1,-1,-1,833,52,1402,52,3,1333};
+globals[] = {25.000000,1,0,0,0,640,480,1,282,6316128,1,-725.768555,894.122925,1871.431030,750.441467,1315,910,1};
+window[] = {2,-1,-1,-1,-1,989,208,1558,208,3,1333};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -876,25 +876,43 @@ class FSM
        "if !(_air) then {_air_modifier = 0};" \n
        "" \n
        "//--- Determine the weight array (Barracks, Light, Heavy, Air)" \n
-       "_weight = [1, .5, .35, .1];" \n
+       "_weight = [1.1, .2, .35, .1];" \n
        "" \n
        "//todo : determine weight based on external factors (funds, towns...)" \n
-       "" \n
-       "//--- Assign roles" \n
        "_teams = _side call CTI_CO_FNC_GetSideGroups;" \n
        "" \n
+       "_infantry_floor = round(_teams / 2);" \n
+       "_infantry_count = 0;" \n
+       "" \n
+       "//TODO: everytime a role is assigned, divide the weight by that role's overall weight (i.e, light assigned, _weight set [1, (_weight select 1) * .95])" \n
+       "//--- Assign roles" \n
        "{" \n
        "	_funds = (_x) call CTI_CO_FNC_GetFundsTeam;" \n
+       "	_var = missionNamespace getVariable [format[""CTI_SQUADS_%1_CATEGORY_%2"", _side, _x getVariable ""cti_role""], []];" \n
        "	" \n
-       "	if (_funds < _light_funds && _light) then {_light_modifier = _light_modifier - .2; _barracks_modifier = _barracks_modifier + .1};" \n
-       "	if (_funds < _heavy_funds && _heavy) then {_heavy_modifier = _heavy_modifier - .17};" \n
+       "	//--- AI groups are more likely to invest into what they already own" \n
+       "	_barracks_modifier_local = _barracks_modifier;" \n
+       "	_light_modifier_local = _light_modifier;" \n
+       "	_heavy_modifier_local = _heavy_modifier;" \n
+       "	_air_modifier_local = _air_modifier;" \n
+       "	switch (_var select CTI_SQUAD_FACTORY) do {" \n
+       "		case CTI_BARRACKS: { if (_infantry_count < _infantry_floor) then {_barracks_modifier_local = _barracks_modifier_local + .5}};" \n
+       "		case CTI_LIGHT: {_light_modifier_local = _light_modifier_local + .15};" \n
+       "		case CTI_HEAVY: {_heavy_modifier_local = _heavy_modifier_local + .5};" \n
+       "		case CTI_AIR: {if (_air) then {_air_modifier_local = _air_modifier_local + .7}};" \n
+       "	};" \n
        "	" \n
-       "	_role = [""Infantry"", ""Light"", ""Heavy"", ""Air""] selectRandomWeighted [(_weight select 0) * _barracks_modifier, (_weight select 1) * _light_modifier, (_weight select 2) * _heavy_modifier, (_weight select 3) * _air_modifier];" \n
+       "	if (_funds < _light_funds && _light) then {_light_modifier_local = _light_modifier_local - .2; _barracks_modifier_local = _barracks_modifier_local + .1};" \n
+       "	if (_funds < _heavy_funds && _heavy) then {_heavy_modifier_local = _heavy_modifier_local - .17};" \n
+       "	" \n
+       "	_role = [""Infantry"", ""Light"", ""Heavy"", ""Air""] selectRandomWeighted [(_weight select 0) * _barracks_modifier_local, (_weight select 1) * _light_modifier_local, (_weight select 2) * _heavy_modifier_local, (_weight select 3) * _air_modifier_local];" \n
+       "	" \n
+       "	if (_role isEqualTo ""Infantry"") then {_infantry_count = _infantry_count + 1};" \n
        "	" \n
        "	[_side, _x, _role] call CTI_FSM_AICommander_SetAIRole;" \n
        "	// _x setVariable [""cti_role"", xxxxxxxx];" \n
        "	" \n
-       "} forEach (_side call CTI_CO_FNC_GetSideGroups);"/*%FSM</STATEINIT""">*/;
+       "} forEach _teams;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

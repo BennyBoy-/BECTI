@@ -1,35 +1,50 @@
-_side = _this select 0;
-_v = _this select 1;
-_t = _this select 2;
-_p = _this select 3;
-_f = _this select 4;
-_m = _this select 5;
-_c = _this select 6;
-_s = _this select 7;
+params ["_side", "_names", "_label", "_members", "_factories"];
+private ["_squads"];
 
 _squads = [];
-for '_i' from 0 to (count _v)-1 do {
-	_pool = [];
-	{ 
-		//--- Make sure that the pool contain valid units
-		if (isClass(configFile >> "CfgVehicles" >> _x select 0)) then {
-			_pool pushBack _x;
-		} else {
-			if (CTI_Log_Level >= CTI_Log_Error) then { ["ERROR", "FILE: Common\Config\Squads\Squads_Set.sqf", format ["[%1] unit [%2] is not a valid CfgVehicles classname (Addons? Typo?).", _side, _x select 0]] call CTI_CO_FNC_Log };
+
+for '_i' from 0 to (count _names)-1 do {	
+	//--- Make sure that the pool contain valid units, if not, delete the unit along with it's weight
+	for '_j' from count((_members select _i) select 0)-1 to 0 step -1 do {
+		if !(isClass(configFile >> "CfgVehicles" >> (((_members select _i) select 0) select _j))) then {
+			if (CTI_Log_Level >= CTI_Log_Error) then { 
+				["ERROR", "FILE: Common\Config\Squads\Squads_Set.sqf", format ["[%1] unit [%2] is not a valid CfgVehicles classname (Addons? Typo?). Removing it from the squad composition...", _side, (((_members select _i) select 0) select _j)]] call CTI_CO_FNC_Log 
+			};
+			
+			((_members select _i) select 0) deleteAt _j;
+			((_members select _i) select 1) deleteAt _j;
 		};
-	} forEach (_p select _i); 
+	};
 	
-	if (count _pool > 0) then {
-		_cat = _c select _i;
+	//--- Make sure that we have at least one valid unit in the composition array
+	if (count((_members select _i) select 0) > 0) then {
+		//--- Retrieve the unit min cost and the max upgrade level required
+		_cost_min = -1;
+		_upgrade_max = 0;
+		{
+			_var = missionNamespace getVariable _x;
+			if !(isNil '_var') then {
+				if ((_var select CTI_UNIT_PRICE) < _cost_min || _cost_min < 0) then {_cost_min = _var select CTI_UNIT_PRICE};
+				if ((_var select CTI_UNIT_UPGRADE) > _upgrade_max) then {_upgrade_max = _var select CTI_UNIT_UPGRADE};
+			} else {
+				if (CTI_Log_Level >= CTI_Log_Warning) then {
+					["WARNING", "FILE: Common\Config\Squads\Squads_Set.sqf", format ["[%1] unit [%2] is not defined in the units files but will be used for the squad template [%3] nonetheless", _side, _x, _names select _i]] call CTI_CO_FNC_Log;
+				};
+			};
+		} forEach ((_members select _i) select 0);
 		
-		if (isNil {missionNamespace getVariable format ["CTI_SQUADS_%1_%2", _side, _cat]}) then {missionNamespace setVariable [format ["CTI_SQUADS_%1_%2", _side, _cat], []]};
-		(missionNamespace getVariable format ["CTI_SQUADS_%1_%2", _side, _cat]) pushBack (_v select _i);
+		missionNamespace setVariable [format ["CTI_SQUAD_%1_%2", _side, _names select _i], [_label select _i, _cost_min, _members select _i, _factories select _i, _upgrade_max]];
+		_squads pushBack (_names select _i);
 		
-		missionNamespace setVariable [format ["CTI_SQUAD_%1_%2", _side, _v select _i], [_t select _i, _m select _i, _pool, _f select _i, _s select _i]];
-		_squads pushBack (_v select _i);
-		
-		if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Common\Config\Squads\Squads_Set.sqf", format ["[%1] Set Squad [%2]", _side, _v select _i]] call CTI_CO_FNC_Log };
+		if (CTI_Log_Level >= CTI_Log_Debug) then { 
+			["DEBUG", "FILE: Common\Config\Squads\Squads_Set.sqf", format ["[%1] Set Squad [%2]", _side, _names select _i]] call CTI_CO_FNC_Log;
+		};
+	} else {
+		if (CTI_Log_Level >= CTI_Log_Error) then { 
+			["ERROR", "FILE: Common\Config\Squads\Squads_Set.sqf", format ["Squad [%1] on side [%2] has no valid units in it's composition, removing it", _names select _i, _side]] call CTI_CO_FNC_Log;
+		};
 	};
 };
 
+//--- The squads names are stored in a variable
 missionNamespace setVariable [format ["CTI_SQUADS_%1", _side], _squads];

@@ -66,26 +66,29 @@ if (isNil {_town getVariable "cti_naval"}) then {
 	switch (true) do {
 		case (_value < 50) : { 
 			_pool_units = [
-				["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 99],
-				["GUER_TOWNS_SQUAD_AT1", 1, 99],			
+				["GUER_TOWNS_SQUAD_RIFLEMEN1", 2],
+				["GUER_TOWNS_SQUAD_RIFLEMEN2", 1],
+				["GUER_TOWNS_SQUAD_RIFLEMEN3", 1, 75],
+				["GUER_TOWNS_SQUAD_AT1", 1],			
 				[
-					["GUER_TOWNS_SQUAD_LIGHT1_MIXED", 2, 75],
-					["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 25]
+					["GUER_TOWNS_SQUAD_LIGHT1_MIXED", 1, 50],
+					["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 1, 30]
 				]
 			];
 		};
 		case (_value >= 50 && _value <= 60) : { 
 			_pool_units = [
 				["GUER_TOWNS_SQUAD_RIFLEMEN1", 1, 75],
+				["GUER_TOWNS_SQUAD_RIFLEMEN2", 1, 70],
 				["GUER_TOWNS_SQUAD_SNIPER", 1, 75],
 				["GUER_TOWNS_SQUAD_AT1", 1, 75],				
 				[
 					["GUER_TOWNS_SQUAD_LIGHT2_MIXED", 2, 25],
-					["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 3, 75],
+					["GUER_TOWNS_SQUAD_LIGHT3_MIXED", 2, 75],
 					["GUER_TOWNS_SQUAD_LIGHT4_MIXED", 1, 25]
 				],
 				[
-					["GUER_TOWNS_SQUAD_APC1_MIXED", 3, 80],
+					["GUER_TOWNS_SQUAD_APC1_MIXED", 2, 70],
 					["GUER_TOWNS_SQUAD_APC2_MIXED", 1, 50]
 				]
 			];

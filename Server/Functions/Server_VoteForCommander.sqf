@@ -67,7 +67,7 @@ if (isNull _commander) then {
 	if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" > 0) then {
 		if !(_logic getVariable "cti_ai_commander") then {
 			_logic setVariable ["cti_ai_commander", true];
-			// (_side) execFSM "Server\FSM\update_commander.fsm"; //todo replace with new ai com fsm
+			(_side) execFSM "Server\FSM\ai_commander.fsm";
 		};
 	};
 } else {

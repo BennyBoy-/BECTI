@@ -401,14 +401,16 @@ CTI_FSM_UpdateAI_Order_TakeTown = {
 		if (_town distance leader _group < CTI_AI_ORDER_TAKEHOLDTOWNS_RANGE) then {
 			//--- We patrol!
 			_move_defend_last = 0;_move_patrol_reload = true;
-			_action = "";_last_action = "";_patrol_area = [];_start_patrol = time;
+			_action = "";_last_action = "";_patrol_area = [([_town, 5, 20] call CTI_CO_FNC_GetRandomPosition)];_start_patrol = time;
 			
+			{_patrol_area pushBack ([_x, 5, 10] call CTI_CO_FNC_GetRandomPosition)} forEach (_town call CTI_CO_FNC_GetTownCamps);
 			for '_i' from 1 to CTI_AI_ORDER_TAKEHOLDTOWNS_HOPS do {_patrol_area pushBack ([_town, 5, CTI_AI_ORDER_TAKEHOLDTOWNS_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition)};
 			
 			if !(behaviour leader _group isEqualTo "AWARE") then {_group setBehaviour "AWARE"};
 			if !(combatMode _group isEqualTo "YELLOW") then {_group setCombatMode "YELLOW"};
 			if !(speedMode _group isEqualTo "NORMAL") then {_group setSpeedMode "NORMAL"};
 			
+			_last_move = [];
 			while {true} do {
 				if (isNil '_group') exitWith {};
 				if (_seed != (_group getVariable "cti_order_seed") || time - _start_patrol > CTI_AI_ORDER_TAKEHOLDTOWNS_TIME) exitWith {};
@@ -420,8 +422,28 @@ CTI_FSM_UpdateAI_Order_TakeTown = {
 				};
 				
 				switch (_action) do {
-					case "patrol": {if (_move_patrol_reload || unitReady leader _group && random 100 > (45 + (random 15))) then {if (_move_patrol_reload) then {_move_patrol_reload = false};_move_to = selectRandom _patrol_area; _group move _move_to}};
-					case "defense": {if (unitReady leader _group && time - _move_defend_last > 65) then {_move_defend_last = time; _group move ([_town, 10, 50] call CTI_CO_FNC_GetRandomPosition)}};
+					case "patrol": { //--- The unit patrols the town
+						if (_move_patrol_reload || unitReady leader _group && random 100 > (45 + (random 15))) then {
+							if (_move_patrol_reload) then {_move_patrol_reload = false};
+								_move_to = selectRandom (_patrol_area - _last_move); 
+								_group move _move_to;
+								
+								_last_move = _move_to;
+								if !(behaviour leader _group isEqualTo "AWARE") then {_group setBehaviour "AWARE"};
+								if !(combatMode _group isEqualTo "YELLOW") then {_group setCombatMode "YELLOW"};
+								if !(speedMode _group isEqualTo "LIMITED") then {_group setSpeedMode "LIMITED"};
+							};
+						};
+					case "defense": { //--- The unit defend the town (center)
+						if (unitReady leader _group && time - _move_defend_last > 65) then {
+							_move_defend_last = time; 
+							_group move ([_town, 10, 50] call CTI_CO_FNC_GetRandomPosition);
+							
+							if !(behaviour leader _group isEqualTo "COMBAT") then {_group setBehaviour "COMBAT"};
+							if !(combatMode _group isEqualTo "RED") then {_group setCombatMode "RED"};
+							if !(speedMode _group isEqualTo "NORMAL") then {_group setSpeedMode "NORMAL"};
+						};
+					};
 				};
 				
 				_last_action = _action;
