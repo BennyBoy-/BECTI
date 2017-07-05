@@ -24,8 +24,6 @@
 	  -> Will mobilize or deploy the HQ based on the given and global variable at the desired position
 */
 
-//todo: notify clients when deploy/mobilize occurs
-
 params ["_variable", "_side", "_position", "_direction"];
 private ["_hq", "_is_deployed", "_logic", "_sideID", "_structure_time", "_var"];
 
@@ -77,6 +75,8 @@ if (((_var select CTI_STRUCTURE_LABELS) select 0) isEqualTo CTI_HQ_DEPLOY) then 
 		_logic setVariable ["cti_hq", _structure, true];
 		deleteVehicle _current_hq;
 		
+		["hq-deployed"] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
+		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
 			["INFORMATION", "FILE: Server\Functions\Server_ToggleHQ.sqf", format["HQ from side [%1] was deployed at position [%2]", _side, _position]] call CTI_CO_FNC_Log;
 		};
@@ -112,6 +112,8 @@ if (((_var select CTI_STRUCTURE_LABELS) select 0) isEqualTo CTI_HQ_DEPLOY) then 
 			_hq setOwner (owner leader _commander);
 			(_hq) remoteExec ["CTI_PVF_CLT_AddHQActions", leader _commander];
 		};
+		
+		["hq-mobilized"] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
 			["INFORMATION", "FILE: Server\Functions\Server_ToggleHQ.sqf", format["HQ from side [%1] was mobilized at position [%2]", _side, _position]] call CTI_CO_FNC_Log;

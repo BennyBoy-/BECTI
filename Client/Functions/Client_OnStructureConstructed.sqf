@@ -28,7 +28,7 @@ private ["_marker", "_score", "_var"];
 _var = missionNamespace getVariable _variable;
 
 //todo move to displaymessage
-CTI_P_ChatID commandChat format ["%1 is now available at grid %2.", (_var select 0) select 1, mapGridPosition getPos _structure];
+CTI_P_ChatID commandChat format ["%1 is now available at grid %2.", (_var select CTI_STRUCTURE_LABELS) select 1, mapGridPosition getPos _structure];
 
 if (CTI_Log_Level >= CTI_Log_Information) then {
 	["INFORMATION", "FILE: Client\Functions\Client_OnStructureConstructed.sqf", format["Base Structure [%1 (%2)] construction is now available at position [%3]", _structure, (_var select 0) select 1, getPos _structure]] call CTI_CO_FNC_Log;

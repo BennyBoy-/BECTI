@@ -167,11 +167,11 @@ if (_completion >= 100) then { //--- The structure is complete
 		} forEach _delete_pos;
 	};
 	
+	["structure-expired", [_variable, _position]] remoteExec ["CTI_PVF_CLT_OnMessageReceived", _side];
+	
 	if (CTI_Log_Level >= CTI_Log_Information) then {
 		["INFORMATION", "FILE: Server\Functions\Server_HandleStructureConstruction.sqf", format["A [%1] from side [%2] Construction has expired at position [%3], was it destroyed? [%4]", (_var select CTI_STRUCTURE_LABELS) select 1, _side, _position, _isDestroyed]] call CTI_CO_FNC_Log;
 	};
-
-	//todo: add message bout structure expiration
 };
 
 //--- ZEUS Curator Editable

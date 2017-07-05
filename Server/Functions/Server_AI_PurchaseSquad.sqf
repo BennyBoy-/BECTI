@@ -29,28 +29,39 @@
 */
 
 params ["_group", "_side", "_squad", "_factory"];
-private ["_can_use", "_compose", "_need", "_picked", "_probability"];
+private ["_compose", "_funds", "_need", "_picked", "_squad_members", "_squad_members_weight"];
 
 _need = round(3 + random 2); //--- The amount of units to purchase, todo improve
 _compose = [];
 
-while {_need > 0} do {
-	//todo: check upgrade level + funds
-	_picked = ((_squad select CTI_SQUAD_COMPOSITION) select 0) selectRandomWeighted ((_squad select CTI_SQUAD_COMPOSITION) select 1);
-	// _probability = if (count _picked > 2) then {_picked select 2} else {100};
+_squad_members = +((_squad select CTI_SQUAD_COMPOSITION) select 0);
+_squad_members_weight = +((_squad select CTI_SQUAD_COMPOSITION) select 1);
+
+_funds = (_group) call CTI_CO_FNC_GetFunds;
+
+while {_need > 0 && count _squad_members > 0} do {
+	_picked = _squad_members selectRandomWeighted _squad_members_weight;
 	
-	// _can_use = true;
-	// if (_probability != 100) then {
-		// if (random 100 > _probability) then {_can_use = false};
-	// };
-	
-	// if (_can_use) then {
-		// _compose pushBack (_picked select 0);
+	_var = missionNamespace getVariable _picked;
+	if !(isNil '_var') then {
+		//--- The group can afford the unit
+		if (_funds >= (_var select CTI_UNIT_PRICE)) then {
+			//--- Don't remove the funds from the AI but make sure that he can afford all the units
+			_funds = _funds - (_var select CTI_UNIT_PRICE);
+			_compose pushBack _picked;
+		} else { //--- No point in picking the same unit again, remove it from the pool
+			_index = _squad_members find _picked;
+			_squad_members deleteAt _index;
+			_squad_members_weight deleteAt _index;
+		};
+	} else { //--- Not defined, add by default
 		_compose pushBack _picked;
-		_need = _need - 1;
-	// };
+	};
+	
+	_need = _need - 1;
 };
 
+//--- Add the units to the purchase queue
 {
 	_seed = time + random 10000 - random 500 + diag_frameno;
 	_crew_count = if (_x isKindOf "Man") then {1} else {count((_x) call compile preprocessFileLineNumbers "Common\Config\Units\Get_DetailedTurrets.sqf")}; //--- TODO, make that a function

@@ -61,7 +61,9 @@ switch (_message_var) do {
 	};
 	case "commander-vote-start": {CTI_P_ChatID commandChat format["%1 has initiated a commander vote!", _parameters]};//--- Todo, popup system with helper on/off
 	case "defense-sold": {CTI_P_ChatID commandChat format ["A %1 defense has been sold for $%2", _parameters select 0, _parameters select 1]};
+	case "hq-deployed": {CTI_P_ChatID commandChat "HQ Deployed"};
 	case "hq-destroyed": {CTI_P_ChatID commandChat "The HQ has been destroyed!"};
+	case "hq-mobilized": {CTI_P_ChatID commandChat "HQ Mobilized"};
 	case "hq-repair": {CTI_P_ChatID commandChat "The HQ has been repaired"};
 	case "fob-sold": {CTI_P_ChatID commandChat format ["A FOB has been sold at Grid %1", _parameters]};
 	case "funds-transfer": {player groupChat format ["%2 has transfered you $%1", _parameters select 0, (_parameters select 1) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]]};
@@ -102,6 +104,7 @@ switch (_message_var) do {
 		CTI_P_ChatID commandChat format ["%1 is under attack at grid %2!", (_var select CTI_STRUCTURE_LABELS) select 1, mapGridPosition (_parameters select 1)];
 	};
 	case "structure-destroyed": {player globalChat format ["%1 has destroyed a %2 structure", _parameters select 0, _parameters select 1]};
+	case "structure-expired": {CTI_P_ChatID commandChat format ["A %1 structure has expired at grid %2.", ((missionNamespace getVariable (_parameters select 0)) select CTI_STRUCTURE_LABELS) select 1, mapGridPosition getPos (_parameters select 1)]};
 	case "structure-sold": {CTI_P_ChatID commandChat format ["A %1 structure has been sold at Grid %2", _parameters select 0, _parameters select 1]};
 	case "structure-sold-refund": {CTI_P_ChatID commandChat format ["S%1 were received from selling a %2 structure", _parameters select 0, _parameters select 1]};
 	case "structure-teamkill-attempt": {

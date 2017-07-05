@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "G:\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, update_ai.fsm">*/
+/*%FSM<COMPILE "D:\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, update_ai.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Start FSM"};
@@ -65,8 +65,8 @@ link30[] = {26,27};
 link31[] = {27,28};
 link32[] = {28,29};
 link33[] = {29,6};
-globals[] = {25.000000,1,0,0,0,640,480,1,272,6316128,1,-454.286224,516.819458,1152.203369,-291.393585,855,1271,1};
-window[] = {2,-1,-1,-1,-1,881,100,1355,100,3,873};
+globals[] = {25.000000,1,0,0,0,640,480,1,272,6316128,1,-454.286224,516.819458,1152.203369,-291.393585,855,910,1};
+window[] = {2,-1,-1,-1,-1,833,-1868,-613,52,3,873};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -255,8 +255,8 @@ class FSM
        "	" \n
        "	_upgrade_reached = if (_upgrade_id > -1) then {([_side, _upgrade_id] call CTI_CO_FNC_GetUpgrade) >= (_var select CTI_SQUAD_UPGRADELEVEL)} else {true};" \n
        "	" \n
-       "	if (count _structures > 0 && _funds >= (_var select 1) && _upgrade_reached) then {" \n
-       "		_factories = [_var select 3, _structures, leader _group] call CTI_CO_FNC_GetSideStructuresByType;" \n
+       "	if (count _structures > 0 && _funds >= (_var select CTI_SQUAD_MINCOST) && _upgrade_reached) then {" \n
+       "		_factories = [_var select CTI_SQUAD_FACTORY, _structures, leader _group] call CTI_CO_FNC_GetSideStructuresByType;" \n
        "		_factory_nearest = objNull;" \n
        "		" \n
        "		if (count _factories > 0) then {" \n
