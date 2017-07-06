@@ -343,7 +343,7 @@ _pool = [];
 } forEach _pool_units;
 
 if (CTI_Log_Level >= CTI_Log_Information) then { 
-	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Retrieved an effective Resistance Pool of [%1] squad(s) for town [%2]. Total groups is set to [%3]", _town getVariable "cti_town_name", count _pool, _totalGroups]] call CTI_CO_FNC_Log;
+	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Retrieved an effective Resistance Pool of [%1] squad(s) for town [%2]. Total groups is set to [%3]", count _pool, _town getVariable "cti_town_name", _totalGroups]] call CTI_CO_FNC_Log;
 };
 
 if (count _pool < 1) exitWith {
