@@ -50,6 +50,7 @@ if !(isNil {missionNamespace getVariable "CTI_HEADLESS_CLIENTS"}) then {
 			if !(isNull _x) then {
 				{deleteVehicle _x; sleep 4;} forEach units _x;
 				sleep 2;
+				deleteGroup _x;
 			};
 		};
 	} forEach _this;

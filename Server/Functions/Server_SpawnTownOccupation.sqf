@@ -446,7 +446,6 @@ if (count _positions_building > 0) then {_positions_building = _positions_buildi
 	
 	_group = createGroup _side;
 	_group setGroupIdGlobal [format["(%1) %2", _town, _group]];
-	_group deleteGroupWhenEmpty true;
 	_groups pushBack _group;
 	
 	if (CTI_Log_Level >= CTI_Log_Information) then {
