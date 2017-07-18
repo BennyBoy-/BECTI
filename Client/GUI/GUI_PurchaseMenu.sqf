@@ -36,7 +36,7 @@ while { true } do {
 		//--- The factory is destroyed, attempt to pick a new one from the same tab if possible. If none are available, we do nothing since the first check handles that
 		if ([CTI_Base_BarracksInRange, CTI_Base_LightInRange, CTI_Base_HeavyInRange, CTI_Base_AirInRange, CTI_Base_RepairInRange, CTI_Base_AmmoInRange, CTI_Base_NavalInRange, CTI_Base_DepotInRange] select (uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_index")) then {
 			//--- Update the factory list if needed
-			if !((uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type") isEqualTo CTI_DEPOT) then {
+			if !((uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type") in [CTI_DEPOT, CTI_DEPOT_NAVAL]) then {
 				_fetched = [uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type", (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType;
 				
 				//--- Make sure that we have at least 1 available factory

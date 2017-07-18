@@ -73,7 +73,10 @@ CTI_UI_Purchase_FillUnitsList = {
 	
 	//--- If we're dealing with a depot, determine whether it is on ground or on water
 	if (_type isEqualTo CTI_DEPOT) then {
-		if (((uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory") getVariable "cti_depot") getVariable ["cti_naval", false]) then {_type = CTI_DEPOT_NAVAL};
+		if (
+			((uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory") getVariable "cti_depot") getVariable ["cti_naval", false] ||
+			((uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory") getVariable "cti_depot") getVariable ["cti_kind_naval", false]
+		) then {_type = CTI_DEPOT_NAVAL};
 	};
 	
 	_upgrade = switch (_type) do {
