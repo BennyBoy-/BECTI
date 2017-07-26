@@ -31,7 +31,7 @@ item26[] = {"Next",8,218,-550.000000,1250.000000,-450.000000,1300.000000,0.00000
 item27[] = {"Build",4,218,-250.000000,1050.000000,-150.000000,1100.000000,2.000000,"Build"};
 item28[] = {"Try_Upgrade",2,250,-375.000000,1150.000000,-275.000000,1200.000000,0.000000,"Try" \n "Upgrade"};
 item29[] = {"Teams_Management",2,250,50.000000,1500.000000,150.000000,1550.000000,0.000000,"Teams" \n "Management"};
-item30[] = {"Try_Construction",2,250,-250.000000,1150.000000,-150.000000,1200.000000,0.000000,"Try" \n "Construction"};
+item30[] = {"Try_Construction",2,4346,-250.000000,1150.000000,-150.000000,1200.000000,0.000000,"Try" \n "Construction"};
 item31[] = {"Defenses",4,218,-400.000000,1350.000000,-300.000000,1400.000000,2.000000,"Defenses"};
 item32[] = {"Determine_Commander_1",2,250,-550.000000,1350.000000,-450.000000,1400.000000,0.000000,"Determine" \n "Commander" \n "Aux. Action"};
 item33[] = {"",7,210,-504.000000,1071.000000,-496.000000,1079.000000,0.000000,""};
@@ -43,7 +43,7 @@ item38[] = {"Next",8,218,-100.000000,1500.000000,0.000000,1550.000000,0.000000,"
 item39[] = {"Set_Orders",4,218,200.000000,1500.000000,300.000000,1550.000000,3.000000,"Set" \n "Orders"};
 item40[] = {"Set_Roles",4,218,200.000000,1425.000000,300.000000,1475.000000,2.000000,"Set" \n "Roles"};
 item41[] = {"Add__Team_Units",4,218,200.000000,1575.000000,300.000000,1625.000000,1.000000,"Add " \n "Team Units"};
-item42[] = {"Set_Update_Roles",2,4346,350.000000,1425.000000,450.000000,1475.000000,0.000000,"Set/Update" \n "Roles"};
+item42[] = {"Set_Update_Roles",2,250,350.000000,1425.000000,450.000000,1475.000000,0.000000,"Set/Update" \n "Roles"};
 item43[] = {"Set_Update_Order",2,250,350.000000,1500.000000,450.000000,1550.000000,0.000000,"Set/Update" \n "Orders"};
 item44[] = {"Try_Add_Team_Uni",2,250,350.000000,1575.000000,450.000000,1625.000000,0.000000,"Try" \n "Add Team Units"};
 item45[] = {"Next",8,218,525.000000,1650.000000,625.000000,1700.000000,0.000000,"Next"};
@@ -105,8 +105,8 @@ link53[] = {43,45};
 link54[] = {44,45};
 link55[] = {45,46};
 link56[] = {46,16};
-globals[] = {25.000000,1,0,0,0,640,480,1,282,6316128,1,-725.768555,894.122925,1871.431030,750.441467,1315,1271,1};
-window[] = {2,-1,-1,-1,-1,881,100,1450,100,3,1333};
+globals[] = {25.000000,1,0,0,0,640,480,1,282,6316128,1,-847.722473,772.169006,1221.010742,100.020943,1315,1271,1};
+window[] = {2,-1,-1,-1,-1,1006,225,1575,225,3,1333};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -731,8 +731,8 @@ class FSM
        "_position_factory = [(_position select 0) + (sin (_direction) * _distance), (_position select 1) + (cos (_direction) * _distance), _position select 2];" \n
        "_direction = (([_position_factory, _position] call CTI_CO_FNC_GetDirTo) + ((_var select CTI_STRUCTURE_PLACEMENT) select 0));" \n
        "" \n
-       "			_sign = ""Sign_Arrow_Large_Blue_F"" createVehicleLocal _position;" \n
-       "			_sign setPos _position;" \n
+       "			//_sign = ""Sign_Arrow_Large_Blue_F"" createVehicleLocal _position;" \n
+       "			//_sign setPos _position;" \n
        "" \n
        "[format [""CTI_%1_%2"", _side, _current_content], _side, _position_factory, _direction] call CTI_SE_FNC_BuildStructure;" \n
        "" \n

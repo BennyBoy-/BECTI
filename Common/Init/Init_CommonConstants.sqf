@@ -616,6 +616,15 @@ CTI_COIN_AREA_REPAIR = [45, 10]; //--- Repair Truck Construction Interface area 
 
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 30; //--- Keep values of 10
 
+//--- Fast Travel
+CTI_FASTTRAVEL_AI_RANGE = 200; //--- The player's AI may use fast travel if within this range
+CTI_FASTTRAVEL_DISTANCE_USE_BASE_MIN = 200; //--- The player has to be within this range to be able to Fast Travel from a base building (HQ / CC)
+CTI_FASTTRAVEL_DISTANCE_USE_TOWN_MIN = 300; //--- The player has to be within this range to be able to Fast Travel from a town
+CTI_FASTTRAVEL_DISTANCE_BASE_MAX = 800; //--- The player may fast travel to destinations within this range when using the HQ
+CTI_FASTTRAVEL_DISTANCE_CC_MAX = 3500; //--- The player may fast travel to destinations within this range when using a command center
+CTI_FASTTRAVEL_DISTANCE_TOWN_MAX = 1000; //--- The player may fast travel to destinations within this range when being in a town
+CTI_FASTTRAVEL_SPEED_COEF = 0.8; //--- The speed coefficient for a player to move from a point A to B ((A distance B / 50) * COEF)
+
 CTI_MARKERS_OPACITY = 0.5;
 CTI_MARKERS_TOWN_AREA_RANGE = 250;
 CTI_MARKERS_UNITS_DEAD_DELAY = 50;

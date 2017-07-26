@@ -21,6 +21,7 @@ switch (_action) do {
 		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210006) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.47), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210006) ctrlCommit 0;
 		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210008) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.52), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210008) ctrlCommit 0;
 		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210009) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.57), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210009) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210010) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.62), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210010) ctrlCommit 0;
 	};
 	case "onMapPressed": {
 		if (CTI_Base_ControlCenterInRange && call CTI_CL_FNC_IsPlayerCommander) then {
@@ -59,5 +60,10 @@ switch (_action) do {
 			closeDialog 0;
 			createDialog "CTI_RscArtilleryMenu";
 		};
+	};
+	case "onFastTravelMenuPressed": {
+		// todo, enable/disable mode
+		closeDialog 0;
+		createDialog "CTI_RscFastTravelMenu";
 	};
 };

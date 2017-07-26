@@ -75,7 +75,7 @@ CTI_UI_Purchase_FillUnitsList = {
 	if (_type isEqualTo CTI_DEPOT) then {
 		if (
 			((uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory") getVariable "cti_depot") getVariable ["cti_naval", false] ||
-			((uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory") getVariable "cti_depot") getVariable ["cti_kind_naval", false]
+			(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory") getVariable ["cti_kind_naval", false]
 		) then {_type = CTI_DEPOT_NAVAL};
 	};
 	

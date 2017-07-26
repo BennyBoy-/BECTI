@@ -2969,7 +2969,7 @@ class CTI_RscCommandMenu {
 			x = "SafeZoneX + (SafeZoneW * 0.2)";
 			y = "SafeZoneY + (SafezoneH * 0.205)";
 			w = "SafeZoneW * 0.3";
-			h = "SafeZoneH * 0.42";
+			h = "SafeZoneH * 0.47";
 			colorBackground[] = {0, 0, 0, 0.7};
 			moving = 1;
 		};
@@ -3053,6 +3053,14 @@ class CTI_RscCommandMenu {
 			
 			text = "Artillery";
 			action = "['onArtilleryMenuPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_CommandMenu.sqf'";
+		};
+		class CTI_Control_FastTravelMenu : CTI_Control_Resources {
+			idc = 210010;
+			
+			y = "SafeZoneY + (SafezoneH * 3.62)"; //--- Render out
+			
+			text = "Fast Travel";
+			action = "['onFastTravelMenuPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_CommandMenu.sqf'";
 		};
 		class CTI_Control_Exit : RscButton {
 			idc = 22555;
@@ -4646,6 +4654,158 @@ class CTI_RscVoteMenu {
 			
 			text = "<<";
 			action = "closeDialog 0; createDialog 'CTI_RscOptionsMenu';";
+		};
+	};
+};
+
+class CTI_RscFastTravelMenu {
+	movingEnable = 0;
+	idd = 310000;
+	onLoad = "uiNamespace setVariable ['cti_dialog_ui_fasttravelmenu', _this select 0];['onLoad'] execVM 'Client\Events\Events_UI_FastTravelMenu.sqf'";
+	onUnload = "uiNamespace setVariable ['cti_dialog_ui_fasttravelmenu', nil]; ['onUnload'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_FastTravelMenu.sqf'";
+	
+	class controlsBackground {
+		class CTI_Background : RscText {
+			x = "SafeZoneX + (SafeZoneW * 0.15)";
+			y = "SafeZoneY + (SafezoneH * 0.15)";
+			w = "SafeZoneW * 0.7";
+			h = "SafeZoneH * 0.7";
+			colorBackground[] = {0, 0, 0, 0.7};
+			moving = 1;
+		};
+		class CTI_Background_Header : CTI_Background {
+			x = "SafeZoneX + (SafeZoneW * 0.15)";
+			y = "SafeZoneY + (SafezoneH * 0.15)";
+			w = "SafeZoneW * 0.7";
+			h = "SafeZoneH * 0.05"; //0.06 stock
+			colorBackground[] = {0, 0, 0, 0.4};
+		};
+		class CTI_Menu_Title : RscText {
+			style = ST_LEFT;
+			x = "SafeZoneX + (SafeZoneW * 0.17)";
+			y = "SafeZoneY + (SafezoneH * 0.155)";
+			w = "SafeZoneW * 0.68";
+			h = "SafeZoneH * 0.037";
+			
+			text = "Fast Travel Menu";
+			colorText[] = {0.258823529, 0.713725490, 1, 1};
+			
+			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+		};
+		
+		class CTI_Menu_MapFrame : RscFrame {
+			x = "SafeZoneX + (SafeZoneW * 0.16)";
+			y = "SafeZoneY + (SafezoneH * 0.21)";
+			w = "SafeZoneW * 0.40";
+			h = "SafeZoneH * 0.58";
+		};
+		class CTI_Menu_InfoFrame : CTI_Menu_MapFrame {
+			y = "SafeZoneY + (SafezoneH * 0.8)";
+			w = "SafeZoneW * 0.40";
+			h = "SafeZoneH * 0.04";
+		};
+		class CTI_Menu_ListLabelFrame : CTI_Menu_MapFrame {
+			x = "SafeZoneX + (SafeZoneW * 0.57)";
+			w = "SafeZoneW * 0.27";
+			h = "SafeZoneH * 0.04";
+		};
+		class CTI_Menu_ListFrame : CTI_Menu_ListLabelFrame {
+			y = "SafeZoneY + (SafezoneH * 0.26)";
+			h = "SafeZoneH * 0.53";
+		};
+		class CTI_Menu_ListInfo_Background : RscText {
+			x = "SafeZoneX + (SafeZoneW * 0.57)";
+			y = "SafeZoneY + (SafezoneH * 0.21)";
+			w = "SafeZoneW * 0.27";
+			h = "SafeZoneH * 0.04";
+			colorBackground[] = {0.5, 0.5, 0.5, 0.25};
+		};
+		class CTI_Menu_ListInfo_Text : RscText {
+			style = ST_CENTER;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.57)";
+			y = "SafeZoneY + (SafezoneH * 0.21)";
+			w = "SafeZoneW * 0.27";
+			h = "SafeZoneH * 0.04";
+			
+			text = "Available locations";
+			sizeEx = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+		};
+	};
+	
+	class controls {
+		class CTI_Menu_Map : RscMapControl {
+			idc = 310001;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.16)";
+			y = "SafeZoneY + (SafezoneH * 0.21)";
+			w = "SafeZoneW * 0.40";
+			h = "SafeZoneH * 0.58";
+			
+			showCountourInterval = 1;
+			
+			onMouseMoving = "mouseX = (_this select 1);mouseY = (_this select 2)";
+			onMouseButtonDown = "mouseButtonDown = _this select 1;";
+			onMouseButtonUp = "mouseButtonUp = _this select 1;";
+		};
+		class CTI_Menu_Control_LocationList : RscListBox {
+			idc = 310002;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.57)";
+			w = "SafeZoneW * 0.27";
+			y = "SafeZoneY + (SafezoneH * 0.26)";
+			h = "SafeZoneH * 0.53";
+			
+			rowHeight = "1.5 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			sizeEx = "0.78 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};
+			
+			onLBSelChanged = "['onLocationLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_FastTravelMenu.sqf'";
+			// onLBDblClick = "['onBuildStructureLBDblClick', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_FastTravelMenu.sqf'"; //todo: ft click
+		};
+		class CTI_Menu_Misc_Info : RscStructuredText {
+			idc = 310003;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.16)";
+			y = "SafeZoneY + (SafezoneH * 0.805)";
+			w = "SafeZoneW * 0.40";
+			h = "SafeZoneH * 0.035";
+			
+			size = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+		};
+		class CTI_Menu_Travel : RscButton {
+			idc = 310004;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.57)";
+			y = "SafeZoneY + (SafeZoneH * 0.80)";
+			h = "SafeZoneH * 0.04";
+			w = "SafeZoneW * 0.27";
+			
+			sizeEx = "0.85 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			
+			text = "Fast Travel";
+			action = "['onFastTravel'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_FastTravelMenu.sqf'";
+		};
+		class CTI_Control_Exit : RscButton {
+			idc = 22555;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.80)";
+			y = "SafeZoneY + (SafezoneH * 0.155)";
+			w = "SafeZoneW * 0.04";
+			h = "SafeZoneH * 0.04";
+			
+			text = "X";
+			action = "closeDialog 0";
+		};
+		class CTI_Control_Back : CTI_Control_Exit {
+			idc = 22555;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.755)";
+			
+			text = "<<";
+			action = "closeDialog 0; createDialog 'CTI_RscCommandMenu';";
 		};
 	};
 };

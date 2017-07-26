@@ -1,0 +1,48 @@
+
+while { true } do {
+	if (isNil {uiNamespace getVariable "cti_dialog_ui_fasttravelmenu"}) exitWith {}; //--- Menu is closed.
+	
+	_locations = call CTI_UI_FastTravel_GetAvailableLocations;
+	_locations_tracker = uiNamespace getVariable "cti_dialog_ui_fasttravelmenu_locations_tracker";
+	
+	//--- A Minimap click has been performed.
+	if (mouseButtonDown isEqualTo 0 && mouseButtonUp isEqualTo 0) then {
+		mouseButtonDown = -1;
+		mouseButtonUp = -1;
+		
+		//--- Attempt to get the nearest respawn of the click.
+		_clicked_position = ((uiNamespace getVariable "cti_dialog_ui_fasttravelmenu") displayCtrl 310001) ctrlMapScreenToWorld [mouseX, mouseY];
+		_nearest = [_clicked_position, uiNamespace getVariable "cti_dialog_ui_fasttravelmenu_locations"] call CTI_CO_FNC_GetClosestEntity;
+		
+		if (_nearest distance _clicked_position < 500) then {
+			{
+				if (_x isEqualTo _nearest) exitWith {
+					uiNamespace setVariable ["cti_dialog_ui_fasttravelmenu_update", false];
+					((uiNamespace getVariable "cti_dialog_ui_fasttravelmenu") displayCtrl 120002) lbSetCurSel _forEachIndex 
+				};
+			} forEach (uiNamespace getVariable "cti_dialog_ui_fasttravelmenu_locations");
+		};
+	};
+	
+	_changes = false;
+	{
+		_location = _x;
+		_require_addin = true;
+		{if (_x select 0 isEqualTo _location) exitWith {_require_addin = false}} forEach _locations_tracker;
+		if (_require_addin) then {_changes = true; (_location) call CTI_UI_FastTravel_AppendTracker};
+	} forEach _locations;
+	
+	{
+		_location = _x select 0;
+		if (!(_location in _locations) || !(alive _location)) then {
+			deleteMarkerLocal (_x select 1);
+			_locations_tracker deleteAt _forEachIndex;
+			uiNamespace setVariable ["cti_dialog_ui_fasttravelmenu_locations_tracker", _locations_tracker];
+			_changes = true;
+		};
+	} forEach +_locations_tracker;
+	
+	if (_changes) then { call CTI_UI_FastTravel_LoadLocations };
+	
+	sleep .25;
+};

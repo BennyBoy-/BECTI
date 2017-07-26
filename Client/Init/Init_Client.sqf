@@ -108,6 +108,7 @@ call compile preprocessFile "Client\Init\Init_PublicVariables.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_AIMicromanagementMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_ArtilleryMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_CoinMenu.sqf";
+call compile preprocessFile "Client\Functions\UI\Functions_UI_FastTravelMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_GearMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_KeyHandlers.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_MapCommanding.sqf";
