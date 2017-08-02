@@ -60,13 +60,14 @@ if !(_sell) then {
 	_structure setVariable ["cti_completion_ratio", _completion_ratio * CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH];
 	// _structure setVariable ["cti_structures_iteration", round(CTI_BASE_WORKERS_BUILD_COEFFICIENT / ((_var select 3)/100))];
 	_structure setVariable ["cti_structures_iteration", (_var select CTI_STRUCTURE_TIME)/100];
-	_structure setVariable ["cti_structure_type", ((_var select CTI_STRUCTURE_LABELS) select 0)];
+	_structure setVariable ["cti_structure_type", ((_var select CTI_STRUCTURE_LABELS) select 0), true];
 
 	[_side, _structure, _variable, _position, _direction, true] spawn CTI_SE_FNC_HandleStructureConstruction;
 
 	_structures_wip = _logic getVariable "cti_structures_wip";
 	_structures_wip pushBack _structure;
 	for '_i' from count(_structures_wip)-1 to 0 step -1 do {if (isNull(_structures_wip select _i)) then {_structures_wip deleteAt _i}};
+	_logic setVariable ["cti_structures_wip", _structures_wip, true];
 	
 	//--- Bounty
 	if !(isNull _killer) then {

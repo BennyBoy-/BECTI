@@ -107,7 +107,7 @@ if (_attempts >= 500) then {
 	//--- Generic per-logic variables
 	_logic setVariable ["cti_hq", _hq, true];
 	_logic setVariable ["cti_hq_deployed", false, true];
-	_logic setVariable ["cti_structures_wip", []];
+	_logic setVariable ["cti_structures_wip", [], true];
 	_logic setVariable ["cti_structures", [], true];
 	_logic setVariable ["cti_structures_areas", [], true]; //todo disable if area limit is on 0
 	_logic setVariable ["cti_structures_lasthit", -600];

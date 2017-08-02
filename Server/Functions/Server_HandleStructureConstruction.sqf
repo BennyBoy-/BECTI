@@ -95,7 +95,7 @@ switch (missionNamespace getVariable "CTI_BASE_CONSTRUCTION_MODE") do {
 };
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
-_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") - [_structure, objNull]];
+_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") - [_structure, objNull], true];
 
 deleteVehicle _structure;
 

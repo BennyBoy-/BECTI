@@ -290,7 +290,7 @@ CTI_Coin_UpdateBaseAreaLimits = {
 			//--- The structure is in a valid area, check about the amount of structures located within that area
 			if (_valid isEqualTo "" && (missionNamespace getVariable "CTI_BASE_AREA_STRUCTURES_IDENTICAL_LIMIT") > -1) then {
 				_nearest_area = [_position, CTI_P_SideLogic getVariable "cti_structures_areas"] call CTI_CO_FNC_GetClosestEntity;
-				_structures_kind = [(CTI_COIN_PARAM select 0) select 0, (CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures)] call CTI_CO_FNC_GetSideStructuresByType;
+				_structures_kind = [(CTI_COIN_PARAM select 0) select 0, ((CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures) + (CTI_P_SideLogic getVariable "cti_structures_wip"))] call CTI_CO_FNC_GetSideStructuresByType;
 				_structure_count = count([_nearest_area, _structures_kind, CTI_BASE_AREA_RANGE, true] call CTI_CO_FNC_GetEntitiesInRange);
 				
 				//--- The structure limit has been reached for that base area
