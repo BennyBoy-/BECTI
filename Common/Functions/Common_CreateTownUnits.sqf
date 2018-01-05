@@ -30,7 +30,7 @@
 */
 
 params ["_town", "_side", "_teams", "_groups", "_positions"];
-private ["_index", "_limit", "_ratio", "_safe_range", "_sideID", "_sorted", "_spawn_range", "_teams_priority", "_tvar", "_vvar"];
+private ["_limit", "_ratio", "_safe_range", "_sideID", "_spawn_range", "_teams_infantry", "_teams_queue", "_teams_vehicles", "_tvar", "_vvar"];
 
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
@@ -47,31 +47,27 @@ _spawn_min_ai = [CTI_TOWNS_OCCUPATION_SPAWN_AI_MIN, CTI_TOWNS_RESISTANCE_SPAWN_A
 _spawn_town_sv = _town getVariable (["cti_town_sv", "cti_town_sv_max"] select (_side isEqualTo resistance));
 _active_units = (((_spawn_max_ai - _spawn_min_ai) * (_spawn_town_sv - CTI_TOWNS_SPAWN_SV_MIN)) / (CTI_TOWNS_SPAWN_SV_MAX - CTI_TOWNS_SPAWN_SV_MIN)) + _spawn_min_ai;
 
-//--- Sort the teams orders if needed
-_teams_priority = [];
-_sorted = false;
+//--- Compose the queue array [[team, group, position], ...]
+_teams_infantry = [];
+_teams_queue = [];
+_teams_vehicles = [];
 
-switch (CTI_TOWNS_SPAWN_PRIORITY) do {
-	case 1: { //--- Vehicles first
-		_teams_infantry = [];
-		_teams_vehicles = [];
-		
-		{
-			_vehicles = false;
-			{
-				if !(_x isKindOf "Man") exitWith {_vehicles = true};
-			} forEach _x;
-			
-			if (_vehicles) then {_teams_vehicles pushBack _x} else {_teams_infantry pushBack _x};
-		} forEach _teams;
-		
-		_teams_priority = _teams_vehicles + _teams_infantry;
-		_sorted = true;
+{
+	switch (CTI_TOWNS_SPAWN_PRIORITY) do {
+		case 1: { //--- Vehicles first
+			if (({!(_x isKindOf "Man")} count _x) > 0) then { //--- Determine whether the group hold a vehicle or not
+				_teams_vehicles pushBack [_x, _groups select _forEachIndex, _positions select _forEachIndex];
+			} else {
+				_teams_infantry pushBack [_x, _groups select _forEachIndex, _positions select _forEachIndex];
+			};
+		};
+		default {_teams_queue pushBack [_x, _groups select _forEachIndex, _positions select _forEachIndex]}; //--- Random, Default
 	};
-	default {_teams_priority = _teams}; //--- Random
-};
+} forEach _teams;
 
-_index = 0;
+//--- In case that the spawn priority is set to use vehicles first, we do append the infantry after the vehicles
+if (CTI_TOWNS_SPAWN_PRIORITY isEqualTo 1) then {_teams_queue = _teams_vehicles + _teams_infantry};
+
 _ratio = round(count _groups * (_ratio/100));
 if (_ratio < 1) then {_ratio = 1};
 
@@ -88,7 +84,7 @@ while {true} do {
 	//--- Abort if there are no more valid groups
 	if (_valid_groups < 1) exitWith {
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Town [%1] has been de-activated. Queued units for side [%2] will not be spawned.", _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Town [%1] has been de-activated. Queued units for side [%2] will be discarded.", _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
 	};
 	
@@ -112,10 +108,11 @@ while {true} do {
 	
 	//--- Create if the total AI count is below the given limit and if the the active squad value is below the threshold or if the current town AI size is below the given value
 	if ((_total < _limit && _active_squads < _ratio) || _current < _active_units) then {
-		_team = _teams_priority select _index;
-		_index_sorted = if (_sorted) then {_teams find _team} else {_index};
-		_position = _positions select _index_sorted;
-		_group = _groups select _index_sorted;
+		_team = (_teams_queue select 0) select 0;
+		_group = (_teams_queue select 0) select 1;
+		_position = (_teams_queue select 0) select 2;
+		
+		_teams_queue deleteAt 0;
 		
 		//--- If the position holds enemies, try to get a new "safe" one, only applies to ground towns
 		if (isNil {_town getVariable "cti_naval"}) then {
@@ -152,10 +149,8 @@ while {true} do {
 		};
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Spawning [%1] units in group [%2] for town [%3] on side [%4] at position [%5]. Overall AI [%6] and current limit [%7]. Active Squad in town [%8] with current Ratio [%9]. Current Live AI in town [%10], AI Spawn threshold is set to [%11]", count _team, _group, _town getVariable "cti_town_name", _side, _position, _total, _limit, _active_squads, _ratio, _current, _active_units]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["Spawning [%1] units in group [%2] for town [%3] on side [%4] at position [%5]. Overall AI [%6] and current limit [%7]. Active Squad in town [%8] with current Ratio [%9]. Current Live AI in town [%10], AI Spawn threshold is set to [%11], Teams left in Queue [%12]", count _team, _group, _town getVariable "cti_town_name", _side, _position, _total, _limit, _active_squads, _ratio, _current, _active_units, count _teams_queue]] call CTI_CO_FNC_Log;
 		};
-		
-		_index = _index + 1;
 		
 		//--- Create the given team
 		_return = [_team, _position, _side, _group, true, false, true, false] call CTI_CO_FNC_CreateTeam;
@@ -193,11 +188,11 @@ while {true} do {
 		};
 	};
 	
-	if (_index >= count _groups) exitWith {
+	if (_teams_queue isEqualTo []) exitWith { //--- All groups are allocated, exit
 		if (CTI_Log_Level >= CTI_Log_Information) then {
-			["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["All the units for town [%1] were spawned on side [%2]", _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
+			["INFORMATION", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format["All the units for town [%1] were spawned on side [%2]. Exiting.", _town getVariable "cti_town_name", _side]] call CTI_CO_FNC_Log;
 		};
-	}; //--- All groups are allocated
+	}; 
 	
 	sleep 3;
 };
